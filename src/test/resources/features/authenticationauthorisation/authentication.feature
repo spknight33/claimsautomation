@@ -2,7 +2,7 @@ Feature: As a user I want to login to Claims Center
 
   Background: 
     Given I access ClaimCenter login page
-  @Ignore
+ 
   Scenario Outline: login valid user
     When I login to ClaimCenter as "<user>" with "<password>"
     Then I will be logged on to ClaimsCenter desktop

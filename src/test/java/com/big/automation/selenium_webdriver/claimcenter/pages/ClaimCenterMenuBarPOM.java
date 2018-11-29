@@ -5,7 +5,9 @@ import static com.big.automation.selenium_webdriver.common.utilities.ThreadUtils
 import static java.lang.String.format;
 
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 
 import com.big.automation.selenium_webdriver.common.baseTest.BaseTest;
@@ -55,9 +57,20 @@ public class ClaimCenterMenuBarPOM extends BaseTest {
    public void selectClaimsMenu() {
 
 	      WebElement claimsDropDown =  getClaimsDropdown();
-	      ((JavascriptExecutor)driver).executeScript("return window.getComputedStyle(arguments[0], ':after').click",claimsDropDown);
+	      //claimsDropDown.click();
+	      //sleep(2);
+	      //((JavascriptExecutor)driver).executeScript("return window.getComputedStyle(arguments[0], ':after').click",claimsDropDown);
 
-	      newClaimMenuOption.click();
+	      // use the down arrow key
+	      claimsDropDown.sendKeys(Keys.DOWN,Keys.ENTER);
+	      
+	      Actions actions = new Actions(driver);
+	      actions.moveToElement(claimsDropDown);
+	      actions.click();
+	      actions.sendKeys(Keys.DOWN);
+	      actions.sendKeys(Keys.ENTER);
+	      actions.build().perform();
+	      //newClaimMenuOption.click();
 	      logger.info(format("%s - done, New Claims menubar clicked", getName()));
 	   }
    
@@ -77,10 +90,10 @@ public class ClaimCenterMenuBarPOM extends BaseTest {
    {
 	   this.getSettingsMenu().click();
 	   logger.info(format("%s - done, setting menu link clicked", getName()));
-	   sleep(10);
+	   sleep(4);
 	   this.getLogoutMenuOption().click();
 	   logger.info(format("%s - done, logout menu option clicked", getName()));
-	   sleep(10);
+	   sleep(4);
 	   
    }
    
