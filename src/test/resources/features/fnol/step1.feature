@@ -1,7 +1,7 @@
 Feature: Step1 of FNOL wizard
   As a ClaimsHandler I want to login and create a claim
 
-  
+
   Scenario: login
     Given I login to ClaimCenter
     And I Select New Claim

@@ -1,9 +1,9 @@
-Feature: As a user I want to login to Claims Center
+Feature: CBPCL-71 As a user I want to login to Claims Center
 
   Background: 
     Given I access ClaimCenter login page
  
-  Scenario Outline: login valid user
+  Scenario Outline: CBPCL-71 TC7 login valid user
     When I login to ClaimCenter as "<user>" with "<password>"
     Then I will be logged on to ClaimsCenter desktop
     And I will log off
@@ -11,6 +11,7 @@ Feature: As a user I want to login to Claims Center
     Examples: 
       | user    | password |
       | sknight | gw       |
+      | rhenderson   | gw       |
 
     @Ignore
     Examples: 
@@ -24,7 +25,7 @@ Feature: As a user I want to login to Claims Center
       | gdick        | gw       |
       | jbutler      | gw       |
 
-  @Ignore
+ 
   Scenario Outline: invalid login should get error message
     When I login to ClaimCenter as "<user>" with "<password>"
     Then an error message "<error message displayed>" will be shown
