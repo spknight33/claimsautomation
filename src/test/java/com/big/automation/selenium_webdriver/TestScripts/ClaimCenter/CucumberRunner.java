@@ -15,7 +15,7 @@ import cucumber.api.testng.TestNGCucumberRunner;
 
 @CucumberOptions(
         features = "src/test/resources/features",
-        glue = {"stepdefs"},
+        glue = {"stepdefs","com.big.automation.selenium_webdriver.TestScripts.ClaimCenter"},
         tags = {"~@Ignore"},
         plugin = {
                 "pretty",

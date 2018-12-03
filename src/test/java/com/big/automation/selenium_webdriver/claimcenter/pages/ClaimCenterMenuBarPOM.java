@@ -58,19 +58,19 @@ public class ClaimCenterMenuBarPOM extends BaseTest {
 
 	      WebElement claimsDropDown =  getClaimsDropdown();
 	      //claimsDropDown.click();
-	      //sleep(2);
-	      //((JavascriptExecutor)driver).executeScript("return window.getComputedStyle(arguments[0], ':after').click",claimsDropDown);
+	      sleep(2);
+	      ((JavascriptExecutor)driver).executeScript("return window.getComputedStyle(arguments[0], ':after').click",claimsDropDown);
 
 	      // use the down arrow key
-	      claimsDropDown.sendKeys(Keys.DOWN,Keys.ENTER);
+	     // claimsDropDown.sendKeys(Keys.DOWN,Keys.ENTER);
 	      
-	      Actions actions = new Actions(driver);
-	      actions.moveToElement(claimsDropDown);
-	      actions.click();
-	      actions.sendKeys(Keys.DOWN);
-	      actions.sendKeys(Keys.ENTER);
-	      actions.build().perform();
-	      //newClaimMenuOption.click();
+	    //  Actions actions = new Actions(driver);
+	    //  actions.moveToElement(claimsDropDown);
+	    //  actions.click();
+	    //  actions.sendKeys(Keys.DOWN);
+	    //  actions.sendKeys(Keys.ENTER);
+	    //  actions.build().perform();
+	    newClaimMenuOption.click();
 	      logger.info(format("%s - done, New Claims menubar clicked", getName()));
 	   }
    

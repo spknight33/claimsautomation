@@ -1,12 +1,38 @@
 package stepdefs;
  
+import java.util.List;
+
+import org.testng.Assert;
+
 import com.big.automation.selenium_webdriver.common.baseTest.BaseTest;
 
+import cucumber.api.DataTable;
 import cucumber.api.java.en.Given;
+import cucumber.api.java.en.Then;
+import cucumber.api.java.en.When;
  
 public class CCFNOLStep1Steps extends BaseTest	{
 	
+	CCLoginSteps loginSteps = new CCLoginSteps();
+	CCMenuBarSTeps menuSteps = new CCMenuBarSTeps();
 	
+	
+	@Given("^As a ClaimsHandler I am at step(\\d+) for FNOL$")
+	public void as_a_ClaimsHandler_I_am_at_step_for_FNOL(int arg1) throws Throwable {
+		loginSteps.i_access_claimcenter_login_page();
+	    loginSteps.i_login_to_ClaimCenter_as_with("sthomson", "gw"); //TODO - user config
+	    menuSteps.selectClaimsMenu();
+	}
+	
+	
+	@Then("^Mandatory field error message will be shown$")
+	public void mandatory_field_error_message_will_be_shown() throws Throwable {
+		Assert.assertTrue(fnolStep1POM.containsErrorMessage("Loss Date : Missing required field \"Loss Date\""),
+				"Error Message For Loss Date expected");
+		Assert.assertTrue(fnolStep1POM
+				.containsErrorMessage("\"Loss Time : Missing required field \"Loss Time\""),
+				"Error Message For Loss Time expected");
+	}
 	
 	@Given("^I Try All Search Variations$")
 public void searchForPolicyByAllVariations() {
@@ -54,8 +80,14 @@ public void searchForPolicyByAllVariations() {
 		fnolStep1POM.searchPolicy();
 
 	}
+	
+	@When("^I Click Search$")
+	public void i_Click_Search() throws Throwable {
+		fnolStep1POM.searchPolicy();
+	}
 
-	@Given("^I Select The First Policy$")
+
+	@When("^I select the first policy in the results$")
 	public void selectFirstPolicy() {
 
 		
@@ -83,8 +115,40 @@ public void searchForPolicyByAllVariations() {
 	}
 	
 
-    
-    	
+	@Then("^I will see the policy search input fields$")
+	public void i_will_see_the_policy_search_input_fields(DataTable dt) throws Throwable {
+		List<String> list = dt.asList(String.class);
+		
+		for(int i=0; i<list.size(); i++) {
+			Assert.assertTrue(fnolStep1POM.inputFieldOnScreen(list.get(i)),"Policy Search Field Check: "+ list.get(i));
+					
+			
+		}
+	
+		
+	}
+   
+	@Then("^I will not see the policy search input fields$")
+	public void i_will_not_see_the_policy_search_input_fields(DataTable dt) throws Throwable {
+		List<String> list = dt.asList(String.class);
+		
+		for(int i=0; i<list.size(); i++) {
+			Assert.assertTrue(fnolStep1POM.inputFieldNotOnScreen(list.get(i)),"Policy Search Field NOT present Check: "+ list.get(i));
+					
+			
+		}
+	}
+	
+	@Then("^I will see the New Claim fields$")
+	public void i_will_see_the_New_Claim_fields(DataTable dt) throws Throwable {
+    List<String> list = dt.asList(String.class);
+		
+		for(int i=0; i<list.size(); i++) {
+			Assert.assertTrue(fnolStep1POM.inputFieldOnScreen(list.get(i)),"PNew Claim Field Check: "+ list.get(i));
+					
+			
+		}
+	}
    
     
  

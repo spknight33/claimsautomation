@@ -11,12 +11,15 @@ import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.NoAlertPresentException;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.ITestResult;
+import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Listeners;
 
@@ -104,6 +107,8 @@ public class BaseTest extends AbstractTestNGCucumberTests{
             driver.manage().window().maximize();
             driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
             driver.manage().timeouts().pageLoadTimeout(60, TimeUnit.SECONDS);
+            // disable the exit alert - deosnt work
+            //driver.executeScript("window.onbeforeunload = function() {};");
             System.out.println("Browser Config Setup Complete");
             break;
          } catch (Exception e) {
@@ -126,10 +131,20 @@ public class BaseTest extends AbstractTestNGCucumberTests{
       fnolStep3POM = PageFactory.initElements(driver, ClaimCenterFNOLStep3POM.class);
    }
 
+   
 
    @AfterMethod(timeOut = 30000, alwaysRun = true)
    public void afterMethod(ITestResult result) throws IOException {
 	   System.out.println("TestNG @bafterMethod in BaseTest - capture screen shot if pass or fail");
+	   
+	   // we may get a leave page message, so accept at end of test
+	   //try {
+	   //driver.manage().deleteAllCookies();
+	  // driver.switchTo().alert().accept();
+	  // }
+	   //catch(NoAlertPresentException e) {}
+	   
+	   
       if (result.getStatus() == ITestResult.FAILURE) {
          logger.log(Status.FAIL, "This Test Failed - See Below");
          sleep(2);
@@ -212,6 +227,9 @@ public class BaseTest extends AbstractTestNGCucumberTests{
          System.out.println("Final screenshot added");
          sleep(2);
       }
+      
+    
+     
    }
 
 
@@ -223,10 +241,17 @@ public class BaseTest extends AbstractTestNGCucumberTests{
       logger.log(Status.INFO, "The Test Class Name is - " + className);
       extent.flush();
       sleep(2);
+  
+      //((JavascriptExecutor)driver).executeScript("window.onbeforeunload = null;");
       driver.quit();
+      //driver.switchTo().alert().accept();
       System.out.println("afterTest method complete");
    }
 
+  /// @AfterClass()
+  // public void AfterClass() {
+	//   driver.switchTo().alert().accept();
+   //}
 
 private static RemoteWebDriver getDriver() {
 	return driver;

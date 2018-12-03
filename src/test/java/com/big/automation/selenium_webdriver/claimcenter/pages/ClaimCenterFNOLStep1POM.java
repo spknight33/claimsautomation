@@ -2,13 +2,17 @@ package com.big.automation.selenium_webdriver.claimcenter.pages;
 
 import static com.big.automation.selenium_webdriver.common.utilities.ThreadUtils.sleep;
 import static java.lang.String.format;
-
+import org.openqa.selenium.JavascriptExecutor;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 import com.big.automation.selenium_webdriver.common.baseTest.BaseTest;
+import com.big.automation.selenium_webdriver.common.types.Brand;
 
 public class ClaimCenterFNOLStep1POM extends BaseTest{
 
@@ -49,6 +53,12 @@ public class ClaimCenterFNOLStep1POM extends BaseTest{
 
 	@FindBy(id = "FNOLWizard:FNOLWizard_FindPolicyScreen:FNOLWizardFindPolicyPanelSet:date-inputEl")
 	private WebElement searchLossDate;
+	
+	@FindBy(id = "FNOLWizard:FNOLWizard_FindPolicyScreen:FNOLWizardFindPolicyPanelSet:FNOLWizard_PolicySearchInputSet:CCAddressInputSet:globalAddressContainer:globalAddress:GlobalAddressInputSet:Country-inputEl")
+	private WebElement searchCountry;
+	
+	@FindBy(id = "FNOLWizard:FNOLWizard_FindPolicyScreen:FNOLWizardFindPolicyPanelSet:FNOLWizard_PolicySearchInputSet:CCAddressInputSet:globalAddressContainer:globalAddress:GlobalAddressInputSet:City-inputEl")
+	private WebElement searchTownCity;
 
 	@FindBy(id = "FNOLWizard:FNOLWizard_FindPolicyScreen:FNOLWizardFindPolicyPanelSet:Search")
 	private WebElement searchPolicyButton;
@@ -82,6 +92,38 @@ public class ClaimCenterFNOLStep1POM extends BaseTest{
 	//	AjaxElementLocatorFactory ajaxElementLocatorFactory = new AjaxElementLocatorFactory(webDriver, 60);
 	//	PageFactory.initElements(ajaxElementLocatorFactory, this);
 	//}
+	
+	
+	private Map<String,String> fieldMap;
+	public ClaimCenterFNOLStep1POM()
+	{
+		fieldMap = new HashMap<String, String>();
+		fieldMap.put("PolicyNumber".toUpperCase(),"policyNumber-inputEl");
+		fieldMap.put("First Name".toUpperCase(),"FirstName-inputEl");
+		fieldMap.put("Last Name".toUpperCase(),"LastName-inputEl");
+		fieldMap.put("Policy Type".toUpperCase(),"PolicyType-inputEl");
+		fieldMap.put("Loss Date".toUpperCase(),"date-inputEl");
+		fieldMap.put("Country".toUpperCase(),"Country-inputEl");
+		fieldMap.put("Town/City".toUpperCase(),"City-inputEl");
+		fieldMap.put("Postcode".toUpperCase(),"PostalCode-inputEl");
+		fieldMap.put("VRN".toUpperCase(),"vrn-inputEl");
+		
+		
+		// These are visible after a policy has been delected
+		fieldMap.put("Claim Loss Date".toUpperCase(),"Claim_LossDate-inputEl");
+		fieldMap.put("Time".toUpperCase(),"Claim_lossTime-inputEl");
+		fieldMap.put("Type Of Claim".toUpperCase(),"ClaimMode_option0-inputEl");
+		
+		
+		// These are OOTB which should not be visible
+		fieldMap.put("Organisation Name".toUpperCase(),"GlobalContactNameInputSet:Name-inputEl");
+		fieldMap.put("SSN or Tax id".toUpperCase(),"ssn-inputEl");
+		fieldMap.put("VIN".toUpperCase(),"vin-inputEl");
+		
+		
+		
+		
+	}
 
 	public String getName() {
 
@@ -146,6 +188,7 @@ public class ClaimCenterFNOLStep1POM extends BaseTest{
 
 	private WebElement getDeSelectButton() {
 
+	
 		return unselectButton;
 	}
 
@@ -288,6 +331,47 @@ public class ClaimCenterFNOLStep1POM extends BaseTest{
 		getNextButton().click();
 		logger.info(format("%s - done, Next clicked", getName()));
 	}
+	
+	
+	
+	public boolean inputFieldOnScreen(String fieldName) throws Exception
+	{
+		boolean onscreen = false;
+		logger.info(format("%s - check inputfield on screen: "+fieldName, getName()));
+		
+		// Will get passed in name that user knows - need to map to xpath id
+		String locatorId = fieldMap.get(fieldName.toUpperCase());
+		
+		
+		if (locatorId == null )
+			throw new Exception("unknown fieldName in field map : "+ fieldName);
+		
+		String xpathLocator = "//input[contains(@id,'" + locatorId + "')]";
+		onscreen = driver.findElements( By.xpath(xpathLocator) ).size() == 1;
+		
+		return onscreen;
+	}
+	
+	public boolean inputFieldNotOnScreen(String fieldName) throws Exception
+	{
+		boolean onscreen = false;
+		logger.info(format("%s - check inputfield NOT on screen: "+fieldName, getName()));
+		
+		// Will get passed in name that user knows - need to map to xpath id
+		String locatorId = fieldMap.get(fieldName.toUpperCase());
+		
+		
+		if (locatorId == null )
+			throw new Exception("unknown fieldName in field map : "+ fieldName);
+		
+		String xpathLocator = "//input[contains(@id,'" + locatorId + "')]";
+		onscreen = driver.findElements( By.xpath(xpathLocator) ).size() == 0;
+		
+		return onscreen;
+	}
+	
+	
+	
 	
 	
 	
