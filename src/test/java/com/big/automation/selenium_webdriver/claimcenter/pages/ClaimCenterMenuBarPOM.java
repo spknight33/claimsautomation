@@ -4,6 +4,10 @@ package com.big.automation.selenium_webdriver.claimcenter.pages;
 import static com.big.automation.selenium_webdriver.common.utilities.ThreadUtils.sleep;
 import static java.lang.String.format;
 
+import java.util.HashMap;
+import java.util.Map;
+
+import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
@@ -47,12 +51,61 @@ public class ClaimCenterMenuBarPOM extends BaseTest {
     //  AjaxElementLocatorFactory ajaxElementLocatorFactory = new AjaxElementLocatorFactory(webDriver, 60);
    //   PageFactory.initElements(ajaxElementLocatorFactory, this);
   // }
+   
+   private Map<String,String> menuItemMap;
+	public ClaimCenterMenuBarPOM()
+	{
+		menuItemMap = new HashMap<String, String>();
+		menuItemMap.put("Desktop".toUpperCase(),"TabBar:DesktopTab-btnEl");
+		menuItemMap.put("Claim".toUpperCase(),"TabBar:ClaimTab-btnEl");
+		menuItemMap.put("Search".toUpperCase(),"TabBar:SearchTab-btnEl");
+		menuItemMap.put("Address Book".toUpperCase(),"TabBar:AddressBookTab-btnEl");
+		menuItemMap.put("Dashboard".toUpperCase(),"TabBar:DashboardTab-btnEl");
+		menuItemMap.put("Team".toUpperCase(),"TabBar:TeamTab-btnEl");
+		menuItemMap.put("Administration".toUpperCase(),"TabBar:AdminTab-btnEl");
+	}
 
    public String getName() {
 
       return "ClaimCenter Menubar";
    }
 
+   
+   public boolean menuOnMenuBar(String menuItem) throws Exception
+	{
+		boolean onscreen = false;
+		logger.info(format("%s - check menuItem on menubar: "+menuItem, getName()));
+		
+		// Will get passed in name that user knows - need to map to xpath id
+		String locatorId = menuItemMap.get(menuItem.toUpperCase());
+		
+		
+		if (locatorId == null )
+			throw new Exception("unknown menuItem in menuItemmap map : "+ menuItem);
+		
+		String xpathLocator = "//span[contains(@id,'" + locatorId + "')]";
+		onscreen = driver.findElements( By.xpath(xpathLocator) ).size() == 1;
+		
+		return onscreen;
+	}
+   
+   public boolean menuNotOnMenuBar(String menuItem) throws Exception
+	{
+		boolean onscreen = false;
+		logger.info(format("%s - check menuItem NOT on menubar: "+menuItem, getName()));
+		
+		// Will get passed in name that user knows - need to map to xpath id
+		String locatorId = menuItemMap.get(menuItem.toUpperCase());
+		
+		
+		if (locatorId == null )
+			throw new Exception("unknown menuItem in menuItemmap map : "+ menuItem);
+		
+		String xpathLocator = "//span[contains(@id,'" + locatorId + "')]";
+		onscreen = driver.findElements( By.xpath(xpathLocator) ).size() == 0;
+		
+		return onscreen;
+	}
 
    public void selectClaimsMenu() {
 
@@ -90,10 +143,10 @@ public class ClaimCenterMenuBarPOM extends BaseTest {
    {
 	   this.getSettingsMenu().click();
 	   logger.info(format("%s - done, setting menu link clicked", getName()));
-	   sleep(4);
+	   sleep(1);
 	   this.getLogoutMenuOption().click();
 	   logger.info(format("%s - done, logout menu option clicked", getName()));
-	   sleep(4);
+	   sleep(1);
 	   
    }
    

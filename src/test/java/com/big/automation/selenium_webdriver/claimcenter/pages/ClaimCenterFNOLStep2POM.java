@@ -23,6 +23,9 @@ public class ClaimCenterFNOLStep2POM extends BaseTest{
 	
 	@FindBy(id = "title")
 	private WebElement titleDropDown;
+	
+	@FindBy(id = "FNOLWizard:AutoWorkersCompWizardStepSet:FNOLWizard_BasicInfoScreen:ttlBar")
+	private WebElement pageTitle;
 
 	@FindBy(className = "message")
 	private List <WebElement> errorMessages;
@@ -85,13 +88,12 @@ public class ClaimCenterFNOLStep2POM extends BaseTest{
 		this.getBackButton().click();
 	}
 
-//   public void populateTitle(String title) {
-
-	// WaitForUtils.waitForElementToBeVisible(webDriver, titleDropDown);
-	// sleep();
-	// WaitForUtils.waitForElementToBeVisible(webDriver, titleDropDown);
-	// getTitleDropDown().selectByVisibleText(title);
-	// }
+	public boolean isPageTitleDisplayed(String expected)
+	{
+		logger.info(format("%s -check page title for step2 :"+expected, getName()));
+		logger.info(format("%s -found page title for step2 :"+this.getPageTitle().getText(), getName()));
+		return this.getPageTitle().getText().equalsIgnoreCase(expected);
+	}
 
 	
 	public String getReportedDateValue() {
@@ -202,6 +204,12 @@ public void setReportedByRelationship(String relationship)
 	}
 	
 	
+	
+	
+	private WebElement getPageTitle() {
+		return pageTitle;
+	}
+
 	public boolean containsErrorMessage(String contains)
 	{
 		boolean found=false;

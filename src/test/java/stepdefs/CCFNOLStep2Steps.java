@@ -5,10 +5,14 @@ import org.testng.Assert;
 import com.big.automation.selenium_webdriver.common.baseTest.BaseTest;
 
 import cucumber.api.java.en.Given;
+import cucumber.api.java.en.Then;
 
 public class CCFNOLStep2Steps extends BaseTest{
 
-	
+	@Then("^I will be on step2 for FNOL$")
+	public void i_will_be_on_step2_for_FNOL() throws Throwable {
+		fnolStep2POM.isPageTitleDisplayed("Step 2 of 5: Basic information");
+	}
 	
 	public void mandatoryFieldErrorMessagesAreShown() {
 		this.next();

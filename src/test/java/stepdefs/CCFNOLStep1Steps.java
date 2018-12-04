@@ -3,6 +3,7 @@ package stepdefs;
 import java.util.List;
 
 import org.testng.Assert;
+import org.testng.asserts.SoftAssert;
 
 import com.big.automation.selenium_webdriver.common.baseTest.BaseTest;
 
@@ -94,11 +95,17 @@ public void searchForPolicyByAllVariations() {
 		fnolStep1POM.selectFirstPolicy();
 	}
 	
-	@Given("^I Set the lossdate to \"([^\"]*)\"$")
+	@Given("^I Set the Loss Date to \"([^\"]*)\"$")
 	public void setLossDate(String date)
 	{
 		
 		fnolStep1POM.setLossDate( date);
+	}
+	@Given("^I Set the Loss Time to \"([^\"]*)\"$")
+	public void setLossTime(String time)
+	{
+		
+		fnolStep1POM.setLossTime( time);
 	}
 
 	@Given("^I click reset button on step1$")
@@ -118,13 +125,14 @@ public void searchForPolicyByAllVariations() {
 	@Then("^I will see the policy search input fields$")
 	public void i_will_see_the_policy_search_input_fields(DataTable dt) throws Throwable {
 		List<String> list = dt.asList(String.class);
+		SoftAssert softAssert = new SoftAssert();
 		
 		for(int i=0; i<list.size(); i++) {
-			Assert.assertTrue(fnolStep1POM.inputFieldOnScreen(list.get(i)),"Policy Search Field Check: "+ list.get(i));
+			softAssert.assertTrue(fnolStep1POM.inputFieldOnScreen(list.get(i)),"Policy Search Field Check: "+ list.get(i));
 					
 			
 		}
-	
+		softAssert.assertAll();
 		
 	}
    
@@ -132,22 +140,26 @@ public void searchForPolicyByAllVariations() {
 	public void i_will_not_see_the_policy_search_input_fields(DataTable dt) throws Throwable {
 		List<String> list = dt.asList(String.class);
 		
+		SoftAssert softAssert = new SoftAssert();
+		
 		for(int i=0; i<list.size(); i++) {
-			Assert.assertTrue(fnolStep1POM.inputFieldNotOnScreen(list.get(i)),"Policy Search Field NOT present Check: "+ list.get(i));
+			softAssert.assertTrue(fnolStep1POM.inputFieldNotOnScreen(list.get(i)),"Policy Search Field NOT present Check: "+ list.get(i));
 					
 			
 		}
+		softAssert.assertAll();
 	}
 	
 	@Then("^I will see the New Claim fields$")
 	public void i_will_see_the_New_Claim_fields(DataTable dt) throws Throwable {
     List<String> list = dt.asList(String.class);
-		
+    SoftAssert softAssert = new SoftAssert();
 		for(int i=0; i<list.size(); i++) {
-			Assert.assertTrue(fnolStep1POM.inputFieldOnScreen(list.get(i)),"PNew Claim Field Check: "+ list.get(i));
+			softAssert.assertTrue(fnolStep1POM.inputFieldOnScreen(list.get(i)),"New Claim Field Check: "+ list.get(i));
 					
 			
 		}
+		softAssert.assertAll();
 	}
    
     

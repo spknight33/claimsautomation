@@ -11,15 +11,12 @@ import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.NoAlertPresentException;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.ITestResult;
-import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeClass;
-import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Listeners;
 
@@ -90,7 +87,7 @@ public class BaseTest extends AbstractTestNGCucumberTests{
    }
 
 
-   @BeforeClass(timeOut = 30000)
+   @BeforeClass(timeOut = 50000)
    public void browserConfig() {
 	   System.out.println("TestNG @beforeClass in BaseTest - creating Webdriver instance and POMs");
       int count = 0;
@@ -228,7 +225,7 @@ public class BaseTest extends AbstractTestNGCucumberTests{
          sleep(2);
       }
       
-    
+  
      
    }
 

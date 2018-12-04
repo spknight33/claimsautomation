@@ -1,5 +1,6 @@
 package stepdefs;
 
+import org.openqa.selenium.NoAlertPresentException;
 import org.testng.Assert;
 
 import com.big.automation.selenium_webdriver.common.baseTest.BaseTest;
@@ -13,6 +14,17 @@ public class CCLoginSteps extends BaseTest {
 	public void i_login_to_ClaimCenter() throws Throwable {
 
 		driver.get("http://10.14.67.173:8080/cc/ClaimCenter.do");
+		// make sure there is no left over alert
+				try {
+					   
+		        	driver.switchTo().alert().accept();
+		        	System.out.println("login step - alert has been cleared");
+		        
+		     	   }
+		     	   catch(NoAlertPresentException e) {
+		     		   System.out.print("login step - No alert is present");
+		     	   }
+		
 		loginPOM.populateUsername("su");
 		loginPOM.populatePassword("gw");
 		loginPOM.next();
@@ -26,6 +38,17 @@ public class CCLoginSteps extends BaseTest {
 		// driver.get("http://10.14.67.173:8080/cc/ClaimCenter.do");
 		// DEV
 		driver.get("http://10.14.67.209:8080/cc/ClaimCenter.do");
+		
+		// make sure there is no left over alert
+		try {
+			   
+        	driver.switchTo().alert().accept();
+        	System.out.println("login step - alert has been cleared");
+        
+     	   }
+     	   catch(NoAlertPresentException e) {
+     		   System.out.print("login step - No alert is present");
+     	   }
 
 	}
 

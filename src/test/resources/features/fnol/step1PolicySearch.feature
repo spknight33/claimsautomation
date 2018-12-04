@@ -8,10 +8,9 @@ Given As a ClaimsHandler I am at step1 for FNOL
 
 Scenario: CBPCL-62 TC1 OOTB policy search fields are hidden/visible from user
 Then I will see the policy search input fields
-| PolicyNumber | First Name | Last Name | Policy Type | Loss Date | Country | Town/City | Postcode | VRN |
+| PolicyNumber | First Name | Last Name | Policy Type | Loss Date | Country | Town/City | Postcode | VRN | 
 And I will not see the policy search input fields
 |SSN or Tax id | VIN | Organisation name |
-
 
 
 Scenario: CBPCL-62 TC4 ClaimsHandler can select a search for policy and will see claims fields
@@ -28,4 +27,11 @@ Then I click next button on step1
 Then Mandatory field error message will be shown
 
 
-Scenario: CBPCL-62 TC9 ClaimsHandler can select a search for policy and will see claims fields
+Scenario: CBPCL-62 TC6 ClaimsHandler can proceed to step2 if all mandatory fields are supplied
+When I Click Search 
+And I select the first policy in the results
+And I Set the Loss Date to "03/12/2018"
+And I Set the Loss Time to "03:00 PM"
+And I click next button on step1
+Then I will be on step2 for FNOL
+
