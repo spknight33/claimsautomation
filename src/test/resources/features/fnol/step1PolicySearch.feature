@@ -5,28 +5,28 @@ I want to see the required search fields so we can easily identify the correct p
 Background:
 Given As a ClaimsHandler I am at step1 for FNOL
 
-
+@Ignore
 Scenario: CBPCL-62 TC1 OOTB policy search fields are hidden/visible from user
 Then I will see the policy search input fields
 | PolicyNumber | First Name | Last Name | Policy Type | Loss Date | Country | Town/City | Postcode | VRN | 
 And I will not see the policy search input fields
 |SSN or Tax id | VIN | Organisation name |
 
-
+@Ignore
 Scenario: CBPCL-62 TC4 ClaimsHandler can select a search for policy and will see claims fields
 When I Click Search 
 And I select the first policy in the results
 Then I will see the New Claim fields
 |  Claim Loss Date | Time | Type Of Claim |
 
-
+@Ignore
 Scenario: CBPCL-62 TC5 ClaimsHandler Claim Fields are mandatory after selecting a policy
 When I Click Search 
 And I select the first policy in the results
 Then I click next button on step1
 Then Mandatory field error message will be shown
 
-
+@Ignore
 Scenario: CBPCL-62 TC6 ClaimsHandler can proceed to step2 if all mandatory fields are supplied
 When I Click Search 
 And I select the first policy in the results

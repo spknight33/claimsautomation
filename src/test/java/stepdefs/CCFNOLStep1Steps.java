@@ -22,7 +22,7 @@ public class CCFNOLStep1Steps extends BaseTest	{
 	public void as_a_ClaimsHandler_I_am_at_step_for_FNOL(int arg1) throws Throwable {
 		loginSteps.i_access_claimcenter_login_page();
 	    loginSteps.i_login_to_ClaimCenter_as_with("sthomson", "gw"); //TODO - user config
-	    menuSteps.selectClaimsMenu();
+	    menuSteps.selectNewClaimsMenuItem();
 	}
 	
 	

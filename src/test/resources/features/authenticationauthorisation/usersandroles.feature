@@ -4,6 +4,7 @@ Feature: CBPCL-71 As a user I want to login to Claims Center with the correct ro
   Background: 
     Given I access ClaimCenter login page
 
+  @Ignore
   Scenario Outline: CBPCL-71 TC7 login valid user and check role
     When I login to ClaimCenter as "<user>" with "<password>"
     Then I will be logged on to ClaimsCenter desktop
@@ -18,3 +19,11 @@ Feature: CBPCL-71 As a user I want to login to Claims Center with the correct ro
       | bchmielewska | gw       | Claims Manager   | Desktop,Claim,Search,Address Book,Dashboard,Team | Administration           |
       | awilson      | gw       | Operations Admin | Claim                                            | Administration           |
       | jbutler      | gw       | IT Admin         | Desktop,Claim,Search,Address Book,Administration |                          |
+
+      
+      Scenario: test menus
+      When I login to ClaimCenter as "sthomson" with "gw"
+     # And I select Desktop,Activities
+      And I select Search,Activities
+     # And I select Search,Claims,Simple
+ 

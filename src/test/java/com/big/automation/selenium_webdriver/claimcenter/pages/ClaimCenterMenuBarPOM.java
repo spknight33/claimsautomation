@@ -18,16 +18,36 @@ import com.big.automation.selenium_webdriver.common.baseTest.BaseTest;
 
 public class ClaimCenterMenuBarPOM extends BaseTest {
 
-  // private final WebDriver webDriver;
-
-  // @FindBy(id = "TabBar:ClaimTab-btnIconEl")
-  // @FindBy(id = "TabBar:ClaimTab-btnEl")
+   @FindBy(id = "TabBar:DesktopTab-btnEl")
+   private WebElement desktopMenuDropdown;
+ 
    @FindBy(id = "TabBar:ClaimTab-btnEl")
    private WebElement claimsMenuDropdown;
+   
+   @FindBy(id = "TabBar:SearchTab-btnEl")
+   private WebElement searchMenuDropdown;
 
+   @FindBy(id = "TabBar:AdminTab-btnEl")
+   private WebElement adminMenuDropdown;
+   
+   @FindBy(id = "TabBar:DesktopTab:Desktop_DesktopActivities-itemEl")
+   private WebElement desktopActivitiesMenuOption;
+   
+   //TODO other desktop options
+ 
+   
    @FindBy(id = "TabBar:ClaimTab:ClaimTab_FNOLWizard-textEl")
    private WebElement newClaimMenuOption;
+   
+   // search menu options
+   
+   @FindBy(id = "TabBar:SearchTab:Search_ActivitySearch-itemEl")
+   private WebElement searchActivitiesMenuOption;
+   
 
+   @FindBy(id = "TabBar:SearchTab:Search_ClaimSearchesGroup:ClaimSearchesGroup_SimpleClaimSearch-itemEl")
+   private WebElement searchClaimsSimpleMenuOption;
+   
 
    @FindBy(id = "Login:LoginScreen:LoginDV:username-inputEl")
    private WebElement loginUsername;
@@ -35,12 +55,10 @@ public class ClaimCenterMenuBarPOM extends BaseTest {
    @FindBy(id = "Desktop:DesktopMenuActions-btnEl")
    private WebElement desktopActionLink;
 
- // //*[@id="TabBar:ClaimTab-btnEl"]//following-sibling::*
    @FindBy(id = ":TabLinkMenuButton-btnEl")
    private WebElement settingsMenu;
    
-   
-   @FindBy(id = "TabBar:LogoutTabBarLink-itemEl")
+      @FindBy(id = "TabBar:LogoutTabBarLink-itemEl")
    private WebElement logoutMenuOption;
 
 
@@ -107,24 +125,96 @@ public class ClaimCenterMenuBarPOM extends BaseTest {
 		return onscreen;
 	}
 
-   public void selectClaimsMenu() {
+   private void openSearchMenu() {
 
-	      WebElement claimsDropDown =  getClaimsDropdown();
-	      //claimsDropDown.click();
-	      sleep(2);
-	      ((JavascriptExecutor)driver).executeScript("return window.getComputedStyle(arguments[0], ':after').click",claimsDropDown);
-
-	      // use the down arrow key
-	     // claimsDropDown.sendKeys(Keys.DOWN,Keys.ENTER);
+	      WebElement searchDropDown =  getSearchMenuDropdown();
+	      Actions actions = new Actions(driver);
+	      actions.moveToElement(searchDropDown);
+	      actions.click();
+	      actions.click();
+	      actions.sendKeys(Keys.DOWN);
+	      actions.build().perform();
 	      
-	    //  Actions actions = new Actions(driver);
-	    //  actions.moveToElement(claimsDropDown);
-	    //  actions.click();
-	    //  actions.sendKeys(Keys.DOWN);
-	    //  actions.sendKeys(Keys.ENTER);
-	    //  actions.build().perform();
-	    newClaimMenuOption.click();
-	      logger.info(format("%s - done, New Claims menubar clicked", getName()));
+	      logger.info(format("%s - done, Search menu opened", getName()));
+}
+   
+   private void openSearchClaimsSubMenu() {
+
+	      WebElement searchDropDown =  getSearchMenuDropdown();
+	      Actions actions = new Actions(driver);
+	      actions.moveToElement(searchDropDown);
+	      actions.click();
+	      actions.click(); //have to do this twice
+	      actions.sendKeys(Keys.DOWN);
+	      actions.sendKeys(Keys.RIGHT); 
+	      actions.build().perform();
+	      
+	      logger.info(format("%s - done, Search claims sub menu opened", getName()));
+}
+   
+   private void openDesktopMenu() {
+
+	      WebElement desktopDropDown =  getDesktopMenuDropdown();
+	      Actions actions = new Actions(driver);
+	      actions.moveToElement(desktopDropDown);
+	      actions.click();
+	      actions.sendKeys(Keys.DOWN);
+	      actions.build().perform();
+	      
+	      logger.info(format("%s - done, Desktop menu opened", getName()));
+}
+   
+   private void openAdminMenu() {
+
+	      WebElement adminDropDown =  getAdminMenuDropdown();
+	      Actions actions = new Actions(driver);
+	      actions.moveToElement(adminDropDown);
+	      actions.click();
+	      actions.sendKeys(Keys.DOWN);
+	      actions.build().perform();
+	      logger.info(format("%s - done, Admin menu opened", getName()));
+   } 
+	 
+   
+   private void openClaimsMenu() {
+
+	      WebElement claimsDropDown =  getClaimsMenuDropdown();
+	      Actions actions = new Actions(driver);
+	      actions.moveToElement(claimsDropDown);
+	      actions.click();
+	      actions.sendKeys(Keys.DOWN);
+	      actions.build().perform();
+	      
+	      logger.info(format("%s - done, Claims menu opened", getName()));
+   }
+   
+   public void selectNewClaimMenuItem()
+   {
+	      openClaimsMenu();
+	      newClaimMenuOption.click();
+	      logger.info(format("%s - done, New Claims menuitem clicked", getName()));
+	   }
+   
+   public void selectDesktopActivitiesMenuItem()
+   {
+	      openDesktopMenu();
+	      desktopActivitiesMenuOption.click();
+	      logger.info(format("%s - done, Desktop Activites menu item clicked", getName()));
+	   }
+   
+   public void selectSearchActivitiesMenuItem()
+   {
+	      openSearchMenu();
+	      searchActivitiesMenuOption.click();
+	      logger.info(format("%s - done, Search Activites menu item clicked", getName()));
+	   }
+   
+   
+   public void selectSearchClaimSimpleMenuItem()
+   {
+	   openSearchClaimsSubMenu();
+	   searchClaimsSimpleMenuOption.click();
+	      logger.info(format("%s - done, Search Claims simple menu item clicked", getName()));
 	   }
    
   
@@ -150,11 +240,29 @@ public class ClaimCenterMenuBarPOM extends BaseTest {
 	   
    }
    
-   public WebElement getClaimsDropdown() {
+   public WebElement getClaimsMenuDropdown() {
 
       return claimsMenuDropdown;
    }
+   
+   
 
+
+private WebElement getDesktopActivitiesMenuOption() {
+	return desktopActivitiesMenuOption;
+}
+
+private WebElement getDesktopMenuDropdown() {
+	return desktopMenuDropdown;
+}
+
+private WebElement getSearchMenuDropdown() {
+	return searchMenuDropdown;
+}
+
+private WebElement getAdminMenuDropdown() {
+	return adminMenuDropdown;
+}
 
 private WebElement getSettingsMenu() {
 	return settingsMenu;
