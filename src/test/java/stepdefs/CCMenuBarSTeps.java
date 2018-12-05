@@ -12,29 +12,24 @@ import cucumber.api.java.en.Then;
 
 public class CCMenuBarSTeps extends BaseTest {
 
+	
+	
+	
 	@Given("^I Select New Claim$")
 	public void selectNewClaimsMenuItem() {
 
 		menuBarPOM.selectNewClaimMenuItem();
 	}
 
-	@Given("^I select Desktop,Activities$")
-	public void selectDesktopActivitiesMenuItem() {
-
-		menuBarPOM.selectDesktopActivitiesMenuItem();
-	}
-
+	
+	
 	@Given("^I select Search,Claims,Simple$")
 	public void selectSearchClaimsSimpleMenuItem() {
 
 		menuBarPOM.selectSearchClaimSimpleMenuItem();
 	}
 
-	@Given("^I select Search,Activities$")
-	public void selectSearchActivitiesMenuItem() {
-
-		menuBarPOM.selectSearchActivitiesMenuItem();
-	}
+	
 
 	@Then("^I will log off$")
 	public void i_will_log_off() throws Throwable {
@@ -80,5 +75,51 @@ public class CCMenuBarSTeps extends BaseTest {
 
 		softAssert.assertAll();
 	}
+	
+
+@Then("^I can select top level menus \"([^\"]*)\"$")
+public void i_can_select_top_level_menus(String menulist) throws Throwable {
+	
+
+	String[] items = menulist.split(",");
+	List<String> list = Arrays.asList(items);
+
+	// loop round list to check menu options are selectable - dont check for empty
+	// entries
+	for (int i = 0; i < list.size(); i++) {
+
+		if (!list.get(i).isEmpty()) {
+			System.out.println("click "+list.get(i));
+			menuBarPOM.clickTopMenu(list.get(i));
+		}
+
+	}
+
+	
+}
+
+@Then("^I can select top level menu \"([^\"]*)\"$")
+public void i_can_select_top_level_menu(String menu) throws Throwable {
+	menuBarPOM.clickTopMenu(menu);
+}
+
+@Then("^I can select sub level menus \"([^\"]*)\" for menu \"([^\"]*)\"$")
+public void i_can_select_sub_level_menus_for_menu(String subMenulist, String menu) throws Throwable {
+
+	String[] subMenus = subMenulist.split(",");
+	List<String> list = Arrays.asList(subMenus);
+
+	// loop round list to check sub menu options are selectable - dont check for empty
+	// entries
+	for (int i = 0; i < list.size(); i++) {
+
+		if (!list.get(i).isEmpty()) {
+			System.out.println("click submenu "+list.get(i) +" for menu: "+menu);
+			menuBarPOM.clickSubMenu(menu, list.get(i));
+		}
+
+	}
+}
+
 
 }

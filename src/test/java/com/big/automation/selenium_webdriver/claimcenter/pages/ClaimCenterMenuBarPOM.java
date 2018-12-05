@@ -1,6 +1,5 @@
 package com.big.automation.selenium_webdriver.claimcenter.pages;
 
-
 import static com.big.automation.selenium_webdriver.common.utilities.ThreadUtils.sleep;
 import static java.lang.String.format;
 
@@ -17,262 +16,351 @@ import org.openqa.selenium.support.FindBy;
 import com.big.automation.selenium_webdriver.common.baseTest.BaseTest;
 
 public class ClaimCenterMenuBarPOM extends BaseTest {
+	
+	private static final String DESKTOP = "Desktop";
+	private static final String CLAIMS = "Claims";
+	private static final String SEARCH = "Search";
+	private static final String ADMINISTRATION = "Administration";
+	// TODO anymore submenus
+	
 
-   @FindBy(id = "TabBar:DesktopTab-btnEl")
-   private WebElement desktopMenuDropdown;
- 
-   @FindBy(id = "TabBar:ClaimTab-btnEl")
-   private WebElement claimsMenuDropdown;
-   
-   @FindBy(id = "TabBar:SearchTab-btnEl")
-   private WebElement searchMenuDropdown;
+	// top level menus
+	@FindBy(id = "TabBar:DesktopTab-btnEl")
+	private WebElement desktopMenu;
 
-   @FindBy(id = "TabBar:AdminTab-btnEl")
-   private WebElement adminMenuDropdown;
-   
-   @FindBy(id = "TabBar:DesktopTab:Desktop_DesktopActivities-itemEl")
-   private WebElement desktopActivitiesMenuOption;
-   
-   //TODO other desktop options
- 
-   
-   @FindBy(id = "TabBar:ClaimTab:ClaimTab_FNOLWizard-textEl")
-   private WebElement newClaimMenuOption;
-   
-   // search menu options
-   
-   @FindBy(id = "TabBar:SearchTab:Search_ActivitySearch-itemEl")
-   private WebElement searchActivitiesMenuOption;
-   
+	@FindBy(id = "TabBar:ClaimTab-btnEl")
+	private WebElement claimsMenu;
 
-   @FindBy(id = "TabBar:SearchTab:Search_ClaimSearchesGroup:ClaimSearchesGroup_SimpleClaimSearch-itemEl")
-   private WebElement searchClaimsSimpleMenuOption;
-   
+	@FindBy(id = "TabBar:SearchTab-btnEl")
+	private WebElement searchMenu;
 
-   @FindBy(id = "Login:LoginScreen:LoginDV:username-inputEl")
-   private WebElement loginUsername;
-   
-   @FindBy(id = "Desktop:DesktopMenuActions-btnEl")
-   private WebElement desktopActionLink;
+	@FindBy(id = "TabBar:AddressBookTab-btnEl")
+	private WebElement addressBookMenu;
 
-   @FindBy(id = ":TabLinkMenuButton-btnEl")
-   private WebElement settingsMenu;
-   
-      @FindBy(id = "TabBar:LogoutTabBarLink-itemEl")
-   private WebElement logoutMenuOption;
+	@FindBy(id = "TabBar:DashboardTab-btnEl")
+	private WebElement dashboardMenu;
 
+	@FindBy(id = "TabBar:TeamTab-btnEl")
+	private WebElement teamMenu;
 
-   //public ClaimCenterMenuBarPOM(WebDriver webDriver) {
+	@FindBy(id = "TabBar:AdminTab-btnEl")
+	private WebElement adminMenu;
 
-    //  this.webDriver = webDriver;//
+	// desktop menuitems
+	@FindBy(id = "TabBar:DesktopTab:Desktop_DesktopActivities-textEl")
+	private WebElement desktopActivitiesMenuOption;
 
-    //  AjaxElementLocatorFactory ajaxElementLocatorFactory = new AjaxElementLocatorFactory(webDriver, 60);
-   //   PageFactory.initElements(ajaxElementLocatorFactory, this);
-  // }
-   
-   private Map<String,String> menuItemMap;
-	public ClaimCenterMenuBarPOM()
-	{
+	@FindBy(id = "TabBar:DesktopTab:Desktop_DesktopClaims-textEl")
+	private WebElement desktopClaimsMenuOption;
+
+	@FindBy(id = "TabBar:DesktopTab:Desktop_DesktopExposures-textEl")
+	private WebElement desktopExposuresMenuOption;
+
+	@FindBy(id = "TabBar:DesktopTab:Desktop_DesktopSubrogations-textEl")
+	private WebElement desktopSubrogationsMenuOption;
+
+	@FindBy(id = "TabBar:DesktopTab:Desktop_DesktopQueuedActivities-textEl")
+	private WebElement desktopQueuesMenuOption;
+
+	@FindBy(id = "TabBar:DesktopTab:Desktop_BulkPay-textEl")
+	private WebElement desktopBulkInvoicesMenuOption;
+
+	// TODO other desktop options- calendar and submenu
+
+	// Claim menuitems
+	@FindBy(id = "TabBar:ClaimTab:ClaimTab_FNOLWizard-textEl")
+	private WebElement newClaimMenuOption;
+
+	// TODO - search claim menuitem and selection of claim from menu
+
+	// search menuitem options
+	@FindBy(id = "TabBar:SearchTab:Search_ActivitySearch-textEl")
+	private WebElement searchActivitiesMenuOption;
+
+	@FindBy(id = "TabBar:SearchTab:Search_PaymentSearch-textEl")
+	private WebElement searchChecksMenuOption;
+
+	@FindBy(id = "TabBar:SearchTab:Search_RecoverySearch-textEl")
+	private WebElement searchRecoveriesMenuOption;
+
+	@FindBy(id = "TabBar:SearchTab:Search_BulkInvoiceSearch-textEl")
+	private WebElement searchBulkInvoicesMenuOption;
+
+	@FindBy(id = "TabBar:SearchTab:Search_ClaimSearchesGroup:ClaimSearchesGroup_SimpleClaimSearch-textEl")
+	private WebElement searchClaimsSimpleMenuOption;
+
+	// ??
+	@FindBy(id = "Desktop:DesktopMenuActions-btnEl")
+	private WebElement desktopActionLink;
+
+	// settings icon
+	@FindBy(id = ":TabLinkMenuButton-btnEl")
+	private WebElement settingsMenu;
+
+	// settings menu items
+	@FindBy(id = "TabBar:LogoutTabBarLink-itemEl")
+	private WebElement logoutMenuOption;
+
+	
+	private Map<String, String> menuItemMap;
+
+	public ClaimCenterMenuBarPOM() {
 		menuItemMap = new HashMap<String, String>();
-		menuItemMap.put("Desktop".toUpperCase(),"TabBar:DesktopTab-btnEl");
-		menuItemMap.put("Claim".toUpperCase(),"TabBar:ClaimTab-btnEl");
-		menuItemMap.put("Search".toUpperCase(),"TabBar:SearchTab-btnEl");
-		menuItemMap.put("Address Book".toUpperCase(),"TabBar:AddressBookTab-btnEl");
-		menuItemMap.put("Dashboard".toUpperCase(),"TabBar:DashboardTab-btnEl");
-		menuItemMap.put("Team".toUpperCase(),"TabBar:TeamTab-btnEl");
-		menuItemMap.put("Administration".toUpperCase(),"TabBar:AdminTab-btnEl");
+		menuItemMap.put("Desktop".toUpperCase(), "TabBar:DesktopTab-btnEl");
+		menuItemMap.put("Claim".toUpperCase(), "TabBar:ClaimTab-btnEl");
+		menuItemMap.put("Search".toUpperCase(), "TabBar:SearchTab-btnEl");
+		menuItemMap.put("Address Book".toUpperCase(), "TabBar:AddressBookTab-btnEl");
+		menuItemMap.put("Dashboard".toUpperCase(), "TabBar:DashboardTab-btnEl");
+		menuItemMap.put("Team".toUpperCase(), "TabBar:TeamTab-btnEl");
+		menuItemMap.put("Administration".toUpperCase(), "TabBar:AdminTab-btnEl");
+		
+		// sublevel menus, concatenate topmenu with sub menu name as key
+		menuItemMap.put("Desktop".toUpperCase()+"Activities".toUpperCase(), "TabBar:DesktopTab:Desktop_DesktopActivities-textEl");
+		menuItemMap.put("Desktop".toUpperCase()+"Claims".toUpperCase(), "TabBar:DesktopTab:Desktop_DesktopClaims-textEl");
+		menuItemMap.put("Desktop".toUpperCase()+"Exposures".toUpperCase(), "TabBar:DesktopTab:Desktop_DesktopExposures-textEl");
+		menuItemMap.put("Desktop".toUpperCase()+"Subrogations".toUpperCase(), "TabBar:DesktopTab:Desktop_DesktopSubrogations-textEl");
+		menuItemMap.put("Desktop".toUpperCase()+"Queues".toUpperCase(), "TabBar:DesktopTab:Desktop_DesktopQueuedActivities-textEl");
+		menuItemMap.put("Desktop".toUpperCase()+"Bulk Invoices".toUpperCase(), "TabBar:DesktopTab:Desktop_BulkPay-textEl");
+		menuItemMap.put("Search".toUpperCase()+"Activities".toUpperCase(), "TabBar:SearchTab:Search_ActivitySearch-textEl");
+		menuItemMap.put("Search".toUpperCase()+"Checks".toUpperCase(), "TabBar:SearchTab:Search_PaymentSearch-textEl");
+		menuItemMap.put("Search".toUpperCase()+"Recoveries".toUpperCase(), "TabBar:SearchTab:Search_RecoverySearch-textE1");
+		menuItemMap.put("Search".toUpperCase()+"Bulk Invoices".toUpperCase(), "TabBar:SearchTab:Search_BulkInvoiceSearch-textEl");
+		//TODO rest of sub menus 
 	}
 
-   public String getName() {
+	public String getName() {
 
-      return "ClaimCenter Menubar";
-   }
-
-   
-   public boolean menuOnMenuBar(String menuItem) throws Exception
-	{
-		boolean onscreen = false;
-		logger.info(format("%s - check menuItem on menubar: "+menuItem, getName()));
-		
-		// Will get passed in name that user knows - need to map to xpath id
-		String locatorId = menuItemMap.get(menuItem.toUpperCase());
-		
-		
-		if (locatorId == null )
-			throw new Exception("unknown menuItem in menuItemmap map : "+ menuItem);
-		
-		String xpathLocator = "//span[contains(@id,'" + locatorId + "')]";
-		onscreen = driver.findElements( By.xpath(xpathLocator) ).size() == 1;
-		
-		return onscreen;
+		return "ClaimCenter Menubar";
 	}
-   
-   public boolean menuNotOnMenuBar(String menuItem) throws Exception
-	{
+
+	public boolean menuOnMenuBar(String menuItem) throws Exception {
 		boolean onscreen = false;
-		logger.info(format("%s - check menuItem NOT on menubar: "+menuItem, getName()));
-		
+		logger.info(format("%s - check menuItem on menubar: " + menuItem, getName()));
+
 		// Will get passed in name that user knows - need to map to xpath id
 		String locatorId = menuItemMap.get(menuItem.toUpperCase());
-		
-		
-		if (locatorId == null )
-			throw new Exception("unknown menuItem in menuItemmap map : "+ menuItem);
-		
+
+		if (locatorId == null)
+			throw new Exception("unknown menuItem in menuItemmap map : " + menuItem);
+
 		String xpathLocator = "//span[contains(@id,'" + locatorId + "')]";
-		onscreen = driver.findElements( By.xpath(xpathLocator) ).size() == 0;
-		
+		onscreen = driver.findElements(By.xpath(xpathLocator)).size() == 1;
+
 		return onscreen;
 	}
 
-   private void openSearchMenu() {
+	public boolean menuNotOnMenuBar(String menuItem) throws Exception {
+		boolean onscreen = false;
+		logger.info(format("%s - check menuItem NOT on menubar: " + menuItem, getName()));
 
-	      WebElement searchDropDown =  getSearchMenuDropdown();
-	      Actions actions = new Actions(driver);
-	      actions.moveToElement(searchDropDown);
-	      actions.click();
-	      actions.click();
-	      actions.sendKeys(Keys.DOWN);
-	      actions.build().perform();
-	      
-	      logger.info(format("%s - done, Search menu opened", getName()));
-}
-   
-   private void openSearchClaimsSubMenu() {
+		// Will get passed in name that user knows - need to map to xpath id
+		String locatorId = menuItemMap.get(menuItem.toUpperCase());
 
-	      WebElement searchDropDown =  getSearchMenuDropdown();
-	      Actions actions = new Actions(driver);
-	      actions.moveToElement(searchDropDown);
-	      actions.click();
-	      actions.click(); //have to do this twice
-	      actions.sendKeys(Keys.DOWN);
-	      actions.sendKeys(Keys.RIGHT); 
-	      actions.build().perform();
-	      
-	      logger.info(format("%s - done, Search claims sub menu opened", getName()));
-}
-   
-   private void openDesktopMenu() {
+		if (locatorId == null)
+			throw new Exception("unknown menuItem in menuItemmap map : " + menuItem);
 
-	      WebElement desktopDropDown =  getDesktopMenuDropdown();
-	      Actions actions = new Actions(driver);
-	      actions.moveToElement(desktopDropDown);
-	      actions.click();
-	      actions.sendKeys(Keys.DOWN);
-	      actions.build().perform();
-	      
-	      logger.info(format("%s - done, Desktop menu opened", getName()));
-}
-   
-   private void openAdminMenu() {
+		String xpathLocator = "//span[contains(@id,'" + locatorId + "')]";
+		onscreen = driver.findElements(By.xpath(xpathLocator)).size() == 0;
 
-	      WebElement adminDropDown =  getAdminMenuDropdown();
-	      Actions actions = new Actions(driver);
-	      actions.moveToElement(adminDropDown);
-	      actions.click();
-	      actions.sendKeys(Keys.DOWN);
-	      actions.build().perform();
-	      logger.info(format("%s - done, Admin menu opened", getName()));
-   } 
-	 
-   
-   private void openClaimsMenu() {
+		return onscreen;
+	}
+	
+	public void clickTopMenu(String menuItem) throws Exception {
+		
+		
+		logger.info(format("%s - click menu item on menubar: " + menuItem, getName()));
+		sleep(2);
 
-	      WebElement claimsDropDown =  getClaimsMenuDropdown();
-	      Actions actions = new Actions(driver);
-	      actions.moveToElement(claimsDropDown);
-	      actions.click();
-	      actions.sendKeys(Keys.DOWN);
-	      actions.build().perform();
-	      
-	      logger.info(format("%s - done, Claims menu opened", getName()));
-   }
-   
-   public void selectNewClaimMenuItem()
-   {
-	      openClaimsMenu();
-	      newClaimMenuOption.click();
-	      logger.info(format("%s - done, New Claims menuitem clicked", getName()));
-	   }
-   
-   public void selectDesktopActivitiesMenuItem()
-   {
-	      openDesktopMenu();
-	      desktopActivitiesMenuOption.click();
-	      logger.info(format("%s - done, Desktop Activites menu item clicked", getName()));
-	   }
-   
-   public void selectSearchActivitiesMenuItem()
-   {
-	      openSearchMenu();
-	      searchActivitiesMenuOption.click();
-	      logger.info(format("%s - done, Search Activites menu item clicked", getName()));
-	   }
-   
-   
-   public void selectSearchClaimSimpleMenuItem()
-   {
-	   openSearchClaimsSubMenu();
-	   searchClaimsSimpleMenuOption.click();
-	      logger.info(format("%s - done, Search Claims simple menu item clicked", getName()));
-	   }
-   
-  
-   public WebElement getClaimsDesktopActionLink() {
+		// Will get passed in name that user knows - need to map to xpath id
+		String locatorId = menuItemMap.get(menuItem.toUpperCase());
 
-	      return claimsMenuDropdown;
-	   }
-   
-   //public boolean isDesktopDisplayed()
-   //{
-	//   boolean exists = driver.findElements( By.id("Desktop:DesktopMenuActions-btnEl") ).size() != 0;
-	//   return exists;
-  // }
-   
-   public void logout()
-   {
-	   this.getSettingsMenu().click();
-	   logger.info(format("%s - done, setting menu link clicked", getName()));
-	   sleep(1);
-	   this.getLogoutMenuOption().click();
-	   logger.info(format("%s - done, logout menu option clicked", getName()));
-	   sleep(1);
-	   
-   }
-   
-   public WebElement getClaimsMenuDropdown() {
+		if (locatorId == null)
+			throw new Exception("unknown menuItem in menuItemmap map : " + menuItem);
 
-      return claimsMenuDropdown;
-   }
-   
-   
+		String xpathLocator = "//span[contains(@id,'" + locatorId + "')]";
+		driver.findElement(By.xpath(xpathLocator)).click();
+		sleep(2);
+		
+	}
+	
+public void clickSubMenu(String topmenu, String submenuitem) throws Exception {
+		
+	    openTopLevelMenu(topmenu);
+	    sleep(2);
+	
+		logger.info(format("%s - click sub menu item on menubar: " + submenuitem, getName()));
+		
+
+		// Will get passed in name that user knows - need to map to xpath id
+		String locatorId = menuItemMap.get(topmenu.toUpperCase()+submenuitem.toUpperCase());
+
+		if (locatorId == null)
+			throw new Exception("unknown menuItem in menuItemmap map : " + topmenu+submenuitem);
+
+		String xpathLocator = "//span[contains(@id,'" + locatorId + "')]";
+		driver.findElement(By.xpath(xpathLocator)).click();
+
+		sleep(2);
+	}
+
+	
 
 
-private WebElement getDesktopActivitiesMenuOption() {
-	return desktopActivitiesMenuOption;
-}
+	private void openTopLevelMenu(String topmenu)
+	{
+		WebElement topMenu = getTopMenu(topmenu);
+		Actions actions = new Actions(driver);
+		actions.moveToElement(topMenu);
+		actions.click();
+		actions.sendKeys(Keys.DOWN);
+		actions.build().perform();
 
-private WebElement getDesktopMenuDropdown() {
-	return desktopMenuDropdown;
-}
+		logger.info(format("%s - done, " + topmenu +" top menu opened", getName()));
+	}
+	
+	private WebElement getTopMenu(String topmenu)
+	{
+		switch (topmenu)
+		{
+		case (DESKTOP):
+		
+		   return this.getDesktopMenu();
+		  
+		case(CLAIMS):
+			return this.getClaimsMenu();
+		
+		case(SEARCH):
+			return this.getSearchMenu();
+		
+		
+		case (ADMINISTRATION):
+			return this.getAdminMenu();
+			
+		}
+		
+		return null;
+		
+	}
+	
+	
 
-private WebElement getSearchMenuDropdown() {
-	return searchMenuDropdown;
-}
+	public void selectNewClaimMenuItem() {
+		openTopLevelMenu(CLAIMS);
+		newClaimMenuOption.click();
+		logger.info(format("%s - done, New Claims menuitem clicked", getName()));
+	}
+	
+	
+	
 
-private WebElement getAdminMenuDropdown() {
-	return adminMenuDropdown;
-}
+	public void selectSearchClaimSimpleMenuItem() {
+		
+		// doesnt work, for now just click on the top level search which does the same currently
+		//openSearchClaimsSubMenu();
+		//searchClaimsSimpleMenuOption.click();
+		//logger.info(format("%s - done, Search Claims simple menu item clicked", getName()));
+		this.getSearchMenu().click();
+		logger.info(format("%s - done, Search menu clicked", getName()));
+	}
 
-private WebElement getSettingsMenu() {
-	return settingsMenu;
-}
+	// public boolean isDesktopDisplayed()
+	// {
+	// boolean exists = driver.findElements(
+	// By.id("Desktop:DesktopMenuActions-btnEl") ).size() != 0;
+	// return exists;
+	// }
 
+	public void logout() {
+		this.getSettingsMenu().click();
+		logger.info(format("%s - done, setting menu link clicked", getName()));
+		sleep(1);
+		this.getLogoutMenuOption().click();
+		logger.info(format("%s - done, logout menu option clicked", getName()));
+		sleep(1);
 
-private WebElement getLogoutMenuOption() {
-	return logoutMenuOption;
-}
+	}
 
- 
+	public WebElement getClaimsMenu() {
+
+		return claimsMenu;
+	}
+
+	private WebElement getDesktopActivitiesMenuOption() {
+		return desktopActivitiesMenuOption;
+	}
+
+	private WebElement getDesktopMenu() {
+		return desktopMenu;
+	}
+
+	private WebElement getSearchMenu() {
+		return searchMenu;
+	}
+
+	private WebElement getAdminMenu() {
+		return adminMenu;
+	}
+
+	private WebElement getSettingsMenu() {
+		return settingsMenu;
+	}
+
+	private WebElement getLogoutMenuOption() {
+		return logoutMenuOption;
+	}
+
+	private WebElement getAddressBookMenu() {
+		return addressBookMenu;
+	}
+
+	private WebElement getDashboardMenu() {
+		return dashboardMenu;
+	}
+
+	private WebElement getTeamMenu() {
+		return teamMenu;
+	}
+
+	private WebElement getDesktopClaimsMenuOption() {
+		return desktopClaimsMenuOption;
+	}
+
+	private WebElement getDesktopExposuresMenuOption() {
+		return desktopExposuresMenuOption;
+	}
+
+	private WebElement getDesktopSubrogationsMenuOption() {
+		return desktopSubrogationsMenuOption;
+	}
+
+	private WebElement getDesktopQueuesMenuOption() {
+		return desktopQueuesMenuOption;
+	}
+
+	private WebElement getDesktopBulkInvoicesMenuOption() {
+		return desktopBulkInvoicesMenuOption;
+	}
+
+	private WebElement getSearchActivitiesMenuOption() {
+		return searchActivitiesMenuOption;
+	}
+
+	private WebElement getSearchChecksMenuOption() {
+		return searchChecksMenuOption;
+	}
+
+	private WebElement getSearchRecoveriesMenuOption() {
+		return searchRecoveriesMenuOption;
+	}
+
+	private WebElement getSearchBulkInvoicesMenuOption() {
+		return searchBulkInvoicesMenuOption;
+	}
+
+	private WebElement getSearchClaimsSimpleMenuOption() {
+		return searchClaimsSimpleMenuOption;
+	}
+	
+	
 
 }
