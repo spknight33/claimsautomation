@@ -26,6 +26,10 @@ public class ClaimCenterFNOLStep3POM extends BaseTest{
 	
 	@FindBy(id = "title")
 	private WebElement titleDropDown;
+	
+	@FindBy(id = "FNOLWizard:AutoWorkersCompWizardStepSet:FNOLWizard_NewLossDetailsScreen:ttlBar")
+	private WebElement pageTitle;
+
 
 	@FindBy(className = "message")
 	private List <WebElement> errorMessages;
@@ -61,7 +65,12 @@ public class ClaimCenterFNOLStep3POM extends BaseTest{
 		return "FNOL Wizard Step3 Add Claim Information";
 	}
 
-		
+	public boolean isPageTitleDisplayed(String expected)
+	{
+		logger.info(format("%s -check page title for step3 :"+expected, getName()));
+		logger.info(format("%s -found page title for step3 :"+this.getPageTitle().getText(), getName()));
+		return this.getPageTitle().getText().equalsIgnoreCase(expected);
+	}
 	
 	public void cancel() {
 
@@ -209,7 +218,9 @@ private WebElement getFinishButton() {
 	private List<WebElement> getErrorMessages(){
 		return errorMessages;
 	}
-	
+	private WebElement getPageTitle() {
+		return pageTitle;
+	}
 	
 	
 	

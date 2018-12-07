@@ -6,6 +6,8 @@ import org.testng.Assert;
 import org.testng.asserts.SoftAssert;
 
 import com.big.automation.selenium_webdriver.common.baseTest.BaseTest;
+import com.big.automation.selenium_webdriver.common.config.UserConfig;
+import com.big.automation.selenium_webdriver.common.config.UserFactory;
 
 import cucumber.api.DataTable;
 import cucumber.api.java.en.Given;
@@ -18,10 +20,22 @@ public class CCFNOLStep1Steps extends BaseTest	{
 	CCMenuBarSTeps menuSteps = new CCMenuBarSTeps();
 	
 	
-	@Given("^As a ClaimsHandler I am at step(\\d+) for FNOL$")
-	public void as_a_ClaimsHandler_I_am_at_step_for_FNOL(int arg1) throws Throwable {
+	public void iCompleteStep1FNOL() throws Throwable 
+	{
+		// need to configure to get a specific configurable pilicy number
+		i_set_the_policy_search_criteria_fields_to("policynumber","7267195637");
+		i_Click_Search();
+		this.setLossDate("06/12/2018");
+		this.setLossTime("03:00 PM");
+		this.next();
+		
+	}
+	
+	@Given("^As a ClaimsHandler I am at step1 for FNOL$")
+	public void as_a_ClaimsHandler_I_am_at_step1_for_FNOL() throws Throwable {
 		loginSteps.i_access_claimcenter_login_page();
-	    loginSteps.i_login_to_ClaimCenter_as_with("sthomson", "gw"); //TODO - user config
+		UserConfig user = UserFactory.getUserConfig(UserFactory.CLAIMSHANDLER);
+	    loginSteps.i_login_to_ClaimCenter_as_with(user.username, user.password); 
 	    menuSteps.selectNewClaimsMenuItem();
 	}
 	
@@ -34,6 +48,52 @@ public class CCFNOLStep1Steps extends BaseTest	{
 				.containsErrorMessage("\"Loss Time : Missing required field \"Loss Time\""),
 				"Error Message For Loss Time expected");
 	}
+	
+	@Then("^Mandatory field error messages will be shown$")
+	public void mandatory_field_error_messages_will_be_shown(DataTable dt) throws Throwable {
+		List<String> list = dt.asList(String.class);
+	    SoftAssert softAssert = new SoftAssert();
+			for(int i=0; i<list.size(); i++) {
+				softAssert.assertTrue(fnolStep1POM.containsErrorMessage(list.get(i)),"Error Message Check: "+ list.get(i));
+				
+			}
+			softAssert.assertAll();
+		}
+		
+		
+	
+	
+	@When("^I set the policy search criteria fields \"([^\"]*)\" to \"([^\"]*)\"$")
+	public void i_set_the_policy_search_criteria_fields_to(String fieldName, String fieldValue) throws Throwable {
+	    switch(fieldName)
+	    {
+	    case "firstname":
+	    	fnolStep1POM.setSearchFirstName(fieldValue);
+	    	break;
+	    case "lastname":
+	    	fnolStep1POM.setSearchLastName(fieldValue);
+	    	break;
+	    case "policynumber":
+	    	fnolStep1POM.setSearchPolicyNumber(fieldValue);
+	    	break;
+	    case "vrn":
+	    	fnolStep1POM.setSearchVRN(fieldValue);
+	    	break;
+	    default:
+	    Assert.fail("unknown search field :"+ fieldName+" - check cucumber script!");
+	    }
+	}
+	
+
+
+	
+
+
+@Then("^I will see policy search results which contains value \"([^\"]*)\" for the \"([^\"]*)\"$")
+public void i_will_see_policy_search_results_which_contains_value_for_the(String value, String resultscolumn) throws Throwable {
+    Assert.assertTrue(fnolStep1POM.policySearchResultsShownForColumn(value, resultscolumn));
+	
+}
 	
 	@Given("^I Try All Search Variations$")
 public void searchForPolicyByAllVariations() {

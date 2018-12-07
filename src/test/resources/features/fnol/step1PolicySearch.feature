@@ -13,6 +13,12 @@ And I will not see the policy search input fields
 |SSN or Tax id | VIN | Organisation name |
 
 @Ignore
+Scenario: CBPCL-62 TC3 ClaimsHandler can find the policy on policy center by searching VRN
+When I set the policy search criteria fields "vrn" to "LS54CYW"
+When I Click Search 
+Then I will see policy search results which contains value "LS54CYW" for the "VRN"
+
+@Ignore
 Scenario: CBPCL-62 TC4 ClaimsHandler can select a search for policy and will see claims fields
 When I Click Search 
 And I select the first policy in the results
@@ -27,11 +33,31 @@ Then I click next button on step1
 Then Mandatory field error message will be shown
 
 @Ignore
-Scenario: CBPCL-62 TC6 ClaimsHandler can proceed to step2 if all mandatory fields are supplied
+Scenario: CBPCL-62 TC6 ClaimsHandler can find the policy on policy center by searching first name and last name
+When I set the policy search criteria fields "firstname" to "simon"
+And I set the policy search criteria fields "lastname" to "fells"
+When I Click Search 
+Then I will see policy search results which contains value "simon fells" for the "insured"
+
+@Ignore
+Scenario: CBPCL-62 TC7 ClaimsHandler can find the policy on policy center by searching policy number
+When I set the policy search criteria fields "policynumber" to "7267195637"
+When I Click Search 
+Then I will see policy search results which contains value "7267195637" for the "policynumber"
+
+@Ignore
+Scenario: CBPCL-62 TC8 ClaimsHandler can find the policy on policy center by searching VRN in lowercase
+When I set the policy search criteria fields "vrn" to "ls54cyw"
+When I Click Search 
+Then I will see policy search results which contains value "LS54CYW" for the "VRN"
+
+@Ignore
+Scenario: ClaimsHandler can proceed to step2 if all mandatory fields are supplied
 When I Click Search 
 And I select the first policy in the results
 And I Set the Loss Date to "03/12/2018"
 And I Set the Loss Time to "03:00 PM"
 And I click next button on step1
 Then I will be on step2 for FNOL
+
 

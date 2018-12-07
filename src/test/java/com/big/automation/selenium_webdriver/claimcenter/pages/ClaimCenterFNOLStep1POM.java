@@ -59,6 +59,11 @@ public class ClaimCenterFNOLStep1POM extends BaseTest{
 	
 	@FindBy(id = "FNOLWizard:FNOLWizard_FindPolicyScreen:FNOLWizardFindPolicyPanelSet:FNOLWizard_PolicySearchInputSet:CCAddressInputSet:globalAddressContainer:globalAddress:GlobalAddressInputSet:City-inputEl")
 	private WebElement searchTownCity;
+	
+	//TODO check when code deliverd that the locator uses vin?
+	@FindBy(id = "FNOLWizard:FNOLWizard_FindPolicyScreen:FNOLWizardFindPolicyPanelSet:FNOLWizard_PolicySearchInputSet:vin-inputEl")
+	private WebElement searchVRN;
+	
 
 	@FindBy(id = "FNOLWizard:FNOLWizard_FindPolicyScreen:FNOLWizardFindPolicyPanelSet:Search")
 	private WebElement searchPolicyButton;
@@ -219,6 +224,16 @@ public class ClaimCenterFNOLStep1POM extends BaseTest{
 		return lossDate;
 	}
 	
+	
+	
+
+	private WebElement getSearchTownCity() {
+		return searchTownCity;
+	}
+
+	private WebElement getSearchVRN() {
+		return searchVRN;
+	}
 
 	private WebElement getCancelButton() {
 		return cancelButton;
@@ -251,14 +266,24 @@ public class ClaimCenterFNOLStep1POM extends BaseTest{
 		logger.info(format("%s - done, find policy selected", getName()));
 	}
 	
+	public void setSearchVRN(String vrn)
+	{
+		sleep(2);
+		this.getSearchVRN().clear();
+		this.getSearchVRN().sendKeys(vrn);
+		logger.info(format("%s - done, vrn set: "+vrn, getName()));
+	}
+	
 	public void setSearchPolicyNumber(String policyNumber)
 	{
+		sleep(2);
 		this.getSearchPolicyNumber().clear();
 		this.getSearchPolicyNumber().sendKeys(policyNumber);
-		logger.info(format("%s - done, find policy numbver set: "+policyNumber, getName()));
+		logger.info(format("%s - done, policy number set: "+policyNumber, getName()));
 	}
 
 	public void setSearchFirstName(String searchFirstName) {
+		sleep(2);
 		this.getSearchFirstName().clear();
 		this.getSearchFirstName().sendKeys(searchFirstName);
 		logger.info(format("%s - done, Search First name set:"+searchFirstName, getName()));
@@ -266,6 +291,7 @@ public class ClaimCenterFNOLStep1POM extends BaseTest{
 	}
 
 	public void setSearchLastName(String searchLastName) {
+		sleep(2);
 		this.getSearchLastName().clear();
 		this.getSearchLastName().sendKeys(searchLastName);
 		logger.info(format("%s - done, Search Lastname set:"+searchLastName, getName()));
@@ -369,6 +395,27 @@ public class ClaimCenterFNOLStep1POM extends BaseTest{
 		
 		return onscreen;
 	}
+	
+	// this needs to be updated to check the actual column field, for now just chekc the text is within the table
+	public boolean policySearchResultsShownForColumn(String value, String resultscolumn) throws Exception
+	{
+		boolean onscreen = false;
+		logger.info(format("%s - check policy search results are on screen for value: "+value+" for column: "+resultscolumn, getName()));
+		
+		sleep(2);
+		
+		String locator = "FNOLWizard:FNOLWizard_FindPolicyScreen:FNOLWizardFindPolicyPanelSet:PolicyResultLV-body";
+		WebElement results = driver.findElement( By.id(locator) );
+		
+		if (results == null)
+			throw new Exception("cannot find policy search results");
+		
+		String xpathLocator = "//*[contains(text(),'"+value+"')]"; // some results in div others in a
+		onscreen = results.findElements( By.xpath(xpathLocator) ).size() > 0; // at least one found
+		
+		return onscreen;
+	}
+	
 	
 	
 	

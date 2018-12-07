@@ -5,6 +5,7 @@ import static java.lang.String.format;
 
 import java.util.List;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
@@ -124,6 +125,16 @@ public String getHowReportedValue()
 {			
 	
 	return this.getHowReported().getAttribute("value");
+}
+
+
+public void selectReportedByName(String option)
+{
+	logger.info(format("%s - goign to select report by name to :"+option, getName()));
+	
+	this.getReportedByName().click();
+	String optionLocator = "//li[text()='"  + option + "']";
+	this.getReportedByName().findElement(By.xpath(optionLocator)).click();
 }
 
 public void setReportedByValue(String name)

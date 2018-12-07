@@ -4,32 +4,16 @@ import org.openqa.selenium.NoAlertPresentException;
 import org.testng.Assert;
 
 import com.big.automation.selenium_webdriver.common.baseTest.BaseTest;
+import com.big.automation.selenium_webdriver.common.config.UserConfig;
+import com.big.automation.selenium_webdriver.common.config.UserFactory;
 
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
+import cucumber.api.java.en.When;
 
 public class CCLoginSteps extends BaseTest {
 
-	@Given("^I login to ClaimCenter$")
-	public void i_login_to_ClaimCenter() throws Throwable {
-
-		driver.get("http://10.14.67.173:8080/cc/ClaimCenter.do");
-		// make sure there is no left over alert
-				try {
-					   
-		        	driver.switchTo().alert().accept();
-		        	System.out.println("login step - alert has been cleared");
-		        
-		     	   }
-		     	   catch(NoAlertPresentException e) {
-		     		   System.out.print("login step - No alert is present");
-		     	   }
-		
-		loginPOM.populateUsername("su");
-		loginPOM.populatePassword("gw");
-		loginPOM.next();
-
-	}
+	
 
 	@Given("^I access ClaimCenter login page$")
 	public void i_access_claimcenter_login_page() throws Throwable {
@@ -52,6 +36,15 @@ public class CCLoginSteps extends BaseTest {
 
 	}
 
+	
+	@When("^I login to ClaimCenter as role \"([^\"]*)\"$")
+	public void i_login_to_ClaimCenter_as_role(String role) throws Throwable {
+	    UserConfig user = UserFactory.getUserConfig(role);
+	    loginPOM.populateUsername(user.username);
+		loginPOM.populatePassword(user.password);
+		loginPOM.next();
+	}
+	
 	@Given("^I login to ClaimCenter as \"([^\"]*)\" with \"([^\"]*)\"$")
 	public void i_login_to_ClaimCenter_as_with(String user, String password) throws Throwable {
 		loginPOM.populateUsername(user);
