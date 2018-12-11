@@ -1,19 +1,44 @@
 package stepdefs;
 
+import java.util.List;
+
 import org.testng.Assert;
+import org.testng.asserts.SoftAssert;
 
 import com.big.automation.selenium_webdriver.common.baseTest.BaseTest;
 
+import cucumber.api.DataTable;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 
 public class CCFNOLStep3Steps extends BaseTest {
+	
+	CCFNOLStep2Steps step2Steps = new CCFNOLStep2Steps();
 
 	@Then("^I will be on step3 for FNOL$")
 	public void i_will_be_on_step3_for_FNOL() throws Throwable {
 		fnolStep3POM.isPageTitleDisplayed("Step 3 of 5: Add claim information");
 	}
+	
+	@Given("^As a ClaimsHandler I am at step3 for FNOL$")
+	public void as_a_ClaimsHandler_I_am_at_step3_for_FNOL() throws Throwable {
+		step2Steps.as_a_ClaimsHandler_I_am_at_step2_for_FNOL();
+		step2Steps.iCompleteStep2FNOL();
+		i_will_be_on_step3_for_FNOL();
+	}
 
+	
+	@Then("^Mandatory field error messages will be shown for step3$")
+	public void mandatory_field_error_messages_will_be_shown_forstep3(DataTable dt) throws Throwable {
+		List<String> list = dt.asList(String.class);
+	    SoftAssert softAssert = new SoftAssert();
+			for(int i=0; i<list.size(); i++) {
+				softAssert.assertTrue(fnolStep2POM.containsErrorMessage(list.get(i)),"Error Message Check: "+ list.get(i));
+				
+			}
+			softAssert.assertAll();
+		}
+	
 	public void mandatoryFieldErrorMessagesAreShown() {
 		this.next();
 		// in step 3, check error messages
@@ -22,6 +47,58 @@ public class CCFNOLStep3Steps extends BaseTest {
 				.containsErrorMessage("Cause : Missing required field \"Cause\""));
 		Assert.assertTrue(fnolStep3POM
 				.containsErrorMessage("Sub Cause : Missing required field \"Sub Cause\""));
+	}
+	
+	@Then("^the \"([^\"]*)\" list on step3 will contain options$")
+	public void the_list_on_step3_will_contain_options(String fieldName,  DataTable dt) throws Throwable {
+		List<String> list = dt.asList(String.class);
+	    SoftAssert softAssert = new SoftAssert();
+			for(int i=0; i<list.size(); i++) {
+				switch(fieldName)
+			    {
+			    case "Incident Type":
+			    	//TODO change
+			    	softAssert.assertTrue(fnolStep3POM.incidentTypeContainsOption(list.get(i)),fieldName + "Field option Check: "+ list.get(i));
+			    	break;
+			   
+			    
+			    default:
+			    Assert.fail("unknown input field :"+ fieldName+" - check cucumber script!");
+			    }
+				
+				
+				
+			}
+			softAssert.assertAll();
+	}
+	
+	@Then("^I select \"([^\"]*)\" from \"([^\"]*)\" field on step3$")
+	public void i_select_from_field_on_step3(String fieldValue, String fieldName) throws Throwable {
+		switch(fieldName)
+	    {
+	    case "Incident Type":
+	    	fnolStep3POM.selectIncidentType(fieldValue);
+	    	break;
+	    
+	    
+	    default:
+	    Assert.fail("unknown input field :"+ fieldName+" - check cucumber script!");
+	    }
+	}
+	
+	@Then("^I will see fault based on loss causes$")
+	public void i_will_see_fault_based_on_loss_causes(DataTable dt) throws Throwable {
+		List<List<String>> list = dt.asLists(String.class);
+		SoftAssert softAssert = new SoftAssert();
+		for(int i=1; i<list.size(); i++) { //i starts from 1 because i=0 represents the header
+			// loop round each row in the test data table
+			fnolStep3POM.selectIncidentType(list.get(i).get(0));
+			fnolStep3POM.selectClaimCauseType(list.get(i).get(1));
+			fnolStep3POM.selectClaimSubCauseType(list.get(i).get(2));
+			
+		//	softAssert.assertTrue(fnolStep3POM.faultTypeContainsOption(list.get(i).get(3)),"Fault option Check: "+ list.get(i).get(3));
+		}
+		softAssert.assertAll();
 	}
 
 	public void setIncidentOnly() {

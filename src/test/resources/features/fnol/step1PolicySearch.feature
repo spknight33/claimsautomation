@@ -1,3 +1,4 @@
+@Ignore
 Feature: CBPCL-62 As a claims handler searching for a policy (Step 1 of the FNOL wizard) 
 I want to see the required search fields so we can easily identify the correct policy.
 
@@ -10,13 +11,13 @@ Scenario: CBPCL-62 TC1 OOTB policy search fields are hidden/visible from user
 Then I will see the policy search input fields
 | PolicyNumber | First Name | Last Name | Policy Type | Loss Date | Country | Town/City | Postcode | VRN | 
 And I will not see the policy search input fields
-|SSN or Tax id | VIN | Organisation name |
+|SSN or Tax id |  Organisation name |
 
 @Ignore
 Scenario: CBPCL-62 TC3 ClaimsHandler can find the policy on policy center by searching VRN
-When I set the policy search criteria fields "vrn" to "LS54CYW"
+When I set the policy search criteria fields "vrn" to "12563"
 When I Click Search 
-Then I will see policy search results which contains value "LS54CYW" for the "VRN"
+Then I will see policy search results which contains value "12563" for the "VRN"
 
 @Ignore
 Scenario: CBPCL-62 TC4 ClaimsHandler can select a search for policy and will see claims fields
@@ -34,16 +35,16 @@ Then Mandatory field error message will be shown
 
 @Ignore
 Scenario: CBPCL-62 TC6 ClaimsHandler can find the policy on policy center by searching first name and last name
-When I set the policy search criteria fields "firstname" to "simon"
-And I set the policy search criteria fields "lastname" to "fells"
+When I set the policy search criteria fields "firstname" to "John"
+And I set the policy search criteria fields "lastname" to "Smith"
 When I Click Search 
-Then I will see policy search results which contains value "simon fells" for the "insured"
+Then I will see policy search results which contains value "John Smith" for the "insured"
 
 @Ignore
 Scenario: CBPCL-62 TC7 ClaimsHandler can find the policy on policy center by searching policy number
-When I set the policy search criteria fields "policynumber" to "7267195637"
+When I set the policy search criteria fields "policynumber" to "1596588080"
 When I Click Search 
-Then I will see policy search results which contains value "7267195637" for the "policynumber"
+Then I will see policy search results which contains value "1596588080" for the "policynumber"
 
 @Ignore
 Scenario: CBPCL-62 TC8 ClaimsHandler can find the policy on policy center by searching VRN in lowercase

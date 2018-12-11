@@ -246,6 +246,7 @@ public void clickSubMenu(String topmenu, String submenuitem) throws Exception {
 
 	public void selectNewClaimMenuItem() {
 		openTopLevelMenu(CLAIMS);
+		sleep(2);
 		newClaimMenuOption.click();
 		logger.info(format("%s - done, New Claims menuitem clicked", getName()));
 	}

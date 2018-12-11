@@ -31,6 +31,16 @@ public class CCFNOLStep2Steps extends BaseTest{
 		fnolStep2POM.isPageTitleDisplayed("Step 2 of 5: Basic information");
 	}
 	
+	public void iCompleteStep2FNOL() throws Throwable 
+	{
+		// need to configure to get a specific configurable pilicy number
+
+		this.i_select_from_field_on_step("John Smith","name");
+		this.i_select_from_field_on_step("Policyholder","relationship to insured");
+		this.next();
+		
+	}
+	
 	public void mandatoryFieldErrorMessagesAreShownForStep2() {
 		this.next();
 		// in step 2, check error messages
@@ -88,10 +98,44 @@ public class CCFNOLStep2Steps extends BaseTest{
 		fnolStep2POM.setHowReportedValue(how);
 	}
 	
+	@Then("^the \"([^\"]*)\" list on step2 will contain options$")
+	public void the_list_on_step_will_contain_options(String fieldName,  DataTable dt) throws Throwable {
+		List<String> list = dt.asList(String.class);
+	    SoftAssert softAssert = new SoftAssert();
+			for(int i=0; i<list.size(); i++) {
+				switch(fieldName)
+			    {
+			    case "How Reported":
+			    	
+			    	softAssert.assertTrue(fnolStep2POM.howReportedContainsOption(list.get(i)),fieldName + "Field option Check: "+ list.get(i));
+			    	break;
+			   
+			    
+			    default:
+			    Assert.fail("unknown input field :"+ fieldName+" - check cucumber script!");
+			    }
+				
+				
+				
+			}
+			softAssert.assertAll();
+	}
 	
-	@Then("^I select the policyholder from the report by name selection$")
-	public void i_select_the_policyholder_from_the_report_by_name_selection() throws Throwable {
-		fnolStep2POM.selectReportedByName("simon fells");
+	
+	@Then("^I select \"([^\"]*)\" from \"([^\"]*)\" field on step2$")
+	public void i_select_from_field_on_step(String fieldValue, String fieldName) throws Throwable {
+		switch(fieldName)
+	    {
+	    case "name":
+	    	fnolStep2POM.selectReportedByName(fieldValue);
+	    	break;
+	    case "relationship to insured":
+	    	fnolStep2POM.selectRelationToInsured(fieldValue);
+	    	break;
+	    
+	    default:
+	    Assert.fail("unknown input field :"+ fieldName+" - check cucumber script!");
+	    }
 	}
 	
 	public void setReportedName(String name)

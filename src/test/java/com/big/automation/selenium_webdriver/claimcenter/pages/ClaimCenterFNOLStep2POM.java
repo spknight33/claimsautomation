@@ -128,13 +128,33 @@ public String getHowReportedValue()
 }
 
 
+public boolean howReportedContainsOption(String option)
+{
+	boolean found=false;
+	logger.info(format("%s - going to check if options in how reported:"+option, getName()));
+	this.getHowReported().click();
+	String optionLocator = "//li[text()='"  + option + "']";
+	found = this.getHowReported().findElements( By.xpath(optionLocator) ).size() > 0;
+	
+	return found;
+}
+
 public void selectReportedByName(String option)
 {
-	logger.info(format("%s - goign to select report by name to :"+option, getName()));
+	logger.info(format("%s - goign to select report by name option :"+option, getName()));
 	
 	this.getReportedByName().click();
 	String optionLocator = "//li[text()='"  + option + "']";
 	this.getReportedByName().findElement(By.xpath(optionLocator)).click();
+}
+
+public void selectRelationToInsured(String option)
+{
+	logger.info(format("%s - going to select relation to insured option :"+option, getName()));
+	sleep(2);
+	this.getReportedByRelation().click();
+	String optionLocator = "//li[text()='"  + option + "']";
+	this.getReportedByRelation().findElement(By.xpath(optionLocator)).click();
 }
 
 public void setReportedByValue(String name)

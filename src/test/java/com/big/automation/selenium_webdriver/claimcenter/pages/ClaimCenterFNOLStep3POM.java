@@ -4,8 +4,10 @@ import static java.lang.String.format;
 
 import java.util.List;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import static com.big.automation.selenium_webdriver.common.utilities.ThreadUtils.sleep;
 
 import com.big.automation.selenium_webdriver.common.baseTest.BaseTest;
 
@@ -40,6 +42,7 @@ public class ClaimCenterFNOLStep3POM extends BaseTest{
 	@FindBy(id ="FNOLWizard:AutoWorkersCompWizardStepSet:FNOLWizard_NewLossDetailsScreen:LossDetailsAddressDV:Claim_LossCause-inputEl")
 	private WebElement incidentType;
 	
+	       
 	@FindBy(id="FNOLWizard:AutoWorkersCompWizardStepSet:FNOLWizard_NewLossDetailsScreen:LossDetailsAddressDV:Claim_Cause_itb-inputEl")
 	private WebElement claimCause;
 	
@@ -57,7 +60,9 @@ public class ClaimCenterFNOLStep3POM extends BaseTest{
 	
 	@FindBy(id="FNOLWizard:AutoWorkersCompWizardStepSet:FNOLWizard_NewLossDetailsScreen:AddPropertyDamageButton-btnEl")
 	private WebElement addPropertyDamageButton;
-
+	
+	@FindBy(id ="FFNOLWizard:AutoWorkersCompWizardStepSet:FNOLWizard_NewLossDetailsScreen:CategorizationDV:Notification_Fault-inputEl")
+	private WebElement faultType;
 	
 
 	public String getName() {
@@ -121,7 +126,54 @@ public class ClaimCenterFNOLStep3POM extends BaseTest{
 	}
 	
 	
-
+	public boolean incidentTypeContainsOption(String option)
+	{
+		boolean found=false;
+		logger.info(format("%s - going to check if options in Incident Type:"+option, getName()));
+		this.getIncidentType().click();
+		String optionLocator = "//li[contains(text(),'"  + option + "')]";
+		found = this.getIncidentType().findElements( By.xpath(optionLocator) ).size() > 0;
+		
+		return found;
+	}
+	public boolean faultTypeContainsOption(String option)
+	{
+		boolean found=false;
+		logger.info(format("%s - going to check if options in Fault Type:"+option, getName()));
+		this.getFaultType().click();
+		String optionLocator = "//li[contains(text(),'"  + option + "')]";
+		found = this.getFaultType().findElements( By.xpath(optionLocator) ).size() > 0;
+		
+		return found;
+	}
+	
+	public void selectIncidentType(String option)
+	{
+		logger.info(format("%s - going to select IncidentType option :"+option, getName()));
+		sleep(1);
+		this.getIncidentType().click();
+		sleep(3);
+		String optionLocator = "//li[contains(text(),'"  + option + "')]";
+		this.getIncidentType().findElement(By.xpath(optionLocator)).click();
+	}
+	public void selectClaimCauseType(String option)
+	{
+		logger.info(format("%s - going to select Claim Cause option :"+option, getName()));
+	    sleep(1);
+		this.getClaimCause().click();
+		sleep(3);
+		String optionLocator = "//li[contains(text(),'"  + option + "')]";
+		this.getClaimCause().findElement(By.xpath(optionLocator)).click();
+	}
+	public void selectClaimSubCauseType(String option)
+	{
+		logger.info(format("%s - going to select Claim SubCause option :"+option, getName()));
+		sleep(1);
+		this.getClaimSubCause().click();
+		sleep(3);
+		String optionLocator = "//li[contains(text(),'"  + option + "')]";
+		this.getClaimSubCause().findElement(By.xpath(optionLocator)).click();
+	}
 
 
    public void selectIncidentOnlyCB()
@@ -225,6 +277,11 @@ private WebElement getFinishButton() {
 	
 	
 	
+	
+	private WebElement getFaultType() {
+		return faultType;
+	}
+
 	public boolean containsErrorMessage(String contains)
 	{
 		boolean found=false;

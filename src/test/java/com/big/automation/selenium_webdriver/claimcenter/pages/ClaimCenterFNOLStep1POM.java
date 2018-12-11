@@ -111,7 +111,7 @@ public class ClaimCenterFNOLStep1POM extends BaseTest{
 		fieldMap.put("Country".toUpperCase(),"Country-inputEl");
 		fieldMap.put("Town/City".toUpperCase(),"City-inputEl");
 		fieldMap.put("Postcode".toUpperCase(),"PostalCode-inputEl");
-		fieldMap.put("VRN".toUpperCase(),"vrn-inputEl");
+		fieldMap.put("VRN".toUpperCase(),"vin-inputEl");
 		
 		
 		// These are visible after a policy has been delected
@@ -123,7 +123,7 @@ public class ClaimCenterFNOLStep1POM extends BaseTest{
 		// These are OOTB which should not be visible
 		fieldMap.put("Organisation Name".toUpperCase(),"GlobalContactNameInputSet:Name-inputEl");
 		fieldMap.put("SSN or Tax id".toUpperCase(),"ssn-inputEl");
-		fieldMap.put("VIN".toUpperCase(),"vin-inputEl");
+		//fieldMap.put("VIN".toUpperCase(),"vin-inputEl");
 		
 		
 		
