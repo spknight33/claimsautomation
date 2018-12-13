@@ -1,6 +1,8 @@
+@Ignore
 Feature: CBPCL-176 As an Operator, I want to be able to record "Fault" "Split Liability" and "Non Fault" fault causes.
   I want this to be displayed so I am aware which fault code applies. This also needs to be able to be changed.
 
+  
   Background: 
     Given As a ClaimsHandler I am at step3 for FNOL
 
@@ -9,6 +11,7 @@ Feature: CBPCL-176 As an Operator, I want to be able to record "Fault" "Split Li
     Then the "Incident Type" list on step3 will contain options
       | Accident | Fire | Flood/Water Damage | Malicious Damage | Misfuelling | Snow | Storm | Theft | Windscreen |
 
+  @Ignore
   Scenario: CBPCL-176 TC1 Accident Incident type, cause and subcauses will generate correct fault code
     Then I will see fault based on loss causes
       | incident type | cause                                                | sub cause                                                                                                        | fault type      |
@@ -90,43 +93,117 @@ Feature: CBPCL-176 As an Operator, I want to be able to record "Fault" "Split Li
       | Accident      | Collision At 'X' Roads                               | Governed by traffic lights - Insured crossed on amber                                                            | Non Fault       |
       | Accident      | Collision At 'X' Roads                               | Governed by traffic lights - Insured crossed on green                                                            | Non Fault       |
       | Accident      | Collision At 'X' Roads                               | Governed by traffic lights - Insured crossed on red                                                              | Non Fault       |
-      | Accident      | Collision Between Oncoming Vehicles                  |                                                                                                                  |                 |
-      | Accident      | Collision Between Oncoming Vehicles                  |                                                                                                                  |                 |
-      | Accident      | Collision Between Oncoming Vehicles                  |                                                                                                                  |                 |
-      | Accident      | Collision Between Oncoming Vehicles                  |                                                                                                                  |                 |
-      | Accident      | Collision In Car Park                                |                                                                                                                  |                 |
-      | Accident      | Collision In Car Park                                |                                                                                                                  |                 |
-      | Accident      | Collision In Car Park                                |                                                                                                                  |                 |
-      | Accident      | Collision In Car Park                                |                                                                                                                  |                 |
-      | Accident      | Collision Whilst Reversing                           |                                                                                                                  |                 |
-      | Accident      | Collision Whilst Reversing                           |                                                                                                                  |                 |
-      | Accident      | Collision Whilst Reversing                           |                                                                                                                  |                 |
-      | Accident      | Collision Whilst Reversing                           |                                                                                                                  |                 |
-      | Accident      | Collision Whilst Reversing                           |                                                                                                                  |                 |
-      | Accident      | Hit in Rear By Third Party                           |                                                                                                                  |                 |
-      | Accident      | Hit in Rear By Third Party                           |                                                                                                                  |                 |
-      | Accident      | Hit in Rear By Third Party                           |                                                                                                                  |                 |
-      | Accident      | Hit in Rear By Third Party                           |                                                                                                                  |                 |
-      | Accident      | Hit in Rear By Third Party                           |                                                                                                                  |                 |
-      | Accident      | Hit Rear Of Third Party                              |                                                                                                                  |                 |
-      | Accident      | Hit Rear Of Third Party                              |                                                                                                                  |                 |
-      | Accident      | Hit Rear Of Third Party                              |                                                                                                                  |                 |
-      | Accident      | Hit Rear Of Third Party                              |                                                                                                                  |                 |
-      | Accident      | Hit Rear Of Third Party                              |                                                                                                                  |                 |
+      | Accident      | Collision Between Oncoming Vehicles                  | Three lane carriage way - no priorities                                                                          | Split Liability |
+      | Accident      | Collision Between Oncoming Vehicles                  | Three lane carriage way - priority with insured                                                                  | Non Fault       |
+      | Accident      | Collision Between Oncoming Vehicles                  | Three lane carriage way - priority with third party                                                              | Fault           |
+      | Accident      | Collision Between Oncoming Vehicles                  | Insured entered 'one way' street the wrong way and collided with oncoming third party vehicle                    | Fault           |
+      | Accident      | Collision Between Oncoming Vehicles                  | Insured turned right across path of oncoming third party vehicle                                                 | Fault           |
+      | Accident      | Collision Between Oncoming Vehicles                  | Insured lost control and collided with oncoming third party vehicle                                              | Fault           |
+      | Accident      | Collision Between Oncoming Vehicles                  | In narrow lane - neither party had right of way                                                                  | Split Liability |
+      | Accident      | Collision Between Oncoming Vehicles                  | On bend in narrow lane - neither party had right of way                                                          | Split Liability |
+      | Accident      | Collision Between Oncoming Vehicles                  | Oncoming third party vehicle lost control and collided with insured                                              | Non Fault       |
+      | Accident      | Collision Between Oncoming Vehicles                  | Insured vehicle overtaking on wrong side of road collided with oncoming third party vehicle                      | Fault           |
+      | Accident      | Collision Between Oncoming Vehicles                  | Collided with oncoming vehicle in a road reduced in width by parked cars on both sides                           | Split Liability |
+      | Accident      | Collision Between Oncoming Vehicles                  | Passing parked vehicle(s) in collision with oncoming third party                                                 | Split Liability |
+      | Accident      | Collision Between Oncoming Vehicles                  | Collided with an oncoming third party who was passing parked vehicle(s)                                          | Split Liability |
+      | Accident      | Collision Between Oncoming Vehicles                  | Having swerved to avoid a pedestrian                                                                             | Fault           |
+      | Accident      | Collision Between Oncoming Vehicles                  | Oncoming third party vehicle entered 'one way' street the wrong way and collided with Insured                    | Non Fault       |
+      | Accident      | Collision Between Oncoming Vehicles                  | Oncoming third party vehicle overtaking on wrong side of road collided with insured                              | Non Fault       |
+      | Accident      | Collision Between Oncoming Vehicles                  | Oncoming third party vehicle turned right across path of insured                                                 | Non Fault       |
+      | Accident      | Collision In Car Park                                | Both parties reversing                                                                                           | Split Liability |
+      | Accident      | Collision In Car Park                                | Having swerved to avoid a pedestrian                                                                             | Fault           |
+      | Accident      | Collision In Car Park                                | Having had attention distracted                                                                                  | Fault           |
+      | Accident      | Collision In Car Park                                | Lost control due to mechanical failure                                                                           | Fault           |
+      | Accident      | Collision In Car Park                                | Having swerved to avoid another vehicle which did not stop                                                       | Fault           |
+      | Accident      | Collision In Car Park                                | Lost control due to black ice - adverse weather conditions                                                       | Fault           |
+      | Accident      | Collision In Car Park                                | Basic error of judgement                                                                                         | Fault           |
+      | Accident      | Collision In Car Park                                | Insured reversed into third party vehicle                                                                        | Fault           |
+      | Accident      | Collision In Car Park                                | Third party reversed into insured vehicle in a car park                                                          | Non Fault       |
+      | Accident      | Collision Whilst Reversing                           | Both parties reversing                                                                                           | Split Liability |
+      | Accident      | Collision Whilst Reversing                           | collided with bollard                                                                                            | Fault           |
+      | Accident      | Collision Whilst Reversing                           | Lost control due to black ice - adverse weather conditions                                                       | Fault           |
+      | Accident      | Collision Whilst Reversing                           | Lost control due to mechanical failure                                                                           | Fault           |
+      | Accident      | Collision Whilst Reversing                           | Collided with moving third party vehicle                                                                         | Fault           |
+      | Accident      | Collision Whilst Reversing                           | Other innate object                                                                                              | Fault           |
+      | Accident      | Collision Whilst Reversing                           | Collided with parked third party vehicle                                                                         | Fault           |
+      | Accident      | Collision Whilst Reversing                           | Struck pedestrian/child                                                                                          | Fault           |
+      | Accident      | Collision Whilst Reversing                           | Collided with post/pillar/wall                                                                                   | Fault           |
+      | Accident      | Collision Whilst Reversing                           | Insured reversed into third party vehicle                                                                        | Fault           |
+      | Accident      | Collision Whilst Reversing                           | Third party reversed into insured vehicle                                                                        | Non Fault       |
+      | Accident      | Collision Whilst Reversing                           | Third party was reversing and colliding with our correctly proceeding vehicle                                    | Non Fault       |
+      | Accident      | Hit in Rear By Third Party                           | Whilst waiting to enter main road at 'T' junction                                                                | Non Fault       |
+      | Accident      | Hit in Rear By Third Party                           | Hit in rear and pushed into passing vehicle                                                                      | Non Fault       |
+      | Accident      | Hit in Rear By Third Party                           | Hit in rear and pushed into vehicle in front                                                                     | Non Fault       |
+      | Accident      | Hit in Rear By Third Party                           | Hit In Rear while correctly proceeding along the road                                                            | Non Fault       |
+      | Accident      | Hit in Rear By Third Party                           | Whilst slowing down for an animal crossing the road                                                              | Non Fault       |
+      | Accident      | Hit in Rear By Third Party                           | Whilst slowing down for people crossing the road                                                                 | Non Fault       |
+      | Accident      | Hit in Rear By Third Party                           | Whilst stationary at 'X' roads                                                                                   | Non Fault       |
+      | Accident      | Hit Rear Of Third Party                              | Hit rear of vehicle stationary at 'X' roads                                                                      | Fault           |
+      | Accident      | Hit Rear Of Third Party                              | Hit rear of vehicle while correctly proceeding along the road                                                    | Fault           |
+      | Accident      | Hit Rear Of Third Party                              | Hit rear of vehicle whilst in line of slow moving traffic                                                        | Fault           |
+      | Accident      | Hit Rear Of Third Party                              | Hit rear of vehicle stationary in line of traffic                                                                | Fault           |
+      | Accident      | Hit Rear Of Third Party                              | Hit rear of vehicle and pushed into passing vehicle                                                              | Fault           |
+      | Accident      | Hit Rear Of Third Party                              | Hit rear of vehicle turning off main road                                                                        | Fault           |
+      | Accident      | Hit Rear Of Third Party                              | Hit rear of vehicle negotiating roundabout                                                                       | Fault           |
+      | Accident      | Hit Rear Of Third Party                              | Hit rear of vehicle slowing down for an animal crossing the road                                                 | Fault           |
+      | Accident      | Hit Rear Of Third Party                              | Hit rear of vehicle whilst slowing down for people crossing the road                                             | Fault           |
+      | Accident      | Hit Rear Of Third Party                              | Hit rear of vehicle waiting to enter main road at 'T' junction                                                   | Fault           |
+      | Accident      | Hit Rear Of Third Party                              | Hit rear of vehicle waiting to enter roundabout                                                                  | Fault           |
       | Accident      | Insured Vehicle Damaged Whilst Parked                |                                                                                                                  |                 |
       | Accident      | Insured Vehicle Damaged Whilst Parked                |                                                                                                                  |                 |
       | Accident      | Insured Vehicle Damaged Whilst Parked                |                                                                                                                  |                 |
       | Accident      | Insured Vehicle Damaged Whilst Parked                |                                                                                                                  |                 |
       | Accident      | Insured Vehicle Damaged Whilst Parked                |                                                                                                                  |                 |
       | Accident      | Insured's Vehicle Left Road                          |                                                                                                                  |                 |
+      | Accident      | Insured's Vehicle Left Road                          |                                                                                                                  |                 |
+      | Accident      | Insured's Vehicle Left Road                          |                                                                                                                  |                 |
+      | Accident      | Insured's Vehicle Left Road                          |                                                                                                                  |                 |
+      | Accident      | Insured's Vehicle Left Road                          |                                                                                                                  |                 |
+      | Accident      | Joining/Leaving Slip Roads/Motorways                 |                                                                                                                  |                 |
+      | Accident      | Joining/Leaving Slip Roads/Motorways                 |                                                                                                                  |                 |
+      | Accident      | Joining/Leaving Slip Roads/Motorways                 |                                                                                                                  |                 |
+      | Accident      | Joining/Leaving Slip Roads/Motorways                 |                                                                                                                  |                 |
       | Accident      | Joining/Leaving Slip Roads/Motorways                 |                                                                                                                  |                 |
       | Accident      | Loss of Consciousness / Automatism                   |                                                                                                                  |                 |
+      | Accident      | Loss of Consciousness / Automatism                   |                                                                                                                  |                 |
+      | Accident      | Loss of Consciousness / Automatism                   |                                                                                                                  |                 |
+      | Accident      | Loss of Consciousness / Automatism                   |                                                                                                                  |                 |
+      | Accident      | Loss of Consciousness / Automatism                   |                                                                                                                  |                 |
+      | Accident      | Loss of Consciousness / Automatism                   |                                                                                                                  |                 |
+      | Accident      | Loss Of Control                                      |                                                                                                                  |                 |
+      | Accident      | Loss Of Control                                      |                                                                                                                  |                 |
+      | Accident      | Loss Of Control                                      |                                                                                                                  |                 |
+      | Accident      | Loss Of Control                                      |                                                                                                                  |                 |
       | Accident      | Loss Of Control                                      |                                                                                                                  |                 |
       | Accident      | Moving From Stationary Position                      |                                                                                                                  |                 |
+      | Accident      | Moving From Stationary Position                      |                                                                                                                  |                 |
+      | Accident      | Moving From Stationary Position                      |                                                                                                                  |                 |
+      | Accident      | Moving From Stationary Position                      |                                                                                                                  |                 |
+      | Accident      | Moving From Stationary Position                      |                                                                                                                  |                 |
+      | Accident      | Multiple Vehicle - Shunt                             |                                                                                                                  |                 |
+      | Accident      | Multiple Vehicle - Shunt                             |                                                                                                                  |                 |
+      | Accident      | Multiple Vehicle - Shunt                             |                                                                                                                  |                 |
+      | Accident      | Multiple Vehicle - Shunt                             |                                                                                                                  |                 |
       | Accident      | Multiple Vehicle - Shunt                             |                                                                                                                  |                 |
       | Accident      | Narrow Road Collision                                |                                                                                                                  |                 |
+      | Accident      | Narrow Road Collision                                |                                                                                                                  |                 |
+      | Accident      | Narrow Road Collision                                |                                                                                                                  |                 |
+      | Accident      | Narrow Road Collision                                |                                                                                                                  |                 |
+      | Accident      | Narrow Road Collision                                |                                                                                                                  |                 |
+      | Accident      | Overtaking                                           |                                                                                                                  |                 |
+      | Accident      | Overtaking                                           |                                                                                                                  |                 |
+      | Accident      | Overtaking                                           |                                                                                                                  |                 |
+      | Accident      | Overtaking                                           |                                                                                                                  |                 |
       | Accident      | Overtaking                                           |                                                                                                                  |                 |
       | Accident      | Reported by TP                                       |                                                                                                                  |                 |
+      | Accident      | Reported by TP                                       |                                                                                                                  |                 |
+      | Accident      | Reported by TP                                       |                                                                                                                  |                 |
+      | Accident      | Reported by TP                                       |                                                                                                                  |                 |
+      | Accident      | Reported by TP                                       |                                                                                                                  |                 |
+      | Accident      | Unknown                                              |                                                                                                                  |                 |
+      | Accident      | Unknown                                              |                                                                                                                  |                 |
+      | Accident      | Unknown                                              |                                                                                                                  |                 |
+      | Accident      | Unknown                                              |                                                                                                                  |                 |
       | Accident      | Unknown                                              |                                                                                                                  |                 |
 
   @Ignore

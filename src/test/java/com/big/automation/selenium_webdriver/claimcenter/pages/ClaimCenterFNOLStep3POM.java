@@ -5,7 +5,10 @@ import static java.lang.String.format;
 import java.util.List;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import static com.big.automation.selenium_webdriver.common.utilities.ThreadUtils.sleep;
 
@@ -52,6 +55,10 @@ public class ClaimCenterFNOLStep3POM extends BaseTest{
 	@FindBy(id="FNOLWizard:AutoWorkersCompWizardStepSet:FNOLWizard_NewLossDetailsScreen:LossDetailsAddressDV:IncidentOnly-inputEl")
 	private WebElement incidentOnlyCB;
 	
+	
+	@FindBy(id="FNOLWizard:AutoWorkersCompWizardStepSet:FNOLWizard_NewLossDetailsScreen:VehicleIncidentIterator:0:VehicleIncidentDV:VehicleName-inputEl")
+	private WebElement insuredVehicleLink;
+	
 	@FindBy(id="FNOLWizard:AutoWorkersCompWizardStepSet:FNOLWizard_NewLossDetailsScreen:AddVehicleButton-btnEl")
 	private WebElement addVehicleButton;
 	
@@ -64,7 +71,19 @@ public class ClaimCenterFNOLStep3POM extends BaseTest{
 	@FindBy(id ="FFNOLWizard:AutoWorkersCompWizardStepSet:FNOLWizard_NewLossDetailsScreen:CategorizationDV:Notification_Fault-inputEl")
 	private WebElement faultType;
 	
+	
+	@FindBy(id ="NewClaimDuplicatesWorksheet:NewClaimDuplicatesScreen:NewClaimDuplicatesWorksheet_CloseButton-btnEl")
+	private WebElement closeDuplicateClaimWindow;
+	private String closeDuplicateClaimLocator = "NewClaimDuplicatesWorksheet:NewClaimDuplicatesScreen:NewClaimDuplicatesWorksheet_CloseButton-btnEl";
+	
 
+	@FindBy(id ="FNOLWizard:AutoWorkersCompWizardStepSet:FNOLWizard_NewLossDetailsScreen:LossDetailsAddressDV:IncidentQuestions_PurposeOfJourney_itb-inputEl")
+	private WebElement journeyPurpose;
+	
+	
+	@FindBy(id ="FNOLWizard:AutoWorkersCompWizardStepSet:FNOLWizard_NewLossDetailsScreen:LossDetailsAddressDV:IncidentQuestions_VehicleUsedFor_itb-inputEl")
+	private WebElement vehicleUsedFor;
+	
 	public String getName() {
 
 		return "FNOL Wizard Step3 Add Claim Information";
@@ -106,11 +125,11 @@ public class ClaimCenterFNOLStep3POM extends BaseTest{
 
 
 	
-	public void setCircumstancesValue(String circumstances)
+	public void setJourneyPurpose(String purpose)
 	{
-		logger.info(format("%s - setting circumstances: "+circumstances, getName()));
-		this.getCircumstances().clear();
-		this.getCircumstances().sendKeys(circumstances);
+		logger.info(format("%s - setting journey purpose: "+purpose, getName()));
+		this.getJourneyPurpose().clear();
+		this.getJourneyPurpose().sendKeys(purpose);
 	}
 	
 	public String getClaimCauseValue() {
@@ -123,6 +142,33 @@ public class ClaimCenterFNOLStep3POM extends BaseTest{
 
 		return this.getClaimSubCause().getAttribute("value");
 
+	}
+	
+	public void setCircumstancesValue(String circumstances)
+	{
+		logger.info(format("%s - setting circumstances: "+circumstances, getName()));
+		this.getCircumstances().clear();
+		this.getCircumstances().sendKeys(circumstances);
+	}
+	
+
+	public void closeDuplicateClaimWindow()
+	{
+		
+		logger.info(format("%s - going to close duplicate cliam window if its open", getName()));
+		//*[@id="NewClaimDuplicatesWorksheet:NewClaimDuplicatesScreen:NewClaimDuplicatesWorksheet_CloseButton-btnEl"]
+		String xpathLocator = "//*[@id='"+  this.closeDuplicateClaimLocator + "']";
+		if(driver.findElements( By.xpath(xpathLocator) ).size() > 0)
+		{
+			logger.info(format("%s - going to close duplicate cliam window as its open", getName()));
+			// close it if present
+			driver.findElement(By.xpath(xpathLocator)).click();
+		}
+		else
+		{
+			logger.info(format("%s - NOT going to close duplicate cliam window as not open", getName()));
+		}
+	
 	}
 	
 	
@@ -205,6 +251,34 @@ public class ClaimCenterFNOLStep3POM extends BaseTest{
 		logger.info(format("%s - done, Add Vehicle clicked", getName()));
 	}
    
+   public void selectVehicleUsedFor(String option)
+	{
+		logger.info(format("%s - going to select VehicleUser for option :"+option, getName()));
+		sleep(1);
+		this.getVehicleUsedFor().click();
+		sleep(2);
+		String optionLocator = "//li[contains(text(),'"  + option + "')]";
+		this.getVehicleUsedFor().findElement(By.xpath(optionLocator)).click();
+	}
+		
+   
+   public void selectInsuredVehicle() {
+		logger.info(format("%s -  going to click INSUREDVehicle", getName()));
+		sleep(4); // TODO make explicit waits
+		JavascriptExecutor je = (JavascriptExecutor) driver;
+		je.executeScript("arguments[0].scrollIntoView(true);",this.getInsuredVehicleLink());
+		this.getInsuredVehicleLink().click();
+		
+		//Actions actions = new Actions(driver);
+		//actions.moveToElement(this.getInsuredVehicleLink());
+		
+		//actions.click();
+	
+		//actions.build().perform();
+		
+		logger.info(format("%s - done, Insured Vehicle clicked", getName()));
+	}
+   
    public void addPedestrian() {
 		logger.info(format("%s -  going to click AddPedestrian", getName()));
 		this.getAddPedestrianButton().click();
@@ -278,6 +352,19 @@ private WebElement getFinishButton() {
 	
 	
 	
+	
+	private WebElement getVehicleUsedFor() {
+		return vehicleUsedFor;
+	}
+
+	private WebElement getJourneyPurpose() {
+		return journeyPurpose;
+	}
+
+	private WebElement getInsuredVehicleLink() {
+		return insuredVehicleLink;
+	}
+
 	private WebElement getFaultType() {
 		return faultType;
 	}

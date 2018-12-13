@@ -23,10 +23,10 @@ public class CCFNOLStep1Steps extends BaseTest	{
 	public void iCompleteStep1FNOL() throws Throwable 
 	{
 		// need to configure to get a specific configurable pilicy number
-		i_set_the_policy_search_criteria_fields_to("policynumber","1596588080");
+		i_set_the_policy_search_criteria_fields_to("policynumber","3324816820");
 		i_Click_Search();
-		this.setLossDate("06/12/2018");
-		this.setLossTime("03:00 PM");
+		this.setLossDate("12/12/2018");
+		this.setLossTime("09:00 AM");
 		this.next();
 		
 	}

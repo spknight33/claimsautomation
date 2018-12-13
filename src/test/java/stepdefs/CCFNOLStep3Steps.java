@@ -18,13 +18,24 @@ public class CCFNOLStep3Steps extends BaseTest {
 	@Then("^I will be on step3 for FNOL$")
 	public void i_will_be_on_step3_for_FNOL() throws Throwable {
 		fnolStep3POM.isPageTitleDisplayed("Step 3 of 5: Add claim information");
+	
+		
 	}
+	
+
 	
 	@Given("^As a ClaimsHandler I am at step3 for FNOL$")
 	public void as_a_ClaimsHandler_I_am_at_step3_for_FNOL() throws Throwable {
 		step2Steps.as_a_ClaimsHandler_I_am_at_step2_for_FNOL();
 		step2Steps.iCompleteStep2FNOL();
 		i_will_be_on_step3_for_FNOL();
+		// close any duplicate claim window
+		fnolStep3POM.closeDuplicateClaimWindow();
+	}
+
+	@Given("^I select the insureds vehicle at step3$")
+	public void i_select_the_insureds_vehicle_at_step3() throws Throwable {
+	    fnolStep3POM.selectInsuredVehicle();
 	}
 
 	
@@ -79,7 +90,15 @@ public class CCFNOLStep3Steps extends BaseTest {
 	    case "Incident Type":
 	    	fnolStep3POM.selectIncidentType(fieldValue);
 	    	break;
-	    
+	    case "Cause":
+	    	fnolStep3POM.selectClaimCauseType(fieldValue);
+	    	break;
+	    case "Sub Cause":
+	    	fnolStep3POM.selectClaimSubCauseType(fieldValue);
+	    	break;
+	    case "Vehicle Used For":
+	    	fnolStep3POM.selectVehicleUsedFor(fieldValue);
+	    	break;
 	    
 	    default:
 	    Assert.fail("unknown input field :"+ fieldName+" - check cucumber script!");
@@ -156,6 +175,22 @@ public class CCFNOLStep3Steps extends BaseTest {
 	}
 	
 	
+	@Given("^I input \"([^\"]*)\" into the \"([^\"]*)\" box on step3$")
+	public void i_input_into_the_box_onstep3(String fieldValue, String fieldName) throws Throwable {
+		switch(fieldName)
+	    {
+	    case "Circumstances":
+	    	fnolStep3POM.setCircumstancesValue(fieldValue);
+	    	break;
+	    case "Journey Purpose":
+	    	fnolStep3POM.setJourneyPurpose(fieldValue);
+	    	break;
+	 
+	    
+	    default:
+	    Assert.fail("unknown input field :"+ fieldName+" - check cucumber script!");
+	    }
+	}
 	
 	public void setCircumstances(String circumstances)
 	{
