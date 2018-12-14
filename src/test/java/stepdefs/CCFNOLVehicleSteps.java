@@ -22,5 +22,19 @@ public class CCFNOLVehicleSteps extends BaseTest {
 	}
 
 	
-	
+	@Given("^I select \"([^\"]*)\" on vehicle screen$")
+	public void i_select_on_vehicle_screen(String button) throws Throwable {
+		switch(button)
+	    {
+	    case "AddDriver":
+	    	vehicleDetailsPOM.selectAddDriver();
+	    	break;
+	    case "AddPassenger":
+	    	vehicleDetailsPOM.selectAddPassenger();
+	    	break;
+	  
+	    default:
+	    Assert.fail("unknown input field :"+ button+" - check cucumber script!");
+	    }
+	}
 }

@@ -14,7 +14,7 @@ import static com.big.automation.selenium_webdriver.common.utilities.ThreadUtils
 
 import com.big.automation.selenium_webdriver.common.baseTest.BaseTest;
 
-public class ClaimCenterVehicleDetailsPOM extends BaseTest{
+public class ClaimCenterDriverDetailsPOM extends BaseTest{
 
 	
 	@FindBy(id = "FNOLWizard:Cancel-btnEl")
@@ -23,18 +23,16 @@ public class ClaimCenterVehicleDetailsPOM extends BaseTest{
 		
 
 	
-	@FindBy(id = "FNOLVehicleIncidentPopup:FNOLVehicleIncidentScreen:0")
+	@FindBy(id = "FNOLContactPopup:FNOLContactScreen:ttlBar")
 	private WebElement pageTitle;
 		
-	@FindBy(id = "FNOLVehicleIncidentPopup:FNOLVehicleIncidentScreen:Update-btnEl")
+	@FindBy(id = "FNOLContactPopup:FNOLContactScreen:Update-btnEl")
 	private WebElement okButton;
 
-	@FindBy(id = "FNOLVehicleIncidentPopup:FNOLVehicleIncidentScreen:OccupantLV_tb:AddDriverButton-btnEl")
-	private WebElement addDriverButton;
+	@FindBy(id = "FNOLContactPopup:FNOLContactScreen:ContactDV:ClaimContactPerson-inputEl")
+	private WebElement driverNameDropdown;
 	
 
-	@FindBy(id = "FNOLVehicleIncidentPopup:FNOLVehicleIncidentScreen:OccupantLV_tb:AddPassengerButton-btnEl")
-	private WebElement addPassengerButton;
 	
 	
 	
@@ -43,14 +41,14 @@ public class ClaimCenterVehicleDetailsPOM extends BaseTest{
 
 	public String getName() {
 
-		return "FNOL Wizard Step3 Vehicle Information";
+		return "FNOL Wizard Step3 Add Driver";
 	}
 
 	public boolean isPageTitleDisplayed(String expected)
 	{
 		sleep(4);
-		logger.info(format("%s -check page title for Vehicle page :"+expected, getName()));
-		logger.info(format("%s -found page title for Vehicle page :"+this.getPageTitle().getText(), getName()));
+		logger.info(format("%s -check page title for Add Driver page :"+expected, getName()));
+		logger.info(format("%s -found page title for Add Driver page :"+this.getPageTitle().getText(), getName()));
 		return this.getPageTitle().getText().equalsIgnoreCase(expected);
 	}
 	
@@ -67,16 +65,10 @@ public class ClaimCenterVehicleDetailsPOM extends BaseTest{
 		logger.info(format("%s - done, OK clicked", getName()));
 	}
 	
-	public void selectAddDriver() {
-		logger.info(format("%s -  going to click AddDriver", getName()));
-		this.clickGWButton(this.getAddDriverButton());
-		logger.info(format("%s - done, AddDriver clicked", getName()));
-	}
-	
-	public void selectAddPassenger() {
-		logger.info(format("%s -  going to click AddPassenger", getName()));
-		this.clickGWButton(this.getAddPassengerButton());
-		logger.info(format("%s - done, AddPassenger clicked", getName()));
+	public void selectDriverName(String option)
+	{
+		logger.info(format("%s - going to select Driver name option :"+option, getName()));
+		this.selectOptionFromGWDropDown(option, this.getDriverNameDropdown(),1);
 	}
 
    
@@ -87,16 +79,15 @@ public class ClaimCenterVehicleDetailsPOM extends BaseTest{
 	private WebElement getPageTitle() {
 		return pageTitle;
 	}
+	
 
-	private WebElement getAddDriverButton() {
-		return addDriverButton;
+	
+
+	
+	private WebElement getDriverNameDropdown() {
+		return driverNameDropdown;
 	}
 
-	private WebElement getAddPassengerButton() {
-		return addPassengerButton;
-	}
-	
-	
 	private WebElement getOkButton() {
 		return okButton;
 	}

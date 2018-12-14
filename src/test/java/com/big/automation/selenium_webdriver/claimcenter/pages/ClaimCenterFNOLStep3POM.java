@@ -109,27 +109,27 @@ public class ClaimCenterFNOLStep3POM extends BaseTest{
 	public void cancel() {
 
 		logger.info(format("%s -  going to click cancel", getName()));
-		getCancelButton().click();
+		this.clickGWButton(getCancelButton());
 		logger.info(format("%s - done, cancel clicked", getName()));
 	}
 	
 	public void finish() {
 
 		logger.info(format("%s -  going to click finish", getName()));
-		getFinishButton().click();
+		this.clickGWButton(getFinishButton());
 		logger.info(format("%s - done, Finish clicked", getName()));
 	}
 	
 	public void next() {
 
 		logger.info(format("%s -  going to click Next", getName()));
-		getNextButton().click();
+		this.clickGWButton(getNextButton());
 		logger.info(format("%s - done, Next clicked", getName()));
 	}
 	
 	public void back() {
 		logger.info(format("%s -  going to click Back", getName()));
-		this.getBackButton().click();
+		this.clickGWButton(getBackButton());
 		logger.info(format("%s - done, Back clicked", getName()));
 	}
 
@@ -277,7 +277,7 @@ public class ClaimCenterFNOLStep3POM extends BaseTest{
    
    public void addVehicle() {
 		logger.info(format("%s -  going to click AddVehicle", getName()));
-		this.getAddVehicleButton().click();
+		this.clickGWButton(getAddVehicleButton());
 		logger.info(format("%s - done, Add Vehicle clicked", getName()));
 	}
    
@@ -290,30 +290,19 @@ public class ClaimCenterFNOLStep3POM extends BaseTest{
    
    public void selectInsuredVehicle() {
 		logger.info(format("%s -  going to click INSUREDVehicle", getName()));
-		sleep(4); // TODO make explicit waits
-		JavascriptExecutor je = (JavascriptExecutor) driver;
-		je.executeScript("arguments[0].scrollIntoView(true);",this.getInsuredVehicleLink());
-		this.getInsuredVehicleLink().click();
-		
-		//Actions actions = new Actions(driver);
-		//actions.moveToElement(this.getInsuredVehicleLink());
-		
-		//actions.click();
-	
-		//actions.build().perform();
-		
+		this.clickGWButton(this.getInsuredVehicleLink());
 		logger.info(format("%s - done, Insured Vehicle clicked", getName()));
 	}
    
    public void addPedestrian() {
 		logger.info(format("%s -  going to click AddPedestrian", getName()));
-		this.getAddPedestrianButton().click();
+		this.clickGWButton(getAddPedestrianButton());
 		logger.info(format("%s - done, Add Pedestrian clicked", getName()));
 	}
    
    public void addPropertyDamage() {
 		logger.info(format("%s -  going to click Add PropertyDamage", getName()));
-		this.getAddPropertyDamageButton().click();
+		this.clickGWButton(getAddPropertyDamageButton());
 		logger.info(format("%s - done, Add PropertyDamage clicked", getName()));
 	}
    
@@ -456,11 +445,20 @@ private WebElement getFinishButton() {
 	
 	private void setGWTextBox(String text, WebElement gwTextBox)
 	{
-		sleep(1);
+		sleep(1); //TODO change
 		JavascriptExecutor je = (JavascriptExecutor) driver;
 		je.executeScript("arguments[0].scrollIntoView(true);",gwTextBox);
 		gwTextBox.clear();
 		gwTextBox.sendKeys(text);
+	}
+	
+	private void clickGWButton(WebElement gwButton)
+	{
+		sleep(2); //TODO change
+		JavascriptExecutor je = (JavascriptExecutor) driver;
+		je.executeScript("arguments[0].scrollIntoView(true);",gwButton);
+		gwButton.click();
+	
 	}
 	
 

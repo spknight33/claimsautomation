@@ -27,6 +27,7 @@ import com.aventstack.extentreports.Status;
 import com.aventstack.extentreports.reporter.ExtentHtmlReporter;
 import com.aventstack.extentreports.reporter.configuration.ChartLocation;
 import com.aventstack.extentreports.reporter.configuration.Theme;
+import com.big.automation.selenium_webdriver.claimcenter.pages.ClaimCenterDriverDetailsPOM;
 import com.big.automation.selenium_webdriver.claimcenter.pages.ClaimCenterFNOLStep1POM;
 import com.big.automation.selenium_webdriver.claimcenter.pages.ClaimCenterFNOLStep2POM;
 import com.big.automation.selenium_webdriver.claimcenter.pages.ClaimCenterFNOLStep3POM;
@@ -62,6 +63,7 @@ public class BaseTest extends AbstractTestNGCucumberTests{
    public static ClaimCenterFNOLStep2POM fnolStep2POM;
    public static ClaimCenterFNOLStep3POM fnolStep3POM;
    public static ClaimCenterVehicleDetailsPOM vehicleDetailsPOM;
+   public static ClaimCenterDriverDetailsPOM driverDetailsPOM;
 
    @BeforeTest(timeOut = 30000)
    public void beforeTest() {
@@ -129,6 +131,7 @@ public class BaseTest extends AbstractTestNGCucumberTests{
       fnolStep2POM = PageFactory.initElements(driver, ClaimCenterFNOLStep2POM.class);
       fnolStep3POM = PageFactory.initElements(driver, ClaimCenterFNOLStep3POM.class);
       vehicleDetailsPOM= PageFactory.initElements(driver, ClaimCenterVehicleDetailsPOM.class);
+      driverDetailsPOM= PageFactory.initElements(driver, ClaimCenterDriverDetailsPOM.class);
    }
 
    
