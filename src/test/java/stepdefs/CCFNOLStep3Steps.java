@@ -99,6 +99,24 @@ public class CCFNOLStep3Steps extends BaseTest {
 	    case "Vehicle Used For":
 	    	fnolStep3POM.selectVehicleUsedFor(fieldValue);
 	    	break;
+	    case "Impact Speed":
+	    	fnolStep3POM.selectImpactSpeed(fieldValue);
+	    	break;
+	    case "Weather":
+	    	fnolStep3POM.selectWeather(fieldValue);
+	    	break;
+	    case "Road Conditions":
+	    	fnolStep3POM.selectRoadConditions(fieldValue);
+	    	break;
+	    case "Photos":
+	    	fnolStep3POM.selectPhotos(fieldValue);
+	    	break;
+	    case "cctv":
+	    	fnolStep3POM.selectCctv(fieldValue);
+	    	break;
+	    case "Fault Type":
+	    	fnolStep3POM.selectFaultType(fieldValue);
+	    	break;
 	    
 	    default:
 	    Assert.fail("unknown input field :"+ fieldName+" - check cucumber script!");
