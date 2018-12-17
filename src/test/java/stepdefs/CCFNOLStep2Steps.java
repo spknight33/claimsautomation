@@ -35,7 +35,8 @@ public class CCFNOLStep2Steps extends BaseTest{
 	{
 		// need to configure to get a specific configurable pilicy number
 
-		this.i_select_from_field_on_step("John Smith","name");
+		this.i_select_from_field_on_step("Portal","How Reported");
+		this.i_select_from_field_on_step("Paul Milligan","name");
 		this.i_select_from_field_on_step("Policyholder","relationship to insured");
 		this.next();
 		
@@ -92,11 +93,7 @@ public class CCFNOLStep2Steps extends BaseTest{
 		fnolStep2POM.setReportedDateValue("21/11/2018");
 	}
 	
-	public void setHowReported(String how)
-	{
-		
-		fnolStep2POM.setHowReportedValue(how);
-	}
+	
 	
 	@Then("^the \"([^\"]*)\" list on step2 will contain options$")
 	public void the_list_on_step_will_contain_options(String fieldName,  DataTable dt) throws Throwable {
@@ -126,6 +123,9 @@ public class CCFNOLStep2Steps extends BaseTest{
 	public void i_select_from_field_on_step(String fieldValue, String fieldName) throws Throwable {
 		switch(fieldName)
 	    {
+	    case "How Reported":
+	    	fnolStep2POM.selectHowReported(fieldValue);
+	    	break;
 	    case "name":
 	    	fnolStep2POM.selectReportedByName(fieldValue);
 	    	break;
@@ -138,17 +138,9 @@ public class CCFNOLStep2Steps extends BaseTest{
 	    }
 	}
 	
-	public void setReportedName(String name)
-	{
-		
-		fnolStep2POM.setReportedByValue( name);
-	}
 	
-	public void setReportedByRelationship(String relationship)
-	{
-		
-		fnolStep2POM.setReportedByRelationship(relationship);
-	}
+	
+	
 	
 	//temp
 	public void clickNamePicker()

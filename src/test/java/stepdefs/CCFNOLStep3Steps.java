@@ -117,6 +117,9 @@ public class CCFNOLStep3Steps extends BaseTest {
 	    case "Fault Type":
 	    	fnolStep3POM.selectFaultType(fieldValue);
 	    	break;
+	    case "Address Location":
+	    	fnolStep3POM.selectAddressLocation(fieldValue);
+	    	break;
 	    
 	    default:
 	    Assert.fail("unknown input field :"+ fieldName+" - check cucumber script!");

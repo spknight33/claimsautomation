@@ -13,6 +13,8 @@ import org.openqa.selenium.support.FindBy;
 import static com.big.automation.selenium_webdriver.common.utilities.ThreadUtils.sleep;
 
 import com.big.automation.selenium_webdriver.common.baseTest.BaseTest;
+import com.big.automation.selenium_webdriver.common.gw.utilities.GuideWireAccessors;
+import com.big.automation.selenium_webdriver.common.utilities.WaitForUtils;
 
 public class ClaimCenterVehicleDetailsPOM extends BaseTest{
 
@@ -36,6 +38,65 @@ public class ClaimCenterVehicleDetailsPOM extends BaseTest{
 	@FindBy(id = "FNOLVehicleIncidentPopup:FNOLVehicleIncidentScreen:OccupantLV_tb:AddPassengerButton-btnEl")
 	private WebElement addPassengerButton;
 	
+	@FindBy(id = "FNOLVehicleIncidentPopup:FNOLVehicleIncidentScreen:VehicleBasicsDV:Vehicle_VehicleType-inputEl")
+	private WebElement vehicleType;
+	@FindBy(id = "FNOLVehicleIncidentPopup:FNOLVehicleIncidentScreen:VehicleBasicsDV:Vehicle_LicensePlate-inputEl")
+	private WebElement vrn;
+	@FindBy(id = "FNOLVehicleIncidentPopup:FNOLVehicleIncidentScreen:VehicleBasicsDV:Vehicle_Year-inputEl")
+	private WebElement year;
+	@FindBy(id = "FNOLVehicleIncidentPopup:FNOLVehicleIncidentScreen:VehicleBasicsDV:Vehicle_Make-inputEl")
+	private WebElement make;
+	@FindBy(id = "FNOLVehicleIncidentPopup:FNOLVehicleIncidentScreen:VehicleBasicsDV:Vehicle_Model-inputEl")
+	private WebElement model;
+	@FindBy(id = "FNOLVehicleIncidentPopup:FNOLVehicleIncidentScreen:VehicleBasicsDV:Owner_Picker-inputEl")
+	private WebElement ownerDropdown;
+	
+	// this is the owner picker stuff
+	// first the icon
+	@FindBy(id = "FNOLVehicleIncidentPopup:FNOLVehicleIncidentScreen:VehicleBasicsDV:Owner_Picker:Owner_PickerMenuIcon")
+	private WebElement ownerPickerLink;
+	// now the New person option
+	@FindBy(id = "FNOLVehicleIncidentPopup:FNOLVehicleIncidentScreen:VehicleBasicsDV:Owner_Picker:ClaimNewContactPickerMenuItemSet:NewContactPickerMenuItemSet_NewPerson-itemEl")
+	private WebElement newPersonSubLink;
+	
+	@FindBy(id = "FNOLVehicleIncidentPopup:FNOLVehicleIncidentScreen:VehicleBasicsDV:Usual_Location-inputEl")
+	private WebElement usualLocationDropdown;
+	
+	@FindBy(id = "FNOLVehicleIncidentPopup:FNOLVehicleIncidentScreen:VehicleBasicsDV:Actual_Location-inputEl")
+	private WebElement actualLocationDropdown;
+	
+	@FindBy(id = "FNOLVehicleIncidentPopup:FNOLVehicleIncidentScreen:VehicleBasicsDV:CurrentVehicleMileage-inputEl")
+	private WebElement currentMileageTextBox;
+	
+	@FindBy(id = "FNOLVehicleIncidentPopup:FNOLVehicleIncidentScreen:Description-inputEl")
+	private WebElement damageDescTextArea;
+	
+	@FindBy(id = "FNOLVehicleIncidentPopup:FNOLVehicleIncidentScreen:PreExistingDamage-inputEl")
+	private WebElement preDamageDescTextArea;
+	
+	@FindBy(id = "FNOLVehicleIncidentPopup:FNOLVehicleIncidentScreen:AirbagsDeployed-inputEl")
+	private WebElement airBagsDropdown;
+
+	@FindBy(id = "FNOLVehicleIncidentPopup:FNOLVehicleIncidentScreen:CalculateButton")
+	private WebElement calcTotalLossLink;
+	
+	
+	
+	// fire section only appears on page for a fire incident
+	
+	@FindBy(id = "FNOLVehicleIncidentPopup:FNOLVehicleIncidentScreen:FireAndVandalismQuestionsInputSet_itb:FireAndVandalismQuestionsInputSet:LastPersonInCharge-inputEl")
+	private WebElement fireLastInChrgeDropdown;
+	//TODO - rest of fire locators
+	
+	//Theft section only appears on page for a theft incident
+	
+	@FindBy(id = "FNOLVehicleIncidentPopup:FNOLVehicleIncidentScreen:VehicleTheftQuestionsInputSet:NumberOfSetsOfKeysProvided-inputEl")
+	private WebElement purchaseKeysDropdown;
+	
+	@FindBy(id = "FNOLVehicleIncidentPopup:FNOLVehicleIncidentScreen:VehicleTheftQuestionsInputSet:NumberOfSetsOfKeysInPossesion-inputEl")
+	private WebElement possessedKeysDropdown;
+	
+	//TODO rest of theft locators
 	
 	
 	@FindBy(className = "message")
@@ -57,26 +118,89 @@ public class ClaimCenterVehicleDetailsPOM extends BaseTest{
 	public void cancel() {
 
 		logger.info(format("%s -  going to click cancel", getName()));
-		this.clickGWButton(this.getCancelButton());
+		GuideWireAccessors.clickGWButton(driver, this.getCancelButton());
 		logger.info(format("%s - done, cancel clicked", getName()));
 	}
 	
 	public void selectOK() {
 		logger.info(format("%s -  going to click OK", getName()));
-		this.clickGWButton(this.getOkButton());
+		GuideWireAccessors.clickGWButton(driver, this.getOkButton());
 		logger.info(format("%s - done, OK clicked", getName()));
 	}
 	
 	public void selectAddDriver() {
 		logger.info(format("%s -  going to click AddDriver", getName()));
-		this.clickGWButton(this.getAddDriverButton());
+		GuideWireAccessors.clickGWButton(driver, this.getAddDriverButton());
 		logger.info(format("%s - done, AddDriver clicked", getName()));
 	}
 	
 	public void selectAddPassenger() {
 		logger.info(format("%s -  going to click AddPassenger", getName()));
-		this.clickGWButton(this.getAddPassengerButton());
+		GuideWireAccessors.clickGWButton(driver, this.getAddPassengerButton());
 		logger.info(format("%s - done, AddPassenger clicked", getName()));
+	}
+	
+	public void selectKeysPurchased(String option)
+	{
+		logger.info(format("%s - going to select keys purchased option :"+option, getName()));
+		GuideWireAccessors.selectOptionFromGWDropDown(driver,option, this.getPurchaseKeysDropdown(),1); // first on page
+	}
+	public void selectKeysPossessed(String option)
+	{
+		logger.info(format("%s - going to select keys possessed option :"+option, getName()));
+		GuideWireAccessors.selectOptionFromGWDropDown(driver,option, this.getPossessedKeysDropdown(),2); // second on page
+	}
+	public void selectUsualLocation(String option)
+	{
+		logger.info(format("%s - going to select usual location option :"+option, getName()));
+		GuideWireAccessors.selectOptionFromGWDropDown(driver,option, this.getUsualLocationDropdown(),1); // first on page
+	}
+	public void selectActualLocation(String option)
+	{
+		logger.info(format("%s - going to select actual location option :"+option, getName()));
+		// the problem with this locator is that theere are only some optikns in actual location
+		// which also occur in suaul location, so the workaround of passing the occurence 1st or 2nd on the 
+		// page will not work
+		// TODO
+		
+		GuideWireAccessors.selectOptionFromGWDropDown(driver, option, this.getActualLocationDropdown(),2); // 2nd on page?
+	}
+	public void selectAirbagsDeployed(String option)
+	{
+		logger.info(format("%s - going to select airbags deployed option :"+option, getName()));
+		GuideWireAccessors.selectOptionFromGWDropDown(driver,option, this.getAirBagsDropdown(),1); // first on page
+	}
+	
+	public void selectVehicleType(String option)
+	{
+		logger.info(format("%s - going to select Vehicle option :"+option, getName()));
+		GuideWireAccessors.selectOptionFromGWDropDown(driver, option, this.getVehicleType(),1);
+	}
+	public void setVrn(String text)
+	{
+		logger.info(format("%s - going to select VRN :"+text, getName()));
+		GuideWireAccessors.setGWTextBox(driver, text, this.getVrn());
+	}
+	public void setYear(String text)
+	{
+		logger.info(format("%s - going to select Year :"+text, getName()));
+		GuideWireAccessors.setGWTextBox(driver, text, this.getYear());
+	}
+	public void setMake(String text)
+	{
+		logger.info(format("%s - going to select make :"+text, getName()));
+		GuideWireAccessors.setGWTextBox(driver, text, this.getMake());
+	}
+	public void setModel(String text)
+	{
+		logger.info(format("%s - going to select Model :"+text, getName()));
+		GuideWireAccessors.setGWTextBox(driver, text, this.getModel());
+	}
+	
+	public void selectNewOwner()
+	{
+		logger.info(format("%s - going to select New Person from owner picker", getName()));
+		GuideWireAccessors.selectOptionFromGWPicker(driver, this.getOwnerPickerLink(),this.getNewPersonSubLink());
 	}
 
    
@@ -100,49 +224,82 @@ public class ClaimCenterVehicleDetailsPOM extends BaseTest{
 	private WebElement getOkButton() {
 		return okButton;
 	}
+	
 
-	private void selectOptionFromGWDropDown(String option,WebElement gwDropDown,int occurrence )
-	{
-		sleep(1); //TODO change to explicit
-		// as it might be down the page, always scroll into view?
-		JavascriptExecutor je = (JavascriptExecutor) driver;
-		je.executeScript("arguments[0].scrollIntoView(true);",gwDropDown);
-		gwDropDown.click(); // need to click it first
-		sleep(1);
-		String optionLocator = "//li[contains(text(),'"  + option + "')]";
-		// as we cant get access to the li elements directly under the guidewire dropdown node, we have to just search the whole document
-		// this makes it very messy as there could be more than one dropdown list with the same values
-		// therefore for now, get a list of list matches and used the occurence 1st 2nd etc of the order in the page
-		if (occurrence > 1)
-		{
-			List<WebElement> elements = gwDropDown.findElements(By.xpath(optionLocator));
-			elements.get(occurrence-1).click();
-		}
-		else
-		{
-			// we can just take the first or only
-			gwDropDown.findElement(By.xpath(optionLocator)).click();
-		}
+	private WebElement getUsualLocationDropdown() {
+		return usualLocationDropdown;
 	}
-	
-	private void setGWTextBox(String text, WebElement gwTextBox)
-	{
-		sleep(1); //TODO change
-		JavascriptExecutor je = (JavascriptExecutor) driver;
-		je.executeScript("arguments[0].scrollIntoView(true);",gwTextBox);
-		gwTextBox.clear();
-		gwTextBox.sendKeys(text);
+
+	private WebElement getActualLocationDropdown() {
+		return actualLocationDropdown;
 	}
-	
-	private void clickGWButton(WebElement gwButton)
-	{
-		sleep(2); //TODO change
-		JavascriptExecutor je = (JavascriptExecutor) driver;
-		je.executeScript("arguments[0].scrollIntoView(true);",gwButton);
-		gwButton.click();
-	
+
+	private WebElement getCurrentMileageTextBox() {
+		return currentMileageTextBox;
 	}
+
+	private WebElement getDamageDescTextArea() {
+		return damageDescTextArea;
+	}
+
+	private WebElement getPreDamageDescTextArea() {
+		return preDamageDescTextArea;
+	}
+
+	private WebElement getAirBagsDropdown() {
+		return airBagsDropdown;
+	}
+
+	private WebElement getCalcTotalLossLink() {
+		return calcTotalLossLink;
+	}
+
+	private WebElement getFireLastInChrgeDropdown() {
+		return fireLastInChrgeDropdown;
+	}
+
+	private WebElement getPurchaseKeysDropdown() {
+		return purchaseKeysDropdown;
+	}
+
+	private WebElement getPossessedKeysDropdown() {
+		return possessedKeysDropdown;
+	}
+
+	private WebElement getVehicleType() {
+		return vehicleType;
+	}
+
+	private WebElement getVrn() {
+		return vrn;
+	}
+
+	private WebElement getYear() {
+		return year;
+	}
+
+	private WebElement getMake() {
+		return make;
+	}
+
+	private WebElement getModel() {
+		return model;
+	}
+
+	private WebElement getOwnerDropdown() {
+		return ownerDropdown;
+	}
+
+	private WebElement getOwnerPickerLink() {
+		return ownerPickerLink;
+	}
+
+	private WebElement getNewPersonSubLink() {
+		return newPersonSubLink;
+	}
+
 	
+
 	
 	
 	

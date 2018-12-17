@@ -12,6 +12,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 import com.big.automation.selenium_webdriver.common.baseTest.BaseTest;
+import com.big.automation.selenium_webdriver.common.gw.utilities.GuideWireAccessors;
 import com.big.automation.selenium_webdriver.common.types.Brand;
 
 public class ClaimCenterFNOLStep1POM extends BaseTest{
@@ -251,16 +252,16 @@ public class ClaimCenterFNOLStep1POM extends BaseTest{
 	}
 
 	public void setSearchLossDate(String searchLossDate) {
-		this.getSearchLossDate().clear();
-		this.getSearchLossDate().sendKeys(searchLossDate);
+		GuideWireAccessors.setGWTextBox(driver,searchLossDate,getSearchLossDate());
 		logger.info(format("%s - done, Search Loss Date set:"+searchLossDate, getName()));
 	}
 
 	public void cancel() {
-		this.getCancelButton().click();
+		GuideWireAccessors.clickGWButton(driver, this.getCancelButton());
 		logger.info(format("%s - done, Cancel clicked", getName()));
 	}
 
+	//TODO
 	public void setFindPolicyRadio() {
 		this.getFindPolicyRadio().click();
 		logger.info(format("%s - done, find policy selected", getName()));
@@ -268,93 +269,78 @@ public class ClaimCenterFNOLStep1POM extends BaseTest{
 	
 	public void setSearchVRN(String vrn)
 	{
-		sleep(2);
-		this.getSearchVRN().clear();
-		this.getSearchVRN().sendKeys(vrn);
+		
+		GuideWireAccessors.setGWTextBox(driver,vrn,getSearchVRN());
 		logger.info(format("%s - done, vrn set: "+vrn, getName()));
 	}
 	
 	public void setSearchPolicyNumber(String policyNumber)
 	{
-		sleep(2);
-		this.getSearchPolicyNumber().clear();
-		this.getSearchPolicyNumber().sendKeys(policyNumber);
+		GuideWireAccessors.setGWTextBox(driver,policyNumber,getSearchPolicyNumber());
 		logger.info(format("%s - done, policy number set: "+policyNumber, getName()));
 	}
 
 	public void setSearchFirstName(String searchFirstName) {
-		sleep(2);
-		this.getSearchFirstName().clear();
-		this.getSearchFirstName().sendKeys(searchFirstName);
+		GuideWireAccessors.setGWTextBox(driver,searchFirstName,getSearchFirstName());
 		logger.info(format("%s - done, Search First name set:"+searchFirstName, getName()));
 		
 	}
 
 	public void setSearchLastName(String searchLastName) {
-		sleep(2);
-		this.getSearchLastName().clear();
-		this.getSearchLastName().sendKeys(searchLastName);
+		GuideWireAccessors.setGWTextBox(driver,searchLastName,getSearchLastName());
 		logger.info(format("%s - done, Search Lastname set:"+searchLastName, getName()));
 		
 	}
 
 	public void setSearchContactName(String searchContact) {
-		this.getSearchContactName().clear();
-		this.getSearchContactName().sendKeys(searchContact);
+		GuideWireAccessors.setGWTextBox(driver,searchContact,getSearchContactName());
 		logger.info(format("%s - done, Search Contact Name set:"+searchContact, getName()));
 
 	}
 
 	public void resetSearchPolicy() {
-		this.getResetSearchPolicyButton().click();
+		GuideWireAccessors.clickGWButton(driver, this.getResetSearchPolicyButton());
 		logger.info(format("%s - done, Reset clicked", getName()));
 	}
 
 	
 	public void setLossDate(String lossDate) {
-		this.getLossDate().clear();
-		this.getLossDate().sendKeys(lossDate);
+		GuideWireAccessors.setGWTextBox(driver, lossDate, getLossDate());
 		logger.info(format("%s - done, Loss Date set:"+lossDate, getName()));
 	}
 	
 	public void setLossTime(String lossTime) {
-		this.getLossTime().clear();
-		this.getLossTime().sendKeys(lossTime);
+		GuideWireAccessors.setGWTextBox(driver,lossTime,getLossTime());
 		logger.info(format("%s - done, Loss Time set:"+lossTime, getName()));
 	}
 
 	public void searchPolicy() {
 
-		
-	
-		
 		logger.info(format("%s - Search Policy button ready", getName()));
-		this.getSearchPolicyButton().click();
+		GuideWireAccessors.clickGWButton(driver, this.getSearchPolicyButton());
 		logger.info(format("%s - done, Search Policy clicked", getName()));
 	}
 
 	public void selectFirstPolicy() {
 
-		this.getFirstPolicySelectButton().click();
+		GuideWireAccessors.clickGWButton(driver, getFirstPolicySelectButton());
 		logger.info(format("%s - done, Search Policy Select (1st) clicked", getName()));
 	}
 
 	public void deselectPolicy() {
-		this.getDeSelectButton().click();
+		GuideWireAccessors.clickGWButton(driver, this.getDeSelectButton());
 		logger.info(format("%s - done, deselect polict clicked", getName()));
 	}
 
 	public void confirmDeselectPolicy() {
-		this.getConfirmDeselectOkButton().click();
+		GuideWireAccessors.clickGWButton(driver, this.getConfirmDeselectOkButton());
 		logger.info(format("%s - done, confirm deselect policy clicked", getName()));
 	}
 	
 	
 	public void next() {
 
-		sleep(2);
-		//WaitForUtils.waitForElementToBeClickable(webDriver, getNextButton());
-		getNextButton().click();
+		GuideWireAccessors.clickGWButton(driver, getNextButton());
 		logger.info(format("%s - done, Next clicked", getName()));
 	}
 	

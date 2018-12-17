@@ -13,6 +13,7 @@ import org.openqa.selenium.support.FindBy;
 import static com.big.automation.selenium_webdriver.common.utilities.ThreadUtils.sleep;
 
 import com.big.automation.selenium_webdriver.common.baseTest.BaseTest;
+import com.big.automation.selenium_webdriver.common.gw.utilities.GuideWireAccessors;
 
 public class ClaimCenterDriverDetailsPOM extends BaseTest{
 
@@ -55,20 +56,20 @@ public class ClaimCenterDriverDetailsPOM extends BaseTest{
 	public void cancel() {
 
 		logger.info(format("%s -  going to click cancel", getName()));
-		this.clickGWButton(this.getCancelButton());
+		GuideWireAccessors.clickGWButton(driver,this.getCancelButton());
 		logger.info(format("%s - done, cancel clicked", getName()));
 	}
 	
 	public void selectOK() {
 		logger.info(format("%s -  going to click OK", getName()));
-		this.clickGWButton(this.getOkButton());
+		GuideWireAccessors.clickGWButton(driver,this.getOkButton());
 		logger.info(format("%s - done, OK clicked", getName()));
 	}
 	
 	public void selectDriverName(String option)
 	{
 		logger.info(format("%s - going to select Driver name option :"+option, getName()));
-		this.selectOptionFromGWDropDown(option, this.getDriverNameDropdown(),1);
+		GuideWireAccessors.selectOptionFromGWDropDown(driver, option, this.getDriverNameDropdown(),1);
 	}
 
    
@@ -92,6 +93,7 @@ public class ClaimCenterDriverDetailsPOM extends BaseTest{
 		return okButton;
 	}
 
+	/*
 	private void selectOptionFromGWDropDown(String option,WebElement gwDropDown,int occurrence )
 	{
 		sleep(1); //TODO change to explicit
@@ -114,9 +116,9 @@ public class ClaimCenterDriverDetailsPOM extends BaseTest{
 			// we can just take the first or only
 			gwDropDown.findElement(By.xpath(optionLocator)).click();
 		}
-	}
+	}*/
 	
-	private void setGWTextBox(String text, WebElement gwTextBox)
+	/*private void setGWTextBox(String text, WebElement gwTextBox)
 	{
 		sleep(1); //TODO change
 		JavascriptExecutor je = (JavascriptExecutor) driver;
@@ -133,7 +135,7 @@ public class ClaimCenterDriverDetailsPOM extends BaseTest{
 		gwButton.click();
 	
 	}
-	
+	*/
 	
 	
 	

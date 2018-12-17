@@ -10,6 +10,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 import com.big.automation.selenium_webdriver.common.baseTest.BaseTest;
+import com.big.automation.selenium_webdriver.common.gw.utilities.GuideWireAccessors;
 
 public class ClaimCenterFNOLStep2POM extends BaseTest{
 
@@ -51,13 +52,6 @@ public class ClaimCenterFNOLStep2POM extends BaseTest{
 	private WebElement reportedByNamePicker;
 	
 
-	//public ClaimCenterFNOLStep2POM(WebDriver webDriver) {
-
-	//	this.webDriver = webDriver;
-
-	//	AjaxElementLocatorFactory ajaxElementLocatorFactory = new AjaxElementLocatorFactory(webDriver, 60);
-	//	PageFactory.initElements(ajaxElementLocatorFactory, this);
-	//}
 
 	public String getName() {
 
@@ -78,15 +72,12 @@ public class ClaimCenterFNOLStep2POM extends BaseTest{
 	
 	
 	public void next() {
-
-		sleep(2);
-		//WaitForUtils.waitForElementToBeClickable(webDriver, getNextButton());
-		getNextButton().click();
+    	GuideWireAccessors.clickGWButton(driver,getNextButton());
 		logger.info(format("%s - done, Next clicked", getName()));
 	}
 	
 	public void back() {
-		this.getBackButton().click();
+		GuideWireAccessors.clickGWButton(driver,getBackButton());
 	}
 
 	public boolean isPageTitleDisplayed(String expected)
@@ -105,8 +96,8 @@ public class ClaimCenterFNOLStep2POM extends BaseTest{
 	public void setReportedDateValue(String date)
 	{			
 		logger.info(format("%s - going to set reported date value to:"+date, getName()));
-		this.getReportedDate().clear();
-		this.getReportedDate().sendKeys(date);
+		GuideWireAccessors.setGWTextBox(driver, date, getReportedDate());
+		
 	}
 	
 	public String getReportedByValue() {
@@ -115,17 +106,12 @@ public class ClaimCenterFNOLStep2POM extends BaseTest{
 
 }
 
-public void setHowReportedValue(String how)
+public void selectHowReported(String option)
 {			
-	logger.info(format("%s - going to set reported how value to:"+how, getName()));
-	this.getHowReported().clear();
-	this.getHowReported().sendKeys(how);
+	logger.info(format("%s - going to set reported how value to:"+option, getName()));
+	GuideWireAccessors.selectOptionFromGWDropDown(driver, option, this.getHowReported(), 1);
 }
-public String getHowReportedValue()
-{			
-	
-	return this.getHowReported().getAttribute("value");
-}
+
 
 
 public boolean howReportedContainsOption(String option)
@@ -141,34 +127,17 @@ public boolean howReportedContainsOption(String option)
 
 public void selectReportedByName(String option)
 {
-	logger.info(format("%s - goign to select report by name option :"+option, getName()));
-	
-	this.getReportedByName().click();
-	String optionLocator = "//li[text()='"  + option + "']";
-	this.getReportedByName().findElement(By.xpath(optionLocator)).click();
+	logger.info(format("%s - going to select report by name option :"+option, getName()));
+	GuideWireAccessors.selectOptionFromGWDropDown(driver, option, getReportedByName(), 1);
 }
 
 public void selectRelationToInsured(String option)
 {
 	logger.info(format("%s - going to select relation to insured option :"+option, getName()));
-	sleep(2);
-	this.getReportedByRelation().click();
-	String optionLocator = "//li[text()='"  + option + "']";
-	this.getReportedByRelation().findElement(By.xpath(optionLocator)).click();
+	GuideWireAccessors.selectOptionFromGWDropDown(driver, option,getReportedByRelation(),1);
 }
 
-public void setReportedByValue(String name)
-{			
-	logger.info(format("%s - going to set reported by  value to:"+name, getName()));
-	this.getReportedByName().clear();
-	this.getReportedByName().sendKeys(name);
-}
-public void setReportedByRelationship(String relationship)
-{			
-	logger.info(format("%s - going to set reported by relationship value to:"+relationship, getName()));
-	this.getReportedByRelation().clear();
-	this.getReportedByRelation().sendKeys(relationship);
-}
+
 
    public void selectVehicleCB()
    {

@@ -13,6 +13,7 @@ import org.openqa.selenium.support.FindBy;
 import static com.big.automation.selenium_webdriver.common.utilities.ThreadUtils.sleep;
 
 import com.big.automation.selenium_webdriver.common.baseTest.BaseTest;
+import com.big.automation.selenium_webdriver.common.gw.utilities.GuideWireAccessors;
 
 public class ClaimCenterFNOLStep3POM extends BaseTest{
 
@@ -26,7 +27,7 @@ public class ClaimCenterFNOLStep3POM extends BaseTest{
 	@FindBy(id = "FNOLWizard:Prev-btnEl")
 	private WebElement backButton;
 	
-	@FindBy(id = "FFNOLWizard:Finish-btnEl")
+	@FindBy(id = "FNOLWizard:Finish-btnEl")
 	private WebElement finishButton;
 	
 	@FindBy(id = "title")
@@ -94,6 +95,10 @@ public class ClaimCenterFNOLStep3POM extends BaseTest{
 	@FindBy(id ="FNOLWizard:AutoWorkersCompWizardStepSet:FNOLWizard_NewLossDetailsScreen:LossDetailsAddressDV:IncidentQuestions_CCTVDashcamFootageAvail_itb-inputEl")
 	private WebElement cctv;
 	
+	
+	@FindBy(id ="FNOLWizard:AutoWorkersCompWizardStepSet:FNOLWizard_NewLossDetailsScreen:LossDetailsAddressDV:AddressDetailInputSetRef:CCAddressInputSet:globalAddressContainer:Address_Picker-inputEl")
+	private WebElement addressDropdown;
+	
 	public String getName() {
 
 		return "FNOL Wizard Step3 Add Claim Information";
@@ -109,27 +114,27 @@ public class ClaimCenterFNOLStep3POM extends BaseTest{
 	public void cancel() {
 
 		logger.info(format("%s -  going to click cancel", getName()));
-		this.clickGWButton(getCancelButton());
+		GuideWireAccessors.clickGWButton(driver,getCancelButton());
 		logger.info(format("%s - done, cancel clicked", getName()));
 	}
 	
 	public void finish() {
 
 		logger.info(format("%s -  going to click finish", getName()));
-		this.clickGWButton(getFinishButton());
+		GuideWireAccessors.clickGWButton(driver,getFinishButton());
 		logger.info(format("%s - done, Finish clicked", getName()));
 	}
 	
 	public void next() {
 
 		logger.info(format("%s -  going to click Next", getName()));
-		this.clickGWButton(getNextButton());
+		GuideWireAccessors.clickGWButton(driver,getNextButton());
 		logger.info(format("%s - done, Next clicked", getName()));
 	}
 	
 	public void back() {
 		logger.info(format("%s -  going to click Back", getName()));
-		this.clickGWButton(getBackButton());
+		GuideWireAccessors.clickGWButton(driver,getBackButton());
 		logger.info(format("%s - done, Back clicked", getName()));
 	}
 
@@ -138,7 +143,7 @@ public class ClaimCenterFNOLStep3POM extends BaseTest{
 	public void setJourneyPurpose(String purpose)
 	{
 		logger.info(format("%s - setting journey purpose: "+purpose, getName()));
-		this.setGWTextBox(purpose, this.getJourneyPurpose());
+		GuideWireAccessors.setGWTextBox(driver,purpose, this.getJourneyPurpose());
 	}
 	
 	public String getClaimCauseValue() {
@@ -156,7 +161,7 @@ public class ClaimCenterFNOLStep3POM extends BaseTest{
 	public void setCircumstancesValue(String circumstances)
 	{
 		logger.info(format("%s - setting circumstances: "+circumstances, getName()));
-		this.setGWTextBox(circumstances, this.getCircumstances());
+		GuideWireAccessors.setGWTextBox(driver, circumstances, this.getCircumstances());
 	}
 	
 
@@ -204,50 +209,55 @@ public class ClaimCenterFNOLStep3POM extends BaseTest{
 	public void selectIncidentType(String option)
 	{
 		logger.info(format("%s - going to select IncidentType option :"+option, getName()));
-		this.selectOptionFromGWDropDown(option, this.getIncidentType(),1);
+		GuideWireAccessors.selectOptionFromGWDropDown(driver,option, this.getIncidentType(),1);
 	}
 	public void selectClaimCauseType(String option)
 	{
 		logger.info(format("%s - going to select Claim Cause option :"+option, getName()));
-		this.selectOptionFromGWDropDown(option, this.getClaimCause(),1);
+		GuideWireAccessors.selectOptionFromGWDropDown(driver,option, this.getClaimCause(),1);
 	}
 	public void selectClaimSubCauseType(String option)
 	{
 		logger.info(format("%s - going to select Claim SubCause option :"+option, getName()));
-		this.selectOptionFromGWDropDown(option, this.getClaimSubCause(),1);
+		GuideWireAccessors.selectOptionFromGWDropDown(driver,option, this.getClaimSubCause(),1);
 	}
 	
 	public void selectImpactSpeed(String option)
 	{
 		logger.info(format("%s - going to select impact speed option :"+option, getName()));
-		this.selectOptionFromGWDropDown(option, this.getImpactSpeed(),1);
+		GuideWireAccessors.selectOptionFromGWDropDown(driver,option, this.getImpactSpeed(),1);
 	}
 	
 	public void selectWeather(String option)
 	{
 		logger.info(format("%s - going to select Weather option :"+option, getName()));
-		this.selectOptionFromGWDropDown(option, this.getWeather(),1);
+		GuideWireAccessors.selectOptionFromGWDropDown(driver,option, this.getWeather(),1);
 	}
 	public void selectRoadConditions(String option)
 	{
 		logger.info(format("%s - going to select road conditions option :"+option, getName()));
-		this.selectOptionFromGWDropDown(option, this.getRoadConditions(),1);
+		GuideWireAccessors.selectOptionFromGWDropDown(driver,option, this.getRoadConditions(),1);
 	}
 	public void selectPhotos(String option)
 	{
 		logger.info(format("%s - going to select photos option :"+option, getName()));
-		this.selectOptionFromGWDropDown(option, this.getPhotos(),1);
+		GuideWireAccessors.selectOptionFromGWDropDown(driver,option, this.getPhotos(),1);
 	}
 	public void selectCctv(String option)
 	{
 		logger.info(format("%s - going to select cctv option :"+option, getName()));
-		this.selectOptionFromGWDropDown(option, this.getCctv(),2);
+		GuideWireAccessors.selectOptionFromGWDropDown(driver,option, this.getCctv(),2);
 	}
 	public void selectFaultType(String option)
 	{
 		logger.info(format("%s - going to select fault type option :"+option, getName()));
 		sleep(2);
-		this.selectOptionFromGWDropDown(option, this.getFaultType(),1);
+		GuideWireAccessors.selectOptionFromGWDropDown(driver,option, this.getFaultType(),1);
+	}
+	public void selectAddressLocation(String option)
+	{
+		logger.info(format("%s - going to select address location option :"+option, getName()));
+		GuideWireAccessors.selectOptionFromGWDropDown(driver,option, this.getAddressDropdown(),1);
 	}
 
 
@@ -277,32 +287,32 @@ public class ClaimCenterFNOLStep3POM extends BaseTest{
    
    public void addVehicle() {
 		logger.info(format("%s -  going to click AddVehicle", getName()));
-		this.clickGWButton(getAddVehicleButton());
+		GuideWireAccessors.clickGWButton(driver,getAddVehicleButton());
 		logger.info(format("%s - done, Add Vehicle clicked", getName()));
 	}
    
    public void selectVehicleUsedFor(String option)
 	{
 		logger.info(format("%s - going to select VehicleUser for option :"+option, getName()));
-		this.selectOptionFromGWDropDown(option, this.getVehicleUsedFor(),1);
+		GuideWireAccessors.selectOptionFromGWDropDown(driver, option, this.getVehicleUsedFor(),1);
 	}
 		
    
    public void selectInsuredVehicle() {
 		logger.info(format("%s -  going to click INSUREDVehicle", getName()));
-		this.clickGWButton(this.getInsuredVehicleLink());
+		GuideWireAccessors.clickGWButton(driver,this.getInsuredVehicleLink());
 		logger.info(format("%s - done, Insured Vehicle clicked", getName()));
 	}
    
    public void addPedestrian() {
 		logger.info(format("%s -  going to click AddPedestrian", getName()));
-		this.clickGWButton(getAddPedestrianButton());
+		GuideWireAccessors.clickGWButton(driver,getAddPedestrianButton());
 		logger.info(format("%s - done, Add Pedestrian clicked", getName()));
 	}
    
    public void addPropertyDamage() {
 		logger.info(format("%s -  going to click Add PropertyDamage", getName()));
-		this.clickGWButton(getAddPropertyDamageButton());
+		GuideWireAccessors.clickGWButton(driver, getAddPropertyDamageButton());
 		logger.info(format("%s - done, Add PropertyDamage clicked", getName()));
 	}
    
@@ -404,6 +414,11 @@ private WebElement getFinishButton() {
 	private WebElement getCctv() {
 		return cctv;
 	}
+	
+
+	private WebElement getAddressDropdown() {
+		return addressDropdown;
+	}
 
 	public boolean containsErrorMessage(String contains)
 	{
@@ -419,6 +434,7 @@ private WebElement getFinishButton() {
 		return found;
 	}
 	
+	/*
 	private void selectOptionFromGWDropDown(String option,WebElement gwDropDown,int occurrence )
 	{
 		sleep(1); //TODO change to explicit
@@ -441,8 +457,9 @@ private WebElement getFinishButton() {
 			// we can just take the first or only
 			gwDropDown.findElement(By.xpath(optionLocator)).click();
 		}
-	}
+	}*/
 	
+	/*
 	private void setGWTextBox(String text, WebElement gwTextBox)
 	{
 		sleep(1); //TODO change
@@ -451,7 +468,8 @@ private WebElement getFinishButton() {
 		gwTextBox.clear();
 		gwTextBox.sendKeys(text);
 	}
-	
+	*/
+	/*
 	private void clickGWButton(WebElement gwButton)
 	{
 		sleep(2); //TODO change
@@ -460,7 +478,7 @@ private WebElement getFinishButton() {
 		gwButton.click();
 	
 	}
-	
+	*/
 
 
 }

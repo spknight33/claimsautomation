@@ -54,7 +54,6 @@ public class BaseTest extends AbstractTestNGCucumberTests{
    public static ScreenshotTestRule screenshotTestRule;
    public static RemoteWebDriver driver;
   
- 
   
    
    public static ClaimCenterLoginPOM loginPOM;

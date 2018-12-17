@@ -203,21 +203,36 @@ Feature: Title of your feature
     And I add "<parties added>" to the claim
     And I select "Next"
     Then I will see the validation errors "<validation errors>"
-      | incident type | cause                   | sub cause                                                              | incidents added                      | parties added              | validation errors        |
-      | Fire          | Vehicle Damaged By Fire | Arson attack                                                           | Insured Vehicle                      |                            | no errors                |
-      | Fire          | Vehicle Damaged By Fire | Arson attack                                                           |                                      |                            | Must Add Insured Vehicle |
-      | Fire          | Vehicle Damaged By Fire | Dropped cigarette/match/lighter                                        | Insured Vehicle                      |                            | no errors                |
-      | Fire          | Vehicle Damaged By Fire | Garage fire                                                            | Insured Vehicle                      |                            | no errors                |
-      | Fire          | Vehicle Damaged By Fire | Manufacturer defect                                                    | Insured Vehicle                      |                            | no errors                |
-      | Fire          | Vehicle Damaged By Fire | Whilst undergoing DIY mechanical repair                                | Insured Vehicle                      |                            | no errors                |
-      | Fire          | Vehicle Damaged By Fire | Whilst undergoing mechanical repair by third party                     | Insured Vehicle                      |                            | no errors                |
-      | Fire          | Vehicle Damaged By Fire | Petrol leakage (whilst idling)                                         | Insured Vehicle                      |                            | no errors                |
-      | Fire          | Vehicle Damaged By Fire | Petrol leakage (whilst travelling)                                     | Insured Vehicle                      |                            | no errors                |
-      | Fire          | Vehicle Damaged By Fire | Parked next to or close by a property on fire                          | Insured Vehicle                      | Third Party Property Owner | no errors                |
-      | Fire          | Vehicle Damaged By Fire | Parked next to or close by a vehicle on fire                           | Insured Vehicle, Third Party Vehicle | Third Party Vehicle Owner  | no errors                |
-      | Fire          | Vehicle Damaged By Fire | Whilst undergoing DIY structural repair, including welding             | Insured Vehicle                      |                            | no errors                |
-      | Fire          | Vehicle Damaged By Fire | Whilst undergoing structural repair, including welding, by third party | Insured Vehicle                      |                            | no errors                |
-      | Fire          | Vehicle Damaged By Fire | Wiring fault                                                           | Insured Vehicle                      |                            | no errors                |
+      | incident type | cause                   | sub cause                                                              | incidents added                      | parties added              | validation errors         |
+      | Fire          | Vehicle Damaged By Fire | Arson attack                                                           | Insured Vehicle                      |                            | no errors                 |
+      | Fire          | Vehicle Damaged By Fire | Arson attack                                                           |                                      |                            | Missing Insured Vehicle   |
+      | Fire          | Vehicle Damaged By Fire | Dropped cigarette/match/lighter                                        | Insured Vehicle                      |                            | no errors                 |
+      | Fire          | Vehicle Damaged By Fire | Dropped cigarette/match/lighter                                        |                                      |                            | Missing Insured Vehicle   |
+      | Fire          | Vehicle Damaged By Fire | Garage fire                                                            | Insured Vehicle                      |                            | no errors                 |
+      | Fire          | Vehicle Damaged By Fire | Garage fire                                                            |                                      |                            | Missing Insured Vehicle   |
+      | Fire          | Vehicle Damaged By Fire | Manufacturer defect                                                    | Insured Vehicle                      |                            | no errors                 |
+      | Fire          | Vehicle Damaged By Fire | Manufacturer defect                                                    |                                      |                            | Missing Insured Vehicle   |
+      | Fire          | Vehicle Damaged By Fire | Whilst undergoing DIY mechanical repair                                | Insured Vehicle                      |                            | no errors                 |
+      | Fire          | Vehicle Damaged By Fire | Whilst undergoing DIY mechanical repair                                |                                      |                            | Missing Insured Vehicle   |
+      | Fire          | Vehicle Damaged By Fire | Whilst undergoing mechanical repair by third party                     | Insured Vehicle                      |                            | no errors                 |
+      | Fire          | Vehicle Damaged By Fire | Whilst undergoing mechanical repair by third party                     |                                      | Missing Insured Vehicle    |                           |
+      | Fire          | Vehicle Damaged By Fire | Petrol leakage (whilst idling)                                         | Insured Vehicle                      |                            | no errors                 |
+      | Fire          | Vehicle Damaged By Fire | Petrol leakage (whilst idling)                                         |                                      |                            | Missing Insured Vehicle   |
+      | Fire          | Vehicle Damaged By Fire | Petrol leakage (whilst travelling)                                     | Insured Vehicle                      |                            | no errors                 |
+      | Fire          | Vehicle Damaged By Fire | Petrol leakage (whilst travelling)                                     |                                      |                            | Missing Insured Vehicle   |
+      | Fire          | Vehicle Damaged By Fire | Parked next to or close by a property on fire                          | Insured Vehicle                      | Third Party Property Owner | no errors                 |
+      | Fire          | Vehicle Damaged By Fire | Parked next to or close by a property on fire                          |                                      | Third Party Property Owner | Missing Insured Vehicle   |
+      | Fire          | Vehicle Damaged By Fire | Parked next to or close by a property on fire                          | Insured Vehicle                      |                            | Missing TP Property Owner |
+      | Fire          | Vehicle Damaged By Fire | Parked next to or close by a vehicle on fire                           | Insured Vehicle, Third Party Vehicle | Third Party Vehicle Owner  | no errors                 |
+      | Fire          | Vehicle Damaged By Fire | Parked next to or close by a vehicle on fire                           | Third Party Vehicle                  | Third Party Vehicle Owner  | Missing Insured Vehicle   |
+      | Fire          | Vehicle Damaged By Fire | Parked next to or close by a vehicle on fire                           | Insured Vehicle                      | Third Party Vehicle Owner  | Missing TP Vehicle        |
+      | Fire          | Vehicle Damaged By Fire | Parked next to or close by a vehicle on fire                           | Insured Vehicle, Third Party Vehicle |                            | Missing TP Vehicle Owner  |
+      | Fire          | Vehicle Damaged By Fire | Whilst undergoing DIY structural repair, including welding             | Insured Vehicle                      |                            | no errors                 |
+      | Fire          | Vehicle Damaged By Fire | Whilst undergoing DIY structural repair, including welding             |                                      |                            | Missing Insured Vehicle   |
+      | Fire          | Vehicle Damaged By Fire | Whilst undergoing structural repair, including welding, by third party | Insured Vehicle                      |                            | no errors                 |
+      | Fire          | Vehicle Damaged By Fire | Whilst undergoing structural repair, including welding, by third party |                                      | Missing Insured Vehicle    |                           |
+      | Fire          | Vehicle Damaged By Fire | Wiring fault                                                           | Insured Vehicle                      |                            | no errors                 |
+      | Fire          | Vehicle Damaged By Fire | Wiring fault                                                           |                                      |                            | Missing Insured Vehicle   |
 
   @Ignore
   Scenario: CBPCL-200 TC3 Flood/Water Damage Incident type, cause and subcauses will cause correct validation at end of step3

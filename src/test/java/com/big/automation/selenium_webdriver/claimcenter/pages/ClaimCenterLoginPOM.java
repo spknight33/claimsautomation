@@ -9,6 +9,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 import com.big.automation.selenium_webdriver.common.baseTest.BaseTest;
+import com.big.automation.selenium_webdriver.common.gw.utilities.GuideWireAccessors;
 
 public class ClaimCenterLoginPOM extends BaseTest{
 
@@ -37,7 +38,7 @@ public class ClaimCenterLoginPOM extends BaseTest{
 
    public void next() {
 
-      getContinueButton().click();
+     GuideWireAccessors.clickGWButton(driver, getContinueButton());
       logger.info(format("%s - done, Login clicked", getName()));
    }
 
@@ -45,25 +46,27 @@ public class ClaimCenterLoginPOM extends BaseTest{
    
    public void populateUsername(String username) {
 	   logger.info(format("username used for this test is - " + username));
-      getUsername().sendKeys(username);
+	   GuideWireAccessors.setGWTextBox(driver, username,getUsername());
       logger.info(format("username used for this test is - " + username));
    }
    
    public void populatePassword(String password) {
 
-	      getPassword().sendKeys(password);
+	   GuideWireAccessors.setGWTextBox(driver,password,getPassword());
 	      logger.info(format("password used for this test is - " + password));
 	   }
 
    public String getErrorMessageValue()
    {
-	   sleep(2);
+	   //TODO - remove sleep
+	   sleep(2); 
 	   logger.info(format("error message on login is: " + this.getErrorMessage().getText()));
 	   return this.getErrorMessage().getText();
    }
    
    public boolean isLoggedOn()
    {
+	   //TODO - remove sleep
 	   sleep(3);
 	   logger.info(format("check if logged on "));
 	   boolean loggedon = driver.findElements( By.id("Login:LoginScreen:LoginDV:submit-btnInnerEl") ).size() == 0;
