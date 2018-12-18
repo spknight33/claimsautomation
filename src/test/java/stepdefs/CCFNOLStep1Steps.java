@@ -5,6 +5,7 @@ import java.util.List;
 import org.testng.Assert;
 import org.testng.asserts.SoftAssert;
 
+import com.big.automation.selenium_webdriver.claimcenter.testdata.ClaimCenterDataBuilder;
 import com.big.automation.selenium_webdriver.common.baseTest.BaseTest;
 import com.big.automation.selenium_webdriver.common.config.UserConfig;
 import com.big.automation.selenium_webdriver.common.config.UserFactory;
@@ -22,8 +23,10 @@ public class CCFNOLStep1Steps extends BaseTest	{
 	
 	public void iCompleteStep1FNOL() throws Throwable 
 	{
+		this.testDataset = ClaimCenterDataBuilder.createDataSet();
+		
 		// need to configure to get a specific configurable pilicy number
-		i_set_the_policy_search_criteria_fields_to("policynumber","2647106169");
+		i_set_the_policy_search_criteria_fields_to("policynumber",testDataset.getPolicyNumber());
 		i_Click_Search();
 		this.setLossDate("12/12/2018");
 		this.setLossTime("09:00 AM");

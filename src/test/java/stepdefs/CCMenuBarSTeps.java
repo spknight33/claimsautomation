@@ -20,6 +20,12 @@ public class CCMenuBarSTeps extends BaseTest {
 
 		menuBarPOM.selectNewClaimMenuItem();
 	}
+	
+	@Given("^I Select existing Claim \"([^\"]*)\"$")
+	public void selectExistingClaim(String claimnumber) {
+
+		menuBarPOM.selectExistingClaim(claimnumber);
+	}
 
 	
 	

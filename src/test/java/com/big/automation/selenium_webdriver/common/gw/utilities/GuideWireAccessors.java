@@ -18,6 +18,7 @@ public class GuideWireAccessors {
 	
 	public static void clickGWButton(WebDriver driver, WebElement gwButton)
 	{
+		
 		WaitForUtils.waitForElementToBeClickable(driver, gwButton);
 		JavascriptExecutor je = (JavascriptExecutor) driver;
 		je.executeScript("arguments[0].scrollIntoView(true);",gwButton);
@@ -27,7 +28,7 @@ public class GuideWireAccessors {
 				}
 				catch (Exception e)
 				{
-					sleep(5);
+					sleep(4);
 					gwButton.click();
 				}
 	

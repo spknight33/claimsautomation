@@ -32,6 +32,14 @@ public class CCFNOLStep3Steps extends BaseTest {
 		// close any duplicate claim window
 		fnolStep3POM.closeDuplicateClaimWindow();
 	}
+	@Given("^As a ClaimsHandler I am at step3 without insured vehicle for FNOL$")
+	public void as_a_ClaimsHandler_I_am_at_step3_without_insured_vehiclefor_FNOL() throws Throwable {
+		step2Steps.as_a_ClaimsHandler_I_am_at_step2_for_FNOL();
+		step2Steps.iCompleteStep2FNOLWithoutInsuredVehicle();
+		i_will_be_on_step3_for_FNOL();
+		// close any duplicate claim window
+		fnolStep3POM.closeDuplicateClaimWindow();
+	}
 
 	@Given("^I select the insureds vehicle at step3$")
 	public void i_select_the_insureds_vehicle_at_step3() throws Throwable {

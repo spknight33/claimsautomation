@@ -71,6 +71,13 @@ public class ClaimCenterMenuBarPOM extends BaseTest {
 	@FindBy(id = "TabBar:ClaimTab:ClaimTab_FNOLWizard-textEl")
 	private WebElement newClaimMenuOption;
 
+	@FindBy(id = "TabBar:ClaimTab:ClaimTab_FindClaim-inputEl")
+	private WebElement existingClaimTextBox;
+	@FindBy(id = "TabBar:ClaimTab:ClaimTab_FindClaim_Button")
+	private WebElement findClaimButton;
+	
+	
+	
 	// TODO - search claim menuitem and selection of claim from menu
 
 	// search menuitem options
@@ -249,6 +256,14 @@ public void clickSubMenu(String topmenu, String submenuitem) throws Exception {
 		sleep(2);
 		newClaimMenuOption.click();
 		logger.info(format("%s - done, New Claims menuitem clicked", getName()));
+	}
+	
+	public void selectExistingClaim(String claimnumber) {
+		openTopLevelMenu(CLAIMS);
+		sleep(3);
+		this.existingClaimTextBox.sendKeys(claimnumber);
+		this.findClaimButton.click();
+		logger.info(format("%s - done, Search Claim for claimnumber clicked", getName()));
 	}
 	
 	

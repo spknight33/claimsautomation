@@ -31,13 +31,30 @@ public class CCFNOLStep2Steps extends BaseTest{
 		fnolStep2POM.isPageTitleDisplayed("Step 2 of 5: Basic information");
 	}
 	
+	
 	public void iCompleteStep2FNOL() throws Throwable 
 	{
 		// need to configure to get a specific configurable pilicy number
 
 		this.i_select_from_field_on_step("Portal","How Reported");
-		this.i_select_from_field_on_step("Paul Milligan","name");
+		this.i_select_from_field_on_step(testDataset.getFirstLastName(),"name");
 		this.i_select_from_field_on_step("Policyholder","relationship to insured");
+		this.next();
+		
+	}
+	
+	
+	public void iCompleteStep2FNOLWithoutInsuredVehicle() throws Throwable 
+	{
+		// need to configure to get a specific configurable pilicy number
+
+		this.i_select_from_field_on_step("Portal","How Reported");
+		this.i_select_from_field_on_step(testDataset.getFirstLastName(),"name");
+		this.i_select_from_field_on_step("Policyholder","relationship to insured");
+		this.i_input_into_the_box_on_step2("01912228888","Home Phone");
+		this.i_input_into_the_box_on_step2("someguy@gmail.com","Email");
+		this.i_select_from_field_on_step("Work","Phone Type");
+		this.unselectFirstInsuredVehicle();
 		this.next();
 		
 	}
@@ -132,22 +149,56 @@ public class CCFNOLStep2Steps extends BaseTest{
 	    case "relationship to insured":
 	    	fnolStep2POM.selectRelationToInsured(fieldValue);
 	    	break;
+	    case "Phone Type":
+	    	fnolStep2POM.selectPhoneType(fieldValue);
+	    	break;
 	    
 	    default:
 	    Assert.fail("unknown input field :"+ fieldName+" - check cucumber script!");
 	    }
 	}
 	
-	
-	
-	
-	
-	//temp
-	public void clickNamePicker()
-	{
-		
-		fnolStep2POM.clickNamePicker();
+	@Given("^I click \"([^\"]*)\" on reportby picker on step2$")
+	public void i_click_on_reportby_picker_on_step2(String option) throws Throwable {
+		switch (option) {
+		case "New Person":
+			fnolStep2POM.selectNewPersonReporter();
+			break;
+		case "New Company":
+			fnolStep2POM.selectNewCompanyReporter();
+			break;
+		case "Search":
+			fnolStep2POM.selectSearchReporter();
+			break;
+
+		default:
+			Assert.fail("unknown input field :" + option + " - check cucumber script!");
+		}
+
 	}
+	
+	@Given("^I input \"([^\"]*)\" into the \"([^\"]*)\" box on step2$")
+	public void i_input_into_the_box_on_step2(String fieldValue, String fieldName) throws Throwable {
+		switch (fieldName) {
+		case "Work Phone":
+			fnolStep2POM.setWorkPhone(fieldValue);
+			break;
+		case "Home Phone":
+			fnolStep2POM.setHomePhone(fieldValue);
+			break;
+		case "Mobile":
+			fnolStep2POM.setMobile(fieldValue);
+			break;
+		case "Email":
+			fnolStep2POM.setEmail(fieldValue);
+			break;
+
+		default:
+			Assert.fail("unknown input field :" + fieldName + " - check cucumber script!");
+		}
+	}
+	
+
 	
 
 }

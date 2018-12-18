@@ -14,30 +14,27 @@ import static com.big.automation.selenium_webdriver.common.utilities.ThreadUtils
 
 import com.big.automation.selenium_webdriver.common.baseTest.BaseTest;
 import com.big.automation.selenium_webdriver.common.gw.utilities.GuideWireAccessors;
+import com.big.automation.selenium_webdriver.common.utilities.WaitForUtils;
 
-public class ClaimCenterDriverDetailsPOM extends BaseTest{
-
-	// This page could in theory be the same as other contacts (e.g person)
-	// for now keep seperate
-	
-	@FindBy(id = "FNOLWizard:Cancel-btnEl")
-	private WebElement cancelButton;
-	
-		
+public class ClaimCenterPersonDetailsPOM extends BaseTest{
 
 	
-	@FindBy(id = "FNOLContactPopup:FNOLContactScreen:ttlBar")
+	
+	@FindBy(id = "NewContactPopup:ContactDetailScreen:ttlBar")
 	private WebElement pageTitle;
 		
-	@FindBy(id = "FNOLContactPopup:FNOLContactScreen:Update-btnEl")
-	private WebElement okButton;
+	@FindBy(id = "NewContactPopup:ContactDetailScreen:ContactBasicsDV_tb:ContactDetailToolbarButtonSet:CustomUpdateButton-btnEl")
+	private WebElement updateButton;
+	
+	@FindBy(id = "NewContactPopup:ContactDetailScreen:ContactBasicsDV_tb:ContactDetailToolbarButtonSet:Cancel-btnEll")
+	private WebElement cancelButton;
 
-	@FindBy(id = "FNOLContactPopup:FNOLContactScreen:ContactDV:ClaimContactPerson-inputEl")
-	private WebElement driverNameDropdown;
+	@FindBy(id = "NewContactPopup:ContactDetailScreen:ContactBasicsDV_tb:ContactDetailToolbarButtonSet:CheckDuplicatesButton-btnEl")
+	private WebElement duplicatesButton;
+
 	
-	@FindBy(id = "FNOLContactPopup:FNOLContactScreen:ContactDV:FNOLContactInputSet:GlobalPersonNameInputSet:Prefix-inputEl")
+	@FindBy(id = "NewContactPopup:ContactDetailScreen:ContactBasicsDV:PersonNameInputSet:GlobalPersonNameInputSet:Prefix-inputEl")
 	private WebElement prefix;
-	
 	@FindBy(id = "NewContactPopup:ContactDetailScreen:ContactBasicsDV:PersonNameInputSet:GlobalPersonNameInputSet:FirstName-inputEl")
 	private WebElement firstName;
 	@FindBy(id = "NewContactPopup:ContactDetailScreen:ContactBasicsDV:PersonNameInputSet:GlobalPersonNameInputSet:LastName-inputEl")
@@ -56,41 +53,38 @@ public class ClaimCenterDriverDetailsPOM extends BaseTest{
 	@FindBy(id = "NewContactPopup:ContactDetailScreen:ContactBasicsDV:PrimaryAddressInputSet:CCAddressInputSet:globalAddressContainer:Address_AddressType-inputEl")
 	private WebElement addressType;
 	
+	//TODO rest of locators
+	
 	
 	@FindBy(className = "message")
 	private List <WebElement> errorMessages;
 
 	public String getName() {
 
-		return "FNOL Wizard Step3 Add Driver";
+		return "Person Contact Information";
 	}
 
 	public boolean isPageTitleDisplayed(String expected)
 	{
 		sleep(4);
-		logger.info(format("%s -check page title for Add Driver page :"+expected, getName()));
-		logger.info(format("%s -found page title for Add Driver page :"+this.getPageTitle().getText(), getName()));
+		logger.info(format("%s -check page title for Person page :"+expected, getName()));
+		logger.info(format("%s -found page title for Person page :"+this.getPageTitle().getText(), getName()));
 		return this.getPageTitle().getText().equalsIgnoreCase(expected);
 	}
 	
-	public void cancel() {
+	public void selectCancel() {
 
 		logger.info(format("%s -  going to click cancel", getName()));
-		GuideWireAccessors.clickGWButton(driver,this.getCancelButton());
+		GuideWireAccessors.clickGWButton(driver, this.getCancelButton());
 		logger.info(format("%s - done, cancel clicked", getName()));
 	}
 	
-	public void selectOK() {
-		logger.info(format("%s -  going to click OK", getName()));
-		GuideWireAccessors.clickGWButton(driver,this.getOkButton());
-		logger.info(format("%s - done, OK clicked", getName()));
+	public void selectUpdate() {
+		logger.info(format("%s -  going to click Update", getName()));
+		GuideWireAccessors.clickGWButton(driver, this.getUpdateButton());
+		logger.info(format("%s - done, Update clicked", getName()));
 	}
 	
-	public void selectDriverName(String option)
-	{
-		logger.info(format("%s - going to select Driver name option :"+option, getName()));
-		GuideWireAccessors.selectOptionFromGWDropDown(driver, option, this.getDriverNameDropdown(),1);
-	}
 	public void selectPrefix(String option)
 	{
 		logger.info(format("%s -  going to select prefix ", getName()));
@@ -136,7 +130,6 @@ public class ClaimCenterDriverDetailsPOM extends BaseTest{
 		GuideWireAccessors.setGWTextBox(driver, text, this.getAddressLine1());
 		logger.info(format("%s - done, address line1 set", getName()));
 	}
-
    
 	private WebElement getCancelButton() {
 	return cancelButton;
@@ -145,17 +138,13 @@ public class ClaimCenterDriverDetailsPOM extends BaseTest{
 	private WebElement getPageTitle() {
 		return pageTitle;
 	}
-	
 
-	
-
-	
-	private WebElement getDriverNameDropdown() {
-		return driverNameDropdown;
+	private WebElement getUpdateButton() {
+		return updateButton;
 	}
 
-	private WebElement getOkButton() {
-		return okButton;
+	private WebElement getDuplicatesButton() {
+		return duplicatesButton;
 	}
 
 	private WebElement getPrefix() {
@@ -197,7 +186,10 @@ public class ClaimCenterDriverDetailsPOM extends BaseTest{
 	private List<WebElement> getErrorMessages() {
 		return errorMessages;
 	}
+	
 
+	
+	
 	
 
 

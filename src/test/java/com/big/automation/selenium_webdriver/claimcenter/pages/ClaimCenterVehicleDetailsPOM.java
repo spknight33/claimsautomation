@@ -27,6 +27,11 @@ public class ClaimCenterVehicleDetailsPOM extends BaseTest{
 	
 	@FindBy(id = "FNOLVehicleIncidentPopup:FNOLVehicleIncidentScreen:0")
 	private WebElement pageTitle;
+	
+	@FindBy(id = "FNOLVehicleIncidentPopup:FNOLVehicleIncidentScreen:VehicleBasicsDV:LossParty_true-inputEl")
+	private WebElement lossPartyInsuredRadio;
+	@FindBy(id = "FNOLVehicleIncidentPopup:FNOLVehicleIncidentScreen:VehicleBasicsDV:LossParty_false-inputEl")
+	private WebElement lossPartyTPRadio;
 		
 	@FindBy(id = "FNOLVehicleIncidentPopup:FNOLVehicleIncidentScreen:Update-btnEl")
 	private WebElement okButton;
