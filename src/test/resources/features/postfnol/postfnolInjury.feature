@@ -1,16 +1,15 @@
-Feature: CBPCL-xxx As an Operator, I want to be able to add theft detail to insured vehicle
+Feature: CBPCL-xxx As an Operator
 
   Background: 
   Given I access ClaimCenter login page
     And I login to ClaimCenter as role "ClaimsHandler"
 
- 
-  Scenario: CBPCL-218 TC1
+  Scenario: CBPCL-219 TC1
     And I Select existing Claim "000-00-000005"
     And I select "Loss Details" on the Claim Navigator
     And I will see post FNOL loss details
     And I click edit button on post FNOL loss details
-    And I click add Property Damage on post FNOL loss details
-    And I complete all fields on post FNOL new property incident
+    And I click add Injury on post FNOL loss details
+    And I complete all fields on post FNOL new injury incident
     And I click update button on post FNOL loss details
  

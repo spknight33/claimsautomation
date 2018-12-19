@@ -38,6 +38,7 @@ import com.big.automation.selenium_webdriver.claimcenter.pages.ClaimCenterPerson
 import com.big.automation.selenium_webdriver.claimcenter.pages.ClaimCenterPropertyDetailsPOM;
 import com.big.automation.selenium_webdriver.claimcenter.pages.ClaimCenterVehicleDetailsPOM;
 import com.big.automation.selenium_webdriver.claimcenter.pages.postfnol.ClaimCenterPOSTFNOLLossDetailsPOM;
+import com.big.automation.selenium_webdriver.claimcenter.pages.postfnol.ClaimCenterPOSTFNOLNewInjuryPOM;
 import com.big.automation.selenium_webdriver.claimcenter.pages.postfnol.ClaimCenterPOSTFNOLNewPropertyPOM;
 import com.big.automation.selenium_webdriver.claimcenter.testdata.ClaimCenterData;
 import com.big.automation.selenium_webdriver.common.extent_reports.ExtentManager;
@@ -76,6 +77,7 @@ public class BaseTest extends AbstractTestNGCucumberTests{
    public static ClaimCenterPropertyDetailsPOM propertyDetailsPOM;
    public static ClaimCenterPOSTFNOLLossDetailsPOM postFnolLossDetailsPOM;
    public static ClaimCenterPOSTFNOLNewPropertyPOM postFnolNewPropertyPOM;
+   public static ClaimCenterPOSTFNOLNewInjuryPOM postFnolNewInjuryPOM;
    
 
    @BeforeTest(timeOut = 30000)
@@ -150,6 +152,8 @@ public class BaseTest extends AbstractTestNGCucumberTests{
       propertyDetailsPOM= PageFactory.initElements(driver, ClaimCenterPropertyDetailsPOM.class);  
       postFnolLossDetailsPOM= PageFactory.initElements(driver, ClaimCenterPOSTFNOLLossDetailsPOM.class); 
       postFnolNewPropertyPOM= PageFactory.initElements(driver, ClaimCenterPOSTFNOLNewPropertyPOM.class);
+      postFnolNewInjuryPOM= PageFactory.initElements(driver, ClaimCenterPOSTFNOLNewInjuryPOM.class);
+      
    }
 
    
