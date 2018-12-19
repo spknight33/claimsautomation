@@ -38,6 +38,7 @@ import com.big.automation.selenium_webdriver.claimcenter.pages.ClaimCenterPerson
 import com.big.automation.selenium_webdriver.claimcenter.pages.ClaimCenterPropertyDetailsPOM;
 import com.big.automation.selenium_webdriver.claimcenter.pages.ClaimCenterVehicleDetailsPOM;
 import com.big.automation.selenium_webdriver.claimcenter.pages.postfnol.ClaimCenterPOSTFNOLLossDetailsPOM;
+import com.big.automation.selenium_webdriver.claimcenter.pages.postfnol.ClaimCenterPOSTFNOLNewPropertyPOM;
 import com.big.automation.selenium_webdriver.claimcenter.testdata.ClaimCenterData;
 import com.big.automation.selenium_webdriver.common.extent_reports.ExtentManager;
 import com.big.automation.selenium_webdriver.common.rules.ScreenshotTestRule;
@@ -74,6 +75,7 @@ public class BaseTest extends AbstractTestNGCucumberTests{
    public static ClaimCenterPersonDetailsPOM personContactDetailsPOM;
    public static ClaimCenterPropertyDetailsPOM propertyDetailsPOM;
    public static ClaimCenterPOSTFNOLLossDetailsPOM postFnolLossDetailsPOM;
+   public static ClaimCenterPOSTFNOLNewPropertyPOM postFnolNewPropertyPOM;
    
 
    @BeforeTest(timeOut = 30000)
@@ -114,7 +116,7 @@ public class BaseTest extends AbstractTestNGCucumberTests{
             webDriverRule = new WebDriverRule();
             driver = webDriverRule.getDriver();
             //logger = new LoggerRule().getLogger();
-            Dimension dimension = new Dimension(1300, 700);
+            Dimension dimension = new Dimension(1800, 1200);
             driver.manage().window().setSize(dimension);
             driver.manage().window().maximize();
             driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
@@ -147,7 +149,7 @@ public class BaseTest extends AbstractTestNGCucumberTests{
       personContactDetailsPOM= PageFactory.initElements(driver, ClaimCenterPersonDetailsPOM.class);  
       propertyDetailsPOM= PageFactory.initElements(driver, ClaimCenterPropertyDetailsPOM.class);  
       postFnolLossDetailsPOM= PageFactory.initElements(driver, ClaimCenterPOSTFNOLLossDetailsPOM.class); 
-     
+      postFnolNewPropertyPOM= PageFactory.initElements(driver, ClaimCenterPOSTFNOLNewPropertyPOM.class);
    }
 
    

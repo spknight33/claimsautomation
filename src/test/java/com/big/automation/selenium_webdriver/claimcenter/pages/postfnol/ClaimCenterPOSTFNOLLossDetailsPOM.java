@@ -24,8 +24,8 @@ public class ClaimCenterPOSTFNOLLossDetailsPOM extends BaseTest{
 	@FindBy(id = "ClaimLossDetails:ClaimLossDetailsScreen:Update-btnEl")
 	private WebElement updateButton;
 		
-	@FindBy(id = "")
-	private WebElement backButton;
+	@FindBy(id = "ClaimLossDetails:ClaimLossDetailsScreen:Edit-btnEl")
+	private WebElement editButton;
 	
 	@FindBy(id = "l")
 	private WebElement finishButton;
@@ -66,6 +66,9 @@ public class ClaimCenterPOSTFNOLLossDetailsPOM extends BaseTest{
 	
 	@FindBy(id="ClaimLossDetails:ClaimLossDetailsScreen:LossDetailsPanelSet:LossDetailsCardCV:LossDetailsDV:Claim_Properties:EditableFixedPropertyIncidentsLV_tb:Add-btnEl")
 	private WebElement addPropertyDamageButton;
+	
+	@FindBy(id="ClaimLossDetails:ClaimLossDetailsScreen:LossDetailsPanelSet:LossDetailsCardCV:LossDetailsDV:EditableInjuryIncidentsLV_tb:Add-btnEl")
+	private WebElement addInjuryButton;
 
 	@FindBy(id ="ClaimLossDetails:ClaimLossDetailsScreen:LossDetailsPanelSet:LossDetailsCardCV:LossDetailsDV:Notification_Fault-inputEl")
 	private WebElement faultType;
@@ -127,10 +130,10 @@ public class ClaimCenterPOSTFNOLLossDetailsPOM extends BaseTest{
 		logger.info(format("%s - done, Update clicked", getName()));
 	}
 	
-	public void back() {
-		logger.info(format("%s -  going to click Back", getName()));
-		GuideWireAccessors.clickGWButton(driver,getBackButton());
-		logger.info(format("%s - done, Back clicked", getName()));
+	public void edit() {
+		logger.info(format("%s -  going to click Edit", getName()));
+		GuideWireAccessors.clickGWButton(driver,getEditButton());
+		logger.info(format("%s - done, Edit clicked", getName()));
 	}
 
 
@@ -293,6 +296,11 @@ public class ClaimCenterPOSTFNOLLossDetailsPOM extends BaseTest{
 		GuideWireAccessors.clickGWButton(driver, getAddPropertyDamageButton());
 		logger.info(format("%s - done, Add PropertyDamage clicked", getName()));
 	}
+   public void addInjury() {
+		logger.info(format("%s -  going to click Add Injury", getName()));
+		GuideWireAccessors.clickGWButton(driver, this.getAddInjuryButton());
+		logger.info(format("%s - done, Add Injury clicked", getName()));
+	}
    
 	private WebElement getCancelButton() {
 	return cancelButton;
@@ -307,10 +315,10 @@ private WebElement getFinishButton() {
 		return updateButton;
 	}
 	
-	private WebElement getBackButton() {
+	private WebElement getEditButton() {
 
 
-		return backButton;
+		return editButton;
 	}
 	private WebElement getCircumstances() {
 		return circumstances;
@@ -393,6 +401,11 @@ private WebElement getFinishButton() {
 		return cctv;
 	}
 	
+	
+
+	private WebElement getAddInjuryButton() {
+		return addInjuryButton;
+	}
 
 	private WebElement getAddressDropdown() {
 		return addressDropdown;
@@ -412,51 +425,5 @@ private WebElement getFinishButton() {
 		return found;
 	}
 	
-	/*
-	private void selectOptionFromGWDropDown(String option,WebElement gwDropDown,int occurrence )
-	{
-		sleep(1); //TODO change to explicit
-		// as it might be down the page, always scroll into view?
-		JavascriptExecutor je = (JavascriptExecutor) driver;
-		je.executeScript("arguments[0].scrollIntoView(true);",gwDropDown);
-		gwDropDown.click(); // need to click it first
-		sleep(1);
-		String optionLocator = "//li[contains(text(),'"  + option + "')]";
-		// as we cant get access to the li elements directly under the guidewire dropdown node, we have to just search the whole document
-		// this makes it very messy as there could be more than one dropdown list with the same values
-		// therefore for now, get a list of list matches and used the occurence 1st 2nd etc of the order in the page
-		if (occurrence > 1)
-		{
-			List<WebElement> elements = gwDropDown.findElements(By.xpath(optionLocator));
-			elements.get(occurrence-1).click();
-		}
-		else
-		{
-			// we can just take the first or only
-			gwDropDown.findElement(By.xpath(optionLocator)).click();
-		}
-	}*/
 	
-	/*
-	private void setGWTextBox(String text, WebElement gwTextBox)
-	{
-		sleep(1); //TODO change
-		JavascriptExecutor je = (JavascriptExecutor) driver;
-		je.executeScript("arguments[0].scrollIntoView(true);",gwTextBox);
-		gwTextBox.clear();
-		gwTextBox.sendKeys(text);
-	}
-	*/
-	/*
-	private void clickGWButton(WebElement gwButton)
-	{
-		sleep(2); //TODO change
-		JavascriptExecutor je = (JavascriptExecutor) driver;
-		je.executeScript("arguments[0].scrollIntoView(true);",gwButton);
-		gwButton.click();
-	
-	}
-	*/
-
-
 }

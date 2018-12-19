@@ -21,8 +21,25 @@ public class CCNavigatorSteps extends BaseTest {
 		switch(link)
 	    {
 	    case "Loss Details":
-	    	navigatorBarPOM.clickTopLevelLossDetails();;
+	    	navigatorBarPOM.clickTopLevelLossDetails("Loss Details");;
 	    	break;
+	    case "Summary":
+	    	navigatorBarPOM.clickTopLevelLossDetails("Summary");;
+	    	break;
+	    case "Workplan":
+	    	navigatorBarPOM.clickTopLevelLossDetails("Workplan");;
+	    	break;
+	    case "Exposures":
+	    	navigatorBarPOM.clickTopLevelLossDetails("Exposures");;
+	    	break;
+	    case "Parties Involved":
+	    	navigatorBarPOM.clickTopLevelLossDetails("Parties Involved");;
+	    	break;
+	    case "Policy":
+	    	navigatorBarPOM.clickTopLevelLossDetails("Policy");;
+	    	break;
+	    	
+	    	//TODO the rest
 	   
 	    default:
 	    Assert.fail("unknown search field :"+ link+" - check cucumber script!");

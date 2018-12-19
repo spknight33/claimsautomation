@@ -245,3 +245,68 @@ Feature: Title of your feature
       | Flood/Water Damage | Flood / Water Damage | Attempted to drive through Flooded area - sea water   |                 |               |                   |
       | Flood/Water Damage | Flood / Water Damage | Vehicle immersed in fresh water                       |                 |               |                   |
       | Flood/Water Damage | Flood / Water Damage | Vehicle immersed in sea water                         |                 |               |                   |
+
+  Scenario: CBPCL-200  TC8  Theft Incident type, cause and subcauses will cause correct validation at end of step3
+    And the "<incidents added>" vehicle is selected
+    And I move to step3 of FNOL
+    When I add "<incidents added>" to the claim
+    And I add "<parties added>" to the claim
+    And I select "Next"
+    Then I will see the validation errors "<validation errors>"
+      | incident type | cause              | sub cause                                               | incidents added | parties added | validation errors       |
+      | Theft         | Theft From Vehicle | Audio from locked vehicle                               | Insured Vehicle |               | no errors               |
+      | Theft         | Theft From Vehicle | Audio from locked vehicle                               |                 |               | Missing Insured Vehicle |
+      | Theft         | Theft From Vehicle | Audio from unlocked vehicle                             | Insured Vehicle |               | no errors               |
+      | Theft         | Theft From Vehicle | Audio from unlocked vehicle                             |                 |               | Missing Insured Vehicle |
+      | Theft         | Theft From Vehicle | Stolen by force / threat of violence / deception        | Insured Vehicle |               | no errors               |
+      | Theft         | Theft From Vehicle | Stolen by force / threat of violence / deception        |                 |               | Missing Insured Vehicle |
+      | Theft         | Theft From Vehicle | Personal items from locked vehicle                      | Insured Vehicle |               | no errors               |
+      | Theft         | Theft From Vehicle | Personal items from locked vehicle                      |                 |               | Missing Insured Vehicle |
+      | Theft         | Theft From Vehicle | Personal items from unlocked vehicle                    | Insured Vehicle |               | no errors               |
+      | Theft         | Theft From Vehicle | Personal items from unlocked vehicle                    |                 |               | Missing Insured Vehicle |
+      | Theft         | Theft From Vehicle | Bodywork parts stolen from locked vehicle               | Insured Vehicle |               | no errors               |
+      | Theft         | Theft From Vehicle | Bodywork parts stolen from locked vehicle               |                 |               | Missing Insured Vehicle |
+      | Theft         | Theft From Vehicle | Satellite Navigation stolen from locked vehicle         | Insured Vehicle |               | no errors               |
+      | Theft         | Theft From Vehicle | Satellite Navigation stolen from locked vehicle         |                 |               | Missing Insured Vehicle |
+      | Theft         | Theft From Vehicle | Satellite Navigation stolen from unlocked vehicle       | Insured Vehicle |               | no errors               |
+      | Theft         | Theft From Vehicle | Satellite Navigation stolen from unlocked vehicle       |                 |               | Missing Insured Vehicle |
+      | Theft         | Theft From Vehicle | Theft Of wheels                                         | Insured Vehicle |               | no errors               |
+      | Theft         | Theft From Vehicle | Theft Of wheels                                         |                 |               | Missing Insured Vehicle |
+      | Theft         | Theft Unrecovered  | Stolen by force / threat of violence / deception        | Insured Vehicle |               | no errors               |
+      | Theft         | Theft Unrecovered  | Stolen by force / threat of violence / deception        |                 |               | Missing Insured Vehicle |
+      | Theft         | Theft Unrecovered  | Stolen whilst parked on the road - outside own home     | Insured Vehicle |               | no errors               |
+      | Theft         | Theft Unrecovered  | Stolen whilst parked on the road - outside own home     |                 |               | Missing Insured Vehicle |
+      | Theft         | Theft Unrecovered  | Stolen whilst parked on the road - not outside own home | Insured Vehicle |               | no errors               |
+      | Theft         | Theft Unrecovered  | Stolen whilst parked on the road - not outside own home |                 |               | Missing Insured Vehicle |
+      | Theft         | Theft Unrecovered  | From driveway - no locked gates                         | Insured Vehicle |               | no errors               |
+      | Theft         | Theft Unrecovered  | From driveway - no locked gates                         |                 |               | Missing Insured Vehicle |
+      | Theft         | Theft Unrecovered  | From driveway - secured by locked gates                 | Insured Vehicle |               | no errors               |
+      | Theft         | Theft Unrecovered  | From driveway - secured by locked gates                 |                 |               | Missing Insured Vehicle |
+      | Theft         | Theft Unrecovered  | From locked garage                                      | Insured Vehicle |               | no errors               |
+      | Theft         | Theft Unrecovered  | From locked garage                                      |                 |               | Missing Insured Vehicle |
+      | Theft         | Theft Unrecovered  | From unlocked garage                                    | Insured Vehicle |               | no errors               |
+      | Theft         | Theft Unrecovered  | From unlocked garage                                    |                 |               | Missing Insured Vehicle |
+      | Theft         | Theft Recovered    | Stolen by force / threat of violence / deception        | Insured Vehicle |               | no errors               |
+      | Theft         | Theft Recovered    | Stolen by force / threat of violence / deception        |                 |               | Missing Insured Vehicle |
+      | Theft         | Theft Recovered    | Stolen whilst parked on the road - outside own home     | Insured Vehicle |               | no errors               |
+      | Theft         | Theft Recovered    | Stolen whilst parked on the road - outside own home     |                 |               | Missing Insured Vehicle |
+      | Theft         | Theft Recovered    | Stolen whilst parked on the road - not outside own home | Insured Vehicle |               | no errors               |
+      | Theft         | Theft Recovered    | Stolen whilst parked on the road - not outside own home |                 |               | Missing Insured Vehicle |
+      | Theft         | Theft Recovered    | From driveway - no locked gates                         | Insured Vehicle |               | no errors               |
+      | Theft         | Theft Recovered    | From driveway - no locked gates                         |                 |               | Missing Insured Vehicle |
+      | Theft         | Theft Recovered    | From driveway - secured by locked gates                 | Insured Vehicle |               | no errors               |
+      | Theft         | Theft Recovered    | From driveway - secured by locked gates                 |                 |               | Missing Insured Vehicle |
+      | Theft         | Theft Recovered    | From locked garage                                      | Insured Vehicle |               | no errors               |
+      | Theft         | Theft Recovered    | From locked garage                                      |                 |               | Missing Insured Vehicle |
+      | Theft         | Theft Recovered    | From unlocked garage                                    | Insured Vehicle |               | no errors               |
+      | Theft         | Theft Recovered    | From unlocked garage                                    |                 |               | Missing Insured Vehicle |
+      | Theft         | Attempted Theft    | Boot damaged / forced open                              | Insured Vehicle |               | no errors               |
+      | Theft         | Attempted Theft    | Boot damaged / forced open                              |                 |               | Missing Insured Vehicle |
+      | Theft         | Attempted Theft    | Door forced/lock drilled out/lock forced                | Insured Vehicle |               | no errors               |
+      | Theft         | Attempted Theft    | Door forced/lock drilled out/lock forced                |                 |               | Missing Insured Vehicle |
+      | Theft         | Attempted Theft    | Rear window broken in an attempt to gain entry          | Insured Vehicle |               | no errors               |
+      | Theft         | Attempted Theft    | Rear window broken in an attempt to gain entry          |                 |               | Missing Insured Vehicle |
+      | Theft         | Attempted Theft    | Side window broken in an attempt to gain entry          | Insured Vehicle |               | no errors               |
+      | Theft         | Attempted Theft    | Side window broken in an attempt to gain entry          |                 |               | Missing Insured Vehicle |
+      | Theft         | Attempted Theft    | Steering lock damaged/forced                            | Insured Vehicle |               | no errors               |
+      | Theft         | Attempted Theft    | Steering lock damaged/forced                            |                 |               | Missing Insured Vehicle |

@@ -29,15 +29,14 @@ public class ClaimCenterNavigatorBarPOM extends BaseTest {
 	
 
 	
-    public void clickTopLevelLossDetails() throws Exception {
+    public void clickTopLevelLossDetails(String toplink) throws Exception {
     	logger.info(format("%s - done, going to click Navigator", getName()));
     	
     	for (WebElement option : navigationLinks) {
     		
-    		String Str = "Loss Details";
-    		
+    		    		
 
-    		if(Str.equalsIgnoreCase(option.getText())){
+    		if(toplink.equalsIgnoreCase(option.getText())){
     		    GuideWireAccessors.clickGWButton(driver, option); 
     		    logger.info(format("%s - done, clicked navigator", getName()));
     		   break;
