@@ -214,12 +214,29 @@ public class ClaimCenterFNOLStep3POM extends BaseTest{
 	public void selectClaimCauseType(String option)
 	{
 		logger.info(format("%s - going to select Claim Cause option :"+option, getName()));
-		GuideWireAccessors.selectOptionFromGWDropDown(driver,option, this.getClaimCause(),1);
+		
+		// due to gw limitations, need to trap any cause option which is the same text as incident type
+		if(option.equalsIgnoreCase("Misfuelling") || option.equalsIgnoreCase("Malicious Damage"))
+		{
+			GuideWireAccessors.selectOptionFromGWDropDown(driver,option, this.getClaimCause(),2); 	// get the second occurence
+		}
+		else
+		{
+		GuideWireAccessors.selectOptionFromGWDropDown(driver,option, this.getClaimCause(),1); 
+		}
 	}
 	public void selectClaimSubCauseType(String option)
 	{
 		logger.info(format("%s - going to select Claim SubCause option :"+option, getName()));
-		GuideWireAccessors.selectOptionFromGWDropDown(driver,option, this.getClaimSubCause(),1);
+		if(option.equalsIgnoreCase("Storm Damage") )
+		{
+		GuideWireAccessors.selectOptionFromGWDropDown(driver,option, this.getClaimSubCause(),2); // get second occurence
+		}
+		else
+		{
+			GuideWireAccessors.selectOptionFromGWDropDown(driver,option, this.getClaimSubCause(),1);
+		}
+		
 	}
 	
 	public void selectImpactSpeed(String option)

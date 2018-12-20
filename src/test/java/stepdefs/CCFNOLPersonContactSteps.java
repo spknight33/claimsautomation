@@ -74,6 +74,12 @@ public class CCFNOLPersonContactSteps extends BaseTest {
 	    case "Address Line1":
 	    	personContactDetailsPOM.setAddressLine1(fieldValue);
 	    	break;
+	    case "Address Line2":
+	    	personContactDetailsPOM.setAddressLine2(fieldValue);
+	    	break;
+	    case "Address Line3":
+	    	personContactDetailsPOM.setAddressLine3(fieldValue);
+	    	break;
 	    
 	    default:
 	    Assert.fail("unknown input field :"+ fieldName+" - check cucumber script!");

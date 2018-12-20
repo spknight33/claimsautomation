@@ -1,8 +1,6 @@
-@Ignore
 Feature: CBPCL-176 As an Operator, I want to be able to record "Fault" "Split Liability" and "Non Fault" fault causes.
   I want this to be displayed so I am aware which fault code applies. This also needs to be able to be changed.
 
-  
   Background: 
     Given As a ClaimsHandler I am at step3 for FNOL
 
@@ -21,11 +19,11 @@ Feature: CBPCL-176 As an Operator, I want to be able to record "Fault" "Split Li
       | Accident      | Accident Involving Animal                            | Swerved to avoid an animal which ran into the road, collided with parked vehicle                                 | Fault           |
       | Accident      | Accident Involving Animal                            | Swerved to avoid an animal which ran into the road, collided with an oncoming vehicle                            | Fault           |
       | Accident      | Accident Involving Animal                            | Swerved to avoid an animal - vehicle left road                                                                   | Fault           |
-      | Accident      | Accident Involving Cyclist                           | Struck cyclist crossing                                                                                          | Fault           |
+      | Accident      | Accident Involving Cyclist                           | Struck Cyclist crossing                                                                                          | Fault           |
       | Accident      | Accident Involving Cyclist                           | Lost control due to mechanical failure                                                                           | Fault           |
-      | Accident      | Accident Involving Cyclist                           | Struck cyclist turning left                                                                                      | Fault           |
-      | Accident      | Accident Involving Cyclist                           | Struck cyclist turning right                                                                                     | Fault           |
-      | Accident      | Accident Involving Cyclist                           | Struck cyclist whilst passing                                                                                    | Fault           |
+      | Accident      | Accident Involving Cyclist                           | Struck Cyclist turning left                                                                                      | Fault           |
+      | Accident      | Accident Involving Cyclist                           | Struck Cyclist turning right                                                                                     | Fault           |
+      | Accident      | Accident Involving Cyclist                           | Struck Cyclist whilst passing                                                                                    | Fault           |
       | Accident      | Accident Involving Pedestrian                        | Struck pedestrian crossing from nearside from between parked vehicles                                            | Fault           |
       | Accident      | Accident Involving Pedestrian                        | Struck pedestrian on pedestrian crossing                                                                         | Fault           |
       | Accident      | Accident Involving Pedestrian                        | Struck pedestrian crossing road                                                                                  | Fault           |
@@ -35,7 +33,7 @@ Feature: CBPCL-176 As an Operator, I want to be able to record "Fault" "Split Li
       | Accident      | Car Door Open                                        | Third party opened car door into path of insured                                                                 | Non Fault       |
       | Accident      | Car Door Open                                        | Insured opened car door into path of passing third party                                                         | Fault           |
       | Accident      | Car Door Open                                        | Insured door already open when hit by third party                                                                | Non Fault       |
-      | Accident      | Caused By Debris On The Road                         | Third party vehicle damaged by debris from insured vehicle                                                       | Fault           |
+      | Accident      | Caused By Debris On The Road                         | Third party vehicle damaged by Debris from insured vehicle                                                    | Fault           |
       | Accident      | Caused By Debris On The Road                         | Debris from known third party                                                                                    | Non Fault       |
       | Accident      | Caused By Debris On The Road                         | Debris from unknown third party                                                                                  | Fault           |
       | Accident      | Changing Lanes                                       | Insured failed to notice third party vehicle                                                                     | Fault           |
@@ -149,62 +147,59 @@ Feature: CBPCL-176 As an Operator, I want to be able to record "Fault" "Split Li
       | Accident      | Hit Rear Of Third Party                              | Hit rear of vehicle whilst slowing down for people crossing the road                                             | Fault           |
       | Accident      | Hit Rear Of Third Party                              | Hit rear of vehicle waiting to enter main road at 'T' junction                                                   | Fault           |
       | Accident      | Hit Rear Of Third Party                              | Hit rear of vehicle waiting to enter roundabout                                                                  | Fault           |
-      | Accident      | Insured Vehicle Damaged Whilst Parked                |                                                                                                                  |                 |
-      | Accident      | Insured Vehicle Damaged Whilst Parked                |                                                                                                                  |                 |
-      | Accident      | Insured Vehicle Damaged Whilst Parked                |                                                                                                                  |                 |
-      | Accident      | Insured Vehicle Damaged Whilst Parked                |                                                                                                                  |                 |
-      | Accident      | Insured Vehicle Damaged Whilst Parked                |                                                                                                                  |                 |
-      | Accident      | Insured's Vehicle Left Road                          |                                                                                                                  |                 |
-      | Accident      | Insured's Vehicle Left Road                          |                                                                                                                  |                 |
-      | Accident      | Insured's Vehicle Left Road                          |                                                                                                                  |                 |
-      | Accident      | Insured's Vehicle Left Road                          |                                                                                                                  |                 |
-      | Accident      | Insured's Vehicle Left Road                          |                                                                                                                  |                 |
-      | Accident      | Joining/Leaving Slip Roads/Motorways                 |                                                                                                                  |                 |
-      | Accident      | Joining/Leaving Slip Roads/Motorways                 |                                                                                                                  |                 |
-      | Accident      | Joining/Leaving Slip Roads/Motorways                 |                                                                                                                  |                 |
-      | Accident      | Joining/Leaving Slip Roads/Motorways                 |                                                                                                                  |                 |
-      | Accident      | Joining/Leaving Slip Roads/Motorways                 |                                                                                                                  |                 |
-      | Accident      | Loss of Consciousness / Automatism                   |                                                                                                                  |                 |
-      | Accident      | Loss of Consciousness / Automatism                   |                                                                                                                  |                 |
-      | Accident      | Loss of Consciousness / Automatism                   |                                                                                                                  |                 |
-      | Accident      | Loss of Consciousness / Automatism                   |                                                                                                                  |                 |
-      | Accident      | Loss of Consciousness / Automatism                   |                                                                                                                  |                 |
-      | Accident      | Loss of Consciousness / Automatism                   |                                                                                                                  |                 |
-      | Accident      | Loss Of Control                                      |                                                                                                                  |                 |
-      | Accident      | Loss Of Control                                      |                                                                                                                  |                 |
-      | Accident      | Loss Of Control                                      |                                                                                                                  |                 |
-      | Accident      | Loss Of Control                                      |                                                                                                                  |                 |
-      | Accident      | Loss Of Control                                      |                                                                                                                  |                 |
-      | Accident      | Moving From Stationary Position                      |                                                                                                                  |                 |
-      | Accident      | Moving From Stationary Position                      |                                                                                                                  |                 |
-      | Accident      | Moving From Stationary Position                      |                                                                                                                  |                 |
-      | Accident      | Moving From Stationary Position                      |                                                                                                                  |                 |
-      | Accident      | Moving From Stationary Position                      |                                                                                                                  |                 |
-      | Accident      | Multiple Vehicle - Shunt                             |                                                                                                                  |                 |
-      | Accident      | Multiple Vehicle - Shunt                             |                                                                                                                  |                 |
-      | Accident      | Multiple Vehicle - Shunt                             |                                                                                                                  |                 |
-      | Accident      | Multiple Vehicle - Shunt                             |                                                                                                                  |                 |
-      | Accident      | Multiple Vehicle - Shunt                             |                                                                                                                  |                 |
-      | Accident      | Narrow Road Collision                                |                                                                                                                  |                 |
-      | Accident      | Narrow Road Collision                                |                                                                                                                  |                 |
-      | Accident      | Narrow Road Collision                                |                                                                                                                  |                 |
-      | Accident      | Narrow Road Collision                                |                                                                                                                  |                 |
-      | Accident      | Narrow Road Collision                                |                                                                                                                  |                 |
-      | Accident      | Overtaking                                           |                                                                                                                  |                 |
-      | Accident      | Overtaking                                           |                                                                                                                  |                 |
-      | Accident      | Overtaking                                           |                                                                                                                  |                 |
-      | Accident      | Overtaking                                           |                                                                                                                  |                 |
-      | Accident      | Overtaking                                           |                                                                                                                  |                 |
-      | Accident      | Reported by TP                                       |                                                                                                                  |                 |
-      | Accident      | Reported by TP                                       |                                                                                                                  |                 |
-      | Accident      | Reported by TP                                       |                                                                                                                  |                 |
-      | Accident      | Reported by TP                                       |                                                                                                                  |                 |
-      | Accident      | Reported by TP                                       |                                                                                                                  |                 |
-      | Accident      | Unknown                                              |                                                                                                                  |                 |
-      | Accident      | Unknown                                              |                                                                                                                  |                 |
-      | Accident      | Unknown                                              |                                                                                                                  |                 |
-      | Accident      | Unknown                                              |                                                                                                                  |                 |
-      | Accident      | Unknown                                              |                                                                                                                  |                 |
+      | Accident      | Insured Vehicle Damaged Whilst Parked                | In private car park                                                                                              | Non Fault       |
+      | Accident      | Insured Vehicle Damaged Whilst Parked                | In public car park                                                                                               | Non Fault       |
+      | Accident      | Insured Vehicle Damaged Whilst Parked                | On road not outside own home                                                                                     | Non Fault       |
+      | Accident      | Insured Vehicle Damaged Whilst Parked                | On road outside own home                                                                                         | Non Fault       |
+      | Accident      | Insured Vehicle Damaged Whilst Parked                | In works car park                                                                                                | Non Fault       |
+      | Accident      | Insured's Vehicle Left Road                          | Obstruction / debris in the road                                                                                 | Fault           |
+      | Accident      | Insured's Vehicle Left Road                          | Poor road / weather conditions                                                                                   | Fault           |
+      | Accident      | Joining/Leaving Slip Roads/Motorways                 | Insured failed to notice third party vehicle on main road                                                        | Fault           |
+      | Accident      | Joining/Leaving Slip Roads/Motorways                 | Insured failed to give way to traffic on main road                                                               | Fault           |
+      | Accident      | Joining/Leaving Slip Roads/Motorways                 | Insured took wrong exit - collision with third party                                                             | Fault           |
+      | Accident      | Joining/Leaving Slip Roads/Motorways                 | Third party failed to give way to traffic on main road                                                           | Non Fault       |
+      | Accident      | Joining/Leaving Slip Roads/Motorways                 | Third party failed to notice insured vehicle on main road                                                        | Fault           |
+      | Accident      | Joining/Leaving Slip Roads/Motorways                 | Insured collided with third party who had taken wrong exit                                                       | Non Fault       |
+      | Accident      | Loss of Consciousness / Automatism                   | Caused by known condition - own damage only                                                                      | Fault           |
+      | Accident      | Loss of Consciousness / Automatism                   | Caused by unknown condition - own damage only                                                                    | Non Fault       |
+      | Accident      | Loss of Consciousness / Automatism                   | Caused by known condition - involving TP vehicle / property                                                      | Fault           |
+      | Accident      | Loss of Consciousness / Automatism                   | Caused by unknown condition - involving TP vehicle / property                                                    | Non Fault       |
+      | Accident      | Loss Of Control                                      | Insured failed to negotiate left hand bend                                                                       | Fault           |
+      | Accident      | Loss Of Control                                      | Insured lost control due to adverse weather conditions                                                           | Fault           |
+      | Accident      | Loss Of Control                                      | Lost Control Human Error                                                                                         | Fault           |
+      | Accident      | Loss Of Control                                      | Lost control due to mechanical failure                                                                           | Fault           |
+      | Accident      | Loss Of Control                                      | Having had attention distracted                                                                                  | Fault           |
+      | Accident      | Loss Of Control                                      | Insured failed to negotiate right hand bend                                                                      | Fault           |
+      | Accident      | Loss Of Control                                      | Turning corner into/out of side road - mounted pavement                                                          | Fault           |
+      | Accident      | Moving From Stationary Position                      | Insured into path of third party who gave a misleading signal                                                    | Split Liability |
+      | Accident      | Moving From Stationary Position                      | Insured out of lay-by into path of third party who gave a misleading signal                                      | Split Liability |
+      | Accident      | Moving From Stationary Position                      | Insured attempting 'U' turn, collision with third party                                                          | Fault           |
+      | Accident      | Moving From Stationary Position                      | Insured into path of third party                                                                                 | Fault           |
+      | Accident      | Moving From Stationary Position                      | Insured out of lay-by into path of third party                                                                   | Fault           |
+      | Accident      | Moving From Stationary Position                      | Third party into path of Insured who gave a misleading signal                                                    | Split Liability |
+      | Accident      | Moving From Stationary Position                      | Third party into path of insured                                                                                 | Non Fault       |
+      | Accident      | Moving From Stationary Position                      | Third Party out of lay-by into path of insured                                                                   | Non Fault       |
+      | Accident      | Moving From Stationary Position                      | Third party out of lay-by into path of insured who gave a misleading signal                                      | Split Liability |
+      | Accident      | Moving From Stationary Position                      | Third party attempted 'U' turn, collision with insured                                                           | Non Fault       |
+      | Accident      | Multiple Vehicle - Shunt                             | Third party from side road - multiple collision on main                                                          | Non Fault       |
+      | Accident      | Multiple Vehicle - Shunt                             | Motorway multiple vehicles                                                                                       | Fault           |
+      | Accident      | Multiple Vehicle - Shunt                             | Insured hit rear of TP forcing it into rear of another                                                           | Fault           |
+      | Accident      | Multiple Vehicle - Shunt                             | Insured struck rear of TP before being hit from behind                                                           | Fault           |
+      | Accident      | Multiple Vehicle - Shunt                             | Insured shunted from rear into TP in front                                                                       | Non Fault       |
+      | Accident      | Multiple Vehicle - Shunt                             | Insured from side road - multiple collision on main                                                              | Fault           |
+      | Accident      | Narrow Road Collision                                | Brow of a hill / bridge                                                                                          | Split Liability |
+      | Accident      | Narrow Road Collision                                | Narrow road / country Lane                                                                                       | Split Liability |
+      | Accident      | Narrow Road Collision                                | Insured passing parked cars                                                                                      | Fault           |
+      | Accident      | Narrow Road Collision                                | Road narrowed by parked cars either side                                                                         | Split Liability |
+      | Accident      | Narrow Road Collision                                | Insured rounding bend                                                                                            | Split Liability |
+      | Accident      | Narrow Road Collision                                | Third party rounding bend                                                                                        | Split Liability |
+      | Accident      | Narrow Road Collision                                | Third party passing parked cars                                                                                  | Non Fault       |
+      | Accident      | Overtaking                                           | Insured from behind hit off side of third party vehicle                                                          | Fault           |
+      | Accident      | Overtaking                                           | Insured hit oncoming third party                                                                                 | Fault           |
+      | Accident      | Overtaking                                           | Third Party from behind hit off side of vehicle                                                                  | Non Fault       |
+      | Accident      | Overtaking                                           | Third Party hit oncoming Insured                                                                                 | Non Fault       |
+      | Accident      | Reported by TP                                       | Reported by TP                                                                                                   | Fault           |
+  #    | Accident      | Unknown                                              | Unknown                                                                                                          | Fault           |
 
   @Ignore
   Scenario: CBPCL-176 TC3 Fire Incident type, cause and subcauses will generate correct fault code
@@ -233,7 +228,7 @@ Feature: CBPCL-176 As an Operator, I want to be able to record "Fault" "Split Li
       | Flood/Water Damage | Flood / Water Damage | Vehicle immersed in fresh water                       | Fault      |
       | Flood/Water Damage | Flood / Water Damage | Vehicle immersed in sea water                         | Fault      |
 
-  @Ignore
+  @Ignore @broken
   Scenario: CBPCL-176 TC5 Malicious Damage Incident type, cause and subcauses will generate correct fault code
     Then I will see fault based on loss causes
       | incident type    | cause                   | sub cause                                         | fault type |
@@ -247,7 +242,7 @@ Feature: CBPCL-176 As an Operator, I want to be able to record "Fault" "Split Li
       | Malicious Damage | Riot or Civil Commotion | Riot / civil commotion - Less than 12 people      | Fault      |
       | Malicious Damage | Riot or Civil Commotion | Riot / civil commotion - More than 12 people      | Fault      |
 
-  @Ignore
+  @Ignore @broken
   Scenario: CBPCL-176 TC6 Misfuelling Incident type, cause and subcauses will generate correct fault code
     Then I will see fault based on loss causes
       | incident type | cause       | sub cause                        | fault type |
@@ -267,13 +262,13 @@ Feature: CBPCL-176 As an Operator, I want to be able to record "Fault" "Split Li
   Scenario: CBPCL-176 TC8 Storm Incident type, cause and subcauses will generate correct fault code
     Then I will see fault based on loss causes
       | incident type | cause        | sub cause                                                           | fault type |
-      | Storm         | Storm Damage | Damaged by falling tree / debris e.g. roof tiles - own property     | Fault      |
-      | Storm         | Storm Damage | Damaged by falling tree / debris e.g. roof tiles - not own property | Non Fault  |
+      | Storm         | Storm Damage | Damaged by falling tree / Debris e.g. roof tiles - own property     | Fault      |
+      | Storm         | Storm Damage | Damaged by falling tree / Debris e.g. roof tiles - not own property | Non Fault  |
       | Storm         | Storm Damage | Hail storm damage                                                   | Fault      |
       | Storm         | Storm Damage | Damaged by Lightning                                                | Fault      |
-      | Storm         | Storm Damage | Storm Damage                                                        | Fault      |
 
-  @Ignore
+  #  | Storm         | Storm Damage | Storm Damage | Fault |
+  @Ignore @broken
   Scenario: CBPCL-176 TC10 Windscreen Incident type, cause and subcauses will generate correct fault code
     Then I will see fault based on loss causes
       | incident type | cause   | sub cause | fault type |

@@ -28,8 +28,8 @@ public class CCFNOLStep1Steps extends BaseTest	{
 		// need to configure to get a specific configurable pilicy number
 		i_set_the_policy_search_criteria_fields_to("policynumber",testDataset.getPolicyNumber());
 		i_Click_Search();
-		this.setLossDate("12/12/2018");
-		this.setLossTime("09:00 AM");
+		this.setLossDate(testDataset.getLossDate());
+		this.setLossTime(testDataset.getLossTime());
 		this.next();
 		
 	}

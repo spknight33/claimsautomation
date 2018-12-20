@@ -7,7 +7,8 @@ public class ClaimCenterTestData implements ClaimCenterData {
 	public String lastName;
 	public String insuredVRN;
 	public String address;
-	
+	public String lossDate;
+	public String lossTime;
 	
 	@Override
 	public String getPolicyNumber() {
@@ -39,6 +40,18 @@ public class ClaimCenterTestData implements ClaimCenterData {
 	public String getAddress() {
 		
 		return address;
+	}
+	
+	@Override
+	public String getLossDate() {
+		
+		return lossDate;
+	}
+	
+	@Override
+	public String getLossTime() {
+		
+		return lossTime;
 	}
 
    
