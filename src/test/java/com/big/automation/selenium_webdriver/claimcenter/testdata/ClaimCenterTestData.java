@@ -3,6 +3,7 @@ package com.big.automation.selenium_webdriver.claimcenter.testdata;
 public class ClaimCenterTestData implements ClaimCenterData {
 
 	public String policyNumber;
+	public String claimNumber;
 	public String firstName;
 	public String lastName;
 	public String insuredVRN;
@@ -53,6 +54,10 @@ public class ClaimCenterTestData implements ClaimCenterData {
 		
 		return lossTime;
 	}
-
+	@Override
+	public String getClaimNumber() {
+		
+		return claimNumber;
+	}
    
 }

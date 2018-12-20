@@ -13,4 +13,6 @@ public interface ClaimCenterData  {
     String getLossDate();
     String getLossTime();
 
+    String getClaimNumber();
+    
 }

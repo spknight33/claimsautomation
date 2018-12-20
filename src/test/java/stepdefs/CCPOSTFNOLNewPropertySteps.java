@@ -14,7 +14,7 @@ public class CCPOSTFNOLNewPropertySteps extends BaseTest {
 	CCFNOLCompanyContactSteps companyContactSteps = new CCFNOLCompanyContactSteps();
 	
 	
-	@Then("^I will see post FNOL new property incident$")
+	@Then("^I will be on new property screen$")
 	public void i_will_see_post_FNOL_newproperty_details() throws Throwable {
 		postFnolNewPropertyPOM.isPageTitleDisplayed("New Property Incident");
 	}

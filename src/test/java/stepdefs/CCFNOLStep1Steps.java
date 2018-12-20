@@ -23,7 +23,6 @@ public class CCFNOLStep1Steps extends BaseTest	{
 	
 	public void iCompleteStep1FNOL() throws Throwable 
 	{
-		this.testDataset = ClaimCenterDataBuilder.createDataSet();
 		
 		// need to configure to get a specific configurable pilicy number
 		i_set_the_policy_search_criteria_fields_to("policynumber",testDataset.getPolicyNumber());

@@ -4,7 +4,7 @@ Feature: CBPCL-xxx As an Operator
   Given I access ClaimCenter login page
     And I login to ClaimCenter as role "ClaimsHandler"
 
-
+  @Ignore
   Scenario: CBPCL-219 TC1
     And I Select existing Claim "000-00-000005"
     And I select "Loss Details" on the Claim Navigator

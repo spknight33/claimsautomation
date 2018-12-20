@@ -1,40 +1,36 @@
-package com.big.automation.selenium_webdriver.claimcenter.pages;
+package com.big.automation.selenium_webdriver.claimcenter.pages.postfnol;
 
+import static com.big.automation.selenium_webdriver.common.utilities.ThreadUtils.sleep;
 import static java.lang.String.format;
 
 import java.util.List;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
-import static com.big.automation.selenium_webdriver.common.utilities.ThreadUtils.sleep;
 
 import com.big.automation.selenium_webdriver.common.baseTest.BaseTest;
 import com.big.automation.selenium_webdriver.common.gw.utilities.GuideWireAccessors;
-import com.big.automation.selenium_webdriver.common.utilities.WaitForUtils;
 
-public class ClaimCenterVehicleDetailsPOM extends BaseTest{
+public class ClaimCenterPOSTFNOLVehicleDetailsPOM extends BaseTest{
 
-	
-	@FindBy(id = "FNOLWizard:Cancel-btnEl")
+	//TODO ALL THE LOCATORS
+	@FindBy(id = "NewVehicleIncidentPopup:NewVehicleIncidentScreen:Update-btnEl")
+	private WebElement okButton;
+	@FindBy(id = "NewVehicleIncidentPopup:NewVehicleIncidentScreen:Cancel-btnEl")
 	private WebElement cancelButton;
 	
-		
-
 	
-	@FindBy(id = "FNOLVehicleIncidentPopup:FNOLVehicleIncidentScreen:0")
+	@FindBy(id = "NewVehicleIncidentPopup:NewVehicleIncidentScreen:0")
 	private WebElement pageTitle;
+	
+	//TODO the rest of the vehicle details looks very different from FNOL
 	
 	@FindBy(id = "FNOLVehicleIncidentPopup:FNOLVehicleIncidentScreen:VehicleBasicsDV:LossParty_true-inputEl")
 	private WebElement lossPartyInsuredRadio;
 	@FindBy(id = "FNOLVehicleIncidentPopup:FNOLVehicleIncidentScreen:VehicleBasicsDV:LossParty_false-inputEl")
 	private WebElement lossPartyTPRadio;
 		
-	@FindBy(id = "FNOLVehicleIncidentPopup:FNOLVehicleIncidentScreen:Update-btnEl")
-	private WebElement okButton;
+	
 
 	@FindBy(id = "FNOLVehicleIncidentPopup:FNOLVehicleIncidentScreen:OccupantLV_tb:AddDriverButton-btnEl")
 	private WebElement addDriverButton;

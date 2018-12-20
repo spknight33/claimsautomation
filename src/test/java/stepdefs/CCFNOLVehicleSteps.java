@@ -11,17 +11,22 @@ public class CCFNOLVehicleSteps extends BaseTest {
 
 	@Then("^I will be on vehicle screen for FNOL$")
 	public void i_will_be_on_vehicle_screen_for_FNOL() throws Throwable {
-		vehicleDetailsPOM.isPageTitleDisplayed("Vehicle Details");
+		fnolVehicleDetailsPOM.isPageTitleDisplayed("Vehicle Details");
+	}
+	
+	@Then("^I will be on new vehicle screen$")
+	public void i_will_be_on_vehicle_screen() throws Throwable {
+		fnolVehicleDetailsPOM.isPageTitleDisplayed("New Vehicle Incident");
 	}
 
 	@Given("^I select \"([^\"]*)\" on vehicle screen$")
 	public void i_select_on_vehicle_screen(String button) throws Throwable {
 		switch (button) {
 		case "AddDriver":
-			vehicleDetailsPOM.selectAddDriver();
+			fnolVehicleDetailsPOM.selectAddDriver();
 			break;
 		case "AddPassenger":
-			vehicleDetailsPOM.selectAddPassenger();
+			fnolVehicleDetailsPOM.selectAddPassenger();
 			break;
 
 		default:
@@ -33,19 +38,19 @@ public class CCFNOLVehicleSteps extends BaseTest {
 	public void i_select_from_field_on_vehicle_screen(String fieldValue, String fieldName) throws Throwable {
 		switch (fieldName) {
 		case "Usual Location":
-			vehicleDetailsPOM.selectUsualLocation(fieldValue);
+			fnolVehicleDetailsPOM.selectUsualLocation(fieldValue);
 			break;
 		case "Actual Location":
-			vehicleDetailsPOM.selectActualLocation(fieldValue);
+			fnolVehicleDetailsPOM.selectActualLocation(fieldValue);
 			break;
 		case "Keys Purchased":
-			vehicleDetailsPOM.selectKeysPurchased(fieldValue);
+			fnolVehicleDetailsPOM.selectKeysPurchased(fieldValue);
 			break;
 		case "Keys Possessed":
-			vehicleDetailsPOM.selectKeysPossessed(fieldValue);
+			fnolVehicleDetailsPOM.selectKeysPossessed(fieldValue);
 			break;
 		case "Vehicle Type":
-			vehicleDetailsPOM.selectVehicleType(fieldValue);
+			fnolVehicleDetailsPOM.selectVehicleType(fieldValue);
 			break;
 
 		default:
@@ -57,16 +62,16 @@ public class CCFNOLVehicleSteps extends BaseTest {
 	public void i_input_into_the_box_onvehicvlescreen(String fieldValue, String fieldName) throws Throwable {
 		switch (fieldName) {
 		case "VRN":
-			vehicleDetailsPOM.setVrn(fieldValue);
+			fnolVehicleDetailsPOM.setVrn(fieldValue);
 			break;
 		case "Year":
-			vehicleDetailsPOM.setYear(fieldValue);
+			fnolVehicleDetailsPOM.setYear(fieldValue);
 			break;
 		case "Make":
-			vehicleDetailsPOM.setMake(fieldValue);
+			fnolVehicleDetailsPOM.setMake(fieldValue);
 			break;
 		case "Model":
-			vehicleDetailsPOM.setModel(fieldValue);
+			fnolVehicleDetailsPOM.setModel(fieldValue);
 			break;
 
 		default:
@@ -77,14 +82,14 @@ public class CCFNOLVehicleSteps extends BaseTest {
 	@Given("^I click ok button on vehicle screen$")
 	public void next() {
 
-		vehicleDetailsPOM.selectOK();
+		fnolVehicleDetailsPOM.selectOK();
 	}
 
 	@Given("^I click \"([^\"]*)\" on owner picker$")
 	public void i_click_on_owner_picker(String option) throws Throwable {
 		switch (option) {
 		case "New Person":
-			vehicleDetailsPOM.selectNewOwner();
+			fnolVehicleDetailsPOM.selectNewOwner();
 			break;
 
 		default:

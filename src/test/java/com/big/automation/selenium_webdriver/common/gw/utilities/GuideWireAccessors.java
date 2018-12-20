@@ -122,8 +122,8 @@ public class GuideWireAccessors {
 			optionLocator = "//li[contains(text(),\"" + option + "\")]";
 		}
 		
-		WebDriverWait wait = new WebDriverWait(driver, 10);
-		wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath(optionLocator)));
+		//WebDriverWait wait = new WebDriverWait(driver, 10);
+		//wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(optionLocator)));
 		WebElement optionElement = null;
 		// as we cant get access to the li elements directly under the guidewire
 		// dropdown node, we have to just search the whole document

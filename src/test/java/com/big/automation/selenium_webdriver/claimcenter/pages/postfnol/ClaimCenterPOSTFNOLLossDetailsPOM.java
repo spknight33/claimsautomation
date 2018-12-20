@@ -27,9 +27,6 @@ public class ClaimCenterPOSTFNOLLossDetailsPOM extends BaseTest{
 	@FindBy(id = "ClaimLossDetails:ClaimLossDetailsScreen:Edit-btnEl")
 	private WebElement editButton;
 	
-	@FindBy(id = "l")
-	private WebElement finishButton;
-	
 		
 	@FindBy(id = "ClaimLossDetails:ClaimLossDetailsScreen:ttlBar")
 	private WebElement pageTitle;
@@ -50,18 +47,12 @@ public class ClaimCenterPOSTFNOLLossDetailsPOM extends BaseTest{
 	
 	@FindBy(id="ClaimLossDetails:ClaimLossDetailsScreen:LossDetailsPanelSet:LossDetailsCardCV:LossDetailsDV:Claim_Subcause_itb-inputEl")
 	private WebElement claimSubCause;
-	
-	@FindBy(id="")
-	private WebElement incidentOnlyCB;
-	
-	
-	@FindBy(id="")
-	private WebElement insuredVehicleLink;
+		
 	
 	@FindBy(id="ClaimLossDetails:ClaimLossDetailsScreen:LossDetailsPanelSet:LossDetailsCardCV:LossDetailsDV:EditableVehicleIncidentsLV_tb:Add-btnEl")
 	private WebElement addVehicleButton;
 	
-	@FindBy(id="")
+	@FindBy(id="todo-changethislocator")
 	private WebElement addPedestrianButton;
 	
 	@FindBy(id="ClaimLossDetails:ClaimLossDetailsScreen:LossDetailsPanelSet:LossDetailsCardCV:LossDetailsDV:Claim_Properties:EditableFixedPropertyIncidentsLV_tb:Add-btnEl")
@@ -70,29 +61,55 @@ public class ClaimCenterPOSTFNOLLossDetailsPOM extends BaseTest{
 	@FindBy(id="ClaimLossDetails:ClaimLossDetailsScreen:LossDetailsPanelSet:LossDetailsCardCV:LossDetailsDV:EditableInjuryIncidentsLV_tb:Add-btnEl")
 	private WebElement addInjuryButton;
 
+	
 	@FindBy(id ="ClaimLossDetails:ClaimLossDetailsScreen:LossDetailsPanelSet:LossDetailsCardCV:LossDetailsDV:Notification_Fault-inputEl")
 	private WebElement faultType;
 	
-	
+	@FindBy(id ="ClaimLossDetails:ClaimLossDetailsScreen:LossDetailsPanelSet:LossDetailsCardCV:LossDetailsDV:LossDate-inputEl")
+	private WebElement lossDate;
 		
 
-	@FindBy(id ="FNOLWizard:AutoWorkersCompWizardStepSet:FNOLWizard_NewLossDetailsScreen:LossDetailsAddressDV:IncidentQuestions_PurposeOfJourney_itb-inputEl")
+	@FindBy(id ="ClaimLossDetails:ClaimLossDetailsScreen:LossDetailsPanelSet:LossDetailsCardCV:LossDetailsDV:IncidentQuestions_PurposeOfJourney_itb-inputEl")
 	private WebElement journeyPurpose;
 	
 	
-	@FindBy(id ="FNOLWizard:AutoWorkersCompWizardStepSet:FNOLWizard_NewLossDetailsScreen:LossDetailsAddressDV:IncidentQuestions_VehicleUsedFor_itb-inputEl")
+	@FindBy(id ="ClaimLossDetails:ClaimLossDetailsScreen:LossDetailsPanelSet:LossDetailsCardCV:LossDetailsDV:IncidentQuestions_VehicleUsedFor_itb-inputEl")
 	private WebElement vehicleUsedFor;
-	@FindBy(id ="FNOLWizard:AutoWorkersCompWizardStepSet:FNOLWizard_NewLossDetailsScreen:LossDetailsAddressDV:IncidentQuestions_SpeedAtImpact_itb-inputEl")
+	@FindBy(id ="ClaimLossDetails:ClaimLossDetailsScreen:LossDetailsPanelSet:LossDetailsCardCV:LossDetailsDV:IncidentQuestions_SpeedAtImpact_itb-inputEl")
 	private WebElement impactSpeed;
-	@FindBy(id ="FNOLWizard:AutoWorkersCompWizardStepSet:FNOLWizard_NewLossDetailsScreen:LossDetailsAddressDV:Claim_Weather-inputEl")
+	@FindBy(id ="ClaimLossDetails:ClaimLossDetailsScreen:LossDetailsPanelSet:LossDetailsCardCV:LossDetailsDV:Claim_Weather-inputEl")
 	private WebElement weather;
-	@FindBy(id ="FNOLWizard:AutoWorkersCompWizardStepSet:FNOLWizard_NewLossDetailsScreen:LossDetailsAddressDV:IncidentQuestions_RoadConditions_itb-inputEl")
+	@FindBy(id ="ClaimLossDetails:ClaimLossDetailsScreen:LossDetailsPanelSet:LossDetailsCardCV:LossDetailsDV:IncidentQuestions_RoadConditions_itb-inputEl")
 	private WebElement roadConditions;
-	@FindBy(id ="FNOLWizard:AutoWorkersCompWizardStepSet:FNOLWizard_NewLossDetailsScreen:LossDetailsAddressDV:IncidentQuestions_SupportingPhotographicEvid_itb-inputEl")
+	@FindBy(id ="ClaimLossDetails:ClaimLossDetailsScreen:LossDetailsPanelSet:LossDetailsCardCV:LossDetailsDV:IncidentQuestions_SupportingPhotographicEvid_itb-inputEl")
 	private WebElement photos;
-	@FindBy(id ="FNOLWizard:AutoWorkersCompWizardStepSet:FNOLWizard_NewLossDetailsScreen:LossDetailsAddressDV:IncidentQuestions_CCTVDashcamFootageAvail_itb-inputEl")
+	@FindBy(id ="ClaimLossDetails:ClaimLossDetailsScreen:LossDetailsPanelSet:LossDetailsCardCV:LossDetailsDV:IncidentQuestions_CCTVDashcamFootageAvail_itb-inputEl")
 	private WebElement cctv;
+	@FindBy(id ="ClaimLossDetails:ClaimLossDetailsScreen:LossDetailsPanelSet:LossDetailsCardCV:LossDetailsDV:IncidentQuestions_CCTVContactLocationDetails_itb-inputEl")
+	private WebElement cctvContact;
 	
+	@FindBy(id ="ClaimLossDetails:ClaimLossDetailsScreen:LossDetailsPanelSet:LossDetailsCardCV:LossDetailsDV:Notification_HowReported-inputEl")
+	private WebElement howReported;
+	@FindBy(id ="ClaimLossDetails:ClaimLossDetailsScreen:LossDetailsPanelSet:LossDetailsCardCV:LossDetailsDV:ReportedBy_Picker-inputEl")
+	private WebElement reportedByDropdown;
+	@FindBy(id ="ClaimLossDetails:ClaimLossDetailsScreen:LossDetailsPanelSet:LossDetailsCardCV:LossDetailsDV:ReportedBy_Picker:ReportedBy_PickerMenuIcon")
+	private WebElement reportedByPickerIcon;
+	@FindBy(id ="ClaimLossDetails:ClaimLossDetailsScreen:LossDetailsPanelSet:LossDetailsCardCV:LossDetailsDV:ReportedBy_Picker:ClaimNewPersonOnlyPickerMenuItemSet:ClaimNewPersonOnlyPickerMenuItemSet_NewPersonMenuItem-itemEl")
+	private WebElement reportedByPickerNewPerson;
+	
+	@FindBy(id ="ClaimLossDetails:ClaimLossDetailsScreen:LossDetailsPanelSet:LossDetailsCardCV:LossDetailsDV:Notification_ReportedByType-inputEl")
+	private WebElement reporterRelationship;
+	
+	
+	@FindBy(id ="ClaimLossDetails:ClaimLossDetailsScreen:LossDetailsPanelSet:LossDetailsCardCV:LossDetailsDV:MainContact_Picker-inputEl")
+	private WebElement mainContactDropdown;
+	@FindBy(id ="ClaimLossDetails:ClaimLossDetailsScreen:LossDetailsPanelSet:LossDetailsCardCV:LossDetailsDV:MainContact_Picker:MainContact_PickerMenuIcon")
+	private WebElement mainContactPickerIcon;
+	@FindBy(id ="ClaimLossDetails:ClaimLossDetailsScreen:LossDetailsPanelSet:LossDetailsCardCV:LossDetailsDV:MainContact_Picker:ClaimNewPersonOnlyPickerMenuItemSet:ClaimNewPersonOnlyPickerMenuItemSet_NewPersonMenuItem-itemEl")
+	private WebElement mainContactPickerNewPerson;
+	
+	@FindBy(id ="ClaimLossDetails:ClaimLossDetailsScreen:LossDetailsPanelSet:LossDetailsCardCV:LossDetailsDV:Notification_MainContactType-inputEl")
+	private WebElement contactRelationship;
 	
 	@FindBy(id ="FNOLWizard:AutoWorkersCompWizardStepSet:FNOLWizard_NewLossDetailsScreen:LossDetailsAddressDV:AddressDetailInputSetRef:CCAddressInputSet:globalAddressContainer:Address_Picker-inputEl")
 	private WebElement addressDropdown;
@@ -116,12 +133,7 @@ public class ClaimCenterPOSTFNOLLossDetailsPOM extends BaseTest{
 		logger.info(format("%s - done, cancel clicked", getName()));
 	}
 	
-	public void finish() {
-
-		logger.info(format("%s -  going to click finish", getName()));
-		GuideWireAccessors.clickGWButton(driver,getFinishButton());
-		logger.info(format("%s - done, Finish clicked", getName()));
-	}
+	
 	
 	public void update() {
 
@@ -243,28 +255,8 @@ public class ClaimCenterPOSTFNOLLossDetailsPOM extends BaseTest{
 
 
 
-   public void selectIncidentOnlyCB()
-   {
-	   logger.info(format("%s - current Incident only CB selection is :"+this.getIncidentOnlyCB().isSelected(), getName()));
-   // can be more than one, but just select first for now
-	   if (!this.getIncidentOnlyCB().isSelected())
-	   {
-		   this.getIncidentOnlyCB().click();
-		   logger.info(format("%s - done, select Incident Only", getName()));
-		   
-	   }
-   }
-   
-   public void deselectIncidentOnlyCB()
-   {
-   // can be more than one, but just deselect first for now
-	   logger.info(format("%s - done, going to deselect Incident Only", getName()));
-	   if (this.getIncidentOnlyCB().isSelected())
-	   {
-		   this.getIncidentOnlyCB().click();
-		   logger.info(format("%s - done, deselect Incident Only", getName()));
-	   }
-   }
+  
+  
    
    public void addVehicle() {
 		logger.info(format("%s -  going to click AddVehicle", getName()));
@@ -278,12 +270,7 @@ public class ClaimCenterPOSTFNOLLossDetailsPOM extends BaseTest{
 		GuideWireAccessors.selectOptionFromGWDropDown(driver, option, this.getVehicleUsedFor(),1);
 	}
 		
-   
-   public void selectInsuredVehicle() {
-		logger.info(format("%s -  going to click INSUREDVehicle", getName()));
-		GuideWireAccessors.clickGWButton(driver,this.getInsuredVehicleLink());
-		logger.info(format("%s - done, Insured Vehicle clicked", getName()));
-	}
+  
    
    public void addPedestrian() {
 		logger.info(format("%s -  going to click AddPedestrian", getName()));
@@ -302,13 +289,24 @@ public class ClaimCenterPOSTFNOLLossDetailsPOM extends BaseTest{
 		logger.info(format("%s - done, Add Injury clicked", getName()));
 	}
    
+   public void setCctvContact(String text) {
+		logger.info(format("%s -  going to set cctv contact:"+text, getName()));
+		GuideWireAccessors.setGWTextBox(driver, text,this.getCctvContact());
+		logger.info(format("%s - done, set cctv contct", getName()));
+	}
+   
+   
+   public void selecHowReported(String option)
+	{
+		logger.info(format("%s - going to select how reported option :"+option, getName()));
+		GuideWireAccessors.selectOptionFromGWDropDown(driver,option, this.getHowReported(),1);
+	}
+   
 	private WebElement getCancelButton() {
 	return cancelButton;
 }
 
-private WebElement getFinishButton() {
-	return finishButton;
-}
+
 
 	private WebElement getUpdateButton() {
 		
@@ -336,10 +334,7 @@ private WebElement getFinishButton() {
 	{
 		return claimSubCause;
 	}
-	private WebElement getIncidentOnlyCB()
-	{
-		return incidentOnlyCB;
-	}
+	
 	private WebElement getAddVehicleButton()
 	{
 		return addVehicleButton;
@@ -372,9 +367,7 @@ private WebElement getFinishButton() {
 		return journeyPurpose;
 	}
 
-	private WebElement getInsuredVehicleLink() {
-		return insuredVehicleLink;
-	}
+	
 
 	private WebElement getFaultType() {
 		return faultType;
@@ -403,12 +396,57 @@ private WebElement getFinishButton() {
 	
 	
 
+	private WebElement getLossDate() {
+		return lossDate;
+	}
+
+	private WebElement getCctvContact() {
+		return cctvContact;
+	}
+
 	private WebElement getAddInjuryButton() {
 		return addInjuryButton;
 	}
 
 	private WebElement getAddressDropdown() {
 		return addressDropdown;
+	}
+	
+
+	private WebElement getHowReported() {
+		return howReported;
+	}
+
+	private WebElement getReportedByDropdown() {
+		return reportedByDropdown;
+	}
+
+	private WebElement getReportedByPickerIcon() {
+		return reportedByPickerIcon;
+	}
+
+	private WebElement getReportedByPickerNewPerson() {
+		return reportedByPickerNewPerson;
+	}
+
+	private WebElement getReporterRelationship() {
+		return reporterRelationship;
+	}
+
+	private WebElement getMainContactDropdown() {
+		return mainContactDropdown;
+	}
+
+	private WebElement getMainContactPickerIcon() {
+		return mainContactPickerIcon;
+	}
+
+	private WebElement getMainContactPickerNewPerson() {
+		return mainContactPickerNewPerson;
+	}
+
+	private WebElement getContactRelationship() {
+		return contactRelationship;
 	}
 
 	public boolean containsErrorMessage(String contains)

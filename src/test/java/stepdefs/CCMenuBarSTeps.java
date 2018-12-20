@@ -26,6 +26,12 @@ public class CCMenuBarSTeps extends BaseTest {
 
 		menuBarPOM.selectExistingClaim(claimnumber);
 	}
+	
+	@Given("^I Select an existing Claim$")
+	public void selectAnExistingClaim() {
+
+		menuBarPOM.selectExistingClaim(this.testDataset.getClaimNumber());
+	}
 
 	
 	
