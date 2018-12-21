@@ -18,6 +18,7 @@ public class GuideWireAccessors {
 	public static final int MAX_RETRY_ON_TEXT_INPUT = 5;
 	public static final int MAX_RETRY_ON_PICKER = 5;
 	public static final int MAX_RETRY_ON_DROPDOWN = 5;
+	public static final int MAX_RETRY_ON_GETVALUE = 2;
 
 	/**
 	 * Common method to click a Guidewire button or link It is possible to get a
@@ -114,12 +115,14 @@ public class GuideWireAccessors {
 		if (caseSensitive)
 		{
 			// need to use double quotes in case therea re any single quotes in the locator text
-			optionLocator = "//li[contains(text(),\"" + option + "\")]";
+			//optionLocator = "//li[contains(text(),\"" + option + "\")]";
+			optionLocator = "//li[normalize-space()=\"" + option + "\"]";
 		}
 		else
 		{
 			//TODO 
-			optionLocator = "//li[contains(text(),\"" + option + "\")]";
+			//optionLocator = "//li[contains(text(),\"" + option + "\")]";
+			optionLocator = "//li[normalize-space()=\"" + option + "\"]";
 		}
 		
 		//WebDriverWait wait = new WebDriverWait(driver, 10);
@@ -241,6 +244,28 @@ public class GuideWireAccessors {
 			findAttempts++;
 		}
 
+	}
+	
+	public static String getSelectedValueFromGWDropdown(WebDriver driver, WebElement gwDropdown,int initialWait) {
+		String selectedValue="";
+		int findAttempts = 0;
+		sleep(initialWait); // wait for a dropdown to be refreshed
+		while (findAttempts < MAX_RETRY_ON_GETVALUE) {
+			try {
+			//	WaitForUtils.waitForElementToBeVisible(driver, gwDropdown);
+				
+				JavascriptExecutor je = (JavascriptExecutor) driver;
+				je.executeScript("arguments[0].scrollIntoView(true);", gwDropdown);
+				selectedValue = gwDropdown.getAttribute("value");
+				break;
+			} catch (Exception e) {
+				sleep(1);
+				// TODO use a logger
+				System.out.println("getSelectedValueFromGWDropdown Exception caught:" + e.getMessage());
+			}
+			findAttempts++;
+		}
+		return selectedValue;
 	}
 
 }

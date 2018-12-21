@@ -5,7 +5,7 @@ Feature: CBPCL-216 As a ClaimCenter user with the role of Adjuster or Manager,
     Given I access ClaimCenter login page
     And I login to ClaimCenter as role "ClaimsHandler"
 
-  
+  @Ignore
   Scenario: CBPCL-216 TC1 ClaimsHandler can edit fields in Loss Details screen post FNOL
     And I Select an existing Claim
     And I select "Loss Details" on the Claim Navigator

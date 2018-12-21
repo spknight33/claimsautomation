@@ -138,13 +138,15 @@ public class CCFNOLStep3Steps extends BaseTest {
 	public void i_will_see_fault_based_on_loss_causes(DataTable dt) throws Throwable {
 		List<List<String>> list = dt.asLists(String.class);
 		SoftAssert softAssert = new SoftAssert();
+		String message;
 		for(int i=1; i<list.size(); i++) { //i starts from 1 because i=0 represents the header
 			// loop round each row in the test data table
 			fnolStep3POM.selectIncidentType(list.get(i).get(0));
 			fnolStep3POM.selectClaimCauseType(list.get(i).get(1));
 			fnolStep3POM.selectClaimSubCauseType(list.get(i).get(2));
 			
-		//	softAssert.assertTrue(fnolStep3POM.faultTypeContainsOption(list.get(i).get(3)),"Fault option Check: "+ list.get(i).get(3));
+			message = "IncidentType[" + list.get(i).get(0) + "] Cause[ " + list.get(i).get(1) + "] subcause [ " + list.get(i).get(2) +"] fault [ " + list.get(i).get(3)+"]";
+			softAssert.assertTrue(fnolStep3POM.faultTypeContainsOption(list.get(i).get(3)),"Fault option Check: "+ message);
 		}
 		softAssert.assertAll();
 	}

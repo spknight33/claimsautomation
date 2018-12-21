@@ -69,7 +69,7 @@ public class ClaimCenterFNOLStep3POM extends BaseTest{
 	@FindBy(id="FNOLWizard:AutoWorkersCompWizardStepSet:FNOLWizard_NewLossDetailsScreen:AddPropertyDamageButton-btnEl")
 	private WebElement addPropertyDamageButton;
 
-	@FindBy(id ="FFNOLWizard:AutoWorkersCompWizardStepSet:FNOLWizard_NewLossDetailsScreen:CategorizationDV:Notification_Fault-inputEl")
+	@FindBy(id ="FNOLWizard:AutoWorkersCompWizardStepSet:FNOLWizard_NewLossDetailsScreen:CategorizationDV:Notification_Fault-inputEl")
 	private WebElement faultType;
 	
 	
@@ -199,10 +199,13 @@ public class ClaimCenterFNOLStep3POM extends BaseTest{
 	{
 		boolean found=false;
 		logger.info(format("%s - going to check if options in Fault Type:"+option, getName()));
-		this.getFaultType().click();
-		String optionLocator = "//li[contains(text(),'"  + option + "')]";
-		found = this.getFaultType().findElements( By.xpath(optionLocator) ).size() > 0;
-		
+		int initialWait=3;
+		String selectedOption = GuideWireAccessors.getSelectedValueFromGWDropdown(driver, this.getFaultType(),initialWait);
+		logger.info(format("%s - selected option in Fault Type:"+selectedOption, getName()));
+		if (option.equalsIgnoreCase(selectedOption))
+		{
+			found = true;
+		}
 		return found;
 	}
 	
@@ -228,7 +231,7 @@ public class ClaimCenterFNOLStep3POM extends BaseTest{
 	public void selectClaimSubCauseType(String option)
 	{
 		logger.info(format("%s - going to select Claim SubCause option :"+option, getName()));
-		if(option.equalsIgnoreCase("Storm Damage") )
+		if(option.equalsIgnoreCase("Storm Damage") || option.equalsIgnoreCase("Repair") || option.equalsIgnoreCase("Replace") || option.equalsIgnoreCase("Unknown")|| option.equalsIgnoreCase("Reported by TP"))
 		{
 		GuideWireAccessors.selectOptionFromGWDropDown(driver,option, this.getClaimSubCause(),2); // get second occurence
 		}
@@ -451,51 +454,6 @@ private WebElement getFinishButton() {
 		return found;
 	}
 	
-	/*
-	private void selectOptionFromGWDropDown(String option,WebElement gwDropDown,int occurrence )
-	{
-		sleep(1); //TODO change to explicit
-		// as it might be down the page, always scroll into view?
-		JavascriptExecutor je = (JavascriptExecutor) driver;
-		je.executeScript("arguments[0].scrollIntoView(true);",gwDropDown);
-		gwDropDown.click(); // need to click it first
-		sleep(1);
-		String optionLocator = "//li[contains(text(),'"  + option + "')]";
-		// as we cant get access to the li elements directly under the guidewire dropdown node, we have to just search the whole document
-		// this makes it very messy as there could be more than one dropdown list with the same values
-		// therefore for now, get a list of list matches and used the occurence 1st 2nd etc of the order in the page
-		if (occurrence > 1)
-		{
-			List<WebElement> elements = gwDropDown.findElements(By.xpath(optionLocator));
-			elements.get(occurrence-1).click();
-		}
-		else
-		{
-			// we can just take the first or only
-			gwDropDown.findElement(By.xpath(optionLocator)).click();
-		}
-	}*/
 	
-	/*
-	private void setGWTextBox(String text, WebElement gwTextBox)
-	{
-		sleep(1); //TODO change
-		JavascriptExecutor je = (JavascriptExecutor) driver;
-		je.executeScript("arguments[0].scrollIntoView(true);",gwTextBox);
-		gwTextBox.clear();
-		gwTextBox.sendKeys(text);
-	}
-	*/
-	/*
-	private void clickGWButton(WebElement gwButton)
-	{
-		sleep(2); //TODO change
-		JavascriptExecutor je = (JavascriptExecutor) driver;
-		je.executeScript("arguments[0].scrollIntoView(true);",gwButton);
-		gwButton.click();
-	
-	}
-	*/
-
 
 }
