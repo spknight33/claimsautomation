@@ -12,7 +12,7 @@ import cucumber.api.java.en.Then;
 
 public class CCPOSTFNOLLossDetailsSteps extends BaseTest {
 	
-	
+	CCFNOLPersonContactSteps personContactSteps = new CCFNOLPersonContactSteps();
 	
 	@Then("^I will see post FNOL loss details$")
 	public void i_will_see_post_FNOL_loss_details() throws Throwable {
@@ -181,7 +181,49 @@ public class CCPOSTFNOLLossDetailsSteps extends BaseTest {
 
 	@Then("^I can enter data into the Notifcation and Contact fields$")
 	public void i_can_enter_data_into_the_Notifcation_and_Contact_fields(DataTable dt) throws Throwable {
-		postFnolLossDetailsPOM.selecHowReported("Portal");
+		List<String> list = dt.asList(String.class);
+	   	for(int i=0; i<list.size(); i++) {
+				switch(list.get(i))
+			    {
+			    case "How Reported":
+			    	postFnolLossDetailsPOM.selecHowReported("Portal");
+	    	   	break;
+			    case "Reported By":
+			    	postFnolLossDetailsPOM.selectNewPersonReporter();
+			    	// on select new person page, complete the details
+					personContactSteps.i_select_from_field_on_persondetails_screen("Mr.", "Prefix");
+					personContactSteps.i_input_into_the_box_on_persondetails_screen("Jimmy", "First Name");
+					personContactSteps.i_input_into_the_box_on_persondetails_screen("Reporter", "Last Name");
+					personContactSteps.i_input_into_the_box_on_persondetails_screen("The Hovel", "Address Line1");
+					personContactSteps.i_input_into_the_box_on_persondetails_screen("Waterside", "Address Line2");
+					personContactSteps.i_input_into_the_box_on_persondetails_screen("The Bridge", "Address Line3");
+					personContactSteps.i_select_on_persondetails_screen("Update");
+	    	   	break;
+			    case "Relationship to Insured":
+			    	postFnolLossDetailsPOM.selectRelationToInsured("Named Driver");
+	    	   	break;
+			    case "Main Contact":
+			    	postFnolLossDetailsPOM.selectNewPersonContact();
+			    	// on select new person page, complete the details
+					personContactSteps.i_select_from_field_on_persondetails_screen("Mr.", "Prefix");
+					personContactSteps.i_input_into_the_box_on_persondetails_screen("Ricky", "First Name");
+					personContactSteps.i_input_into_the_box_on_persondetails_screen("Contact", "Last Name");
+					personContactSteps.i_input_into_the_box_on_persondetails_screen("The Bends", "Address Line1");
+					personContactSteps.i_input_into_the_box_on_persondetails_screen("Waterside", "Address Line2");
+					personContactSteps.i_input_into_the_box_on_persondetails_screen("The Bridge", "Address Line3");
+					personContactSteps.i_select_on_persondetails_screen("Update");
+			    case "Contact Relationship to Insured":
+			    	postFnolLossDetailsPOM.selectContactRelationToInsured("Police");
+	    	   	break;
+			   
+			   
+			    default:
+			    Assert.fail("unknown input field :"+ list.get(i)+" - check cucumber script!");
+			    }
+				
+				
+			}
+		
 	}
 	
 	

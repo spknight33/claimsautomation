@@ -5,7 +5,7 @@ Feature: CBPCL-216 As a ClaimCenter user with the role of Adjuster or Manager,
     Given I access ClaimCenter login page
     And I login to ClaimCenter as role "ClaimsHandler"
 
-  @Ignore
+  
   Scenario: CBPCL-216 TC1 ClaimsHandler can edit fields in Loss Details screen post FNOL
     And I Select an existing Claim
     And I select "Loss Details" on the Claim Navigator
@@ -18,7 +18,7 @@ Feature: CBPCL-216 As a ClaimCenter user with the role of Adjuster or Manager,
     And I can enter data into the Incident Question fields
       | What were you using the vehicle for | What was the pourpose of your Journey | Do You know the other driver | At what speed were you travelling at impact | Weather | Road Conditions | Supporting photgraphic evidence | CCTv/Dashcam footage available |
     And I can enter data into the Notifcation and Contact fields
-      | How Reported | Reported By | Relationship to Insured | Main Contact | Relationship to Insured |
+      | How Reported | Reported By | Relationship to Insured | Main Contact | Contact Relationship to Insured |
 
     @Ignore
     Scenario: CBPCL-216 TC2 ClaimsHandler can add Vehicle from Loss Details post FNOL 

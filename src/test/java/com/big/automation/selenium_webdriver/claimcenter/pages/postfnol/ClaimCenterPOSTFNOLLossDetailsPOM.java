@@ -305,8 +305,42 @@ public class ClaimCenterPOSTFNOLLossDetailsPOM extends BaseTest{
 	private WebElement getCancelButton() {
 	return cancelButton;
 }
+	public boolean howReportedContainsOption(String option) {
+		boolean found = false;
+		logger.info(format("%s - going to check if options in how reported:" + option, getName()));
+		this.getHowReported().click();
+		String optionLocator = "//li[text()='" + option + "']";
+		found = this.getHowReported().findElements(By.xpath(optionLocator)).size() > 0;
 
+		return found;
+	}
 
+	public void selectReportedByName(String option) {
+		logger.info(format("%s - going to select report by name option :" + option, getName()));
+		GuideWireAccessors.selectOptionFromGWDropDown(driver, option, getReportedByDropdown(), 1);
+	}
+
+	public void selectRelationToInsured(String option) {
+		logger.info(format("%s - going to select relation to insured option :" + option, getName()));
+		GuideWireAccessors.selectOptionFromGWDropDown(driver, option, getReporterRelationship(), 1);
+	}
+	public void selectContactRelationToInsured(String option) {
+		logger.info(format("%s - going to select contact relation to insured option :" + option, getName()));
+		GuideWireAccessors.selectOptionFromGWDropDown(driver, option, getContactRelationship(), 2);
+	}
+
+	public void selectNewPersonReporter()
+	{
+		logger.info(format("%s - going to select New Person from reported by picker", getName()));
+		GuideWireAccessors.selectOptionFromGWPicker(driver, this.getReportedByPickerIcon(),this.getReportedByPickerNewPerson());
+	}
+	
+	public void selectNewPersonContact()
+	{
+		logger.info(format("%s - going to select New Person from contact picker", getName()));
+		GuideWireAccessors.selectOptionFromGWPicker(driver, this.getMainContactPickerIcon(),this.getMainContactPickerNewPerson());
+	}
+	
 
 	private WebElement getUpdateButton() {
 		
