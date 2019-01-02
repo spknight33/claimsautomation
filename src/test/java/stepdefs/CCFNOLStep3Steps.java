@@ -10,10 +10,12 @@ import com.big.automation.selenium_webdriver.common.baseTest.BaseTest;
 import cucumber.api.DataTable;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
+import cucumber.api.java.en.When;
 
 public class CCFNOLStep3Steps extends BaseTest {
 	
 	CCFNOLStep2Steps step2Steps = new CCFNOLStep2Steps();
+	CCFNOLStep4Steps step4Steps = new CCFNOLStep4Steps();
 
 	@Then("^I will be on step3 for FNOL$")
 	public void i_will_be_on_step3_for_FNOL() throws Throwable {
@@ -228,6 +230,53 @@ public class CCFNOLStep3Steps extends BaseTest {
 		
 		fnolStep3POM.setCircumstancesValue(circumstances);
 	}
+	
+	@When("^I select the loss cause types and try to proceed past step3 I will see the validation error message \"([^\"]*)\"$")
+	public void i_select_the_loss_cause_types_and_try_to_proceed_past_step_I_will_see_the_validation_error_message(String errorMessage, DataTable dt) throws Throwable {
+	 List<List<String>> list = dt.asLists(String.class);
+		SoftAssert softAssert = new SoftAssert();
+		String message;
+		// close any duplicate claim window
+		fnolStep3POM.closeDuplicateClaimWindow();
+		// select the address so that erro is not generated from that
+		fnolStep3POM.selectAddressLocation(testDataset.getAddress());
+		for(int i=1; i<list.size(); i++) { //i starts from 1 because i=0 represents the header
+			// loop round each row in the test data table
+			fnolStep3POM.selectIncidentType(list.get(i).get(0));
+			fnolStep3POM.selectClaimCauseType(list.get(i).get(1));
+			fnolStep3POM.selectClaimSubCauseType(list.get(i).get(2));
+			next();
+			message = "IncidentType[" + list.get(i).get(0) + "] Cause[ " + list.get(i).get(1) + "] subcause [ " + list.get(i).get(2)+"]";
+			softAssert.assertTrue(fnolStep3POM.containsErrorMessage(errorMessage),message);
+		
+		}
+		softAssert.assertAll();
+	}
+	
+	@When("^I select the loss causes I will be able to proceed past step3 with no validation error$")
+	public void i_select_the_loss_causes_I_will_be_able_to_proceed_past_step_with_no_validation_error(DataTable dt) throws Throwable {
+		List<List<String>> list = dt.asLists(String.class);
+		SoftAssert softAssert = new SoftAssert();
+		String message;
+		// close any duplicate claim window
+		fnolStep3POM.closeDuplicateClaimWindow();
+		// select the address so that error is not generated from that
+		fnolStep3POM.selectAddressLocation(testDataset.getAddress());
+		for(int i=1; i<list.size(); i++) { //i starts from 1 because i=0 represents the header
+			// loop round each row in the test data table
+			fnolStep3POM.selectIncidentType(list.get(i).get(0));
+			fnolStep3POM.selectClaimCauseType(list.get(i).get(1));
+			fnolStep3POM.selectClaimSubCauseType(list.get(i).get(2));
+			next();
+			message = "IncidentType[" + list.get(i).get(0) + "] Cause[ " + list.get(i).get(1) + "] subcause [ " + list.get(i).get(2)+"]";
+			softAssert.assertTrue(step4Steps.step4isDisplayed(),message);
+			step4Steps.previous();
+			
+		}
+		softAssert.assertAll();
+	}
+	
+	
 	
 
 }

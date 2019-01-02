@@ -1,3 +1,4 @@
+@Ignore
 Feature: CBPCL-176 As an Operator, I want to be able to record "Fault" "Split Liability" and "Non Fault" fault causes.
   I want this to be displayed so I am aware which fault code applies. This also needs to be able to be changed.
 
@@ -40,7 +41,7 @@ Feature: CBPCL-176 As an Operator, I want to be able to record "Fault" "Split Li
       | Accident      | Changing Lanes                                       | Swerved to avoid a vehicle which did not stop and collided with a third party                                    | Fault           |
       | Accident      | Changing Lanes                                       | Swerved to avoid a vehicle which braked suddenly and collided with third party                                   | Fault           |
       | Accident      | Changing Lanes                                       | Third party failed to notice Insured                                                                             | Non Fault       |
-      | Accident      | Changing Lanes                                       | Third party swerved into my path                                                                                 | Non Fault       |
+      | Accident      | Changing Lanes                                       | Third party swerved into my path.                                                                                 | Non Fault       |
       | Accident      | Collided With Fixed Object                           | Having swerved to avoid an animal which ran across the road                                                      | Fault           |
       | Accident      | Collided With Fixed Object                           | Having swerved to avoid a pedestrian crossing the road                                                           | Fault           |
       | Accident      | Collided With Fixed Object                           | Having had attention distracted                                                                                  | Fault           |

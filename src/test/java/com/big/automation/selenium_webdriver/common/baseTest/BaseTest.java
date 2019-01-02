@@ -33,6 +33,7 @@ import com.big.automation.selenium_webdriver.claimcenter.pages.ClaimCenterFNOLPe
 import com.big.automation.selenium_webdriver.claimcenter.pages.ClaimCenterFNOLStep1POM;
 import com.big.automation.selenium_webdriver.claimcenter.pages.ClaimCenterFNOLStep2POM;
 import com.big.automation.selenium_webdriver.claimcenter.pages.ClaimCenterFNOLStep3POM;
+import com.big.automation.selenium_webdriver.claimcenter.pages.ClaimCenterFNOLStep4POM;
 import com.big.automation.selenium_webdriver.claimcenter.pages.ClaimCenterLoginPOM;
 import com.big.automation.selenium_webdriver.claimcenter.pages.ClaimCenterMenuBarPOM;
 import com.big.automation.selenium_webdriver.claimcenter.pages.ClaimCenterNavigatorBarPOM;
@@ -77,6 +78,7 @@ public class BaseTest extends AbstractTestNGCucumberTests{
    public static ClaimCenterFNOLStep1POM fnolStep1POM;
    public static ClaimCenterFNOLStep2POM fnolStep2POM;
    public static ClaimCenterFNOLStep3POM fnolStep3POM;
+   public static ClaimCenterFNOLStep4POM fnolStep4POM;
    public static ClaimCenterFNOLPedestrianDetailsPOM fnolPedestrianPOM;
    public static ClaimCenterFNOLVehicleDetailsPOM fnolVehicleDetailsPOM;
    public static ClaimCenterDriverDetailsPOM driverDetailsPOM;
@@ -159,6 +161,7 @@ public class BaseTest extends AbstractTestNGCucumberTests{
       fnolStep1POM = PageFactory.initElements(driver, ClaimCenterFNOLStep1POM.class);
       fnolStep2POM = PageFactory.initElements(driver, ClaimCenterFNOLStep2POM.class);
       fnolStep3POM = PageFactory.initElements(driver, ClaimCenterFNOLStep3POM.class);
+      fnolStep4POM = PageFactory.initElements(driver, ClaimCenterFNOLStep4POM.class);
       fnolPedestrianPOM= PageFactory.initElements(driver, ClaimCenterFNOLPedestrianDetailsPOM.class);
       
       fnolVehicleDetailsPOM= PageFactory.initElements(driver, ClaimCenterFNOLVehicleDetailsPOM.class);

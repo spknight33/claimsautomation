@@ -31,7 +31,7 @@ public class CCFNOLStep2Steps extends BaseTest{
 		fnolStep2POM.isPageTitleDisplayed("Step 2 of 5: Basic information");
 	}
 	
-	
+	@Then("I complete step2 for FNOL$")
 	public void iCompleteStep2FNOL() throws Throwable 
 	{
 		// need to configure to get a specific configurable pilicy number
@@ -43,7 +43,7 @@ public class CCFNOLStep2Steps extends BaseTest{
 		
 	}
 	
-	
+	@Then("I complete step2 for FNOL without insured vehicle$")
 	public void iCompleteStep2FNOLWithoutInsuredVehicle() throws Throwable 
 	{
 		// need to configure to get a specific configurable pilicy number

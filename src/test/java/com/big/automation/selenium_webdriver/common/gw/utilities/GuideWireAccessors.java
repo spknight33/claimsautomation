@@ -19,6 +19,7 @@ public class GuideWireAccessors {
 	public static final int MAX_RETRY_ON_PICKER = 5;
 	public static final int MAX_RETRY_ON_DROPDOWN = 5;
 	public static final int MAX_RETRY_ON_GETVALUE = 2;
+	public static final int MAX_RETRY_ON_GETTEXT = 3;
 
 	/**
 	 * Common method to click a Guidewire button or link It is possible to get a
@@ -45,6 +46,26 @@ public class GuideWireAccessors {
 			findAttempts++;
 		}
 	}
+	
+	public static String getGWElementText(WebDriver driver, WebElement gwElement) {
+		int findAttempts = 0;
+		String text="";
+		while (findAttempts < MAX_RETRY_ON_GETTEXT) {
+			try {
+				
+				JavascriptExecutor je = (JavascriptExecutor) driver;
+				je.executeScript("arguments[0].scrollIntoView(true);", gwElement);
+				text = gwElement.getText();
+				break;
+			} catch (Exception e) {
+				sleep(3);
+				// TODO use a logger
+				System.out.println("getext Exception caught:" + e.getMessage());
+			}
+			findAttempts++;
+		}
+		return text;
+	}
 
 	/**
 	 * Common method to enter text into a text box or area. It is possible to get a
@@ -66,7 +87,7 @@ public class GuideWireAccessors {
 				gwTextBox.sendKeys(text);
 				break;
 			} catch (Exception e) {
-				sleep(1);
+				sleep(3);
 				// TODO use a logger
 				System.out.println("setkGWTestBox Exception caught:" + e.getMessage());
 			}

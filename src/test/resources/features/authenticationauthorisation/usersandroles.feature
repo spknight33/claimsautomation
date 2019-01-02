@@ -1,3 +1,4 @@
+@Ignore
 Feature: CBPCL-71 As a user I want to login to Claims Center with the correct role
 
   Background: 

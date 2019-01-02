@@ -1,3 +1,4 @@
+@Ignore
 Feature: CBPCL-xxx As an Operator, I want to be able to add theft detail to insured vehicle
 
  
