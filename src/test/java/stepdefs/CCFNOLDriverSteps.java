@@ -1,13 +1,9 @@
 package stepdefs;
 
-import java.util.List;
-
 import org.testng.Assert;
-import org.testng.asserts.SoftAssert;
 
 import com.big.automation.selenium_webdriver.common.baseTest.BaseTest;
 
-import cucumber.api.DataTable;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 
@@ -18,7 +14,7 @@ public class CCFNOLDriverSteps extends BaseTest {
 	
 	@Then("^I will be on Driver screen for FNOL$")
 	public void i_will_be_on_driver_screen_for_FNOL() throws Throwable {
-	    driverDetailsPOM.isPageTitleDisplayed("Driver Details");
+	    fnolDriverDetailsPOM.isPageTitleDisplayed("Driver Details");
 	}
 
 	
@@ -27,7 +23,7 @@ public class CCFNOLDriverSteps extends BaseTest {
 		switch(fieldName)
 		    {
 	    case "Driver Name":
-	    	driverDetailsPOM.selectDriverName(fieldValue);
+	    	fnolDriverDetailsPOM.selectDriverName(fieldValue);
 	    	break;
 	  
 	  
@@ -39,6 +35,18 @@ public class CCFNOLDriverSteps extends BaseTest {
 	@Given("^I click ok button on driver screen$")
 	public void next() {
 		
-		driverDetailsPOM.selectOK();
+		fnolDriverDetailsPOM.selectOK();
+	}
+	
+	@Given("^I complete fields on FNOL new TP driver incident$")
+	public void i_complete_all_fields() throws Throwable {
+		
+		fnolDriverDetailsPOM.setAddressLine1("9 Walkers Road");
+		fnolDriverDetailsPOM.setFirstName("Jim");
+		fnolDriverDetailsPOM.setLastName("Boyracer");
+		
+	
+		fnolDriverDetailsPOM.selectOK();
+		
 	}
 }

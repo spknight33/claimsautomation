@@ -201,11 +201,12 @@ public class CCFNOLStep3Steps extends BaseTest {
 		fnolStep3POM.addPedestrian();
 	}
 	
-	@Given("^I click add Property Damage on step2$")
+	@Given("^I click add Property Damage on step3$")
 	public void addPropertyDamage() {
 		
 		fnolStep3POM.addPropertyDamage();
 	}
+	
 	
 	
 	@Given("^I input \"([^\"]*)\" into the \"([^\"]*)\" box on step3$")

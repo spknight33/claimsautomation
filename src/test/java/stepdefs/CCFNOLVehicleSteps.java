@@ -52,6 +52,9 @@ public class CCFNOLVehicleSteps extends BaseTest {
 		case "Vehicle Type":
 			fnolVehicleDetailsPOM.selectVehicleType(fieldValue);
 			break;
+		case "Vehicle Owner":
+			fnolVehicleDetailsPOM.selectOwnerName(fieldValue);
+			break;
 
 		default:
 			Assert.fail("unknown input field :" + fieldValue + " - check cucumber script!");

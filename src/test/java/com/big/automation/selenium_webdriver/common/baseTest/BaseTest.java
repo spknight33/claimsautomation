@@ -28,7 +28,7 @@ import com.aventstack.extentreports.reporter.ExtentHtmlReporter;
 import com.aventstack.extentreports.reporter.configuration.ChartLocation;
 import com.aventstack.extentreports.reporter.configuration.Theme;
 import com.big.automation.selenium_webdriver.claimcenter.pages.ClaimCenterCompanyDetailsPOM;
-import com.big.automation.selenium_webdriver.claimcenter.pages.ClaimCenterDriverDetailsPOM;
+import com.big.automation.selenium_webdriver.claimcenter.pages.ClaimCenterFNOLDriverDetailsPOM;
 import com.big.automation.selenium_webdriver.claimcenter.pages.ClaimCenterFNOLPedestrianDetailsPOM;
 import com.big.automation.selenium_webdriver.claimcenter.pages.ClaimCenterFNOLStep1POM;
 import com.big.automation.selenium_webdriver.claimcenter.pages.ClaimCenterFNOLStep2POM;
@@ -81,9 +81,9 @@ public class BaseTest extends AbstractTestNGCucumberTests{
    public static ClaimCenterFNOLStep4POM fnolStep4POM;
    public static ClaimCenterFNOLPedestrianDetailsPOM fnolPedestrianPOM;
    public static ClaimCenterFNOLVehicleDetailsPOM fnolVehicleDetailsPOM;
-   public static ClaimCenterDriverDetailsPOM driverDetailsPOM;
+   public static ClaimCenterFNOLDriverDetailsPOM fnolDriverDetailsPOM;
    public static ClaimCenterPersonDetailsPOM personContactDetailsPOM;
-   public static ClaimCenterPropertyDetailsPOM propertyDetailsPOM;
+   public static ClaimCenterPropertyDetailsPOM fnolPropertyDetailsPOM;
    public static ClaimCenterPOSTFNOLLossDetailsPOM postFnolLossDetailsPOM;
    public static ClaimCenterPOSTFNOLNewPropertyPOM postFnolNewPropertyPOM;
    public static ClaimCenterPOSTFNOLNewInjuryPOM postFnolNewInjuryPOM;
@@ -165,9 +165,9 @@ public class BaseTest extends AbstractTestNGCucumberTests{
       fnolPedestrianPOM= PageFactory.initElements(driver, ClaimCenterFNOLPedestrianDetailsPOM.class);
       
       fnolVehicleDetailsPOM= PageFactory.initElements(driver, ClaimCenterFNOLVehicleDetailsPOM.class);
-      driverDetailsPOM= PageFactory.initElements(driver, ClaimCenterDriverDetailsPOM.class);
+      fnolDriverDetailsPOM= PageFactory.initElements(driver, ClaimCenterFNOLDriverDetailsPOM.class);
       personContactDetailsPOM= PageFactory.initElements(driver, ClaimCenterPersonDetailsPOM.class);  
-      propertyDetailsPOM= PageFactory.initElements(driver, ClaimCenterPropertyDetailsPOM.class);  
+      fnolPropertyDetailsPOM= PageFactory.initElements(driver, ClaimCenterPropertyDetailsPOM.class);  
      
       postFnolLossDetailsPOM= PageFactory.initElements(driver, ClaimCenterPOSTFNOLLossDetailsPOM.class); 
       postFnolNewPropertyPOM= PageFactory.initElements(driver, ClaimCenterPOSTFNOLNewPropertyPOM.class);

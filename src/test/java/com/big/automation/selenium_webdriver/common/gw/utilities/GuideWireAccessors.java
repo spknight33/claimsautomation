@@ -33,7 +33,7 @@ public class GuideWireAccessors {
 		int findAttempts = 0;
 		while (findAttempts < MAX_RETRY_ON_CLICK_ELEMENT) {
 			try {
-				WaitForUtils.waitForElementToBeClickable(driver, gwButton);
+				WaitForUtils.waitForElementToBeClickableVariable(driver, gwButton,10);
 				JavascriptExecutor je = (JavascriptExecutor) driver;
 				je.executeScript("arguments[0].scrollIntoView(true);", gwButton);
 				gwButton.click();
@@ -66,6 +66,13 @@ public class GuideWireAccessors {
 		}
 		return text;
 	}
+	
+	public static List<WebElement> getErrorMessages(WebDriver driver) {
+		// add a delay to allow any messages 
+		//sleep(1);
+		List<WebElement> elements = driver.findElements(By.className("messages"));
+		return elements;
+	}
 
 	/**
 	 * Common method to enter text into a text box or area. It is possible to get a
@@ -80,7 +87,7 @@ public class GuideWireAccessors {
 		int findAttempts = 0;
 		while (findAttempts < MAX_RETRY_ON_TEXT_INPUT) {
 			try {
-				WaitForUtils.waitForElementToBeClickable(driver, gwTextBox);
+				WaitForUtils.waitForElementToBeClickableVariable(driver, gwTextBox,10);
 				JavascriptExecutor je = (JavascriptExecutor) driver;
 				je.executeScript("arguments[0].scrollIntoView(true);", gwTextBox);
 				gwTextBox.clear();
@@ -117,7 +124,7 @@ public class GuideWireAccessors {
 		int findAttempts = 0;
 		while (findAttempts < MAX_RETRY_ON_DROPDOWN) {
 			try {
-				WaitForUtils.waitForElementToBeClickable(driver, gwDropDown);
+				WaitForUtils.waitForElementToBeClickableVariable(driver, gwDropDown,10); //10 seconds max
 				// as it might be down the page, always scroll into view
 				JavascriptExecutor je = (JavascriptExecutor) driver;
 				je.executeScript("arguments[0].scrollIntoView(true);", gwDropDown);
@@ -192,36 +199,7 @@ public class GuideWireAccessors {
 
 	}
 
-	/*
-	 * public static void selectOptionFromGWDropDown(WebDriver driver, String
-	 * option, WebElement gwDropDown, int occurrence) {
-	 * WaitForUtils.waitForElementToBeClickable(driver, gwDropDown); // as it might
-	 * be down the page, always scroll into view JavascriptExecutor je =
-	 * (JavascriptExecutor) driver;
-	 * je.executeScript("arguments[0].scrollIntoView(true);", gwDropDown);
-	 * 
-	 * // we can get a element not clickable, even though we have waited! try {
-	 * gwDropDown.click(); // need to click it first } catch (Exception e) {
-	 * sleep(5); gwDropDown.click(); }
-	 * 
-	 * String optionLocator = "//li[contains(text(),'" + option + "')]";
-	 * 
-	 * WebDriverWait wait = new WebDriverWait(driver, 10);
-	 * wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(optionLocator
-	 * )));
-	 * 
-	 * // as we cant get access to the li elements directly under the guidewire //
-	 * dropdown node, we have to just search the whole document // this makes it
-	 * very messy as there could be more than one dropdown list with // the same
-	 * values // therefore for now, get a list of list matches and used the
-	 * occurence 1st 2nd // etc of the order in the page if (occurrence > 1) {
-	 * List<WebElement> elements = gwDropDown.findElements(By.xpath(optionLocator));
-	 * // it could be that there is only one occurrence in the page, even though //
-	 * occurrence 2 was asked for // as a workaround for now, just click the last?
-	 * if (occurrence != elements.size()) { occurrence = elements.size(); }
-	 * elements.get(occurrence - 1).click(); } else { // we can just take the first
-	 * or only gwDropDown.findElement(By.xpath(optionLocator)).click(); } }
-	 */
+	
 
 	/**
 	 * used to select the link from a gw picker icon drop mdown (e.g for new person)
@@ -235,7 +213,7 @@ public class GuideWireAccessors {
 		int findAttempts = 0;
 		while (findAttempts < MAX_RETRY_ON_PICKER) {
 			try {
-				WaitForUtils.waitForElementToBeClickable(driver, picker);
+				WaitForUtils.waitForElementToBeClickableVariable(driver, picker,10);
 				// as it might be down the page, always scroll into view
 				JavascriptExecutor je = (JavascriptExecutor) driver;
 				je.executeScript("arguments[0].scrollIntoView(true);", picker);
@@ -254,7 +232,7 @@ public class GuideWireAccessors {
 		findAttempts = 0;
 		while (findAttempts < MAX_RETRY_ON_PICKER) {
 			try {
-				WaitForUtils.waitForElementToBeClickable(driver, pickerOption);
+				WaitForUtils.waitForElementToBeClickableVariable(driver, pickerOption,10);
 				pickerOption.click();
 				break;
 			} catch (Exception e) {

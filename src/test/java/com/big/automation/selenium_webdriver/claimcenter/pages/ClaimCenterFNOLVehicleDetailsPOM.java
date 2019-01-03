@@ -170,6 +170,11 @@ public class ClaimCenterFNOLVehicleDetailsPOM extends BaseTest{
 		logger.info(format("%s - going to select airbags deployed option :"+option, getName()));
 		GuideWireAccessors.selectOptionFromGWDropDown(driver,option, this.getAirBagsDropdown(),1); // first on page
 	}
+	public void selectOwnerName(String option)
+	{
+		logger.info(format("%s - going to select vehgicle owner name option :"+option, getName()));
+		GuideWireAccessors.selectOptionFromGWDropDown(driver, option, this.getOwnerDropdown(),1);
+	}
 	
 	public void selectVehicleType(String option)
 	{
