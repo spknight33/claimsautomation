@@ -46,7 +46,7 @@ public class CCPOSTFNOLNewInjurySteps extends BaseTest {
 		
 		// on search hospital page
 		searchAddressBookSteps.i_will_be_on_search_address_book_screen();
-		searchAddressBookSteps.i_input_into_the_box_on_search_addres_book_screen("QUEEN ALEX", "Search Name");
+		searchAddressBookSteps.i_input_into_the_box_on_search_address_book_screen("QUEEN ALEX", "Search Name");
 		searchAddressBookSteps.i_select_on_search_address_book_screen("Search");
 		searchAddressBookSteps.i_select_on_search_address_book_screen("Select First Result");
 		

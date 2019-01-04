@@ -263,7 +263,7 @@ public void clickSubMenu(String topmenu, String submenuitem) throws Exception {
 		sleep(3);
 		this.existingClaimTextBox.sendKeys(claimnumber);
 		this.findClaimButton.click();
-		logger.info(format("%s - done, Search Claim for claimnumber clicked", getName()));
+		logger.info(format("%s - done, Search Claim for claimnumber clicked:"+claimnumber, getName()));
 	}
 	
 	

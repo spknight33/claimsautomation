@@ -1,4 +1,3 @@
-@Ignore
 Feature: CBPCL-216 As a ClaimCenter user with the role of Adjuster or Manager,
   I want to be able update the details on the loss so that I can make sure that the data on the claim represents our current understanding of the loss.
 
@@ -6,6 +5,17 @@ Feature: CBPCL-216 As a ClaimCenter user with the role of Adjuster or Manager,
     Given I access ClaimCenter login page
     And I login to ClaimCenter as role "ClaimsHandler"
 
+ 
+ Scenario: CBPCL-47 TC11 Police details can be added in Loss Details of post FNOL
+    And I Select an existing Claim
+    And I select "Loss Details" on the Claim Navigator
+    And I will see post FNOL loss details
+    When I click edit button on post FNOL loss details
+   When I click add Police details on post FNOL loss details
+   Then I will be on new police details screen for post FNOL
+   And I complete fields on post FNOL new police details screen
+   And I click update button on post FNOL loss details
+ 
   @Ignore
   Scenario: CBPCL-216 TC1 ClaimsHandler can edit fields in Loss Details screen post FNOL
     And I Select an existing Claim

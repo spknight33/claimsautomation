@@ -79,6 +79,13 @@ public class ClaimCenterSearchAddressBookPOM extends BaseTest{
 		logger.info(format("%s - done, search name set", getName()));
 	}
 	
+	public void selectSearchType(String option)
+	{
+		logger.info(format("%s -  going to set search type", getName()));
+		GuideWireAccessors.selectOptionFromGWDropDown(driver, option, this.getContactType(), 1);
+		logger.info(format("%s - done, search type set", getName()));
+	}
+	
 	
    
 	private WebElement getCancelButton() {

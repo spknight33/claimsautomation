@@ -20,7 +20,7 @@ public class ClaimCenterDataBuilder {
 		//data.address = "12 The grove, newcastle, NE31PX";
 		data.lossDate = "20/12/2018";
 		data.lossTime = "09:00 AM";
-		data.claimNumber ="000-00-000005";
+		data.claimNumber ="000-00-000009";
 		
 		return data;
 	}

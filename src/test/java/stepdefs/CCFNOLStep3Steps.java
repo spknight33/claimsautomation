@@ -207,6 +207,12 @@ public class CCFNOLStep3Steps extends BaseTest {
 		fnolStep3POM.addPropertyDamage();
 	}
 	
+	@Given("^I click add Police Details on step3$")
+	public void addPoliceDetails() {
+		
+		fnolStep3POM.addPoliceDetails();
+	}
+	
 	
 	
 	@Given("^I input \"([^\"]*)\" into the \"([^\"]*)\" box on step3$")

@@ -1,16 +1,13 @@
 package com.big.automation.selenium_webdriver.claimcenter.pages;
 
+import static com.big.automation.selenium_webdriver.common.utilities.ThreadUtils.sleep;
 import static java.lang.String.format;
 
 import java.util.List;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
-import static com.big.automation.selenium_webdriver.common.utilities.ThreadUtils.sleep;
 
 import com.big.automation.selenium_webdriver.common.baseTest.BaseTest;
 import com.big.automation.selenium_webdriver.common.gw.utilities.GuideWireAccessors;
@@ -95,6 +92,10 @@ public class ClaimCenterFNOLStep3POM extends BaseTest{
 	@FindBy(id ="FNOLWizard:AutoWorkersCompWizardStepSet:FNOLWizard_NewLossDetailsScreen:LossDetailsAddressDV:IncidentQuestions_CCTVDashcamFootageAvail_itb-inputEl")
 	private WebElement cctv;
 	
+	@FindBy(id="FNOLWizard:AutoWorkersCompWizardStepSet:FNOLWizard_NewLossDetailsScreen:PoliceDetailsLV:PoliceDetailsLV_tb:Add-btnEl")
+	private WebElement addPoliceButton;
+	@FindBy(id="FNOLWizard:AutoWorkersCompWizardStepSet:FNOLWizard_NewLossDetailsScreen:PoliceDetailsLV:PoliceDetailsLV_tb:Remove-btnEl")
+	private WebElement removePoliceButton;
 	
 	@FindBy(id ="FNOLWizard:AutoWorkersCompWizardStepSet:FNOLWizard_NewLossDetailsScreen:LossDetailsAddressDV:AddressDetailInputSetRef:CCAddressInputSet:globalAddressContainer:Address_Picker-inputEl")
 	private WebElement addressDropdown;
@@ -336,6 +337,12 @@ public class ClaimCenterFNOLStep3POM extends BaseTest{
 		logger.info(format("%s - done, Add PropertyDamage clicked", getName()));
 	}
    
+   public void addPoliceDetails() {
+		logger.info(format("%s -  going to click Add Police", getName()));
+		GuideWireAccessors.clickGWButton(driver,getAddPoliceButton());
+		logger.info(format("%s - done, Add Police clicked", getName()));
+	}
+   
 	private WebElement getCancelButton() {
 	return cancelButton;
 }
@@ -438,6 +445,28 @@ private WebElement getFinishButton() {
 
 	private WebElement getAddressDropdown() {
 		return addressDropdown;
+	}
+	
+	
+
+	private WebElement getTitleDropDown() {
+		return titleDropDown;
+	}
+
+	private WebElement getCloseDuplicateClaimWindow() {
+		return closeDuplicateClaimWindow;
+	}
+
+	private String getCloseDuplicateClaimLocator() {
+		return closeDuplicateClaimLocator;
+	}
+
+	private WebElement getAddPoliceButton() {
+		return addPoliceButton;
+	}
+
+	private WebElement getRemovePoliceButton() {
+		return removePoliceButton;
 	}
 
 	public boolean containsErrorMessage(String contains)

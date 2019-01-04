@@ -40,7 +40,7 @@ public class SearchAddressBookSteps extends BaseTest {
 	
 	
 	@Given("^I input \"([^\"]*)\" into the \"([^\"]*)\" box on search address book screen$")
-	public void i_input_into_the_box_on_search_addres_book_screen(String fieldValue, String fieldName) throws Throwable {
+	public void i_input_into_the_box_on_search_address_book_screen(String fieldValue, String fieldName) throws Throwable {
 		switch(fieldName)
 	    {
 	    case "Search Name":
@@ -50,6 +50,15 @@ public class SearchAddressBookSteps extends BaseTest {
 	    default:
 	    Assert.fail("unknown input field :"+ fieldName+" - check cucumber script!");
 	    }
+	}
+	
+	// to be called from other steps directly
+	public void searchForContactAndSelectFirst(String type, String name)
+	{
+		searchAddressBookPOM.selectSearchType(type);
+		searchAddressBookPOM.setSearchName(name);
+		searchAddressBookPOM.selectSearch();
+		searchAddressBookPOM.selectFirstResult();
 	}
 	
 

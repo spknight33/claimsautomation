@@ -54,6 +54,12 @@ public class CCPOSTFNOLLossDetailsSteps extends BaseTest {
 		postFnolLossDetailsPOM.addInjury();
 	}
 	
+	@Given("^I click add Police details on post FNOL loss details$")
+	public void addPoliceDetails() {
+		
+		postFnolLossDetailsPOM.addPolice();
+	}
+	
 	@Then("^I can enter data into the Loss Details fields$")
 	public void i_can_enter_data_into_the_Loss_Details_fields(DataTable dt) throws Throwable {
 		List<String> list = dt.asList(String.class);

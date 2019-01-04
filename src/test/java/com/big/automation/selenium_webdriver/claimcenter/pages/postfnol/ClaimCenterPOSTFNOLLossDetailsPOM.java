@@ -114,6 +114,10 @@ public class ClaimCenterPOSTFNOLLossDetailsPOM extends BaseTest{
 	@FindBy(id ="FNOLWizard:AutoWorkersCompWizardStepSet:FNOLWizard_NewLossDetailsScreen:LossDetailsAddressDV:AddressDetailInputSetRef:CCAddressInputSet:globalAddressContainer:Address_Picker-inputEl")
 	private WebElement addressDropdown;
 	
+	@FindBy(id ="ClaimLossDetails:ClaimLossDetailsScreen:LossDetailsPanelSet:LossDetailsCardCV:LossDetailsDV:PoliceDetailsLV:PoliceDetailsLV_tb:Add-btnEl")
+	private WebElement addPoliceButton;
+	
+	
 	public String getName() {
 
 		return "Post FNOL Loss Details";
@@ -295,6 +299,11 @@ public class ClaimCenterPOSTFNOLLossDetailsPOM extends BaseTest{
 		logger.info(format("%s - done, set cctv contct", getName()));
 	}
    
+   public void addPolice() {
+		logger.info(format("%s -  going to click Add Police", getName()));
+		GuideWireAccessors.clickGWButton(driver, this.getAddPoliceButton());
+		logger.info(format("%s - done, Add Police clicked", getName()));
+	}
    
    public void selecHowReported(String option)
 	{
@@ -481,6 +490,12 @@ public class ClaimCenterPOSTFNOLLossDetailsPOM extends BaseTest{
 
 	private WebElement getContactRelationship() {
 		return contactRelationship;
+	}
+	
+	
+
+	private WebElement getAddPoliceButton() {
+		return addPoliceButton;
 	}
 
 	public boolean containsErrorMessage(String contains)

@@ -29,20 +29,22 @@ import com.aventstack.extentreports.reporter.configuration.ChartLocation;
 import com.aventstack.extentreports.reporter.configuration.Theme;
 import com.big.automation.selenium_webdriver.claimcenter.pages.ClaimCenterCompanyDetailsPOM;
 import com.big.automation.selenium_webdriver.claimcenter.pages.ClaimCenterFNOLDriverDetailsPOM;
+import com.big.automation.selenium_webdriver.claimcenter.pages.ClaimCenterFNOLNewPoliceDetailsPOM;
 import com.big.automation.selenium_webdriver.claimcenter.pages.ClaimCenterFNOLPedestrianDetailsPOM;
 import com.big.automation.selenium_webdriver.claimcenter.pages.ClaimCenterFNOLStep1POM;
 import com.big.automation.selenium_webdriver.claimcenter.pages.ClaimCenterFNOLStep2POM;
 import com.big.automation.selenium_webdriver.claimcenter.pages.ClaimCenterFNOLStep3POM;
 import com.big.automation.selenium_webdriver.claimcenter.pages.ClaimCenterFNOLStep4POM;
+import com.big.automation.selenium_webdriver.claimcenter.pages.ClaimCenterFNOLVehicleDetailsPOM;
 import com.big.automation.selenium_webdriver.claimcenter.pages.ClaimCenterLoginPOM;
 import com.big.automation.selenium_webdriver.claimcenter.pages.ClaimCenterMenuBarPOM;
 import com.big.automation.selenium_webdriver.claimcenter.pages.ClaimCenterNavigatorBarPOM;
 import com.big.automation.selenium_webdriver.claimcenter.pages.ClaimCenterPersonDetailsPOM;
 import com.big.automation.selenium_webdriver.claimcenter.pages.ClaimCenterPropertyDetailsPOM;
 import com.big.automation.selenium_webdriver.claimcenter.pages.ClaimCenterSearchAddressBookPOM;
-import com.big.automation.selenium_webdriver.claimcenter.pages.ClaimCenterFNOLVehicleDetailsPOM;
 import com.big.automation.selenium_webdriver.claimcenter.pages.postfnol.ClaimCenterPOSTFNOLLossDetailsPOM;
 import com.big.automation.selenium_webdriver.claimcenter.pages.postfnol.ClaimCenterPOSTFNOLNewInjuryPOM;
+import com.big.automation.selenium_webdriver.claimcenter.pages.postfnol.ClaimCenterPOSTFNOLNewPoliceDetailsPOM;
 import com.big.automation.selenium_webdriver.claimcenter.pages.postfnol.ClaimCenterPOSTFNOLNewPropertyPOM;
 import com.big.automation.selenium_webdriver.claimcenter.pages.postfnol.ClaimCenterPOSTFNOLPedestrianDetailsPOM;
 import com.big.automation.selenium_webdriver.claimcenter.pages.postfnol.ClaimCenterPOSTFNOLVehicleDetailsPOM;
@@ -79,6 +81,7 @@ public class BaseTest extends AbstractTestNGCucumberTests{
    public static ClaimCenterFNOLStep2POM fnolStep2POM;
    public static ClaimCenterFNOLStep3POM fnolStep3POM;
    public static ClaimCenterFNOLStep4POM fnolStep4POM;
+   public static ClaimCenterFNOLNewPoliceDetailsPOM fnolNewPolicePOM;
    public static ClaimCenterFNOLPedestrianDetailsPOM fnolPedestrianPOM;
    public static ClaimCenterFNOLVehicleDetailsPOM fnolVehicleDetailsPOM;
    public static ClaimCenterFNOLDriverDetailsPOM fnolDriverDetailsPOM;
@@ -89,6 +92,7 @@ public class BaseTest extends AbstractTestNGCucumberTests{
    public static ClaimCenterPOSTFNOLNewInjuryPOM postFnolNewInjuryPOM;
    public static ClaimCenterPOSTFNOLPedestrianDetailsPOM postFnolPedestrianPOM;
    public static ClaimCenterPOSTFNOLVehicleDetailsPOM postFnolVehicleDetailsPOM;
+   public static ClaimCenterPOSTFNOLNewPoliceDetailsPOM postFnolNewPolicePOM;
    public static ClaimCenterCompanyDetailsPOM companyContactDetailsPOM;
    public static ClaimCenterSearchAddressBookPOM searchAddressBookPOM;
    
@@ -163,6 +167,7 @@ public class BaseTest extends AbstractTestNGCucumberTests{
       fnolStep3POM = PageFactory.initElements(driver, ClaimCenterFNOLStep3POM.class);
       fnolStep4POM = PageFactory.initElements(driver, ClaimCenterFNOLStep4POM.class);
       fnolPedestrianPOM= PageFactory.initElements(driver, ClaimCenterFNOLPedestrianDetailsPOM.class);
+      fnolNewPolicePOM= PageFactory.initElements(driver, ClaimCenterFNOLNewPoliceDetailsPOM.class);
       
       fnolVehicleDetailsPOM= PageFactory.initElements(driver, ClaimCenterFNOLVehicleDetailsPOM.class);
       fnolDriverDetailsPOM= PageFactory.initElements(driver, ClaimCenterFNOLDriverDetailsPOM.class);
@@ -174,7 +179,7 @@ public class BaseTest extends AbstractTestNGCucumberTests{
       postFnolNewInjuryPOM= PageFactory.initElements(driver, ClaimCenterPOSTFNOLNewInjuryPOM.class);
       postFnolPedestrianPOM= PageFactory.initElements(driver, ClaimCenterPOSTFNOLPedestrianDetailsPOM.class);
       postFnolVehicleDetailsPOM= PageFactory.initElements(driver, ClaimCenterPOSTFNOLVehicleDetailsPOM.class);
-      
+      postFnolNewPolicePOM= PageFactory.initElements(driver, ClaimCenterPOSTFNOLNewPoliceDetailsPOM.class);
 
       
       companyContactDetailsPOM= PageFactory.initElements(driver, ClaimCenterCompanyDetailsPOM.class);
