@@ -2,6 +2,7 @@ package stepdefs;
 
 import org.testng.Assert;
 
+import com.big.automation.selenium_webdriver.claimcenter.testdata.ClaimCenterData;
 import com.big.automation.selenium_webdriver.common.baseTest.BaseTest;
 
 import cucumber.api.java.en.Given;
@@ -11,6 +12,35 @@ public class CCFNOLNewPoliceSteps extends BaseTest {
 	
 	
 	SearchAddressBookSteps searchContactSteps = new SearchAddressBookSteps();
+	
+	/**
+	 * Used for Regression scripts
+	 * @param scenarioData
+	 * @throws Throwable
+	 */
+	public void completeFNOLNewPoliceForTestScenario(ClaimCenterData scenarioData)  throws Throwable
+	{
+		//TODO - obtain from scenarioData
+		fnolNewPolicePOM.setDateReported("01/01/2019");
+		fnolNewPolicePOM.setTimeReported("10:00 AM");
+		fnolNewPolicePOM.setIncidentReference("MYREF123");
+		fnolNewPolicePOM.setCrimeReference("CR3444");
+		fnolNewPolicePOM.setOfficerName("Officer Dibble");
+		fnolNewPolicePOM.setBadgeNumber("999111");
+		
+		fnolNewPolicePOM.selectSearchPoliceForce();
+		searchContactSteps.searchForContactAndSelectFirst("PoliceForce_itb", "Avon and somerset");
+		// search contact manager for force
+		fnolNewPolicePOM.selectPoliceAttended(true);
+		fnolNewPolicePOM.selectFurtherAction(true);
+		fnolNewPolicePOM.selectApprehended(true);
+		fnolNewPolicePOM.setFurtherActionDetails("Further action will be required");
+		fnolNewPolicePOM.setApprehendedDetails("The suspect has been apprehended");
+		
+		fnolNewPolicePOM.selectOK();
+	}
+	
+	
 	
 	@Then("^I will be on new police details screen for FNOL$")
 	public void i_will_be_on_newpolice_screen_for_FNOL() throws Throwable {

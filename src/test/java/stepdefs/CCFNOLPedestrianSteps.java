@@ -2,6 +2,7 @@ package stepdefs;
 
 import org.testng.Assert;
 
+import com.big.automation.selenium_webdriver.claimcenter.testdata.ClaimCenterData;
 import com.big.automation.selenium_webdriver.common.baseTest.BaseTest;
 
 import cucumber.api.java.en.Given;
@@ -9,8 +10,17 @@ import cucumber.api.java.en.Then;
 
 public class CCFNOLPedestrianSteps extends BaseTest {
 	
+	public void completeFNOLPedestrianForTestScenario(ClaimCenterData scenarioData)
+	{
+		//TODO - change to use ScenarioData
+		fnolPedestrianPOM.setAddressLine1("1 Walkers Road");
+		fnolPedestrianPOM.setFirstName("Jock");
+		fnolPedestrianPOM.setLastName("JayWalker");
+		
 	
-	
+		fnolPedestrianPOM.selectOK();
+		
+	}
 	
 	@Then("^I will be on pedestrian screen for FNOL$")
 	public void i_will_be_on_pedestrian_screen_for_FNOL() throws Throwable {

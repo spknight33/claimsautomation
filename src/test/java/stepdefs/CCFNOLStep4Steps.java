@@ -2,12 +2,11 @@ package stepdefs;
 
 import java.util.List;
 
-import org.testng.Assert;
 import org.testng.asserts.SoftAssert;
 
+import com.big.automation.selenium_webdriver.claimcenter.testdata.ClaimCenterData;
+import com.big.automation.selenium_webdriver.claimcenter.testdata.ClaimCenterDataBuilder;
 import com.big.automation.selenium_webdriver.common.baseTest.BaseTest;
-import com.big.automation.selenium_webdriver.common.config.UserConfig;
-import com.big.automation.selenium_webdriver.common.config.UserFactory;
 
 import cucumber.api.DataTable;
 import cucumber.api.java.en.Given;
@@ -15,7 +14,25 @@ import cucumber.api.java.en.Then;
 
 public class CCFNOLStep4Steps extends BaseTest{
 	
+	CCFNOLStep3Steps step3Steps = new CCFNOLStep3Steps();
+	ClaimCenterData scenarioData = ClaimCenterDataBuilder.createDataSet();
 	
+	/**
+	 * for use by regression scripts
+	 * @param scenarioData
+	 * @throws Throwable
+	 */
+	public void completeFNOLStep4ForTestScenario(ClaimCenterData scenarioData)  throws Throwable
+	{
+		fnolStep4POM.next();
+	}
+	
+	@Given("^As a ClaimsHandler I am at step4 for FNOL$")
+	public void as_a_ClaimsHandler_I_am_at_step4_for_FNOL() throws Throwable {
+		step3Steps.as_a_ClaimsHandler_I_am_at_step3_for_FNOL();
+		step3Steps.completeFNOLStep3ForTestScenario(scenarioData);
+	
+	}
 	
 
 	@Then("^I will be on step4 for FNOL$")
@@ -35,7 +52,7 @@ public class CCFNOLStep4Steps extends BaseTest{
 		List<String> list = dt.asList(String.class);
 	    SoftAssert softAssert = new SoftAssert();
 			for(int i=0; i<list.size(); i++) {
-				softAssert.assertTrue(fnolStep2POM.containsErrorMessage(list.get(i)),"Error Message Check: "+ list.get(i));
+				softAssert.assertTrue(fnolStep4POM.containsErrorMessage(list.get(i)),"Error Message Check: "+ list.get(i));
 				
 			}
 			softAssert.assertAll();

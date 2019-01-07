@@ -74,14 +74,15 @@ public class ClaimCenterSearchAddressBookPOM extends BaseTest{
 	
 	public void setSearchName(String text)
 	{
-		logger.info(format("%s -  going to set search name", getName()));
+		sleep(1); // add a delay as 
+		logger.info(format("%s -  going to set search name:"+text, getName()));
 		GuideWireAccessors.setGWTextBox(driver, text, this.getSearchName());
 		logger.info(format("%s - done, search name set", getName()));
 	}
 	
 	public void selectSearchType(String option)
 	{
-		logger.info(format("%s -  going to set search type", getName()));
+		logger.info(format("%s -  going to set search type:"+option, getName()));
 		GuideWireAccessors.selectOptionFromGWDropDown(driver, option, this.getContactType(), 1);
 		logger.info(format("%s - done, search type set", getName()));
 	}

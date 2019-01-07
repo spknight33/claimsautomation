@@ -2,12 +2,52 @@ package stepdefs;
 
 import org.testng.Assert;
 
+import com.big.automation.selenium_webdriver.claimcenter.testdata.ClaimCenterData;
 import com.big.automation.selenium_webdriver.common.baseTest.BaseTest;
 
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 
 public class CCFNOLVehicleSteps extends BaseTest {
+	
+	CCFNOLDriverSteps driverSteps = new CCFNOLDriverSteps();
+	
+	/**
+	 * This is for regression test cases driven by scenarioData
+	 * @param scenarioData
+	 */
+	public void completeFNOLPHVehicleForTestScenario(ClaimCenterData scenarioData)
+	{
+		// TODO - 
+		// most cases will have insured vehicle already - so for now leave this and just do the driver checl
+	   if (scenarioData.atPHVehicleStep3FNOLDriverRequired())
+	   {
+		   fnolVehicleDetailsPOM.selectAddDriver();
+		   driverSteps.completeFNOLDriverForTestScenario(scenarioData);
+	   }
+	   fnolVehicleDetailsPOM.selectOK();
+	}
+	
+	/**
+	 * This is for regression test cases driven by scenarioData
+	 * @param scenarioData
+	 */
+	public void completeFNOLTPVehicleForTestScenario(ClaimCenterData scenarioData)
+	{
+	  // TODO - add TP vehicle 
+		fnolVehicleDetailsPOM.setMake("Ford");
+		fnolVehicleDetailsPOM.setModel("Ka");
+		fnolVehicleDetailsPOM.setVrn("PY60HFL");
+		fnolVehicleDetailsPOM.setYear("2006");
+	   // TODO rest of fields
+		
+	   if (scenarioData.atTPVehicleStep3FNOLDriverRequired())
+	   {
+		   fnolVehicleDetailsPOM.selectAddDriver();
+		   driverSteps.completeFNOLDriverForTestScenario(scenarioData);
+	   }
+	   fnolVehicleDetailsPOM.selectOK();
+	}
 
 	@Then("^I will be on vehicle screen for FNOL$")
 	public void i_will_be_on_vehicle_screen_for_FNOL() throws Throwable {

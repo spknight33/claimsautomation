@@ -2,6 +2,7 @@ package stepdefs;
 
 import org.testng.Assert;
 
+import com.big.automation.selenium_webdriver.claimcenter.testdata.ClaimCenterData;
 import com.big.automation.selenium_webdriver.common.baseTest.BaseTest;
 
 import cucumber.api.java.en.Given;
@@ -9,7 +10,16 @@ import cucumber.api.java.en.Then;
 
 public class CCFNOLDriverSteps extends BaseTest {
 	
+	public void completeFNOLDriverForTestScenario(ClaimCenterData scenarioData)
+	{
+		//TODO - use data from scenario
+		fnolDriverDetailsPOM.setAddressLine1("9 Walkers Road");
+		fnolDriverDetailsPOM.setFirstName("Jim");
+		fnolDriverDetailsPOM.setLastName("Boyracer");
+		
 	
+		fnolDriverDetailsPOM.selectOK();
+	}
 	
 	
 	@Then("^I will be on Driver screen for FNOL$")

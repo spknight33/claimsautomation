@@ -5,9 +5,8 @@ import java.util.List;
 import org.testng.Assert;
 import org.testng.asserts.SoftAssert;
 
+import com.big.automation.selenium_webdriver.claimcenter.testdata.ClaimCenterData;
 import com.big.automation.selenium_webdriver.common.baseTest.BaseTest;
-import com.big.automation.selenium_webdriver.common.config.UserConfig;
-import com.big.automation.selenium_webdriver.common.config.UserFactory;
 
 import cucumber.api.DataTable;
 import cucumber.api.java.en.Given;
@@ -19,6 +18,29 @@ public class CCFNOLStep2Steps extends BaseTest{
 	CCMenuBarSTeps menuSteps = new CCMenuBarSTeps();
 	CCFNOLStep1Steps step1Steps = new CCFNOLStep1Steps();
 	
+	/**
+	 * This method used for regression scripts, driven by scenario data
+	 * @param scenarioData
+	 * @throws Throwable
+	 */
+	public void completeFNOLStep2ForTestScenario(ClaimCenterData scenarioData)  throws Throwable
+	{
+
+		this.i_select_from_field_on_step("Portal","How Reported");
+		this.i_select_from_field_on_step(scenarioData.getFirstLastName(),"name");
+		this.i_select_from_field_on_step("Policyholder","relationship to insured");
+		this.i_input_into_the_box_on_step2("01912228888","Home Phone");
+		this.i_input_into_the_box_on_step2("someguy@gmail.com","Email");
+		this.i_select_from_field_on_step("Work","Phone Type");
+		
+		if (!scenarioData.atStep2FNOLPHVehicleRequired())
+		{
+			this.unselectFirstInsuredVehicle();
+		}
+		this.next();
+		
+	
+	}
 	
 	@Given("^As a ClaimsHandler I am at step2 for FNOL$")
 	public void as_a_ClaimsHandler_I_am_at_step2_for_FNOL() throws Throwable {

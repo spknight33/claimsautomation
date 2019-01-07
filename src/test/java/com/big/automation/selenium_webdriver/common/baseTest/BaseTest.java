@@ -29,12 +29,14 @@ import com.aventstack.extentreports.reporter.configuration.ChartLocation;
 import com.aventstack.extentreports.reporter.configuration.Theme;
 import com.big.automation.selenium_webdriver.claimcenter.pages.ClaimCenterCompanyDetailsPOM;
 import com.big.automation.selenium_webdriver.claimcenter.pages.ClaimCenterFNOLDriverDetailsPOM;
+import com.big.automation.selenium_webdriver.claimcenter.pages.ClaimCenterFNOLNewExposurePOM;
 import com.big.automation.selenium_webdriver.claimcenter.pages.ClaimCenterFNOLNewPoliceDetailsPOM;
 import com.big.automation.selenium_webdriver.claimcenter.pages.ClaimCenterFNOLPedestrianDetailsPOM;
 import com.big.automation.selenium_webdriver.claimcenter.pages.ClaimCenterFNOLStep1POM;
 import com.big.automation.selenium_webdriver.claimcenter.pages.ClaimCenterFNOLStep2POM;
 import com.big.automation.selenium_webdriver.claimcenter.pages.ClaimCenterFNOLStep3POM;
 import com.big.automation.selenium_webdriver.claimcenter.pages.ClaimCenterFNOLStep4POM;
+import com.big.automation.selenium_webdriver.claimcenter.pages.ClaimCenterFNOLStep5POM;
 import com.big.automation.selenium_webdriver.claimcenter.pages.ClaimCenterFNOLVehicleDetailsPOM;
 import com.big.automation.selenium_webdriver.claimcenter.pages.ClaimCenterLoginPOM;
 import com.big.automation.selenium_webdriver.claimcenter.pages.ClaimCenterMenuBarPOM;
@@ -81,10 +83,12 @@ public class BaseTest extends AbstractTestNGCucumberTests{
    public static ClaimCenterFNOLStep2POM fnolStep2POM;
    public static ClaimCenterFNOLStep3POM fnolStep3POM;
    public static ClaimCenterFNOLStep4POM fnolStep4POM;
+   public static ClaimCenterFNOLStep5POM fnolStep5POM;
    public static ClaimCenterFNOLNewPoliceDetailsPOM fnolNewPolicePOM;
    public static ClaimCenterFNOLPedestrianDetailsPOM fnolPedestrianPOM;
    public static ClaimCenterFNOLVehicleDetailsPOM fnolVehicleDetailsPOM;
    public static ClaimCenterFNOLDriverDetailsPOM fnolDriverDetailsPOM;
+   public static ClaimCenterFNOLNewExposurePOM fnolNewExposurePOM;
    public static ClaimCenterPersonDetailsPOM personContactDetailsPOM;
    public static ClaimCenterPropertyDetailsPOM fnolPropertyDetailsPOM;
    public static ClaimCenterPOSTFNOLLossDetailsPOM postFnolLossDetailsPOM;
@@ -166,8 +170,10 @@ public class BaseTest extends AbstractTestNGCucumberTests{
       fnolStep2POM = PageFactory.initElements(driver, ClaimCenterFNOLStep2POM.class);
       fnolStep3POM = PageFactory.initElements(driver, ClaimCenterFNOLStep3POM.class);
       fnolStep4POM = PageFactory.initElements(driver, ClaimCenterFNOLStep4POM.class);
+      fnolStep5POM = PageFactory.initElements(driver, ClaimCenterFNOLStep5POM.class);
       fnolPedestrianPOM= PageFactory.initElements(driver, ClaimCenterFNOLPedestrianDetailsPOM.class);
       fnolNewPolicePOM= PageFactory.initElements(driver, ClaimCenterFNOLNewPoliceDetailsPOM.class);
+      fnolNewExposurePOM= PageFactory.initElements(driver, ClaimCenterFNOLNewExposurePOM.class);
       
       fnolVehicleDetailsPOM= PageFactory.initElements(driver, ClaimCenterFNOLVehicleDetailsPOM.class);
       fnolDriverDetailsPOM= PageFactory.initElements(driver, ClaimCenterFNOLDriverDetailsPOM.class);

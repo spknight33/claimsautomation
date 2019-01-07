@@ -15,15 +15,12 @@ import static com.big.automation.selenium_webdriver.common.utilities.ThreadUtils
 import com.big.automation.selenium_webdriver.common.baseTest.BaseTest;
 import com.big.automation.selenium_webdriver.common.gw.utilities.GuideWireAccessors;
 
-public class ClaimCenterFNOLStep4POM extends BaseTest{
+public class ClaimCenterFNOLStep5POM extends BaseTest{
 
 	
 	@FindBy(id = "FNOLWizard:Cancel-btnEl")
 	private WebElement cancelButton;
 	
-	@FindBy(id = "FNOLWizard:Next-btnEl")
-	private WebElement nextButton;
-		
 	@FindBy(id = "FNOLWizard:Prev-btnEl")
 	private WebElement backButton;
 	
@@ -40,19 +37,25 @@ public class ClaimCenterFNOLStep4POM extends BaseTest{
 	@FindBy(className = "message")
 	private List <WebElement> errorMessages;
 	
+	@FindBy(id = "FNOLWizard:AutoWorkersCompWizardStepSet:FNOLWizard_AssignSaveScreen:CommonAssign-inputEl")
+	private WebElement assignmentDropdown;
 	
+	@FindBy(id = "FNOLWizard:AutoWorkersCompWizardStepSet:FNOLWizard_AssignSaveScreen:Note-inputEl")
+	private WebElement note;
 	
+	@FindBy(id = "FNOLWizard:AutoWorkersCompWizardStepSet:FNOLWizard_AssignSaveScreen:NewExposureLV_tb:AddExposure-btnEl")
+	private WebElement addExposureDropdown;
 	
 	
 	public String getName() {
 
-		return "FNOL Wizard Step4 Services";
+		return "FNOL Wizard Step5 Save and Assign Claim";
 	}
 
 	public boolean isPageTitleDisplayed(String expected)
 	{
 		
-		logger.info(format("%s -found page title for step4 :"+this.getPageTitle().getText(), getName()));
+		logger.info(format("%s -found page title for step5 :"+this.getPageTitle().getText(), getName()));
 		return GuideWireAccessors.getGWElementText(driver, this.getPageTitle()).equalsIgnoreCase(expected);
 	}
 	
@@ -70,12 +73,7 @@ public class ClaimCenterFNOLStep4POM extends BaseTest{
 		logger.info(format("%s - done, Finish clicked", getName()));
 	}
 	
-	public void next() {
-
-		logger.info(format("%s -  going to click Next", getName()));
-		GuideWireAccessors.clickGWButton(driver,getNextButton());
-		logger.info(format("%s - done, Next clicked", getName()));
-	}
+	
 	
 	public void back() {
 		logger.info(format("%s -  going to click Back", getName()));
@@ -83,7 +81,25 @@ public class ClaimCenterFNOLStep4POM extends BaseTest{
 		logger.info(format("%s - done, Back clicked", getName()));
 	}
 
-
+	public void setNote(String text)
+	{
+		logger.info(format("%s -  going to set note", getName()));
+		GuideWireAccessors.setGWTextBox(driver, text, this.getNote());
+		logger.info(format("%s - done, note set", getName()));
+	}
+	
+	public void selectAssignment(String option)
+	{
+		logger.info(format("%s - going to select Assignment option :"+option, getName()));
+		GuideWireAccessors.selectOptionFromGWDropDown(driver,option, this.getAssignmentDropdown(),1);
+	}
+	
+	
+	public void selectExposureSubMenuHierarchy(List<String> menuHierarchy)
+	{
+		logger.info(format("%s - going to select Exposure sub menu item ",getName()));
+		GuideWireAccessors.selectOptionFromPopupMenu(driver, menuHierarchy, this.getAddExposureDropdown());
+	}
 	
    
 	private WebElement getCancelButton() {
@@ -94,10 +110,7 @@ private WebElement getFinishButton() {
 	return finishButton;
 }
 
-	private WebElement getNextButton() {
-		
-		return nextButton;
-	}
+	
 	
 	private WebElement getBackButton() {
 
@@ -114,6 +127,22 @@ private WebElement getFinishButton() {
 	
 	
 	
+
+	private WebElement getTitleDropDown() {
+		return titleDropDown;
+	}
+
+	private WebElement getAssignmentDropdown() {
+		return assignmentDropdown;
+	}
+
+	private WebElement getNote() {
+		return note;
+	}
+
+	private WebElement getAddExposureDropdown() {
+		return addExposureDropdown;
+	}
 
 	public boolean containsErrorMessage(String contains)
 	{

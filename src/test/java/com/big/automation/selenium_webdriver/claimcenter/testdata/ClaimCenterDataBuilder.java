@@ -22,6 +22,27 @@ public class ClaimCenterDataBuilder {
 		data.lossTime = "09:00 AM";
 		data.claimNumber ="000-00-000009";
 		
+		data.atStep2FNOLPHVehicleRequired = true;
+		
+		//step3 FNOL
+		data.step3FNOLIncidentType = "Accident";
+		data.step3FNOLCause = "Hit in Rear By Third Party";
+		data.step3FNOLSubCause = "Hit In Rear while correctly proceeding along the road";
+		
+		
+		data.atStep3FNOLPedestrianRequired = false;
+		data.atStep3FNOLPropertyRequired= false;
+		data.atStep3FNOLTPVehicleRequired= true;
+		data.atStep3FNOLPoliceRequired= false;
+	    
+		data.atStep2FNOLInsuredVehicleRequired= true;
+	    
+		data.atTPVehicleStep3FNOLDriverRequired= true;
+		data.atTPVehicleStep3FNOLPassengerRequired= false;
+	    
+		data.atPHVehicleStep3FNOLDriverRequired= true;
+		data.atPHVehicleStep3FNOLPassengerRequired= false;
+		
 		return data;
 	}
 

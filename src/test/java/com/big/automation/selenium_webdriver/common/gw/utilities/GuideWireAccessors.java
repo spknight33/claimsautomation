@@ -8,8 +8,6 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 import com.big.automation.selenium_webdriver.common.utilities.WaitForUtils;
 
@@ -18,6 +16,7 @@ public class GuideWireAccessors {
 	public static final int MAX_RETRY_ON_TEXT_INPUT = 5;
 	public static final int MAX_RETRY_ON_PICKER = 5;
 	public static final int MAX_RETRY_ON_DROPDOWN = 5;
+	public static final int MAX_RETRY_ON_MENUITEM = 2;
 	public static final int MAX_RETRY_ON_GETVALUE = 2;
 	public static final int MAX_RETRY_ON_GETTEXT = 3;
 
@@ -265,6 +264,63 @@ public class GuideWireAccessors {
 			findAttempts++;
 		}
 		return selectedValue;
+	}
+	
+	/**
+	 * For accessing popup menus where user will drill down to the lower menu item
+	 * @param driver
+	 * @param menuHierarchy
+	 * @param gwDropDown
+	 */
+	public static void selectOptionFromPopupMenu(WebDriver driver, List<String> menuHierarchy, WebElement gwDropDown) {
+		int findAttempts = 0;
+		while (findAttempts < MAX_RETRY_ON_DROPDOWN) {
+			try {
+				WaitForUtils.waitForElementToBeClickableVariable(driver, gwDropDown,10); //10 seconds max
+				// as it might be down the page, always scroll into view
+				JavascriptExecutor je = (JavascriptExecutor) driver;
+				je.executeScript("arguments[0].scrollIntoView(true);", gwDropDown);
+				gwDropDown.click();
+				break;
+			} catch (Exception e) {
+				sleep(1);
+				// TODO use a logger
+				System.out.println("selectOptionFromPopupMenu Exception caught:" + e.getMessage());
+			}
+			findAttempts++;
+		}
+
+		
+		// we need to loop round the list of items in the supplied hierarchy
+		// finding each and clicking on each until the list is exhausted
+		String optionLocator; 
+		WebElement menuElement = null;
+		
+		for (String menuItem: menuHierarchy)
+		{
+			optionLocator = "//span[normalize-space()=\"" + menuItem + "\"]";
+			menuElement = driver.findElement(By.xpath(optionLocator));
+			findAttempts = 0;
+			while (findAttempts < MAX_RETRY_ON_MENUITEM) {
+				try {
+					JavascriptExecutor je = (JavascriptExecutor) driver;
+					je.executeScript("arguments[0].scrollIntoView(true);", menuElement);
+					menuElement.click();
+					break;
+				} catch (Exception e) {
+					sleep(1);
+					// TODO use a logger
+					System.out.println("selectOptionFromPopupMenu (option) Exception caught:" + e.getMessage());
+				}
+				findAttempts++;
+			}
+			
+		}
+			
+		
+		
+
+		
 	}
 
 }

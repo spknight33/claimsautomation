@@ -15,4 +15,26 @@ public interface ClaimCenterData  {
 
     String getClaimNumber();
     
+    
+    String getStep3FNOLIncidentType();
+    String getStep3FNOLCause();
+    String getStep3FNOLSubCause();
+    
+    boolean atStep2FNOLPHVehicleRequired();
+    
+    boolean atStep3FNOLPedestrianRequired();
+    boolean atStep3FNOLPropertyRequired();
+    boolean atStep3FNOLTPVehicleRequired();
+    boolean atStep3FNOLPoliceRequired();
+    
+    boolean atStep2FNOLInsuredVehicleRequired();
+    
+    boolean atTPVehicleStep3FNOLDriverRequired();
+    boolean atTPVehicleStep3FNOLPassengerRequired();
+    
+    boolean atPHVehicleStep3FNOLDriverRequired();
+    boolean atPHVehicleStep3FNOLPassengerRequired();
+    
+    boolean atPedestrianStep3FNOLInjuryRequired();
+    
 }
