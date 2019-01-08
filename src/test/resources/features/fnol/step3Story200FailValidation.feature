@@ -2,7 +2,7 @@
 Feature: Validation at step3 of FNOL
 
   Background: 
-    Given As a ClaimsHandler I am at step2 for FNOL
+    Given As a "ClaimsHandler" I am at step2 for FNOL
 
   @Ignore @passed
   Scenario: CBPCL-200  TC10-part1 Fail step3 Validation when IncidentType/Cause/Subcause requires just an INSURED VEHICLE incident and none is present

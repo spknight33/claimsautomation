@@ -113,18 +113,18 @@ public class CCFNOLStep3Steps extends BaseTest {
 
 	}
 
-	@Given("^As a ClaimsHandler I am at step3 for FNOL$")
-	public void as_a_ClaimsHandler_I_am_at_step3_for_FNOL() throws Throwable {
-		step2Steps.as_a_ClaimsHandler_I_am_at_step2_for_FNOL();
+	@Given("^As a \"([^\"]*)\" I am at step3 for FNOL$")
+	public void as_a_user_I_am_at_step3_for_FNOL(String userType) throws Throwable {
+		step2Steps.as_a_user_I_am_at_step2_for_FNOL(userType);
 		step2Steps.iCompleteStep2FNOL();
 		i_will_be_on_step3_for_FNOL();
 		// close any duplicate claim window
 		fnolStep3POM.closeDuplicateClaimWindow();
 	}
 
-	@Given("^As a ClaimsHandler I am at step3 without insured vehicle for FNOL$")
-	public void as_a_ClaimsHandler_I_am_at_step3_without_insured_vehiclefor_FNOL() throws Throwable {
-		step2Steps.as_a_ClaimsHandler_I_am_at_step2_for_FNOL();
+	@Given("^As a \"([^\"]*)\" I am at step3 without insured vehicle for FNOL$")
+	public void as_a_ClaimsHandler_I_am_at_step3_without_insured_vehiclefor_FNOL(String userType) throws Throwable {
+		step2Steps.as_a_user_I_am_at_step2_for_FNOL(userType);
 		step2Steps.iCompleteStep2FNOLWithoutInsuredVehicle();
 		i_will_be_on_step3_for_FNOL();
 		// close any duplicate claim window

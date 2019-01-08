@@ -42,9 +42,9 @@ public class CCFNOLStep2Steps extends BaseTest{
 	
 	}
 	
-	@Given("^As a ClaimsHandler I am at step2 for FNOL$")
-	public void as_a_ClaimsHandler_I_am_at_step2_for_FNOL() throws Throwable {
-		step1Steps.as_a_ClaimsHandler_I_am_at_step1_for_FNOL();
+	@Given("^As a \"([^\"]*)\" I am at step2 for FNOL$")
+	public void as_a_user_I_am_at_step2_for_FNOL(String userType) throws Throwable {
+		step1Steps.as_a_user_I_am_at_step1_for_FNOL(userType);
 		step1Steps.iCompleteStep1FNOL();
 	}
 

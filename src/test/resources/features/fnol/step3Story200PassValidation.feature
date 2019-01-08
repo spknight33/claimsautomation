@@ -2,7 +2,7 @@
 Feature: Validation at step3 of FNOL
 
   Background: 
-    Given As a ClaimsHandler I am at step2 for FNOL
+    Given As a "ClaimsHandler" I am at step2 for FNOL
 
   @Ignore @passed
   Scenario: CBPCL-200  TC1   Pass step3 validation when IncidentType/Cause/Subcause requires JUST INSURED VEHICLE has one present
@@ -346,7 +346,7 @@ Feature: Validation at step3 of FNOL
     And I click ok button on vehicle screen
     And I click add Property Damage on step3
     And I will be on FNOL new property screen
-    And I complete fields on FNOL new property incident
+    And I complete the "Property" details on the new property contact screen
     When I select the loss causes I will be able to proceed past step3 with no validation error
       | incident type | cause                      | sub cause                                                   |
       | Accident      | Collided With Fixed Object | Having swerved to avoid an animal which ran across the road |

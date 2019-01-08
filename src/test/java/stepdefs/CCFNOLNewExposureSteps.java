@@ -1,6 +1,5 @@
 package stepdefs;
 
-import java.util.Arrays;
 import java.util.List;
 
 import org.testng.Assert;
@@ -12,7 +11,6 @@ import com.big.automation.selenium_webdriver.common.baseTest.BaseTest;
 import cucumber.api.DataTable;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
-import cucumber.api.java.en.When;
 
 public class CCFNOLNewExposureSteps extends BaseTest {
 	
@@ -25,6 +23,7 @@ public class CCFNOLNewExposureSteps extends BaseTest {
 	
 	@Then("^I will be on the new exposure screen for FNOL$")
 	public void i_will_be_on_newexposure_screen_for_FNOL() throws Throwable {
+		// should be common to all exposure poms
 		fnolNewExposurePOM.isPageTitleDisplayed("New Exposure");
 	}
 	
@@ -51,8 +50,38 @@ public class CCFNOLNewExposureSteps extends BaseTest {
 		switch(fieldName)
 		    {
 		
-	    case "Address Type":
-	    	//fnolPedestrianPOM.selectAddressType(fieldValue);
+	    case "Claimant Type":
+	    	fnolNewExposurePOM.selectClaimantType(fieldValue);
+	    	break;
+	    
+	   //TODO
+	    default:
+	    Assert.fail("unknown input field :"+ fieldValue+" - check cucumber script!");
+	    }
+	}
+	
+	@Given("^I select \"([^\"]*)\" from \"([^\"]*)\" on new property exposure screen for FNOL$")
+	public void i_select_from_field_on_propertyexposure_screen(String fieldValue, String fieldName) throws Throwable {
+		switch(fieldName)
+		    {
+		
+	    case "Claimant Type":
+	    	fnolNewPropertyExposurePOM.selectClaimantType(fieldValue);
+	    	break;
+	    
+	   //TODO
+	    default:
+	    Assert.fail("unknown input field :"+ fieldValue+" - check cucumber script!");
+	    }
+	}
+	
+	@Given("^I select \"([^\"]*)\" from \"([^\"]*)\" on new injury exposure screen for FNOL$")
+	public void i_select_from_field_on_injuryexposure_screen(String fieldValue, String fieldName) throws Throwable {
+		switch(fieldName)
+		    {
+		
+	    case "Claimant Type":
+	    	fnolNewInjuryExposurePOM.selectClaimantType(fieldValue);
 	    	break;
 	    
 	   //TODO
@@ -83,6 +112,68 @@ public class CCFNOLNewExposureSteps extends BaseTest {
 	
 		fnolNewExposurePOM.selectOK();
 		
+	}
+	
+	@Given("^I click \"([^\"]*)\" on claimant picker on new exposure screen$")
+	public void i_click_on_claimant_picker(String option) throws Throwable {
+		switch (option) {
+		case "New Person":
+			fnolNewExposurePOM.selectNewClaimant();
+			break;
+
+		default:
+			Assert.fail("unknown input field :" + option + " - check cucumber script!");
+		}
+
+	}
+	@Given("^I click \"([^\"]*)\" on claimant picker on new property exposure screen$")
+	public void i_click_on_propertyclaimant_picker(String option) throws Throwable {
+		switch (option) {
+		case "New Person":
+			fnolNewPropertyExposurePOM.selectNewClaimant();
+			break;
+
+		default:
+			Assert.fail("unknown input field :" + option + " - check cucumber script!");
+		}
+
+	}
+	@Given("^I click \"([^\"]*)\" on claimant picker on new injury exposure screen$")
+	public void i_click_on_injuryclaimant_picker(String option) throws Throwable {
+		switch (option) {
+		case "New Person":
+			fnolNewInjuryExposurePOM.selectNewClaimant();
+			break;
+
+		default:
+			Assert.fail("unknown input field :" + option + " - check cucumber script!");
+		}
+
+	}
+	
+	@Given("^I click \"([^\"]*)\" on property name picker$")
+	public void i_click_on_property_picker(String option) throws Throwable {
+		switch (option) {
+		case "New Incident...":
+			fnolNewPropertyExposurePOM.selectNewProperty();
+			break;
+
+		default:
+			Assert.fail("unknown input field :" + option + " - check cucumber script!");
+		}
+
+	}
+	@Given("^I click \"([^\"]*)\" on injury picker$")
+	public void i_click_on_injury_picker(String option) throws Throwable {
+		switch (option) {
+		case "New Incident...":
+			fnolNewInjuryExposurePOM.selectNewInjury();
+			break;
+
+		default:
+			Assert.fail("unknown input field :" + option + " - check cucumber script!");
+		}
+
 	}
 	
 	@Then("^I will see the error messages on the New Exposures screen$")

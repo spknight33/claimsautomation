@@ -4,6 +4,7 @@ import static com.big.automation.selenium_webdriver.common.utilities.ThreadUtils
 import static java.lang.String.format;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.openqa.selenium.By;
@@ -14,6 +15,7 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 
 import com.big.automation.selenium_webdriver.common.baseTest.BaseTest;
+import com.big.automation.selenium_webdriver.common.gw.utilities.GuideWireAccessors;
 
 public class ClaimCenterMenuBarPOM extends BaseTest {
 	
@@ -254,8 +256,22 @@ public void clickSubMenu(String topmenu, String submenuitem) throws Exception {
 	public void selectNewClaimMenuItem() {
 		openTopLevelMenu(CLAIMS);
 		sleep(2);
+		
+		
+		// for some reason, if the user does not have a previous claim, then the key down on top menu doesnt work!
+		// In this case a link is on a main page
+		// for not check that link exists and lick it other wise se the menu
+		List <WebElement> elements = driver.findElements(By.id("NoClaim:NoClaimScreen:NoClaimDV:CreateNewClaim-inputEl"));
+		if (elements != null && elements.size() > 0)
+		{
+		    GuideWireAccessors.clickGWButton(driver, elements.get(0));// should only be one anyway
+			logger.info(format("%s - done, New Claims LINK clicked", getName()));
+		}
+		else
+		{
 		newClaimMenuOption.click();
 		logger.info(format("%s - done, New Claims menuitem clicked", getName()));
+		}
 	}
 	
 	public void selectExistingClaim(String claimnumber) {

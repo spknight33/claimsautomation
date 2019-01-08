@@ -11,7 +11,7 @@ import org.openqa.selenium.support.FindBy;
 import com.big.automation.selenium_webdriver.common.baseTest.BaseTest;
 import com.big.automation.selenium_webdriver.common.gw.utilities.GuideWireAccessors;
 
-public class ClaimCenterFNOLNewExposurePOM extends BaseTest{
+public class ClaimCenterFNOLNewInjuryExposurePOM extends BaseTest{
 
 	
 	
@@ -29,18 +29,15 @@ public class ClaimCenterFNOLNewExposurePOM extends BaseTest{
 
 	@FindBy(id = "NewClaimWizard_NewExposurePopup:NewClaimWizard_ExposurePageScreen:NewClaimExposureDV:Claimant_Picker-inputEl")
 	private WebElement claimantDropdown;
-	             
-	@FindBy(id = "NewClaimWizard_NewExposurePopup:NewClaimWizard_ExposurePageScreen:NewClaimExposureDV:Claimant_Picker:Claimant_PickerMenuIcon")
+    @FindBy(id = "NewClaimWizard_NewExposurePopup:NewClaimWizard_ExposurePageScreen:NewClaimExposureDV:Claimant_Picker:Claimant_PickerMenuIcon")
 	private WebElement claimantPickerIcon;
-	
 	@FindBy(id = "NewClaimWizard_NewExposurePopup:NewClaimWizard_ExposurePageScreen:NewClaimExposureDV:Claimant_Picker:ClaimNewContactPickerMenuItemSet:NewContactPickerMenuItemSet_NewPerson-textEl")
 	private WebElement claimantPickerNewPerson;
 	
 	@FindBy(id = "NewClaimWizard_NewExposurePopup:NewClaimWizard_ExposurePageScreen:NewClaimExposureDV:Claimant_Type-inputEl")
 	private WebElement claimantTypeDropdown;
 	
-	
-	@FindBy(id = "NewClaimWizard_NewExposurePopup:NewClaimWizard_ExposurePageScreen:NewClaimExposureDV:Claimant_ContactProhibited_true-inputEl")
+		@FindBy(id = "NewClaimWizard_NewExposurePopup:NewClaimWizard_ExposurePageScreen:NewClaimExposureDV:Claimant_ContactProhibited_true-inputEl")
 	private WebElement claimantContactProhibYes;
 	@FindBy(id = "NewClaimWizard_NewExposurePopup:NewClaimWizard_ExposurePageScreen:NewClaimExposureDV:Claimant_ContactProhibited_false-inputEl")
 	private WebElement claimantContactProhibNo;
@@ -53,12 +50,14 @@ public class ClaimCenterFNOLNewExposurePOM extends BaseTest{
 	@FindBy(id = "NewClaimWizard_NewExposurePopup:NewClaimWizard_ExposurePageScreen:NewClaimExposureDV:AltContact_Name:ClaimNewContactPickerMenuItemSet:NewContactPickerMenuItemSet_NewPerson-textEl")
 	private WebElement altContactPickerNewPerson;
 	
-	@FindBy(id = "NewClaimWizard_NewExposurePopup:NewClaimWizard_ExposurePageScreen:NewClaimExposureDV:NewClaimPropertyDamageDV:NewClaimIncidentInputSet:Property_Incident:Property_IncidentMenuIcon")
-	private WebElement propertyPickerIcon;
-	@FindBy(id = "NewClaimWizard_NewExposurePopup:NewClaimWizard_ExposurePageScreen:NewClaimExposureDV:NewClaimPropertyDamageDV:NewClaimIncidentInputSet:Property_Incident:NewClaimPropertyDamageDV_NewIncidentMenuItem-itemEl")
-	private WebElement propertyPickerNewIncident;
+	@FindBy(id = "NewClaimWizard_NewExposurePopup:NewClaimWizard_ExposurePageScreen:NewClaimExposureDV:BIDamageInputSet:Injury_Incident-inputEl")
+	private WebElement injuryDropdown;
+	@FindBy(id = "NewClaimWizard_NewExposurePopup:NewClaimWizard_ExposurePageScreen:NewClaimExposureDV:BIDamageInputSet:Injury_Incident:Injury_IncidentMenuIcon")
+	private WebElement injuryPickerIcon;
+	@FindBy(id = "NewClaimWizard_NewExposurePopup:NewClaimWizard_ExposurePageScreen:NewClaimExposureDV:BIDamageInputSet:Injury_Incident:BodilyInjuryDamageDV_NewIncidentMenuItem-itemEl")
+	private WebElement injuryPickerNewIncident;
 	
-	//TODO the rest
+	
 		
 		
 	@FindBy(className = "message")
@@ -68,7 +67,7 @@ public class ClaimCenterFNOLNewExposurePOM extends BaseTest{
 
 	public String getName() {
 
-		return "New Exposure FNOL";
+		return "New Injury Exposure FNOL";
 	}
 
 	public boolean isPageTitleDisplayed(String expected)
@@ -96,10 +95,10 @@ public class ClaimCenterFNOLNewExposurePOM extends BaseTest{
 		logger.info(format("%s - going to select New Person from Claimant picker", getName()));
 		GuideWireAccessors.selectOptionFromGWPicker(driver, this.getClaimantPickerIcon(),this.getClaimantPickerNewPerson());
 	}
-	public void selectNewProperty()
+	public void selectNewInjury()
 	{
-		logger.info(format("%s - going to select New Incident from Property picker", getName()));
-		GuideWireAccessors.selectOptionFromGWPicker(driver, this.getPropertyPickerIcon(),this.getPropertyPickerNewIncident());
+		logger.info(format("%s - going to select New Incident from Injury picker", getName()));
+		GuideWireAccessors.selectOptionFromGWPicker(driver, this.getInjuryPickerIcon(),this.getInjuryPickerNewIncident());
 	}
 	
 	public void selectClaimantType(String option)
@@ -173,12 +172,18 @@ public class ClaimCenterFNOLNewExposurePOM extends BaseTest{
 	
 	
 	
-	private WebElement getPropertyPickerIcon() {
-		return propertyPickerIcon;
+	
+
+	private WebElement getInjuryDropdown() {
+		return injuryDropdown;
 	}
 
-	private WebElement getPropertyPickerNewIncident() {
-		return propertyPickerNewIncident;
+	private WebElement getInjuryPickerIcon() {
+		return injuryPickerIcon;
+	}
+
+	private WebElement getInjuryPickerNewIncident() {
+		return injuryPickerNewIncident;
 	}
 
 	public boolean containsErrorMessage(String contains)

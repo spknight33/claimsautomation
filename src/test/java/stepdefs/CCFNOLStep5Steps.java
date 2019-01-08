@@ -32,9 +32,9 @@ public class CCFNOLStep5Steps extends BaseTest{
 		fnolStep5POM.finish();
 	}
 	
-	@Given("^As a ClaimsHandler I am at step5 for FNOL$")
-	public void as_a_ClaimsHandler_I_am_at_step5_for_FNOL() throws Throwable {
-		step4Steps.as_a_ClaimsHandler_I_am_at_step4_for_FNOL();
+	@Given("^As a \"([^\"]*)\" I am at step5 for FNOL$")
+	public void as_a_ClaimsHandler_I_am_at_step5_for_FNOL(String userType) throws Throwable {
+		step4Steps.as_a_user_I_am_at_step4_for_FNOL(userType);
 		step4Steps.completeFNOLStep4ForTestScenario(scenarioData);
 	
 	}

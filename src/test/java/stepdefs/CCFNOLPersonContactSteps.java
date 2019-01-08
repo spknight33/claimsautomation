@@ -1,13 +1,9 @@
 package stepdefs;
 
-import java.util.List;
-
 import org.testng.Assert;
-import org.testng.asserts.SoftAssert;
 
 import com.big.automation.selenium_webdriver.common.baseTest.BaseTest;
 
-import cucumber.api.DataTable;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 
@@ -84,6 +80,26 @@ public class CCFNOLPersonContactSteps extends BaseTest {
 	    default:
 	    Assert.fail("unknown input field :"+ fieldName+" - check cucumber script!");
 	    }
+	}
+	
+	@Then("^I complete the \"([^\"]*)\" details on the new person contact screen$")
+	public void i_complete_the_details_on_the_new_person_contact_screen(String type) throws Throwable {
+		switch(type)
+	    {
+	    case "Claimant":
+	    	//TODO get claimant from testdata scenario case
+	    	personContactDetailsPOM.selectPrefix("Ms.");
+	    	personContactDetailsPOM.setFirstName("Joan");
+	    	personContactDetailsPOM.setLastName("Arc");
+	    	personContactDetailsPOM.setMobile("07771438079");
+	    	personContactDetailsPOM.setAddressLine1("1 The stake");
+	    	break;
+	   
+	    
+	    default:
+	    Assert.fail("unknown input field :"+ type+" - check cucumber script!");
+	    }
+		personContactDetailsPOM.selectUpdate();
 	}
 	
 

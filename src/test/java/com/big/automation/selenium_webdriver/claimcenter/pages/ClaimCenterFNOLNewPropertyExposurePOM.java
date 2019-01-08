@@ -11,7 +11,7 @@ import org.openqa.selenium.support.FindBy;
 import com.big.automation.selenium_webdriver.common.baseTest.BaseTest;
 import com.big.automation.selenium_webdriver.common.gw.utilities.GuideWireAccessors;
 
-public class ClaimCenterFNOLNewExposurePOM extends BaseTest{
+public class ClaimCenterFNOLNewPropertyExposurePOM extends BaseTest{
 
 	
 	
@@ -24,34 +24,33 @@ public class ClaimCenterFNOLNewExposurePOM extends BaseTest{
 	@FindBy(id = "NewClaimWizard_NewExposurePopup:NewClaimWizard_ExposurePageScreen:Cancel-btnEl")
 	private WebElement cancelButton;
 
-	@FindBy(id = "NewClaimWizard_NewExposurePopup:NewClaimWizard_ExposurePageScreen:NewClaimExposureDV:Coverage-inputEl")
+	@FindBy(id = "NewClaimWizard_NewExposurePopup:NewClaimWizard_ExposurePageScreen:NewClaimExposureDV:NewClaimPropertyDamageDV:Exposure_Coverage-inputEl")
 	private WebElement coverageDropdown;
 
-	@FindBy(id = "NewClaimWizard_NewExposurePopup:NewClaimWizard_ExposurePageScreen:NewClaimExposureDV:Claimant_Picker-inputEl")
+	@FindBy(id = "NewClaimWizard_NewExposurePopup:NewClaimWizard_ExposurePageScreen:NewClaimExposureDV:NewClaimPropertyDamageDV:Claimant_Picker-inputEl")
 	private WebElement claimantDropdown;
 	             
-	@FindBy(id = "NewClaimWizard_NewExposurePopup:NewClaimWizard_ExposurePageScreen:NewClaimExposureDV:Claimant_Picker:Claimant_PickerMenuIcon")
+	@FindBy(id = "NewClaimWizard_NewExposurePopup:NewClaimWizard_ExposurePageScreen:NewClaimExposureDV:NewClaimPropertyDamageDV:Claimant_Picker:Claimant_PickerMenuIcon")
 	private WebElement claimantPickerIcon;
-	
-	@FindBy(id = "NewClaimWizard_NewExposurePopup:NewClaimWizard_ExposurePageScreen:NewClaimExposureDV:Claimant_Picker:ClaimNewContactPickerMenuItemSet:NewContactPickerMenuItemSet_NewPerson-textEl")
+	@FindBy(id = "NewClaimWizard_NewExposurePopup:NewClaimWizard_ExposurePageScreen:NewClaimExposureDV:NewClaimPropertyDamageDV:Claimant_Picker:ClaimNewContactPickerMenuItemSet:NewContactPickerMenuItemSet_NewPerson-itemEl")
 	private WebElement claimantPickerNewPerson;
 	
-	@FindBy(id = "NewClaimWizard_NewExposurePopup:NewClaimWizard_ExposurePageScreen:NewClaimExposureDV:Claimant_Type-inputEl")
+	@FindBy(id = "NewClaimWizard_NewExposurePopup:NewClaimWizard_ExposurePageScreen:NewClaimExposureDV:NewClaimPropertyDamageDV:Claimant_Type-inputEl")
 	private WebElement claimantTypeDropdown;
 	
 	
-	@FindBy(id = "NewClaimWizard_NewExposurePopup:NewClaimWizard_ExposurePageScreen:NewClaimExposureDV:Claimant_ContactProhibited_true-inputEl")
+	@FindBy(id = "NewClaimWizard_NewExposurePopup:NewClaimWizard_ExposurePageScreen:NewClaimExposureDV:NewClaimPropertyDamageDV:Claimant_ContactProhibited_true-inputEl")
 	private WebElement claimantContactProhibYes;
-	@FindBy(id = "NewClaimWizard_NewExposurePopup:NewClaimWizard_ExposurePageScreen:NewClaimExposureDV:Claimant_ContactProhibited_false-inputEl")
+	@FindBy(id = "NewClaimWizard_NewExposurePopup:NewClaimWizard_ExposurePageScreen:NewClaimExposureDV:NewClaimPropertyDamageDV:Claimant_ContactProhibited_false-inputEl")
 	private WebElement claimantContactProhibNo;
 	
 	
-	@FindBy(id = "NewClaimWizard_NewExposurePopup:NewClaimWizard_ExposurePageScreen:NewClaimExposureDV:AltContact_Name-inputEl")
-	private WebElement altContactDropdown;
-	@FindBy(id = "NewClaimWizard_NewExposurePopup:NewClaimWizard_ExposurePageScreen:NewClaimExposureDV:AltContact_Name:AltContact_NameMenuIcon")
-	private WebElement altContactPickerIcon;
-	@FindBy(id = "NewClaimWizard_NewExposurePopup:NewClaimWizard_ExposurePageScreen:NewClaimExposureDV:AltContact_Name:ClaimNewContactPickerMenuItemSet:NewContactPickerMenuItemSet_NewPerson-textEl")
-	private WebElement altContactPickerNewPerson;
+	//@FindBy(id = "NewClaimWizard_NewExposurePopup:NewClaimWizard_ExposurePageScreen:NewClaimExposureDV:AltContact_Name-inputEl")
+	//private WebElement altContactDropdown;
+	//@FindBy(id = "NewClaimWizard_NewExposurePopup:NewClaimWizard_ExposurePageScreen:NewClaimExposureDV:AltContact_Name:AltContact_NameMenuIcon")
+	//private WebElement altContactPickerIcon;
+	//@FindBy(id = "NewClaimWizard_NewExposurePopup:NewClaimWizard_ExposurePageScreen:NewClaimExposureDV:AltContact_Name:ClaimNewContactPickerMenuItemSet:NewContactPickerMenuItemSet_NewPerson-textEl")
+	//private WebElement altContactPickerNewPerson;
 	
 	@FindBy(id = "NewClaimWizard_NewExposurePopup:NewClaimWizard_ExposurePageScreen:NewClaimExposureDV:NewClaimPropertyDamageDV:NewClaimIncidentInputSet:Property_Incident:Property_IncidentMenuIcon")
 	private WebElement propertyPickerIcon;
@@ -68,7 +67,7 @@ public class ClaimCenterFNOLNewExposurePOM extends BaseTest{
 
 	public String getName() {
 
-		return "New Exposure FNOL";
+		return "New Property Exposure FNOL";
 	}
 
 	public boolean isPageTitleDisplayed(String expected)
@@ -158,7 +157,7 @@ public class ClaimCenterFNOLNewExposurePOM extends BaseTest{
 		return claimantContactProhibNo;
 	}
 
-	private WebElement getAltContactDropdown() {
+	/*private WebElement getAltContactDropdown() {
 		return altContactDropdown;
 	}
 
@@ -168,7 +167,7 @@ public class ClaimCenterFNOLNewExposurePOM extends BaseTest{
 
 	private WebElement getAltContactPickerNewPerson() {
 		return altContactPickerNewPerson;
-	}
+	}*/
 
 	
 	

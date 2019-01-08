@@ -4,7 +4,7 @@ Feature: Feature: CBPCL-112 As a claims handler I want to see ITB specific optio
   Also As a claims handler we require the ability to choose the reporter of a new claim to be a company. This is so that when a third party insurer/solicitors, etc report a claim we are able to record their information and reference.
 
   Background: 
-    Given As a ClaimsHandler I am at step2 for FNOL
+    Given As a "ClaimsHandler" I am at step2 for FNOL
 
   @Ignore
   Scenario: CBPCL-112 TC1 Valid options are shown in the 'How reported' question

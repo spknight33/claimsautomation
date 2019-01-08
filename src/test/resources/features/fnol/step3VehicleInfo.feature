@@ -6,7 +6,7 @@ Feature: CBPCL-xxx As an Operator, I want to be able to add theft detail to insu
 
   @Ignore
   Scenario: CBPCL-176 TC1
-   Given As a ClaimsHandler I am at step3 without insured vehicle for FNOL
+   Given As a "ClaimsHandler" I am at step3 without insured vehicle for FNOL
     And I input "Some idiot crashed into me!" into the "Circumstances" box on step3
     And I input "Mainly for going to work" into the "Journey Purpose" box on step3
     And I select "Theft" from "Incident Type" field on step3

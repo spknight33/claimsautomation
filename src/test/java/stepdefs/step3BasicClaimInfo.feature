@@ -3,7 +3,7 @@ Feature: CBPCL-176 As an Operator, I want to be able to record "Fault" "Split Li
   I want this to be displayed so I am aware which fault code applies. This also needs to be able to be changed.
 
   Background: 
-    Given As a ClaimsHandler I am at step3 for FNOL
+    Given As a "ClaimsHandler" I am at step3 for FNOL
 
   @Ignore
   Scenario: CBPCL-176 TC1 Valid options are shown in the 'Incident Type' question

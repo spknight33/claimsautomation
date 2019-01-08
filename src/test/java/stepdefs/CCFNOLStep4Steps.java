@@ -27,9 +27,9 @@ public class CCFNOLStep4Steps extends BaseTest{
 		fnolStep4POM.next();
 	}
 	
-	@Given("^As a ClaimsHandler I am at step4 for FNOL$")
-	public void as_a_ClaimsHandler_I_am_at_step4_for_FNOL() throws Throwable {
-		step3Steps.as_a_ClaimsHandler_I_am_at_step3_for_FNOL();
+	@Given("^As a \"([^\"]*)\" I am at step4 for FNOL$")
+	public void as_a_user_I_am_at_step4_for_FNOL(String userType) throws Throwable {
+		step3Steps.as_a_user_I_am_at_step3_for_FNOL(userType);
 		step3Steps.completeFNOLStep3ForTestScenario(scenarioData);
 	
 	}

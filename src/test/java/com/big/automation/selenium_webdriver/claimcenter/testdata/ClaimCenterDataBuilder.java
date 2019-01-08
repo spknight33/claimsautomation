@@ -26,18 +26,18 @@ public class ClaimCenterDataBuilder {
 		
 		//step3 FNOL
 		data.step3FNOLIncidentType = "Accident";
-		data.step3FNOLCause = "Hit in Rear By Third Party";
-		data.step3FNOLSubCause = "Hit In Rear while correctly proceeding along the road";
+		data.step3FNOLCause = "Accident Involving Animal";
+		data.step3FNOLSubCause = "Collided with animal - owner known";
 		
 		
 		data.atStep3FNOLPedestrianRequired = false;
 		data.atStep3FNOLPropertyRequired= false;
-		data.atStep3FNOLTPVehicleRequired= true;
+		data.atStep3FNOLTPVehicleRequired= false;
 		data.atStep3FNOLPoliceRequired= false;
 	    
 		data.atStep2FNOLInsuredVehicleRequired= true;
 	    
-		data.atTPVehicleStep3FNOLDriverRequired= true;
+		data.atTPVehicleStep3FNOLDriverRequired= false;
 		data.atTPVehicleStep3FNOLPassengerRequired= false;
 	    
 		data.atPHVehicleStep3FNOLDriverRequired= true;

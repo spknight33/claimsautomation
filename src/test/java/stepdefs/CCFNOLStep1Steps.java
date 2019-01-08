@@ -5,7 +5,6 @@ import java.util.List;
 import org.testng.Assert;
 import org.testng.asserts.SoftAssert;
 
-import com.big.automation.selenium_webdriver.claimcenter.testdata.ClaimCenterDataBuilder;
 import com.big.automation.selenium_webdriver.common.baseTest.BaseTest;
 import com.big.automation.selenium_webdriver.common.config.UserConfig;
 import com.big.automation.selenium_webdriver.common.config.UserFactory;
@@ -33,13 +32,16 @@ public class CCFNOLStep1Steps extends BaseTest	{
 		
 	}
 	
-	@Given("^As a ClaimsHandler I am at step1 for FNOL$")
-	public void as_a_ClaimsHandler_I_am_at_step1_for_FNOL() throws Throwable {
+	@Given("^As a \"([^\"]*)\" I am at step1 for FNOL$")
+	public void as_a_user_I_am_at_step1_for_FNOL(String userType) throws Throwable {
 		loginSteps.i_access_claimcenter_login_page();
-		UserConfig user = UserFactory.getUserConfig(UserFactory.CLAIMSHANDLER);
+		UserConfig user = UserFactory.getUserConfig(userType);
 	    loginSteps.i_login_to_ClaimCenter_as_with(user.username, user.password); 
 	    menuSteps.selectNewClaimsMenuItem();
 	}
+	
+	
+	
 	
 	
 	@Then("^Mandatory field error message will be shown$")
