@@ -11,9 +11,9 @@ import org.openqa.selenium.support.FindBy;
 import com.big.automation.selenium_webdriver.common.baseTest.BaseTest;
 import com.big.automation.selenium_webdriver.common.gw.utilities.GuideWireAccessors;
 
-public class ClaimCenterPOSTFNOLVehicleDetailsPOM extends BaseTest{
+public class ClaimCenterPOSTFNOLEditVehicleDetailsPOM extends BaseTest{
 
-	//TODO ALL THE LOCATORS
+	
 	@FindBy(id = "NewVehicleIncidentPopup:NewVehicleIncidentScreen:Update-btnEl")
 	private WebElement okButton;
 	@FindBy(id = "NewVehicleIncidentPopup:NewVehicleIncidentScreen:Cancel-btnEl")

@@ -47,12 +47,17 @@ import com.big.automation.selenium_webdriver.claimcenter.pages.ClaimCenterNaviga
 import com.big.automation.selenium_webdriver.claimcenter.pages.ClaimCenterPersonDetailsPOM;
 import com.big.automation.selenium_webdriver.claimcenter.pages.ClaimCenterFNOLPropertyDetailsPOM;
 import com.big.automation.selenium_webdriver.claimcenter.pages.ClaimCenterSearchAddressBookPOM;
+import com.big.automation.selenium_webdriver.claimcenter.pages.postfnol.ClaimCenterPOSTFNOLEditInjuryExposurePOM;
+import com.big.automation.selenium_webdriver.claimcenter.pages.postfnol.ClaimCenterPOSTFNOLEditPropertyExposurePOM;
+import com.big.automation.selenium_webdriver.claimcenter.pages.postfnol.ClaimCenterPOSTFNOLEditVehicleExposurePOM;
+import com.big.automation.selenium_webdriver.claimcenter.pages.postfnol.ClaimCenterPOSTFNOLExposuresPOM;
 import com.big.automation.selenium_webdriver.claimcenter.pages.postfnol.ClaimCenterPOSTFNOLLossDetailsPOM;
 import com.big.automation.selenium_webdriver.claimcenter.pages.postfnol.ClaimCenterPOSTFNOLNewInjuryPOM;
 import com.big.automation.selenium_webdriver.claimcenter.pages.postfnol.ClaimCenterPOSTFNOLNewPoliceDetailsPOM;
 import com.big.automation.selenium_webdriver.claimcenter.pages.postfnol.ClaimCenterPOSTFNOLNewPropertyPOM;
+import com.big.automation.selenium_webdriver.claimcenter.pages.postfnol.ClaimCenterPOSTFNOLNewVehicleDetailsPOM;
 import com.big.automation.selenium_webdriver.claimcenter.pages.postfnol.ClaimCenterPOSTFNOLPedestrianDetailsPOM;
-import com.big.automation.selenium_webdriver.claimcenter.pages.postfnol.ClaimCenterPOSTFNOLVehicleDetailsPOM;
+import com.big.automation.selenium_webdriver.claimcenter.pages.postfnol.ClaimCenterPOSTFNOLEditVehicleDetailsPOM;
 import com.big.automation.selenium_webdriver.claimcenter.testdata.ClaimCenterData;
 import com.big.automation.selenium_webdriver.claimcenter.testdata.ClaimCenterDataBuilder;
 import com.big.automation.selenium_webdriver.common.extent_reports.ExtentManager;
@@ -97,17 +102,22 @@ public class BaseTest extends AbstractTestNGCucumberTests{
    public static ClaimCenterPersonDetailsPOM personContactDetailsPOM;
    public static ClaimCenterFNOLPropertyDetailsPOM fnolPropertyDetailsPOM;
    public static ClaimCenterFNOLNewInjuryPOM fnolNewInjuryPOM;
+   public static ClaimCenterPOSTFNOLExposuresPOM postFnolExposuresPOM;
+   public static ClaimCenterPOSTFNOLEditInjuryExposurePOM postFnolEditInjuryExposurePOM;
+   public static ClaimCenterPOSTFNOLEditPropertyExposurePOM postFnolEditPropertyExposurePOM;
+   public static ClaimCenterPOSTFNOLEditVehicleExposurePOM postFnolEditVehicleExposurePOM;
    public static ClaimCenterPOSTFNOLLossDetailsPOM postFnolLossDetailsPOM;
    public static ClaimCenterPOSTFNOLNewPropertyPOM postFnolNewPropertyPOM;
    public static ClaimCenterPOSTFNOLNewInjuryPOM postFnolNewInjuryPOM;
    public static ClaimCenterPOSTFNOLPedestrianDetailsPOM postFnolPedestrianPOM;
-   public static ClaimCenterPOSTFNOLVehicleDetailsPOM postFnolVehicleDetailsPOM;
+   public static ClaimCenterPOSTFNOLEditVehicleDetailsPOM postFnolEditVehiclePOM;
+   public static ClaimCenterPOSTFNOLNewVehicleDetailsPOM postFnolNewVehiclePOM;
    public static ClaimCenterPOSTFNOLNewPoliceDetailsPOM postFnolNewPolicePOM;
    public static ClaimCenterCompanyDetailsPOM companyContactDetailsPOM;
    public static ClaimCenterSearchAddressBookPOM searchAddressBookPOM;
    
    
-  
+   
 
    @BeforeTest(timeOut = 30000)
    public void beforeTest() {
@@ -190,13 +200,23 @@ public class BaseTest extends AbstractTestNGCucumberTests{
       personContactDetailsPOM= PageFactory.initElements(driver, ClaimCenterPersonDetailsPOM.class);  
       fnolPropertyDetailsPOM= PageFactory.initElements(driver, ClaimCenterFNOLPropertyDetailsPOM.class);  
      
+      
+      
+      postFnolExposuresPOM= PageFactory.initElements(driver, ClaimCenterPOSTFNOLExposuresPOM.class);
+      postFnolEditInjuryExposurePOM= PageFactory.initElements(driver, ClaimCenterPOSTFNOLEditInjuryExposurePOM.class);
+      postFnolEditPropertyExposurePOM= PageFactory.initElements(driver, ClaimCenterPOSTFNOLEditPropertyExposurePOM.class);
+      postFnolEditVehicleExposurePOM= PageFactory.initElements(driver, ClaimCenterPOSTFNOLEditVehicleExposurePOM.class);
+      
       postFnolLossDetailsPOM= PageFactory.initElements(driver, ClaimCenterPOSTFNOLLossDetailsPOM.class); 
       postFnolNewPropertyPOM= PageFactory.initElements(driver, ClaimCenterPOSTFNOLNewPropertyPOM.class);
       postFnolNewInjuryPOM= PageFactory.initElements(driver, ClaimCenterPOSTFNOLNewInjuryPOM.class);
+      postFnolNewVehiclePOM= PageFactory.initElements(driver, ClaimCenterPOSTFNOLNewVehicleDetailsPOM.class);
+      
       postFnolPedestrianPOM= PageFactory.initElements(driver, ClaimCenterPOSTFNOLPedestrianDetailsPOM.class);
-      postFnolVehicleDetailsPOM= PageFactory.initElements(driver, ClaimCenterPOSTFNOLVehicleDetailsPOM.class);
+      postFnolEditVehiclePOM= PageFactory.initElements(driver, ClaimCenterPOSTFNOLEditVehicleDetailsPOM.class);
       postFnolNewPolicePOM= PageFactory.initElements(driver, ClaimCenterPOSTFNOLNewPoliceDetailsPOM.class);
 
+      
       
       companyContactDetailsPOM= PageFactory.initElements(driver, ClaimCenterCompanyDetailsPOM.class);
       searchAddressBookPOM= PageFactory.initElements(driver, ClaimCenterSearchAddressBookPOM.class);

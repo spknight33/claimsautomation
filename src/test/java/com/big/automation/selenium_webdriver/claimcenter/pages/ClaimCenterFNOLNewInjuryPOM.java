@@ -5,6 +5,7 @@ import static java.lang.String.format;
 
 import java.util.List;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
@@ -37,7 +38,8 @@ public class ClaimCenterFNOLNewInjuryPOM extends BaseTest{
 	@FindBy(id = "NewInjuryIncidentPopup:NewInjuryIncidentScreen:InjuryIncidentDV:InjuryIncidentInputSet:InjuryDescription-inputEl")
 	private WebElement injuryDesc;
 	
-	@FindBy(id = "NewInjuryIncidentPopup:NewInjuryIncidentScreen:InjuryIncidentDV:InjuryIncidentInputSet:InjuryDescription-inputEl")
+	
+	@FindBy(id = "NewInjuryIncidentPopup:NewInjuryIncidentScreen:InjuryIncidentDV:InjuryIncidentInputSet:EditableBodyPartDetailsLV_tb:Add-btnEl")
 	private WebElement addInjuryButton;
 	
 	
@@ -121,7 +123,31 @@ public class ClaimCenterFNOLNewInjuryPOM extends BaseTest{
 		GuideWireAccessors.selectOptionFromGWDropDown(driver, option, this.getInjurySeverity(), 1);
 	}
 	
+	public void selectAddInjury()
+	{
+		logger.info(format("%s - going to select add injury button ", getName()));
+		GuideWireAccessors.clickGWButton(driver, this.getAddInjuryButton());
+	}
 	
+	public void selectAreaOfBody(String option, int sequence)
+	{
+		// use to select the area of body for the first (for now) change to be able to set for any row
+	    // just change to use table[x]
+		String locator = "//*[@id=\"NewInjuryIncidentPopup:NewInjuryIncidentScreen:InjuryIncidentDV:InjuryIncidentInputSet:EditableBodyPartDetailsLV-body\"]//table[" + sequence + "]//tr/td[2]/div";
+		WebElement element = driver.findElement(By.xpath(locator));
+		GuideWireAccessors.selectOptionFromGWDropDown(driver, option, element, 1);
+		
+	}
+	
+	public void selectDetailedInjury(String option, int sequence)
+	{
+		// use to select the detailed injury for the first (for now) change to be able to set for any row
+		sleep(2);
+		String locator = "//*[@id=\"NewInjuryIncidentPopup:NewInjuryIncidentScreen:InjuryIncidentDV:InjuryIncidentInputSet:EditableBodyPartDetailsLV-body\"]//table[" + sequence + "]//tr/td[3]/div";
+		WebElement element = driver.findElement(By.xpath(locator));
+		GuideWireAccessors.selectOptionFromGWDropDown(driver, option, element, 1);
+		
+	}
 	
 	
 	public void selectAmbulanceAttended(boolean attended)

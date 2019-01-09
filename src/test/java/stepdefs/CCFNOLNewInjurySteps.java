@@ -35,6 +35,12 @@ public class CCFNOLNewInjurySteps extends BaseTest {
 		
 		fnolNewInjuryPOM.setInjuryDesc("I have been badly injured");
 		fnolNewInjuryPOM.selectSeverity("Major");
+		
+		fnolNewInjuryPOM.selectAddInjury();
+		
+		fnolNewInjuryPOM.selectAreaOfBody("Head", 1);
+		fnolNewInjuryPOM.selectDetailedInjury("Brain Injury", 1);
+		
 		fnolNewInjuryPOM.selectAmbulanceAttended(true);
 		fnolNewInjuryPOM.selectAirAmbulanceAttended(false);
 		fnolNewInjuryPOM.selectHospitalAttended(false);
