@@ -73,7 +73,7 @@ public class ClaimCenterFNOLNewExposurePOM extends BaseTest{
 
 	public boolean isPageTitleDisplayed(String expected)
 	{
-		sleep(4);
+		sleep(2);
 
 		logger.info(format("%s -found page title for Exposure page :"+this.getPageTitle().getText(), getName()));
 		return this.getPageTitle().getText().equalsIgnoreCase(expected);

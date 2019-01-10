@@ -46,6 +46,11 @@ public class ClaimCenterFNOLStep5POM extends BaseTest{
 	@FindBy(id = "FNOLWizard:AutoWorkersCompWizardStepSet:FNOLWizard_AssignSaveScreen:NewExposureLV_tb:AddExposure-btnEl")
 	private WebElement addExposureDropdown;
 	
+	@FindBy(id ="WebMessageWorksheet:WebMessageWorksheetScreen:WebMessageWorksheet_ClearButton")
+	private WebElement closeWarningsWindow;
+	private String closeWarningsLocator = "WebMessageWorksheet:WebMessageWorksheetScreen:WebMessageWorksheet_ClearButton";
+	
+	
 	
 	public String getName() {
 
@@ -70,8 +75,30 @@ public class ClaimCenterFNOLStep5POM extends BaseTest{
 
 		logger.info(format("%s -  going to click finish", getName()));
 		GuideWireAccessors.clickGWButton(driver,getFinishButton());
-		logger.info(format("%s - done, Finish clicked", getName()));
+		// we may get prompt for validation warnings
+		//clear any if necessary
+		logger.info(format("%s - going to close warnings window if its open", getName()));
+		//*[@id="NewClaimDuplicatesWorksheet:NewClaimDuplicatesScreen:NewClaimDuplicatesWorksheet_CloseButton-btnEl"]
+		String xpathLocator = "//*[@id='"+  this.closeWarningsLocator + "']";
+		if(driver.findElements( By.xpath(xpathLocator) ).size() > 0)
+		{
+			logger.info(format("%s - going to close warnings window as its open", getName()));
+			// close it if present
+			driver.findElement(By.xpath(xpathLocator)).click();
+			GuideWireAccessors.clickGWButton(driver,getFinishButton());
+		}
+		else
+		{
+			logger.info(format("%s - NOT going to warnings window as not open", getName()));
+		}
+	
+		
 	}
+	
+	
+		
+		
+	
 	
 	
 	

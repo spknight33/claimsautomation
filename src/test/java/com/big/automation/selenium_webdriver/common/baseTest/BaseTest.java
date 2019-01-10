@@ -34,6 +34,7 @@ import com.big.automation.selenium_webdriver.claimcenter.pages.ClaimCenterFNOLNe
 import com.big.automation.selenium_webdriver.claimcenter.pages.ClaimCenterFNOLNewInjuryPOM;
 import com.big.automation.selenium_webdriver.claimcenter.pages.ClaimCenterFNOLNewPoliceDetailsPOM;
 import com.big.automation.selenium_webdriver.claimcenter.pages.ClaimCenterFNOLNewPropertyExposurePOM;
+import com.big.automation.selenium_webdriver.claimcenter.pages.ClaimCenterFNOLNewVehicleExposurePOM;
 import com.big.automation.selenium_webdriver.claimcenter.pages.ClaimCenterFNOLPedestrianDetailsPOM;
 import com.big.automation.selenium_webdriver.claimcenter.pages.ClaimCenterFNOLStep1POM;
 import com.big.automation.selenium_webdriver.claimcenter.pages.ClaimCenterFNOLStep2POM;
@@ -99,6 +100,8 @@ public class BaseTest extends AbstractTestNGCucumberTests{
    public static ClaimCenterFNOLNewExposurePOM fnolNewExposurePOM;
    public static ClaimCenterFNOLNewPropertyExposurePOM fnolNewPropertyExposurePOM;
    public static ClaimCenterFNOLNewInjuryExposurePOM fnolNewInjuryExposurePOM;
+   public static ClaimCenterFNOLNewVehicleExposurePOM fnolNewVehicleExposurePOM;
+   
    public static ClaimCenterPersonDetailsPOM personContactDetailsPOM;
    public static ClaimCenterFNOLPropertyDetailsPOM fnolPropertyDetailsPOM;
    public static ClaimCenterFNOLNewInjuryPOM fnolNewInjuryPOM;
@@ -193,6 +196,7 @@ public class BaseTest extends AbstractTestNGCucumberTests{
       fnolNewExposurePOM= PageFactory.initElements(driver, ClaimCenterFNOLNewExposurePOM.class);
       fnolNewPropertyExposurePOM= PageFactory.initElements(driver, ClaimCenterFNOLNewPropertyExposurePOM.class);
       fnolNewInjuryExposurePOM= PageFactory.initElements(driver, ClaimCenterFNOLNewInjuryExposurePOM.class);
+      fnolNewVehicleExposurePOM= PageFactory.initElements(driver, ClaimCenterFNOLNewVehicleExposurePOM.class);
       
       
       fnolVehicleDetailsPOM= PageFactory.initElements(driver, ClaimCenterFNOLVehicleDetailsPOM.class);

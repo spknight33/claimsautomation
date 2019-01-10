@@ -1,3 +1,4 @@
+@Ignore
 Feature: CBPCL-225 As a ClaimCenter user with the role of Adjuster or Manager, I want to be able maintain claim related exposures (Vehicle Damage) so that I can make sure that the data on the claim represents our current understanding of the loss.
 Background: 
 Given I access ClaimCenter login page

@@ -57,7 +57,7 @@ Feature: CBPCL-422 As a ClaimCenter user with the role of Adjuster or Manager, I
     
      Scenario: CBPCL-222 TC8 New injury can be created on exposures Medical Expenses screen at step5 FNOL
      Given As a "ClaimsHandler" I am at step5 for FNOL
-     When I select the Add Exposures Popup Menu Hierarchy "BMW 3 SERIES (ND58PFL / United Kingdom),Medical Expenses"
+     When I select the Add Exposures Popup Menu Hierarchy "2015 SKODA OCTAVIA (s99sja / United Kingdom),Medical Expenses"
     Then I will be on the new exposure screen for FNOL
     And I select "Insured" from "Claimant Type" on new injury exposure screen for FNOL
     And I click "New Person" on claimant picker on new injury exposure screen

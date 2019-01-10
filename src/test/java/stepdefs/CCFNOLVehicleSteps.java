@@ -23,7 +23,7 @@ public class CCFNOLVehicleSteps extends BaseTest {
 	   if (scenarioData.atPHVehicleStep3FNOLDriverRequired())
 	   {
 		   fnolVehicleDetailsPOM.selectAddDriver();
-		   driverSteps.completeFNOLDriverForTestScenario(scenarioData);
+		   driverSteps.completeFNOLPHDriverForTestScenario(scenarioData);
 	   }
 	   fnolVehicleDetailsPOM.selectOK();
 	}
@@ -44,7 +44,7 @@ public class CCFNOLVehicleSteps extends BaseTest {
 	   if (scenarioData.atTPVehicleStep3FNOLDriverRequired())
 	   {
 		   fnolVehicleDetailsPOM.selectAddDriver();
-		   driverSteps.completeFNOLDriverForTestScenario(scenarioData);
+		   driverSteps.completeFNOLTPDriverForTestScenario(scenarioData);
 	   }
 	   fnolVehicleDetailsPOM.selectOK();
 	}

@@ -10,12 +10,21 @@ import cucumber.api.java.en.Then;
 
 public class CCFNOLDriverSteps extends BaseTest {
 	
-	public void completeFNOLDriverForTestScenario(ClaimCenterData scenarioData)
+	public void completeFNOLTPDriverForTestScenario(ClaimCenterData scenarioData)
 	{
 		//TODO - use data from scenario
 		fnolDriverDetailsPOM.setAddressLine1("9 Walkers Road");
 		fnolDriverDetailsPOM.setFirstName("Jim");
 		fnolDriverDetailsPOM.setLastName("Boyracer");
+		
+	
+		fnolDriverDetailsPOM.selectOK();
+	}
+	
+	public void completeFNOLPHDriverForTestScenario(ClaimCenterData scenarioData)
+	{
+		//TODO - use data from scenario
+		fnolDriverDetailsPOM.selectDriverName(scenarioData.getFirstLastName());
 		
 	
 		fnolDriverDetailsPOM.selectOK();

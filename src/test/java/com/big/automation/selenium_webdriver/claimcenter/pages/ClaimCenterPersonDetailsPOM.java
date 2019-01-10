@@ -122,31 +122,42 @@ public class ClaimCenterPersonDetailsPOM extends BaseTest{
 	{
 		logger.info(format("%s -  going to set mobile", getName()));
 		GuideWireAccessors.setGWTextBox(driver, text, this.getMobile());
-		logger.info(format("%s - done, mobile set", getName()));
+	
 	}
 	public void setEmail(String text)
 	{
 		logger.info(format("%s -  going to set email", getName()));
 		GuideWireAccessors.setGWTextBox(driver, text, this.getMainEmail());
-		logger.info(format("%s - done, email set", getName()));
+		
 	}
 	public void setAddressLine1(String text)
 	{
 		logger.info(format("%s -  going to set address line1", getName()));
 		GuideWireAccessors.setGWTextBox(driver, text, this.getAddressLine1());
-		logger.info(format("%s - done, address line1 set", getName()));
+		
 	}
 	public void setAddressLine2(String text)
 	{
 		logger.info(format("%s -  going to set address line2", getName()));
 		GuideWireAccessors.setGWTextBox(driver, text, this.getAddressLine2());
-		logger.info(format("%s - done, address line2 set", getName()));
+		
 	}
 	public void setAddressLine3(String text)
 	{
 		logger.info(format("%s -  going to set address line3", getName()));
 		GuideWireAccessors.setGWTextBox(driver, text, this.getAddressLine3());
-		logger.info(format("%s - done, address line3 set", getName()));
+	
+	}
+	public void setPostCode(String text)
+	{
+		logger.info(format("%s -  going to set postcode", getName()));
+		GuideWireAccessors.setGWTextBox(driver, text, this.getPostCode());
+		// as postcode causes display off other address fields, but this can take a couple of seconds - the next method should wait until available but add a slug anyway
+		Actions actions = new Actions(driver);
+		actions.sendKeys(Keys.TAB);
+		actions.build().perform();
+		sleep(1);
+		
 	}
    
 	private WebElement getCancelButton() {

@@ -100,7 +100,11 @@ public class ClaimCenterFNOLNewInjuryExposurePOM extends BaseTest{
 		logger.info(format("%s - going to select New Incident from Injury picker", getName()));
 		GuideWireAccessors.selectOptionFromGWPicker(driver, this.getInjuryPickerIcon(),this.getInjuryPickerNewIncident());
 	}
-	
+	public void selectClaimant(String option)
+	{
+		logger.info(format("%s - going to select Claimant  option:"+option, getName()));
+		GuideWireAccessors.selectOptionFromGWDropDown(driver, option, this.getClaimantDropdown(), 1);
+	}
 	public void selectClaimantType(String option)
 	{
 		logger.info(format("%s - going to select Claimant type option:"+option, getName()));

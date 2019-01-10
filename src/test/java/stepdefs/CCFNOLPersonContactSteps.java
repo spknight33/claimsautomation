@@ -92,6 +92,7 @@ public class CCFNOLPersonContactSteps extends BaseTest {
 	    	personContactDetailsPOM.setFirstName("Joan");
 	    	personContactDetailsPOM.setLastName("Arc");
 	    	personContactDetailsPOM.setMobile("07771438079");
+	    	personContactDetailsPOM.setPostCode("NE31PX");
 	    	personContactDetailsPOM.setAddressLine1("1 The stake");
 	    	break;
 	   

@@ -76,6 +76,7 @@ public class CCFNOLStep5Steps extends BaseTest{
 	public void next() {
 		
 		fnolStep5POM.finish();
+		
 	}
 
 	@Given("^I click previous button on step5$")

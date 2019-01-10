@@ -1,4 +1,4 @@
-package com.big.automation.selenium_webdriver.claimcenter.pages.postfnol;
+package com.big.automation.selenium_webdriver.claimcenter.pages;
 
 import static com.big.automation.selenium_webdriver.common.utilities.ThreadUtils.sleep;
 import static java.lang.String.format;
@@ -11,54 +11,41 @@ import org.openqa.selenium.support.FindBy;
 import com.big.automation.selenium_webdriver.common.baseTest.BaseTest;
 import com.big.automation.selenium_webdriver.common.gw.utilities.GuideWireAccessors;
 
-public class ClaimCenterPOSTFNOLEditVehicleExposurePOM extends BaseTest{
+public class ClaimCenterFNOLNewVehicleExposurePOM extends BaseTest{
 
 	
 	
-	@FindBy(id = "ExposureDetail:ExposureDetailScreen:ttlBar")
+	@FindBy(id = "NewClaimWizard_NewExposurePopup:NewClaimWizard_ExposurePageScreen:ttlBar")
 	private WebElement pageTitle;
-	@FindBy(id = "ExposureDetail:ExposureDetailScreen:Edit")
-	private WebElement editButton;
-	@FindBy(id = "ExposureDetail:ExposureDetail_UpLink")
-	private WebElement upToExposuresLink;
-		
-	@FindBy(id = "ExposureDetail:ExposureDetailScreen:Update")
-	private WebElement updateButton;
-	
-	@FindBy(id = "ExposureDetail:ExposureDetailScreen:Cancel")
+	@FindBy(id = "NewClaimWizard_NewExposurePopup:NewClaimWizard_ExposurePageScreen:Update")
+	private WebElement okButton;
+	@FindBy(id = "NewClaimWizard_NewExposurePopup:NewClaimWizard_ExposurePageScreen:Cancel")
 	private WebElement cancelButton;
 
-	@FindBy(id = "ExposureDetail:ExposureDetailScreen:ExposureDetailDV:VehicleDamageDV:Coverage-inputEl")
+	@FindBy(id = "NewClaimWizard_NewExposurePopup:NewClaimWizard_ExposurePageScreen:NewClaimExposureDV:NewClaimVehicleDamageDV:Coverage-inputEl")
 	private WebElement coverageDropdown;
 
-	@FindBy(id = "ExposureDetail:ExposureDetailScreen:ExposureDetailDV:VehicleDamageDV:Claimant_Picker-inputEl")
+	@FindBy(id = "NewClaimWizard_NewExposurePopup:NewClaimWizard_ExposurePageScreen:NewClaimExposureDV:NewClaimVehicleDamageDV:Claimant_Picker-inputEl")
 	private WebElement claimantDropdown;
-    @FindBy(id = "ExposureDetail:ExposureDetailScreen:ExposureDetailDV:VehicleDamageDV:Claimant_Picker:Claimant_PickerMenuIcon")
+    @FindBy(id = "NewClaimWizard_NewExposurePopup:NewClaimWizard_ExposurePageScreen:NewClaimExposureDV:NewClaimVehicleDamageDV:Claimant_Picker:Claimant_PickerMenuIcon")
 	private WebElement claimantPickerIcon;
-	@FindBy(id = "ExposureDetail:ExposureDetailScreen:ExposureDetailDV:VehicleDamageDV:Claimant_Picker:ClaimNewContactPickerMenuItemSet:NewContactPickerMenuItemSet_NewPerson-itemEl")
+	@FindBy(id = "NewClaimWizard_NewExposurePopup:NewClaimWizard_ExposurePageScreen:NewClaimExposureDV:NewClaimVehicleDamageDV:Claimant_Picker:ClaimNewContactPickerMenuItemSet:NewContactPickerMenuItemSet_NewPerson-itemEl")
 	private WebElement claimantPickerNewPerson;
 	
-	@FindBy(id = "ExposureDetail:ExposureDetailScreen:ExposureDetailDV:VehicleDamageDV:Claimant_Type-inputEl")
+	@FindBy(id = "NewClaimWizard_NewExposurePopup:NewClaimWizard_ExposurePageScreen:NewClaimExposureDV:NewClaimVehicleDamageDV:Claimant_Type-inputEl")
 	private WebElement claimantTypeDropdown;
 	
-		@FindBy(id = "ExposureDetail:ExposureDetailScreen:ExposureDetailDV:VehicleDamageDV:Claimant_ContactProhibited_true-inputEl")
+	@FindBy(id = "NewClaimWizard_NewExposurePopup:NewClaimWizard_ExposurePageScreen:NewClaimExposureDV:NewClaimVehicleDamageDV:Claimant_ContactProhibited_true-inputEl")
 	private WebElement claimantContactProhibYes;
-	@FindBy(id = "ExposureDetail:ExposureDetailScreen:ExposureDetailDV:VehicleDamageDV:Claimant_ContactProhibited_false-inputEl")
+	@FindBy(id = "NewClaimWizard_NewExposurePopup:NewClaimWizard_ExposurePageScreen:NewClaimExposureDV:NewClaimVehicleDamageDV:Claimant_ContactProhibited_false-inputEl")
 	private WebElement claimantContactProhibNo;
 	
 	
-	//@FindBy(id = "NewClaimWizard_NewExposurePopup:NewClaimWizard_ExposurePageScreen:NewClaimExposureDV:AltContact_Name-inputEl")
-	//private WebElement altContactDropdown;
-	//@FindBy(id = "NewClaimWizard_NewExposurePopup:NewClaimWizard_ExposurePageScreen:NewClaimExposureDV:AltContact_Name:AltContact_NameMenuIcon")
-	//private WebElement altContactPickerIcon;
-	//@FindBy(id = "NewClaimWizard_NewExposurePopup:NewClaimWizard_ExposurePageScreen:NewClaimExposureDV:AltContact_Name:ClaimNewContactPickerMenuItemSet:NewContactPickerMenuItemSet_NewPerson-textEl")
-	//private WebElement altContactPickerNewPerson;
-	
-	@FindBy(id = "ExposureDetail:ExposureDetailScreen:ExposureDetailDV:VehicleDamageDV:Vehicle_Incident-inputEl")
+	@FindBy(id = "NewClaimWizard_NewExposurePopup:NewClaimWizard_ExposurePageScreen:NewClaimExposureDV:NewClaimVehicleDamageDV:Claimant_ContactProhibited_false-inputEl")
 	private WebElement vehicleDropdown;
-	@FindBy(id = "ExposureDetail:ExposureDetailScreen:ExposureDetailDV:VehicleDamageDV:Vehicle_Incident:Vehicle_IncidentMenuIcon")
+	@FindBy(id = "NewClaimWizard_NewExposurePopup:NewClaimWizard_ExposurePageScreen:NewClaimExposureDV:NewClaimVehicleDamageDV:Vehicle_Incident:Vehicle_IncidentMenuIcon")
 	private WebElement vehiclePickerIcon;
-	@FindBy(id = "ExposureDetail:ExposureDetailScreen:ExposureDetailDV:VehicleDamageDV:Vehicle_Incident:VehicleDamageDV_NewIncidentMenuItem-itemEl")
+	@FindBy(id = "NewClaimWizard_NewExposurePopup:NewClaimWizard_ExposurePageScreen:NewClaimExposureDV:NewClaimVehicleDamageDV:Vehicle_Incident:NewClaimVehicleDamageDV_NewIncidentMenuItem-itemEl")
 	private WebElement vehiclePickerNewIncident;
 	
 	//TODO excess stuff?
@@ -71,12 +58,12 @@ public class ClaimCenterPOSTFNOLEditVehicleExposurePOM extends BaseTest{
 
 	public String getName() {
 
-		return "Edit VEhicle Exposure FNOL";
+		return "New Vehicle Exposure FNOL";
 	}
 
 	public boolean isPageTitleDisplayed(String expected)
 	{
-		sleep(4);
+		sleep(3);
 
 		logger.info(format("%s -found page title for Exposure page :"+this.getPageTitle().getText(), getName()));
 		return this.getPageTitle().getText().equalsIgnoreCase(expected);
@@ -88,15 +75,28 @@ public class ClaimCenterPOSTFNOLEditVehicleExposurePOM extends BaseTest{
 		GuideWireAccessors.clickGWButton(driver, this.getCancelButton());
 		
 	}
-	public void selectEdit() {
-		logger.info(format("%s -  going to click Edit", getName()));
-		GuideWireAccessors.clickGWButton(driver, this.getEditButton());
+	
+		
+	public void selectOk() {
+		logger.info(format("%s -  going to click ok", getName()));
+		GuideWireAccessors.clickGWButton(driver, this.getOkButton());
+		
 	}
-		
-	public void selectUpdate() {
-		logger.info(format("%s -  going to click Update", getName()));
-		GuideWireAccessors.clickGWButton(driver, this.getUpdateButton());
-		
+	
+	public void selectCoverage(String option)
+	{
+		logger.info(format("%s - going to select coverage option:"+option, getName()));
+		GuideWireAccessors.selectOptionFromGWDropDown(driver, option, this.getCoverageDropdown(), 1);
+	}
+	public void selecVehicle(String option)
+	{
+		logger.info(format("%s - going to select vehicle option:"+option, getName()));
+		GuideWireAccessors.selectOptionFromGWDropDown(driver, option, this.getVehicleDropdown(), 1);
+	}
+	public void selectClaimant(String option)
+	{
+		logger.info(format("%s - going to select Claimant  option:"+option, getName()));
+		GuideWireAccessors.selectOptionFromGWDropDown(driver, option, this.getClaimantDropdown(), 1);
 	}
 	public void selectNewClaimant()
 	{
@@ -115,11 +115,7 @@ public class ClaimCenterPOSTFNOLEditVehicleExposurePOM extends BaseTest{
 		GuideWireAccessors.selectOptionFromGWDropDown(driver, option, this.getClaimantTypeDropdown(), 1);
 	}
 	
-	public void selectUpToExposures() {
-		logger.info(format("%s -  going to click up to exposures link", getName()));
-		GuideWireAccessors.clickGWButton(driver, this.getUpToExposuresLink());
-		
-	}
+	
    
 	private WebElement getCancelButton() {
 	return cancelButton;
@@ -132,13 +128,7 @@ public class ClaimCenterPOSTFNOLEditVehicleExposurePOM extends BaseTest{
 	
 
 
-	private WebElement getEditButton() {
-		return editButton;
-	}
-
-	private WebElement getUpToExposuresLink() {
-		return upToExposuresLink;
-	}
+	
 
 	private List<WebElement> getErrorMessages() {
 		return errorMessages;
@@ -193,8 +183,10 @@ public class ClaimCenterPOSTFNOLEditVehicleExposurePOM extends BaseTest{
 		return vehiclePickerNewIncident;
 	}
 
-	private WebElement getUpdateButton() {
-		return updateButton;
+	
+
+	private WebElement getOkButton() {
+		return okButton;
 	}
 
 	public boolean containsErrorMessage(String contains)
