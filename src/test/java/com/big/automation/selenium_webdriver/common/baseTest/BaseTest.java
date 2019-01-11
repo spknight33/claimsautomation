@@ -28,12 +28,16 @@ import com.aventstack.extentreports.reporter.ExtentHtmlReporter;
 import com.aventstack.extentreports.reporter.configuration.ChartLocation;
 import com.aventstack.extentreports.reporter.configuration.Theme;
 import com.big.automation.selenium_webdriver.claimcenter.pages.ClaimCenterCompanyDetailsPOM;
+import com.big.automation.selenium_webdriver.claimcenter.pages.ClaimCenterFNOLClaimSavedPOM;
 import com.big.automation.selenium_webdriver.claimcenter.pages.ClaimCenterFNOLDriverDetailsPOM;
+import com.big.automation.selenium_webdriver.claimcenter.pages.ClaimCenterFNOLNewCreditHireExposurePOM;
 import com.big.automation.selenium_webdriver.claimcenter.pages.ClaimCenterFNOLNewExposurePOM;
 import com.big.automation.selenium_webdriver.claimcenter.pages.ClaimCenterFNOLNewInjuryExposurePOM;
 import com.big.automation.selenium_webdriver.claimcenter.pages.ClaimCenterFNOLNewInjuryPOM;
 import com.big.automation.selenium_webdriver.claimcenter.pages.ClaimCenterFNOLNewPoliceDetailsPOM;
 import com.big.automation.selenium_webdriver.claimcenter.pages.ClaimCenterFNOLNewPropertyExposurePOM;
+import com.big.automation.selenium_webdriver.claimcenter.pages.ClaimCenterFNOLNewProtocolHireExposurePOM;
+import com.big.automation.selenium_webdriver.claimcenter.pages.ClaimCenterFNOLNewTPCaptureExposurePOM;
 import com.big.automation.selenium_webdriver.claimcenter.pages.ClaimCenterFNOLNewVehicleExposurePOM;
 import com.big.automation.selenium_webdriver.claimcenter.pages.ClaimCenterFNOLPedestrianDetailsPOM;
 import com.big.automation.selenium_webdriver.claimcenter.pages.ClaimCenterFNOLStep1POM;
@@ -93,6 +97,8 @@ public class BaseTest extends AbstractTestNGCucumberTests{
    public static ClaimCenterFNOLStep3POM fnolStep3POM;
    public static ClaimCenterFNOLStep4POM fnolStep4POM;
    public static ClaimCenterFNOLStep5POM fnolStep5POM;
+   public static ClaimCenterFNOLClaimSavedPOM fnolClaimSavedPOM;
+   
    public static ClaimCenterFNOLNewPoliceDetailsPOM fnolNewPolicePOM;
    public static ClaimCenterFNOLPedestrianDetailsPOM fnolPedestrianPOM;
    public static ClaimCenterFNOLVehicleDetailsPOM fnolVehicleDetailsPOM;
@@ -101,6 +107,10 @@ public class BaseTest extends AbstractTestNGCucumberTests{
    public static ClaimCenterFNOLNewPropertyExposurePOM fnolNewPropertyExposurePOM;
    public static ClaimCenterFNOLNewInjuryExposurePOM fnolNewInjuryExposurePOM;
    public static ClaimCenterFNOLNewVehicleExposurePOM fnolNewVehicleExposurePOM;
+   public static ClaimCenterFNOLNewCreditHireExposurePOM fnolNewCreditHireExposurePOM;
+   public static ClaimCenterFNOLNewProtocolHireExposurePOM fnolNewProtocolHireExposurePOM;
+   public static ClaimCenterFNOLNewTPCaptureExposurePOM fnolNewTPCaptureExposurePOM;
+   
    
    public static ClaimCenterPersonDetailsPOM personContactDetailsPOM;
    public static ClaimCenterFNOLPropertyDetailsPOM fnolPropertyDetailsPOM;
@@ -190,6 +200,8 @@ public class BaseTest extends AbstractTestNGCucumberTests{
       fnolStep3POM = PageFactory.initElements(driver, ClaimCenterFNOLStep3POM.class);
       fnolStep4POM = PageFactory.initElements(driver, ClaimCenterFNOLStep4POM.class);
       fnolStep5POM = PageFactory.initElements(driver, ClaimCenterFNOLStep5POM.class);
+      fnolClaimSavedPOM = PageFactory.initElements(driver, ClaimCenterFNOLClaimSavedPOM.class);
+      
       fnolPedestrianPOM= PageFactory.initElements(driver, ClaimCenterFNOLPedestrianDetailsPOM.class);
       fnolNewPolicePOM= PageFactory.initElements(driver, ClaimCenterFNOLNewPoliceDetailsPOM.class);
       fnolNewInjuryPOM= PageFactory.initElements(driver, ClaimCenterFNOLNewInjuryPOM.class);
@@ -197,6 +209,9 @@ public class BaseTest extends AbstractTestNGCucumberTests{
       fnolNewPropertyExposurePOM= PageFactory.initElements(driver, ClaimCenterFNOLNewPropertyExposurePOM.class);
       fnolNewInjuryExposurePOM= PageFactory.initElements(driver, ClaimCenterFNOLNewInjuryExposurePOM.class);
       fnolNewVehicleExposurePOM= PageFactory.initElements(driver, ClaimCenterFNOLNewVehicleExposurePOM.class);
+      fnolNewCreditHireExposurePOM= PageFactory.initElements(driver, ClaimCenterFNOLNewCreditHireExposurePOM.class);
+      fnolNewProtocolHireExposurePOM= PageFactory.initElements(driver, ClaimCenterFNOLNewProtocolHireExposurePOM.class);
+      fnolNewTPCaptureExposurePOM= PageFactory.initElements(driver, ClaimCenterFNOLNewTPCaptureExposurePOM.class);
       
       
       fnolVehicleDetailsPOM= PageFactory.initElements(driver, ClaimCenterFNOLVehicleDetailsPOM.class);

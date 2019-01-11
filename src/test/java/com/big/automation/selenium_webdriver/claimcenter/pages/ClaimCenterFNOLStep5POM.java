@@ -18,6 +18,7 @@ import com.big.automation.selenium_webdriver.common.gw.utilities.GuideWireAccess
 public class ClaimCenterFNOLStep5POM extends BaseTest{
 
 	
+	
 	@FindBy(id = "FNOLWizard:Cancel-btnEl")
 	private WebElement cancelButton;
 	
@@ -74,6 +75,7 @@ public class ClaimCenterFNOLStep5POM extends BaseTest{
 	public void finish() {
 
 		logger.info(format("%s -  going to click finish", getName()));
+		
 		GuideWireAccessors.clickGWButton(driver,getFinishButton());
 		// we may get prompt for validation warnings
 		//clear any if necessary
@@ -91,7 +93,7 @@ public class ClaimCenterFNOLStep5POM extends BaseTest{
 		{
 			logger.info(format("%s - NOT going to warnings window as not open", getName()));
 		}
-	
+	   sleep(3);
 		
 	}
 	

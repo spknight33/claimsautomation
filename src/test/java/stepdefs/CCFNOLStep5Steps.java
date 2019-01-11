@@ -27,9 +27,10 @@ public class CCFNOLStep5Steps extends BaseTest{
 	public void completeFNOLStep5ForTestScenario(ClaimCenterData scenarioData)  throws Throwable
 	{
 		fnolStep5POM.setNote("this is a note added to the claim at step5");
-		List<String> list = Arrays.asList("BMW 3 SERIES (ND58PFL / United Kingdom)", "Personal Accident");
-		fnolStep5POM.selectExposureSubMenuHierarchy(list);
+		//List<String> list = Arrays.asList("BMW 3 SERIES (ND58PFL / United Kingdom)", "Personal Accident");
+		//fnolStep5POM.selectExposureSubMenuHierarchy(list);
 		fnolStep5POM.finish();
+		fnolClaimSavedPOM.isPageTitleDisplayed("New Claim Saved");
 	}
 	
 	@Given("^As a \"([^\"]*)\" I am at step5 for FNOL$")

@@ -11,7 +11,7 @@ import org.openqa.selenium.support.FindBy;
 import com.big.automation.selenium_webdriver.common.baseTest.BaseTest;
 import com.big.automation.selenium_webdriver.common.gw.utilities.GuideWireAccessors;
 
-public class ClaimCenterFNOLNewVehicleExposurePOM extends BaseTest{
+public class ClaimCenterFNOLNewTPCaptureExposurePOM extends BaseTest{
 
 	
 	
@@ -48,9 +48,7 @@ public class ClaimCenterFNOLNewVehicleExposurePOM extends BaseTest{
 	@FindBy(id = "NewClaimWizard_NewExposurePopup:NewClaimWizard_ExposurePageScreen:NewClaimExposureDV:NewClaimVehicleDamageDV:Vehicle_Incident:NewClaimVehicleDamageDV_NewIncidentMenuItem-itemEl")
 	private WebElement vehiclePickerNewIncident;
 	
-	//TODO excess stuff?
-		
-		
+
 	@FindBy(className = "message")
 	private List <WebElement> errorMessages;
 
