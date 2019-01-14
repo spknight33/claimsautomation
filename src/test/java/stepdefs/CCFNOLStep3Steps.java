@@ -41,7 +41,7 @@ public class CCFNOLStep3Steps extends BaseTest {
 	CCFNOLVehicleSteps vehicleSteps = new CCFNOLVehicleSteps();
 	CCFNOLNewPoliceSteps policeSteps = new CCFNOLNewPoliceSteps();
 	
-	ClaimCenterData scenarioData = ClaimCenterDataBuilder.createDataSet();
+	//ClaimCenterData scenarioData = ClaimCenterDataBuilder.createDataSet();
 	
 	// TODO - start of work for regression FNOL script to be driven by external configuration
 	public void completeFNOLStep3ForTestScenario(ClaimCenterData scenarioData)  throws Throwable

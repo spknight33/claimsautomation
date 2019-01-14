@@ -56,7 +56,7 @@ public class ClaimCenterFNOLNewCreditHireExposurePOM extends BaseTest{
 
 	public String getName() {
 
-		return "New Vehicle Exposure FNOL";
+		return "New Credit Hire Exposure FNOL";
 	}
 
 	public boolean isPageTitleDisplayed(String expected)

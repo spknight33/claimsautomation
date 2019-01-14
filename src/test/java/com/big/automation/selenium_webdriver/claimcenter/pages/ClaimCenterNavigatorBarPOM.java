@@ -13,7 +13,9 @@ import com.big.automation.selenium_webdriver.common.gw.utilities.GuideWireAccess
 public class ClaimCenterNavigatorBarPOM extends BaseTest {
 	
 	
-
+	@FindBy(id = "Claim:ClaimMenuActions-btnEl")
+	private WebElement actionsMenu;
+	
 
 	@FindBy(xpath = "//span[@class='x-tree-node-text ']")
 	private List<WebElement> navigationLinks;
@@ -29,7 +31,7 @@ public class ClaimCenterNavigatorBarPOM extends BaseTest {
 	
 
 	
-    public void clickTopLevelLossDetails(String toplink) throws Exception {
+    public void clickTopLevel(String toplink) throws Exception {
     	logger.info(format("%s - done, going to click Navigator", getName()));
     	
     	for (WebElement option : navigationLinks) {
@@ -44,6 +46,30 @@ public class ClaimCenterNavigatorBarPOM extends BaseTest {
     	}
 		
 	}
+    
+    
+    public void selectActionsSubMenuHierarchy(List<String> menuHierarchy)
+	{
+		logger.info(format("%s - going to select Actions sub menu item ",getName()));
+		GuideWireAccessors.selectOptionFromPopupMenu(driver, menuHierarchy, this.getActionsMenu());
+	}
+
+
+
+
+	private WebElement getActionsMenu() {
+		return actionsMenu;
+	}
+
+
+
+
+	private List<WebElement> getNavigationLinks() {
+		return navigationLinks;
+	}
+    
+    
+    
 
 	
 

@@ -27,10 +27,11 @@ public class CCFNOLRegressionSteps extends BaseTest {
 	CCFNOLVehicleSteps vehicleSteps = new CCFNOLVehicleSteps();
 	
 	//TODO this to be driven by cucumnber to load a specific data set
-	ClaimCenterData scenarioData = ClaimCenterDataBuilder.createDataSet();
+	
 
 	@When("^I create a claim as part of a regression test$")
 	public void i_create_a_claim_as_part_of_a_regression_test() throws Throwable {
+		ClaimCenterData scenarioData = ClaimCenterDataBuilder.createRegressionDataSet();
 		//TODO - jump straight to step3 for now, but change to go through other steps later
 		//step2Steps.completeFNOLStep2ForTestScenario(scenarioData);
 		//step3Steps.completeFNOLStep3ForTestScenario(scenarioData);
