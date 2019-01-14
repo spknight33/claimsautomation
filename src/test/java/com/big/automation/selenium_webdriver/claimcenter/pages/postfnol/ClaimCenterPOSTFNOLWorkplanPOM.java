@@ -4,6 +4,7 @@ import static java.lang.String.format;
 
 import java.util.List;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
@@ -88,6 +89,44 @@ public class ClaimCenterPOSTFNOLWorkplanPOM extends BaseTest{
 		logger.info(format("%s -  going to select activities:"+option, getName()));
 		GuideWireAccessors.selectOptionFromGWDropDown(driver, option, this.getActivitiesDropdown(), 1);
 		
+	}
+	
+	public void selectActivityOfType(String type)
+	{
+	    sleep(1);
+		String locator = "//*[@id=\"ClaimWorkplan:ClaimWorkplanScreen:WorkplanLV-body\"]//table//tr/td[7]//a";
+		List <WebElement> elements = driver.findElements(By.xpath(locator));
+		
+		// loop till find first with mathcing type
+		for (WebElement element:elements)
+		{
+			if (element.getText().equalsIgnoreCase(type))
+			{
+				GuideWireAccessors.clickGWButton(driver, element);
+				break;
+			}
+		}
+	}
+	
+	
+	public boolean activityOfTypePresent(String type)
+	{
+		boolean found = false;
+	    sleep(1);
+		String locator = "//*[@id=\"ClaimWorkplan:ClaimWorkplanScreen:WorkplanLV-body\"]//table//tr/td[7]//a";
+		List <WebElement> elements = driver.findElements(By.xpath(locator));
+		
+		// loop till find first with mathcing type
+		for (WebElement element:elements)
+		{
+			if (element.getText().equalsIgnoreCase(type))
+			{
+				found = true;
+				break;
+			}
+		}
+		
+		return found;
 	}
 
 

@@ -25,7 +25,7 @@ public class CCFNOLDriverSteps extends BaseTest {
 	{
 		//TODO - use data from scenario
 		fnolDriverDetailsPOM.selectDriverName(scenarioData.getFirstLastName());
-		
+	
 	
 		fnolDriverDetailsPOM.selectOK();
 	}
@@ -44,7 +44,18 @@ public class CCFNOLDriverSteps extends BaseTest {
 	    case "Driver Name":
 	    	fnolDriverDetailsPOM.selectDriverName(fieldValue);
 	    	break;
-	  
+	    case "Related To":
+	    	fnolDriverDetailsPOM.selectRelationToOwner(fieldValue);
+	    	break;
+	    case "Prefix":
+	    	fnolDriverDetailsPOM.selectPrefix(fieldValue);
+	    	break;
+	    case "Address Type":
+	    	fnolDriverDetailsPOM.selectAddressType(fieldValue);
+	    	break;
+	    case "Gender":
+	    	fnolDriverDetailsPOM.selectGender(fieldValue);
+	    	break;
 	  
 	    default:
 	    Assert.fail("unknown input field :"+ fieldValue+" - check cucumber script!");

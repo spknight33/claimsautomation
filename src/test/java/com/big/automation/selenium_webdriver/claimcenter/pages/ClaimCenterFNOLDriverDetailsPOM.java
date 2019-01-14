@@ -16,43 +16,108 @@ public class ClaimCenterFNOLDriverDetailsPOM extends BaseTest{
 	// This page could in theory be the same as other contacts (e.g person)
 	// for now keep seperate
 	
+	@FindBy(id = "FNOLContactPopup:FNOLContactScreen:ttlBar")
+	private WebElement pageTitle;
+	
+	@FindBy(id = "FNOLContactPopup:FNOLContactScreen:Update-btnEl")
+	private WebElement okButton;
 	@FindBy(id = "FNOLWizard:Cancel-btnEl")
 	private WebElement cancelButton;
 	
-		
-
-	
-	@FindBy(id = "FNOLContactPopup:FNOLContactScreen:ttlBar")
-	private WebElement pageTitle;
-		
-	@FindBy(id = "FNOLContactPopup:FNOLContactScreen:Update-btnEl")
-	private WebElement okButton;
 
 	@FindBy(id = "FNOLContactPopup:FNOLContactScreen:ContactDV:ClaimContactPerson-inputEl")
 	private WebElement driverNameDropdown;
+	@FindBy(id = "FNOLContactPopup:FNOLContactScreen:ContactDV:FNOLContactInputSet:DriverRelationToOwner-inputEl")
+	private WebElement relationToOwnerDropdown;
 	
 	@FindBy(id = "FNOLContactPopup:FNOLContactScreen:ContactDV:FNOLContactInputSet:GlobalPersonNameInputSet:Prefix-inputEl")
 	private WebElement prefix;
-	
-
 	@FindBy(id = "FNOLContactPopup:FNOLContactScreen:ContactDV:FNOLContactInputSet:GlobalPersonNameInputSet:FirstName-inputEl")
 	private WebElement firstName;
+	@FindBy(id = "FNOLContactPopup:FNOLContactScreen:ContactDV:FNOLContactInputSet:GlobalPersonNameInputSet:MiddleName-inputEl")
+	private WebElement middleName;
 	@FindBy(id = "FNOLContactPopup:FNOLContactScreen:ContactDV:FNOLContactInputSet:GlobalPersonNameInputSet:LastName-inputEl")
 	private WebElement lastName;
-	@FindBy(id = "FNOLContactPopup:FNOLContactScreen:ContactDV:FNOLContactInputSet:reporter_mobile:GlobalPhoneInputSet:NationalSubscriberNumber-inputEl")
-	private WebElement mobile;
-	
-	@FindBy(id = "FNOLContactPopup:FNOLContactScreen:ContactDV:FNOLContactInputSet:reporter_email-inputEl")
-	private WebElement mainEmail;
+	@FindBy(id = "FNOLContactPopup:FNOLContactScreen:ContactDV:FNOLContactInputSet:Gender-inputEl")
+	private WebElement gender;
+	@FindBy(id = "FNOLContactPopup:FNOLContactScreen:ContactDV:FNOLContactInputSet:DateOfBirth-inputEl")
+	private WebElement dob;
+
 	@FindBy(id = "FNOLContactPopup:FNOLContactScreen:ContactDV:FNOLContactInputSet:CCAddressInputSet:globalAddressContainer:globalAddress:GlobalAddressInputSet:AddressLine1-inputEl")
 	private WebElement addressLine1;
 	@FindBy(id = "FNOLContactPopup:FNOLContactScreen:ContactDV:FNOLContactInputSet:CCAddressInputSet:globalAddressContainer:globalAddress:GlobalAddressInputSet:AddressLine2-inputEl")
 	private WebElement addressLine2;
 	@FindBy(id = "FNOLContactPopup:FNOLContactScreen:ContactDV:FNOLContactInputSet:CCAddressInputSet:globalAddressContainer:globalAddress:GlobalAddressInputSet:AddressLine3-inputEl")
 	private WebElement addressLine3;
+	@FindBy(id = "FNOLContactPopup:FNOLContactScreen:ContactDV:FNOLContactInputSet:CCAddressInputSet:globalAddressContainer:globalAddress:GlobalAddressInputSet:City-inputEl")
+	private WebElement city;
+	@FindBy(id = "FNOLContactPopup:FNOLContactScreen:ContactDV:FNOLContactInputSet:CCAddressInputSet:globalAddressContainer:globalAddress:GlobalAddressInputSet:County-inputEl")
+	private WebElement county;
+	@FindBy(id = "FNOLContactPopup:FNOLContactScreen:ContactDV:FNOLContactInputSet:CCAddressInputSet:globalAddressContainer:globalAddress:GlobalAddressInputSet:PostalCode-inputEl")
+	private WebElement postcode;
 	
 	@FindBy(id = "FNOLContactPopup:FNOLContactScreen:ContactDV:FNOLContactInputSet:CCAddressInputSet:globalAddressContainer:Address_AddressType-inputEl")
 	private WebElement addressType;
+	@FindBy(id = "FNOLContactPopup:FNOLContactScreen:ContactDV:FNOLContactInputSet:CCAddressInputSet:globalAddressContainer:Address_Description-inputEl")
+	private WebElement locationDesc;
+	@FindBy(id = "FNOLContactPopup:FNOLContactScreen:ContactDV:FNOLContactInputSet:CCAddressInputSet:globalAddressContainer:Address_ValidUntil-inputEl")
+	private WebElement validUntil;
+	
+	@FindBy(id = "FNOLContactPopup:FNOLContactScreen:ContactDV:FNOLContactInputSet:reporter_businessphone:GlobalPhoneInputSet:NationalSubscriberNumber-inputEl")
+	private WebElement workPhone;
+	@FindBy(id = "FNOLContactPopup:FNOLContactScreen:ContactDV:FNOLContactInputSet:reporter_homephone:GlobalPhoneInputSet:NationalSubscriberNumber-inputEl")
+	private WebElement homePhone;
+	@FindBy(id = "FNOLContactPopup:FNOLContactScreen:ContactDV:FNOLContactInputSet:reporter_mobile:GlobalPhoneInputSet:NationalSubscriberNumber-inputEl")
+	private WebElement mobile;
+	@FindBy(id = "FNOLContactPopup:FNOLContactScreen:ContactDV:FNOLContactInputSet:reporter_primarytype-inputEl")
+	private WebElement primaryPhoneDropdown;
+	
+	@FindBy(id = "FNOLContactPopup:FNOLContactScreen:ContactDV:FNOLContactInputSet:reporter_email-inputEl")
+	private WebElement mainEmail;
+	@FindBy(id = "FNOLContactPopup:FNOLContactScreen:ContactDV:FNOLContactInputSet:Email2-inputEl")
+	private WebElement altEmail;
+	
+	@FindBy(id = "FNOLContactPopup:FNOLContactScreen:ContactDV:FNOLContactInputSet:NationalInsurance_itb-inputEl")
+	private WebElement niNumber;
+	
+	@FindBy(id = "FNOLContactPopup:FNOLContactScreen:ContactDV:FNOLContactInputSet:DriverLicense-inputEl")
+	private WebElement licenseNumber;
+	@FindBy(id = "FNOLContactPopup:FNOLContactScreen:ContactDV:FNOLContactInputSet:Notes-inputEl")
+	private WebElement notes;
+	
+	//INDEMNITY SECTION 
+	//---------------------------
+	//TODO - the policy retrieved fields
+	@FindBy(id = "FNOLContactPopup:FNOLContactScreen:ContactDV:DriverIndemnityQuestionsInputSet:ClaimFullTimeOccupation-inputEl")
+	private WebElement indemnityOccupationDropdown;
+	@FindBy(id = "FNOLContactPopup:FNOLContactScreen:ContactDV:DriverIndemnityQuestionsInputSet:ClaimLicenceType-inputEl")
+	private WebElement indemnityLicenseTypeDropdown;
+	@FindBy(id = "FNOLContactPopup:FNOLContactScreen:ContactDV:FNOLContactInputSet:Notes-inputEl")
+	private WebElement indemnityLicenseLengthDropdown;
+	@FindBy(id = "FNOLContactPopup:FNOLContactScreen:ContactDV:DriverIndemnityQuestionsInputSet:ClaimMedicalConditions-inputEl")
+	private WebElement indemnityMedicalDropdown;
+	
+	@FindBy(id = "FNOLContactPopup:FNOLContactScreen:ContactDV:DriverIndemnityQuestionsInputSet:ClaimHasPreviousMotorClaims_true-inputEl")
+	private WebElement indemnityIncLast5YesOption;
+	@FindBy(id = "FNOLContactPopup:FNOLContactScreen:ContactDV:DriverIndemnityQuestionsInputSet:ClaimHasPreviousMotorClaims_false-inputEl")
+	private WebElement indemnityIncLast5NoOption;
+	
+	@FindBy(id = "FNOLContactPopup:FNOLContactScreen:ContactDV:DriverIndemnityQuestionsInputSet:ClaimHasMotorConvictions_true-inputEl")
+	private WebElement indemnityOffenceLast5YesOption;
+	@FindBy(id = "FNOLContactPopup:FNOLContactScreen:ContactDV:DriverIndemnityQuestionsInputSet:ClaimHasMotorConvictions_false-inputEl")
+	private WebElement indemnityOffenceLast5NoOption;
+	
+	@FindBy(id = "FNOLContactPopup:FNOLContactScreen:ContactDV:DriverIndemnityQuestionsInputSet:DrinkOrDrugProsecutionInd-inputEl")
+	private WebElement indemnityProsecutionDropdown;
+	
+	@FindBy(id = "FNOLContactPopup:FNOLContactScreen:ContactDV:DriverIndemnityQuestionsInputSet:DriverTestedAtSceneInd_true-inputEl")
+	private WebElement indemnityDriverTestedYesOption;
+	@FindBy(id = "FNOLContactPopup:FNOLContactScreen:ContactDV:DriverIndemnityQuestionsInputSet:DriverTestedAtSceneInd_false-inputEl")
+	private WebElement indemnityDriverTestedNoOption;
+	
+	
+	@FindBy(id = "FNOLContactPopup:FNOLContactScreen:ContactDV:DriverIndemnityQuestionsInputSet:WearingSeatbeltInd-inputEl")
+	private WebElement indemnitySeatbeltDropdown;
 	
 	
 	@FindBy(className = "message")
@@ -65,9 +130,9 @@ public class ClaimCenterFNOLDriverDetailsPOM extends BaseTest{
 
 	public boolean isPageTitleDisplayed(String expected)
 	{
-		sleep(4);
-		logger.info(format("%s -check page title for Add Driver page :"+expected, getName()));
-		logger.info(format("%s -found page title for Add Driver page :"+this.getPageTitle().getText(), getName()));
+		sleep(3);
+		
+		logger.info(format("%s -found page title for page :"+this.getPageTitle().getText(), getName()));
 		return this.getPageTitle().getText().equalsIgnoreCase(expected);
 	}
 	
@@ -75,13 +140,13 @@ public class ClaimCenterFNOLDriverDetailsPOM extends BaseTest{
 
 		logger.info(format("%s -  going to click cancel", getName()));
 		GuideWireAccessors.clickGWButton(driver,this.getCancelButton());
-		logger.info(format("%s - done, cancel clicked", getName()));
+		
 	}
 	
 	public void selectOK() {
 		logger.info(format("%s -  going to click OK", getName()));
 		GuideWireAccessors.clickGWButton(driver,this.getOkButton());
-		logger.info(format("%s - done, OK clicked", getName()));
+		
 	}
 	
 	public void selectDriverName(String option)
@@ -89,52 +154,113 @@ public class ClaimCenterFNOLDriverDetailsPOM extends BaseTest{
 		logger.info(format("%s - going to select Driver name option :"+option, getName()));
 		GuideWireAccessors.selectOptionFromGWDropDown(driver, option, this.getDriverNameDropdown(),1);
 	}
+	public void selectRelationToOwner(String option)
+	{
+		logger.info(format("%s - going to select relation to owner option :"+option, getName()));
+		GuideWireAccessors.selectOptionFromGWDropDown(driver, option, this.getRelationToOwnerDropdown(),1);
+	}
 	public void selectPrefix(String option)
 	{
 		logger.info(format("%s -  going to select prefix ", getName()));
 		GuideWireAccessors.selectOptionFromGWDropDown(driver, option, this.getPrefix(), 1);
-		logger.info(format("%s - done, prefix selected", getName()));
+		
 	}
-	
-	
-	public void selectAddressType(String option)
-	{
-		logger.info(format("%s -  going to select address type", getName()));
-		GuideWireAccessors.selectOptionFromGWDropDown(driver, option, this.getAddressType(), 1);
-		logger.info(format("%s - done, address type selected", getName()));
-	}
-	
 	public void setFirstName(String text)
 	{
 		logger.info(format("%s -  going to set first name", getName()));
 		GuideWireAccessors.setGWTextBox(driver, text, this.getFirstName());
-		logger.info(format("%s - done, first name set", getName()));
+		
+	}
+	public void setMiddleName(String text)
+	{
+		logger.info(format("%s -  going to set middle name", getName()));
+		GuideWireAccessors.setGWTextBox(driver, text, this.getMiddleName());
+		
 	}
 	public void setLastName(String text)
 	{
 		logger.info(format("%s -  going to set last name", getName()));
 		GuideWireAccessors.setGWTextBox(driver, text, this.getLastName());
-		logger.info(format("%s - done, last name set", getName()));
+		
 	}
+	public void selectGender(String text)
+	{
+		logger.info(format("%s -  going to set gender", getName()));
+		GuideWireAccessors.setGWTextBox(driver, text, this.getGender());
+		
+	}
+	public void setDob(String text)
+	{
+		logger.info(format("%s -  going to set dob", getName()));
+		GuideWireAccessors.setGWTextBox(driver, text, this.getDob());
+		
+	}
+	
+	public void setAddressLine1(String text)
+	{
+		logger.info(format("%s -  going to set address line1", getName()));
+		GuideWireAccessors.setGWTextBox(driver, text, this.getAddressLine1());
+		
+	}
+	public void setAddressLine2(String text)
+	{
+		logger.info(format("%s -  going to set address line2", getName()));
+		GuideWireAccessors.setGWTextBox(driver, text, this.getAddressLine2());
+		
+	}
+	public void setAddressLine3(String text)
+	{
+		logger.info(format("%s -  going to set address line3", getName()));
+		GuideWireAccessors.setGWTextBox(driver, text, this.getAddressLine3());
+		
+	}
+	public void setCity(String text)
+	{
+		logger.info(format("%s -  going to set city", getName()));
+		GuideWireAccessors.setGWTextBox(driver, text, this.getCity());
+		
+	}
+	public void setCounty(String text)
+	{
+		logger.info(format("%s -  going to set County", getName()));
+		GuideWireAccessors.setGWTextBox(driver, text, this.getCounty());
+		
+	}
+	public void setPostcode(String text)
+	{
+		logger.info(format("%s -  going to set postcode", getName()));
+		GuideWireAccessors.setGWTextBox(driver, text, this.getPostcode());
+		// TODO tab off
+		
+	}
+
+	public void selectAddressType(String option)
+	{
+		logger.info(format("%s -  going to select address type", getName()));
+		GuideWireAccessors.selectOptionFromGWDropDown(driver, option, this.getAddressType(), 1);
+		
+	}
+	public void setLocationDesc(String text)
+	{
+		logger.info(format("%s -  going to set location desc", getName()));
+		GuideWireAccessors.setGWTextBox(driver, text, this.getLocationDesc());
+		
+	}
+	
+	//TODO - phone etc
+	
 	public void setMobile(String text)
 	{
 		logger.info(format("%s -  going to set mobile", getName()));
 		GuideWireAccessors.setGWTextBox(driver, text, this.getMobile());
-		logger.info(format("%s - done, mobile set", getName()));
+		
 	}
 	public void setEmail(String text)
 	{
 		logger.info(format("%s -  going to set email", getName()));
 		GuideWireAccessors.setGWTextBox(driver, text, this.getMainEmail());
-		logger.info(format("%s - done, email set", getName()));
+		
 	}
-	public void setAddressLine1(String text)
-	{
-		logger.info(format("%s -  going to set address line1", getName()));
-		GuideWireAccessors.setGWTextBox(driver, text, this.getAddressLine1());
-		logger.info(format("%s - done, address line1 set", getName()));
-	}
-
    
 	private WebElement getCancelButton() {
 	return cancelButton;
@@ -194,6 +320,118 @@ public class ClaimCenterFNOLDriverDetailsPOM extends BaseTest{
 
 	private List<WebElement> getErrorMessages() {
 		return errorMessages;
+	}
+
+	private WebElement getRelationToOwnerDropdown() {
+		return relationToOwnerDropdown;
+	}
+
+	private WebElement getMiddleName() {
+		return middleName;
+	}
+
+	private WebElement getGender() {
+		return gender;
+	}
+
+	private WebElement getDob() {
+		return dob;
+	}
+
+	private WebElement getCity() {
+		return city;
+	}
+
+	private WebElement getCounty() {
+		return county;
+	}
+
+	private WebElement getPostcode() {
+		return postcode;
+	}
+
+	private WebElement getLocationDesc() {
+		return locationDesc;
+	}
+
+	private WebElement getValidUntil() {
+		return validUntil;
+	}
+
+	private WebElement getWorkPhone() {
+		return workPhone;
+	}
+
+	private WebElement getHomePhone() {
+		return homePhone;
+	}
+
+	private WebElement getPrimaryPhoneDropdown() {
+		return primaryPhoneDropdown;
+	}
+
+	private WebElement getAltEmail() {
+		return altEmail;
+	}
+
+	private WebElement getNiNumber() {
+		return niNumber;
+	}
+
+	private WebElement getLicenseNumber() {
+		return licenseNumber;
+	}
+
+	private WebElement getNotes() {
+		return notes;
+	}
+
+	private WebElement getIndemnityOccupationDropdown() {
+		return indemnityOccupationDropdown;
+	}
+
+	private WebElement getIndemnityLicenseTypeDropdown() {
+		return indemnityLicenseTypeDropdown;
+	}
+
+	private WebElement getIndemnityLicenseLengthDropdown() {
+		return indemnityLicenseLengthDropdown;
+	}
+
+	private WebElement getIndemnityMedicalDropdown() {
+		return indemnityMedicalDropdown;
+	}
+
+	private WebElement getIndemnityIncLast5YesOption() {
+		return indemnityIncLast5YesOption;
+	}
+
+	private WebElement getIndemnityIncLast5NoOption() {
+		return indemnityIncLast5NoOption;
+	}
+
+	private WebElement getIndemnityOffenceLast5YesOption() {
+		return indemnityOffenceLast5YesOption;
+	}
+
+	private WebElement getIndemnityOffenceLast5NoOption() {
+		return indemnityOffenceLast5NoOption;
+	}
+
+	private WebElement getIndemnityProsecutionDropdown() {
+		return indemnityProsecutionDropdown;
+	}
+
+	private WebElement getIndemnityDriverTestedYesOption() {
+		return indemnityDriverTestedYesOption;
+	}
+
+	private WebElement getIndemnityDriverTestedNoOption() {
+		return indemnityDriverTestedNoOption;
+	}
+
+	private WebElement getIndemnitySeatbeltDropdown() {
+		return indemnitySeatbeltDropdown;
 	}
 
 	

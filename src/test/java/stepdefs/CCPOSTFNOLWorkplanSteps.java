@@ -9,6 +9,7 @@ import com.big.automation.selenium_webdriver.common.baseTest.BaseTest;
 import cucumber.api.DataTable;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
+import cucumber.api.java.en.When;
 
 public class CCPOSTFNOLWorkplanSteps extends BaseTest {
 	
@@ -33,6 +34,18 @@ public class CCPOSTFNOLWorkplanSteps extends BaseTest {
 	    }
 	}
 	
+	@When("^I will see the \"([^\"]*)\" activity on Workplan screen for post FNOL")
+	public void i_willsee_the_activity_on_the_post_FNOL_workplan_screen(String type) throws Throwable {
+		Assert.assertTrue(postFnolWorkplanPOM.activityOfTypePresent(type), "expected activity to be present");
+	}
+	
+	
+	@When("^I select the \"([^\"]*)\" activity on Workplan screen for post FNOL")
+	public void i_select_the_activity_on_the_post_FNOL_workplan_screen(String type) throws Throwable {
+		postFnolWorkplanPOM.selectActivityOfType(type);
+	}
 	
 
+	
+	
 }
