@@ -17,14 +17,14 @@ import cucumber.api.java.en.When;
 public class CCFNOLStep5Steps extends BaseTest{
 	
 	CCFNOLStep4Steps step4Steps = new CCFNOLStep4Steps();
-	ClaimCenterData scenarioData = ClaimCenterDataBuilder.createDataSet();
+	
 	
 	/**
 	 * for use by regression scripts
 	 * @param scenarioData
 	 * @throws Throwable
 	 */
-	public void completeFNOLStep5ForTestScenario(ClaimCenterData scenarioData)  throws Throwable
+	public void completeFNOLStep5ForTestScenario()  throws Throwable
 	{
 		fnolStep5POM.setNote("this is a note added to the claim at step5");
 		//List<String> list = Arrays.asList("BMW 3 SERIES (ND58PFL / United Kingdom)", "Personal Accident");
@@ -36,7 +36,7 @@ public class CCFNOLStep5Steps extends BaseTest{
 	@Given("^As a \"([^\"]*)\" I am at step5 for FNOL$")
 	public void as_a_ClaimsHandler_I_am_at_step5_for_FNOL(String userType) throws Throwable {
 		step4Steps.as_a_user_I_am_at_step4_for_FNOL(userType);
-		step4Steps.completeFNOLStep4ForTestScenario(scenarioData);
+		step4Steps.completeFNOLStep4ForTestScenario();
 	
 	}
 	

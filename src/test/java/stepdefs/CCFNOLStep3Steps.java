@@ -8,6 +8,7 @@ import org.testng.asserts.SoftAssert;
 import com.big.automation.selenium_webdriver.claimcenter.testdata.ClaimCenterData;
 import com.big.automation.selenium_webdriver.claimcenter.testdata.ClaimCenterDataBuilder;
 import com.big.automation.selenium_webdriver.common.baseTest.BaseTest;
+import com.big.automation.selenium_webdriver.common.utilities.excelutils.ExcelUtil;
 
 import cucumber.api.DataTable;
 import cucumber.api.java.en.Given;
@@ -44,50 +45,50 @@ public class CCFNOLStep3Steps extends BaseTest {
 	//ClaimCenterData scenarioData = ClaimCenterDataBuilder.createDataSet();
 	
 	// TODO - start of work for regression FNOL script to be driven by external configuration
-	public void completeFNOLStep3ForTestScenario(ClaimCenterData scenarioData)  throws Throwable
+	public void completeFNOLStep3ForTestScenario()  throws Throwable
 	{
 		// add pedestrian if required
-		if (scenarioData.atStep3FNOLPedestrianRequired())
+		if (ExcelUtil.getTestDataValue("Fnol_Step3_PedestrianRequired").equalsIgnoreCase("TRUE"))
 		{
 			fnolStep3POM.addPedestrian();
-			pedestrianSteps.completeFNOLPedestrianForTestScenario(scenarioData);
+			pedestrianSteps.completeFNOLPedestrianForTestScenario();
 		}
 		
 		// add property if required
-		if (scenarioData.atStep3FNOLPropertyRequired())
+		if (ExcelUtil.getTestDataValue("Fnol_Step3_PropertyRequired").equalsIgnoreCase("TRUE"))
 		{
 			fnolStep3POM.addPropertyDamage();
-			propertySteps.completeFNOLPropertyForTestScenario(scenarioData);
+			propertySteps.completeFNOLPropertyForTestScenario();
 		}
 		
 		// add insured driver if required
-		if (scenarioData.atPHVehicleStep3FNOLDriverRequired())
+		if (ExcelUtil.getTestDataValue("Fnol_PHDriverRequired").equalsIgnoreCase("TRUE"))
 		{
 			fnolStep3POM.selectInsuredVehicle();
-			vehicleSteps.completeFNOLPHVehicleForTestScenario(scenarioData);
+			vehicleSteps.completeFNOLPHVehicleForTestScenario();
 		}
 		
 		// add TP vehicle/driver if required
-		if (scenarioData.atStep3FNOLTPVehicleRequired())
+		if (ExcelUtil.getTestDataValue("Fnol_Step3_TPVehicleRequired").equalsIgnoreCase("TRUE"))
 		{
 			fnolStep3POM.addVehicle();
-			vehicleSteps.completeFNOLTPVehicleForTestScenario(scenarioData);
+			vehicleSteps.completeFNOLTPVehicleForTestScenario();
 		}
 		
 		// add police if required
-		if (scenarioData.atStep3FNOLPoliceRequired())
+		if (ExcelUtil.getTestDataValue("Fnol_Step3_PoliceRequired").equalsIgnoreCase("TRUE"))
 		{
 			fnolStep3POM.addPoliceDetails();
-			policeSteps.completeFNOLNewPoliceForTestScenario(scenarioData);
+			policeSteps.completeFNOLNewPoliceForTestScenario();
 		}
 		
 		
 		// Add details to step3 fields
 		//TODO get from scenarioData
 		fnolStep3POM.setCircumstancesValue("Someone crashed into me");
-		fnolStep3POM.selectIncidentType(scenarioData.getStep3FNOLIncidentType());
-		fnolStep3POM.selectClaimCauseType(scenarioData.getStep3FNOLCause());
-		fnolStep3POM.selectClaimSubCauseType(scenarioData.getStep3FNOLSubCause());
+		fnolStep3POM.selectIncidentType(ExcelUtil.getTestDataValue("Fnol_Step3_IncidentType"));
+		fnolStep3POM.selectClaimCauseType(ExcelUtil.getTestDataValue("Fnol_Step3_Cause"));
+		fnolStep3POM.selectClaimSubCauseType(ExcelUtil.getTestDataValue("Fnol_Step3_SubCause"));
 		
 		//TODO OTHER FIELDS
 		fnolStep3POM.selectVehicleUsedFor("Business");
@@ -98,7 +99,7 @@ public class CCFNOLStep3Steps extends BaseTest {
 		//fnolStep3POM.selectCctv("Yes");
 		
 		// select the location
-		fnolStep3POM.selectAddressLocation(scenarioData.getAddress());
+		fnolStep3POM.selectAddressLocation(ExcelUtil.getTestDataValue("Fnol_Insured_Address"));
 		
 		fnolStep3POM.next();
 		
@@ -327,7 +328,7 @@ public class CCFNOLStep3Steps extends BaseTest {
 		// close any duplicate claim window
 		fnolStep3POM.closeDuplicateClaimWindow();
 		// select the address so that erro is not generated from that
-		fnolStep3POM.selectAddressLocation(testDataset.getAddress());
+		fnolStep3POM.selectAddressLocation(ExcelUtil.getTestDataValue("Fnol_Insured_Address"));
 		for (int i = 1; i < list.size(); i++) { // i starts from 1 because i=0 represents the header
 			// loop round each row in the test data table
 			fnolStep3POM.selectIncidentType(list.get(i).get(0));
@@ -351,7 +352,7 @@ public class CCFNOLStep3Steps extends BaseTest {
 		// close any duplicate claim window
 		fnolStep3POM.closeDuplicateClaimWindow();
 		// select the address so that error is not generated from that
-		fnolStep3POM.selectAddressLocation(testDataset.getAddress());
+		fnolStep3POM.selectAddressLocation(ExcelUtil.getTestDataValue("Fnol_Insured_Address"));
 		for (int i = 1; i < list.size(); i++) { // i starts from 1 because i=0 represents the header
 			// loop round each row in the test data table
 			fnolStep3POM.selectIncidentType(list.get(i).get(0));

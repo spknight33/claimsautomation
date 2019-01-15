@@ -2,21 +2,64 @@ package stepdefs;
 
 import org.testng.Assert;
 
-import com.big.automation.selenium_webdriver.claimcenter.testdata.ClaimCenterData;
 import com.big.automation.selenium_webdriver.common.baseTest.BaseTest;
+import com.big.automation.selenium_webdriver.common.utilities.excelutils.ExcelUtil;
 
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 
 public class CCFNOLPedestrianSteps extends BaseTest {
 	
-	public void completeFNOLPedestrianForTestScenario(ClaimCenterData scenarioData)
+	public void completeFNOLPedestrianForTestScenario()
 	{
-		//TODO - change to use ScenarioData
-		fnolPedestrianPOM.setAddressLine1("1 Walkers Road");
-		fnolPedestrianPOM.setFirstName("Jock");
-		fnolPedestrianPOM.setLastName("JayWalker");
 		
+		String fieldValue = ExcelUtil.getTestDataValue("Fnol_PedestrianPrefix");
+		if (fieldValue !=null)
+			fnolPedestrianPOM.selectPrefix(fieldValue);
+		
+		fieldValue = ExcelUtil.getTestDataValue("Fnol_PedestrianFirstName");
+		if (fieldValue !=null)
+			fnolPedestrianPOM.setFirstName(fieldValue);
+		
+		fieldValue = ExcelUtil.getTestDataValue("Fnol_PedestrianLastName");
+		if (fieldValue !=null)
+			fnolPedestrianPOM.setLastName(fieldValue);
+		
+		fieldValue = ExcelUtil.getTestDataValue("Fnol_PedestrianEmail");
+		if (fieldValue !=null)
+			fnolPedestrianPOM.setEmail(fieldValue);
+		
+		fieldValue = ExcelUtil.getTestDataValue("Fnol_PedestrianMobile");
+		if (fieldValue !=null)
+			fnolPedestrianPOM.setMobile(fieldValue);
+		
+		fieldValue = ExcelUtil.getTestDataValue("Fnol_PedestrianNotes");
+		if (fieldValue !=null)
+			fnolPedestrianPOM.setNotes(fieldValue);
+		
+			
+		fieldValue = ExcelUtil.getTestDataValue("Fnol_PedestrianInjured");
+		if (fieldValue !=null && fieldValue.equalsIgnoreCase("TRUE"))
+		{
+			fnolPedestrianPOM.selectInjured(true);
+			fnolPedestrianPOM.selectAddInjury();
+			
+			fieldValue = ExcelUtil.getTestDataValue("Fnol_PedestrianInjDesc");
+			if (fieldValue !=null)
+				fnolPedestrianPOM.setInjuryDesc(fieldValue);
+			 
+			 fieldValue = ExcelUtil.getTestDataValue("Fnol_PedestrianInj1BodyArea");
+				if (fieldValue !=null)
+					fnolPedestrianPOM.selectAreaOfBody(fieldValue, 1);
+				fieldValue = ExcelUtil.getTestDataValue("Fnol_PedestrianInj1Detailed");
+				if (fieldValue !=null)
+					fnolPedestrianPOM.selectDetailedInjury(fieldValue, 1);
+		     
+		}
+		else
+		{
+			fnolPedestrianPOM.selectInjured(false);
+		}
 	
 		fnolPedestrianPOM.selectOK();
 		

@@ -5,6 +5,7 @@ import static java.lang.String.format;
 
 import java.util.List;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
@@ -13,9 +14,7 @@ import com.big.automation.selenium_webdriver.common.gw.utilities.GuideWireAccess
 
 public class ClaimCenterFNOLDriverDetailsPOM extends BaseTest{
 
-	// This page could in theory be the same as other contacts (e.g person)
-	// for now keep seperate
-	
+		
 	@FindBy(id = "FNOLContactPopup:FNOLContactScreen:ttlBar")
 	private WebElement pageTitle;
 	
@@ -42,6 +41,13 @@ public class ClaimCenterFNOLDriverDetailsPOM extends BaseTest{
 	private WebElement gender;
 	@FindBy(id = "FNOLContactPopup:FNOLContactScreen:ContactDV:FNOLContactInputSet:DateOfBirth-inputEl")
 	private WebElement dob;
+	
+	
+	//tp only here
+	@FindBy(id = "FNOLContactPopup:FNOLContactScreen:ContactDV:FNOLContactInputSet:PedestrianOrDriverOrPassengerDetails:PedestrianOrDriverOrPassengerRoleInputSet:WereTheyWearingASeatBelt_itb_true-inputEl")
+	private WebElement tpWearingSeatbeltYesOption;
+	@FindBy(id = "FNOLContactPopup:FNOLContactScreen:ContactDV:FNOLContactInputSet:PedestrianOrDriverOrPassengerDetails:PedestrianOrDriverOrPassengerRoleInputSet:WereTheyWearingASeatBelt_itb_false-boxLabelEl")
+	private WebElement tpWearingSeatbeltNoOption;
 
 	@FindBy(id = "FNOLContactPopup:FNOLContactScreen:ContactDV:FNOLContactInputSet:CCAddressInputSet:globalAddressContainer:globalAddress:GlobalAddressInputSet:AddressLine1-inputEl")
 	private WebElement addressLine1;
@@ -119,6 +125,17 @@ public class ClaimCenterFNOLDriverDetailsPOM extends BaseTest{
 	@FindBy(id = "FNOLContactPopup:FNOLContactScreen:ContactDV:DriverIndemnityQuestionsInputSet:WearingSeatbeltInd-inputEl")
 	private WebElement indemnitySeatbeltDropdown;
 	
+	// Injury section
+	@FindBy(id = "FNOLContactPopup:FNOLContactScreen:ContactDV:InjuredBoolean_true-inputEl")
+	private WebElement injuredYesOption;
+	@FindBy(id = "FNOLContactPopup:FNOLContactScreen:ContactDV:InjuredBoolean_false-inputEl")
+	private WebElement injuredNoOption;
+	
+	
+	@FindBy(id = "FNOLContactPopup:FNOLContactScreen:ContactDV:InjuryIncidentInputSet:InjuryDescription-inputEl")
+	private WebElement injuryDesc;
+	@FindBy(id = "FNOLContactPopup:FNOLContactScreen:ContactDV:InjuryIncidentInputSet:EditableBodyPartDetailsLV_tb:Add")
+	private WebElement addInjuryButton;
 	
 	@FindBy(className = "message")
 	private List <WebElement> errorMessages;
@@ -148,6 +165,8 @@ public class ClaimCenterFNOLDriverDetailsPOM extends BaseTest{
 		GuideWireAccessors.clickGWButton(driver,this.getOkButton());
 		
 	}
+	
+	
 	
 	public void selectDriverName(String option)
 	{
@@ -259,6 +278,58 @@ public class ClaimCenterFNOLDriverDetailsPOM extends BaseTest{
 	{
 		logger.info(format("%s -  going to set email", getName()));
 		GuideWireAccessors.setGWTextBox(driver, text, this.getMainEmail());
+		
+	}
+	
+	
+	// Injury Section
+	//-------------------------------------
+	public void selectInjured(boolean injured)
+	{
+		logger.info(format("%s -  going to set injured"+injured, getName()));
+		
+		if (injured)
+		{
+		GuideWireAccessors.clickGWButton(driver, this.getInjuredYesOption());
+		}
+		else
+		{
+			GuideWireAccessors.clickGWButton(driver, this.getInjuredNoOption());
+		}
+		
+	}
+	public void selectAddInjury()
+	{
+		logger.info(format("%s -  going to clikc add injury button", getName()));
+		
+			GuideWireAccessors.clickGWButton(driver, this.getAddInjuryButton());
+	
+		
+	}
+	
+	public void setInjuryDesc(String text) {
+		logger.info(format("%s -  going to set injury desc", getName()));
+		GuideWireAccessors.setGWTextBox(driver, text, this.getInjuryDesc());
+	}
+	public void selectAreaOfBody(String option, int sequence)
+	{
+		logger.info(format("%s -  going to select area of body"+option, getName()));
+		// use to select the area of body for the first (for now) change to be able to set for any row
+	    // just change to use table[x]
+		String locator = "//*[@id=\"FNOLContactPopup:FNOLContactScreen:ContactDV:InjuryIncidentInputSet:EditableBodyPartDetailsLV-body\"]//table[" + sequence + "]//tr/td[2]/div";
+		WebElement element = driver.findElement(By.xpath(locator));
+		GuideWireAccessors.selectOptionFromGWDropDown(driver, option, element, 1);
+		
+	}
+	
+	public void selectDetailedInjury(String option, int sequence)
+	{
+		logger.info(format("%s -  going to select detald injury"+option, getName()));
+		// use to select the detailed injury for the first (for now) change to be able to set for any row
+		sleep(2);
+		String locator = "//*[@id=\"FNOLContactPopup:FNOLContactScreen:ContactDV:InjuryIncidentInputSet:EditableBodyPartDetailsLV-body\"]//table[" + sequence + "]//tr/td[3]/div";
+		WebElement element = driver.findElement(By.xpath(locator));
+		GuideWireAccessors.selectOptionFromGWDropDown(driver, option, element, 1);
 		
 	}
    
@@ -432,6 +503,30 @@ public class ClaimCenterFNOLDriverDetailsPOM extends BaseTest{
 
 	private WebElement getIndemnitySeatbeltDropdown() {
 		return indemnitySeatbeltDropdown;
+	}
+
+	private WebElement getTpWearingSeatbeltYesOption() {
+		return tpWearingSeatbeltYesOption;
+	}
+
+	private WebElement getTpWearingSeatbeltNoOption() {
+		return tpWearingSeatbeltNoOption;
+	}
+
+	private WebElement getInjuredYesOption() {
+		return injuredYesOption;
+	}
+
+	private WebElement getInjuredNoOption() {
+		return injuredNoOption;
+	}
+
+	private WebElement getInjuryDesc() {
+		return injuryDesc;
+	}
+
+	private WebElement getAddInjuryButton() {
+		return addInjuryButton;
 	}
 
 	

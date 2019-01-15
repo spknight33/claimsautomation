@@ -1,7 +1,5 @@
 package stepdefs.regression;
 
-import com.big.automation.selenium_webdriver.claimcenter.testdata.ClaimCenterData;
-import com.big.automation.selenium_webdriver.claimcenter.testdata.ClaimCenterDataBuilder;
 import com.big.automation.selenium_webdriver.common.baseTest.BaseTest;
 
 import cucumber.api.java.en.When;
@@ -31,12 +29,12 @@ public class CCFNOLRegressionSteps extends BaseTest {
 
 	@When("^I create a claim as part of a regression test$")
 	public void i_create_a_claim_as_part_of_a_regression_test() throws Throwable {
-		ClaimCenterData scenarioData = ClaimCenterDataBuilder.createRegressionDataSet();
+		
 		//TODO - jump straight to step3 for now, but change to go through other steps later
-		//step2Steps.completeFNOLStep2ForTestScenario(scenarioData);
-		//step3Steps.completeFNOLStep3ForTestScenario(scenarioData);
-		//step4Steps.completeFNOLStep4ForTestScenario(scenarioData);
-		step5Steps.completeFNOLStep5ForTestScenario(scenarioData);
+		//step2Steps.completeFNOLStep2ForTestScenario();
+		//step3Steps.completeFNOLStep3ForTestScenario();
+		//step4Steps.completeFNOLStep4ForTestScenario(scenaroData);
+		step5Steps.completeFNOLStep5ForTestScenario();
 	}
 	
 

@@ -18,7 +18,7 @@ public class CCFNOLNewPoliceSteps extends BaseTest {
 	 * @param scenarioData
 	 * @throws Throwable
 	 */
-	public void completeFNOLNewPoliceForTestScenario(ClaimCenterData scenarioData)  throws Throwable
+	public void completeFNOLNewPoliceForTestScenario()  throws Throwable
 	{
 		//TODO - obtain from scenarioData
 		fnolNewPolicePOM.setDateReported("01/01/2019");

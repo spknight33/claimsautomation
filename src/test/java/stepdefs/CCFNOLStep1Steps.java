@@ -8,6 +8,7 @@ import org.testng.asserts.SoftAssert;
 import com.big.automation.selenium_webdriver.common.baseTest.BaseTest;
 import com.big.automation.selenium_webdriver.common.config.UserConfig;
 import com.big.automation.selenium_webdriver.common.config.UserFactory;
+import com.big.automation.selenium_webdriver.common.utilities.excelutils.ExcelUtil;
 
 import cucumber.api.DataTable;
 import cucumber.api.java.en.Given;
@@ -24,10 +25,11 @@ public class CCFNOLStep1Steps extends BaseTest	{
 	{
 		
 		// need to configure to get a specific configurable pilicy number
-		i_set_the_policy_search_criteria_fields_to("policynumber",testDataset.getPolicyNumber());
+		//i_set_the_policy_search_criteria_fields_to("policynumber",testDataset.getPolicyNumber());
+		i_set_the_policy_search_criteria_fields_to("policynumber",ExcelUtil.getTestDataValue("Fnol_PolicyNumber"));
 		i_Click_Search();
-		this.setLossDate(testDataset.getLossDate());
-		this.setLossTime(testDataset.getLossTime());
+		this.setLossDate(ExcelUtil.getTestDataValue("Fnol_Step1_LossDate"));
+		this.setLossTime(ExcelUtil.getTestDataValue("Fnol_Step1_LossTime"));
 		this.next();
 		
 	}

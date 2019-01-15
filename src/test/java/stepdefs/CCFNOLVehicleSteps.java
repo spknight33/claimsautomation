@@ -2,8 +2,8 @@ package stepdefs;
 
 import org.testng.Assert;
 
-import com.big.automation.selenium_webdriver.claimcenter.testdata.ClaimCenterData;
 import com.big.automation.selenium_webdriver.common.baseTest.BaseTest;
+import com.big.automation.selenium_webdriver.common.utilities.excelutils.ExcelUtil;
 
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
@@ -11,41 +11,97 @@ import cucumber.api.java.en.Then;
 public class CCFNOLVehicleSteps extends BaseTest {
 	
 	CCFNOLDriverSteps driverSteps = new CCFNOLDriverSteps();
+
 	
-	/**
-	 * This is for regression test cases driven by scenarioData
-	 * @param scenarioData
-	 */
-	public void completeFNOLPHVehicleForTestScenario(ClaimCenterData scenarioData)
+	public void completeFNOLPHVehicleForTestScenario()
 	{
 		// TODO - 
 		// most cases will have insured vehicle already - so for now leave this and just do the driver checl
-	   if (scenarioData.atPHVehicleStep3FNOLDriverRequired())
+	if (ExcelUtil.getTestDataValue("Fnol_PHDriverRequired").equalsIgnoreCase("TRUE"))
 	   {
 		   fnolVehicleDetailsPOM.selectAddDriver();
-		   driverSteps.completeFNOLPHDriverForTestScenario(scenarioData);
+		   driverSteps.completeFNOLPHDriverForTestScenario();
 	   }
+	
+	String fieldValue = ExcelUtil.getTestDataValue("Fnol_PHVehicleDamageDesc");
+	if (fieldValue !=null)
+		fnolVehicleDetailsPOM.setDamageDesc(fieldValue);
+	
+	fieldValue = ExcelUtil.getTestDataValue("Fnol_PHVehiclePreDamage");
+	if (fieldValue !=null)
+		fnolVehicleDetailsPOM.setPreDamageDesc(fieldValue);
+	
+	fieldValue = ExcelUtil.getTestDataValue("Fnol_PHVehicleAirBags");
+	if (fieldValue !=null)
+		fnolVehicleDetailsPOM.selectAirbagsDeployed(fieldValue);
+	
+	
 	   fnolVehicleDetailsPOM.selectOK();
 	}
 	
-	/**
-	 * This is for regression test cases driven by scenarioData
-	 * @param scenarioData
-	 */
-	public void completeFNOLTPVehicleForTestScenario(ClaimCenterData scenarioData)
+
+	public void completeFNOLTPVehicleForTestScenario()
 	{
-	  // TODO - add TP vehicle 
-		fnolVehicleDetailsPOM.setMake("Ford");
-		fnolVehicleDetailsPOM.setModel("Ka");
-		fnolVehicleDetailsPOM.setVrn("PY60HFL");
-		fnolVehicleDetailsPOM.setYear("2006");
-	   // TODO rest of fields
+	  // add TP vehicle 
 		
-	   if (scenarioData.atTPVehicleStep3FNOLDriverRequired())
+		String fieldValue = ExcelUtil.getTestDataValue("Fnol_TPVehicleType");
+		if (fieldValue !=null)
+			fnolVehicleDetailsPOM.selectVehicleType(fieldValue);
+		
+		fieldValue = ExcelUtil.getTestDataValue("Fnol_TPVehicleVrn");
+		if (fieldValue !=null)
+			fnolVehicleDetailsPOM.setVrn(fieldValue);
+		
+		fieldValue = ExcelUtil.getTestDataValue("Fnol_TPVehicleYear");
+		if (fieldValue !=null)
+			fnolVehicleDetailsPOM.setYear(fieldValue);
+		
+		fieldValue = ExcelUtil.getTestDataValue("Fnol_TPVehicleMake");
+		if (fieldValue !=null)
+			fnolVehicleDetailsPOM.setMake(fieldValue);
+		
+		fieldValue = ExcelUtil.getTestDataValue("Fnol_TPVehicleModel");
+		if (fieldValue !=null)
+			fnolVehicleDetailsPOM.setModel(fieldValue);
+		
+		fieldValue = ExcelUtil.getTestDataValue("Fnol_TPVehicleStyle");
+		if (fieldValue !=null)
+			fnolVehicleDetailsPOM.selectVehicleStyle(fieldValue);
+		
+		fieldValue = ExcelUtil.getTestDataValue("Fnol_TPVehicleColor");
+		if (fieldValue !=null)
+			fnolVehicleDetailsPOM.setColor(fieldValue);
+		
+		fieldValue = ExcelUtil.getTestDataValue("Fnol_TPVehicleVin");
+		if (fieldValue !=null)
+			fnolVehicleDetailsPOM.setVin(fieldValue);
+			
+		fieldValue = ExcelUtil.getTestDataValue("Fnol_TPVehicleDamageDesc");
+		if (fieldValue !=null)
+			fnolVehicleDetailsPOM.setDamageDesc(fieldValue);
+		
+		fieldValue = ExcelUtil.getTestDataValue("Fnol_TPVehiclePreDamage");
+		if (fieldValue !=null)
+			fnolVehicleDetailsPOM.setPreDamageDesc(fieldValue);
+		
+		fieldValue = ExcelUtil.getTestDataValue("Fnol_TPVehicleAirBags");
+		if (fieldValue !=null)
+			fnolVehicleDetailsPOM.selectAirbagsDeployed(fieldValue);
+		// add TP driver if one is required
+		if (ExcelUtil.getTestDataValue("Fnol_TPDriverRequired").equalsIgnoreCase("TRUE"))
 	   {
 		   fnolVehicleDetailsPOM.selectAddDriver();
-		   driverSteps.completeFNOLTPDriverForTestScenario(scenarioData);
+		   driverSteps.completeFNOLTPDriverForTestScenario();
 	   }
+		
+		// add TP passenger if one is requiredd
+		if (ExcelUtil.getTestDataValue("Fnol_TPPassengerRequired").equalsIgnoreCase("TRUE"))
+		   {
+			   fnolVehicleDetailsPOM.selectAddPassenger();
+			   // todo passenger screen
+		   }
+			   
+		
 	   fnolVehicleDetailsPOM.selectOK();
 	}
 

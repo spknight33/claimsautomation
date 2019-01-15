@@ -81,6 +81,9 @@ import cucumber.api.testng.AbstractTestNGCucumberTests;
 @Listeners(com.big.automation.selenium_webdriver.common.testlistener.TestListener.class)
 
 public class BaseTest extends AbstractTestNGCucumberTests{
+	
+	
+   public static final String testDataExcelFilename = "testdata.xlsx";
 
    public static ITestResult result;
    public static WebDriverRule webDriverRule;
@@ -90,7 +93,7 @@ public class BaseTest extends AbstractTestNGCucumberTests{
    public static ScreenshotTestRule screenshotTestRule;
    public static RemoteWebDriver driver;
    
-   public static ClaimCenterData testDataset;
+   //public static ClaimCenterData testDataset;
   
    
    
@@ -264,7 +267,7 @@ public class BaseTest extends AbstractTestNGCucumberTests{
       
       
       // TODO - for now 
-      this.testDataset = ClaimCenterDataBuilder.createDataSet();
+     // this.testDataset = ClaimCenterDataBuilder.createDataSet();
 		
       
    }

@@ -48,8 +48,16 @@ public class ClaimCenterFNOLVehicleDetailsPOM extends BaseTest{
 	private WebElement make;
 	@FindBy(id = "FNOLVehicleIncidentPopup:FNOLVehicleIncidentScreen:VehicleBasicsDV:Vehicle_Model-inputEl")
 	private WebElement model;
+	@FindBy(id = "FNOLVehicleIncidentPopup:FNOLVehicleIncidentScreen:VehicleBasicsDV:Vehicle_Color-inputEl")
+	private WebElement color;
 	@FindBy(id = "FNOLVehicleIncidentPopup:FNOLVehicleIncidentScreen:VehicleBasicsDV:Owner_Picker-inputEl")
 	private WebElement ownerDropdown;
+	
+	@FindBy(id = "FNOLVehicleIncidentPopup:FNOLVehicleIncidentScreen:VehicleBasicsDV:Vehicle_Style-inputEl")
+	private WebElement style;
+	@FindBy(id = "FNOLVehicleIncidentPopup:FNOLVehicleIncidentScreen:VehicleBasicsDV:Vehicle_VIN-inputEl")
+	private WebElement vin;
+	
 	
 	// this is the owner picker stuff
 	// first the icon
@@ -202,12 +210,39 @@ public class ClaimCenterFNOLVehicleDetailsPOM extends BaseTest{
 		GuideWireAccessors.setGWTextBox(driver, text, this.getModel());
 	}
 	
+	public void selectVehicleStyle(String option)
+	{
+		logger.info(format("%s - going to select Vehicle style :"+option, getName()));
+		GuideWireAccessors.selectOptionFromGWDropDown(driver, option, this.getStyle(),1);
+	}
+	public void setColor(String text)
+	{
+		logger.info(format("%s - going to set color  :"+text, getName()));
+		GuideWireAccessors.setGWTextBox(driver, text, this.getColor());
+	}
+	public void setVin(String text)
+	{
+		logger.info(format("%s - going to set vin :"+text, getName()));
+		GuideWireAccessors.setGWTextBox(driver, text, this.getVin());
+	}
+	
 	public void selectNewOwner()
 	{
 		logger.info(format("%s - going to select New Person from owner picker", getName()));
 		GuideWireAccessors.selectOptionFromGWPicker(driver, this.getOwnerPickerLink(),this.getNewPersonSubLink());
 	}
 
+	public void setDamageDesc(String text)
+	{
+		logger.info(format("%s - going to set damage desc :"+text, getName()));
+		GuideWireAccessors.setGWTextBox(driver, text, this.getDamageDescTextArea());
+	}
+	
+	public void setPreDamageDesc(String text)
+	{
+		logger.info(format("%s - going to set pre damage desc :"+text, getName()));
+		GuideWireAccessors.setGWTextBox(driver, text, this.getPreDamageDescTextArea());
+	}
    
 	private WebElement getCancelButton() {
 	return cancelButton;
@@ -301,6 +336,30 @@ public class ClaimCenterFNOLVehicleDetailsPOM extends BaseTest{
 
 	private WebElement getNewPersonSubLink() {
 		return newPersonSubLink;
+	}
+
+	private WebElement getLossPartyInsuredRadio() {
+		return lossPartyInsuredRadio;
+	}
+
+	private WebElement getLossPartyTPRadio() {
+		return lossPartyTPRadio;
+	}
+
+	private WebElement getStyle() {
+		return style;
+	}
+
+	private List<WebElement> getErrorMessages() {
+		return errorMessages;
+	}
+
+	private WebElement getColor() {
+		return color;
+	}
+
+	private WebElement getVin() {
+		return vin;
 	}
 
 	

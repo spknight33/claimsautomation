@@ -2,30 +2,93 @@ package stepdefs;
 
 import org.testng.Assert;
 
-import com.big.automation.selenium_webdriver.claimcenter.testdata.ClaimCenterData;
 import com.big.automation.selenium_webdriver.common.baseTest.BaseTest;
+import com.big.automation.selenium_webdriver.common.utilities.excelutils.ExcelUtil;
 
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 
 public class CCFNOLDriverSteps extends BaseTest {
 	
-	public void completeFNOLTPDriverForTestScenario(ClaimCenterData scenarioData)
+	public void completeFNOLTPDriverForTestScenario()
 	{
-		//TODO - use data from scenario
-		fnolDriverDetailsPOM.setAddressLine1("9 Walkers Road");
-		fnolDriverDetailsPOM.setFirstName("Jim");
-		fnolDriverDetailsPOM.setLastName("Boyracer");
 		
+		String fieldValue = ExcelUtil.getTestDataValue("Fnol_TPDriverPrefix");
+		if (fieldValue !=null)
+		     fnolDriverDetailsPOM.selectPrefix(fieldValue);
+		
+		fieldValue = ExcelUtil.getTestDataValue("Fnol_TPDriverFirstName");
+		if (fieldValue !=null)
+		     fnolDriverDetailsPOM.setFirstName(fieldValue);
+		
+		fieldValue = ExcelUtil.getTestDataValue("Fnol_TPDriverLastName");
+		if (fieldValue !=null)
+		     fnolDriverDetailsPOM.setLastName(fieldValue);
+		
+		fieldValue = ExcelUtil.getTestDataValue("Fnol_TPDriverEmail");
+		if (fieldValue !=null)
+		     fnolDriverDetailsPOM.setEmail(fieldValue);
+		
+  
+		// add injury if required 
+		fieldValue = ExcelUtil.getTestDataValue("Fnol_TPDriverInjured");
+		if (fieldValue !=null && fieldValue.equalsIgnoreCase("TRUE"))
+		{
+			 fnolDriverDetailsPOM.selectInjured(true);
+			 fnolDriverDetailsPOM.selectAddInjury();
+			 
+			 fieldValue = ExcelUtil.getTestDataValue("Fnol_TPDriverInjDesc");
+				if (fieldValue !=null)
+				     fnolDriverDetailsPOM.setInjuryDesc(fieldValue);
+			 
+			 fieldValue = ExcelUtil.getTestDataValue("Fnol_TPDriverInj1BodyArea");
+				if (fieldValue !=null)
+				     fnolDriverDetailsPOM.selectAreaOfBody(fieldValue, 1);
+				fieldValue = ExcelUtil.getTestDataValue("Fnol_TPDriverInj1Detailed");
+				if (fieldValue !=null)
+				     fnolDriverDetailsPOM.selectDetailedInjury(fieldValue, 1);
+		     
+		}
+		else
+		{
+			fnolDriverDetailsPOM.selectInjured(false);
+		}
+	
 	
 		fnolDriverDetailsPOM.selectOK();
 	}
 	
-	public void completeFNOLPHDriverForTestScenario(ClaimCenterData scenarioData)
+	public void completeFNOLPHDriverForTestScenario()
 	{
-		//TODO - use data from scenario
-		fnolDriverDetailsPOM.selectDriverName(scenarioData.getFirstLastName());
+		if (ExcelUtil.getTestDataValue("Fnol_PHDriverIsInsuredPerson").equalsIgnoreCase("TRUE"))
+		{
+		     fnolDriverDetailsPOM.selectDriverName(ExcelUtil.getTestDataValue("Fnol_Name"));
+		}
+		//TODO else - create a new driver
 	
+		// add injury if required 
+				String fieldValue = ExcelUtil.getTestDataValue("Fnol_PHDriverInjured");
+				if (fieldValue !=null && fieldValue.equalsIgnoreCase("TRUE"))
+				{
+					 fnolDriverDetailsPOM.selectInjured(true);
+					 fnolDriverDetailsPOM.selectAddInjury();
+					 
+					 fieldValue = ExcelUtil.getTestDataValue("Fnol_PHDriverInjDesc");
+						if (fieldValue !=null)
+						     fnolDriverDetailsPOM.setInjuryDesc(fieldValue);
+					 
+					 fieldValue = ExcelUtil.getTestDataValue("Fnol_PHDriverInj1BodyArea");
+						if (fieldValue !=null)
+						     fnolDriverDetailsPOM.selectAreaOfBody(fieldValue, 1);
+						fieldValue = ExcelUtil.getTestDataValue("Fnol_PHDriverInj1Detailed");
+						if (fieldValue !=null)
+						     fnolDriverDetailsPOM.selectDetailedInjury(fieldValue, 1);
+				     
+				}
+				else
+				{
+					fnolDriverDetailsPOM.selectInjured(false);
+				}
 	
 		fnolDriverDetailsPOM.selectOK();
 	}
@@ -71,9 +134,18 @@ public class CCFNOLDriverSteps extends BaseTest {
 	@Given("^I complete fields on FNOL new TP driver incident$")
 	public void i_complete_all_fields() throws Throwable {
 		
-		fnolDriverDetailsPOM.setAddressLine1("9 Walkers Road");
-		fnolDriverDetailsPOM.setFirstName("Jim");
-		fnolDriverDetailsPOM.setLastName("Boyracer");
+		String fieldValue = ExcelUtil.getTestDataValue("Fnol_TPDriverPrefix");
+		if (fieldValue !=null)
+		     fnolDriverDetailsPOM.selectPrefix(fieldValue);
+		
+		fieldValue = ExcelUtil.getTestDataValue("Fnol_TPDriverFirstName");
+		if (fieldValue !=null)
+		     fnolDriverDetailsPOM.setFirstName(fieldValue);
+		
+		fieldValue = ExcelUtil.getTestDataValue("Fnol_TPDriverLastName");
+		if (fieldValue !=null)
+		     fnolDriverDetailsPOM.setLastName(fieldValue);
+		
 		
 	
 		fnolDriverDetailsPOM.selectOK();

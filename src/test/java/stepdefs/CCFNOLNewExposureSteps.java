@@ -5,9 +5,8 @@ import java.util.List;
 import org.testng.Assert;
 import org.testng.asserts.SoftAssert;
 
-import com.big.automation.selenium_webdriver.claimcenter.pages.ClaimCenterFNOLNewVehicleExposurePOM;
-import com.big.automation.selenium_webdriver.claimcenter.testdata.ClaimCenterData;
 import com.big.automation.selenium_webdriver.common.baseTest.BaseTest;
+import com.big.automation.selenium_webdriver.common.utilities.excelutils.ExcelUtil;
 
 import cucumber.api.DataTable;
 import cucumber.api.java.en.Given;
@@ -16,7 +15,7 @@ import cucumber.api.java.en.When;
 
 public class CCFNOLNewExposureSteps extends BaseTest {
 
-	public void completeFNOLExposureForTestScenario(ClaimCenterData scenarioData) {
+	public void completeFNOLExposureForTestScenario() {
 		// TODO - change to use ScenarioData
 
 	}
@@ -218,20 +217,20 @@ public class CCFNOLNewExposureSteps extends BaseTest {
 
 	@When("^I select the Insured as Claimant on new vehicle exposure screen for FNOL$")
 	public void i_select_the_Insured_as_Claimant_on_new_vehicle_exposure_screen_for_FNOL() throws Throwable {
-		fnolNewVehicleExposurePOM.selectClaimant(testDataset.getFirstLastName()); // use insured from testdata
+		fnolNewVehicleExposurePOM.selectClaimant(ExcelUtil.getTestDataValue("Fnol_Name")); // use insured from testdata
 	}
 	@When("^I select the Insured as Claimant on new Credit Hire exposure screen for FNOL$")
 	public void i_select_the_Insured_as_Claimant_on_new_credithirer_exposure_screen_for_FNOL() throws Throwable {
-		fnolNewCreditHireExposurePOM.selectClaimant(testDataset.getFirstLastName()); // use insured from testdata
+		fnolNewCreditHireExposurePOM.selectClaimant(ExcelUtil.getTestDataValue("Fnol_Name")); // use insured from testdata
 	}
 
 	@When("^I select the Insured as Claimant on new Protocol Hire exposure screen for FNOL$")
 	public void i_select_the_Insured_as_Claimant_on_new_protocolhire_exposure_screen_for_FNOL() throws Throwable {
-		fnolNewProtocolHireExposurePOM.selectClaimant(testDataset.getFirstLastName()); // use insured from testdata
+		fnolNewProtocolHireExposurePOM.selectClaimant(ExcelUtil.getTestDataValue("Fnol_Name")); // use insured from testdata
 	}
 	@When("^I select the Insured as Claimant on new TP Capture exposure screen for FNOL$")
 	public void i_select_the_Insured_as_Claimant_on_new_tpcapture_exposure_screen_for_FNOL() throws Throwable {
-		fnolNewTPCaptureExposurePOM.selectClaimant(testDataset.getFirstLastName()); // use insured from testdata
+		fnolNewTPCaptureExposurePOM.selectClaimant(ExcelUtil.getTestDataValue("Fnol_Name")); // use insured from testdata
 	}
 
 

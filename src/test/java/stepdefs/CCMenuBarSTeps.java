@@ -6,6 +6,7 @@ import java.util.List;
 import org.testng.asserts.SoftAssert;
 
 import com.big.automation.selenium_webdriver.common.baseTest.BaseTest;
+import com.big.automation.selenium_webdriver.common.utilities.excelutils.ExcelUtil;
 
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
@@ -30,7 +31,7 @@ public class CCMenuBarSTeps extends BaseTest {
 	@Given("^I Select an existing Claim$")
 	public void selectAnExistingClaim() {
 
-		menuBarPOM.selectExistingClaim(this.testDataset.getClaimNumber());
+		menuBarPOM.selectExistingClaim(ExcelUtil.getTestDataValue("PostFnol_ClaimNumber"));
 	}
 
 	

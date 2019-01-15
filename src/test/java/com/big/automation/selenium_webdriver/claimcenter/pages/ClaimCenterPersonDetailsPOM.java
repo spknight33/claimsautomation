@@ -54,6 +54,8 @@ public class ClaimCenterPersonDetailsPOM extends BaseTest{
 	@FindBy(id = "NewContactPopup:ContactDetailScreen:ContactBasicsDV:PrimaryAddressInputSet:CCAddressInputSet:globalAddressContainer:globalAddress:GlobalAddressInputSet:PostalCode-inputEl")
 	private WebElement postCode;
 	
+	@FindBy(id = "NewContactPopup:ContactDetailScreen:ContactBasicsDV:PrimaryAddressInputSet:CCAddressInputSet:globalAddressContainer:Address_Description-inputEl")
+	private WebElement locationDesc;
 	
 	@FindBy(id = "NewContactPopup:ContactDetailScreen:ContactBasicsDV:PrimaryAddressInputSet:CCAddressInputSet:globalAddressContainer:Address_AddressType-inputEl")
 	private WebElement addressType;
@@ -159,6 +161,13 @@ public class ClaimCenterPersonDetailsPOM extends BaseTest{
 		sleep(1);
 		
 	}
+	
+	public void setLocationDesc(String text)
+	{
+		logger.info(format("%s -  going to set location description", getName()));
+		GuideWireAccessors.setGWTextBox(driver, text, this.getLocationDesc());
+	
+	}
    
 	private WebElement getCancelButton() {
 	return cancelButton;
@@ -226,6 +235,10 @@ public class ClaimCenterPersonDetailsPOM extends BaseTest{
 
 	private WebElement getWorkPhone() {
 		return workPhone;
+	}
+
+	private WebElement getLocationDesc() {
+		return locationDesc;
 	}
 	
 

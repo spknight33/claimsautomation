@@ -7,6 +7,7 @@ import org.testng.asserts.SoftAssert;
 
 import com.big.automation.selenium_webdriver.claimcenter.testdata.ClaimCenterData;
 import com.big.automation.selenium_webdriver.common.baseTest.BaseTest;
+import com.big.automation.selenium_webdriver.common.utilities.excelutils.ExcelUtil;
 
 import cucumber.api.DataTable;
 import cucumber.api.java.en.Given;
@@ -23,17 +24,17 @@ public class CCFNOLStep2Steps extends BaseTest{
 	 * @param scenarioData
 	 * @throws Throwable
 	 */
-	public void completeFNOLStep2ForTestScenario(ClaimCenterData scenarioData)  throws Throwable
+	public void completeFNOLStep2ForTestScenario()  throws Throwable
 	{
 
-		this.i_select_from_field_on_step("Portal","How Reported");
-		this.i_select_from_field_on_step(scenarioData.getFirstLastName(),"name");
+		this.i_select_from_field_on_step(ExcelUtil.getTestDataValue("Fnol_Step2_HowReported"),"How Reported");
+		this.i_select_from_field_on_step(ExcelUtil.getTestDataValue("Fnol_Name"),"name");
 		this.i_select_from_field_on_step("Policyholder","relationship to insured");
 		this.i_input_into_the_box_on_step2("01912228888","Home Phone");
 		this.i_input_into_the_box_on_step2("someguy@gmail.com","Email");
 		this.i_select_from_field_on_step("Work","Phone Type");
 		
-		if (!scenarioData.atStep2FNOLPHVehicleRequired())
+		if (!ExcelUtil.getTestDataValue("Fnol_Step2_PHVehicleRequired").equalsIgnoreCase("TRUE"))
 		{
 			this.unselectFirstInsuredVehicle();
 		}
@@ -59,7 +60,8 @@ public class CCFNOLStep2Steps extends BaseTest{
 		// need to configure to get a specific configurable pilicy number
 
 		this.i_select_from_field_on_step("Portal","How Reported");
-		this.i_select_from_field_on_step(testDataset.getFirstLastName(),"name");
+	
+		this.i_select_from_field_on_step(ExcelUtil.getTestDataValue("Fnol_Name"),"name");
 		this.i_select_from_field_on_step("Policyholder","relationship to insured");
 		this.next();
 		
@@ -71,7 +73,7 @@ public class CCFNOLStep2Steps extends BaseTest{
 		// need to configure to get a specific configurable pilicy number
 
 		this.i_select_from_field_on_step("Portal","How Reported");
-		this.i_select_from_field_on_step(testDataset.getFirstLastName(),"name");
+		this.i_select_from_field_on_step(ExcelUtil.getTestDataValue("Fnol_Name"),"name");
 		this.i_select_from_field_on_step("Policyholder","relationship to insured");
 		this.i_input_into_the_box_on_step2("01912228888","Home Phone");
 		this.i_input_into_the_box_on_step2("someguy@gmail.com","Email");

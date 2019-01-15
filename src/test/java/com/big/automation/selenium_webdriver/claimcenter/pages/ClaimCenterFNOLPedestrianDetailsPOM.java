@@ -5,6 +5,7 @@ import static java.lang.String.format;
 
 import java.util.List;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
@@ -63,13 +64,26 @@ public class ClaimCenterFNOLPedestrianDetailsPOM extends BaseTest{
 	@FindBy(id = "FNOLContactPopup:FNOLContactScreen:ContactDV:FNOLContactInputSet:reporter_email-inputEl")
 	private WebElement mainEmail;
 	
+	@FindBy(id = "FNOLContactPopup:FNOLContactScreen:ContactDV:FNOLContactInputSet:Email2-inputEl")
+	private WebElement altEmail;
+	
+	@FindBy(id = "FNOLContactPopup:FNOLContactScreen:ContactDV:FNOLContactInputSet:NationalInsurance_itb-inputEl")
+	private WebElement niNumber;
+	
+	@FindBy(id = "FNOLContactPopup:FNOLContactScreen:ContactDV:FNOLContactInputSet:DriverLicense-inputEl")
+	private WebElement licenseNumber;
+	@FindBy(id = "FNOLContactPopup:FNOLContactScreen:ContactDV:FNOLContactInputSet:Notes-inputEl")
+	private WebElement notes;
+	
 	@FindBy(id = "FNOLContactPopup:FNOLContactScreen:ContactDV:InjuredBoolean_true-inputEl")
 	private WebElement injuredTrueRadio;
 	@FindBy(id = "FNOLContactPopup:FNOLContactScreen:ContactDV:InjuredBoolean_false-inputEl")
 	private WebElement injuredFalseRadio;
 	@FindBy(id = "FNOLContactPopup:FNOLContactScreen:ContactDV:InjuryIncidentInputSet:InjuryDescription-inputEl")
 	private WebElement injuredDesc;
-	//TODO rest of injuries
+	
+		@FindBy(id = "FNOLContactPopup:FNOLContactScreen:ContactDV:InjuryIncidentInputSet:EditableBodyPartDetailsLV_tb:Add")
+		private WebElement addInjuryButton;
 	
 	@FindBy(className = "message")
 	private List <WebElement> errorMessages;
@@ -157,6 +171,78 @@ public class ClaimCenterFNOLPedestrianDetailsPOM extends BaseTest{
 		GuideWireAccessors.setGWTextBox(driver, text, this.getAddressLine3());
 		logger.info(format("%s - done, address line3 set", getName()));
 	}
+	public void setCity(String text)
+	{
+		logger.info(format("%s -  going to set city", getName()));
+		GuideWireAccessors.setGWTextBox(driver, text, this.getCity());
+		
+	}
+	
+	public void setPostcode(String text)
+	{
+		logger.info(format("%s -  going to set postcode", getName()));
+		GuideWireAccessors.setGWTextBox(driver, text, this.getPostCode());
+		// TODO tab off
+		
+	}
+	
+	public void setNotes(String text)
+	{
+		logger.info(format("%s -  going to set notes", getName()));
+		GuideWireAccessors.setGWTextBox(driver, text, this.getNotes());
+	}
+	
+	// Injury Section
+		//-------------------------------------
+		public void selectInjured(boolean injured)
+		{
+			logger.info(format("%s -  going to set injured"+injured, getName()));
+			
+			if (injured)
+			{
+			GuideWireAccessors.clickGWButton(driver, this.getInjuredTrueRadio());
+			}
+			else
+			{
+				GuideWireAccessors.clickGWButton(driver, this.getInjuredFalseRadio());
+			}
+			
+		}
+		public void selectAddInjury()
+		{
+			logger.info(format("%s -  going to clikc add injury button", getName()));
+			
+				GuideWireAccessors.clickGWButton(driver, this.getAddInjuryButton());
+		
+			
+		}
+		
+		public void setInjuryDesc(String text) {
+		logger.info(format("%s -  going to set injury desc", getName()));
+		GuideWireAccessors.setGWTextBox(driver, text, this.getInjuredDesc());
+	}
+		
+		public void selectAreaOfBody(String option, int sequence)
+		{
+			logger.info(format("%s -  going to select area of body"+option, getName()));
+			// use to select the area of body for the first (for now) change to be able to set for any row
+		    // just change to use table[x]
+			String locator = "//*[@id=\"FNOLContactPopup:FNOLContactScreen:ContactDV:InjuryIncidentInputSet:EditableBodyPartDetailsLV-body\"]//table[" + sequence + "]//tr/td[2]/div";
+			WebElement element = driver.findElement(By.xpath(locator));
+			GuideWireAccessors.selectOptionFromGWDropDown(driver, option, element, 1);
+			
+		}
+		
+		public void selectDetailedInjury(String option, int sequence)
+		{
+			logger.info(format("%s -  going to select detald injury"+option, getName()));
+			// use to select the detailed injury for the first (for now) change to be able to set for any row
+			sleep(2);
+			String locator = "//*[@id=\"FNOLContactPopup:FNOLContactScreen:ContactDV:InjuryIncidentInputSet:EditableBodyPartDetailsLV-body\"]//table[" + sequence + "]//tr/td[3]/div";
+			WebElement element = driver.findElement(By.xpath(locator));
+			GuideWireAccessors.selectOptionFromGWDropDown(driver, option, element, 1);
+			
+		}
    
 	private WebElement getCancelButton() {
 	return cancelButton;
@@ -246,6 +332,26 @@ public class ClaimCenterFNOLPedestrianDetailsPOM extends BaseTest{
 
 	private WebElement getInjuredDesc() {
 		return injuredDesc;
+	}
+
+	private WebElement getAddInjuryButton() {
+		return addInjuryButton;
+	}
+
+	private WebElement getAltEmail() {
+		return altEmail;
+	}
+
+	private WebElement getNiNumber() {
+		return niNumber;
+	}
+
+	private WebElement getLicenseNumber() {
+		return licenseNumber;
+	}
+
+	private WebElement getNotes() {
+		return notes;
 	}
 	
 
