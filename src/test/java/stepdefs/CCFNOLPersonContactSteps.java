@@ -3,6 +3,7 @@ package stepdefs;
 import org.testng.Assert;
 
 import com.big.automation.selenium_webdriver.common.baseTest.BaseTest;
+import com.big.automation.selenium_webdriver.common.utilities.excelutils.ExcelUtil;
 
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
@@ -10,7 +11,33 @@ import cucumber.api.java.en.Then;
 public class CCFNOLPersonContactSteps extends BaseTest {
 	
 	
+	public void completeFNOLPropertyOwnerForTestScenario()
+	{
+		
+		String fieldValue = ExcelUtil.getTestDataValue("Fnol_PropertyNewOwnerPrefix");
+		if (fieldValue !=null)
+			personContactDetailsPOM.selectPrefix(fieldValue);
+		
+		fieldValue = ExcelUtil.getTestDataValue("Fnol_PropertyNewOwnerFirstName");
+		if (fieldValue !=null)
+			personContactDetailsPOM.setFirstName(fieldValue);
+		
+		fieldValue = ExcelUtil.getTestDataValue("Fnol_PropertyNewOwnerLastName");
+		if (fieldValue !=null)
+			personContactDetailsPOM.setLastName(fieldValue);
+		
+		fieldValue = ExcelUtil.getTestDataValue("Fnol_PropertyNewOwnerEmail");
+		if (fieldValue !=null)
+			personContactDetailsPOM.setEmail(fieldValue);
+		
+		fieldValue = ExcelUtil.getTestDataValue("Fnol_PropertyNewOwnerLocationDesc");
+		if (fieldValue !=null)
+			personContactDetailsPOM.setLocationDesc(fieldValue);
+		
+		
 	
+		personContactDetailsPOM.selectUpdate();
+	}
 	
 	@Then("^I will be on person contact screen for FNOL$")
 	public void i_will_be_on_personcontact_screen_for_FNOL() throws Throwable {

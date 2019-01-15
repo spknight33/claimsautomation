@@ -12,7 +12,7 @@ import org.openqa.selenium.support.FindBy;
 import com.big.automation.selenium_webdriver.common.baseTest.BaseTest;
 import com.big.automation.selenium_webdriver.common.gw.utilities.GuideWireAccessors;
 
-public class ClaimCenterFNOLDriverDetailsPOM extends BaseTest{
+public class ClaimCenterFNOLNewPassengerDetailsPOM extends BaseTest{
 
 		
 	@FindBy(id = "FNOLContactPopup:FNOLContactScreen:ttlBar")
@@ -20,14 +20,13 @@ public class ClaimCenterFNOLDriverDetailsPOM extends BaseTest{
 	
 	@FindBy(id = "FNOLContactPopup:FNOLContactScreen:Update-btnEl")
 	private WebElement okButton;
-	@FindBy(id = "FNOLWizard:Cancel-btnEl")
+	@FindBy(id = "FNOLContactPopup:FNOLContactScreen:Cancel")
 	private WebElement cancelButton;
 	
 
 	@FindBy(id = "FNOLContactPopup:FNOLContactScreen:ContactDV:ClaimContactPerson-inputEl")
-	private WebElement driverNameDropdown;
-	@FindBy(id = "FNOLContactPopup:FNOLContactScreen:ContactDV:FNOLContactInputSet:DriverRelationToOwner-inputEl")
-	private WebElement relationToOwnerDropdown;
+	private WebElement passengerNameDropdown;
+
 	
 	@FindBy(id = "FNOLContactPopup:FNOLContactScreen:ContactDV:FNOLContactInputSet:GlobalPersonNameInputSet:Prefix-inputEl")
 	private WebElement prefix;
@@ -42,12 +41,14 @@ public class ClaimCenterFNOLDriverDetailsPOM extends BaseTest{
 	@FindBy(id = "FNOLContactPopup:FNOLContactScreen:ContactDV:FNOLContactInputSet:DateOfBirth-inputEl")
 	private WebElement dob;
 	
+	@FindBy(id = "FNOLContactPopup:FNOLContactScreen:ContactDV:FNOLContactInputSet:PedestrianOrDriverOrPassengerDetails:PedestrianOrDriverOrPassengerRoleInputSet:WhereWereTheyInTheVehicle_itb-inputEl")
+	private WebElement whereInVehicleDropdown;
 	
 	//tp only here
 	@FindBy(id = "FNOLContactPopup:FNOLContactScreen:ContactDV:FNOLContactInputSet:PedestrianOrDriverOrPassengerDetails:PedestrianOrDriverOrPassengerRoleInputSet:WereTheyWearingASeatBelt_itb_true-inputEl")
-	private WebElement tpWearingSeatbeltYesOption;
+	private WebElement passengerWearingSeatbeltYesOption;
 	@FindBy(id = "FNOLContactPopup:FNOLContactScreen:ContactDV:FNOLContactInputSet:PedestrianOrDriverOrPassengerDetails:PedestrianOrDriverOrPassengerRoleInputSet:WereTheyWearingASeatBelt_itb_false-boxLabelEl")
-	private WebElement tpWearingSeatbeltNoOption;
+	private WebElement passengerWearingSeatbeltNoOption;
 
 	@FindBy(id = "FNOLContactPopup:FNOLContactScreen:ContactDV:FNOLContactInputSet:CCAddressInputSet:globalAddressContainer:globalAddress:GlobalAddressInputSet:AddressLine1-inputEl")
 	private WebElement addressLine1;
@@ -91,39 +92,7 @@ public class ClaimCenterFNOLDriverDetailsPOM extends BaseTest{
 	@FindBy(id = "FNOLContactPopup:FNOLContactScreen:ContactDV:FNOLContactInputSet:Notes-inputEl")
 	private WebElement notes;
 	
-	//INDEMNITY SECTION 
-	//---------------------------
-	//TODO - the policy retrieved fields
-	@FindBy(id = "FNOLContactPopup:FNOLContactScreen:ContactDV:DriverIndemnityQuestionsInputSet:ClaimFullTimeOccupation-inputEl")
-	private WebElement indemnityOccupationDropdown;
-	@FindBy(id = "FNOLContactPopup:FNOLContactScreen:ContactDV:DriverIndemnityQuestionsInputSet:ClaimLicenceType-inputEl")
-	private WebElement indemnityLicenseTypeDropdown;
-	@FindBy(id = "FNOLContactPopup:FNOLContactScreen:ContactDV:FNOLContactInputSet:Notes-inputEl")
-	private WebElement indemnityLicenseLengthDropdown;
-	@FindBy(id = "FNOLContactPopup:FNOLContactScreen:ContactDV:DriverIndemnityQuestionsInputSet:ClaimMedicalConditions-inputEl")
-	private WebElement indemnityMedicalDropdown;
 	
-	@FindBy(id = "FNOLContactPopup:FNOLContactScreen:ContactDV:DriverIndemnityQuestionsInputSet:ClaimHasPreviousMotorClaims_true-inputEl")
-	private WebElement indemnityIncLast5YesOption;
-	@FindBy(id = "FNOLContactPopup:FNOLContactScreen:ContactDV:DriverIndemnityQuestionsInputSet:ClaimHasPreviousMotorClaims_false-inputEl")
-	private WebElement indemnityIncLast5NoOption;
-	
-	@FindBy(id = "FNOLContactPopup:FNOLContactScreen:ContactDV:DriverIndemnityQuestionsInputSet:ClaimHasMotorConvictions_true-inputEl")
-	private WebElement indemnityOffenceLast5YesOption;
-	@FindBy(id = "FNOLContactPopup:FNOLContactScreen:ContactDV:DriverIndemnityQuestionsInputSet:ClaimHasMotorConvictions_false-inputEl")
-	private WebElement indemnityOffenceLast5NoOption;
-	
-	@FindBy(id = "FNOLContactPopup:FNOLContactScreen:ContactDV:DriverIndemnityQuestionsInputSet:DrinkOrDrugProsecutionInd-inputEl")
-	private WebElement indemnityProsecutionDropdown;
-	
-	@FindBy(id = "FNOLContactPopup:FNOLContactScreen:ContactDV:DriverIndemnityQuestionsInputSet:DriverTestedAtSceneInd_true-inputEl")
-	private WebElement indemnityDriverTestedYesOption;
-	@FindBy(id = "FNOLContactPopup:FNOLContactScreen:ContactDV:DriverIndemnityQuestionsInputSet:DriverTestedAtSceneInd_false-inputEl")
-	private WebElement indemnityDriverTestedNoOption;
-	
-	
-	@FindBy(id = "FNOLContactPopup:FNOLContactScreen:ContactDV:DriverIndemnityQuestionsInputSet:WearingSeatbeltInd-inputEl")
-	private WebElement indemnitySeatbeltDropdown;
 	
 	// Injury section
 	@FindBy(id = "FNOLContactPopup:FNOLContactScreen:ContactDV:InjuredBoolean_true-inputEl")
@@ -168,16 +137,12 @@ public class ClaimCenterFNOLDriverDetailsPOM extends BaseTest{
 	
 	
 	
-	public void selectDriverName(String option)
+	public void selectPassengerName(String option)
 	{
-		logger.info(format("%s - going to select Driver name option :"+option, getName()));
-		GuideWireAccessors.selectOptionFromGWDropDown(driver, option, this.getDriverNameDropdown(),1);
+		logger.info(format("%s - going to select passenger name option :"+option, getName()));
+		GuideWireAccessors.selectOptionFromGWDropDown(driver, option, this.getPassengerNameDropdown(),1);
 	}
-	public void selectRelationToOwner(String option)
-	{
-		logger.info(format("%s - going to select relation to owner option :"+option, getName()));
-		GuideWireAccessors.selectOptionFromGWDropDown(driver, option, this.getRelationToOwnerDropdown(),1);
-	}
+	
 	public void selectPrefix(String option)
 	{
 		logger.info(format("%s -  going to select prefix ", getName()));
@@ -343,13 +308,6 @@ public class ClaimCenterFNOLDriverDetailsPOM extends BaseTest{
 	}
 	
 
-	
-
-	
-	private WebElement getDriverNameDropdown() {
-		return driverNameDropdown;
-	}
-
 	private WebElement getOkButton() {
 		return okButton;
 	}
@@ -394,9 +352,7 @@ public class ClaimCenterFNOLDriverDetailsPOM extends BaseTest{
 		return errorMessages;
 	}
 
-	private WebElement getRelationToOwnerDropdown() {
-		return relationToOwnerDropdown;
-	}
+	
 
 	private WebElement getMiddleName() {
 		return middleName;
@@ -458,62 +414,7 @@ public class ClaimCenterFNOLDriverDetailsPOM extends BaseTest{
 		return notes;
 	}
 
-	private WebElement getIndemnityOccupationDropdown() {
-		return indemnityOccupationDropdown;
-	}
-
-	private WebElement getIndemnityLicenseTypeDropdown() {
-		return indemnityLicenseTypeDropdown;
-	}
-
-	private WebElement getIndemnityLicenseLengthDropdown() {
-		return indemnityLicenseLengthDropdown;
-	}
-
-	private WebElement getIndemnityMedicalDropdown() {
-		return indemnityMedicalDropdown;
-	}
-
-	private WebElement getIndemnityIncLast5YesOption() {
-		return indemnityIncLast5YesOption;
-	}
-
-	private WebElement getIndemnityIncLast5NoOption() {
-		return indemnityIncLast5NoOption;
-	}
-
-	private WebElement getIndemnityOffenceLast5YesOption() {
-		return indemnityOffenceLast5YesOption;
-	}
-
-	private WebElement getIndemnityOffenceLast5NoOption() {
-		return indemnityOffenceLast5NoOption;
-	}
-
-	private WebElement getIndemnityProsecutionDropdown() {
-		return indemnityProsecutionDropdown;
-	}
-
-	private WebElement getIndemnityDriverTestedYesOption() {
-		return indemnityDriverTestedYesOption;
-	}
-
-	private WebElement getIndemnityDriverTestedNoOption() {
-		return indemnityDriverTestedNoOption;
-	}
-
-	private WebElement getIndemnitySeatbeltDropdown() {
-		return indemnitySeatbeltDropdown;
-	}
-
-	private WebElement getTpWearingSeatbeltYesOption() {
-		return tpWearingSeatbeltYesOption;
-	}
-
-	private WebElement getTpWearingSeatbeltNoOption() {
-		return tpWearingSeatbeltNoOption;
-	}
-
+	
 	private WebElement getInjuredYesOption() {
 		return injuredYesOption;
 	}
@@ -528,6 +429,22 @@ public class ClaimCenterFNOLDriverDetailsPOM extends BaseTest{
 
 	private WebElement getAddInjuryButton() {
 		return addInjuryButton;
+	}
+
+	private WebElement getPassengerNameDropdown() {
+		return passengerNameDropdown;
+	}
+
+	private WebElement getWhereInVehicleDropdown() {
+		return whereInVehicleDropdown;
+	}
+
+	private WebElement getPassengerWearingSeatbeltYesOption() {
+		return passengerWearingSeatbeltYesOption;
+	}
+
+	private WebElement getPassengerWearingSeatbeltNoOption() {
+		return passengerWearingSeatbeltNoOption;
 	}
 
 	

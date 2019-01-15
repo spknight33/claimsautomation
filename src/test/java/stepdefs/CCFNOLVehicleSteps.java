@@ -11,6 +11,7 @@ import cucumber.api.java.en.Then;
 public class CCFNOLVehicleSteps extends BaseTest {
 	
 	CCFNOLDriverSteps driverSteps = new CCFNOLDriverSteps();
+	CCFNOLPassengerSteps passengerSteps = new CCFNOLPassengerSteps();
 
 	
 	public void completeFNOLPHVehicleForTestScenario()
@@ -98,7 +99,8 @@ public class CCFNOLVehicleSteps extends BaseTest {
 		if (ExcelUtil.getTestDataValue("Fnol_TPPassengerRequired").equalsIgnoreCase("TRUE"))
 		   {
 			   fnolVehicleDetailsPOM.selectAddPassenger();
-			   // todo passenger screen
+			   passengerSteps.completeFNOLTPPassengerForTestScenario();
+			  
 		   }
 			   
 		

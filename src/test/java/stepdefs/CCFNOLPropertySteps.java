@@ -2,7 +2,6 @@ package stepdefs;
 
 import org.testng.Assert;
 
-import com.big.automation.selenium_webdriver.claimcenter.testdata.ClaimCenterData;
 import com.big.automation.selenium_webdriver.common.baseTest.BaseTest;
 import com.big.automation.selenium_webdriver.common.utilities.excelutils.ExcelUtil;
 
@@ -45,13 +44,7 @@ public class CCFNOLPropertySteps extends BaseTest {
 		{
 			fnolPropertyDetailsPOM.selectNewOwnerPerson();
 			// on select new person page, complete the details
-			// TODO move this to person steps for fnol property owner
-			personContactSteps.i_select_from_field_on_persondetails_screen("Mr.", "Prefix");
-			personContactSteps.i_input_into_the_box_on_persondetails_screen("Dora", "First Name");
-			personContactSteps.i_input_into_the_box_on_persondetails_screen("Explorer", "Last Name");
-			
-			personContactSteps.i_input_into_the_box_on_persondetails_screen("The Bridge", "Location Description");
-			personContactSteps.i_select_on_persondetails_screen("Update");
+		   personContactSteps.completeFNOLPropertyOwnerForTestScenario();
 		}
 		
 		//TODO - get these from datasheet

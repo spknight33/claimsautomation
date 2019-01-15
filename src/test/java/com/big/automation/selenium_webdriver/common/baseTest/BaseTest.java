@@ -34,6 +34,7 @@ import com.big.automation.selenium_webdriver.claimcenter.pages.ClaimCenterFNOLNe
 import com.big.automation.selenium_webdriver.claimcenter.pages.ClaimCenterFNOLNewExposurePOM;
 import com.big.automation.selenium_webdriver.claimcenter.pages.ClaimCenterFNOLNewInjuryExposurePOM;
 import com.big.automation.selenium_webdriver.claimcenter.pages.ClaimCenterFNOLNewInjuryPOM;
+import com.big.automation.selenium_webdriver.claimcenter.pages.ClaimCenterFNOLNewPassengerDetailsPOM;
 import com.big.automation.selenium_webdriver.claimcenter.pages.ClaimCenterFNOLNewPoliceDetailsPOM;
 import com.big.automation.selenium_webdriver.claimcenter.pages.ClaimCenterFNOLNewPropertyExposurePOM;
 import com.big.automation.selenium_webdriver.claimcenter.pages.ClaimCenterFNOLNewProtocolHireExposurePOM;
@@ -118,6 +119,7 @@ public class BaseTest extends AbstractTestNGCucumberTests{
    public static ClaimCenterFNOLNewCreditHireExposurePOM fnolNewCreditHireExposurePOM;
    public static ClaimCenterFNOLNewProtocolHireExposurePOM fnolNewProtocolHireExposurePOM;
    public static ClaimCenterFNOLNewTPCaptureExposurePOM fnolNewTPCaptureExposurePOM;
+   public static ClaimCenterFNOLNewPassengerDetailsPOM fnolNewPassengerPOM;
    
    
    public static ClaimCenterPersonDetailsPOM personContactDetailsPOM;
@@ -234,8 +236,8 @@ public class BaseTest extends AbstractTestNGCucumberTests{
       fnolDriverDetailsPOM= PageFactory.initElements(driver, ClaimCenterFNOLDriverDetailsPOM.class);
       personContactDetailsPOM= PageFactory.initElements(driver, ClaimCenterPersonDetailsPOM.class);  
       fnolPropertyDetailsPOM= PageFactory.initElements(driver, ClaimCenterFNOLPropertyDetailsPOM.class);  
-     
       
+      fnolNewPassengerPOM= PageFactory.initElements(driver, ClaimCenterFNOLNewPassengerDetailsPOM.class);  
       
       postFnolExposuresPOM= PageFactory.initElements(driver, ClaimCenterPOSTFNOLExposuresPOM.class);
       postFnolEditInjuryExposurePOM= PageFactory.initElements(driver, ClaimCenterPOSTFNOLEditInjuryExposurePOM.class);
