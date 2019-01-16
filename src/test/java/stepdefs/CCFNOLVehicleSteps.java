@@ -14,7 +14,7 @@ public class CCFNOLVehicleSteps extends BaseTest {
 	CCFNOLPassengerSteps passengerSteps = new CCFNOLPassengerSteps();
 
 	
-	public void completeFNOLPHVehicleForTestScenario()
+	public void completeFNOLPHVehicleForTestScenario() throws Throwable
 	{
 		// TODO - 
 		// most cases will have insured vehicle already - so for now leave this and just do the driver checl
@@ -36,12 +36,20 @@ public class CCFNOLVehicleSteps extends BaseTest {
 	if (fieldValue !=null)
 		fnolVehicleDetailsPOM.selectAirbagsDeployed(fieldValue);
 	
+	// add TP passenger if one is requiredd
+			if (ExcelUtil.getTestDataValue("Fnol_PHPassengerRequired").equalsIgnoreCase("TRUE"))
+			   {
+				   fnolVehicleDetailsPOM.selectAddPassenger();
+				   passengerSteps.completeFNOLPHPassengerForTestScenario();
+				  
+			   }
+	
 	
 	   fnolVehicleDetailsPOM.selectOK();
 	}
 	
 
-	public void completeFNOLTPVehicleForTestScenario()
+	public void completeFNOLTPVehicleForTestScenario() throws Throwable
 	{
 	  // add TP vehicle 
 		

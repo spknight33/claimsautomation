@@ -10,7 +10,9 @@ import cucumber.api.java.en.Then;
 
 public class CCFNOLDriverSteps extends BaseTest {
 	
-	public void completeFNOLTPDriverForTestScenario()
+	SearchAddressBookSteps searchAddressBookSteps = new SearchAddressBookSteps();
+	
+	public void completeFNOLTPDriverForTestScenario() throws Throwable
 	{
 		
 		String fieldValue = ExcelUtil.getTestDataValue("Fnol_TPDriverPrefix");
@@ -47,7 +49,29 @@ public class CCFNOLDriverSteps extends BaseTest {
 				fieldValue = ExcelUtil.getTestDataValue("Fnol_TPDriverInj1Detailed");
 				if (fieldValue !=null)
 				     fnolDriverDetailsPOM.selectDetailedInjury(fieldValue, 1);
+				
+				fieldValue = ExcelUtil.getTestDataValue("Fnol_TPDriverInjHospAttend");
+				if (fieldValue !=null && fieldValue.equalsIgnoreCase("TRUE"))
+				{
 		     
+					fnolDriverDetailsPOM.selectHospitalAttend(true);
+					fieldValue = ExcelUtil.getTestDataValue("Fnol_TPDriverInjHospOvernight");
+					if (fieldValue !=null && fieldValue.equalsIgnoreCase("TRUE"))
+					    fnolDriverDetailsPOM.selectOvernightStay(true);
+					else
+						 fnolDriverDetailsPOM.selectOvernightStay(false);
+					
+					fnolDriverDetailsPOM.selectSearchHospital();
+					
+					// on search hospital page
+					searchAddressBookSteps.i_will_be_on_search_address_book_screen();
+					fieldValue = ExcelUtil.getTestDataValue("Fnol_TPDriverInjHospSearchName");
+			
+					searchAddressBookSteps.i_input_into_the_box_on_search_address_book_screen(fieldValue, "Search Name");
+					searchAddressBookSteps.i_select_on_search_address_book_screen("Search");
+					searchAddressBookSteps.i_select_on_search_address_book_screen("Select First Result");
+				}
+				
 		}
 		else
 		{
@@ -58,7 +82,7 @@ public class CCFNOLDriverSteps extends BaseTest {
 		fnolDriverDetailsPOM.selectOK();
 	}
 	
-	public void completeFNOLPHDriverForTestScenario()
+	public void completeFNOLPHDriverForTestScenario() throws Throwable
 	{
 		if (ExcelUtil.getTestDataValue("Fnol_PHDriverIsInsuredPerson").equalsIgnoreCase("TRUE"))
 		{
@@ -83,6 +107,28 @@ public class CCFNOLDriverSteps extends BaseTest {
 						fieldValue = ExcelUtil.getTestDataValue("Fnol_PHDriverInj1Detailed");
 						if (fieldValue !=null)
 						     fnolDriverDetailsPOM.selectDetailedInjury(fieldValue, 1);
+						
+						fieldValue = ExcelUtil.getTestDataValue("Fnol_PHDriverInjHospAttend");
+						if (fieldValue !=null && fieldValue.equalsIgnoreCase("TRUE"))
+						{
+				     
+							fnolDriverDetailsPOM.selectHospitalAttend(true);
+							fieldValue = ExcelUtil.getTestDataValue("Fnol_PHDriverInjHospOvernight");
+							if (fieldValue !=null && fieldValue.equalsIgnoreCase("TRUE"))
+							    fnolDriverDetailsPOM.selectOvernightStay(true);
+							else
+								 fnolDriverDetailsPOM.selectOvernightStay(false);
+							
+							fnolDriverDetailsPOM.selectSearchHospital();
+							
+							// on search hospital page
+							searchAddressBookSteps.i_will_be_on_search_address_book_screen();
+							fieldValue = ExcelUtil.getTestDataValue("Fnol_PHDriverInjHospSearchName");
+					
+							searchAddressBookSteps.i_input_into_the_box_on_search_address_book_screen(fieldValue, "Search Name");
+							searchAddressBookSteps.i_select_on_search_address_book_screen("Search");
+							searchAddressBookSteps.i_select_on_search_address_book_screen("Select First Result");
+						}
 				     
 				}
 				else

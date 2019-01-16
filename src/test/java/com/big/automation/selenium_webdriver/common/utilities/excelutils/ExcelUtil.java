@@ -78,7 +78,7 @@ import static com.big.automation.selenium_webdriver.common.baseTest.BaseTest.tes
 	            // Open the Excel file
 	            FileInputStream ExcelFile = new FileInputStream(testDataExcelPath + testDataExcelFilename);
 	            excelWBook = new XSSFWorkbook(ExcelFile);
-	            System.out.println("set the excel workbook");
+	            System.out.println("/n Set the excel workbook");
 	            excelWSheet = excelWBook.getSheet(sheetName);
 	            if (excelWSheet == null)
 	            {throw new Exception("Failed to find the worksheet <"+sheetName+"> in the file<"+testDataExcelPath + testDataExcelFilename+">");
@@ -102,17 +102,46 @@ import static com.big.automation.selenium_webdriver.common.baseTest.BaseTest.tes
 	    	String key = "";
 	    	String value="";
 	    	testDataMap = new HashMap<>();
-	    	int rows = sheet.getPhysicalNumberOfRows();
+	    	XSSFRow row=null;
+
+	    	XSSFCell keyCell=null;
+	    	XSSFCell valueCell=null;
+	    	int rows = sheet.getLastRowNum() + 1;
+	    	
+	    	System.out.println("Rows to process:"+rows);
 	    	 for(int i=0;i<rows;i++){
 	    		 
 	    		 
 	    		 DataFormatter dataFormatter = new DataFormatter(Locale.UK);
-	    		
-	    	     key = dataFormatter.formatCellValue(sheet.getRow(i).getCell(0));
-	    	     value = dataFormatter.formatCellValue(sheet.getRow(i).getCell(1));
+	    		 key = null;
+	    		 value = null;
+	    		 
+	    		 row = sheet.getRow(i);
+	    		 
+	    		 if (row !=null)
+	    		 {
+		    		 keyCell = row.getCell(0);
+		    		 valueCell = row.getCell(1);
+	    		 }
+	    		 
+	    		 if (keyCell!=null)
+	    		 {
+	    	        key = dataFormatter.formatCellValue(keyCell);
+	    		 }
+	    		 if (valueCell != null)
+	    		 {
+	    			 value = dataFormatter.formatCellValue(valueCell);
+	    		 }
+	    	     if (value!= null && !value.isEmpty())
+	    	     {
 	    		 testDataMap.put(key,
 	    				 value);
-	    		 System.out.println("/n entry added to map: <"+key+"><"+value+">");
+	    		 System.out.println("entry added to map: <"+key+"><"+value+">");
+	    	     }
+	    	     else
+	    	     { if (key!= null && !key.isEmpty())
+	    	    	 System.out.println("Comment:"+key);
+	    	     }
 	    	
 	    }
 	    }

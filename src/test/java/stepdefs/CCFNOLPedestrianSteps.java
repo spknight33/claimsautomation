@@ -9,8 +9,9 @@ import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 
 public class CCFNOLPedestrianSteps extends BaseTest {
+	SearchAddressBookSteps searchAddressBookSteps = new SearchAddressBookSteps();
 	
-	public void completeFNOLPedestrianForTestScenario()
+	public void completeFNOLPedestrianForTestScenario() throws Throwable
 	{
 		
 		String fieldValue = ExcelUtil.getTestDataValue("Fnol_PedestrianPrefix");
@@ -54,6 +55,28 @@ public class CCFNOLPedestrianSteps extends BaseTest {
 				fieldValue = ExcelUtil.getTestDataValue("Fnol_PedestrianInj1Detailed");
 				if (fieldValue !=null)
 					fnolPedestrianPOM.selectDetailedInjury(fieldValue, 1);
+				
+				fieldValue = ExcelUtil.getTestDataValue("Fnol_PedestrianInjHospAttend");
+				if (fieldValue !=null && fieldValue.equalsIgnoreCase("TRUE"))
+				{
+		     
+					fnolPedestrianPOM.selectHospitalAttend(true);
+					fieldValue = ExcelUtil.getTestDataValue("Fnol_PedestrianInjHospOvernight");
+					if (fieldValue !=null && fieldValue.equalsIgnoreCase("TRUE"))
+						fnolPedestrianPOM.selectOvernightStay(true);
+					else
+						fnolPedestrianPOM.selectOvernightStay(false);
+					
+					fnolPedestrianPOM.selectSearchHospital();
+					
+					// on search hospital page
+					searchAddressBookSteps.i_will_be_on_search_address_book_screen();
+					fieldValue = ExcelUtil.getTestDataValue("Fnol_PedestrianInjHospSearchName");
+			
+					searchAddressBookSteps.i_input_into_the_box_on_search_address_book_screen(fieldValue, "Search Name");
+					searchAddressBookSteps.i_select_on_search_address_book_screen("Search");
+					searchAddressBookSteps.i_select_on_search_address_book_screen("Select First Result");
+				}
 		     
 		}
 		else

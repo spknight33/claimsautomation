@@ -84,6 +84,33 @@ public class ClaimCenterFNOLPedestrianDetailsPOM extends BaseTest{
 	
 		@FindBy(id = "FNOLContactPopup:FNOLContactScreen:ContactDV:InjuryIncidentInputSet:EditableBodyPartDetailsLV_tb:Add")
 		private WebElement addInjuryButton;
+		
+		@FindBy(id = "FNOLContactPopup:FNOLContactScreen:ContactDV:InjuryIncidentInputSet:AmbulanceAttended_itb_true-inputEl")
+		private WebElement ambulanceYesRadio;
+		@FindBy(id = "FNOLContactPopup:FNOLContactScreen:ContactDV:InjuryIncidentInputSet:AmbulanceAttended_itb_false-inputEll")
+		private WebElement ambulanceNoRadio;
+		
+		
+		@FindBy(id = "FNOLContactPopup:FNOLContactScreen:ContactDV:InjuryIncidentInputSet:AirAmbulanceAttended_itb_true-inputEl")
+		private WebElement airAmbulanceYesRadio;
+		@FindBy(id = "FNOLContactPopup:FNOLContactScreen:ContactDV:InjuryIncidentInputSet:AirAmbulanceAttended_itb_false-inputEll")
+		private WebElement airAmbulanceNoRadio;
+		
+		@FindBy(id = "FNOLContactPopup:FNOLContactScreen:ContactDV:InjuryIncidentInputSet:HospitalAttended_itb_true-inputEl")
+		private WebElement hospitalAttendYesRadio;
+		@FindBy(id = "FNOLContactPopup:FNOLContactScreen:ContactDV:InjuryIncidentInputSet:HospitalAttended_itb_false-boxLabelEl")
+		private WebElement hospitalAttendNoRadio;	
+
+		@FindBy(id = "FNOLContactPopup:FNOLContactScreen:ContactDV:InjuryIncidentInputSet:HospitalDetails_itb:Hospital_itb-inputEl")
+		private WebElement hospitalNameDropdown;
+		@FindBy(id = "FNOLContactPopup:FNOLContactScreen:ContactDV:InjuryIncidentInputSet:HospitalDetails_itb:Hospital_itb:Hospital_itbMenuIcon")
+		private WebElement hospitalNamePickerIcon;	
+		@FindBy(id = "FNOLContactPopup:FNOLContactScreen:ContactDV:InjuryIncidentInputSet:HospitalDetails_itb:Hospital_itb:MenuItem_Search-itemEl")
+		private WebElement hospitalNameSearch;
+		@FindBy(id = "FNOLContactPopup:FNOLContactScreen:ContactDV:InjuryIncidentInputSet:HospitalDetails_itb:OvernightStayInHospital_itb_true-inputEl")
+		private WebElement hospitalStayYesRadio;
+		@FindBy(id = "FNOLContactPopup:FNOLContactScreen:ContactDV:InjuryIncidentInputSet:HospitalDetails_itb:OvernightStayInHospital_itb_false-inputEl")
+		private WebElement hospitalStayNoRadio;
 	
 	@FindBy(className = "message")
 	private List <WebElement> errorMessages;
@@ -243,6 +270,72 @@ public class ClaimCenterFNOLPedestrianDetailsPOM extends BaseTest{
 			GuideWireAccessors.selectOptionFromGWDropDown(driver, option, element, 1);
 			
 		}
+		
+		public void selectAmbulanceAttend(boolean attended)
+		{
+			logger.info(format("%s -  going to set ambulance attended"+attended, getName()));
+			
+			if (attended)
+			{
+			GuideWireAccessors.clickGWButton(driver, this.getAmbulanceYesRadio());
+			}
+			else
+			{
+				GuideWireAccessors.clickGWButton(driver, this.getAmbulanceNoRadio());
+			}
+			
+		}
+		
+		public void selectAirAmbulanceAttend(boolean attended)
+		{
+			logger.info(format("%s -  going to set air ambulance attended"+attended, getName()));
+			
+			if (attended)
+			{
+			GuideWireAccessors.clickGWButton(driver, this.getAirAmbulanceYesRadio());
+			}
+			else
+			{
+				GuideWireAccessors.clickGWButton(driver, this.getAirAmbulanceNoRadio());
+			}
+			
+		}
+		
+		public void selectHospitalAttend(boolean attended)
+		{
+			logger.info(format("%s -  going to set hospital attended"+attended, getName()));
+			
+			if (attended)
+			{
+			GuideWireAccessors.clickGWButton(driver, this.getHospitalAttendYesRadio());
+			}
+			else
+			{
+				GuideWireAccessors.clickGWButton(driver, this.getHospitalAttendNoRadio());
+			}
+			
+		}
+		public void selectOvernightStay(boolean stayed)
+		{
+			logger.info(format("%s -  going to set overnight stay to:"+stayed, getName()));
+		    if (stayed)
+		    {
+		    	GuideWireAccessors.clickGWButton(driver, this.getHospitalStayYesRadio());
+		    }
+		    else
+		    {
+		    	GuideWireAccessors.clickGWButton(driver, this.getHospitalStayNoRadio());
+		    }
+		
+			
+		}
+		
+		public void selectSearchHospital()
+		{
+			logger.info(format("%s - going to select Search from hospital name picker", getName()));
+			GuideWireAccessors.selectOptionFromGWPicker(driver, this.getHospitalNamePickerIcon(),this.getHospitalNameSearch());
+		}
+		
    
 	private WebElement getCancelButton() {
 	return cancelButton;
@@ -352,6 +445,50 @@ public class ClaimCenterFNOLPedestrianDetailsPOM extends BaseTest{
 
 	private WebElement getNotes() {
 		return notes;
+	}
+
+	private WebElement getAmbulanceYesRadio() {
+		return ambulanceYesRadio;
+	}
+
+	private WebElement getAmbulanceNoRadio() {
+		return ambulanceNoRadio;
+	}
+
+	private WebElement getAirAmbulanceYesRadio() {
+		return airAmbulanceYesRadio;
+	}
+
+	private WebElement getAirAmbulanceNoRadio() {
+		return airAmbulanceNoRadio;
+	}
+
+	private WebElement getHospitalAttendYesRadio() {
+		return hospitalAttendYesRadio;
+	}
+
+	private WebElement getHospitalAttendNoRadio() {
+		return hospitalAttendNoRadio;
+	}
+
+	private WebElement getHospitalNameDropdown() {
+		return hospitalNameDropdown;
+	}
+
+	private WebElement getHospitalNamePickerIcon() {
+		return hospitalNamePickerIcon;
+	}
+
+	private WebElement getHospitalNameSearch() {
+		return hospitalNameSearch;
+	}
+
+	private WebElement getHospitalStayYesRadio() {
+		return hospitalStayYesRadio;
+	}
+
+	private WebElement getHospitalStayNoRadio() {
+		return hospitalStayNoRadio;
 	}
 	
 

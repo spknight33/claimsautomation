@@ -10,7 +10,9 @@ import cucumber.api.java.en.Then;
 
 public class CCFNOLPassengerSteps extends BaseTest {
 	
-	public void completeFNOLTPPassengerForTestScenario()
+	SearchAddressBookSteps searchAddressBookSteps = new SearchAddressBookSteps();
+	
+	public void completeFNOLTPPassengerForTestScenario() throws Throwable
 	{
 		
 		String fieldValue = ExcelUtil.getTestDataValue("Fnol_TPPassengerPrefix");
@@ -47,6 +49,27 @@ public class CCFNOLPassengerSteps extends BaseTest {
 				fieldValue = ExcelUtil.getTestDataValue("Fnol_TPPassengerInj1Detailed");
 				if (fieldValue !=null)
 					fnolNewPassengerPOM.selectDetailedInjury(fieldValue, 1);
+				fieldValue = ExcelUtil.getTestDataValue("Fnol_TPPassengerInjHospAttend");
+				if (fieldValue !=null && fieldValue.equalsIgnoreCase("TRUE"))
+				{
+		     
+					fnolNewPassengerPOM.selectHospitalAttend(true);
+					fieldValue = ExcelUtil.getTestDataValue("Fnol_TPPassengerInjHospOvernight");
+					if (fieldValue !=null && fieldValue.equalsIgnoreCase("TRUE"))
+						fnolNewPassengerPOM.selectOvernightStay(true);
+					else
+						fnolNewPassengerPOM.selectOvernightStay(false);
+					
+					fnolNewPassengerPOM.selectSearchHospital();
+					
+					// on search hospital page
+					searchAddressBookSteps.i_will_be_on_search_address_book_screen();
+					fieldValue = ExcelUtil.getTestDataValue("Fnol_TPPassengerInjHospSearchName");
+			
+					searchAddressBookSteps.i_input_into_the_box_on_search_address_book_screen(fieldValue, "Search Name");
+					searchAddressBookSteps.i_select_on_search_address_book_screen("Search");
+					searchAddressBookSteps.i_select_on_search_address_book_screen("Select First Result");
+				}
 		     
 		}
 		else
@@ -58,7 +81,74 @@ public class CCFNOLPassengerSteps extends BaseTest {
 		fnolNewPassengerPOM.selectOK();
 	}
 	
-	//TODO PH passnger
+	public void completeFNOLPHPassengerForTestScenario() throws Throwable
+	{
+		
+		String fieldValue = ExcelUtil.getTestDataValue("Fnol_PHPassengerPrefix");
+		if (fieldValue !=null)
+			fnolNewPassengerPOM.selectPrefix(fieldValue);
+		
+		fieldValue = ExcelUtil.getTestDataValue("Fnol_PHPassengerFirstName");
+		if (fieldValue !=null)
+			fnolNewPassengerPOM.setFirstName(fieldValue);
+		
+		fieldValue = ExcelUtil.getTestDataValue("Fnol_PHPassengerLastName");
+		if (fieldValue !=null)
+			fnolNewPassengerPOM.setLastName(fieldValue);
+		
+		fieldValue = ExcelUtil.getTestDataValue("Fnol_PHPassengerEmail");
+		if (fieldValue !=null)
+			fnolNewPassengerPOM.setEmail(fieldValue);
+		
+  
+		// add injury if required 
+		fieldValue = ExcelUtil.getTestDataValue("Fnol_PHPassengerInjured");
+		if (fieldValue !=null && fieldValue.equalsIgnoreCase("TRUE"))
+		{
+			fnolNewPassengerPOM.selectInjured(true);
+			fnolNewPassengerPOM.selectAddInjury();
+			 
+			 fieldValue = ExcelUtil.getTestDataValue("Fnol_PHPassengerInjDesc");
+				if (fieldValue !=null)
+					fnolNewPassengerPOM.setInjuryDesc(fieldValue);
+			 
+			 fieldValue = ExcelUtil.getTestDataValue("Fnol_PHPassengerInj1BodyArea");
+				if (fieldValue !=null)
+					fnolNewPassengerPOM.selectAreaOfBody(fieldValue, 1);
+				fieldValue = ExcelUtil.getTestDataValue("Fnol_PHPassengerInj1Detailed");
+				if (fieldValue !=null)
+					fnolNewPassengerPOM.selectDetailedInjury(fieldValue, 1);
+				fieldValue = ExcelUtil.getTestDataValue("Fnol_PHPassengerInjHospAttend");
+				if (fieldValue !=null && fieldValue.equalsIgnoreCase("TRUE"))
+				{
+		     
+					fnolNewPassengerPOM.selectHospitalAttend(true);
+					fieldValue = ExcelUtil.getTestDataValue("Fnol_PHPassengerInjHospOvernight");
+					if (fieldValue !=null && fieldValue.equalsIgnoreCase("TRUE"))
+						fnolNewPassengerPOM.selectOvernightStay(true);
+					else
+						fnolNewPassengerPOM.selectOvernightStay(false);
+					
+					fnolNewPassengerPOM.selectSearchHospital();
+					
+					// on search hospital page
+					searchAddressBookSteps.i_will_be_on_search_address_book_screen();
+					fieldValue = ExcelUtil.getTestDataValue("Fnol_PHPassengerInjHospSearchName");
+			
+					searchAddressBookSteps.i_input_into_the_box_on_search_address_book_screen(fieldValue, "Search Name");
+					searchAddressBookSteps.i_select_on_search_address_book_screen("Search");
+					searchAddressBookSteps.i_select_on_search_address_book_screen("Select First Result");
+				}
+		     
+		}
+		else
+		{
+			fnolNewPassengerPOM.selectInjured(false);
+		}
+	
+	
+		fnolNewPassengerPOM.selectOK();
+	}
 	
 	
 	@Then("^I will be on New Passenger screen for FNOL$")
