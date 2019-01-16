@@ -6,7 +6,9 @@ import static java.lang.String.format;
 import java.util.List;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 
 import com.big.automation.selenium_webdriver.common.baseTest.BaseTest;
@@ -50,6 +52,8 @@ public class ClaimCenterFNOLPedestrianDetailsPOM extends BaseTest{
 	private WebElement city;
 	@FindBy(id = "FNOLContactPopup:FNOLContactScreen:ContactDV:FNOLContactInputSet:CCAddressInputSet:globalAddressContainer:globalAddress:GlobalAddressInputSet:PostalCode-inputEl")
 	private WebElement postCode;
+	@FindBy(id = "FNOLContactPopup:FNOLContactScreen:ContactDV:FNOLContactInputSet:CCAddressInputSet:globalAddressContainer:globalAddress:GlobalAddressInputSet:addresses-inputEl")
+	private WebElement postCodeAddressDropdown;
 	
 	
 	@FindBy(id = "FNOLContactPopup:FNOLContactScreen:ContactDV:FNOLContactInputSet:CCAddressInputSet:globalAddressContainer:Address_AddressType-inputEl")
@@ -122,8 +126,7 @@ public class ClaimCenterFNOLPedestrianDetailsPOM extends BaseTest{
 
 	public boolean isPageTitleDisplayed(String expected)
 	{
-		sleep(4);
-		logger.info(format("%s -check page title for Person page :"+expected, getName()));
+		sleep(3);
 		logger.info(format("%s -found page title for Person page :"+this.getPageTitle().getText(), getName()));
 		return this.getPageTitle().getText().equalsIgnoreCase(expected);
 	}
@@ -132,20 +135,20 @@ public class ClaimCenterFNOLPedestrianDetailsPOM extends BaseTest{
 
 		logger.info(format("%s -  going to click cancel", getName()));
 		GuideWireAccessors.clickGWButton(driver, this.getCancelButton());
-		logger.info(format("%s - done, cancel clicked", getName()));
+		
 	}
 	
 	public void selectOK() {
 		logger.info(format("%s -  going to click OK", getName()));
 		GuideWireAccessors.clickGWButton(driver, this.getOkButton());
-		logger.info(format("%s - done, OK clicked", getName()));
+		
 	}
 	
 	public void selectPrefix(String option)
 	{
 		logger.info(format("%s -  going to select prefix ", getName()));
 		GuideWireAccessors.selectOptionFromGWDropDown(driver, option, this.getPrefix(), 1);
-		logger.info(format("%s - done, prefix selected", getName()));
+		
 	}
 	
 	
@@ -153,50 +156,50 @@ public class ClaimCenterFNOLPedestrianDetailsPOM extends BaseTest{
 	{
 		logger.info(format("%s -  going to select address type", getName()));
 		GuideWireAccessors.selectOptionFromGWDropDown(driver, option, this.getAddressType(), 1);
-		logger.info(format("%s - done, address type selected", getName()));
+		
 	}
 	
 	public void setFirstName(String text)
 	{
 		logger.info(format("%s -  going to set first name", getName()));
 		GuideWireAccessors.setGWTextBox(driver, text, this.getFirstName());
-		logger.info(format("%s - done, first name set", getName()));
+		
 	}
 	public void setLastName(String text)
 	{
 		logger.info(format("%s -  going to set last name", getName()));
 		GuideWireAccessors.setGWTextBox(driver, text, this.getLastName());
-		logger.info(format("%s - done, last name set", getName()));
+		
 	}
 	public void setMobile(String text)
 	{
 		logger.info(format("%s -  going to set mobile", getName()));
 		GuideWireAccessors.setGWTextBox(driver, text, this.getMobile());
-		logger.info(format("%s - done, mobile set", getName()));
+		
 	}
 	public void setEmail(String text)
 	{
 		logger.info(format("%s -  going to set email", getName()));
 		GuideWireAccessors.setGWTextBox(driver, text, this.getMainEmail());
-		logger.info(format("%s - done, email set", getName()));
+		
 	}
 	public void setAddressLine1(String text)
 	{
 		logger.info(format("%s -  going to set address line1", getName()));
 		GuideWireAccessors.setGWTextBox(driver, text, this.getAddressLine1());
-		logger.info(format("%s - done, address line1 set", getName()));
+		
 	}
 	public void setAddressLine2(String text)
 	{
 		logger.info(format("%s -  going to set address line2", getName()));
 		GuideWireAccessors.setGWTextBox(driver, text, this.getAddressLine2());
-		logger.info(format("%s - done, address line2 set", getName()));
+		
 	}
 	public void setAddressLine3(String text)
 	{
 		logger.info(format("%s -  going to set address line3", getName()));
 		GuideWireAccessors.setGWTextBox(driver, text, this.getAddressLine3());
-		logger.info(format("%s - done, address line3 set", getName()));
+		
 	}
 	public void setCity(String text)
 	{
@@ -209,7 +212,18 @@ public class ClaimCenterFNOLPedestrianDetailsPOM extends BaseTest{
 	{
 		logger.info(format("%s -  going to set postcode", getName()));
 		GuideWireAccessors.setGWTextBox(driver, text, this.getPostCode());
-		// TODO tab off
+		// as postcode causes display off other address fields, but this can take a couple of seconds - the next method should wait until available but add a slug anyway
+				Actions actions = new Actions(driver);
+				actions.sendKeys(Keys.TAB);
+				actions.build().perform();
+				sleep(2);
+		
+	}
+	
+	public void selectPostcodeAddress(String option)
+	{
+		logger.info(format("%s -  going to select address type", getName()));
+		GuideWireAccessors.selectOptionFromGWDropDown(driver, option, this.getPostCodeAddressDropdown(), 1);
 		
 	}
 	
@@ -489,6 +503,10 @@ public class ClaimCenterFNOLPedestrianDetailsPOM extends BaseTest{
 
 	private WebElement getHospitalStayNoRadio() {
 		return hospitalStayNoRadio;
+	}
+
+	private WebElement getPostCodeAddressDropdown() {
+		return postCodeAddressDropdown;
 	}
 	
 

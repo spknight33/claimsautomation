@@ -1,17 +1,15 @@
 package stepdefs;
 
-import static java.lang.String.format;
-
 import com.big.automation.selenium_webdriver.common.baseTest.BaseTest;
-import com.big.automation.selenium_webdriver.common.gw.utilities.GuideWireAccessors;
+import com.big.automation.selenium_webdriver.common.utilities.excelutils.ExcelUtil;
 
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 
 public class CCPOSTFNOLNewPropertySteps extends BaseTest {
 	
-	CCFNOLPersonContactSteps personContactSteps = new CCFNOLPersonContactSteps();
-	CCFNOLCompanyContactSteps companyContactSteps = new CCFNOLCompanyContactSteps();
+	CCPOSTFNOLPersonContactSteps personContactSteps = new CCPOSTFNOLPersonContactSteps();
+	CCPOSTFNOLCompanyContactSteps companyContactSteps = new CCPOSTFNOLCompanyContactSteps();
 	
 	
 	@Then("^I will be on new property screen$")
@@ -29,46 +27,67 @@ public class CCPOSTFNOLNewPropertySteps extends BaseTest {
 	@Given("^I complete all fields on post FNOL new property incident$")
 	public void i_complete_all_fields() throws Throwable {
 		
-		postFnolNewPropertyPOM.setPropertyDesc("Household residence");
-		postFnolNewPropertyPOM.setDamageDesc("The fence was knocked down");
-		postFnolNewPropertyPOM.setLossEstimate("500");
-		postFnolNewPropertyPOM.setExtentDamage("Whole fence has been knocked down");
-		postFnolNewPropertyPOM.setAddressLine1("55 The way");
-		postFnolNewPropertyPOM.setAddressLine2("by the ford");
-		postFnolNewPropertyPOM.setAddressLine3("By the stream");
-		postFnolNewPropertyPOM.setCity("Newcastle Upon Tyne");
-		postFnolNewPropertyPOM.setPostcode("NE41PC");
-		postFnolNewPropertyPOM.setLocationDescription("Near the fire station");
 		
-		postFnolNewPropertyPOM.selectNewOwnerPerson();
-		// on select new person page, complete the details
-		personContactSteps.i_select_from_field_on_persondetails_screen("Mr.", "Prefix");
-		personContactSteps.i_input_into_the_box_on_persondetails_screen("Dora", "First Name");
-		personContactSteps.i_input_into_the_box_on_persondetails_screen("Explorer", "Last Name");
-		personContactSteps.i_input_into_the_box_on_persondetails_screen("27 Industrial Estate", "Address Line1");
-		personContactSteps.i_input_into_the_box_on_persondetails_screen("Waterside", "Address Line2");
-		personContactSteps.i_input_into_the_box_on_persondetails_screen("The Bridge", "Address Line3");
-		personContactSteps.i_select_on_persondetails_screen("Update");
+		this.completePostFNOLPropertyForTestScenario();
+	}
+	
+	public void completePostFNOLPropertyForTestScenario()  throws Throwable
+	{
 		
-		// on select new company  page, complete the details
-		postFnolNewPropertyPOM.selectNewOwnerCompany();
-		companyContactSteps.i_input_into_the_box_on_companydetails_screen("Acme Limited", "Company Name");
-		companyContactSteps.i_input_into_the_box_on_companydetails_screen("27 Industrial Estate", "Address Line1");
-		companyContactSteps.i_input_into_the_box_on_companydetails_screen("Waterside", "Address Line2");
-		companyContactSteps.i_input_into_the_box_on_companydetails_screen("The Bridge", "Address Line3");
-		companyContactSteps.i_input_into_the_box_on_companydetails_screen("Portsmouth", "City");
-		companyContactSteps.i_input_into_the_box_on_companydetails_screen("PE331PL", "Postcode");
-		companyContactSteps.i_input_into_the_box_on_companydetails_screen("Acme Limited", "Company Name");
-		companyContactSteps.i_select_from_field_on_companydetails_screen("Billing", "Address Type");
-		companyContactSteps.i_input_into_the_box_on_companydetails_screen("This is a great company", "Notes");
-		companyContactSteps.i_select_on_companydetails_screen("Update");
 		
+		String fieldValue = ExcelUtil.getTestDataValue("PostFnol_PropertyDesc");
+		if (fieldValue !=null)
+			postFnolNewPropertyPOM.setPropertyDesc(fieldValue);
+		
+		fieldValue = ExcelUtil.getTestDataValue("PostFnol_PropertyDamageDesc");
+		if (fieldValue !=null)
+			postFnolNewPropertyPOM.setDamageDesc(fieldValue);
+		
+		fieldValue = ExcelUtil.getTestDataValue("PostFnol_PropertyLossEstimate");
+		if (fieldValue !=null)
+			postFnolNewPropertyPOM.setLossEstimate(fieldValue);
+		
+		fieldValue = ExcelUtil.getTestDataValue("PostFnol_PropertyExtDamage");
+		if (fieldValue !=null)
+			postFnolNewPropertyPOM.setExtentDamage(fieldValue);
+		
+		
+		
+		//TODO - get these from datasheet
 		postFnolNewPropertyPOM.selectEstimateReceived("Yes");
-		postFnolNewPropertyPOM.setEstimatedRepairCost("400");
+		postFnolNewPropertyPOM.setEstimatedRepairCost("3000");
 		postFnolNewPropertyPOM.setEstimatedRepairTime("1 hour");
 		postFnolNewPropertyPOM.selectAlreadyRepaired(true);
 		
-		postFnolNewPropertyPOM.selectOK();
+		
+		// some issue with the clicker on this page-
+		fieldValue = ExcelUtil.getTestDataValue("PostFnol_PropertyNewOwner");
+		if (fieldValue !=null && fieldValue.equalsIgnoreCase("TRUE"))
+		{
+			postFnolNewPropertyPOM.selectNewOwnerPerson();
+					// on select new person page, complete the details
+			personContactSteps.completePostFNOLPropertyOwnerForTestScenario();
+		}
+		
+		// OVERRIDE PERON WITH COMPNAY IT SET
+		fieldValue = ExcelUtil.getTestDataValue("PostFnol_PropertyNewCompany");
+		if (fieldValue !=null && fieldValue.equalsIgnoreCase("TRUE"))
+		{
+			postFnolNewPropertyPOM.selectNewOwnerCompany();
+					// on select new company page, complete the details
+			companyContactSteps.completePostFNOLPropertyOwnerForTestScenario();
+		}
+				
+				
+				
+				
+				// moved this to the end as was causing stale elements if done earlier!
+				fieldValue = ExcelUtil.getTestDataValue("PostFnol_PropertyLocationDesc");
+				if (fieldValue !=null)
+					postFnolNewPropertyPOM.setLocationDescription(fieldValue);
+				
+		
+				postFnolNewPropertyPOM.selectOK();
 	}
 	
 	

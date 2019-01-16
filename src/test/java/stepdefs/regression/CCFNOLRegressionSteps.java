@@ -3,26 +3,19 @@ package stepdefs.regression;
 import com.big.automation.selenium_webdriver.common.baseTest.BaseTest;
 
 import cucumber.api.java.en.When;
-import stepdefs.CCFNOLPedestrianSteps;
-import stepdefs.CCFNOLPropertySteps;
-import stepdefs.CCFNOLStep1Steps;
-import stepdefs.CCFNOLStep2Steps;
-import stepdefs.CCFNOLStep3Steps;
-import stepdefs.CCFNOLStep4Steps;
 import stepdefs.CCFNOLStep5Steps;
-import stepdefs.CCFNOLVehicleSteps;
 
 
 public class CCFNOLRegressionSteps extends BaseTest {
 
-	CCFNOLStep1Steps step1Steps = new CCFNOLStep1Steps();
-	CCFNOLStep2Steps step2Steps = new CCFNOLStep2Steps();
-	CCFNOLStep3Steps step3Steps = new CCFNOLStep3Steps();
-	CCFNOLStep4Steps step4Steps = new CCFNOLStep4Steps();
+	//CCFNOLStep1Steps step1Steps = new CCFNOLStep1Steps();
+	//CCFNOLStep2Steps step2Steps = new CCFNOLStep2Steps();
+	//CCFNOLStep3Steps step3Steps = new CCFNOLStep3Steps();
+	//CCFNOLStep4Steps step4Steps = new CCFNOLStep4Steps();
 	CCFNOLStep5Steps step5Steps = new CCFNOLStep5Steps();
-	CCFNOLPedestrianSteps pedestrianSteps = new CCFNOLPedestrianSteps();
-	CCFNOLPropertySteps propertySteps = new CCFNOLPropertySteps();
-	CCFNOLVehicleSteps vehicleSteps = new CCFNOLVehicleSteps();
+	//CCFNOLPedestrianSteps pedestrianSteps = new CCFNOLPedestrianSteps();
+	//CCFNOLPropertySteps propertySteps = new CCFNOLPropertySteps();
+	//CCFNOLVehicleSteps vehicleSteps = new CCFNOLVehicleSteps();
 	
 	//TODO this to be driven by cucumnber to load a specific data set
 	

@@ -31,6 +31,19 @@ public class CCFNOLDriverSteps extends BaseTest {
 		if (fieldValue !=null)
 		     fnolDriverDetailsPOM.setEmail(fieldValue);
 		
+
+		// address fields
+		fieldValue = ExcelUtil.getTestDataValue("Fnol_TPDriverPostcodeSearch");
+		if (fieldValue !=null && fieldValue.equalsIgnoreCase("TRUE")) {
+			fieldValue = ExcelUtil.getTestDataValue("Fnol_TPDriverPostcode");
+			fnolDriverDetailsPOM.setPostcode(fieldValue);
+			fieldValue = ExcelUtil.getTestDataValue("Fnol_TPDriverPostcodeAddress");
+			fnolDriverDetailsPOM.selectPostcodeAddress(fieldValue);
+		}
+		else
+		{
+			fnolDriverDetailsPOM.setAddressLine1("some address line"); //TODO
+		}
   
 		// add injury if required 
 		fieldValue = ExcelUtil.getTestDataValue("Fnol_TPDriverInjured");

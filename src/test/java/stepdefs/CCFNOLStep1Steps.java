@@ -30,6 +30,7 @@ public class CCFNOLStep1Steps extends BaseTest	{
 		i_Click_Search();
 		this.setLossDate(ExcelUtil.getTestDataValue("Fnol_Step1_LossDate"));
 		this.setLossTime(ExcelUtil.getTestDataValue("Fnol_Step1_LossTime"));
+		fnolStep1POM.setPostcode("NE31PX"); // temp TODO
 		this.next();
 		
 	}

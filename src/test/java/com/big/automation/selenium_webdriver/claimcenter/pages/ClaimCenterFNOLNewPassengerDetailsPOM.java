@@ -6,7 +6,9 @@ import static java.lang.String.format;
 import java.util.List;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 
 import com.big.automation.selenium_webdriver.common.baseTest.BaseTest;
@@ -62,7 +64,13 @@ public class ClaimCenterFNOLNewPassengerDetailsPOM extends BaseTest{
 	private WebElement county;
 	@FindBy(id = "FNOLContactPopup:FNOLContactScreen:ContactDV:FNOLContactInputSet:CCAddressInputSet:globalAddressContainer:globalAddress:GlobalAddressInputSet:PostalCode-inputEl")
 	private WebElement postcode;
+	@FindBy(id = "FNOLContactPopup:FNOLContactScreen:ContactDV:FNOLContactInputSet:CCAddressInputSet:globalAddressContainer:globalAddress:GlobalAddressInputSet:addresses-inputEl")
+	private WebElement postCodeAddressDropdown;
 	
+	private WebElement getPostCodeAddressDropdown() {
+		return postCodeAddressDropdown;
+	}
+
 	@FindBy(id = "FNOLContactPopup:FNOLContactScreen:ContactDV:FNOLContactInputSet:CCAddressInputSet:globalAddressContainer:Address_AddressType-inputEl")
 	private WebElement addressType;
 	@FindBy(id = "FNOLContactPopup:FNOLContactScreen:ContactDV:FNOLContactInputSet:CCAddressInputSet:globalAddressContainer:Address_Description-inputEl")
@@ -240,7 +248,17 @@ public class ClaimCenterFNOLNewPassengerDetailsPOM extends BaseTest{
 	{
 		logger.info(format("%s -  going to set postcode", getName()));
 		GuideWireAccessors.setGWTextBox(driver, text, this.getPostcode());
-		// TODO tab off
+		// as postcode causes display off other address fields, but this can take a couple of seconds - the next method should wait until available but add a slug anyway
+				Actions actions = new Actions(driver);
+				actions.sendKeys(Keys.TAB);
+				actions.build().perform();
+				sleep(2);
+		
+	}
+	public void selectPostcodeAddress(String option)
+	{
+		logger.info(format("%s -  going to select address type", getName()));
+		GuideWireAccessors.selectOptionFromGWDropDown(driver, option, this.getPostCodeAddressDropdown(), 1);
 		
 	}
 

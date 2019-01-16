@@ -4,6 +4,7 @@ import org.testng.Assert;
 
 import com.big.automation.selenium_webdriver.claimcenter.testdata.ClaimCenterData;
 import com.big.automation.selenium_webdriver.common.baseTest.BaseTest;
+import com.big.automation.selenium_webdriver.common.utilities.excelutils.ExcelUtil;
 
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
@@ -20,22 +21,86 @@ public class CCFNOLNewPoliceSteps extends BaseTest {
 	 */
 	public void completeFNOLNewPoliceForTestScenario()  throws Throwable
 	{
-		//TODO - obtain from scenarioData
-		fnolNewPolicePOM.setDateReported("01/01/2019");
-		fnolNewPolicePOM.setTimeReported("10:00 AM");
-		fnolNewPolicePOM.setIncidentReference("MYREF123");
-		fnolNewPolicePOM.setCrimeReference("CR3444");
-		fnolNewPolicePOM.setOfficerName("Officer Dibble");
-		fnolNewPolicePOM.setBadgeNumber("999111");
+		
+		String fieldValue = ExcelUtil.getTestDataValue("Fnol_PoliceDateReported");
+		if (fieldValue !=null)
+			fnolNewPolicePOM.setDateReported(fieldValue);
+		
+		fieldValue = ExcelUtil.getTestDataValue("Fnol_PoliceTimeReported");
+		if (fieldValue !=null)
+			fnolNewPolicePOM.setTimeReported(fieldValue);
+		
+		fieldValue = ExcelUtil.getTestDataValue("Fnol_PoliceIncidentRef");
+		if (fieldValue !=null)
+			fnolNewPolicePOM.setIncidentReference(fieldValue);
+		
+		fieldValue = ExcelUtil.getTestDataValue("Fnol_PoliceCrimeRef");
+		if (fieldValue !=null)
+			fnolNewPolicePOM.setCrimeReference(fieldValue);
+		
+		fieldValue = ExcelUtil.getTestDataValue("Fnol_PoliceDateOfficerName");
+		if (fieldValue !=null)
+			fnolNewPolicePOM.setOfficerName(fieldValue);
+		
+		fieldValue = ExcelUtil.getTestDataValue("Fnol_PoliceBadgeNumber");
+		if (fieldValue !=null)
+			fnolNewPolicePOM.setBadgeNumber(fieldValue);
+		
+		fieldValue = ExcelUtil.getTestDataValue("Fnol_PoliceAttended");
+		if (fieldValue !=null && fieldValue.equalsIgnoreCase("TRUE")) 
+		{
+			fnolNewPolicePOM.selectPoliceAttended(true);
+		
+		}
+		else
+		{
+			fnolNewPolicePOM.selectPoliceAttended(false);
+		}
+		
+		if (fieldValue !=null)
+			fnolNewPolicePOM.setBadgeNumber(fieldValue);
+		
+	
+		fieldValue = ExcelUtil.getTestDataValue("Fnol_PoliceFutherAction");
+		if (fieldValue !=null && fieldValue.equalsIgnoreCase("TRUE")) 
+		{
+			fnolNewPolicePOM.selectFurtherAction(true);
+			fieldValue = ExcelUtil.getTestDataValue("Fnol_PoliceFutherActionDetails");
+			fnolNewPolicePOM.setFurtherActionDetails(fieldValue);
+		}
+		else
+		{
+			fnolNewPolicePOM.selectFurtherAction(false);
+		}
+		
+		fieldValue = ExcelUtil.getTestDataValue("Fnol_PoliceApprehended");
+		if (fieldValue !=null && fieldValue.equalsIgnoreCase("TRUE")) 
+		{
+			fnolNewPolicePOM.selectApprehended(true);
+			fieldValue = ExcelUtil.getTestDataValue("Fnol_PoliceApprehendedDetails");
+			fnolNewPolicePOM.setApprehendedDetails(fieldValue);
+		}
+		else
+		{
+			fnolNewPolicePOM.selectApprehended(false);
+		}
+			
+		
+		fieldValue = ExcelUtil.getTestDataValue("Fnol_PoliceDateReported");
+		if (fieldValue !=null)
+			fnolNewPolicePOM.setBadgeNumber(fieldValue);
+		fieldValue = ExcelUtil.getTestDataValue("Fnol_PoliceDateReported");
+		if (fieldValue !=null)
+			fnolNewPolicePOM.setBadgeNumber(fieldValue);
+		fieldValue = ExcelUtil.getTestDataValue("Fnol_PoliceDateReported");
+		if (fieldValue !=null)
+			fnolNewPolicePOM.setBadgeNumber(fieldValue);
 		
 		fnolNewPolicePOM.selectSearchPoliceForce();
-		searchContactSteps.searchForContactAndSelectFirst("PoliceForce_itb", "Avon and somerset");
+		fieldValue = ExcelUtil.getTestDataValue("Fnol_PoliceForceSearchName");
+		searchContactSteps.searchForContactAndSelectFirst("PoliceForce_itb", fieldValue);
 		// search contact manager for force
-		fnolNewPolicePOM.selectPoliceAttended(true);
-		fnolNewPolicePOM.selectFurtherAction(true);
-		fnolNewPolicePOM.selectApprehended(true);
-		fnolNewPolicePOM.setFurtherActionDetails("Further action will be required");
-		fnolNewPolicePOM.setApprehendedDetails("The suspect has been apprehended");
+	
 		
 		fnolNewPolicePOM.selectOK();
 	}
@@ -104,23 +169,7 @@ public class CCFNOLNewPoliceSteps extends BaseTest {
 	@Given("^I complete fields on FNOL new police details screen$")
 	public void i_complete_all_fields() throws Throwable {
 		
-		fnolNewPolicePOM.setDateReported("01/01/2019");
-		fnolNewPolicePOM.setTimeReported("10:00 AM");
-		fnolNewPolicePOM.setIncidentReference("MYREF123");
-		fnolNewPolicePOM.setCrimeReference("CR3444");
-		fnolNewPolicePOM.setOfficerName("Officer Dibble");
-		fnolNewPolicePOM.setBadgeNumber("999111");
-		
-		fnolNewPolicePOM.selectSearchPoliceForce();
-		searchContactSteps.searchForContactAndSelectFirst("PoliceForce_itb", "Avon and somerset");
-		// search contact manager for force
-		fnolNewPolicePOM.selectPoliceAttended(true);
-		fnolNewPolicePOM.selectFurtherAction(true);
-		fnolNewPolicePOM.selectApprehended(true);
-		fnolNewPolicePOM.setFurtherActionDetails("Further action will be required");
-		fnolNewPolicePOM.setApprehendedDetails("The suspect has been apprehended");
-		
-		fnolNewPolicePOM.selectOK();
+		this.completeFNOLNewPoliceForTestScenario();
 		
 	}
 

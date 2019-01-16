@@ -5,7 +5,9 @@ import static java.lang.String.format;
 
 import java.util.List;
 
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 
 import com.big.automation.selenium_webdriver.common.baseTest.BaseTest;
@@ -46,6 +48,7 @@ public class ClaimCenterFNOLPropertyDetailsPOM extends BaseTest {
 
 	@FindBy(id = "NewFixedPropertyIncidentPopup:NewFixedPropertyIncidentScreen:FixPropIncidentDetailDV:FixedPropertyIncidentDV:PropertyOwner_itb-inputEl")
 	private WebElement ownerDropDown;
+
 	@FindBy(id = "NewFixedPropertyIncidentPopup:NewFixedPropertyIncidentScreen:FixPropIncidentDetailDV:FixedPropertyIncidentDV:PropertyOwner_itb:PropertyOwner_itbMenuIcon")
 	private WebElement ownerPicker;
 	@FindBy(id = "NewFixedPropertyIncidentPopup:NewFixedPropertyIncidentScreen:FixPropIncidentDetailDV:FixedPropertyIncidentDV:PropertyOwner_itb:ClaimNewCompanyOrPersonPickerMenuItemSet:NewContactPickerMenuItemSet_NewPerson-itemEl")
@@ -142,7 +145,11 @@ public class ClaimCenterFNOLPropertyDetailsPOM extends BaseTest {
 	public void setPostcode(String text) {
 		logger.info(format("%s -  going to set postcode", getName()));
 		GuideWireAccessors.setGWTextBox(driver, text, this.getPostCode());
-		logger.info(format("%s - done, postcode set", getName()));
+		// as postcode causes display off other address fields, but this can take a couple of seconds - the next method should wait until available but add a slug anyway
+				Actions actions = new Actions(driver);
+				actions.sendKeys(Keys.TAB);
+				actions.build().perform();
+				sleep(2);
 	}
 
 	public void setLocationDescription(String text) {
@@ -153,6 +160,7 @@ public class ClaimCenterFNOLPropertyDetailsPOM extends BaseTest {
 
 	public void selectNewOwnerPerson() {
 		logger.info(format("%s - going to select New Person from owner picker", getName()));
+		sleep(1);
 		GuideWireAccessors.selectOptionFromGWPicker(driver, this.getOwnerPicker(), this.getOwnerNewPerson());
 	}
 
@@ -164,7 +172,7 @@ public class ClaimCenterFNOLPropertyDetailsPOM extends BaseTest {
 	public void selectEstimateReceived(String option) {
 		logger.info(format("%s -  going to set estimate received:" + option, getName()));
 		GuideWireAccessors.selectOptionFromGWDropDown(driver, option, this.getEstimateReceivedDropdown(), 1);
-		logger.info(format("%s - done, estimate received set", getName()));
+	
 	}
 
 	public void setEstimateCost(String text) {

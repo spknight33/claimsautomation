@@ -26,6 +26,19 @@ public class CCFNOLPedestrianSteps extends BaseTest {
 		if (fieldValue !=null)
 			fnolPedestrianPOM.setLastName(fieldValue);
 		
+		// address fields
+		fieldValue = ExcelUtil.getTestDataValue("Fnol_PedestrianPostcodeSearch");
+		if (fieldValue !=null && fieldValue.equalsIgnoreCase("TRUE")) {
+			fieldValue = ExcelUtil.getTestDataValue("Fnol_PedestrianPostcode");
+			fnolPedestrianPOM.setPostcode(fieldValue);
+			fieldValue = ExcelUtil.getTestDataValue("Fnol_PedestrianPostcodeAddress");
+			fnolPedestrianPOM.selectPostcodeAddress(fieldValue);
+		}
+		else
+		{
+			fnolPedestrianPOM.setAddressLine1("some address line"); //TODO
+		}
+		
 		fieldValue = ExcelUtil.getTestDataValue("Fnol_PedestrianEmail");
 		if (fieldValue !=null)
 			fnolPedestrianPOM.setEmail(fieldValue);

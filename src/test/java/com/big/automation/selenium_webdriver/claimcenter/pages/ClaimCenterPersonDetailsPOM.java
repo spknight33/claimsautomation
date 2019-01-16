@@ -232,7 +232,7 @@ public class ClaimCenterPersonDetailsPOM extends BaseTest{
 		Actions actions = new Actions(driver);
 		actions.sendKeys(Keys.TAB);
 		actions.build().perform();
-		sleep(1);
+		sleep(2);
 		
 	}
 	

@@ -120,6 +120,7 @@ public class GuideWireAccessors {
 	
 	public static void selectOptionFromGWDropDown(WebDriver driver, String option, WebElement gwDropDown,
 			int occurrence, boolean caseSensitive) {
+		
 		int findAttempts = 0;
 		while (findAttempts < MAX_RETRY_ON_DROPDOWN) {
 			try {
@@ -217,6 +218,7 @@ public class GuideWireAccessors {
 				JavascriptExecutor je = (JavascriptExecutor) driver;
 				je.executeScript("arguments[0].scrollIntoView(true);", picker);
 				picker.click();
+				sleep(1);
 				break;
 
 			} catch (Exception e) {

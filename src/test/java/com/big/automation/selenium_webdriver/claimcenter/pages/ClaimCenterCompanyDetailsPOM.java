@@ -5,7 +5,9 @@ import static java.lang.String.format;
 
 import java.util.List;
 
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 
 import com.big.automation.selenium_webdriver.common.baseTest.BaseTest;
@@ -54,7 +56,7 @@ public class ClaimCenterCompanyDetailsPOM extends BaseTest{
 	
 	@FindBy(id = "NewContactPopup:ContactDetailScreen:ContactBasicsDV:PersonContactInfoInputSet:Cell:GlobalPhoneInputSet:NationalSubscriberNumber-inputEl")
 	private WebElement mobile;
-	@FindBy(id = "NewContactPopup:ContactDetailScreen:ContactBasicsDV:PersonContactInfoInputSet:Primary-inputEl")
+	@FindBy(id = "NewContactPopup:ContactDetailScreen:ContactBasicsDV:BusinessContactInfoInputSet:Email1-inputEl")
 	private WebElement mainEmail;
 	@FindBy(id = "NewContactPopup:ContactDetailScreen:ContactBasicsDV:Notes-inputEl")
 	private WebElement notes;
@@ -73,7 +75,7 @@ public class ClaimCenterCompanyDetailsPOM extends BaseTest{
 	public boolean isPageTitleDisplayed(String expected)
 	{
 		sleep(4);
-		logger.info(format("%s -check page title for Person page :"+expected, getName()));
+		
 		logger.info(format("%s -found page title for Person page :"+this.getPageTitle().getText(), getName()));
 		return this.getPageTitle().getText().equalsIgnoreCase(expected);
 	}
@@ -82,13 +84,13 @@ public class ClaimCenterCompanyDetailsPOM extends BaseTest{
 
 		logger.info(format("%s -  going to click cancel", getName()));
 		GuideWireAccessors.clickGWButton(driver, this.getCancelButton());
-		logger.info(format("%s - done, cancel clicked", getName()));
+		
 	}
 	
 	public void selectUpdate() {
 		logger.info(format("%s -  going to click Update", getName()));
 		GuideWireAccessors.clickGWButton(driver, this.getUpdateButton());
-		logger.info(format("%s - done, Update clicked", getName()));
+		
 	}
 	
 	
@@ -98,63 +100,67 @@ public class ClaimCenterCompanyDetailsPOM extends BaseTest{
 	{
 		logger.info(format("%s -  going to select address type", getName()));
 		GuideWireAccessors.selectOptionFromGWDropDown(driver, option, this.getAddressType(), 1);
-		logger.info(format("%s - done, address type selected", getName()));
+		
 	}
 	
 	public void setCompanyName(String text)
 	{
 		logger.info(format("%s -  going to set company name", getName()));
 		GuideWireAccessors.setGWTextBox(driver, text, this.getCompanyName());
-		logger.info(format("%s - done, company name set", getName()));
+		
 	}
 	
 	public void setWorkPhone(String text)
 	{
 		logger.info(format("%s -  going to set work phone", getName()));
 		GuideWireAccessors.setGWTextBox(driver, text, this.getWorkPhone());
-		logger.info(format("%s - done, work phone set", getName()));
+		
 	}
 	public void setMobile(String text)
 	{
 		logger.info(format("%s -  going to set mobile", getName()));
 		GuideWireAccessors.setGWTextBox(driver, text, this.getMobile());
-		logger.info(format("%s - done, mobile set", getName()));
+		
 	}
 	public void setEmail(String text)
 	{
 		logger.info(format("%s -  going to set email", getName()));
 		GuideWireAccessors.setGWTextBox(driver, text, this.getMainEmail());
-		logger.info(format("%s - done, email set", getName()));
+		
 	}
 	public void setAddressLine1(String text)
 	{
 		logger.info(format("%s -  going to set address line1", getName()));
 		GuideWireAccessors.setGWTextBox(driver, text, this.getAddressLine1());
-		logger.info(format("%s - done, address line1 set", getName()));
+		
 	}
 	public void setAddressLine2(String text)
 	{
 		logger.info(format("%s -  going to set address line2", getName()));
 		GuideWireAccessors.setGWTextBox(driver, text, this.getAddressLine2());
-		logger.info(format("%s - done, address line2 set", getName()));
+		
 	}
 	public void setAddressLine3(String text)
 	{
 		logger.info(format("%s -  going to set address line3", getName()));
 		GuideWireAccessors.setGWTextBox(driver, text, this.getAddressLine3());
-		logger.info(format("%s - done, address line3 set", getName()));
+		
 	}
 	public void setCity(String text)
 	{
 		logger.info(format("%s -  going to set city", getName()));
 		GuideWireAccessors.setGWTextBox(driver, text, this.getCity());
-		logger.info(format("%s - done, city set", getName()));
+		
 	}
 	public void setPostCode(String text)
 	{
 		logger.info(format("%s -  going to set postcode", getName()));
 		GuideWireAccessors.setGWTextBox(driver, text, this.getPostCode());
-		logger.info(format("%s - done, postcode set", getName()));
+		// as postcode causes display off other address fields, but this can take a couple of seconds - the next method should wait until available but add a slug anyway
+				Actions actions = new Actions(driver);
+				actions.sendKeys(Keys.TAB);
+				actions.build().perform();
+				sleep(2);
 	}
 	public void setLocationDesc(String text)
 	{

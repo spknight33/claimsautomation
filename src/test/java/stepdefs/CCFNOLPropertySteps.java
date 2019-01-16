@@ -15,7 +15,8 @@ public class CCFNOLPropertySteps extends BaseTest {
 	
 	public void completeFNOLPropertyForTestScenario()  throws Throwable
 	{
-		//TODO - get from scenarioData
+		
+		
 		String fieldValue = ExcelUtil.getTestDataValue("Fnol_PropertyDesc");
 		if (fieldValue !=null)
 			fnolPropertyDetailsPOM.setPropertyDesc(fieldValue);
@@ -32,26 +33,29 @@ public class CCFNOLPropertySteps extends BaseTest {
 		if (fieldValue !=null)
 			fnolPropertyDetailsPOM.setExtentDamage(fieldValue);
 		
-		fieldValue = ExcelUtil.getTestDataValue("Fnol_PropertyLocationDesc");
-		if (fieldValue !=null)
-			fnolPropertyDetailsPOM.setLocationDescription(fieldValue);
 		
-	
-		
-		
-		fieldValue = ExcelUtil.getTestDataValue("Fnol_PropertyNewOwner");
-		if (fieldValue !=null && fieldValue.equalsIgnoreCase("TRUE"))
-		{
-			fnolPropertyDetailsPOM.selectNewOwnerPerson();
-			// on select new person page, complete the details
-		   personContactSteps.completeFNOLPropertyOwnerForTestScenario();
-		}
 		
 		//TODO - get these from datasheet
 		fnolPropertyDetailsPOM.selectEstimateReceived("Yes");
 		fnolPropertyDetailsPOM.setEstimateCost("3000");
 		fnolPropertyDetailsPOM.setEstimateRepairTime("1 hour");
 		fnolPropertyDetailsPOM.selectAlreadyRepaired(true);
+		
+		
+		// some issue with the clicker on this page-
+				fieldValue = ExcelUtil.getTestDataValue("Fnol_PropertyNewOwner");
+				if (fieldValue !=null && fieldValue.equalsIgnoreCase("TRUE"))
+				{
+					fnolPropertyDetailsPOM.selectNewOwnerPerson();
+					// on select new person page, complete the details
+				   personContactSteps.completeFNOLPropertyOwnerForTestScenario();
+				}
+				
+				// moved this to the end as was causing stale elements if done earlier!
+				fieldValue = ExcelUtil.getTestDataValue("Fnol_PropertyLocationDesc");
+				if (fieldValue !=null)
+					fnolPropertyDetailsPOM.setLocationDescription(fieldValue);
+				
 		
 		fnolPropertyDetailsPOM.selectOK();
 	}

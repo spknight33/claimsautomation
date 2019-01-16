@@ -31,6 +31,19 @@ public class CCFNOLPassengerSteps extends BaseTest {
 		if (fieldValue !=null)
 			fnolNewPassengerPOM.setEmail(fieldValue);
 		
+		// address fields
+				fieldValue = ExcelUtil.getTestDataValue("Fnol_TPPassengerPostcodeSearch");
+				if (fieldValue !=null && fieldValue.equalsIgnoreCase("TRUE")) {
+					fieldValue = ExcelUtil.getTestDataValue("Fnol_TPPassengerPostcode");
+					fnolNewPassengerPOM.setPostcode(fieldValue);
+					fieldValue = ExcelUtil.getTestDataValue("Fnol_TPPassengerPostcodeAddress");
+					fnolNewPassengerPOM.selectPostcodeAddress(fieldValue);
+				}
+				else
+				{
+					fnolNewPassengerPOM.setAddressLine1("some address line"); //TODO
+				}
+		
   
 		// add injury if required 
 		fieldValue = ExcelUtil.getTestDataValue("Fnol_TPPassengerInjured");
@@ -99,6 +112,19 @@ public class CCFNOLPassengerSteps extends BaseTest {
 		fieldValue = ExcelUtil.getTestDataValue("Fnol_PHPassengerEmail");
 		if (fieldValue !=null)
 			fnolNewPassengerPOM.setEmail(fieldValue);
+		
+		// address fields
+		fieldValue = ExcelUtil.getTestDataValue("Fnol_PHPassengerPostcodeSearch");
+		if (fieldValue !=null && fieldValue.equalsIgnoreCase("TRUE")) {
+			fieldValue = ExcelUtil.getTestDataValue("Fnol_PHPassengerPostcode");
+			fnolNewPassengerPOM.setPostcode(fieldValue);
+			fieldValue = ExcelUtil.getTestDataValue("Fnol_PHPassengerPostcodeAddress");
+			fnolNewPassengerPOM.selectPostcodeAddress(fieldValue);
+		}
+		else
+		{
+			fnolNewPassengerPOM.setAddressLine1("some address line"); //TODO
+		}
 		
   
 		// add injury if required 

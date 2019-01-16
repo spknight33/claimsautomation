@@ -3,6 +3,7 @@ package stepdefs;
 import org.testng.Assert;
 
 import com.big.automation.selenium_webdriver.common.baseTest.BaseTest;
+import com.big.automation.selenium_webdriver.common.utilities.excelutils.ExcelUtil;
 
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
@@ -75,22 +76,86 @@ public class CCPOSTFNOLNewPoliceSteps extends BaseTest {
 	@Given("^I complete fields on post FNOL new police details screen$")
 	public void i_complete_all_fields() throws Throwable {
 		
-		postFnolNewPolicePOM.setDateReported("01/01/2019");
-		postFnolNewPolicePOM.setTimeReported("10:00 AM");
-		postFnolNewPolicePOM.setIncidentReference("MYREF123");
-		postFnolNewPolicePOM.setCrimeReference("CR3444");
-		postFnolNewPolicePOM.setOfficerName("Officer Dibble");
-		postFnolNewPolicePOM.setBadgeNumber("999111");
+		String fieldValue = ExcelUtil.getTestDataValue("PostFnol_PoliceDateReported");
+		if (fieldValue !=null)
+			postFnolNewPolicePOM.setDateReported(fieldValue);
+		
+		fieldValue = ExcelUtil.getTestDataValue("PostFnol_PoliceTimeReported");
+		if (fieldValue !=null)
+			postFnolNewPolicePOM.setTimeReported(fieldValue);
+		
+		fieldValue = ExcelUtil.getTestDataValue("PostFnol_PoliceIncidentRef");
+		if (fieldValue !=null)
+			postFnolNewPolicePOM.setIncidentReference(fieldValue);
+		
+		fieldValue = ExcelUtil.getTestDataValue("PostFnol_PoliceCrimeRef");
+		if (fieldValue !=null)
+			postFnolNewPolicePOM.setCrimeReference(fieldValue);
+		
+		fieldValue = ExcelUtil.getTestDataValue("PostFnol_PoliceDateOfficerName");
+		if (fieldValue !=null)
+			postFnolNewPolicePOM.setOfficerName(fieldValue);
+		
+		fieldValue = ExcelUtil.getTestDataValue("PostFnol_PoliceBadgeNumber");
+		if (fieldValue !=null)
+			postFnolNewPolicePOM.setBadgeNumber(fieldValue);
+		
+		fieldValue = ExcelUtil.getTestDataValue("PostFnol_PoliceAttended");
+		if (fieldValue !=null && fieldValue.equalsIgnoreCase("TRUE")) 
+		{
+			postFnolNewPolicePOM.selectPoliceAttended(true);
+		
+		}
+		else
+		{
+			postFnolNewPolicePOM.selectPoliceAttended(false);
+		}
+		
+		if (fieldValue !=null)
+			postFnolNewPolicePOM.setBadgeNumber(fieldValue);
+		
+	
+		fieldValue = ExcelUtil.getTestDataValue("PostFnol_PoliceFutherAction");
+		if (fieldValue !=null && fieldValue.equalsIgnoreCase("TRUE")) 
+		{
+			postFnolNewPolicePOM.selectFurtherAction(true);
+			fieldValue = ExcelUtil.getTestDataValue("PostFnol_PoliceFutherActionDetails");
+			postFnolNewPolicePOM.setFurtherActionDetails(fieldValue);
+		}
+		else
+		{
+			postFnolNewPolicePOM.selectFurtherAction(false);
+		}
+		
+		fieldValue = ExcelUtil.getTestDataValue("PostFnol_PoliceApprehended");
+		if (fieldValue !=null && fieldValue.equalsIgnoreCase("TRUE")) 
+		{
+			postFnolNewPolicePOM.selectApprehended(true);
+			fieldValue = ExcelUtil.getTestDataValue("PostFnol_PoliceApprehendedDetails");
+			postFnolNewPolicePOM.setApprehendedDetails(fieldValue);
+		}
+		else
+		{
+			postFnolNewPolicePOM.selectApprehended(false);
+		}
+			
+		
+		fieldValue = ExcelUtil.getTestDataValue("PostFnol_PoliceDateReported");
+		if (fieldValue !=null)
+			postFnolNewPolicePOM.setBadgeNumber(fieldValue);
+		fieldValue = ExcelUtil.getTestDataValue("PostFnol_PoliceDateReported");
+		if (fieldValue !=null)
+			postFnolNewPolicePOM.setBadgeNumber(fieldValue);
+		fieldValue = ExcelUtil.getTestDataValue("PostFnol_PoliceDateReported");
+		if (fieldValue !=null)
+			postFnolNewPolicePOM.setBadgeNumber(fieldValue);
 		
 		postFnolNewPolicePOM.selectSearchPoliceForce();
-		searchContactSteps.searchForContactAndSelectFirst("PoliceForce_itb", "Avon and somerset");
+		fieldValue = ExcelUtil.getTestDataValue("PostFnol_PoliceForceSearchName");
+		searchContactSteps.searchForContactAndSelectFirst("PoliceForce_itb", fieldValue);
 		// search contact manager for force
-		postFnolNewPolicePOM.selectPoliceAttended(true);
-		postFnolNewPolicePOM.selectFurtherAction(true);
-		postFnolNewPolicePOM.selectApprehended(true);
-		postFnolNewPolicePOM.setFurtherActionDetails("Further action will be required");
-		postFnolNewPolicePOM.setApprehendedDetails("The suspect has been apprehended");
-		postFnolNewPolicePOM.setNotes("Office Dibble works nights");
+	
+		
 		postFnolNewPolicePOM.selectOK();
 		
 	}

@@ -3,22 +3,42 @@ package stepdefs;
 import org.testng.Assert;
 
 import com.big.automation.selenium_webdriver.common.baseTest.BaseTest;
+import com.big.automation.selenium_webdriver.common.utilities.excelutils.ExcelUtil;
 
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 
-public class CCFNOLCompanyContactSteps extends BaseTest {
+public class CCPOSTFNOLCompanyContactSteps extends BaseTest {
 	
 	
+	public void completePostFNOLPropertyOwnerForTestScenario()
+	{
+		
+		String fieldValue = ExcelUtil.getTestDataValue("PostFnol_PropertyNewCompanyName");
+		if (fieldValue !=null)
+			companyContactDetailsPOM.setCompanyName(fieldValue);
+		
+				
+		fieldValue = ExcelUtil.getTestDataValue("PostFnol_PropertyNewCompanyEmail");
+		if (fieldValue !=null)
+			companyContactDetailsPOM.setEmail(fieldValue);
+		
+		fieldValue = ExcelUtil.getTestDataValue("PostFnol_PropertyNewCompanyLocationDesc");
+		if (fieldValue !=null)
+			companyContactDetailsPOM.setLocationDesc(fieldValue);
+		
+		
 	
+		companyContactDetailsPOM.selectUpdate();
+	}
 	
-	@Then("^I will be on the new company contact screen$")
+	@Then("^I will be on the new company contact screen for Post FNOL$")
 	public void i_will_be_on_companycontact_screen() throws Throwable {
 	    companyContactDetailsPOM.isPageTitleDisplayed("New Company");
 	}
 
 	
-	@Given("^I select \"([^\"]*)\" on company details screen$")
+	@Given("^I select \"([^\"]*)\" on company details screen for Post FNOL$")
 	public void i_select_on_companydetails_screen(String button) throws Throwable {
 		switch(button)
 	    {
@@ -34,7 +54,7 @@ public class CCFNOLCompanyContactSteps extends BaseTest {
 	    }
 	}
 	
-	@Given("^I select \"([^\"]*)\" from \"([^\"]*)\" on company details screen$")
+	@Given("^I select \"([^\"]*)\" from \"([^\"]*)\" on company details screen for Post FNOL$")
 	public void i_select_from_field_on_companydetails_screen(String fieldValue, String fieldName) throws Throwable {
 		switch(fieldName)
 		    {
@@ -49,7 +69,7 @@ public class CCFNOLCompanyContactSteps extends BaseTest {
 	    }
 	}
 	
-	@Given("^I input \"([^\"]*)\" into the \"([^\"]*)\" box on company details screen$")
+	@Given("^I input \"([^\"]*)\" into the \"([^\"]*)\" box on company details screen for Post FNOL$")
 	public void i_input_into_the_box_on_companydetails_screen(String fieldValue, String fieldName) throws Throwable {
 		switch(fieldName)
 	    {

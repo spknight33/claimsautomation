@@ -61,6 +61,9 @@ public class ClaimCenterFNOLStep1POM extends BaseTest{
 	@FindBy(id = "FNOLWizard:FNOLWizard_FindPolicyScreen:FNOLWizardFindPolicyPanelSet:FNOLWizard_PolicySearchInputSet:CCAddressInputSet:globalAddressContainer:globalAddress:GlobalAddressInputSet:City-inputEl")
 	private WebElement searchTownCity;
 	
+	@FindBy(id = "FNOLWizard:FNOLWizard_FindPolicyScreen:FNOLWizardFindPolicyPanelSet:FNOLWizard_PolicySearchInputSet:CCAddressInputSet:globalAddressContainer:globalAddress:GlobalAddressInputSet:PostalCode-inputEl")
+	private WebElement searchPostcode;
+	
 	//TODO check when code deliverd that the locator uses vin?
 	@FindBy(id = "FNOLWizard:FNOLWizard_FindPolicyScreen:FNOLWizardFindPolicyPanelSet:FNOLWizard_PolicySearchInputSet:vin-inputEl")
 	private WebElement searchVRN;
@@ -337,6 +340,11 @@ public class ClaimCenterFNOLStep1POM extends BaseTest{
 		logger.info(format("%s - done, confirm deselect policy clicked", getName()));
 	}
 	
+	public void setPostcode(String text) {
+		GuideWireAccessors.setGWTextBox(driver,text,this.getSearchPostcode());
+		logger.info(format("%s - done, postcode set:"+text, getName()));
+	}
+	
 	
 	public void next() {
 
@@ -400,6 +408,26 @@ public class ClaimCenterFNOLStep1POM extends BaseTest{
 		onscreen = results.findElements( By.xpath(xpathLocator) ).size() > 0; // at least one found
 		
 		return onscreen;
+	}
+
+	private WebElement getSearchCountry() {
+		return searchCountry;
+	}
+
+	private WebElement getSearchPostcode() {
+		return searchPostcode;
+	}
+
+	private WebElement getUnselectButton() {
+		return unselectButton;
+	}
+
+	private WebElement getOkDeselectPrompt() {
+		return okDeselectPrompt;
+	}
+
+	private Map<String, String> getFieldMap() {
+		return fieldMap;
 	}
 	
 	
