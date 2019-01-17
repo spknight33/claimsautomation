@@ -46,7 +46,7 @@ public class ClaimCenterSearchAddressBookPOM extends BaseTest{
 	public boolean isPageTitleDisplayed(String expected)
 	{
 		sleep(4);
-		logger.info(format("%s -check page title for Person page :"+expected, getName()));
+		
 		logger.info(format("%s -found page title for Person page :"+this.getPageTitle().getText(), getName()));
 		return this.getPageTitle().getText().equalsIgnoreCase(expected);
 	}
@@ -55,19 +55,19 @@ public class ClaimCenterSearchAddressBookPOM extends BaseTest{
 
 		logger.info(format("%s -  going to click cancel", getName()));
 		GuideWireAccessors.clickGWButton(driver, this.getCancelButton());
-		logger.info(format("%s - done, cancel clicked", getName()));
+		
 	}
 	
 	public void selectSearch() {
 		logger.info(format("%s -  going to click Search", getName()));
 		GuideWireAccessors.clickGWButton(driver, this.getSearchButton());
-		logger.info(format("%s - done, Search clicked", getName()));
+		
 	}
 	
 	public void selectFirstResult() {
 		logger.info(format("%s -  going to click Select on result", getName()));
 		GuideWireAccessors.clickGWButton(driver, this.getSelectFirstResultButton());
-		logger.info(format("%s - done, Select on result  clicked", getName()));
+		
 	}
 	
 	
@@ -77,14 +77,14 @@ public class ClaimCenterSearchAddressBookPOM extends BaseTest{
 		sleep(1); // add a delay as 
 		logger.info(format("%s -  going to set search name:"+text, getName()));
 		GuideWireAccessors.setGWTextBox(driver, text, this.getSearchName());
-		logger.info(format("%s - done, search name set", getName()));
+		
 	}
 	
 	public void selectSearchType(String option)
 	{
 		logger.info(format("%s -  going to set search type:"+option, getName()));
 		GuideWireAccessors.selectOptionFromGWDropDown(driver, option, this.getContactType(), 1);
-		logger.info(format("%s - done, search type set", getName()));
+		
 	}
 	
 	

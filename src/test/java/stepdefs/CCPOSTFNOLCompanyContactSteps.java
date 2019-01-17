@@ -27,6 +27,7 @@ public class CCPOSTFNOLCompanyContactSteps extends BaseTest {
 		if (fieldValue !=null)
 			companyContactDetailsPOM.setLocationDesc(fieldValue);
 		
+		//TODO rest of company fields
 		
 	
 		companyContactDetailsPOM.selectUpdate();

@@ -5,6 +5,12 @@ import com.big.automation.selenium_webdriver.common.baseTest.BaseTest;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 
+/**
+ * @deprecated
+ * done in driver and pedestrian screens etc
+ * @author stephen.knight
+ *
+ */
 public class CCPOSTFNOLNewInjurySteps extends BaseTest {
 	
 	CCFNOLPersonContactSteps personContactSteps = new CCFNOLPersonContactSteps();

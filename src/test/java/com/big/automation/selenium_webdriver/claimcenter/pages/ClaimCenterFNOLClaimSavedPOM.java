@@ -26,7 +26,8 @@ public class ClaimCenterFNOLClaimSavedPOM extends BaseTest{
 	@FindBy(className = "message")
 	private List <WebElement> errorMessages;
 	
-	
+	@FindBy(id = "NewClaimSaved:NewClaimSavedScreen:NewClaimSavedDV:GoToClaim-inputEl")
+	private WebElement claimLink;
 	
 	
 	
@@ -50,7 +51,12 @@ public class ClaimCenterFNOLClaimSavedPOM extends BaseTest{
 		return pageTitle;
 	}
 	
-	
+	public void clickClaimLink() {
+
+		logger.info(format("%s -  going to click claim link", getName()));
+		GuideWireAccessors.clickGWButton(driver,this.getClaimLink());
+		
+	} 
 	
 
 	
@@ -68,6 +74,11 @@ public class ClaimCenterFNOLClaimSavedPOM extends BaseTest{
 		}
 		return found;
 	}
+
+	private WebElement getClaimLink() {
+		return claimLink;
+	}
+	
 	
 	
 

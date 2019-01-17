@@ -1,11 +1,7 @@
 package stepdefs;
 
-import static java.lang.String.format;
-
 import com.big.automation.selenium_webdriver.common.baseTest.BaseTest;
-import com.big.automation.selenium_webdriver.common.gw.utilities.GuideWireAccessors;
 
-import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 
 public class CCPOSTFNOLNewPedestrianSteps extends BaseTest {

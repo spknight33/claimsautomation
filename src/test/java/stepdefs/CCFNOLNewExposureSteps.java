@@ -232,6 +232,15 @@ public class CCFNOLNewExposureSteps extends BaseTest {
 	public void i_select_the_Insured_as_Claimant_on_new_tpcapture_exposure_screen_for_FNOL() throws Throwable {
 		fnolNewTPCaptureExposurePOM.selectClaimant(ExcelUtil.getTestDataValue("Fnol_Name")); // use insured from testdata
 	}
+	@When("^I select the Insured as Claimant on new injury exposure screen for FNOL$")
+	public void i_select_the_Insured_as_Claimant_on_new_injury_exposure_screen_for_FNOL() throws Throwable {
+		fnolNewInjuryExposurePOM.selectClaimant(ExcelUtil.getTestDataValue("Fnol_Name")); // use insured from testdata
+	}
+	@When("^I select the Insured as Claimant on new property exposure screen for FNOL$")
+	public void i_select_the_Insured_as_Claimant_on_new_property_exposure_screen_for_FNOL() throws Throwable {
+		fnolNewPropertyExposurePOM.selectClaimant(ExcelUtil.getTestDataValue("Fnol_Name")); // use insured from testdata
+	}
+
 
 
 	@Given("^I click \"([^\"]*)\" on property name picker$")

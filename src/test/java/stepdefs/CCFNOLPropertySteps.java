@@ -99,6 +99,10 @@ public class CCFNOLPropertySteps extends BaseTest {
 	
 	@Then("^I complete the \"([^\"]*)\" details on the new property screen$")
 	public void i_complete_the_details_on_the_new_property_contact_screen(String type) throws Throwable {
+		
+		
+		completeFNOLPropertyForTestScenario();
+		/*
 		switch(type)
 	    {
 	    case "Property":
@@ -112,7 +116,7 @@ public class CCFNOLPropertySteps extends BaseTest {
 			fnolPropertyDetailsPOM.setAddressLine3("By the stream");
 			fnolPropertyDetailsPOM.setCity("Newcastle Upon Tyne");
 			fnolPropertyDetailsPOM.setPostcode("NE41PC");
-			fnolPropertyDetailsPOM.setLocationDescription("Near the fire station");
+			
 			
 			fnolPropertyDetailsPOM.selectNewOwnerPerson();
 			// on select new person page, complete the details
@@ -128,6 +132,9 @@ public class CCFNOLPropertySteps extends BaseTest {
 			fnolPropertyDetailsPOM.setEstimateCost("400");
 			fnolPropertyDetailsPOM.setEstimateRepairTime("1 hour");
 			fnolPropertyDetailsPOM.selectAlreadyRepaired(true);
+			
+			fnolPropertyDetailsPOM.setLocationDescription("Near the fire station");
+			
 			fnolPropertyDetailsPOM.selectOK();
 	    	break;
 	   
@@ -135,7 +142,7 @@ public class CCFNOLPropertySteps extends BaseTest {
 	    default:
 	    Assert.fail("unknown input field :"+ type+" - check cucumber script!");
 	    }
-		fnolPropertyDetailsPOM.selectOK();;
+		fnolPropertyDetailsPOM.selectOK();;*/
 	}
 	
 

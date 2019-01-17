@@ -156,6 +156,12 @@ public class ClaimCenterFNOLNewPropertyExposurePOM extends BaseTest{
 	private WebElement getClaimantContactProhibNo() {
 		return claimantContactProhibNo;
 	}
+	
+	public void selectClaimant(String option)
+	{
+		logger.info(format("%s - going to select Claimant  option:"+option, getName()));
+		GuideWireAccessors.selectOptionFromGWDropDown(driver, option, this.getClaimantDropdown(), 1);
+	}
 
 	/*private WebElement getAltContactDropdown() {
 		return altContactDropdown;
