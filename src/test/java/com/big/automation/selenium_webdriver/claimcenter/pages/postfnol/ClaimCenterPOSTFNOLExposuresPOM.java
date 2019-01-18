@@ -93,6 +93,42 @@ public class ClaimCenterPOSTFNOLExposuresPOM extends BaseTest{
 		
 	}
 	
+	public String getHandlerForExposure(String type,String coverage)
+	{
+		logger.info(format("%s - get handler for exposure ", getName()));
+	    sleep(2);
+		String locator = "//*[@id=\"ClaimExposures:ClaimExposuresScreen:ExposuresLV-body\"]//table//tr";
+		List <WebElement> rows = driver.findElements(By.xpath(locator));
+		
+		WebElement expType;
+		WebElement expCoverage;
+		WebElement expHandler;
+		
+		// loop till find first with mathcing type
+		for (WebElement rowElement:rows)
+		{
+			
+			//find the type
+			expType = rowElement.findElement(By.xpath("//td[3]"));
+			expCoverage = rowElement.findElement(By.xpath("//td[4]"));
+			expHandler = rowElement.findElement(By.xpath("//td[6]"));
+			
+			//logger.info(format("%s - check exposure table row for matching entry ", getName()));
+			//logger.info(format("%s - check exposure table type "+expType.getText(), getName()));
+			//logger.info(format("%s - check exposure table coverage "+expCoverage.getText(), getName()));
+			if (expType.getText().equalsIgnoreCase(type) && expCoverage.getText().equalsIgnoreCase(coverage))
+			{
+				logger.info(format("%s - Found match in exposure table: "+expHandler.getText(), getName()));
+				return expHandler.getText();
+				
+			}
+		}
+		
+		return null;
+	
+		
+	}
+	
 	
 	private List<WebElement> getErrorMessages(){
 		return errorMessages;

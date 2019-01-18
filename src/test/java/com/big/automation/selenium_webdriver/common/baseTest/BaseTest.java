@@ -41,6 +41,7 @@ import com.big.automation.selenium_webdriver.claimcenter.pages.ClaimCenterFNOLNe
 import com.big.automation.selenium_webdriver.claimcenter.pages.ClaimCenterFNOLNewTPCaptureExposurePOM;
 import com.big.automation.selenium_webdriver.claimcenter.pages.ClaimCenterFNOLNewVehicleExposurePOM;
 import com.big.automation.selenium_webdriver.claimcenter.pages.ClaimCenterFNOLPedestrianDetailsPOM;
+import com.big.automation.selenium_webdriver.claimcenter.pages.ClaimCenterFNOLPropertyDetailsPOM;
 import com.big.automation.selenium_webdriver.claimcenter.pages.ClaimCenterFNOLStep1POM;
 import com.big.automation.selenium_webdriver.claimcenter.pages.ClaimCenterFNOLStep2POM;
 import com.big.automation.selenium_webdriver.claimcenter.pages.ClaimCenterFNOLStep3POM;
@@ -51,13 +52,14 @@ import com.big.automation.selenium_webdriver.claimcenter.pages.ClaimCenterLoginP
 import com.big.automation.selenium_webdriver.claimcenter.pages.ClaimCenterMenuBarPOM;
 import com.big.automation.selenium_webdriver.claimcenter.pages.ClaimCenterNavigatorBarPOM;
 import com.big.automation.selenium_webdriver.claimcenter.pages.ClaimCenterPersonDetailsPOM;
-import com.big.automation.selenium_webdriver.claimcenter.pages.ClaimCenterFNOLPropertyDetailsPOM;
 import com.big.automation.selenium_webdriver.claimcenter.pages.ClaimCenterSearchAddressBookPOM;
+import com.big.automation.selenium_webdriver.claimcenter.pages.ClaimCenterTotalLossCalulatorPOM;
 import com.big.automation.selenium_webdriver.claimcenter.pages.postfnol.ClaimCenterPOSTFNOLEditCreditHireExposurePOM;
 import com.big.automation.selenium_webdriver.claimcenter.pages.postfnol.ClaimCenterPOSTFNOLEditInjuryExposurePOM;
 import com.big.automation.selenium_webdriver.claimcenter.pages.postfnol.ClaimCenterPOSTFNOLEditPropertyExposurePOM;
 import com.big.automation.selenium_webdriver.claimcenter.pages.postfnol.ClaimCenterPOSTFNOLEditProtocolHireExposurePOM;
 import com.big.automation.selenium_webdriver.claimcenter.pages.postfnol.ClaimCenterPOSTFNOLEditTPCaptureExposurePOM;
+import com.big.automation.selenium_webdriver.claimcenter.pages.postfnol.ClaimCenterPOSTFNOLEditVehicleDetailsPOM;
 import com.big.automation.selenium_webdriver.claimcenter.pages.postfnol.ClaimCenterPOSTFNOLEditVehicleExposurePOM;
 import com.big.automation.selenium_webdriver.claimcenter.pages.postfnol.ClaimCenterPOSTFNOLExposuresPOM;
 import com.big.automation.selenium_webdriver.claimcenter.pages.postfnol.ClaimCenterPOSTFNOLLossDetailsPOM;
@@ -68,9 +70,6 @@ import com.big.automation.selenium_webdriver.claimcenter.pages.postfnol.ClaimCen
 import com.big.automation.selenium_webdriver.claimcenter.pages.postfnol.ClaimCenterPOSTFNOLNewVehicleDetailsPOM;
 import com.big.automation.selenium_webdriver.claimcenter.pages.postfnol.ClaimCenterPOSTFNOLPedestrianDetailsPOM;
 import com.big.automation.selenium_webdriver.claimcenter.pages.postfnol.ClaimCenterPOSTFNOLWorkplanPOM;
-import com.big.automation.selenium_webdriver.claimcenter.pages.postfnol.ClaimCenterPOSTFNOLEditVehicleDetailsPOM;
-import com.big.automation.selenium_webdriver.claimcenter.testdata.ClaimCenterData;
-import com.big.automation.selenium_webdriver.claimcenter.testdata.ClaimCenterDataBuilder;
 import com.big.automation.selenium_webdriver.common.extent_reports.ExtentManager;
 import com.big.automation.selenium_webdriver.common.rules.ScreenshotTestRule;
 import com.big.automation.selenium_webdriver.common.rules.WebDriverRule;
@@ -147,6 +146,9 @@ public class BaseTest extends AbstractTestNGCucumberTests{
    
    public static ClaimCenterPOSTFNOLWorkplanPOM postFnolWorkplanPOM;
    public static ClaimCenterPOSTFNOLNewActivityPOM postFnolNewActivityPOM;
+   
+   
+   public static ClaimCenterTotalLossCalulatorPOM totalLossCalcPOM;
    
    
 
@@ -266,10 +268,8 @@ public class BaseTest extends AbstractTestNGCucumberTests{
       postFnolWorkplanPOM= PageFactory.initElements(driver, ClaimCenterPOSTFNOLWorkplanPOM.class);
       postFnolNewActivityPOM= PageFactory.initElements(driver, ClaimCenterPOSTFNOLNewActivityPOM.class);
       
+      totalLossCalcPOM= PageFactory.initElements(driver, ClaimCenterTotalLossCalulatorPOM.class);
       
-      
-      // TODO - for now 
-     // this.testDataset = ClaimCenterDataBuilder.createDataSet();
 		
       
    }

@@ -1,11 +1,11 @@
-
+@Ignore
 Feature: CBPCL-210 As a ClaimCenter user with the role of Claims Adjuster or Manager, I want to be able to assign a claim, exposure or activity to a specific adjuster or queue. So that I can make sure that claims are assigned to the right person.
 
   Background: 
    Given I use test data set "regression_set1"
    And As a "ClaimsHandler" I am at step5 for FNOL
 
-    @Ignore
+    
     Scenario: CBPCL-210 TC1 Exposure created for INSURED ACCIDENTAL DAMAGE is assigned to Accidental Damage Group
     When I select the Add Exposures Popup Menu Hierarchy "Choose by Coverage Type,Accidental Damage - Vehicle Damage"
      And  I will be on the new exposure screen for FNOL
@@ -18,7 +18,7 @@ Feature: CBPCL-210 As a ClaimCenter user with the role of Claims Adjuster or Man
      And I click on the created claim link on Claim Saved screen
      And I select "Exposures" on the Claim Navigator
      And I will see post FNOL exposures screen
-     # to do check which adjuster the exposure is assigned to ie tp property damage group
+     And I will see type "Vehicle" for coverage "Accidental Damage" has been assigned to a user in group "Accidental Damage"
      
      @Ignore
     Scenario: CBPCL-210 TC2 Exposure created for Insured MEDICAL EXPENSES is assigned to Personal Injury - MOJ Group
@@ -32,7 +32,7 @@ Feature: CBPCL-210 As a ClaimCenter user with the role of Claims Adjuster or Man
      And I click on the created claim link on Claim Saved screen
      And I select "Exposures" on the Claim Navigator
      And I will see post FNOL exposures screen
-     # to do check which adjuster the exposure is assigned to ie tp property damage group
+     And I will see type "Bodily Injury" for coverage "Medical Expenses" has been assigned to a user in group "Personal Injury - MOJ"
      
       @Ignore
      Scenario: CBPCL-210 TC3 Exposure created for INSURED PERSONAL ACCIDENT is assigned to Personal Injury - MOJ Group
@@ -46,7 +46,7 @@ Feature: CBPCL-210 As a ClaimCenter user with the role of Claims Adjuster or Man
      And I click on the created claim link on Claim Saved screen
      And I select "Exposures" on the Claim Navigator
      And I will see post FNOL exposures screen
-     # to do check which adjuster the exposure is assigned to ie tp property damage group
+     And I will see type "Bodily Injury" for coverage "Personal Accident" has been assigned to a user in group "Personal Injury - MOJ"
      
       @Ignore
       Scenario: CBPCL-210 TC4 Exposure created for PERSONAL BELONGINGS is assigned to Accidental Damage
@@ -60,7 +60,7 @@ Feature: CBPCL-210 As a ClaimCenter user with the role of Claims Adjuster or Man
      And I click on the created claim link on Claim Saved screen
      And I select "Exposures" on the Claim Navigator
      And I will see post FNOL exposures screen
-     # to do check which adjuster the exposure is assigned to ie tp property damage group
+     And I will see type "Vehicle" for coverage "Personal Belongings" has been assigned to a user in group "Accidental Damage"
      
       @Ignore
        Scenario: CBPCL-210 TC5 Exposure created for PERSONAL BELOGINGS AND HANDBAG COVER is assigned to Accidental Damage
@@ -74,7 +74,7 @@ Feature: CBPCL-210 As a ClaimCenter user with the role of Claims Adjuster or Man
      And I click on the created claim link on Claim Saved screen
      And I select "Exposures" on the Claim Navigator
      And I will see post FNOL exposures screen
-     # to do check which adjuster the exposure is assigned to ie tp property damage group
+     And I will see type "Vehicle" for coverage "Personal Belongings and Handbag Cover" has been assigned to a user in group "Accidental Damage"
      
       @Ignore
         Scenario: CBPCL-210 TC6 Exposure created for FIRE Vehicle damage is assigned to Accidental Damage
@@ -88,7 +88,7 @@ Feature: CBPCL-210 As a ClaimCenter user with the role of Claims Adjuster or Man
      And I click on the created claim link on Claim Saved screen
      And I select "Exposures" on the Claim Navigator
      And I will see post FNOL exposures screen
-     # to do check which adjuster the exposure is assigned to ie tp property damage group
+     And I will see type "Vehicle" for coverage "Fire" has been assigned to a user in group "Accidental Damage"
 
   @Ignore
    Scenario: CBPCL-210 TC7 Exposure created for MISFUELLING Vehicle damage is assigned to Accidental Damage
@@ -102,7 +102,7 @@ Feature: CBPCL-210 As a ClaimCenter user with the role of Claims Adjuster or Man
      And I click on the created claim link on Claim Saved screen
      And I select "Exposures" on the Claim Navigator
      And I will see post FNOL exposures screen
-     # to do check which adjuster the exposure is assigned to ie tp property damage group
+     And I will see type "Vehicle" for coverage "Misfuelling Cover" has been assigned to a user in group "Accidental Damage"
 
 @Ignore
 Scenario: CBPCL-210 TC8 Exposure created for THIRD PARTY PERSONAL INJURY is assigned to Personal Injury - MOJ Group
@@ -115,7 +115,7 @@ Scenario: CBPCL-210 TC8 Exposure created for THIRD PARTY PERSONAL INJURY is assi
      And I click on the created claim link on Claim Saved screen
      And I select "Exposures" on the Claim Navigator
      And I will see post FNOL exposures screen
-     # to do check which adjuster the exposure is assigned to ie tp property damage group
+    And I will see type "Bodily Injury" for coverage "Third Party Liability" has been assigned to a user in group "Personal Injury - MOJ"
   
     @Ignore
     Scenario: CBPCL-210 TC9 Create For TP VEHICLE DAMAGE Liability, If no Personal Injury or Credit Hire exposure, then assign to TP Property Damage Group
@@ -129,7 +129,7 @@ Scenario: CBPCL-210 TC8 Exposure created for THIRD PARTY PERSONAL INJURY is assi
      And I click on the created claim link on Claim Saved screen
      And I select "Exposures" on the Claim Navigator
      And I will see post FNOL exposures screen
-     # to do check which adjuster the exposure is assigned to ie tp property damage group
+     And I will see type "Vehicle" for coverage "Third Party Liability" has been assigned to a user in group "Third Party Property Damage"
      
      @Ignore
      Scenario: CBPCL-210 TC10 Create For TP VEHICLE DAMAGE Liability, If no Personal Injury but there is Credit Hire exposure, then assign to Credit Hire Group
@@ -148,7 +148,8 @@ Scenario: CBPCL-210 TC8 Exposure created for THIRD PARTY PERSONAL INJURY is assi
      And I click on the created claim link on Claim Saved screen
      And I select "Exposures" on the Claim Navigator
      And I will see post FNOL exposures screen
-     # to do check which adjuster the exposure is assigned to ie credit hire
+     And I will see type "Credit Hire" for coverage "Third Party Liability" has been assigned to a user in group "Credit Hire"
+     And I will see type "Vehicle" for coverage "Third Party Liability" has been assigned to a user in group "Credit Hire"
      
      @Ignore
      Scenario: CBPCL-210 TC11 Create For TP VEHICLE DAMAGE Liability, There is a Personal Injury (Personal Accident) Exposure but there is no Credit Hire exposure, then assign to PI Group
@@ -167,7 +168,8 @@ Scenario: CBPCL-210 TC8 Exposure created for THIRD PARTY PERSONAL INJURY is assi
      And I click on the created claim link on Claim Saved screen
      And I select "Exposures" on the Claim Navigator
      And I will see post FNOL exposures screen
-     # to do check which adjuster the exposure is assigned to ie credit hire
+     And I will see type "Bodily Injury" for coverage "Personal Accident" has been assigned to a user in group "Personal Injury - MOJ"
+     And I will see type "Vehicle" for coverage "Third Party Liability" has been assigned to a user in group "Personal Injury - MOJ"
      
      @Ignore
       Scenario: CBPCL-210 TC12 Create For TP VEHICLE DAMAGE Liability, There is a Personal Injury (Medical Expenses) Exposure but there is no Credit Hire exposure, then assign to PI Group
@@ -186,7 +188,8 @@ Scenario: CBPCL-210 TC8 Exposure created for THIRD PARTY PERSONAL INJURY is assi
      And I click on the created claim link on Claim Saved screen
      And I select "Exposures" on the Claim Navigator
      And I will see post FNOL exposures screen
-     # to do check which adjuster the exposure is assigned to ie credit hire
+      And I will see type "Bodily Injury" for coverage "Medical Expenses" has been assigned to a user in group "Personal Injury - MOJ"
+     And I will see type "Vehicle" for coverage "Third Party Liability" has been assigned to a user in group "Personal Injury - MOJ"
      
      @Ignore
       Scenario: CBPCL-210 TC13 Create For TP VEHICLE DAMAGE Liability, There is a Personal Injury (Third Party Injury) Exposure but there is no Credit Hire exposure, then assign to PI Group
@@ -204,7 +207,8 @@ Scenario: CBPCL-210 TC8 Exposure created for THIRD PARTY PERSONAL INJURY is assi
      And I click on the created claim link on Claim Saved screen
      And I select "Exposures" on the Claim Navigator
      And I will see post FNOL exposures screen
-     # to do check which adjuster the exposure is assigned to ie credit hire
+      And I will see type "Bodily Injury" for coverage "Third Party Liability" has been assigned to a user in group "Personal Injury - MOJ"
+     And I will see type "Vehicle" for coverage "Third Party Liability" has been assigned to a user in group "Personal Injury - MOJ"
      
      @Ignore
       Scenario: CBPCL-210 TC14 Create For TP VEHICLE DAMAGE Liability, There is a Personal Injury Exposure and there is a Credit Hire exposure, then assign to PI Group
@@ -227,7 +231,9 @@ Scenario: CBPCL-210 TC8 Exposure created for THIRD PARTY PERSONAL INJURY is assi
      And I click on the created claim link on Claim Saved screen
      And I select "Exposures" on the Claim Navigator
      And I will see post FNOL exposures screen
-     # to do check which adjuster the exposure is assigned to ie credit hire
+     And I will see type "Bodily Injury" for coverage "Third Party Liability" has been assigned to a user in group "Personal Injury - MOJ"
+     And I will see type "Vehicle" for coverage "Third Party Liability" has been assigned to a user in group "Personal Injury - MOJ"
+     And I will see type "Credit Hire" for coverage "Third Party Liability" has been assigned to a user in group "Credit Hire"
      
      @Ignore
      Scenario: CBPCL-210 TC15 Exposure created for Third Party CREDIT HIRE is assigned to Credit Hire group
@@ -241,7 +247,7 @@ Scenario: CBPCL-210 TC8 Exposure created for THIRD PARTY PERSONAL INJURY is assi
      And I click on the created claim link on Claim Saved screen
      And I select "Exposures" on the Claim Navigator
      And I will see post FNOL exposures screen
-     # to do check which adjuster the exposure is assigned to ie tp property damage group
+     And I will see type "Credit Hire" for coverage "Third Party Liability" has been assigned to a user in group "Credit Hire"
      
      @Ignore
      Scenario: CBPCL-210 TC16 Exposure created for TP CAPTURE is assigned to TP capture group
@@ -255,7 +261,7 @@ Scenario: CBPCL-210 TC8 Exposure created for THIRD PARTY PERSONAL INJURY is assi
      And I click on the created claim link on Claim Saved screen
      And I select "Exposures" on the Claim Navigator
      And I will see post FNOL exposures screen
-     # to do check which adjuster the exposure is assigned to ie tp property damage group
+     And I will see type "TP Capture" for coverage "Third Party Liability" has been assigned to a user in group "Third Party Capture"
      
      
       @Ignore
@@ -272,7 +278,8 @@ Scenario: CBPCL-210 TC8 Exposure created for THIRD PARTY PERSONAL INJURY is assi
      And I click on the created claim link on Claim Saved screen
      And I select "Exposures" on the Claim Navigator
      And I will see post FNOL exposures screen
-     # to do check which adjuster the exposure is assigned to ie tp property damage group
+     And I will see type "Property" for coverage "Third Party Liability" has been assigned to a user in group "Third Party Property Damage"
+   
      
      @Ignore
      Scenario: CBPCL-210 TC18 Create For TP PROPERTY Damage Liability, If no Personal Injury but there is Credit Hire exposure, then assign to Credit Hire Group
@@ -293,7 +300,8 @@ Scenario: CBPCL-210 TC8 Exposure created for THIRD PARTY PERSONAL INJURY is assi
      And I click on the created claim link on Claim Saved screen
      And I select "Exposures" on the Claim Navigator
      And I will see post FNOL exposures screen
-     # to do check which adjuster the exposure is assigned to ie credit hire
+     And I will see type "Credit Hire" for coverage "Third Party Liability" has been assigned to a user in group "Credit Hire"
+     And I will see type "Property" for coverage "Third Party Liability" has been assigned to a user in group "Credit Hire"
      
      @Ignore
      Scenario: CBPCL-210 TC19 Create For TP PROPERTY Damage Liability, There is a Personal Injury (Personal Accident) Exposure but there is no Credit Hire exposure, then assign to PI Group
@@ -314,7 +322,8 @@ Scenario: CBPCL-210 TC8 Exposure created for THIRD PARTY PERSONAL INJURY is assi
      And I click on the created claim link on Claim Saved screen
      And I select "Exposures" on the Claim Navigator
      And I will see post FNOL exposures screen
-     # to do check which adjuster the exposure is assigned to ie credit hire
+       And I will see type "Bodily Injury" for coverage "Personal Accident" has been assigned to a user in group "Personal Injury - MOJ"
+     And I will see type "Property" for coverage "Third Party Liability" has been assigned to a user in group "Personal Injury - MOJ"
      
      @Ignore
       Scenario: CBPCL-210 TC20 Create For TP PROPERTY Damage Liability, There is a Personal Injury (Medical Expenses) Exposure but there is no Credit Hire exposure, then assign to PI Group
@@ -335,7 +344,8 @@ Scenario: CBPCL-210 TC8 Exposure created for THIRD PARTY PERSONAL INJURY is assi
      And I click on the created claim link on Claim Saved screen
      And I select "Exposures" on the Claim Navigator
      And I will see post FNOL exposures screen
-     # to do check which adjuster the exposure is assigned to ie credit hire
+      And I will see type "Bodily Injury" for coverage "Medical Expenses" has been assigned to a user in group "Personal Injury - MOJ"
+      And I will see type "Property" for coverage "Third Party Liability" has been assigned to a user in group "Personal Injury - MOJ"
      
      @Ignore
       Scenario: CBPCL-210 TC21 Create For TP PROPERTY Damage Liability, There is a Personal Injury (Third Party Injury) Exposure but there is no Credit Hire exposure, then assign to PI Group
@@ -355,7 +365,8 @@ Scenario: CBPCL-210 TC8 Exposure created for THIRD PARTY PERSONAL INJURY is assi
      And I click on the created claim link on Claim Saved screen
      And I select "Exposures" on the Claim Navigator
      And I will see post FNOL exposures screen
-     # to do check which adjuster the exposure is assigned to ie credit hire
+     And I will see type "Bodily Injury" for coverage "Third Party Liability" has been assigned to a user in group "Personal Injury - MOJ"
+     And I will see type "Property" for coverage "Third Party Liability" has been assigned to a user in group "Personal Injury - MOJ"
      
      @Ignore
       Scenario: CBPCL-210 TC22 Create For TP PROPERTY Damage Liability, There is a Personal Injury Exposure and there is a Credit Hire exposure, then assign to PI Group
@@ -380,10 +391,12 @@ Scenario: CBPCL-210 TC8 Exposure created for THIRD PARTY PERSONAL INJURY is assi
      And I click on the created claim link on Claim Saved screen
      And I select "Exposures" on the Claim Navigator
      And I will see post FNOL exposures screen
-     # to do check which adjuster the exposure is assigned to ie credit hire
+     And I will see type "Bodily Injury" for coverage "Third Party Liability" has been assigned to a user in group "Personal Injury - MOJ"
+     And I will see type "Credit Hire" for coverage "Third Party Liability" has been assigned to a user in group "Credit Hire"
+     And I will see type "Property" for coverage "Third Party Liability" has been assigned to a user in group "Personal Injury - MOJ"
      
      
-    
+   
    Scenario: CBPCL-210 TC23 Exposure created for PROTOCOL HIRE Vehicle damage is assigned to credit hire protocol group
    And I select the Add Exposures Popup Menu Hierarchy "Choose by Coverage Type,Third Party Liability,Liability - Protocol Hire"
     And I will be on the new exposure screen for FNOL
@@ -395,8 +408,9 @@ Scenario: CBPCL-210 TC8 Exposure created for THIRD PARTY PERSONAL INJURY is assi
      And I click on the created claim link on Claim Saved screen
      And I select "Exposures" on the Claim Navigator
      And I will see post FNOL exposures screen
-     # to do check which adjuster the exposure is assigned to ie tp property damage group
+    And I will see type "Protocol Hire" for coverage "Third Party Liability" has been assigned to a user in group "Credit Hire Protocol"
      
+     @Ignore
       Scenario: CBPCL-210 TC24 Exposure created for THEFT Vehicle damage is assigned to accidental damage group
    And I select the Add Exposures Popup Menu Hierarchy "Choose by Coverage Type,Theft"
      And  I will be on the new exposure screen for FNOL
@@ -408,10 +422,11 @@ Scenario: CBPCL-210 TC8 Exposure created for THIRD PARTY PERSONAL INJURY is assi
      And I click on the created claim link on Claim Saved screen
      And I select "Exposures" on the Claim Navigator
      And I will see post FNOL exposures screen
-     # to do check which adjuster the exposure is assigned to ie tp property damage group
+     And I will see type "Vehicle" for coverage "Theft" has been assigned to a user in group "Accidental Damage"
      
+     @Ignore
       Scenario: CBPCL-210 TC25 Exposure created for GLASS Vehicle damage is assigned to claim support queue
-   When I select the Add Exposures Popup Menu Hierarchy "Choose by Coverage Type,Glass - Vehicle Damage"
+     When I select the Add Exposures Popup Menu Hierarchy "Choose by Coverage Type,Glass - Vehicle Damage"
      And  I will be on the new exposure screen for FNOL
      And I select the Insured as Claimant on new vehicle exposure screen for FNOL
      And I select "Insured" from "Claimant Type" on new vehicle exposure screen for FNOL
@@ -421,7 +436,8 @@ Scenario: CBPCL-210 TC8 Exposure created for THIRD PARTY PERSONAL INJURY is assi
      And I click on the created claim link on Claim Saved screen
      And I select "Exposures" on the Claim Navigator
      And I will see post FNOL exposures screen
-     # to do check which adjuster the exposure is assigned to ie tp property damage group
+     # to do this willbe a queue, so how is this shown in exposure table
+     # also need to login as claimssupport user to see the queue in desktop
      
      @Ignore
   Scenario: CBPCL-210 TC99 Create ALL exposures for assignment

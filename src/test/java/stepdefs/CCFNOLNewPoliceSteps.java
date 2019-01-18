@@ -2,7 +2,7 @@ package stepdefs;
 
 import org.testng.Assert;
 
-import com.big.automation.selenium_webdriver.claimcenter.testdata.ClaimCenterData;
+
 import com.big.automation.selenium_webdriver.common.baseTest.BaseTest;
 import com.big.automation.selenium_webdriver.common.utilities.excelutils.ExcelUtil;
 

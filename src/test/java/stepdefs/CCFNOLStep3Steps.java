@@ -5,8 +5,7 @@ import java.util.List;
 import org.testng.Assert;
 import org.testng.asserts.SoftAssert;
 
-import com.big.automation.selenium_webdriver.claimcenter.testdata.ClaimCenterData;
-import com.big.automation.selenium_webdriver.claimcenter.testdata.ClaimCenterDataBuilder;
+
 import com.big.automation.selenium_webdriver.common.baseTest.BaseTest;
 import com.big.automation.selenium_webdriver.common.utilities.excelutils.ExcelUtil;
 
@@ -47,6 +46,29 @@ public class CCFNOLStep3Steps extends BaseTest {
 	// TODO - start of work for regression FNOL script to be driven by external configuration
 	public void completeFNOLStep3ForTestScenario()  throws Throwable
 	{
+		
+		// Add details to step3 fields
+				//TODO get from scenarioData
+				fnolStep3POM.setCircumstancesValue("Someone crashed into me");
+				fnolStep3POM.selectIncidentType(ExcelUtil.getTestDataValue("Fnol_Step3_IncidentType"));
+				fnolStep3POM.selectClaimCauseType(ExcelUtil.getTestDataValue("Fnol_Step3_Cause"));
+				fnolStep3POM.selectClaimSubCauseType(ExcelUtil.getTestDataValue("Fnol_Step3_SubCause"));
+				
+		// add insured driver if required
+				// TODO - update vehicle details
+		if (ExcelUtil.getTestDataValue("Fnol_PHDriverRequired").equalsIgnoreCase("TRUE"))
+		{
+				fnolStep3POM.selectInsuredVehicle();
+				vehicleSteps.completeFNOLPHVehicleForTestScenario();
+		}
+		
+		// add TP vehicle/driver if required
+				if (ExcelUtil.getTestDataValue("Fnol_Step3_TPVehicleRequired").equalsIgnoreCase("TRUE"))
+				{
+					fnolStep3POM.addVehicle();
+					vehicleSteps.completeFNOLTPVehicleForTestScenario();
+				}
+		
 		// add pedestrian if required
 		if (ExcelUtil.getTestDataValue("Fnol_Step3_PedestrianRequired").equalsIgnoreCase("TRUE"))
 		{
@@ -61,19 +83,7 @@ public class CCFNOLStep3Steps extends BaseTest {
 			propertySteps.completeFNOLPropertyForTestScenario();
 		}
 		
-		// add insured driver if required
-		if (ExcelUtil.getTestDataValue("Fnol_PHDriverRequired").equalsIgnoreCase("TRUE"))
-		{
-			fnolStep3POM.selectInsuredVehicle();
-			vehicleSteps.completeFNOLPHVehicleForTestScenario();
-		}
 		
-		// add TP vehicle/driver if required
-		if (ExcelUtil.getTestDataValue("Fnol_Step3_TPVehicleRequired").equalsIgnoreCase("TRUE"))
-		{
-			fnolStep3POM.addVehicle();
-			vehicleSteps.completeFNOLTPVehicleForTestScenario();
-		}
 		
 		// add police if required
 		if (ExcelUtil.getTestDataValue("Fnol_Step3_PoliceRequired").equalsIgnoreCase("TRUE"))
@@ -83,12 +93,6 @@ public class CCFNOLStep3Steps extends BaseTest {
 		}
 		
 		
-		// Add details to step3 fields
-		//TODO get from scenarioData
-		fnolStep3POM.setCircumstancesValue("Someone crashed into me");
-		fnolStep3POM.selectIncidentType(ExcelUtil.getTestDataValue("Fnol_Step3_IncidentType"));
-		fnolStep3POM.selectClaimCauseType(ExcelUtil.getTestDataValue("Fnol_Step3_Cause"));
-		fnolStep3POM.selectClaimSubCauseType(ExcelUtil.getTestDataValue("Fnol_Step3_SubCause"));
 		
 		//TODO OTHER FIELDS
 		fnolStep3POM.selectVehicleUsedFor("Business");

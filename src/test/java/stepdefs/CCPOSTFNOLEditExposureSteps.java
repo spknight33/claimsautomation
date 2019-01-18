@@ -5,7 +5,6 @@ import java.util.List;
 import org.testng.Assert;
 import org.testng.asserts.SoftAssert;
 
-import com.big.automation.selenium_webdriver.claimcenter.testdata.ClaimCenterData;
 import com.big.automation.selenium_webdriver.common.baseTest.BaseTest;
 
 import cucumber.api.DataTable;
@@ -15,13 +14,12 @@ import cucumber.api.java.en.When;
 
 public class CCPOSTFNOLEditExposureSteps extends BaseTest {
 	
-	public void completeFNOLExposureForTestScenario(ClaimCenterData scenarioData)
+	public void completeFNOLExposureForTestScenario()
 	{
 		//TODO - change to use ScenarioData
 		
 		
 	}
-	
 	
 	
 	

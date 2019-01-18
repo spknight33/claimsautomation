@@ -7,21 +7,22 @@ public class UserFactory {
 	public static final String CLAIMSMANAGER = "ClaimsManager";
 	public static final String OPSADMIN = "OpsAdmin";
 	public static final String ITADMIN = "ITAdmin";
+	//public static final String DEFAULT = "Default";
 
 	public static UserConfig getUserConfig(String role) {
 		switch (role) {
 		case (CLAIMSHANDLER):
-			return new UserConfig("sthomson", "gw");
+			return new UserConfig("sthomson", "gw","unknown");
 
 		case (TEAMMANAGER):
-			return new UserConfig("rhenderson", "gw");
+			return new UserConfig("rhenderson", "gw","unknown");
 
 		case (CLAIMSMANAGER):
-			return new UserConfig("bchmielewska", "gw");
+			return new UserConfig("bchmielewska", "gw","unknown");
 		case (OPSADMIN):
-			return new UserConfig("awilson", "gw");
+			return new UserConfig("awilson", "gw","unknown");
 		case (ITADMIN):
-			return new UserConfig("jbutler", "gw");
+			return new UserConfig("jbutler", "gw","unknonw");
 		}
 
 		return null;
