@@ -54,6 +54,7 @@ import com.big.automation.selenium_webdriver.claimcenter.pages.ClaimCenterNaviga
 import com.big.automation.selenium_webdriver.claimcenter.pages.ClaimCenterPersonDetailsPOM;
 import com.big.automation.selenium_webdriver.claimcenter.pages.ClaimCenterSearchAddressBookPOM;
 import com.big.automation.selenium_webdriver.claimcenter.pages.ClaimCenterTotalLossCalulatorPOM;
+import com.big.automation.selenium_webdriver.claimcenter.pages.desktop.ClaimCenterDesktopQueuesPOM;
 import com.big.automation.selenium_webdriver.claimcenter.pages.postfnol.ClaimCenterPOSTFNOLEditCreditHireExposurePOM;
 import com.big.automation.selenium_webdriver.claimcenter.pages.postfnol.ClaimCenterPOSTFNOLEditInjuryExposurePOM;
 import com.big.automation.selenium_webdriver.claimcenter.pages.postfnol.ClaimCenterPOSTFNOLEditPropertyExposurePOM;
@@ -69,6 +70,7 @@ import com.big.automation.selenium_webdriver.claimcenter.pages.postfnol.ClaimCen
 import com.big.automation.selenium_webdriver.claimcenter.pages.postfnol.ClaimCenterPOSTFNOLNewPropertyPOM;
 import com.big.automation.selenium_webdriver.claimcenter.pages.postfnol.ClaimCenterPOSTFNOLNewVehicleDetailsPOM;
 import com.big.automation.selenium_webdriver.claimcenter.pages.postfnol.ClaimCenterPOSTFNOLPedestrianDetailsPOM;
+import com.big.automation.selenium_webdriver.claimcenter.pages.postfnol.ClaimCenterPOSTFNOLSummaryPOM;
 import com.big.automation.selenium_webdriver.claimcenter.pages.postfnol.ClaimCenterPOSTFNOLWorkplanPOM;
 import com.big.automation.selenium_webdriver.common.extent_reports.ExtentManager;
 import com.big.automation.selenium_webdriver.common.rules.ScreenshotTestRule;
@@ -134,6 +136,7 @@ public class BaseTest extends AbstractTestNGCucumberTests{
    public static ClaimCenterPOSTFNOLEditTPCaptureExposurePOM postFnolEditTPCaptureExposurePOM;
    
    
+   public static ClaimCenterPOSTFNOLSummaryPOM postFnolSummaryPOM;
    public static ClaimCenterPOSTFNOLLossDetailsPOM postFnolLossDetailsPOM;
    public static ClaimCenterPOSTFNOLNewPropertyPOM postFnolNewPropertyPOM;
    public static ClaimCenterPOSTFNOLNewInjuryPOM postFnolNewInjuryPOM;
@@ -150,7 +153,9 @@ public class BaseTest extends AbstractTestNGCucumberTests{
    
    public static ClaimCenterTotalLossCalulatorPOM totalLossCalcPOM;
    
+   // desktop stuff
    
+   public static ClaimCenterDesktopQueuesPOM desktopQueuesPOM;
 
    @BeforeTest(timeOut = 30000)
    public void beforeTest() {
@@ -251,6 +256,7 @@ public class BaseTest extends AbstractTestNGCucumberTests{
       
       
       
+      postFnolSummaryPOM= PageFactory.initElements(driver, ClaimCenterPOSTFNOLSummaryPOM.class); 
       postFnolLossDetailsPOM= PageFactory.initElements(driver, ClaimCenterPOSTFNOLLossDetailsPOM.class); 
       postFnolNewPropertyPOM= PageFactory.initElements(driver, ClaimCenterPOSTFNOLNewPropertyPOM.class);
       postFnolNewInjuryPOM= PageFactory.initElements(driver, ClaimCenterPOSTFNOLNewInjuryPOM.class);
@@ -270,7 +276,8 @@ public class BaseTest extends AbstractTestNGCucumberTests{
       
       totalLossCalcPOM= PageFactory.initElements(driver, ClaimCenterTotalLossCalulatorPOM.class);
       
-		
+      desktopQueuesPOM= PageFactory.initElements(driver, ClaimCenterDesktopQueuesPOM.class);
+      
       
    }
 

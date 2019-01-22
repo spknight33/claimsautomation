@@ -21,7 +21,7 @@ public class CCLoginSteps extends BaseTest {
 		// TST
 		// driver.get("http://10.14.67.173:8080/cc/ClaimCenter.do");
 		//DEV
-		driver.get("http://10.14.67.209:8080/cc/ClaimCenter.do");
+		driver.get("http://claimcenterdev.cloud.aioinissaydowa.eu/cc/");
 		
 		// make sure there is no left over alert
 		try {

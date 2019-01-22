@@ -43,7 +43,37 @@ public class CCNavigatorSteps extends BaseTest {
 	    	//TODO the rest
 	   
 	    default:
-	    Assert.fail("unknown search field :"+ link+" - check cucumber script!");
+	    Assert.fail("unknown field :"+ link+" - check cucumber script!");
+	    }
+	}
+	
+	@Given("^I select \"([^\"]*)\" on the Desktop Navigator$")
+	public void i_select_on_the_Desktop_Navigator(String link) throws Throwable {
+	    
+		
+		switch(link)
+	    {
+	    case "Activities":
+	    	navigatorBarPOM.clickDesktopTopLevel("Activities");;
+	    	break;
+	    case "Claims":
+	    	navigatorBarPOM.clickDesktopTopLevel("Claims");;
+	    	break;
+	    case "Queues":
+	    	navigatorBarPOM.clickDesktopTopLevel("Queues");;
+	    	break;
+	    case "Subrogations":
+	    	navigatorBarPOM.clickDesktopTopLevel("Subrogations");;
+	    	break;
+	    case "Exposures":
+	    	navigatorBarPOM.clickDesktopTopLevel("Exposures");;
+	    	break;
+	    
+	    	
+	    	//TODO the rest
+	   
+	    default:
+	    Assert.fail("unknown field :"+ link+" - check cucumber script!");
 	    }
 	}
 	

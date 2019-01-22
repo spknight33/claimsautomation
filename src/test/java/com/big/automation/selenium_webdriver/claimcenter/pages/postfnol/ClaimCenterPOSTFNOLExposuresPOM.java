@@ -97,7 +97,7 @@ public class ClaimCenterPOSTFNOLExposuresPOM extends BaseTest{
 	{
 		logger.info(format("%s - get handler for exposure ", getName()));
 	    sleep(2);
-		String locator = "//*[@id=\"ClaimExposures:ClaimExposuresScreen:ExposuresLV-body\"]//table//tr";
+		String locator = "//*[@id=\"ClaimExposures:ClaimExposuresScreen:ExposuresLV-body\"]//table";
 		List <WebElement> rows = driver.findElements(By.xpath(locator));
 		
 		WebElement expType;
@@ -105,13 +105,19 @@ public class ClaimCenterPOSTFNOLExposuresPOM extends BaseTest{
 		WebElement expHandler;
 		
 		// loop till find first with mathcing type
-		for (WebElement rowElement:rows)
+		int rowTotal = rows.size();
+		String rowLocator = null;
+		for(int i=1; i<=rowTotal; i++)
 		{
 			
-			//find the type
-			expType = rowElement.findElement(By.xpath("//td[3]"));
-			expCoverage = rowElement.findElement(By.xpath("//td[4]"));
-			expHandler = rowElement.findElement(By.xpath("//td[6]"));
+			rowLocator = locator + "[" + i + "]";
+				//find the type
+			expType = driver.findElement(By.xpath(rowLocator+"//tr//td[3]"));
+			expCoverage = driver.findElement(By.xpath(rowLocator+"//tr//td[4]"));
+			expHandler = driver.findElement(By.xpath(rowLocator+"//tr//td[6]"));
+			
+			logger.info(format("%s - get handler for exposure - check row:"+expType.getText()+" "+expCoverage.getText()+" "+expHandler.getText(), getName()));
+			
 			
 			//logger.info(format("%s - check exposure table row for matching entry ", getName()));
 			//logger.info(format("%s - check exposure table type "+expType.getText(), getName()));
@@ -124,6 +130,7 @@ public class ClaimCenterPOSTFNOLExposuresPOM extends BaseTest{
 			}
 		}
 		
+		logger.info(format("%s - NO match in exposure table: "+type+" "+coverage, getName()));
 		return null;
 	
 		

@@ -3,6 +3,7 @@ package com.big.automation.selenium_webdriver.common.config;
 public class UserFactory {
 
 	public static final String CLAIMSHANDLER = "ClaimsHandler";
+	public static final String CLAIMSSUPPORT = "ClaimsSupport";
 	public static final String TEAMMANAGER = "TeamManager";
 	public static final String CLAIMSMANAGER = "ClaimsManager";
 	public static final String OPSADMIN = "OpsAdmin";
@@ -13,6 +14,8 @@ public class UserFactory {
 		switch (role) {
 		case (CLAIMSHANDLER):
 			return new UserConfig("sthomson", "gw","unknown");
+		case (CLAIMSSUPPORT):
+			return new UserConfig("sh1", "gw","unknown");
 
 		case (TEAMMANAGER):
 			return new UserConfig("rhenderson", "gw","unknown");

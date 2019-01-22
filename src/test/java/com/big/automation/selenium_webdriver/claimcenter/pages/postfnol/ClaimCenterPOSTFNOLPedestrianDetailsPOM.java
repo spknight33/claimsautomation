@@ -5,7 +5,10 @@ import static java.lang.String.format;
 
 import java.util.List;
 
+import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 
 import com.big.automation.selenium_webdriver.common.baseTest.BaseTest;
@@ -14,77 +17,125 @@ import com.big.automation.selenium_webdriver.common.gw.utilities.GuideWireAccess
 public class ClaimCenterPOSTFNOLPedestrianDetailsPOM extends BaseTest{
 
 	// could be merged with person later
-	//TODO CHANGE ALL THE LOCATORS ONCE SCREEN IS READY
 	
-	@FindBy(id = "FNOLContactPopup:FNOLContactScreen:ttlBar")
+	
+	@FindBy(id = "PostFNOLContactPopup:FNOLContactScreen:ttlBar")
 	private WebElement pageTitle;
 		
-	@FindBy(id = "FNOLContactPopup:FNOLContactScreen:Update-btnEl")
+	@FindBy(id = "PostFNOLContactPopup:FNOLContactScreen:Update")
 	private WebElement okButton;
 	
-	@FindBy(id = "FNOLContactPopup:FNOLContactScreen:Cancel-btnEl")
+	@FindBy(id = "PostFNOLContactPopup:FNOLContactScreen:Cancel")
 	private WebElement cancelButton;
 
 	
 	
-	@FindBy(id = "FNOLContactPopup:FNOLContactScreen:ContactDV:FNOLContactInputSet:GlobalPersonNameInputSet:Prefix-inputEl")
+	@FindBy(id = "PostFNOLContactPopup:FNOLContactScreen:ContactDV:FNOLContactInputSet:GlobalPersonNameInputSet:Prefix-inputEl")
 	private WebElement prefix;
-	@FindBy(id = "FNOLContactPopup:FNOLContactScreen:ContactDV:FNOLContactInputSet:GlobalPersonNameInputSet:FirstName-inputEl")
+	@FindBy(id = "PostFNOLContactPopup:FNOLContactScreen:ContactDV:FNOLContactInputSet:GlobalPersonNameInputSet:FirstName-inputEl")
 	private WebElement firstName;
-	@FindBy(id = "FNOLContactPopup:FNOLContactScreen:ContactDV:FNOLContactInputSet:GlobalPersonNameInputSet:MiddleName-inputEl")
+	@FindBy(id = "PostFNOLContactPopup:FNOLContactScreen:ContactDV:FNOLContactInputSet:GlobalPersonNameInputSet:MiddleName-inputEl")
 	private WebElement middleName;
-	@FindBy(id = "FNOLContactPopup:FNOLContactScreen:ContactDV:FNOLContactInputSet:GlobalPersonNameInputSet:LastName-inputEl")
+	@FindBy(id = "PostFNOLContactPopup:FNOLContactScreen:ContactDV:FNOLContactInputSet:GlobalPersonNameInputSet:LastName-inputEl")
 	private WebElement lastName;
-	@FindBy(id = "FNOLContactPopup:FNOLContactScreen:ContactDV:FNOLContactInputSet:Gender-inputEl")
+	@FindBy(id = "PostFNOLContactPopup:FNOLContactScreen:ContactDV:FNOLContactInputSet:Gender-inputEl")
 	private WebElement gender;
-	@FindBy(id = "FNOLContactPopup:FNOLContactScreen:ContactDV:FNOLContactInputSet:DateOfBirth-inputEl")
+	@FindBy(id = "PostFNOLContactPopup:FNOLContactScreen:ContactDV:FNOLContactInputSet:DateOfBirth-inputEl")
 	private WebElement dob;
 	
-	@FindBy(id = "FNOLContactPopup:FNOLContactScreen:ContactDV:FNOLContactInputSet:CCAddressInputSet:globalAddressContainer:globalAddress:GlobalAddressInputSet:AddressLine1-inputEl")
+	@FindBy(id = "PostFNOLContactPopup:FNOLContactScreen:ContactDV:FNOLContactInputSet:CCAddressInputSet:globalAddressContainer:globalAddress:GlobalAddressInputSet:AddressLine1-inputEl")
 	private WebElement addressLine1;
-	@FindBy(id = "FNOLContactPopup:FNOLContactScreen:ContactDV:FNOLContactInputSet:CCAddressInputSet:globalAddressContainer:globalAddress:GlobalAddressInputSet:AddressLine2-inputEl")
+	@FindBy(id = "PostFNOLContactPopup:FNOLContactScreen:ContactDV:FNOLContactInputSet:CCAddressInputSet:globalAddressContainer:globalAddress:GlobalAddressInputSet:AddressLine2-inputEl")
 	private WebElement addressLine2;
-	@FindBy(id = "FNOLContactPopup:FNOLContactScreen:ContactDV:FNOLContactInputSet:CCAddressInputSet:globalAddressContainer:globalAddress:GlobalAddressInputSet:AddressLine3-inputEl")
+	@FindBy(id = "PostFNOLContactPopup:FNOLContactScreen:ContactDV:FNOLContactInputSet:CCAddressInputSet:globalAddressContainer:globalAddress:GlobalAddressInputSet:AddressLine3-inputEl")
 	private WebElement addressLine3;
-	@FindBy(id = "FNOLContactPopup:FNOLContactScreen:ContactDV:FNOLContactInputSet:CCAddressInputSet:globalAddressContainer:globalAddress:GlobalAddressInputSet:City-inputEl")
+	@FindBy(id = "PostFNOLContactPopup:FNOLContactScreen:ContactDV:FNOLContactInputSet:CCAddressInputSet:globalAddressContainer:globalAddress:GlobalAddressInputSet:City-inputEl")
 	private WebElement city;
-	@FindBy(id = "FNOLContactPopup:FNOLContactScreen:ContactDV:FNOLContactInputSet:CCAddressInputSet:globalAddressContainer:globalAddress:GlobalAddressInputSet:PostalCode-inputEl")
+	@FindBy(id = "PostFNOLContactPopup:FNOLContactScreen:ContactDV:FNOLContactInputSet:CCAddressInputSet:globalAddressContainer:globalAddress:GlobalAddressInputSet:County-inputEl")
+	private WebElement county;
+	@FindBy(id = "PostFNOLContactPopup:FNOLContactScreen:ContactDV:FNOLContactInputSet:CCAddressInputSet:globalAddressContainer:globalAddress:GlobalAddressInputSet:PostalCode-inputEl")
 	private WebElement postCode;
-	
-	
-	@FindBy(id = "FNOLContactPopup:FNOLContactScreen:ContactDV:FNOLContactInputSet:CCAddressInputSet:globalAddressContainer:Address_AddressType-inputEl")
+	@FindBy(id = "PostFNOLContactPopup:FNOLContactScreen:ContactDV:FNOLContactInputSet:CCAddressInputSet:globalAddressContainer:globalAddress:GlobalAddressInputSet:addresses-inputEl")
+	private WebElement addressPicker;
+	@FindBy(id = "PostFNOLContactPopup:FNOLContactScreen:ContactDV:FNOLContactInputSet:CCAddressInputSet:globalAddressContainer:Address_AddressType-inputEl")
 	private WebElement addressType;
-	//TODO
+	@FindBy(id = "PostFNOLContactPopup:FNOLContactScreen:ContactDV:FNOLContactInputSet:CCAddressInputSet:globalAddressContainer:Address_Description-inputEl")
+	private WebElement locationDesc;
+
 	
-	@FindBy(id = "FNOLContactPopup:FNOLContactScreen:ContactDV:FNOLContactInputSet:reporter_businessphone:GlobalPhoneInputSet:NationalSubscriberNumber-inputEl")
+	@FindBy(id = "PostFNOLContactPopup:FNOLContactScreen:ContactDV:FNOLContactInputSet:reporter_businessphone:GlobalPhoneInputSet:NationalSubscriberNumber-inputEl")
 	private WebElement workPhone;
-	//TODO rest of locators
-	@FindBy(id = "FNOLContactPopup:FNOLContactScreen:ContactDV:FNOLContactInputSet:reporter_mobile:GlobalPhoneInputSet:NationalSubscriberNumber-inputEl")
+	@FindBy(id = "PostFNOLContactPopup:FNOLContactScreen:ContactDV:FNOLContactInputSet:reporter_homephone:GlobalPhoneInputSet:NationalSubscriberNumber-inputEl")
+	private WebElement homePhone;
+	@FindBy(id = "PostFNOLContactPopup:FNOLContactScreen:ContactDV:FNOLContactInputSet:reporter_mobile:GlobalPhoneInputSet:NationalSubscriberNumber-inputEl")
 	private WebElement mobile;
-	@FindBy(id = "FNOLContactPopup:FNOLContactScreen:ContactDV:FNOLContactInputSet:reporter_email-inputEl")
-	private WebElement mainEmail;
+	@FindBy(id = "PostFNOLContactPopup:FNOLContactScreen:ContactDV:FNOLContactInputSet:reporter_primarytype-inputEl")
+	private WebElement primaryPhoneDropdown;
 	
-	@FindBy(id = "FNOLContactPopup:FNOLContactScreen:ContactDV:InjuredBoolean_true-inputEl")
+	@FindBy(id = "PostFNOLContactPopup:FNOLContactScreen:ContactDV:FNOLContactInputSet:reporter_email-inputEl")
+	private WebElement mainEmail;
+	@FindBy(id = "PostFNOLContactPopup:FNOLContactScreen:ContactDV:FNOLContactInputSet:Email2-inputEl")
+	private WebElement altEmail;
+	@FindBy(id = "PostFNOLContactPopup:FNOLContactScreen:ContactDV:FNOLContactInputSet:NationalInsurance_itb-inputEl")
+	private WebElement niNumber;
+	@FindBy(id = "PostFNOLContactPopup:FNOLContactScreen:ContactDV:FNOLContactInputSet:Notes-inputEl")
+	private WebElement notes;
+	
+	@FindBy(id = "PostFNOLContactPopup:FNOLContactScreen:ContactDV:InjuredBoolean_true-inputEl")
 	private WebElement injuredTrueRadio;
-	@FindBy(id = "FNOLContactPopup:FNOLContactScreen:ContactDV:InjuredBoolean_false-inputEl")
+	@FindBy(id = "PostFNOLContactPopup:FNOLContactScreen:ContactDV:InjuredBoolean_false-inputEl")
 	private WebElement injuredFalseRadio;
-	@FindBy(id = "FNOLContactPopup:FNOLContactScreen:ContactDV:InjuryIncidentInputSet:InjuryDescription-inputEl")
-	private WebElement injuredDesc;
-	//TODO rest of injuries
+	
+	//INJURY SECTION
+	//--------------
+		@FindBy(id = "PostFNOLContactPopup:FNOLContactScreen:ContactDV:InjuryIncidentInputSet:InjuryDescription-inputEl")
+		private WebElement injuredDesc;
+	
+		@FindBy(id = "PostFNOLContactPopup:FNOLContactScreen:ContactDV:InjuryIncidentInputSet:EditableBodyPartDetailsLV_tb:Add")
+		private WebElement addInjuryButton;
+		
+		@FindBy(id = "PostFNOLContactPopup:FNOLContactScreen:ContactDV:InjuryIncidentInputSet:AmbulanceAttended_itb_true-inputEl")
+		private WebElement ambulanceYesRadio;
+		@FindBy(id = "PostFNOLContactPopup:FNOLContactScreen:ContactDV:InjuryIncidentInputSet:AmbulanceAttended_itb_false-inputEl")
+		private WebElement ambulanceNoRadio;
+		
+		
+		@FindBy(id = "PostFNOLContactPopup:FNOLContactScreen:ContactDV:InjuryIncidentInputSet:AirAmbulanceAttended_itb_true-inputEl")
+		private WebElement airAmbulanceYesRadio;
+		@FindBy(id = "PostFNOLContactPopup:FNOLContactScreen:ContactDV:InjuryIncidentInputSet:AirAmbulanceAttended_itb_false-inputEl")
+		private WebElement airAmbulanceNoRadio;
+		
+		@FindBy(id = "PostFNOLContactPopup:FNOLContactScreen:ContactDV:InjuryIncidentInputSet:HospitalAttended_itb_true-inputEl")
+		private WebElement hospitalAttendYesRadio;
+		@FindBy(id = "PostFNOLContactPopup:FNOLContactScreen:ContactDV:InjuryIncidentInputSet:HospitalAttended_itb_false-inputEl")
+		private WebElement hospitalAttendNoRadio;	
+
+		@FindBy(id = "PostFNOLContactPopup:FNOLContactScreen:ContactDV:InjuryIncidentInputSet:HospitalDetails_itb:Hospital_itb-inputEl")
+		private WebElement hospitalNameDropdown;
+		@FindBy(id = "PostFNOLContactPopup:FNOLContactScreen:ContactDV:InjuryIncidentInputSet:HospitalDetails_itb:Hospital_itb:Hospital_itbMenuIcon")
+		private WebElement hospitalNamePickerIcon;	
+		@FindBy(id = "PostFNOLContactPopup:FNOLContactScreen:ContactDV:InjuryIncidentInputSet:HospitalDetails_itb:Hospital_itb:MenuItem_Search-itemEl")
+		private WebElement hospitalNameSearch;
+		@FindBy(id = "PostFNOLContactPopup:FNOLContactScreen:ContactDV:InjuryIncidentInputSet:HospitalDetails_itb:OvernightStayInHospital_itb_true-inputEl")
+		private WebElement hospitalStayYesRadio;
+		@FindBy(id = "PostFNOLContactPopup:FNOLContactScreen:ContactDV:InjuryIncidentInputSet:HospitalDetails_itb:OvernightStayInHospital_itb_false-inputEl")
+		private WebElement hospitalStayNoRadio;
+		
+		
 	
 	@FindBy(className = "message")
 	private List <WebElement> errorMessages;
 
 	public String getName() {
 
-		return "Person Contact Information";
+		return "Pedestrian Contact Information (post FNOL)";
 	}
 
 	public boolean isPageTitleDisplayed(String expected)
 	{
-		sleep(4);
-		logger.info(format("%s -check page title for Person page :"+expected, getName()));
-		logger.info(format("%s -found page title for Person page :"+this.getPageTitle().getText(), getName()));
+		sleep(3);
+		
+		logger.info(format("%s -found page title for page :"+this.getPageTitle().getText(), getName()));
 		return this.getPageTitle().getText().equalsIgnoreCase(expected);
 	}
 	
@@ -92,72 +143,283 @@ public class ClaimCenterPOSTFNOLPedestrianDetailsPOM extends BaseTest{
 
 		logger.info(format("%s -  going to click cancel", getName()));
 		GuideWireAccessors.clickGWButton(driver, this.getCancelButton());
-		logger.info(format("%s - done, cancel clicked", getName()));
+		
 	}
 	
 	public void selectOK() {
 		logger.info(format("%s -  going to click OK", getName()));
 		GuideWireAccessors.clickGWButton(driver, this.getOkButton());
-		logger.info(format("%s - done, OK clicked", getName()));
+		
 	}
 	
 	public void selectPrefix(String option)
 	{
 		logger.info(format("%s -  going to select prefix ", getName()));
 		GuideWireAccessors.selectOptionFromGWDropDown(driver, option, this.getPrefix(), 1);
-		logger.info(format("%s - done, prefix selected", getName()));
+		
 	}
 	
 	
-	public void selectAddressType(String option)
-	{
-		logger.info(format("%s -  going to select address type", getName()));
-		GuideWireAccessors.selectOptionFromGWDropDown(driver, option, this.getAddressType(), 1);
-		logger.info(format("%s - done, address type selected", getName()));
-	}
+	
 	
 	public void setFirstName(String text)
 	{
 		logger.info(format("%s -  going to set first name", getName()));
 		GuideWireAccessors.setGWTextBox(driver, text, this.getFirstName());
-		logger.info(format("%s - done, first name set", getName()));
+		
+	}
+	public void setMiddleName(String text)
+	{
+		logger.info(format("%s -  going to set middle name", getName()));
+		GuideWireAccessors.setGWTextBox(driver, text, this.getMiddleName());
+		
 	}
 	public void setLastName(String text)
 	{
 		logger.info(format("%s -  going to set last name", getName()));
 		GuideWireAccessors.setGWTextBox(driver, text, this.getLastName());
-		logger.info(format("%s - done, last name set", getName()));
+		
 	}
-	public void setMobile(String text)
+	
+	public void selectGender(String option)
 	{
-		logger.info(format("%s -  going to set mobile", getName()));
-		GuideWireAccessors.setGWTextBox(driver, text, this.getMobile());
-		logger.info(format("%s - done, mobile set", getName()));
+		logger.info(format("%s -  going to select geneder type", getName()));
+		GuideWireAccessors.selectOptionFromGWDropDown(driver, option, this.getGender(), 1);
+		
 	}
-	public void setEmail(String text)
-	{
-		logger.info(format("%s -  going to set email", getName()));
-		GuideWireAccessors.setGWTextBox(driver, text, this.getMainEmail());
-		logger.info(format("%s - done, email set", getName()));
-	}
+	
+	
+	//ADDRESS details
+	//-------------------------
 	public void setAddressLine1(String text)
 	{
 		logger.info(format("%s -  going to set address line1", getName()));
 		GuideWireAccessors.setGWTextBox(driver, text, this.getAddressLine1());
-		logger.info(format("%s - done, address line1 set", getName()));
+		
 	}
 	public void setAddressLine2(String text)
 	{
 		logger.info(format("%s -  going to set address line2", getName()));
 		GuideWireAccessors.setGWTextBox(driver, text, this.getAddressLine2());
-		logger.info(format("%s - done, address line2 set", getName()));
+		
 	}
 	public void setAddressLine3(String text)
 	{
 		logger.info(format("%s -  going to set address line3", getName()));
 		GuideWireAccessors.setGWTextBox(driver, text, this.getAddressLine3());
-		logger.info(format("%s - done, address line3 set", getName()));
+		
 	}
+	public void setCity(String text)
+	{
+		logger.info(format("%s -  going to set city", getName()));
+		GuideWireAccessors.setGWTextBox(driver, text, this.getCity());
+		
+	}
+	public void setCounty(String text)
+	{
+		logger.info(format("%s -  going to set county", getName()));
+		GuideWireAccessors.setGWTextBox(driver, text, this.getCounty());
+		
+	}
+	public void setPostcode(String text)
+	{
+		logger.info(format("%s -  going to set postcode", getName()));
+		GuideWireAccessors.setGWTextBox(driver, text, this.getPostCode());
+		// as postcode causes display off other address fields, but this can take a couple of seconds - the next method should wait until available but add a slug anyway
+				Actions actions = new Actions(driver);
+				actions.sendKeys(Keys.TAB);
+				actions.build().perform();
+				sleep(2);
+		
+	}
+	public void selectAddress(String option)
+	{
+		logger.info(format("%s -  going to select address for postcode", getName()));
+		GuideWireAccessors.selectOptionFromGWDropDown(driver, option, this.getAddressPicker(), 1);
+		
+	}
+	public void selectAddressType(String option)
+	{
+		logger.info(format("%s -  going to select address type", getName()));
+		GuideWireAccessors.selectOptionFromGWDropDown(driver, option, this.getAddressType(), 1);
+		
+	}
+	public void setAddressLocation(String text)
+	{
+		logger.info(format("%s -  going to set address location desc", getName()));
+		GuideWireAccessors.setGWTextBox(driver, text, this.getLocationDesc());
+		
+	}
+	
+	
+	public void setWorkPhone(String text)
+	{
+		logger.info(format("%s -  going to set workphone", getName()));
+		GuideWireAccessors.setGWTextBox(driver, text, this.getWorkPhone());
+		
+	}
+	public void setHomePhone(String text)
+	{
+		logger.info(format("%s -  going to set homephone", getName()));
+		GuideWireAccessors.setGWTextBox(driver, text, this.getHomePhone());
+		
+	}
+	public void setMobile(String text)
+	{
+		logger.info(format("%s -  going to set mobile", getName()));
+		GuideWireAccessors.setGWTextBox(driver, text, this.getMobile());
+		
+	}
+	public void selectPrimaryPhone(String option)
+	{
+		logger.info(format("%s -  going to select primary phone type", getName()));
+		GuideWireAccessors.selectOptionFromGWDropDown(driver, option, this.getPrimaryPhoneDropdown(), 1);
+		
+	}
+	
+	
+	public void setEmail(String text)
+	{
+		logger.info(format("%s -  going to set email", getName()));
+		GuideWireAccessors.setGWTextBox(driver, text, this.getMainEmail());
+		
+	}
+	public void setAltEmail(String text)
+	{
+		logger.info(format("%s -  going to set altemail", getName()));
+		GuideWireAccessors.setGWTextBox(driver, text, this.getAltEmail());
+		
+	}
+	public void setNiNumber(String text)
+	{
+		logger.info(format("%s -  going to set ninumber", getName()));
+		GuideWireAccessors.setGWTextBox(driver, text, this.getNiNumber());
+		
+	}
+	public void setNotes(String text)
+	{
+		logger.info(format("%s -  going to set notes", getName()));
+		GuideWireAccessors.setGWTextBox(driver, text, this.getNotes());
+		
+	}
+	
+	// Injury Section
+		//-------------------------------------
+		public void selectInjured(boolean injured)
+		{
+			logger.info(format("%s -  going to set injured"+injured, getName()));
+			
+			if (injured)
+			{
+			GuideWireAccessors.clickGWButton(driver, this.getInjuredTrueRadio());
+			}
+			else
+			{
+				GuideWireAccessors.clickGWButton(driver, this.getInjuredFalseRadio());
+			}
+			
+		}
+		public void selectAddInjury()
+		{
+			logger.info(format("%s -  going to clikc add injury button", getName()));
+			
+				GuideWireAccessors.clickGWButton(driver, this.getAddInjuryButton());
+		
+			
+		}
+		
+		public void setInjuryDesc(String text) {
+			sleep(1);
+			logger.info(format("%s -  going to set injury desc", getName()));
+			GuideWireAccessors.setGWTextBox(driver, text, this.getInjuredDesc());
+		}
+		public void selectAreaOfBody(String option, int sequence)
+		{
+			logger.info(format("%s -  going to select area of body"+option, getName()));
+			// use to select the area of body for the first (for now) change to be able to set for any row
+		    // just change to use table[x]
+			String locator = "//*[@id=\"PostFNOLContactPopup:FNOLContactScreen:ContactDV:InjuryIncidentInputSet:EditableBodyPartDetailsLV-body\"]//table[" + sequence + "]//tr/td[2]/div";
+			WebElement element = driver.findElement(By.xpath(locator));
+			GuideWireAccessors.selectOptionFromGWDropDown(driver, option, element, 1);
+			
+		}
+		
+		public void selectDetailedInjury(String option, int sequence)
+		{
+			logger.info(format("%s -  going to select detald injury"+option, getName()));
+			// use to select the detailed injury for the first (for now) change to be able to set for any row
+			sleep(2);
+			String locator = "//*[@id=\"PostFNOLContactPopup:FNOLContactScreen:ContactDV:InjuryIncidentInputSet:EditableBodyPartDetailsLV-body\"]//table[" + sequence + "]//tr/td[3]/div";
+			WebElement element = driver.findElement(By.xpath(locator));
+			GuideWireAccessors.selectOptionFromGWDropDown(driver, option, element, 1);
+			
+		}
+		
+		public void selectAmbulanceAttend(boolean attended)
+		{
+			logger.info(format("%s -  going to set ambulance attended"+attended, getName()));
+			
+			if (attended)
+			{
+			GuideWireAccessors.clickGWButton(driver, this.getAmbulanceYesRadio());
+			}
+			else
+			{
+				GuideWireAccessors.clickGWButton(driver, this.getAmbulanceNoRadio());
+			}
+			
+		}
+		
+		public void selectAirAmbulanceAttend(boolean attended)
+		{
+			logger.info(format("%s -  going to set air ambulance attended"+attended, getName()));
+			
+			if (attended)
+			{
+			GuideWireAccessors.clickGWButton(driver, this.getAirAmbulanceYesRadio());
+			}
+			else
+			{
+				GuideWireAccessors.clickGWButton(driver, this.getAirAmbulanceNoRadio());
+			}
+			
+		}
+		
+		public void selectHospitalAttend(boolean attended)
+		{
+			logger.info(format("%s -  going to set hospital attended"+attended, getName()));
+			
+			if (attended)
+			{
+			GuideWireAccessors.clickGWButton(driver, this.getHospitalAttendYesRadio());
+			}
+			else
+			{
+				GuideWireAccessors.clickGWButton(driver, this.getHospitalAttendNoRadio());
+			}
+			
+		}
+		public void selectOvernightStay(boolean stayed)
+		{
+			logger.info(format("%s -  going to set overnight stay to:"+stayed, getName()));
+		    if (stayed)
+		    {
+		    	GuideWireAccessors.clickGWButton(driver, this.getHospitalStayYesRadio());
+		    }
+		    else
+		    {
+		    	GuideWireAccessors.clickGWButton(driver, this.getHospitalStayNoRadio());
+		    }
+		
+			
+		}
+		
+		public void selectSearchHospital()
+		{
+			logger.info(format("%s - going to select Search from hospital name picker", getName()));
+			GuideWireAccessors.selectOptionFromGWPicker(driver, this.getHospitalNamePickerIcon(),this.getHospitalNameSearch());
+		}
+   
    
 	private WebElement getCancelButton() {
 	return cancelButton;
@@ -247,6 +509,86 @@ public class ClaimCenterPOSTFNOLPedestrianDetailsPOM extends BaseTest{
 
 	private WebElement getInjuredDesc() {
 		return injuredDesc;
+	}
+
+	private WebElement getCounty() {
+		return county;
+	}
+
+	private WebElement getAddressPicker() {
+		return addressPicker;
+	}
+
+	private WebElement getLocationDesc() {
+		return locationDesc;
+	}
+
+	private WebElement getHomePhone() {
+		return homePhone;
+	}
+
+	private WebElement getPrimaryPhoneDropdown() {
+		return primaryPhoneDropdown;
+	}
+
+	private WebElement getAltEmail() {
+		return altEmail;
+	}
+
+	private WebElement getNiNumber() {
+		return niNumber;
+	}
+
+	private WebElement getNotes() {
+		return notes;
+	}
+
+	private WebElement getAddInjuryButton() {
+		return addInjuryButton;
+	}
+
+	private WebElement getAmbulanceYesRadio() {
+		return ambulanceYesRadio;
+	}
+
+	private WebElement getAmbulanceNoRadio() {
+		return ambulanceNoRadio;
+	}
+
+	private WebElement getAirAmbulanceYesRadio() {
+		return airAmbulanceYesRadio;
+	}
+
+	private WebElement getAirAmbulanceNoRadio() {
+		return airAmbulanceNoRadio;
+	}
+
+	private WebElement getHospitalAttendYesRadio() {
+		return hospitalAttendYesRadio;
+	}
+
+	private WebElement getHospitalAttendNoRadio() {
+		return hospitalAttendNoRadio;
+	}
+
+	private WebElement getHospitalNameDropdown() {
+		return hospitalNameDropdown;
+	}
+
+	private WebElement getHospitalNamePickerIcon() {
+		return hospitalNamePickerIcon;
+	}
+
+	private WebElement getHospitalNameSearch() {
+		return hospitalNameSearch;
+	}
+
+	private WebElement getHospitalStayYesRadio() {
+		return hospitalStayYesRadio;
+	}
+
+	private WebElement getHospitalStayNoRadio() {
+		return hospitalStayNoRadio;
 	}
 	
 

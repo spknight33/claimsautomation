@@ -220,8 +220,103 @@ public class ClaimCenterTotalLossCalulatorPOM extends BaseTest{
 
 	}
 	
-	//TODO the rest
-   
+	public void selectVeryHeavyDamage(boolean veryheavy)
+	{
+		logger.info(format("%s -  going to set very heavy to:"+veryheavy, getName()));
+	    if (veryheavy)
+	    {
+	    	GuideWireAccessors.clickGWButton(driver, this.getVeryHeavyYesOption());
+	    }
+	    else
+	    {
+	    	GuideWireAccessors.clickGWButton(driver, this.getVeryHeavyYesOption());
+	    }
+
+	}
+	
+	public void selectBurnEngine(boolean burn)
+	{
+		logger.info(format("%s -  going to set burn engine to:"+burn, getName()));
+	    if (burn)
+	    {
+	    	GuideWireAccessors.clickGWButton(driver, this.getBurnEngineYesOption());
+	    }
+	    else
+	    {
+	    	GuideWireAccessors.clickGWButton(driver, this.getBurnEngineNoOption());
+	    }
+
+	}
+	
+	public void selectDamageInterior(boolean burninterior)
+	{
+		logger.info(format("%s -  going to set damage interior to:"+burninterior, getName()));
+	    if (burninterior)
+	    {
+	    	GuideWireAccessors.clickGWButton(driver, this.getDamageInteriorYesOption());
+	    }
+	    else
+	    {
+	    	GuideWireAccessors.clickGWButton(driver, this.getDamageInteriorNoOption());
+	    }
+
+	}
+	
+	public void selectDrivenIntoWater(boolean intowater)
+	{
+		logger.info(format("%s -  going to set intowater to:"+intowater, getName()));
+	    if (intowater)
+	    {
+	    	GuideWireAccessors.clickGWButton(driver, this.getFloodDeepWaterYesOption());
+	    }
+	    else
+	    {
+	    	GuideWireAccessors.clickGWButton(driver, this.getFloodDeepWaterNoOption());
+	    }
+
+	}
+	
+	public void selectSubmerged(boolean submerged)
+	{
+		logger.info(format("%s -  going to set submerged to:"+submerged, getName()));
+	    if (submerged)
+	    {
+	    	GuideWireAccessors.clickGWButton(driver, this.getFullySubmergedYesOption());
+	    }
+	    else
+	    {
+	    	GuideWireAccessors.clickGWButton(driver, this.getFullySubmergedNoOption());
+	    }
+
+	}
+	
+	public void selectWaterPassengerCompartment(boolean compartment)
+	{
+		logger.info(format("%s -  going to set compartment to:"+compartment, getName()));
+	    if (compartment)
+	    {
+	    	GuideWireAccessors.clickGWButton(driver, this.getWaterCompartmentYesOption());
+	    }
+	    else
+	    {
+	    	GuideWireAccessors.clickGWButton(driver, this.getWaterCompartmentNoOption());
+	    }
+
+	}
+	
+	public void selectWaterReachedSeats(boolean seats)
+	{
+		logger.info(format("%s -  going to set seats to:"+seats, getName()));
+	    if (seats)
+	    {
+	    	GuideWireAccessors.clickGWButton(driver, this.getWaterSeatsYesOption());
+	    }
+	    else
+	    {
+	    	GuideWireAccessors.clickGWButton(driver, this.getWaterSeatsNoOption());
+	    }
+
+	}
 	private WebElement getCancelButton() {
 	return cancelButton;
 }

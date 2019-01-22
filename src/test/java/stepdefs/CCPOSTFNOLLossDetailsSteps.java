@@ -5,6 +5,7 @@ import java.util.List;
 import org.testng.Assert;
 
 import com.big.automation.selenium_webdriver.common.baseTest.BaseTest;
+import com.big.automation.selenium_webdriver.common.utilities.excelutils.ExcelUtil;
 
 import cucumber.api.DataTable;
 import cucumber.api.java.en.Given;
@@ -48,11 +49,6 @@ public class CCPOSTFNOLLossDetailsSteps extends BaseTest {
 		postFnolLossDetailsPOM.addPedestrian();
 	}
 	
-	@Given("^I click add Injury on post FNOL loss details$")
-	public void addInjury() {
-		
-		postFnolLossDetailsPOM.addInjury();
-	}
 	
 	@Given("^I click add Police details on post FNOL loss details$")
 	public void addPoliceDetails() {
@@ -61,40 +57,34 @@ public class CCPOSTFNOLLossDetailsSteps extends BaseTest {
 	}
 	
 	@Then("^I can enter data into the Loss Details fields$")
-	public void i_can_enter_data_into_the_Loss_Details_fields(DataTable dt) throws Throwable {
-		List<String> list = dt.asList(String.class);
-	   	for(int i=0; i<list.size(); i++) {
-				switch(list.get(i))
-			    {
-			    case "Circumstances":
-			    	postFnolLossDetailsPOM.setCircumstancesValue("Some Circs");
-	    	   	break;
-			    case "Incident Type":
-			    	postFnolLossDetailsPOM.selectIncidentType("Accident");
-	    	   	break;
-			    case "Cause":
-			    	postFnolLossDetailsPOM.selectClaimCauseType("Car Door Open");
-	    	   	break;
-			    case "Sub Cause":
-			    	postFnolLossDetailsPOM.selectClaimSubCauseType("Third party opened car door into path of insured");
-	    	   	break;
-			    case "Fault Rating":
-			    	postFnolLossDetailsPOM.selectFaultType("Fault");
-	    	   	break;
-			    case "Catastrophe":
-			    	//TODO
-	    	   	break;
-			    case "Date Of Loss":
-			    	//TODO
-	    	   	break;
-			   
-			    default:
-			    Assert.fail("unknown input field :"+ list.get(i)+" - check cucumber script!");
-			    }
-				
-				
-				
-			}
+	public void i_enter_data_into_the_Loss_Details_fields() throws Throwable {
+		
+	
+		String fieldValue = ExcelUtil.getTestDataValue("PostFnol_LossDetails_Circumstances");
+		if (fieldValue !=null)
+			postFnolLossDetailsPOM.setCircumstancesValue(fieldValue);
+		
+		fieldValue = ExcelUtil.getTestDataValue("PostFnol_LossDetails_IncidentType");
+		if (fieldValue !=null)
+			postFnolLossDetailsPOM.selectIncidentType(fieldValue);
+		
+		fieldValue = ExcelUtil.getTestDataValue("PostFnol_LossDetails_Cause");
+		if (fieldValue !=null)
+			postFnolLossDetailsPOM.selectClaimCauseType(fieldValue);
+		
+		fieldValue = ExcelUtil.getTestDataValue("PostFnol_LossDetails_SubCause");
+		if (fieldValue !=null)
+			postFnolLossDetailsPOM.selectClaimSubCauseType(fieldValue);
+		
+		fieldValue = ExcelUtil.getTestDataValue("PostFnol_LossDetails_FaulltRate");
+		if (fieldValue !=null)
+			postFnolLossDetailsPOM.selectFaultType(fieldValue);
+		
+		fieldValue = ExcelUtil.getTestDataValue("PostFnol_LossDetails_InsuredsLiability");
+		if (fieldValue !=null)
+			postFnolLossDetailsPOM.setInsuredsLiability(fieldValue);
+		
+	   	
 			
 	}
 
@@ -144,44 +134,57 @@ public class CCPOSTFNOLLossDetailsSteps extends BaseTest {
 	}
 
 	@Then("^I can enter data into the Incident Question fields$")
-	public void i_can_enter_data_into_the_Incident_Question_fields(DataTable dt) throws Throwable {
-		List<String> list = dt.asList(String.class);
-	   	for(int i=0; i<list.size(); i++) {
-				switch(list.get(i))
-			    {
-			    case "What were you using the vehicle for":
-			    	postFnolLossDetailsPOM.selectVehicleUsedFor("Business");
-	    	   	break;
-			    case "What was the pourpose of your Journey":
-			    	postFnolLossDetailsPOM.setJourneyPurpose("Going to the shops");
-	    	   	break;
-			    case "Do You know the other driver":
-			    	//TODO
-	    	   	break;
-			    case "At what speed were you travelling at impact":
-			    	postFnolLossDetailsPOM.selectImpactSpeed("0-6 MPH");
-	    	   	break;
-			    case "Weather":
-			    	postFnolLossDetailsPOM.selectWeather("Wind");
-	    	   	break;
-			    case "Road Conditions":
-			    	postFnolLossDetailsPOM.selectRoadConditions("Muddy");
-	    	   	break;
-			    case "Supporting photgraphic evidence":
-			    	postFnolLossDetailsPOM.selectPhotos("Yes");
-	    	   	break;
-			    case "CCTv/Dashcam footage available":
-			    	postFnolLossDetailsPOM.selectCctv("Yes");
-			    	postFnolLossDetailsPOM.setCctvContact("The local police");
-	    	   	break;
-			    
-			   
-			    default:
-			    Assert.fail("unknown input field :"+ list.get(i)+" - check cucumber script!");
-			    }
-				
-				
-			}
+	public void i_enter_data_into_the_Incident_Question_fields() throws Throwable {
+		
+		String fieldValue = ExcelUtil.getTestDataValue("PostFnol_LossDetails_IncUsingFor");
+		if (fieldValue !=null)
+			postFnolLossDetailsPOM.selectVehicleUsedFor(fieldValue);
+		
+		fieldValue = ExcelUtil.getTestDataValue("PostFnol_LossDetails_IncPurpose");
+		if (fieldValue !=null)
+			postFnolLossDetailsPOM.setJourneyPurpose(fieldValue);
+		
+		fieldValue = ExcelUtil.getTestDataValue("PostFnol_LossDetails_IncKnowOtherDriver");
+		if (fieldValue !=null && fieldValue.equalsIgnoreCase("TRUE"))
+		{
+			postFnolLossDetailsPOM.selectKnowOtherDriver(true);
+			fieldValue = ExcelUtil.getTestDataValue("PostFnol_LossDetails_IncNatureOfRel");
+			if (fieldValue !=null)
+				postFnolLossDetailsPOM.setNatureOfRelationship(fieldValue);
+		}
+		else {
+			postFnolLossDetailsPOM.selectKnowOtherDriver(false);
+		}
+		
+		fieldValue = ExcelUtil.getTestDataValue("PostFnol_LossDetails_IncSpeedImpact");
+		if (fieldValue !=null)
+			postFnolLossDetailsPOM.selectImpactSpeed(fieldValue);
+		
+		fieldValue = ExcelUtil.getTestDataValue("PostFnol_LossDetails_IncWeather");
+		if (fieldValue !=null)
+			postFnolLossDetailsPOM.selectWeather(fieldValue);
+		
+		fieldValue = ExcelUtil.getTestDataValue("PostFnol_LossDetails_IncRoadCond");
+		if (fieldValue !=null)
+			postFnolLossDetailsPOM.selectRoadConditions(fieldValue);
+		
+		fieldValue = ExcelUtil.getTestDataValue("PostFnol_LossDetails_IncPhotos");
+		if (fieldValue !=null)
+			postFnolLossDetailsPOM.selectPhotos(fieldValue);
+		
+		fieldValue = ExcelUtil.getTestDataValue("PostFnol_LossDetails_IncCctv");
+		if (fieldValue !=null)
+			postFnolLossDetailsPOM.selectCctv(fieldValue);
+		
+		if (fieldValue !=null && fieldValue.equalsIgnoreCase("Yes"))
+		{
+			
+			fieldValue = ExcelUtil.getTestDataValue("PostFnol_LossDetails_IncCctvContact");
+			if (fieldValue !=null)
+				postFnolLossDetailsPOM.setCctvContact(fieldValue);
+		}
+		
+		
 	}
 	   
 

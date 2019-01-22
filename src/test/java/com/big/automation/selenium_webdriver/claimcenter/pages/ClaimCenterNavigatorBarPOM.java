@@ -47,6 +47,22 @@ public class ClaimCenterNavigatorBarPOM extends BaseTest {
 		
 	}
     
+    public void clickDesktopTopLevel(String toplink) throws Exception {
+    	logger.info(format("%s - done, going to click desktop Navigator", getName()));
+    	
+    	for (WebElement option : navigationLinks) {
+    		
+    		    		
+         // desktop links include a count of items, so exclude that
+    		if(option.getText().startsWith(toplink)){
+    		    GuideWireAccessors.clickGWButton(driver, option); 
+    		    logger.info(format("%s - done, clicked navigator", getName()));
+    		   break;
+    		}
+    	}
+		
+	}
+    
     
     public void selectActionsSubMenuHierarchy(List<String> menuHierarchy)
 	{

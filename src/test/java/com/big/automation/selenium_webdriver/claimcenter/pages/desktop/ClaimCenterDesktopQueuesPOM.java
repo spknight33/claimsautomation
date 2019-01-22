@@ -1,47 +1,51 @@
-package com.big.automation.selenium_webdriver.claimcenter.pages;
+package com.big.automation.selenium_webdriver.claimcenter.pages.desktop;
 
+import static com.big.automation.selenium_webdriver.common.utilities.ThreadUtils.sleep;
 import static java.lang.String.format;
 
 import java.util.List;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
-import static com.big.automation.selenium_webdriver.common.utilities.ThreadUtils.sleep;
 
 import com.big.automation.selenium_webdriver.common.baseTest.BaseTest;
 import com.big.automation.selenium_webdriver.common.gw.utilities.GuideWireAccessors;
 
-public class ClaimCenterFNOLClaimSavedPOM extends BaseTest{
+public class ClaimCenterDesktopQueuesPOM extends BaseTest{
 
-	
-	
-	@FindBy(id = "NewClaimSaved:NewClaimSavedScreen:ttlBar")
+	@FindBy(id = "DesktopQueuedActivities:DesktopQueuedActivitiesScreen:0")
 	private WebElement pageTitle;
 
 
 	@FindBy(className = "message")
 	private List <WebElement> errorMessages;
 	
-	@FindBy(id = "NewClaimSaved:NewClaimSavedScreen:NewClaimSavedDV:GoToClaim-inputEl")
-	private WebElement claimLink;
+
+	
+	@FindBy(id ="DesktopQueuedActivities:DesktopQueuedActivitiesScreen:DesktopQueuedActivities_AssignNextButton2")
+	private WebElement assignNextButton;
+
 	
 	
-	
+
 	public String getName() {
 
-		return "Claim saved FNOL confirmation";
+		return "Desktop Queue screen";
 	}
 
 	public boolean isPageTitleDisplayed(String expected)
 	{
-	    sleep(10);
+	    sleep(1);
 		logger.info(format("%s -found page title for :"+this.getPageTitle().getText(), getName()));
-		return GuideWireAccessors.getGWElementText(driver, this.getPageTitle()).equalsIgnoreCase(expected);
+		return this.getPageTitle().getText().equalsIgnoreCase(expected);
 	}
+	
+	public void clickAssignNext()
+	{
+		logger.info(format("%s -  going to click assign next in queue", getName()));
+		GuideWireAccessors.clickGWButton(driver,this.getAssignNextButton());
+	}
+	
 	
 	
 	private List<WebElement> getErrorMessages(){
@@ -51,15 +55,10 @@ public class ClaimCenterFNOLClaimSavedPOM extends BaseTest{
 		return pageTitle;
 	}
 	
-	public void clickClaimLink() {
-
-		logger.info(format("%s -  going to click claim link", getName()));
-		GuideWireAccessors.clickGWButton(driver,this.getClaimLink());
-		
-	} 
+	
+	
 	
 
-	
 
 	public boolean containsErrorMessage(String contains)
 	{
@@ -75,11 +74,9 @@ public class ClaimCenterFNOLClaimSavedPOM extends BaseTest{
 		return found;
 	}
 
-	private WebElement getClaimLink() {
-		return claimLink;
+	private WebElement getAssignNextButton() {
+		return assignNextButton;
 	}
 	
 	
-	
-
 }
