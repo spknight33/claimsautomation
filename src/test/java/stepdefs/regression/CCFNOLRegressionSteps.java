@@ -3,7 +3,7 @@ package stepdefs.regression;
 import com.big.automation.selenium_webdriver.common.baseTest.BaseTest;
 
 import cucumber.api.java.en.When;
-import stepdefs.CCFNOLStep5Steps;
+import stepdefs.fnol.CCFNOLStep5Steps;
 
 
 public class CCFNOLRegressionSteps extends BaseTest {
