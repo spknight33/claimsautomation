@@ -17,7 +17,7 @@ public class CCPOSTFNOLPassengerSteps extends BaseTest {
 	
 	@Then("^I will be on Edit Passenger screen for post FNOL$")
 	public void i_will_be_on_editpassenger_screen_for_postFNOL() throws Throwable {
-	    postFnolEditPassengerPOM.isPageTitleDisplayed("Passenger Details");
+	    postFnolPassengerPOM.isPageTitleDisplayed("Passenger Details");
 	}
 
 	
@@ -26,16 +26,16 @@ public class CCPOSTFNOLPassengerSteps extends BaseTest {
 		switch(fieldName)
 		    {
 	    case "Passenger Name":
-	    	postFnolEditPassengerPOM.selectPassengerName(fieldValue);
+	    	postFnolPassengerPOM.selectPassengerName(fieldValue);
 	    	break;
 	       case "Prefix":
-	    	   postFnolEditPassengerPOM.selectPrefix(fieldValue);
+	    	   postFnolPassengerPOM.selectPrefix(fieldValue);
 	    	break;
 	    case "Address Type":
-	    	postFnolEditPassengerPOM.selectAddressType(fieldValue);
+	    	postFnolPassengerPOM.selectAddressType(fieldValue);
 	    	break;
 	    case "Gender":
-	    	postFnolEditPassengerPOM.selectGender(fieldValue);
+	    	postFnolPassengerPOM.selectGender(fieldValue);
 	    	break;
 	  
 	    default:
@@ -46,13 +46,13 @@ public class CCPOSTFNOLPassengerSteps extends BaseTest {
 	@Given("^I click ok button on edit passenger screen for post FNOL$")
 	public void okorupdate() {
 		
-		postFnolEditPassengerPOM.selectOKorUpdate();
+		postFnolPassengerPOM.selectOKorUpdate();
 	}
 	
 	@Given("^I click cancel button on edit passenger screen for post FNOL$")
 	public void cancel() {
 		
-		postFnolEditPassengerPOM.cancel();
+		postFnolPassengerPOM.cancel();
 	}
 	
 	

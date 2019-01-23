@@ -16,7 +16,7 @@ public class CCPOSTFNOLEditDriverSteps extends BaseTest {
 	
 	@Then("^I will be on edit Driver screen for post FNOL$")
 	public void i_will_be_on_driver_screen_for_postFNOL() throws Throwable {
-	    postFnolEditDriverPOM.isPageTitleDisplayed("Driver Details");
+	    postFnolDriverPOM.isPageTitleDisplayed("Driver Details");
 	}
 
 	
@@ -25,19 +25,19 @@ public class CCPOSTFNOLEditDriverSteps extends BaseTest {
 		switch(fieldName)
 		    {
 	    case "Driver Name":
-	    	postFnolEditDriverPOM.selectDriverName(fieldValue);
+	    	postFnolDriverPOM.selectDriverName(fieldValue);
 	    	break;
 	    case "Related To":
-	    	postFnolEditDriverPOM.selectRelationToOwner(fieldValue);
+	    	postFnolDriverPOM.selectRelationToOwner(fieldValue);
 	    	break;
 	    case "Prefix":
-	    	postFnolEditDriverPOM.selectPrefix(fieldValue);
+	    	postFnolDriverPOM.selectPrefix(fieldValue);
 	    	break;
 	    case "Address Type":
-	    	postFnolEditDriverPOM.selectAddressType(fieldValue);
+	    	postFnolDriverPOM.selectAddressType(fieldValue);
 	    	break;
 	    case "Gender":
-	    	postFnolEditDriverPOM.selectGender(fieldValue);
+	    	postFnolDriverPOM.selectGender(fieldValue);
 	    	break;
 	  
 	    default:
@@ -48,13 +48,13 @@ public class CCPOSTFNOLEditDriverSteps extends BaseTest {
 	@Given("^I click ok button on edit driver screen for post FNOL$")
 	public void okorupdate() {
 		
-		postFnolEditDriverPOM.selectOKOrUpdate();
+		postFnolDriverPOM.selectOKOrUpdate();
 	}
 	
 	@Given("^I click cancel button on edit driver screen for post FNOL$")
 	public void cancel() {
 		
-		postFnolEditDriverPOM.cancel();
+		postFnolDriverPOM.cancel();
 	}
 	
 	

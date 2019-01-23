@@ -14,7 +14,7 @@ import org.openqa.selenium.support.FindBy;
 import com.big.automation.selenium_webdriver.common.baseTest.BaseTest;
 import com.big.automation.selenium_webdriver.common.gw.utilities.GuideWireAccessors;
 
-public class ClaimCenterPOSTFNOLEditDriverDetailsPOM extends BaseTest{
+public class ClaimCenterPOSTFNOLDriverDetailsPOM extends BaseTest{
 
 		
 	@FindBy(id = "PostFNOLContactPopup:FNOLContactScreen:ttlBar")

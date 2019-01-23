@@ -55,18 +55,17 @@ import com.big.automation.selenium_webdriver.claimcenter.pages.fnol.exposures.Cl
 import com.big.automation.selenium_webdriver.claimcenter.pages.fnol.exposures.ClaimCenterFNOLNewProtocolHireExposurePOM;
 import com.big.automation.selenium_webdriver.claimcenter.pages.fnol.exposures.ClaimCenterFNOLNewTPCaptureExposurePOM;
 import com.big.automation.selenium_webdriver.claimcenter.pages.fnol.exposures.ClaimCenterFNOLNewVehicleExposurePOM;
-import com.big.automation.selenium_webdriver.claimcenter.pages.postfnol.ClaimCenterPOSTFNOLEditDriverDetailsPOM;
-import com.big.automation.selenium_webdriver.claimcenter.pages.postfnol.ClaimCenterPOSTFNOLEditPassengerDetailsPOM;
+import com.big.automation.selenium_webdriver.claimcenter.pages.postfnol.ClaimCenterPOSTFNOLDriverDetailsPOM;
 import com.big.automation.selenium_webdriver.claimcenter.pages.postfnol.ClaimCenterPOSTFNOLEditPropertyPOM;
 import com.big.automation.selenium_webdriver.claimcenter.pages.postfnol.ClaimCenterPOSTFNOLEditVehicleDetailsPOM;
 import com.big.automation.selenium_webdriver.claimcenter.pages.postfnol.ClaimCenterPOSTFNOLLossDetailsPOM;
 import com.big.automation.selenium_webdriver.claimcenter.pages.postfnol.ClaimCenterPOSTFNOLNewActivityPOM;
-import com.big.automation.selenium_webdriver.claimcenter.pages.postfnol.ClaimCenterPOSTFNOLNewInjuryPOM;
 import com.big.automation.selenium_webdriver.claimcenter.pages.postfnol.ClaimCenterPOSTFNOLNewNotePOM;
 import com.big.automation.selenium_webdriver.claimcenter.pages.postfnol.ClaimCenterPOSTFNOLNewPoliceDetailsPOM;
 import com.big.automation.selenium_webdriver.claimcenter.pages.postfnol.ClaimCenterPOSTFNOLNewPropertyPOM;
 import com.big.automation.selenium_webdriver.claimcenter.pages.postfnol.ClaimCenterPOSTFNOLNewServicePOM;
 import com.big.automation.selenium_webdriver.claimcenter.pages.postfnol.ClaimCenterPOSTFNOLNewVehicleDetailsPOM;
+import com.big.automation.selenium_webdriver.claimcenter.pages.postfnol.ClaimCenterPOSTFNOLPassengerDetailsPOM;
 import com.big.automation.selenium_webdriver.claimcenter.pages.postfnol.ClaimCenterPOSTFNOLPedestrianDetailsPOM;
 import com.big.automation.selenium_webdriver.claimcenter.pages.postfnol.ClaimCenterPOSTFNOLSummaryPOM;
 import com.big.automation.selenium_webdriver.claimcenter.pages.postfnol.ClaimCenterPOSTFNOLWorkplanPOM;
@@ -146,11 +145,10 @@ public class BaseTest extends AbstractTestNGCucumberTests{
    public static ClaimCenterPOSTFNOLNewPropertyPOM postFnolNewPropertyPOM;
    public static ClaimCenterPOSTFNOLEditPropertyPOM postFnolEditPropertyPOM;
   
-   public static ClaimCenterPOSTFNOLNewInjuryPOM postFnolNewInjuryPOM;
    public static ClaimCenterPOSTFNOLPedestrianDetailsPOM postFnolPedestrianPOM;
    public static ClaimCenterPOSTFNOLEditVehicleDetailsPOM postFnolEditVehiclePOM;
-   public static ClaimCenterPOSTFNOLEditDriverDetailsPOM postFnolEditDriverPOM;
-   public static ClaimCenterPOSTFNOLEditPassengerDetailsPOM postFnolEditPassengerPOM;
+   public static ClaimCenterPOSTFNOLDriverDetailsPOM postFnolDriverPOM;
+   public static ClaimCenterPOSTFNOLPassengerDetailsPOM postFnolPassengerPOM;
    
    
    
@@ -244,7 +242,6 @@ public class BaseTest extends AbstractTestNGCucumberTests{
       
       fnolPedestrianPOM= PageFactory.initElements(driver, ClaimCenterFNOLPedestrianDetailsPOM.class);
       fnolNewPolicePOM= PageFactory.initElements(driver, ClaimCenterFNOLNewPoliceDetailsPOM.class);
-      fnolNewInjuryPOM= PageFactory.initElements(driver, ClaimCenterFNOLNewInjuryPOM.class);
       fnolNewExposurePOM= PageFactory.initElements(driver, ClaimCenterFNOLNewExposurePOM.class);
       fnolNewPropertyExposurePOM= PageFactory.initElements(driver, ClaimCenterFNOLNewPropertyExposurePOM.class);
       fnolNewInjuryExposurePOM= PageFactory.initElements(driver, ClaimCenterFNOLNewInjuryExposurePOM.class);
@@ -274,13 +271,12 @@ public class BaseTest extends AbstractTestNGCucumberTests{
       postFnolSummaryPOM= PageFactory.initElements(driver, ClaimCenterPOSTFNOLSummaryPOM.class); 
       postFnolLossDetailsPOM= PageFactory.initElements(driver, ClaimCenterPOSTFNOLLossDetailsPOM.class); 
       postFnolNewPropertyPOM= PageFactory.initElements(driver, ClaimCenterPOSTFNOLNewPropertyPOM.class);
-      postFnolNewInjuryPOM= PageFactory.initElements(driver, ClaimCenterPOSTFNOLNewInjuryPOM.class);
       postFnolNewVehiclePOM= PageFactory.initElements(driver, ClaimCenterPOSTFNOLNewVehicleDetailsPOM.class);
       
       postFnolPedestrianPOM= PageFactory.initElements(driver, ClaimCenterPOSTFNOLPedestrianDetailsPOM.class);
       postFnolEditVehiclePOM= PageFactory.initElements(driver, ClaimCenterPOSTFNOLEditVehicleDetailsPOM.class);
-      postFnolEditDriverPOM= PageFactory.initElements(driver, ClaimCenterPOSTFNOLEditDriverDetailsPOM.class);
-      postFnolEditPassengerPOM= PageFactory.initElements(driver, ClaimCenterPOSTFNOLEditPassengerDetailsPOM.class);
+      postFnolDriverPOM= PageFactory.initElements(driver, ClaimCenterPOSTFNOLDriverDetailsPOM.class);
+      postFnolPassengerPOM= PageFactory.initElements(driver, ClaimCenterPOSTFNOLPassengerDetailsPOM.class);
       
       
       
