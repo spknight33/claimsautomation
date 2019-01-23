@@ -22,8 +22,6 @@ public class ClaimCenterPOSTFNOLEditVehicleDetailsPOM extends BaseTest{
 	private WebElement cancelButton;
 	
 	
-	
-	
 	//VEHICLE BASICS SECTION
 	//--------------------------------------------------------------------------
 	@FindBy(id = "EditVehicleIncidentPopup:EditVehicleIncidentScreen:PostFNOLVehicleIncidentDV:VehicleBasicsIS:LossParty_option1-inputEl")

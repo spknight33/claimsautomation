@@ -94,6 +94,59 @@ public class ClaimCenterPOSTFNOLLossDetailsPOM extends BaseTest{
 	@FindBy(id="ClaimLossDetails:ClaimLossDetailsScreen:AddPropertyDamageButton")
 	private WebElement addPropertyDamageButton;
 	
+	//VEHICLE edit dropdowns
+	//-----------------------------------------
+	// assumes 1st vehicle is insureds
+	@FindBy(id="ClaimLossDetails:ClaimLossDetailsScreen:VehicleIncidentIterator:0:VehicleIncidentDV:VehicleName:VehicleNameMenuIcon")
+	private WebElement phEditVehiclePickerIcon;
+	@FindBy(id="ClaimLossDetails:ClaimLossDetailsScreen:VehicleIncidentIterator:0:VehicleIncidentDV:VehicleName:EditVehicleMenu-itemEl")
+	private WebElement phEditVehiclePickerEditVehicle;
+	@FindBy(id="ClaimLossDetails:ClaimLossDetailsScreen:VehicleIncidentIterator:0:VehicleIncidentDV:VehicleName:RemoveVehicleMenu-textEl")
+	private WebElement phEditVehiclePickerRemoveVehicle;
+	// assumes 2nd vehicle is insureds
+	@FindBy(id="ClaimLossDetails:ClaimLossDetailsScreen:VehicleIncidentIterator:1:VehicleIncidentDV:VehicleName:VehicleNameMenuIcon")
+	private WebElement tpEditVehiclePickerIcon;
+	@FindBy(id="ClaimLossDetails:ClaimLossDetailsScreen:VehicleIncidentIterator:1:VehicleIncidentDV:VehicleName:EditVehicleMenu-itemEl")
+	private WebElement tpEditVehiclePickerEditVehicle;
+	@FindBy(id="ClaimLossDetails:ClaimLossDetailsScreen:VehicleIncidentIterator:1:VehicleIncidentDV:VehicleName:RemoveVehicleMenu-textEl")
+	private WebElement tpEditVehiclePickerRemoveVehicle;
+	
+	
+	@FindBy(id="ClaimLossDetails:ClaimLossDetailsScreen:VehicleIncidentIterator:0:VehicleIncidentDV:PassengerLV:driver")
+	private WebElement phEditDriver;
+	@FindBy(id="ClaimLossDetails:ClaimLossDetailsScreen:VehicleIncidentIterator:1:VehicleIncidentDV:PassengerLV:driver")
+	private WebElement tpEditDriver;
+	
+	@FindBy(id="ClaimLossDetails:ClaimLossDetailsScreen:VehicleIncidentIterator:0:VehicleIncidentDV:PassengerLV:0:passenger")
+	private WebElement phEditPassenger;
+	@FindBy(id="ClaimLossDetails:ClaimLossDetailsScreen:VehicleIncidentIterator:1:VehicleIncidentDV:PassengerLV:0:passenger")
+	private WebElement tpEditPassenger;
+	
+	
+	
+	//PROPERTY edit dropdowns
+	//-----------------------------------------
+	// just do the 1st for now
+	@FindBy(id="ClaimLossDetails:ClaimLossDetailsScreen:PropertyIncidentIterator:0:PropertyIncidentDV:PropertyName:PropertyNameMenuIcon")
+	private WebElement editPropertyPickerIcon;
+	@FindBy(id="ClaimLossDetails:ClaimLossDetailsScreen:PropertyIncidentIterator:0:PropertyIncidentDV:PropertyName:EditProperty-itemEl")
+	private WebElement editPropertyPickerEditProperty;
+	@FindBy(id="ClaimLossDetails:ClaimLossDetailsScreen:PropertyIncidentIterator:0:PropertyIncidentDV:PropertyName:RemoveProperty-textEl")
+	private WebElement editPropertyPickerRemoveProperty;
+	
+	//PEDESTRIAN edit dropdowns
+		//-----------------------------------------
+		// just do the 1st for now
+	@FindBy(id="ClaimLossDetails:ClaimLossDetailsScreen:PedestrianIterator:0:PedestrianDV:PersonName:PersonNameMenuIcon")
+	private WebElement editPedestrianPickerIcon;
+	@FindBy(id="ClaimLossDetails:ClaimLossDetailsScreen:PedestrianIterator:0:PedestrianDV:PersonName:EditPedestrian-textEl")
+	private WebElement editPedestrianPickerEditPedestrian;
+	@FindBy(id="ClaimLossDetails:ClaimLossDetailsScreen:PedestrianIterator:0:PedestrianDV:PersonName:RemovePedestrian-textEl")
+	private WebElement editPedestrianPickerRemovePedestrian;
+		
+	
+	
+		
 	//LOSS LOCATION
 	//----------------------------------
 	@FindBy(id ="ClaimLossDetails:ClaimLossDetailsScreen:LossDetailsAddressDV:AddressDetailInputSetRef:CCAddressInputSet:globalAddressContainer:Address_Picker-inputEl")
@@ -363,8 +416,86 @@ public class ClaimCenterPOSTFNOLLossDetailsPOM extends BaseTest{
 		
 	}
    
-   //TODO - how to select the various existing vehicles/pedestrians/property/drivers/passengers/deletes
- 
+  
+   public void selectEditPHVehicle()
+   {
+	   // the ph is usually the 1st in the set, there is nothing else on the page which denotes difference between PH/TP vehicle other than an image icon
+	   // could use that later
+	   logger.info(format("%s -  going to click edit PH vehicle", getName()));
+	   GuideWireAccessors.selectOptionFromGWPicker(driver, this.getPhEditVehiclePickerIcon(), this.getPhEditVehiclePickerEditVehicle());
+   }
+   public void selectDeletePHVehicle()
+   {
+	   // the ph is usually the 1st in the set, there is nothing else on the page which denotes difference between PH/TP vehicle other than an image icon
+	   // could use that later
+	   logger.info(format("%s -  going to click delete PH vehicle", getName()));
+	   GuideWireAccessors.selectOptionFromGWPicker(driver, this.getPhEditVehiclePickerIcon(), this.getPhEditVehiclePickerRemoveVehicle());
+   }
+   public void selectEditPHDriver()
+   {
+	  
+	   logger.info(format("%s -  going to click edit PH Driver", getName()));
+	   GuideWireAccessors.clickGWButton(driver, this.getPhEditDriver());
+   }
+   public void selectEditPHPassenger()
+   {
+	  
+	   logger.info(format("%s -  going to click edit PH passenger", getName()));
+	   GuideWireAccessors.clickGWButton(driver, this.getPhEditPassenger());
+   }
+   
+   public void selectEditTPVehicle()
+   {
+	   // the ph is usually the 1st in the set, there is nothing else on the page which denotes difference between PH/TP vehicle other than an image icon
+	   // could use that later
+	   logger.info(format("%s -  going to click edit TP vehicle", getName()));
+	   GuideWireAccessors.selectOptionFromGWPicker(driver, this.getTpEditVehiclePickerIcon(), this.getTpEditVehiclePickerEditVehicle());
+   }
+   public void selectDeleteTPVehicle()
+   {
+	   // the ph is usually the 1st in the set, there is nothing else on the page which denotes difference between PH/TP vehicle other than an image icon
+	   // could use that later
+	   logger.info(format("%s -  going to click delete TP vehicle", getName()));
+	   GuideWireAccessors.selectOptionFromGWPicker(driver, this.getTpEditVehiclePickerIcon(), this.getTpEditVehiclePickerRemoveVehicle());
+   }
+   public void selectEditTPDriver()
+   {
+	  
+	   logger.info(format("%s -  going to click edit TP Driver", getName()));
+	   GuideWireAccessors.clickGWButton(driver, this.getTpEditDriver());
+   }
+   public void selectEditTPPassenger()
+   {
+	  
+	   logger.info(format("%s -  going to click edit TP passenger", getName()));
+	   GuideWireAccessors.clickGWButton(driver, this.getTpEditPassenger());
+   }
+   
+   public void selectEditPedestrian()
+   {
+	
+	   logger.info(format("%s -  going to click edit pedestrian", getName()));
+	   GuideWireAccessors.selectOptionFromGWPicker(driver, this.getEditPedestrianPickerIcon(), this.getEditPedestrianPickerEditPedestrian());
+   }
+   public void selectDeletePedestrian()
+   {
+	 
+	   logger.info(format("%s -  going to click delete pedestrian", getName()));
+	   GuideWireAccessors.selectOptionFromGWPicker(driver, this.getEditPedestrianPickerIcon(), this.getEditPedestrianPickerRemovePedestrian());
+   }
+   
+   public void selectEditProperty()
+   {
+	  
+	   logger.info(format("%s -  going to click edit property", getName()));
+	   GuideWireAccessors.selectOptionFromGWPicker(driver, this.getEditPropertyPickerIcon(), this.getEditPropertyPickerEditProperty());
+   }
+   public void selectDeleteProperty()
+   {
+	
+	   logger.info(format("%s -  going to click delete property", getName()));
+	   GuideWireAccessors.selectOptionFromGWPicker(driver, this.getEditPropertyPickerIcon(), this.getEditPropertyPickerRemoveProperty());
+   }
    
   
    
@@ -663,6 +794,78 @@ public class ClaimCenterPOSTFNOLLossDetailsPOM extends BaseTest{
 
 	private WebElement getAddOfficialsButton() {
 		return addOfficialsButton;
+	}
+	
+	
+
+	private WebElement getPhEditVehiclePickerIcon() {
+		return phEditVehiclePickerIcon;
+	}
+
+	private WebElement getPhEditVehiclePickerEditVehicle() {
+		return phEditVehiclePickerEditVehicle;
+	}
+	
+	
+
+	private WebElement getTpEditVehiclePickerIcon() {
+		return tpEditVehiclePickerIcon;
+	}
+
+	private WebElement getTpEditVehiclePickerEditVehicle() {
+		return tpEditVehiclePickerEditVehicle;
+	}
+	
+	
+
+	private WebElement getPhEditVehiclePickerRemoveVehicle() {
+		return phEditVehiclePickerRemoveVehicle;
+	}
+
+	private WebElement getTpEditVehiclePickerRemoveVehicle() {
+		return tpEditVehiclePickerRemoveVehicle;
+	}
+
+	private WebElement getEditPropertyPickerIcon() {
+		return editPropertyPickerIcon;
+	}
+
+	private WebElement getEditPropertyPickerEditProperty() {
+		return editPropertyPickerEditProperty;
+	}
+
+	private WebElement getEditPropertyPickerRemoveProperty() {
+		return editPropertyPickerRemoveProperty;
+	}
+
+	private WebElement getEditPedestrianPickerIcon() {
+		return editPedestrianPickerIcon;
+	}
+
+	private WebElement getEditPedestrianPickerEditPedestrian() {
+		return editPedestrianPickerEditPedestrian;
+	}
+
+	private WebElement getEditPedestrianPickerRemovePedestrian() {
+		return editPedestrianPickerRemovePedestrian;
+	}
+	
+	
+
+	private WebElement getPhEditDriver() {
+		return phEditDriver;
+	}
+
+	private WebElement getTpEditDriver() {
+		return tpEditDriver;
+	}
+
+	private WebElement getPhEditPassenger() {
+		return phEditPassenger;
+	}
+
+	private WebElement getTpEditPassenger() {
+		return tpEditPassenger;
 	}
 
 	public boolean containsErrorMessage(String contains)

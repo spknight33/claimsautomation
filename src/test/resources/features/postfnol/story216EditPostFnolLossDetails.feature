@@ -32,7 +32,7 @@ Feature: CBPCL-216 As a ClaimCenter user with the role of Adjuster or Manager,
       | How Reported | Reported By | Relationship to Insured | Main Contact | Contact Relationship to Insured |
        And I click update button on post FNOL loss details
 
-  @Ignore
+@Ignore
     Scenario: CBPCL-216 TC2 ClaimsHandler can add Vehicle from Loss Details post FNOL 
     And I Select an existing Claim
     And I select "Loss Details" on the Claim Navigator
@@ -52,7 +52,7 @@ Feature: CBPCL-216 As a ClaimCenter user with the role of Adjuster or Manager,
     And I complete all fields on post FNOL new property incident
      And I click update button on post FNOL loss details
     
-    
+    @Ignore
       Scenario: CBPCL-216 TC4 ClaimsHandler can add Pedestrian from Loss Details post FNOL 
     And I Select an existing Claim
     And I select "Loss Details" on the Claim Navigator
@@ -62,3 +62,84 @@ Feature: CBPCL-216 As a ClaimCenter user with the role of Adjuster or Manager,
     Then I will be on new pedestrian screen on post FNOL
     And I complete all fields on post FNOL new pedestrian incident
      And I click update button on post FNOL loss details
+     
+   @Ignore
+     Scenario: CBPCL-216 TC13  ClaimsHandler can edit PH Vehicle from Loss Details post FNOL 
+    And I Select an existing Claim
+    And I select "Loss Details" on the Claim Navigator
+    And I will see post FNOL loss details
+     When I click edit button on post FNOL loss details
+    When I click edit PH Vehicle on post FNOL loss details
+    Then I will be on edit vehicle screen on post FNOL
+    And I click cancel button on edit vehicle screen on post FNOL edit
+    
+  @Ignore
+        Scenario: CBPCL-216 TC14  ClaimsHandler can edit TP Vehicle from Loss Details post FNOL 
+    And I Select an existing Claim
+    And I select "Loss Details" on the Claim Navigator
+    And I will see post FNOL loss details
+     When I click edit button on post FNOL loss details
+    When I click edit TP Vehicle on post FNOL loss details
+    Then I will be on edit vehicle screen on post FNOL
+    And I click cancel button on edit vehicle screen on post FNOL edit
+    
+ @Ignore
+          Scenario: CBPCL-216 TC15  ClaimsHandler can edit Pedestrian from Loss Details post FNOL 
+    And I Select an existing Claim
+    And I select "Loss Details" on the Claim Navigator
+    And I will see post FNOL loss details
+     When I click edit button on post FNOL loss details
+    When I click edit Pedestrian on post FNOL loss details
+    Then I will be on edit pedestrian screen on post FNOL
+    And I click cancel button on edit pedestrian screen on post FNOL
+    
+    @Ignore
+          Scenario: CBPCL-216 TC16  ClaimsHandler can edit property from Loss Details post FNOL 
+    And I Select an existing Claim
+    And I select "Loss Details" on the Claim Navigator
+    And I will see post FNOL loss details
+     When I click edit button on post FNOL loss details
+    When I click edit Property on post FNOL loss details
+    Then I will be on edit property screen on post FNOL
+    And I click cancel button on edit property screen on post FNOL
+    
+   @Ignore
+    Scenario: CBPCL-216 TC17  ClaimsHandler can edit PH driver from Loss Details post FNOL 
+    And I Select an existing Claim
+    And I select "Loss Details" on the Claim Navigator
+    And I will see post FNOL loss details
+     When I click edit button on post FNOL loss details
+    When I click edit PH Driver on post FNOL loss details
+    Then I will be on edit Driver screen for post FNOL
+    And I click cancel button on edit driver screen for post FNOL
+    
+  
+           Scenario: CBPCL-216 TC18  ClaimsHandler can edit TP driver from Loss Details post FNOL 
+    And I Select an existing Claim
+    And I select "Loss Details" on the Claim Navigator
+    And I will see post FNOL loss details
+     When I click edit button on post FNOL loss details
+    When I click edit TP Driver on post FNOL loss details
+    Then I will be on edit Driver screen for post FNOL
+    And I click cancel button on edit driver screen for post FNOL
+    
+   
+        Scenario: CBPCL-216 TC19  ClaimsHandler can edit PH passenger from Loss Details post FNOL 
+    And I Select an existing Claim
+    And I select "Loss Details" on the Claim Navigator
+    And I will see post FNOL loss details
+     When I click edit button on post FNOL loss details
+    When I click edit PH Passenger on post FNOL loss details
+    Then I will be on Edit Passenger screen for post FNOL
+    And I click cancel button on edit passenger screen for post FNOL
+    
+     @Ignore
+         Scenario: CBPCL-216 TC20  ClaimsHandler can edit TP passenger from Loss Details post FNOL 
+    And I Select an existing Claim
+    And I select "Loss Details" on the Claim Navigator
+    And I will see post FNOL loss details
+     When I click edit button on post FNOL loss details
+    When I click edit TP Passenger on post FNOL loss details
+    Then I will be on Edit Passenger screen for post FNOL
+    And I click cancel button on edit passenger screen for post FNOL
+    

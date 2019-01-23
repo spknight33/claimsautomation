@@ -19,7 +19,7 @@ public class CCLoginSteps extends BaseTest {
 	public void i_access_claimcenter_login_page() throws Throwable {
 
 		// TST
-		// driver.get("http://10.14.67.173:8080/cc/ClaimCenter.do");
+		// driver.get("http://claimcentertest.cloud.aioinissaydowa.eu/cc/");
 		//DEV
 		driver.get("http://claimcenterdev.cloud.aioinissaydowa.eu/cc/");
 		

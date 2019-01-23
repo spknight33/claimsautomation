@@ -56,8 +56,11 @@ import com.big.automation.selenium_webdriver.claimcenter.pages.ClaimCenterSearch
 import com.big.automation.selenium_webdriver.claimcenter.pages.ClaimCenterTotalLossCalulatorPOM;
 import com.big.automation.selenium_webdriver.claimcenter.pages.desktop.ClaimCenterDesktopQueuesPOM;
 import com.big.automation.selenium_webdriver.claimcenter.pages.postfnol.ClaimCenterPOSTFNOLEditCreditHireExposurePOM;
+import com.big.automation.selenium_webdriver.claimcenter.pages.postfnol.ClaimCenterPOSTFNOLEditDriverDetailsPOM;
 import com.big.automation.selenium_webdriver.claimcenter.pages.postfnol.ClaimCenterPOSTFNOLEditInjuryExposurePOM;
+import com.big.automation.selenium_webdriver.claimcenter.pages.postfnol.ClaimCenterPOSTFNOLEditPassengerDetailsPOM;
 import com.big.automation.selenium_webdriver.claimcenter.pages.postfnol.ClaimCenterPOSTFNOLEditPropertyExposurePOM;
+import com.big.automation.selenium_webdriver.claimcenter.pages.postfnol.ClaimCenterPOSTFNOLEditPropertyPOM;
 import com.big.automation.selenium_webdriver.claimcenter.pages.postfnol.ClaimCenterPOSTFNOLEditProtocolHireExposurePOM;
 import com.big.automation.selenium_webdriver.claimcenter.pages.postfnol.ClaimCenterPOSTFNOLEditTPCaptureExposurePOM;
 import com.big.automation.selenium_webdriver.claimcenter.pages.postfnol.ClaimCenterPOSTFNOLEditVehicleDetailsPOM;
@@ -66,8 +69,10 @@ import com.big.automation.selenium_webdriver.claimcenter.pages.postfnol.ClaimCen
 import com.big.automation.selenium_webdriver.claimcenter.pages.postfnol.ClaimCenterPOSTFNOLLossDetailsPOM;
 import com.big.automation.selenium_webdriver.claimcenter.pages.postfnol.ClaimCenterPOSTFNOLNewActivityPOM;
 import com.big.automation.selenium_webdriver.claimcenter.pages.postfnol.ClaimCenterPOSTFNOLNewInjuryPOM;
+import com.big.automation.selenium_webdriver.claimcenter.pages.postfnol.ClaimCenterPOSTFNOLNewNotePOM;
 import com.big.automation.selenium_webdriver.claimcenter.pages.postfnol.ClaimCenterPOSTFNOLNewPoliceDetailsPOM;
 import com.big.automation.selenium_webdriver.claimcenter.pages.postfnol.ClaimCenterPOSTFNOLNewPropertyPOM;
+import com.big.automation.selenium_webdriver.claimcenter.pages.postfnol.ClaimCenterPOSTFNOLNewServicePOM;
 import com.big.automation.selenium_webdriver.claimcenter.pages.postfnol.ClaimCenterPOSTFNOLNewVehicleDetailsPOM;
 import com.big.automation.selenium_webdriver.claimcenter.pages.postfnol.ClaimCenterPOSTFNOLPedestrianDetailsPOM;
 import com.big.automation.selenium_webdriver.claimcenter.pages.postfnol.ClaimCenterPOSTFNOLSummaryPOM;
@@ -139,9 +144,16 @@ public class BaseTest extends AbstractTestNGCucumberTests{
    public static ClaimCenterPOSTFNOLSummaryPOM postFnolSummaryPOM;
    public static ClaimCenterPOSTFNOLLossDetailsPOM postFnolLossDetailsPOM;
    public static ClaimCenterPOSTFNOLNewPropertyPOM postFnolNewPropertyPOM;
+   public static ClaimCenterPOSTFNOLEditPropertyPOM postFnolEditPropertyPOM;
+  
    public static ClaimCenterPOSTFNOLNewInjuryPOM postFnolNewInjuryPOM;
    public static ClaimCenterPOSTFNOLPedestrianDetailsPOM postFnolPedestrianPOM;
    public static ClaimCenterPOSTFNOLEditVehicleDetailsPOM postFnolEditVehiclePOM;
+   public static ClaimCenterPOSTFNOLEditDriverDetailsPOM postFnolEditDriverPOM;
+   public static ClaimCenterPOSTFNOLEditPassengerDetailsPOM postFnolEditPassengerPOM;
+   
+   
+   
    public static ClaimCenterPOSTFNOLNewVehicleDetailsPOM postFnolNewVehiclePOM;
    public static ClaimCenterPOSTFNOLNewPoliceDetailsPOM postFnolNewPolicePOM;
    public static ClaimCenterCompanyDetailsPOM companyContactDetailsPOM;
@@ -149,6 +161,9 @@ public class BaseTest extends AbstractTestNGCucumberTests{
    
    public static ClaimCenterPOSTFNOLWorkplanPOM postFnolWorkplanPOM;
    public static ClaimCenterPOSTFNOLNewActivityPOM postFnolNewActivityPOM;
+   public static ClaimCenterPOSTFNOLNewNotePOM postFnolNewNotePOM;
+   public static ClaimCenterPOSTFNOLNewServicePOM postFnolNewServicePOM;
+   
    
    
    public static ClaimCenterTotalLossCalulatorPOM totalLossCalcPOM;
@@ -253,7 +268,7 @@ public class BaseTest extends AbstractTestNGCucumberTests{
       postFnolEditCreditHireExposurePOM= PageFactory.initElements(driver, ClaimCenterPOSTFNOLEditCreditHireExposurePOM.class);
       postFnolEditProtocolHireExposurePOM= PageFactory.initElements(driver, ClaimCenterPOSTFNOLEditProtocolHireExposurePOM.class);
       postFnolEditTPCaptureExposurePOM= PageFactory.initElements(driver, ClaimCenterPOSTFNOLEditTPCaptureExposurePOM.class);
-      
+     
       
       
       postFnolSummaryPOM= PageFactory.initElements(driver, ClaimCenterPOSTFNOLSummaryPOM.class); 
@@ -264,8 +279,14 @@ public class BaseTest extends AbstractTestNGCucumberTests{
       
       postFnolPedestrianPOM= PageFactory.initElements(driver, ClaimCenterPOSTFNOLPedestrianDetailsPOM.class);
       postFnolEditVehiclePOM= PageFactory.initElements(driver, ClaimCenterPOSTFNOLEditVehicleDetailsPOM.class);
+      postFnolEditDriverPOM= PageFactory.initElements(driver, ClaimCenterPOSTFNOLEditDriverDetailsPOM.class);
+      postFnolEditPassengerPOM= PageFactory.initElements(driver, ClaimCenterPOSTFNOLEditPassengerDetailsPOM.class);
+      
+      
+      
       postFnolNewPolicePOM= PageFactory.initElements(driver, ClaimCenterPOSTFNOLNewPoliceDetailsPOM.class);
-
+      postFnolEditPropertyPOM= PageFactory.initElements(driver, ClaimCenterPOSTFNOLEditPropertyPOM.class);
+      
       
       
       companyContactDetailsPOM= PageFactory.initElements(driver, ClaimCenterCompanyDetailsPOM.class);
@@ -273,6 +294,10 @@ public class BaseTest extends AbstractTestNGCucumberTests{
       
       postFnolWorkplanPOM= PageFactory.initElements(driver, ClaimCenterPOSTFNOLWorkplanPOM.class);
       postFnolNewActivityPOM= PageFactory.initElements(driver, ClaimCenterPOSTFNOLNewActivityPOM.class);
+      postFnolNewNotePOM= PageFactory.initElements(driver, ClaimCenterPOSTFNOLNewNotePOM.class);
+      postFnolNewServicePOM= PageFactory.initElements(driver, ClaimCenterPOSTFNOLNewServicePOM.class);
+      
+      
       
       totalLossCalcPOM= PageFactory.initElements(driver, ClaimCenterTotalLossCalulatorPOM.class);
       

@@ -10,6 +10,7 @@ import com.big.automation.selenium_webdriver.common.utilities.excelutils.ExcelUt
 import cucumber.api.DataTable;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
+import cucumber.api.java.en.When;
 
 public class CCPOSTFNOLLossDetailsSteps extends BaseTest {
 	
@@ -47,6 +48,42 @@ public class CCPOSTFNOLLossDetailsSteps extends BaseTest {
 	public void addPedestrian() {
 		
 		postFnolLossDetailsPOM.addPedestrian();
+	}
+	
+	@When("^I click edit PH Vehicle on post FNOL loss details$")
+	public void i_click_edit_PH_Vehicle_on_post_FNOL_loss_details() throws Throwable {
+		postFnolLossDetailsPOM.selectEditPHVehicle();
+	}
+	@When("^I click edit PH Driver on post FNOL loss details$")
+	public void i_click_edit_PH_Driver_on_post_FNOL_loss_details() throws Throwable {
+		postFnolLossDetailsPOM.selectEditPHDriver();
+	}
+	@When("^I click edit PH Passenger on post FNOL loss details$")
+	public void i_click_edit_PH_passenger_on_post_FNOL_loss_details() throws Throwable {
+		postFnolLossDetailsPOM.selectEditPHPassenger();
+	}
+	
+	@When("^I click edit TP Vehicle on post FNOL loss details$")
+	public void i_click_edit_TP_Vehicle_on_post_FNOL_loss_details() throws Throwable {
+		postFnolLossDetailsPOM.selectEditTPVehicle();
+	}
+	@When("^I click edit TP Driver on post FNOL loss details$")
+	public void i_click_edit_TP_Driver_on_post_FNOL_loss_details() throws Throwable {
+		postFnolLossDetailsPOM.selectEditTPDriver();
+	}
+	@When("^I click edit TP Passenger on post FNOL loss details$")
+	public void i_click_edit_TP_passenger_on_post_FNOL_loss_details() throws Throwable {
+		postFnolLossDetailsPOM.selectEditTPPassenger();
+	}
+	
+	@When("^I click edit Pedestrian on post FNOL loss details$")
+	public void i_click_edit_Pedestrian_on_post_FNOL_loss_details() throws Throwable {
+		postFnolLossDetailsPOM.selectEditPedestrian();
+	}
+	
+	@When("^I click edit Property on post FNOL loss details$")
+	public void i_click_edit_Property_on_post_FNOL_loss_details() throws Throwable {
+		postFnolLossDetailsPOM.selectEditProperty();
 	}
 	
 	

@@ -1,4 +1,4 @@
-
+@Ignore
 Feature: CBPCL-210 As a ClaimCenter user with the role of Claims Adjuster or Manager, I want to be able to assign a claim, exposure or activity to a specific adjuster or queue. So that I can make sure that claims are assigned to the right person.
 
   Background: 
@@ -423,7 +423,7 @@ Scenario: CBPCL-210 TC8 Exposure created for THIRD PARTY PERSONAL INJURY is assi
      And I will see post FNOL exposures screen
      And I will see type "Vehicle" for coverage "Theft" has been assigned to a user in group "Accidental Damage"
      
-   
+   @Ignore
       Scenario: CBPCL-210 TC25 Exposure created for GLASS Vehicle damage is assigned to claim support queue
      When I select the Add Exposures Popup Menu Hierarchy "Choose by Coverage Type,Glass - Vehicle Damage"
      And  I will be on the new exposure screen for FNOL

@@ -14,6 +14,12 @@ public class CCPOSTFNOLEditVehicleSteps extends BaseTest {
 		postFnolEditVehiclePOM.isPageTitleDisplayed("Vehicle Details");
 	}
 	
+	@Given("^I click cancel button on edit vehicle screen on post FNOL edit$")
+	public void cancel() {
+		
+		postFnolEditVehiclePOM.cancel();
+	}
+	
 	//TODO
 	// check if fire section is visible
 	// check if theft section is visible

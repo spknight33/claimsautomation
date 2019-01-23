@@ -22,17 +22,16 @@ public class ClaimCenterPOSTFNOLNewVehicleDetailsPOM extends BaseTest{
 	@FindBy(id = "NewVehicleIncidentPopup:NewVehicleIncidentScreen:Cancel")
 	private WebElement cancelButton;
 		
-	
+	//VEHICLE BASICS SECTION
+	//--------------------------------------------------------------------------
+		
 	@FindBy(id = "NewVehicleIncidentPopup:NewVehicleIncidentScreen:PostFNOLVehicleIncidentDV:VehicleBasicsIS:LossParty_option1-inputEl")
 	private WebElement lossPartyInsuredRadio;
 	@FindBy(id = "NewVehicleIncidentPopup:NewVehicleIncidentScreen:PostFNOLVehicleIncidentDV:VehicleBasicsIS:LossParty_option2-inputEl")
 	private WebElement lossPartyTPRadio;
 		
-	
-	@FindBy(id = "NewVehicleIncidentPopup:NewVehicleIncidentScreen:PostFNOLVehicleIncidentDV:OccupantLV_tb:AddDriverButton-btnEl")
-	private WebElement addDriverButton;
-	@FindBy(id = "NewVehicleIncidentPopup:NewVehicleIncidentScreen:PostFNOLVehicleIncidentDV:OccupantLV_tb:AddPassengerButton")
-	private WebElement addPassengerButton;
+	//TODO selectVEhicleDropdown?
+		
 	
 	@FindBy(id = "NewVehicleIncidentPopup:NewVehicleIncidentScreen:PostFNOLVehicleIncidentDV:VehicleBasicsIS:Vehicle_VehicleType-inputEl")
 	private WebElement vehicleType;
@@ -79,6 +78,10 @@ public class ClaimCenterPOSTFNOLNewVehicleDetailsPOM extends BaseTest{
 	private WebElement calcTotalLossLink;
 	
 	
+	@FindBy(id = "NewVehicleIncidentPopup:NewVehicleIncidentScreen:PostFNOLVehicleIncidentDV:OccupantLV_tb:AddDriverButton-btnEl")
+	private WebElement addDriverButton;
+	@FindBy(id = "NewVehicleIncidentPopup:NewVehicleIncidentScreen:PostFNOLVehicleIncidentDV:OccupantLV_tb:AddPassengerButton")
+	private WebElement addPassengerButton;
 	
 	// fire section only appears on page for a fire incident
 	// and only for PH vehicle - add these later

@@ -28,15 +28,33 @@ public class CCFNOLStep2Steps extends BaseTest{
 
 		this.i_select_from_field_on_step(ExcelUtil.getTestDataValue("Fnol_Step2_HowReported"),"How Reported");
 		this.i_select_from_field_on_step(ExcelUtil.getTestDataValue("Fnol_Name"),"name");
+		//TODO CHANGE THESE TO BE EXCEL DRIVEN
 		this.i_select_from_field_on_step("Policyholder","relationship to insured");
 		this.i_input_into_the_box_on_step2("01912228888","Home Phone");
 		this.i_input_into_the_box_on_step2("someguy@gmail.com","Email");
 		this.i_select_from_field_on_step("Work","Phone Type");
 		
+		String fieldValue=null;
+		if (ExcelUtil.getTestDataValue("Fnol_Step2_AlertNotified").equalsIgnoreCase("TRUE"))
+		{
+			fnolStep2POM.selectAlert(true);
+			fieldValue = ExcelUtil.getTestDataValue("Fnol_Step2_AlertId");
+			if (fieldValue != null)
+			    fnolStep2POM.setAlertId(fieldValue);
+		}
+		else
+		{
+			fnolStep2POM.selectAlert(false);
+		}
+		
 		if (!ExcelUtil.getTestDataValue("Fnol_Step2_PHVehicleRequired").equalsIgnoreCase("TRUE"))
 		{
 			this.unselectFirstInsuredVehicle();
 		}
+		
+		
+		
+		
 		this.next();
 		
 	
@@ -56,16 +74,11 @@ public class CCFNOLStep2Steps extends BaseTest{
 	@Then("I complete step2 for FNOL$")
 	public void iCompleteStep2FNOL() throws Throwable 
 	{
-		// need to configure to get a specific configurable pilicy number
-
-		this.i_select_from_field_on_step("Portal","How Reported");
-	
-		this.i_select_from_field_on_step(ExcelUtil.getTestDataValue("Fnol_Name"),"name");
-		this.i_select_from_field_on_step("Policyholder","relationship to insured");
-		this.next();
+		completeFNOLStep2ForTestScenario();
 		
 	}
 	
+	//
 	@Then("I complete step2 for FNOL without insured vehicle$")
 	public void iCompleteStep2FNOLWithoutInsuredVehicle() throws Throwable 
 	{

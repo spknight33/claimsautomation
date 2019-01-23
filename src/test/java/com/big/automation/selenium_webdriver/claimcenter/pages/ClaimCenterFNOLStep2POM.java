@@ -73,6 +73,13 @@ public class ClaimCenterFNOLStep2POM extends BaseTest {
 	private WebElement contactPhoneType;
 	@FindBy(id = "FNOLWizard:AutoWorkersCompWizardStepSet:FNOLWizard_BasicInfoScreen:PanelRow:BasicInfoDetailViewPanelDV:reporter_email-inputEl")
 	private WebElement contactEmail;
+	
+	@FindBy(id = "FNOLWizard:AutoWorkersCompWizardStepSet:FNOLWizard_BasicInfoScreen:PanelRow:BasicInfoDetailViewPanelDV:NotifiedByAlertInputSet:NotifiedByAlert_itb_true-inputEl")
+	private WebElement alertTrueRadio;
+	@FindBy(id = "FNOLWizard:AutoWorkersCompWizardStepSet:FNOLWizard_BasicInfoScreen:PanelRow:BasicInfoDetailViewPanelDV:NotifiedByAlertInputSet:NotifiedByAlert_itb_false-inputEl")
+	private WebElement alertFalseRadio;
+	@FindBy(id = "FNOLWizard:AutoWorkersCompWizardStepSet:FNOLWizard_BasicInfoScreen:PanelRow:BasicInfoDetailViewPanelDV:NotifiedByAlertInputSet:AlertID_itb-inputEl")
+	private WebElement alertId;
 
 	@FindBy(id = "FNOLWizard:AutoWorkersCompWizardStepSet:FNOLWizard_BasicInfoScreen:PanelRow:BasicInfoDetailViewPanelDV:MainContactChoice_true-inputEl")
 	private WebElement samePersonTrueRadio;
@@ -168,31 +175,52 @@ public class ClaimCenterFNOLStep2POM extends BaseTest {
 	public void setWorkPhone(String text) {
 		logger.info(format("%s -  going to set Work phone", getName()));
 		GuideWireAccessors.setGWTextBox(driver, text, this.getContactWorkPhone());
-		logger.info(format("%s - done, Work phone set", getName()));
+		
 	}
 
 	public void setHomePhone(String text) {
 		logger.info(format("%s -  going to set Home phone", getName()));
 		GuideWireAccessors.setGWTextBox(driver, text, this.getContactHomePhone());
-		logger.info(format("%s - done, Home phone set", getName()));
+		
 	}
 
 	public void setMobile(String text) {
 		logger.info(format("%s -  going to set mobile", getName()));
 		GuideWireAccessors.setGWTextBox(driver, text, this.getContactMobile());
-		logger.info(format("%s - done, mobile set", getName()));
+		
 	}
 
 	public void selectPhoneType(String option) {
 		logger.info(format("%s -  going to select phone type", getName()));
 		GuideWireAccessors.selectOptionFromGWDropDown(driver, option, this.getContactPhoneType(), 1);
-		logger.info(format("%s - done, phone type selected", getName()));
+		
 	}
 
 	public void setEmail(String text) {
 		logger.info(format("%s -  going to set email", getName()));
 		GuideWireAccessors.setGWTextBox(driver, text, this.getContactEmail());
-		logger.info(format("%s - done, email set", getName()));
+		
+	}
+	
+	public void selectAlert(boolean alert)
+	{
+		logger.info(format("%s -  going to set alert to:"+alert, getName()));
+	    if (alert)
+	    {
+	    	GuideWireAccessors.clickGWButton(driver, this.getAlertTrueRadio());
+	    }
+	    else
+	    {
+	    	GuideWireAccessors.clickGWButton(driver, this.getAlertFalseRadio());
+	    }
+	
+		
+	}
+	
+	public void setAlertId(String text) {
+		logger.info(format("%s -  going to set alert id", getName()));
+		GuideWireAccessors.setGWTextBox(driver, text, this.getAlertId());
+		
 	}
 
 	public void selectVehicleCB() {
@@ -214,6 +242,8 @@ public class ClaimCenterFNOLStep2POM extends BaseTest {
 		// logger.info(format("%s - done, deselect vehicle", getName()));
 		// }
 	}
+	
+	
 
 	private WebElement getNextButton() {
 
@@ -320,6 +350,20 @@ public class ClaimCenterFNOLStep2POM extends BaseTest {
 
 	private WebElement getDiffPersonRelation() {
 		return diffPersonRelation;
+	}
+	
+	
+
+	private WebElement getAlertTrueRadio() {
+		return alertTrueRadio;
+	}
+
+	private WebElement getAlertFalseRadio() {
+		return alertFalseRadio;
+	}
+
+	private WebElement getAlertId() {
+		return alertId;
 	}
 
 	public boolean containsErrorMessage(String contains) {
