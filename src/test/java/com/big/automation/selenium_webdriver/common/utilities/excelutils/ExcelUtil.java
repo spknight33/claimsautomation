@@ -5,7 +5,8 @@ package com.big.automation.selenium_webdriver.common.utilities.excelutils;
 	import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.DataFormatter;
 	import org.apache.poi.xssf.usermodel.XSSFCell;
-	import org.apache.poi.xssf.usermodel.XSSFRow;
+import org.apache.poi.xssf.usermodel.XSSFFormulaEvaluator;
+import org.apache.poi.xssf.usermodel.XSSFRow;
 	import org.apache.poi.xssf.usermodel.XSSFSheet;
 	import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 	import org.openqa.selenium.Platform;
@@ -103,6 +104,8 @@ import static com.big.automation.selenium_webdriver.common.baseTest.BaseTest.tes
 	    	String value="";
 	    	testDataMap = new HashMap<>();
 	    	XSSFRow row=null;
+	    	
+	    	XSSFFormulaEvaluator formulaeval = excelWBook.getCreationHelper().createFormulaEvaluator();
 
 	    	XSSFCell keyCell=null;
 	    	XSSFCell valueCell=null;
@@ -126,17 +129,17 @@ import static com.big.automation.selenium_webdriver.common.baseTest.BaseTest.tes
 	    		 
 	    		 if (keyCell!=null)
 	    		 {
-	    	        key = dataFormatter.formatCellValue(keyCell);
+	    			  key = dataFormatter.formatCellValue(keyCell,formulaeval);
 	    		 }
 	    		 if (valueCell != null)
 	    		 {
-	    			 value = dataFormatter.formatCellValue(valueCell);
+	    			 value = dataFormatter.formatCellValue(valueCell,formulaeval);
 	    		 }
 	    	     if (value!= null && !value.isEmpty())
 	    	     {
-	    		 testDataMap.put(key,
-	    				 value);
-	    		 System.out.println("entry added to map: <"+key+"><"+value+">");
+	    		 testDataMap.put(key.trim(),
+	    				 value.trim());
+	    		 System.out.println("entry added to map: <"+key.trim()+"><"+value.trim()+">");
 	    	     }
 	    	     else
 	    	     { if (key!= null && !key.isEmpty())

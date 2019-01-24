@@ -4,6 +4,7 @@ import org.testng.Assert;
 
 import com.big.automation.selenium_webdriver.common.baseTest.BaseTest;
 import com.big.automation.selenium_webdriver.common.config.UserToGroupMap;
+import com.big.automation.selenium_webdriver.common.utilities.excelutils.ExcelUtil;
 
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
@@ -37,12 +38,53 @@ public class CCPOSTFNOLExposuresSteps extends BaseTest {
 	   
 		Assert.assertTrue(UserToGroupMap.getGroupForUser(handler).equalsIgnoreCase(group),"Not in expected group:"+group);
 	   // A handler will belong to a group
-		
-	   
-	   
 	}
 	
-	   
+	@Given("^I will see type \"([^\"]*)\" for coverage \"([^\"]*)\" has been assigned to a user in group \"([^\"]*)\" for Claimant \"([^\"]*)\"$")
+	public void i_will_see_type_for_coverage_has_been_assigned_to_a_user_in_group_for_Claimant(String type, String coverage, String group, String claimant) throws Throwable {
+		String handler = postFnolExposuresPOM.getHandlerForExposure(type, coverage);
+		   
+	    // fail if handler not found
+		Assert.assertNotNull(handler,"Cannot find exposure in exposure table");
+  		Assert.assertTrue(UserToGroupMap.getGroupForUser(handler).equalsIgnoreCase(group),"Not in expected group:"+group);
+	   // A handler will belong to a group
+		
+  		String expClaimant = postFnolExposuresPOM.getClaimantForExposure(type, coverage);
+  		Assert.assertNotNull(expClaimant,"Cannot find exposure in exposure table");
+  		
+  		
+  		// detemrine which claimant type to check against
+  		String fieldValue=null;
+  		switch (claimant)
+  		{
+  		case ("TP Driver"):
+  			fieldValue = ExcelUtil.getTestDataValue("Fnol_TPDriverFullName");
+  		    Assert.assertTrue(expClaimant.equalsIgnoreCase(fieldValue),"expected claimant to be :"+fieldValue+" but was:"+expClaimant);
+  			break;
+  		case ("PH Driver"):
+  			fieldValue = ExcelUtil.getTestDataValue("Fnol_PHDriverFullName");
+  		    Assert.assertTrue(expClaimant.equalsIgnoreCase(fieldValue),"expected claimant to be :"+fieldValue+" but was:"+expClaimant);
+  			break;
+  		case ("Pedestrian"):
+  			fieldValue = ExcelUtil.getTestDataValue("Fnol_PedestrianFullName");
+  		    Assert.assertTrue(expClaimant.equalsIgnoreCase(fieldValue),"expected claimant to be :"+fieldValue+" but was:"+expClaimant);
+  			break;
+  		case ("TP Passenger"):
+  			fieldValue = ExcelUtil.getTestDataValue("Fnol_TPPassengerFullName");
+  		    Assert.assertTrue(expClaimant.equalsIgnoreCase(fieldValue),"expected claimant to be :"+fieldValue+" but was:"+expClaimant);
+  			break;
+  		case ("PH Passenger"):
+  			fieldValue = ExcelUtil.getTestDataValue("Fnol_PHPassengerFullName");
+  		    Assert.assertTrue(expClaimant.equalsIgnoreCase(fieldValue),"expected claimant to be :"+fieldValue+" but was:"+expClaimant);
+  			break;
+  		
+  		}
+  		
+  		
+  		
+  		
+		
+	}
 
 	
 	

@@ -2,7 +2,7 @@
 Feature: CBPCL-210 As a ClaimCenter user with the role of Claims Adjuster or Manager, I want to be able to assign a claim, exposure or activity to a specific adjuster or queue. So that I can make sure that claims are assigned to the right person.
 
   Background: 
-   Given I use test data set "regression_set1"
+   Given I use test data set "autoexposure_set2"
    And As a "ClaimsHandler" I am at step5 for FNOL
 
    @Ignore
@@ -62,7 +62,7 @@ Feature: CBPCL-210 As a ClaimCenter user with the role of Claims Adjuster or Man
      And I will see post FNOL exposures screen
      And I will see type "Vehicle" for coverage "Personal Belongings" has been assigned to a user in group "Accidental Damage"
      
-     @Ignore
+    @Ignore
        Scenario: CBPCL-210 TC5 Exposure created for PERSONAL BELOGINGS AND HANDBAG COVER is assigned to Accidental Damage
    And I select the Add Exposures Popup Menu Hierarchy "Choose by Coverage Type,Personal Belongings and Handbag Cover"
      And  I will be on the new exposure screen for FNOL
@@ -367,7 +367,7 @@ Scenario: CBPCL-210 TC8 Exposure created for THIRD PARTY PERSONAL INJURY is assi
      And I will see type "Bodily Injury" for coverage "Third Party Liability" has been assigned to a user in group "Personal Injury - MOJ"
      And I will see type "Property" for coverage "Third Party Liability" has been assigned to a user in group "Personal Injury - MOJ"
      
-     @Ignore
+   @Ignore
       Scenario: CBPCL-210 TC22 Create For TP PROPERTY Damage Liability, There is a Personal Injury Exposure and there is a Credit Hire exposure, then assign to PI Group
      When I select the Add Exposures Popup Menu Hierarchy "Choose by Coverage Type,Third Party Liability,Liability - Property Damage"
     Then I will be on the new exposure screen for FNOL
@@ -423,7 +423,7 @@ Scenario: CBPCL-210 TC8 Exposure created for THIRD PARTY PERSONAL INJURY is assi
      And I will see post FNOL exposures screen
      And I will see type "Vehicle" for coverage "Theft" has been assigned to a user in group "Accidental Damage"
      
-   @Ignore
+     @Ignore
       Scenario: CBPCL-210 TC25 Exposure created for GLASS Vehicle damage is assigned to claim support queue
      When I select the Add Exposures Popup Menu Hierarchy "Choose by Coverage Type,Glass - Vehicle Damage"
      And  I will be on the new exposure screen for FNOL
@@ -440,7 +440,7 @@ Scenario: CBPCL-210 TC8 Exposure created for THIRD PARTY PERSONAL INJURY is assi
      And I login to ClaimCenter as role "ClaimsSupport"
      And I select "Queues" on the Desktop Navigator
      And I will see desktop queue details
-     And I will click assign next on desktop queue screen
+    # And I will click assign next on desktop queue screen
      
      
      @Ignore

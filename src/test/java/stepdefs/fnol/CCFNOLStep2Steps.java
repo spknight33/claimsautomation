@@ -27,16 +27,21 @@ public class CCFNOLStep2Steps extends BaseTest{
 	 */
 	public void completeFNOLStep2ForTestScenario()  throws Throwable
 	{
-
-		this.i_select_from_field_on_step(ExcelUtil.getTestDataValue("Fnol_Step2_HowReported"),"How Reported");
-		this.i_select_from_field_on_step(ExcelUtil.getTestDataValue("Fnol_Name"),"name");
-		//TODO CHANGE THESE TO BE EXCEL DRIVEN
-		this.i_select_from_field_on_step("Policyholder","relationship to insured");
-		this.i_input_into_the_box_on_step2("01912228888","Home Phone");
-		this.i_input_into_the_box_on_step2("someguy@gmail.com","Email");
-		this.i_select_from_field_on_step("Work","Phone Type");
-		
 		String fieldValue=null;
+		fieldValue = ExcelUtil.getTestDataValue("Fnol_Step2_HowReported");
+		if (fieldValue !=null)
+		    this.i_select_from_field_on_step(fieldValue,"How Reported");
+		
+         fieldValue = ExcelUtil.getTestDataValue("Fnol_Step2_ReportedBy");
+		if (fieldValue !=null)
+		this.i_select_from_field_on_step(fieldValue ,"name");
+		//TODO CHANGE THESE TO BE EXCEL DRIVEN
+		//this.i_select_from_field_on_step("Policyholder","relationship to insured");
+		//this.i_input_into_the_box_on_step2("01912228888","Home Phone");
+		//this.i_input_into_the_box_on_step2("someguy@gmail.com","Email");
+		//this.i_select_from_field_on_step("Work","Phone Type");
+		
+		
 		if (ExcelUtil.getTestDataValue("Fnol_Step2_AlertNotified").equalsIgnoreCase("TRUE"))
 		{
 			fnolStep2POM.selectAlert(true);

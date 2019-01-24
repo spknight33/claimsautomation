@@ -20,21 +20,24 @@ public class CCFNOLVehicleSteps extends BaseTest {
 	{
 		// TODO - 
 		// most cases will have insured vehicle already - so for now leave this and just do the driver checl
-	if (ExcelUtil.getTestDataValue("Fnol_PHDriverRequired").equalsIgnoreCase("TRUE"))
+		
+	String fieldValue = ExcelUtil.getTestDataValue("Fnol_PHDriverRequired");
+	if (fieldValue !=null &&fieldValue.equalsIgnoreCase("TRUE"))
 	   {
 		   fnolVehicleDetailsPOM.selectAddDriver();
 		   driverSteps.completeFNOLPHDriverForTestScenario();
 	   }
 	
 
-	String fieldValue = ExcelUtil.getTestDataValue("Fnol_PHVehicleModified");
-	if (fieldValue.equalsIgnoreCase("TRUE"))
+	fieldValue = ExcelUtil.getTestDataValue("Fnol_PHVehicleModified");
+	if (fieldValue !=null &&fieldValue.equalsIgnoreCase("TRUE"))
 	{
 		fnolVehicleDetailsPOM.selectVehicleModified(true);
 		
 		fnolVehicleDetailsPOM.clickAddModification();
 		// now choose modification
 		fieldValue = ExcelUtil.getTestDataValue("Fnol_PHVehicleModificationType");
+		if (fieldValue !=null)
 		fnolVehicleDetailsPOM.selectModification(fieldValue, 1);
 	}
 	else
@@ -64,7 +67,7 @@ public class CCFNOLVehicleSteps extends BaseTest {
 		fnolVehicleDetailsPOM.setPreDamageDesc(fieldValue);
 	
 	fieldValue = ExcelUtil.getTestDataValue("Fnol_PHVehicleRoadWorthy");
-	if (fieldValue.equalsIgnoreCase("TRUE"))
+	if (fieldValue !=null &&fieldValue.equalsIgnoreCase("TRUE"))
 	{
 		fnolVehicleDetailsPOM.selectRoadworthy(true);
 	}
@@ -93,7 +96,7 @@ public class CCFNOLVehicleSteps extends BaseTest {
 	
 	// OTHER section
 	fieldValue = ExcelUtil.getTestDataValue("Fnol_PHVehicleFinanceOnVehicle");
-	if (fieldValue.equalsIgnoreCase("TRUE"))
+	if (fieldValue !=null&& fieldValue.equalsIgnoreCase("TRUE"))
 	{
 		fnolVehicleDetailsPOM.selectFinanceOnVehicle(true);
 		
@@ -135,7 +138,7 @@ public class CCFNOLVehicleSteps extends BaseTest {
 			fnolVehicleDetailsPOM.setFireTimeDiscovered(fieldValue);
 		
 		fieldValue = ExcelUtil.getTestDataValue("Fnol_PHVehicleFireGarage");
-		if (fieldValue.equalsIgnoreCase("TRUE"))
+		if (fieldValue !=null && fieldValue.equalsIgnoreCase("TRUE"))
 		{
 			fnolVehicleDetailsPOM.selectFireVisitedGarage(true);
 			fieldValue = ExcelUtil.getTestDataValue("Fnol_PHVehicleFireGarageDetails");
@@ -147,7 +150,7 @@ public class CCFNOLVehicleSteps extends BaseTest {
 		}
 		
 		fieldValue = ExcelUtil.getTestDataValue("Fnol_PHVehicleFireOtherVehicle");
-		if (fieldValue.equalsIgnoreCase("TRUE"))
+		if (fieldValue !=null && fieldValue.equalsIgnoreCase("TRUE"))
 		{
 			fnolVehicleDetailsPOM.selectFireOtherVehicles(true);
 			fieldValue = ExcelUtil.getTestDataValue("Fnol_PHVehicleFireOtherVehicleDetails");
@@ -160,7 +163,7 @@ public class CCFNOLVehicleSteps extends BaseTest {
 		
 		
 		fieldValue = ExcelUtil.getTestDataValue("Fnol_PHVehicleFireSuspected");
-		if (fieldValue.equalsIgnoreCase("TRUE"))
+		if (fieldValue !=null&& fieldValue.equalsIgnoreCase("TRUE"))
 		{
 			fnolVehicleDetailsPOM.selectFireSuspected(true);
 			fieldValue = ExcelUtil.getTestDataValue("Fnol_PHVehicleFireSuspectNewPerson");
@@ -181,7 +184,7 @@ public class CCFNOLVehicleSteps extends BaseTest {
 			
 		}
 		else {
-			fnolVehicleDetailsPOM.selectFireSuspected(true);
+			fnolVehicleDetailsPOM.selectFireSuspected(false);
 			}
 		}
 	
@@ -212,7 +215,7 @@ public class CCFNOLVehicleSteps extends BaseTest {
 			
 			
 			fieldValue = ExcelUtil.getTestDataValue("Fnol_PHVehicleTheftWindowsLocked");
-			if (fieldValue.equalsIgnoreCase("TRUE"))
+			if (fieldValue !=null && fieldValue.equalsIgnoreCase("TRUE"))
 			{
 				fnolVehicleDetailsPOM.selectTheftWindowsLocked(true);
 			}
@@ -223,7 +226,7 @@ public class CCFNOLVehicleSteps extends BaseTest {
           
 
 			fieldValue = ExcelUtil.getTestDataValue("Fnol_PHVehicleTheftSecurityFitted");
-			if (fieldValue.equalsIgnoreCase("TRUE"))
+			if (fieldValue !=null && fieldValue.equalsIgnoreCase("TRUE"))
 			{
 				fnolVehicleDetailsPOM.selectTheftSecurityFitted(true);
 				
@@ -232,7 +235,7 @@ public class CCFNOLVehicleSteps extends BaseTest {
 					fnolVehicleDetailsPOM.setTheftSecurityDetails(fieldValue);
 				
 				fieldValue = ExcelUtil.getTestDataValue("Fnol_PHVehicleTheftSecurityActive");
-				if (fieldValue.equalsIgnoreCase("TRUE"))
+				if (fieldValue !=null && fieldValue.equalsIgnoreCase("TRUE"))
 				{
 					fnolVehicleDetailsPOM.selectTheftSecurityActive(true);
 				}
@@ -261,7 +264,7 @@ public class CCFNOLVehicleSteps extends BaseTest {
 			
 			//contactless
 			fieldValue = ExcelUtil.getTestDataValue("Fnol_PHVehicleTheftKeyContactless");
-			if (fieldValue.equalsIgnoreCase("TRUE"))
+			if (fieldValue !=null && fieldValue.equalsIgnoreCase("TRUE"))
 			{
 				fnolVehicleDetailsPOM.selectTheftKeysContactless(true);
 			}
@@ -271,7 +274,7 @@ public class CCFNOLVehicleSteps extends BaseTest {
 			}
 			
 			fieldValue = ExcelUtil.getTestDataValue("Fnol_PHVehicleTheftKeyLeftInVehicle");
-			if (fieldValue.equalsIgnoreCase("TRUE"))
+			if (fieldValue !=null && fieldValue.equalsIgnoreCase("TRUE"))
 			{
 				fnolVehicleDetailsPOM.selectTheftKeysLeft(true);
 			}
@@ -281,7 +284,7 @@ public class CCFNOLVehicleSteps extends BaseTest {
 			}
 			
 			fieldValue = ExcelUtil.getTestDataValue("Fnol_PHVehicleTheftGarage");
-			if (fieldValue.equalsIgnoreCase("TRUE"))
+			if (fieldValue !=null && fieldValue.equalsIgnoreCase("TRUE"))
 			{
 				fnolVehicleDetailsPOM.selectTheftVisitedGarage(true);
 				fieldValue = ExcelUtil.getTestDataValue("Fnol_PHVehicleTheftGarageDetails");
@@ -293,7 +296,7 @@ public class CCFNOLVehicleSteps extends BaseTest {
 			}
 			
 			fieldValue = ExcelUtil.getTestDataValue("Fnol_PHVehicleTheftVehicleChanged");
-			if (fieldValue.equalsIgnoreCase("TRUE"))
+			if (fieldValue !=null &&fieldValue.equalsIgnoreCase("TRUE"))
 			{
 				fnolVehicleDetailsPOM.selectTheftVehicleChanged(true);
 				fieldValue = ExcelUtil.getTestDataValue("Fnol_PHVehicleTheftVehicleChangedDetails");
@@ -306,7 +309,7 @@ public class CCFNOLVehicleSteps extends BaseTest {
 			
 			
 			fieldValue = ExcelUtil.getTestDataValue("Fnol_PHVehicleTheftSuspected");
-			if (fieldValue.equalsIgnoreCase("TRUE"))
+			if (fieldValue !=null &&fieldValue.equalsIgnoreCase("TRUE"))
 			{
 				fnolVehicleDetailsPOM.selectTheftSuspected(true);
 				fieldValue = ExcelUtil.getTestDataValue("Fnol_PHVehicleTheftSuspectNewPerson");
@@ -333,7 +336,7 @@ public class CCFNOLVehicleSteps extends BaseTest {
 		
 		// police
 			fieldValue = ExcelUtil.getTestDataValue("Fnol_PHVehicleTheftPoliceTreating");
-			if (fieldValue.equalsIgnoreCase("FALSE"))
+			if (fieldValue !=null &&fieldValue.equalsIgnoreCase("FALSE"))
 			{
 				fnolVehicleDetailsPOM.selectTheftPoliceTreating(false);
 				

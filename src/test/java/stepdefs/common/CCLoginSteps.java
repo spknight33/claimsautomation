@@ -19,9 +19,9 @@ public class CCLoginSteps extends BaseTest {
 	public void i_access_claimcenter_login_page() throws Throwable {
 
 		// TST
-		// driver.get("http://claimcentertest.cloud.aioinissaydowa.eu/cc/");
+		 driver.get("http://claimcentertest.cloud.aioinissaydowa.eu/cc/");
 		//DEV
-		driver.get("http://claimcenterdev.cloud.aioinissaydowa.eu/cc/");
+		//driver.get("http://claimcenterdev.cloud.aioinissaydowa.eu/cc/");
 		
 		// make sure there is no left over alert
 		try {
