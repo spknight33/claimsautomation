@@ -39,6 +39,62 @@ public class CCFNOLPersonContactSteps extends BaseTest {
 		personContactDetailsPOM.selectUpdate();
 	}
 	
+	public void completeFNOLClaimReporterForTestScenario()
+	{
+		
+		String fieldValue = ExcelUtil.getTestDataValue("Fnol_ClaimReporterPrefix");
+		if (fieldValue !=null)
+			personContactDetailsPOM.selectPrefix(fieldValue);
+		
+		fieldValue = ExcelUtil.getTestDataValue("Fnol_ClaimReporterFirstName");
+		if (fieldValue !=null)
+			personContactDetailsPOM.setFirstName(fieldValue);
+		
+		fieldValue = ExcelUtil.getTestDataValue("Fnol_ClaimReporterLastName");
+		if (fieldValue !=null)
+			personContactDetailsPOM.setLastName(fieldValue);
+		
+		fieldValue = ExcelUtil.getTestDataValue("Fnol_ClaimReporterEmail");
+		if (fieldValue !=null)
+			personContactDetailsPOM.setEmail(fieldValue);
+		
+		fieldValue = ExcelUtil.getTestDataValue("Fnol_ClaimReporterLocationDesc");
+		if (fieldValue !=null)
+			personContactDetailsPOM.setLocationDesc(fieldValue);
+		
+		
+	
+		personContactDetailsPOM.selectUpdate();
+	}
+	
+	public void completeFNOLClaimMainContactForTestScenario()
+	{
+		
+		String fieldValue = ExcelUtil.getTestDataValue("Fnol_ClaimMainContactPrefix");
+		if (fieldValue !=null)
+			personContactDetailsPOM.selectPrefix(fieldValue);
+		
+		fieldValue = ExcelUtil.getTestDataValue("Fnol_ClaimMainContactFirstName");
+		if (fieldValue !=null)
+			personContactDetailsPOM.setFirstName(fieldValue);
+		
+		fieldValue = ExcelUtil.getTestDataValue("Fnol_ClaimMainContactLastName");
+		if (fieldValue !=null)
+			personContactDetailsPOM.setLastName(fieldValue);
+		
+		fieldValue = ExcelUtil.getTestDataValue("Fnol_ClaimMainContactEmail");
+		if (fieldValue !=null)
+			personContactDetailsPOM.setEmail(fieldValue);
+		
+		fieldValue = ExcelUtil.getTestDataValue("Fnol_ClaimMainContactLocationDesc");
+		if (fieldValue !=null)
+			personContactDetailsPOM.setLocationDesc(fieldValue);
+		
+		
+	
+		personContactDetailsPOM.selectUpdate();
+	}
+	
 	@Then("^I will be on person contact screen for FNOL$")
 	public void i_will_be_on_personcontact_screen_for_FNOL() throws Throwable {
 	    personContactDetailsPOM.isPageTitleDisplayed("Person Details");

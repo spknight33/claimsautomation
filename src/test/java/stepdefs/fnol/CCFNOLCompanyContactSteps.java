@@ -3,6 +3,7 @@ package stepdefs.fnol;
 import org.testng.Assert;
 
 import com.big.automation.selenium_webdriver.common.baseTest.BaseTest;
+import com.big.automation.selenium_webdriver.common.utilities.excelutils.ExcelUtil;
 
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
@@ -10,6 +11,40 @@ import cucumber.api.java.en.Then;
 public class CCFNOLCompanyContactSteps extends BaseTest {
 	
 	
+	public void completeFNOLClaimReporterForTestScenario()
+	{
+		
+		String fieldValue = ExcelUtil.getTestDataValue("Fnol_ClaimReporterCompanyname");
+		if (fieldValue !=null)
+			companyContactDetailsPOM.setCompanyName(fieldValue);
+		
+		fieldValue = ExcelUtil.getTestDataValue("Fnol_ClaimReporterCompanyWorkphone");
+		if (fieldValue !=null)
+			companyContactDetailsPOM.setWorkPhone(fieldValue);
+		
+		fieldValue = ExcelUtil.getTestDataValue("Fnol_ClaimReporterCompanyMobile");
+		if (fieldValue !=null)
+			companyContactDetailsPOM.setMobile(fieldValue);
+		
+		fieldValue = ExcelUtil.getTestDataValue("Fnol_ClaimReporterCompanyEmail");
+		if (fieldValue !=null)
+			companyContactDetailsPOM.setEmail(fieldValue);
+		
+		fieldValue = ExcelUtil.getTestDataValue("Fnol_ClaimReporterCompanyLocationDesc");
+		if (fieldValue !=null)
+			companyContactDetailsPOM.setLocationDesc(fieldValue);
+		
+		fieldValue = ExcelUtil.getTestDataValue("Fnol_ClaimReporterCompanyAddressLine1");
+		if (fieldValue !=null)
+			companyContactDetailsPOM.setAddressLine1(fieldValue);
+		
+		fieldValue = ExcelUtil.getTestDataValue("Fnol_ClaimReporterCompanyNotes");
+		if (fieldValue !=null)
+			companyContactDetailsPOM.setNotes(fieldValue);
+		
+	
+    	companyContactDetailsPOM.selectUpdate();
+	}
 	
 	
 	@Then("^I will be on the new company contact screen$")

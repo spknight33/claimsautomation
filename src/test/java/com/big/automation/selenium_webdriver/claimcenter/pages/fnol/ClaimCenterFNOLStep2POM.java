@@ -5,7 +5,6 @@ import static java.lang.String.format;
 
 import java.util.List;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
@@ -14,55 +13,52 @@ import com.big.automation.selenium_webdriver.common.gw.utilities.GuideWireAccess
 
 public class ClaimCenterFNOLStep2POM extends BaseTest {
 
-	@FindBy(id = "FNOLWizard:Next-btnEl")
-	private WebElement nextButton;
-
-	@FindBy(id = "FNOLWizard:Prev")
-	private WebElement backButton;
-
-	@FindBy(id = "title")
-	private WebElement titleDropDown;
-
 	@FindBy(id = "FNOLWizard:AutoWorkersCompWizardStepSet:FNOLWizard_BasicInfoScreen:ttlBar")
 	private WebElement pageTitle;
+	
+	@FindBy(id = "FNOLWizard:Cancel")
+	private WebElement cancelButton;
+	@FindBy(id = "FNOLWizard:Next")
+	private WebElement nextButton;
+	@FindBy(id = "FNOLWizard:Prev")
+	private WebElement backButton;
 
 	@FindBy(className = "message")
 	private List<WebElement> errorMessages;
 
-	// these are not robust finders, so will need revisit, just select fierts for
-	// now
+
 	@FindBy(id = "FNOLWizard:AutoWorkersCompWizardStepSet:FNOLWizard_BasicInfoScreen:PanelRow:RightPanel:FNOLWizard_BasicInfoRightPanelSet:0:InsuredVehicleDV:InsuredVehicleInputGroup:_checkbox")
 	private WebElement firstInsuredVehicleCB;
 
+	//Reported By
+	//----------------------------------------------------------------
 	@FindBy(id = "FNOLWizard:AutoWorkersCompWizardStepSet:FNOLWizard_BasicInfoScreen:PanelRow:BasicInfoDetailViewPanelDV:HowReported-inputEl")
 	private WebElement howReported;
-
 	@FindBy(id = "FNOLWizard:AutoWorkersCompWizardStepSet:FNOLWizard_BasicInfoScreen:PanelRow:BasicInfoDetailViewPanelDV:ReportedBy_Name-inputEl")
 	private WebElement reportedByName;
-	@FindBy(id = "FNOLWizard:AutoWorkersCompWizardStepSet:FNOLWizard_BasicInfoScreen:PanelRow:BasicInfoDetailViewPanelDV:ReportedBy_Name-trigger-picker")
-	private WebElement reportedByNamePicker;
-	// this is the picker stuff
-	// first the icon
 	@FindBy(id = "FNOLWizard:AutoWorkersCompWizardStepSet:FNOLWizard_BasicInfoScreen:PanelRow:BasicInfoDetailViewPanelDV:ReportedBy_Name:ReportedBy_NameMenuIcon")
-	private WebElement reportedByPickerLink;
+	private WebElement reportedByPickerIcon;
 	// now the New person option
 	@FindBy(id = "FNOLWizard:AutoWorkersCompWizardStepSet:FNOLWizard_BasicInfoScreen:PanelRow:BasicInfoDetailViewPanelDV:ReportedBy_Name:ClaimNewCompanyOrPersonPickerMenuItemSet:NewContactPickerMenuItemSet_NewPerson-itemEl")
-	private WebElement newPersonSubLink;
+	private WebElement reportedByNewPersonPicker;
 	@FindBy(id = "FNOLWizard:AutoWorkersCompWizardStepSet:FNOLWizard_BasicInfoScreen:PanelRow:BasicInfoDetailViewPanelDV:ReportedBy_Name:ClaimNewCompanyOrPersonPickerMenuItemSet:NewContactPickerMenuItemSet_NewCompany-itemEl")
-	private WebElement newCompanySubLink;
+	private WebElement reportedByNewCompanyPicker;
 	@FindBy(id = "FNOLWizard:AutoWorkersCompWizardStepSet:FNOLWizard_BasicInfoScreen:PanelRow:BasicInfoDetailViewPanelDV:ReportedBy_Name:MenuItem_Search-itemEl")
-	private WebElement searchSubLink;
-
+	private WebElement reportedBySearchPicker;
 	@FindBy(id = "FNOLWizard:AutoWorkersCompWizardStepSet:FNOLWizard_BasicInfoScreen:PanelRow:BasicInfoDetailViewPanelDV:Claim_ReportedByType-inputEl")
 	private WebElement reportedByRelation;
-
 	@FindBy(id = "FNOLWizard:AutoWorkersCompWizardStepSet:FNOLWizard_BasicInfoScreen:PanelRow:BasicInfoDetailViewPanelDV:Notification_ReportedDate-inputEl")
 	private WebElement reportedDate;
-
+	
+	
+    // contact info
+	//---------------------------------------
 	@FindBy(id = "FNOLWizard:AutoWorkersCompWizardStepSet:FNOLWizard_BasicInfoScreen:PanelRow:BasicInfoDetailViewPanelDV:DOB-inputEl")
 	private WebElement dob;
+	
 	@FindBy(id = "FNOLWizard:AutoWorkersCompWizardStepSet:FNOLWizard_BasicInfoScreen:PanelRow:BasicInfoDetailViewPanelDV:reporter_Address-inputEl")
 	private WebElement contactAddress;
+	
 	@FindBy(id = "FNOLWizard:AutoWorkersCompWizardStepSet:FNOLWizard_BasicInfoScreen:PanelRow:BasicInfoDetailViewPanelDV:reporter_businessphone:GlobalPhoneInputSet:NationalSubscriberNumber-inputEl")
 	private WebElement contactWorkPhone;
 	@FindBy(id = "FNOLWizard:AutoWorkersCompWizardStepSet:FNOLWizard_BasicInfoScreen:PanelRow:BasicInfoDetailViewPanelDV:reporter_homephone:GlobalPhoneInputSet:NationalSubscriberNumber-inputEl")
@@ -74,6 +70,18 @@ public class ClaimCenterFNOLStep2POM extends BaseTest {
 	@FindBy(id = "FNOLWizard:AutoWorkersCompWizardStepSet:FNOLWizard_BasicInfoScreen:PanelRow:BasicInfoDetailViewPanelDV:reporter_email-inputEl")
 	private WebElement contactEmail;
 	
+	@FindBy(id = "FNOLWizard:AutoWorkersCompWizardStepSet:FNOLWizard_BasicInfoScreen:PanelRow:BasicInfoDetailViewPanelDV:EditContact")
+	private WebElement editContactButton;
+	
+	// Insured Details
+	//-----------------------------------------------
+	@FindBy(id = "FNOLWizard:AutoWorkersCompWizardStepSet:FNOLWizard_BasicInfoScreen:PanelRow:BasicInfoDetailViewPanelDV:Insured_Name-inputEl")
+	private WebElement insuredName;
+	@FindBy(id = "FNOLWizard:AutoWorkersCompWizardStepSet:FNOLWizard_BasicInfoScreen:PanelRow:BasicInfoDetailViewPanelDV:Insured_Address-inputEl")
+	private WebElement insuredAddress;
+	@FindBy(id = "FNOLWizard:AutoWorkersCompWizardStepSet:FNOLWizard_BasicInfoScreen:PanelRow:BasicInfoDetailViewPanelDV:Insured_WorkPhone-inputEl")
+	private WebElement insuredPrimaryPhone;
+	
 	@FindBy(id = "FNOLWizard:AutoWorkersCompWizardStepSet:FNOLWizard_BasicInfoScreen:PanelRow:BasicInfoDetailViewPanelDV:NotifiedByAlertInputSet:NotifiedByAlert_itb_true-inputEl")
 	private WebElement alertTrueRadio;
 	@FindBy(id = "FNOLWizard:AutoWorkersCompWizardStepSet:FNOLWizard_BasicInfoScreen:PanelRow:BasicInfoDetailViewPanelDV:NotifiedByAlertInputSet:NotifiedByAlert_itb_false-inputEl")
@@ -81,58 +89,88 @@ public class ClaimCenterFNOLStep2POM extends BaseTest {
 	@FindBy(id = "FNOLWizard:AutoWorkersCompWizardStepSet:FNOLWizard_BasicInfoScreen:PanelRow:BasicInfoDetailViewPanelDV:NotifiedByAlertInputSet:AlertID_itb-inputEl")
 	private WebElement alertId;
 
+	// Main contact
+	//-------------------------------------------------------
 	@FindBy(id = "FNOLWizard:AutoWorkersCompWizardStepSet:FNOLWizard_BasicInfoScreen:PanelRow:BasicInfoDetailViewPanelDV:MainContactChoice_true-inputEl")
 	private WebElement samePersonTrueRadio;
 	@FindBy(id = "FNOLWizard:AutoWorkersCompWizardStepSet:FNOLWizard_BasicInfoScreen:PanelRow:BasicInfoDetailViewPanelDV:MainContactChoice_false-inputEl")
 	private WebElement samePersonFalseRadio;
 
 	@FindBy(id = "FNOLWizard:AutoWorkersCompWizardStepSet:FNOLWizard_BasicInfoScreen:PanelRow:BasicInfoDetailViewPanelDV:MainContact_Name-inputEl")
-	private WebElement diffPersonName;
+	private WebElement diffPersonNameDropdown;
+	@FindBy(id = "FNOLWizard:AutoWorkersCompWizardStepSet:FNOLWizard_BasicInfoScreen:PanelRow:BasicInfoDetailViewPanelDV:MainContact_Name:MainContact_NameMenuIcon")
+	private WebElement diffPersonPickerIcon;
+	// now the New person option
+	@FindBy(id = "FNOLWizard:AutoWorkersCompWizardStepSet:FNOLWizard_BasicInfoScreen:PanelRow:BasicInfoDetailViewPanelDV:MainContact_Name:ClaimNewPersonOnlyPickerMenuItemSet:ClaimNewPersonOnlyPickerMenuItemSet_NewPersonMenuItem-itemEl")
+	private WebElement diffPersonNewPersonPicker;
+	@FindBy(id = "FNOLWizard:AutoWorkersCompWizardStepSet:FNOLWizard_BasicInfoScreen:PanelRow:BasicInfoDetailViewPanelDV:MainContact_Name:MenuItem_Search-itemEl")
+	private WebElement diffPersonSearchPicker;
+	
 	@FindBy(id = "FNOLWizard:AutoWorkersCompWizardStepSet:FNOLWizard_BasicInfoScreen:PanelRow:BasicInfoDetailViewPanelDV:Claim_MainContactType-inputEl")
 	private WebElement diffPersonRelation;
 
-	// TODO diff person new person picker
+	
 
 	public String getName() {
 
 		return "FNOL Wizard Step2 Basic Information";
 	}
+	
+    public boolean isPageTitleDisplayed(String expected) {
+		
+		logger.info(format("%s -found page title for step2 :" + this.getPageTitle().getText(), getName()));
+		return this.getPageTitle().getText().equalsIgnoreCase(expected);
+	}
+    
+    
+    public void cancel() {
+    	logger.info(format("%s - going to click cancel", getName()));
+		GuideWireAccessors.clickGWButton(driver, this.getCancelButton());
+		
+	}
+    
+    public void next() {
+    	logger.info(format("%s - going to click next", getName()));
+		GuideWireAccessors.clickGWButton(driver, getNextButton());
+		
+	}
 
+	public void back() {
+		logger.info(format("%s -going to click back", getName()));
+		GuideWireAccessors.clickGWButton(driver, getBackButton());
+	}
+
+    //Reported By
+    //--------------------------------------------------------------------
+	public void selectHowReported(String option) {
+		logger.info(format("%s - going to set reported how value to:" + option, getName()));
+		GuideWireAccessors.selectOptionFromGWDropDown(driver, option, this.getHowReported(), 1);
+	}
+	
+	public void selectReportedByName(String option) {
+		logger.info(format("%s - going to select report by name option :" + option, getName()));
+		GuideWireAccessors.selectOptionFromGWDropDown(driver, option, getReportedByName(), 1);
+	}
+	
 	public void selectNewPersonReporter() {
 		logger.info(format("%s - going to select New Person from reportedby picker", getName()));
-		GuideWireAccessors.selectOptionFromGWPicker(driver, this.getReportedByPickerLink(), this.getNewPersonSubLink());
+		GuideWireAccessors.selectOptionFromGWPicker(driver, this.getReportedByPickerLink(), this.getReportedByNewPersonPicker());
 	}
 
 	public void selectNewCompanyReporter() {
 		logger.info(format("%s - going to select New Company from reportedby picker", getName()));
 		GuideWireAccessors.selectOptionFromGWPicker(driver, this.getReportedByPickerLink(),
-				this.getNewCompanySubLink());
+				this.getReportedByNewCompanyPicker());
 	}
 
 	public void selectSearchReporter() {
 		logger.info(format("%s - going to select search from reportedby picker", getName()));
-		GuideWireAccessors.selectOptionFromGWPicker(driver, this.getReportedByPickerLink(), this.getSearchSubLink());
+		GuideWireAccessors.selectOptionFromGWPicker(driver, this.getReportedByPickerLink(), this.getReportedBySearchPicker());
 	}
 
-	public void next() {
-		GuideWireAccessors.clickGWButton(driver, getNextButton());
-		logger.info(format("%s - done, Next clicked", getName()));
-	}
-
-	public void back() {
-		GuideWireAccessors.clickGWButton(driver, getBackButton());
-	}
-
-	public boolean isPageTitleDisplayed(String expected) {
-		logger.info(format("%s -check page title for step2 :" + expected, getName()));
-		logger.info(format("%s -found page title for step2 :" + this.getPageTitle().getText(), getName()));
-		return this.getPageTitle().getText().equalsIgnoreCase(expected);
-	}
-
-	public String getReportedDateValue() {
-
-		return this.getReportedDate().getText();
-
+	public void selectRelationToInsured(String option) {
+		logger.info(format("%s - going to select relation to insured option :" + option, getName()));
+		GuideWireAccessors.selectOptionFromGWDropDown(driver, option, getReportedByRelation(), 1);
 	}
 
 	public void setReportedDateValue(String date) {
@@ -141,36 +179,22 @@ public class ClaimCenterFNOLStep2POM extends BaseTest {
 
 	}
 
+	public String getReportedDateValue() {
+
+		return this.getReportedDate().getText();
+
+	}
+
+
 	public String getReportedByValue() {
 
 		return this.getReportedByName().getAttribute("value");
 
 	}
 
-	public void selectHowReported(String option) {
-		logger.info(format("%s - going to set reported how value to:" + option, getName()));
-		GuideWireAccessors.selectOptionFromGWDropDown(driver, option, this.getHowReported(), 1);
-	}
-
-	public boolean howReportedContainsOption(String option) {
-		boolean found = false;
-		logger.info(format("%s - going to check if options in how reported:" + option, getName()));
-		this.getHowReported().click();
-		String optionLocator = "//li[text()='" + option + "']";
-		found = this.getHowReported().findElements(By.xpath(optionLocator)).size() > 0;
-
-		return found;
-	}
-
-	public void selectReportedByName(String option) {
-		logger.info(format("%s - going to select report by name option :" + option, getName()));
-		GuideWireAccessors.selectOptionFromGWDropDown(driver, option, getReportedByName(), 1);
-	}
-
-	public void selectRelationToInsured(String option) {
-		logger.info(format("%s - going to select relation to insured option :" + option, getName()));
-		GuideWireAccessors.selectOptionFromGWDropDown(driver, option, getReportedByRelation(), 1);
-	}
+	
+	// Contact info
+	//-----------------------------------------------------------------
 
 	public void setWorkPhone(String text) {
 		logger.info(format("%s -  going to set Work phone", getName()));
@@ -191,7 +215,8 @@ public class ClaimCenterFNOLStep2POM extends BaseTest {
 	}
 
 	public void selectPhoneType(String option) {
-		logger.info(format("%s -  going to select phone type", getName()));
+		sleep(3);
+		logger.info(format("%s -  going to select phone type:"+option, getName()));
 		GuideWireAccessors.selectOptionFromGWDropDown(driver, option, this.getContactPhoneType(), 1);
 		
 	}
@@ -201,6 +226,14 @@ public class ClaimCenterFNOLStep2POM extends BaseTest {
 		GuideWireAccessors.setGWTextBox(driver, text, this.getContactEmail());
 		
 	}
+	public void clickEditContact() {
+		logger.info(format("%s -going to click edit contact", getName()));
+		GuideWireAccessors.clickGWButton(driver, this.getEditContactButton());
+	}
+	
+	//Insured read only fields
+	//-----------------------------------------
+	//TODO
 	
 	public void selectAlert(boolean alert)
 	{
@@ -223,6 +256,47 @@ public class ClaimCenterFNOLStep2POM extends BaseTest {
 		
 	}
 
+	// Main Contact
+	//-----------------------------------------------------------
+	public void selectMainContactSame(boolean same)
+	{
+		logger.info(format("%s -  going to set main contact same to:"+same, getName()));
+	    if (same)
+	    {
+	    	GuideWireAccessors.clickGWButton(driver, this.getSamePersonTrueRadio());
+	    }
+	    else
+	    {
+	    	GuideWireAccessors.clickGWButton(driver, this.getSamePersonFalseRadio());
+	    }
+	
+		
+	}
+	
+	public void selectDiffContactName(String option) {
+		logger.info(format("%s - going to select diffferent contact name option :" + option, getName()));
+		GuideWireAccessors.selectOptionFromGWDropDown(driver, option, this.getDiffPersonNameDropdown(), 1);
+	}
+	
+	public void selectNewPersonDiffContact() {
+		logger.info(format("%s - going to select New Person from different contact picker", getName()));
+		GuideWireAccessors.selectOptionFromGWPicker(driver, this.getDiffPersonPickerIcon(), this.getDiffPersonNewPersonPicker());
+	}
+
+	
+	public void selectSearchDiffContactRelation() {
+		logger.info(format("%s - going to select different contact relation", getName()));
+		GuideWireAccessors.selectOptionFromGWPicker(driver, this.getDiffPersonPickerIcon(), this.getDiffPersonSearchPicker());
+	}
+	
+	public void selectDiffContactRelation(String option) {
+		logger.info(format("%s - going to select diffferent contact relation :" + option, getName()));
+		GuideWireAccessors.selectOptionFromGWDropDown(driver, option, this.getDiffPersonRelation(), 1);
+	}
+	
+	
+	//Vehicle checkbox
+	//-------------------------------------------	
 	public void selectVehicleCB() {
 		logger.info(format("%s - current CB selection is :" + this.getFirstInsuredVehicleCB().isSelected(), getName()));
 		// can be more than one, but just select first for now
@@ -280,28 +354,32 @@ public class ClaimCenterFNOLStep2POM extends BaseTest {
 		return reportedByRelation;
 	}
 
-	private WebElement getTitleDropDown() {
-		return titleDropDown;
-	}
 
-	private WebElement getReportedByNamePicker() {
-		return reportedByNamePicker;
-	}
 
 	private WebElement getReportedByPickerLink() {
-		return reportedByPickerLink;
+		return reportedByPickerIcon;
 	}
 
-	private WebElement getNewPersonSubLink() {
-		return newPersonSubLink;
+	
+
+	private WebElement getCancelButton() {
+		return cancelButton;
 	}
 
-	private WebElement getNewCompanySubLink() {
-		return newCompanySubLink;
+	private WebElement getReportedByPickerIcon() {
+		return reportedByPickerIcon;
 	}
 
-	private WebElement getSearchSubLink() {
-		return searchSubLink;
+	private WebElement getReportedByNewPersonPicker() {
+		return reportedByNewPersonPicker;
+	}
+
+	private WebElement getReportedByNewCompanyPicker() {
+		return reportedByNewCompanyPicker;
+	}
+
+	private WebElement getReportedBySearchPicker() {
+		return reportedBySearchPicker;
 	}
 
 	private WebElement getPageTitle() {
@@ -344,15 +422,45 @@ public class ClaimCenterFNOLStep2POM extends BaseTest {
 		return samePersonFalseRadio;
 	}
 
-	private WebElement getDiffPersonName() {
-		return diffPersonName;
-	}
+	
 
 	private WebElement getDiffPersonRelation() {
 		return diffPersonRelation;
 	}
 	
 	
+
+	private WebElement getEditContactButton() {
+		return editContactButton;
+	}
+
+	private WebElement getInsuredName() {
+		return insuredName;
+	}
+
+	private WebElement getInsuredAddress() {
+		return insuredAddress;
+	}
+
+	private WebElement getInsuredPrimaryPhone() {
+		return insuredPrimaryPhone;
+	}
+
+	private WebElement getDiffPersonNameDropdown() {
+		return diffPersonNameDropdown;
+	}
+
+	private WebElement getDiffPersonPickerIcon() {
+		return diffPersonPickerIcon;
+	}
+
+	private WebElement getDiffPersonNewPersonPicker() {
+		return diffPersonNewPersonPicker;
+	}
+
+	private WebElement getDiffPersonSearchPicker() {
+		return diffPersonSearchPicker;
+	}
 
 	private WebElement getAlertTrueRadio() {
 		return alertTrueRadio;
