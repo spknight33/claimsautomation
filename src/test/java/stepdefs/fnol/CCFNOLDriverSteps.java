@@ -1,10 +1,14 @@
 package stepdefs.fnol;
 
+import java.util.List;
+
 import org.testng.Assert;
+import org.testng.asserts.SoftAssert;
 
 import com.big.automation.selenium_webdriver.common.baseTest.BaseTest;
 import com.big.automation.selenium_webdriver.common.utilities.excelutils.ExcelUtil;
 
+import cucumber.api.DataTable;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import stepdefs.common.SearchAddressBookSteps;
@@ -179,6 +183,12 @@ public class CCFNOLDriverSteps extends BaseTest {
 	    case "Gender":
 	    	fnolDriverDetailsPOM.selectGender(fieldValue);
 	    	break;
+	    case "Injured":
+	    	if (fieldValue.equalsIgnoreCase("true"))
+	      	  fnolDriverDetailsPOM.selectInjured(true);
+	    	else
+	    		fnolDriverDetailsPOM.selectInjured(false);
+	    	break;
 	  
 	    default:
 	    Assert.fail("unknown input field :"+ fieldValue+" - check cucumber script!");
@@ -189,6 +199,12 @@ public class CCFNOLDriverSteps extends BaseTest {
 	public void next() {
 		
 		fnolDriverDetailsPOM.selectOK();
+	}
+	
+	@Given("^I click addinjury button on driver screen$")
+	public void addinjury() {
+		
+		fnolDriverDetailsPOM.selectAddInjury();
 	}
 	
 	@Given("^I complete fields on FNOL new TP driver incident$")
@@ -211,4 +227,17 @@ public class CCFNOLDriverSteps extends BaseTest {
 		fnolDriverDetailsPOM.selectOK();
 		
 	}
+	
+	@Then("^Mandatory field error messages will be shown for New Driver screen in FNOL$")
+	public void mandatory_field_error_messages_will_be_shown_forstep3newdriver(DataTable dt) throws Throwable {
+		List<String> list = dt.asList(String.class);
+		SoftAssert softAssert = new SoftAssert();
+		for (int i = 0; i < list.size(); i++) {
+			softAssert.assertTrue(fnolDriverDetailsPOM.containsErrorMessage(list.get(i)),
+					"Error Message Check: " + list.get(i));
+
+		}
+	
+	
+}
 }

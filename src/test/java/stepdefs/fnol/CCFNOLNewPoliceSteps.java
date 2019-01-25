@@ -1,11 +1,14 @@
 package stepdefs.fnol;
 
-import org.testng.Assert;
+import java.util.List;
 
+import org.testng.Assert;
+import org.testng.asserts.SoftAssert;
 
 import com.big.automation.selenium_webdriver.common.baseTest.BaseTest;
 import com.big.automation.selenium_webdriver.common.utilities.excelutils.ExcelUtil;
 
+import cucumber.api.DataTable;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import stepdefs.common.SearchAddressBookSteps;
@@ -112,6 +115,12 @@ public class CCFNOLNewPoliceSteps extends BaseTest {
 	public void i_will_be_on_newpolice_screen_for_FNOL() throws Throwable {
 		fnolNewPolicePOM.isPageTitleDisplayed("Police Details");
 	}
+	
+	@Given("^I click ok button on FNOL new police incident$")
+	public void ok() {
+		
+		fnolNewPolicePOM.selectOK();
+	}
 
 	
 	@Given("^I select \"([^\"]*)\" on new police details screen for FNOL$")
@@ -173,5 +182,17 @@ public class CCFNOLNewPoliceSteps extends BaseTest {
 		this.completeFNOLNewPoliceForTestScenario();
 		
 	}
+	
+	@Then("^Mandatory field error messages will be shown for New Police screen in FNOL$")
+	public void mandatory_field_error_messages_will_be_shown_forstep3newpolice(DataTable dt) throws Throwable {
+		List<String> list = dt.asList(String.class);
+		SoftAssert softAssert = new SoftAssert();
+		for (int i = 0; i < list.size(); i++) {
+			softAssert.assertTrue(fnolNewPolicePOM.containsErrorMessage(list.get(i)),
+					"Error Message Check: " + list.get(i));
 
+		}
+		
+}
+	
 }

@@ -174,8 +174,13 @@ public class ClaimCenterFNOLDriverDetailsPOM extends BaseTest{
 	private WebElement hospitalStayNoRadio;
 	
 	
-	@FindBy(className = "message")
-	private List <WebElement> errorMessages;
+	//@FindBy(className = "message")
+	//private List <WebElement> errorMessages;
+	public boolean containsErrorMessage(String contains)
+	{
+				
+		return GuideWireAccessors.containsErrorMessage(driver, contains, By.className("message"));
+	}
 
 	public String getName() {
 
@@ -505,10 +510,7 @@ public class ClaimCenterFNOLDriverDetailsPOM extends BaseTest{
 		return addressType;
 	}
 
-	private List<WebElement> getErrorMessages() {
-		return errorMessages;
-	}
-
+	
 	private WebElement getRelationToOwnerDropdown() {
 		return relationToOwnerDropdown;
 	}

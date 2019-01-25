@@ -140,8 +140,13 @@ public class ClaimCenterFNOLNewPassengerDetailsPOM extends BaseTest{
 	@FindBy(id = "FNOLContactPopup:FNOLContactScreen:ContactDV:InjuryIncidentInputSet:HospitalDetails_itb:OvernightStayInHospital_itb_false-inputEl")
 	private WebElement hospitalStayNoRadio;
 	
-	@FindBy(className = "message")
-	private List <WebElement> errorMessages;
+	//@FindBy(className = "message")
+	//private List <WebElement> errorMessages;
+	public boolean containsErrorMessage(String contains)
+	{
+				
+		return GuideWireAccessors.containsErrorMessage(driver, contains, By.className("message"));
+	}
 
 	public String getName() {
 
@@ -458,11 +463,7 @@ public class ClaimCenterFNOLNewPassengerDetailsPOM extends BaseTest{
 		return addressType;
 	}
 
-	private List<WebElement> getErrorMessages() {
-		return errorMessages;
-	}
 
-	
 
 	private WebElement getMiddleName() {
 		return middleName;

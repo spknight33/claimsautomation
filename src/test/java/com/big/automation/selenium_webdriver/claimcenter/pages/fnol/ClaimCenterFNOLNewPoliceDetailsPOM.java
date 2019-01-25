@@ -5,6 +5,7 @@ import static java.lang.String.format;
 
 import java.util.List;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
@@ -82,8 +83,13 @@ public class ClaimCenterFNOLNewPoliceDetailsPOM extends BaseTest{
 	
 
 	
-	@FindBy(className = "message")
-	private List <WebElement> errorMessages;
+	//@FindBy(className = "message")
+	//private List <WebElement> errorMessages;
+	public boolean containsErrorMessage(String contains)
+	{
+				
+		return GuideWireAccessors.containsErrorMessage(driver, contains, By.className("message"));
+	}
 
 	public String getName() {
 
@@ -314,10 +320,6 @@ public class ClaimCenterFNOLNewPoliceDetailsPOM extends BaseTest{
 
 	private WebElement getNotes() {
 		return notes;
-	}
-
-	private List<WebElement> getErrorMessages() {
-		return errorMessages;
 	}
 
 	
