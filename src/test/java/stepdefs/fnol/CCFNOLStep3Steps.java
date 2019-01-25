@@ -146,7 +146,7 @@ public class CCFNOLStep3Steps extends BaseTest {
 		List<String> list = dt.asList(String.class);
 		SoftAssert softAssert = new SoftAssert();
 		for (int i = 0; i < list.size(); i++) {
-			softAssert.assertTrue(fnolStep2POM.containsErrorMessage(list.get(i)),
+			softAssert.assertTrue(fnolStep3POM.containsErrorMessage(list.get(i)),
 					"Error Message Check: " + list.get(i));
 
 		}

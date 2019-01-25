@@ -5,6 +5,7 @@ import static java.lang.String.format;
 
 import java.util.List;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -67,8 +68,8 @@ public class ClaimCenterFNOLPropertyDetailsPOM extends BaseTest {
 	@FindBy(id = "NewFixedPropertyIncidentPopup:NewFixedPropertyIncidentScreen:FixPropIncidentDetailDV:FixedPropertyIncidentDV:AlreadyRepaired_false-inputEl")
 	private WebElement alreadyRepairedNoRadio;
 
-	@FindBy(className = "message")
-	private List<WebElement> errorMessages;
+	//@FindBy(className = "message")
+	//private List<WebElement> errorMessages;
 
 	public String getName() {
 
@@ -285,8 +286,10 @@ public class ClaimCenterFNOLPropertyDetailsPOM extends BaseTest {
 		return alreadyRepairedNoRadio;
 	}
 
-	private List<WebElement> getErrorMessages() {
-		return errorMessages;
+	public boolean containsErrorMessage(String contains)
+	{
+				
+		return GuideWireAccessors.containsErrorMessage(driver, contains, By.className("message"));
 	}
 
 }

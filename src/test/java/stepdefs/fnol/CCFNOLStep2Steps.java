@@ -69,22 +69,29 @@ public class CCFNOLStep2Steps extends BaseTest{
 				
 		// confirm section
 		//------------------
-		fieldValue = ExcelUtil.getTestDataValue("Fnol_Step2_Confirm_Workphone");
-		if (fieldValue !=null)
-			fnolStep2POM.setWorkPhone(fieldValue);
-		fieldValue = ExcelUtil.getTestDataValue("Fnol_Step2_Confirm_Homephone");
-		if (fieldValue !=null)
-			fnolStep2POM.setHomePhone(fieldValue);
-		fieldValue = ExcelUtil.getTestDataValue("Fnol_Step2_Confirm_Mobile");
-		if (fieldValue !=null)
-			fnolStep2POM.setMobile(fieldValue);
-		// bug on this - doesnt display
-		//fieldValue = ExcelUtil.getTestDataValue("Fnol_Step2_Confirm_PhoneType");
-		//if (fieldValue !=null)
-		//	fnolStep2POM.selectPhoneType(fieldValue);
-		fieldValue = ExcelUtil.getTestDataValue("Fnol_Step2_Confirm_Email");
-		if (fieldValue !=null)
-			fnolStep2POM.setEmail(fieldValue);
+		fieldValue = ExcelUtil.getTestDataValue("Fnol_Step2_Confirm_HasChanges");
+		if (fieldValue !=null && fieldValue.equalsIgnoreCase("TRUE"))
+		{
+		
+			fieldValue = ExcelUtil.getTestDataValue("Fnol_Step2_Confirm_Workphone");
+			if (fieldValue !=null)
+				fnolStep2POM.setWorkPhone(fieldValue);
+			fieldValue = ExcelUtil.getTestDataValue("Fnol_Step2_Confirm_Homephone");
+			if (fieldValue !=null)
+				fnolStep2POM.setHomePhone(fieldValue);
+			fieldValue = ExcelUtil.getTestDataValue("Fnol_Step2_Confirm_Mobile");
+			if (fieldValue !=null)
+				fnolStep2POM.setMobile(fieldValue);
+			
+			fieldValue = ExcelUtil.getTestDataValue("Fnol_Step2_Confirm_Email");
+			if (fieldValue !=null)
+				fnolStep2POM.setEmail(fieldValue);
+			
+			// bug on this - doesnt display unless moved to here!
+					fieldValue = ExcelUtil.getTestDataValue("Fnol_Step2_Confirm_PhoneType");
+					if (fieldValue !=null)
+						fnolStep2POM.selectPhoneType(fieldValue);
+		}
 		
 		//dont need to select relation in this case
 		
@@ -260,6 +267,12 @@ public class CCFNOLStep2Steps extends BaseTest{
 	    	break;
 	    case "Phone Type":
 	    	fnolStep2POM.selectPhoneType(fieldValue);
+	    	break;
+	    case "Alert Notified":
+	    	if (fieldValue.equalsIgnoreCase("true"))
+	    	    fnolStep2POM.selectAlert(true);
+	    	else
+	    		fnolStep2POM.selectAlert(false);
 	    	break;
 	    
 	    default:

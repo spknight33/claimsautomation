@@ -5,6 +5,7 @@ import static java.lang.String.format;
 
 import java.util.List;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
@@ -23,8 +24,9 @@ public class ClaimCenterFNOLStep2POM extends BaseTest {
 	@FindBy(id = "FNOLWizard:Prev")
 	private WebElement backButton;
 
-	@FindBy(className = "message")
-	private List<WebElement> errorMessages;
+	// do dynamic as get stale elements for repated calls to UI
+	//@FindBy(className = "message")
+	//private List<WebElement> errorMessages;
 
 
 	@FindBy(id = "FNOLWizard:AutoWorkersCompWizardStepSet:FNOLWizard_BasicInfoScreen:PanelRow:RightPanel:FNOLWizard_BasicInfoRightPanelSet:0:InsuredVehicleDV:InsuredVehicleInputGroup:_checkbox")
@@ -197,25 +199,32 @@ public class ClaimCenterFNOLStep2POM extends BaseTest {
 	//-----------------------------------------------------------------
 
 	public void setWorkPhone(String text) {
-		logger.info(format("%s -  going to set Work phone", getName()));
+		sleep(1);
+		logger.info(format("%s -  going to set Work phone:"+text, getName()));
 		GuideWireAccessors.setGWTextBox(driver, text, this.getContactWorkPhone());
 		
 	}
 
 	public void setHomePhone(String text) {
-		logger.info(format("%s -  going to set Home phone", getName()));
+		logger.info(format("%s -  going to set Home phone:"+text, getName()));
+		// for bizarre reason. have to set this twice
+		GuideWireAccessors.setGWTextBox(driver, text, this.getContactHomePhone());
+		sleep(1);
 		GuideWireAccessors.setGWTextBox(driver, text, this.getContactHomePhone());
 		
 	}
 
 	public void setMobile(String text) {
-		logger.info(format("%s -  going to set mobile", getName()));
+		logger.info(format("%s -  going to set mobile:"+text, getName()));
+		// for bizarre reason. have to set this twice
+		GuideWireAccessors.setGWTextBox(driver, text, this.getContactMobile());
+		sleep(1);
 		GuideWireAccessors.setGWTextBox(driver, text, this.getContactMobile());
 		
 	}
 
 	public void selectPhoneType(String option) {
-		sleep(3);
+		sleep(1); //bug means need to wait
 		logger.info(format("%s -  going to select phone type:"+option, getName()));
 		GuideWireAccessors.selectOptionFromGWDropDown(driver, option, this.getContactPhoneType(), 1);
 		
@@ -237,6 +246,7 @@ public class ClaimCenterFNOLStep2POM extends BaseTest {
 	
 	public void selectAlert(boolean alert)
 	{
+		sleep(2);
 		logger.info(format("%s -  going to set alert to:"+alert, getName()));
 	    if (alert)
 	    {
@@ -339,7 +349,7 @@ public class ClaimCenterFNOLStep2POM extends BaseTest {
 	}
 
 	private List<WebElement> getErrorMessages() {
-		return errorMessages;
+		return driver.findElements(By.className("message"));
 	}
 
 	private WebElement getReportedByName() {
@@ -475,14 +485,15 @@ public class ClaimCenterFNOLStep2POM extends BaseTest {
 	}
 
 	public boolean containsErrorMessage(String contains) {
-		boolean found = false;
+		/*boolean found = false;
 		for (WebElement element : getErrorMessages()) {
 			if (element.getText().equalsIgnoreCase(contains)) {
 				found = true;
 				break;
 			}
 		}
-		return found;
+		return found;*/
+		return GuideWireAccessors.containsErrorMessage(driver, contains, By.className("message"));
 	}
 
 }

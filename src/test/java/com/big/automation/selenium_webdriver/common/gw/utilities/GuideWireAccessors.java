@@ -66,11 +66,41 @@ public class GuideWireAccessors {
 		return text;
 	}
 	
-	public static List<WebElement> getErrorMessages(WebDriver driver) {
+	//public static List<WebElement> getErrorMessages(WebDriver driver) {
 		// add a delay to allow any messages 
 		//sleep(1);
-		List<WebElement> elements = driver.findElements(By.className("messages"));
-		return elements;
+	//	List<WebElement> elements = driver.findElements(By.className("messages"));
+	//	return elements;
+	//}
+	
+	
+	public static boolean containsErrorMessage(WebDriver driver, String contains,By by)
+	{
+		int findAttempts = 0;
+		boolean found=false;
+	
+		while (findAttempts < MAX_RETRY_ON_GETTEXT) {
+			try {
+				List<WebElement> elements = driver.findElements(by);
+				
+				
+				for (WebElement element : elements) 
+				{
+					if (element.getText().equalsIgnoreCase(contains))
+					{
+						found = true;
+						break;
+					}
+				}
+			}
+		 catch (Exception e) {
+			sleep(1);
+			// TODO use a logger
+			System.out.println("containserrormessage Exception caught:" + e.getMessage());
+		}
+		findAttempts++;
+		}
+		return found;
 	}
 
 	/**
@@ -96,6 +126,7 @@ public class GuideWireAccessors {
 				sleep(3);
 				// TODO use a logger
 				System.out.println("setkGWTestBox Exception caught:" + e.getMessage());
+				System.out.println("setkGWTestBox Exception trying to set text <"+text+"> for element <"+gwTextBox.getTagName()+">");
 			}
 			findAttempts++;
 		}

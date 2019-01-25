@@ -34,8 +34,8 @@ public class ClaimCenterFNOLStep3POM extends BaseTest{
 	private WebElement pageTitle;
 
 
-	@FindBy(className = "message")
-	private List <WebElement> errorMessages;
+	//@FindBy(className = "message")
+	//private List <WebElement> errorMessages;
 	
 	@FindBy(id ="FNOLWizard:AutoWorkersCompWizardStepSet:FNOLWizard_NewLossDetailsScreen:LossDetailsAddressDV:Description-inputEl")
 	private WebElement circumstances;
@@ -393,9 +393,9 @@ private WebElement getFinishButton() {
 	{
 		return addPropertyDamageButton;
 	}
-	private List<WebElement> getErrorMessages(){
-		return errorMessages;
-	}
+	//private List<WebElement> getErrorMessages() {
+	//	return driver.findElements(By.className("message"));
+	//}
 	private WebElement getPageTitle() {
 		return pageTitle;
 	}
@@ -471,7 +471,7 @@ private WebElement getFinishButton() {
 
 	public boolean containsErrorMessage(String contains)
 	{
-		boolean found=false;
+		/*boolean found=false;
 		for (WebElement element : getErrorMessages()) 
 		{
 			if (element.getText().equalsIgnoreCase(contains))
@@ -480,7 +480,9 @@ private WebElement getFinishButton() {
 				break;
 			}
 		}
-		return found;
+		return found;*/
+		
+		return GuideWireAccessors.containsErrorMessage(driver, contains, By.className("message"));
 	}
 	
 	
