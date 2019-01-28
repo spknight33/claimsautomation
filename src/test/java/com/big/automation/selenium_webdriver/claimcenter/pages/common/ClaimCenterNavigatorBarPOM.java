@@ -1,6 +1,7 @@
 package com.big.automation.selenium_webdriver.claimcenter.pages.common;
 
 import static java.lang.String.format;
+import static com.big.automation.selenium_webdriver.common.utilities.ThreadUtils.sleep;
 
 import java.util.List;
 
@@ -33,7 +34,7 @@ public class ClaimCenterNavigatorBarPOM extends BaseTest {
 	
     public void clickTopLevel(String toplink) throws Exception {
     	logger.info(format("%s - done, going to click Navigator", getName()));
-    	
+    	sleep(1);
     	for (WebElement option : navigationLinks) {
     		
     		    		
@@ -49,7 +50,7 @@ public class ClaimCenterNavigatorBarPOM extends BaseTest {
     
     public void clickDesktopTopLevel(String toplink) throws Exception {
     	logger.info(format("%s - done, going to click desktop Navigator", getName()));
-    	
+    	sleep(1);
     	for (WebElement option : navigationLinks) {
     		
     		    		

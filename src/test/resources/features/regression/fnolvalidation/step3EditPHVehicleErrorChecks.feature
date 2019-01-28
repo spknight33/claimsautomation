@@ -1,4 +1,4 @@
-
+@Ignore
 Feature: Regression test for errors for step3 edit PH Vehicle - Theft and Fire
 
   Background: 

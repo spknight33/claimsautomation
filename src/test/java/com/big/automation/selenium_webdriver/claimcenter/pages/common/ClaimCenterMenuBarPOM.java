@@ -252,6 +252,7 @@ public void clickSubMenu(String topmenu, String submenuitem) throws Exception {
 	}
 	
 	public void selectNewClaimMenuItem() {
+		logger.info(format("%s - New Claim from quickjump", getName()));
 		GuideWireAccessors.useQuickJump(driver, "NewClaim");
 	}
 	
@@ -280,7 +281,11 @@ public void clickSubMenu(String topmenu, String submenuitem) throws Exception {
 	}
 	*/
 	
-	
+	public void selectExistingClaim(String claimnumber) {
+		logger.info(format("%s - select claim from quickjump:"+claimnumber, getName()));
+		GuideWireAccessors.useQuickJump(driver, "Claim "+claimnumber);
+	}
+	/*
 	public void selectExistingClaim(String claimnumber) {
 		openTopLevelMenu(CLAIMS);
 		sleep(3);
@@ -289,7 +294,7 @@ public void clickSubMenu(String topmenu, String submenuitem) throws Exception {
 		logger.info(format("%s - done, Search Claim for claimnumber clicked:"+claimnumber, getName()));
 	}
 	
-	
+	*/
 	
 
 	public void selectSearchClaimSimpleMenuItem() {

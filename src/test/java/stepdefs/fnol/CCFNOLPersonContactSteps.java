@@ -67,6 +67,34 @@ public class CCFNOLPersonContactSteps extends BaseTest {
 		personContactDetailsPOM.selectUpdate();
 	}
 	
+	public void completePostFNOLClaimReporterForTestScenario()
+	{
+		
+		String fieldValue = ExcelUtil.getTestDataValue("PostFnol_LossDetails_ReporterPrefix");
+		if (fieldValue !=null)
+			personContactDetailsPOM.selectPrefix(fieldValue);
+		
+		fieldValue = ExcelUtil.getTestDataValue("PostFnol_LossDetails_ReporterFirstName");
+		if (fieldValue !=null)
+			personContactDetailsPOM.setFirstName(fieldValue);
+		
+		fieldValue = ExcelUtil.getTestDataValue("PostFnol_LossDetails_ReporterLastName");
+		if (fieldValue !=null)
+			personContactDetailsPOM.setLastName(fieldValue);
+		
+		fieldValue = ExcelUtil.getTestDataValue("PostFnol_LossDetails_ReporterEmail");
+		if (fieldValue !=null)
+			personContactDetailsPOM.setEmail(fieldValue);
+		
+		fieldValue = ExcelUtil.getTestDataValue("PostFnol_LossDetails_ReporterLocationDesc");
+		if (fieldValue !=null)
+			personContactDetailsPOM.setLocationDesc(fieldValue);
+		
+		
+	
+		personContactDetailsPOM.selectUpdate();
+	}
+	
 	public void completeFNOLClaimMainContactForTestScenario()
 	{
 		
@@ -87,6 +115,34 @@ public class CCFNOLPersonContactSteps extends BaseTest {
 			personContactDetailsPOM.setEmail(fieldValue);
 		
 		fieldValue = ExcelUtil.getTestDataValue("Fnol_ClaimMainContactLocationDesc");
+		if (fieldValue !=null)
+			personContactDetailsPOM.setLocationDesc(fieldValue);
+		
+		
+	
+		personContactDetailsPOM.selectUpdate();
+	}
+	
+	public void completePostFNOLClaimMainContactForTestScenario()
+	{
+		
+		String fieldValue = ExcelUtil.getTestDataValue("PostFnol_LossDetails_MainContactPrefix");
+		if (fieldValue !=null)
+			personContactDetailsPOM.selectPrefix(fieldValue);
+		
+		fieldValue = ExcelUtil.getTestDataValue("PostFnol_LossDetails_MainContactFirstName");
+		if (fieldValue !=null)
+			personContactDetailsPOM.setFirstName(fieldValue);
+		
+		fieldValue = ExcelUtil.getTestDataValue("PostFnol_LossDetails_MainContactLastName");
+		if (fieldValue !=null)
+			personContactDetailsPOM.setLastName(fieldValue);
+		
+		fieldValue = ExcelUtil.getTestDataValue("PostFnol_LossDetails_MainContactEmail");
+		if (fieldValue !=null)
+			personContactDetailsPOM.setEmail(fieldValue);
+		
+		fieldValue = ExcelUtil.getTestDataValue("PostFnol_LossDetails_MainContactLocationDesc");
 		if (fieldValue !=null)
 			personContactDetailsPOM.setLocationDesc(fieldValue);
 		

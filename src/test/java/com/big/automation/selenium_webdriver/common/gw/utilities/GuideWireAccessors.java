@@ -32,6 +32,7 @@ public class GuideWireAccessors {
 				JavascriptExecutor je = (JavascriptExecutor) driver;
 				je.executeScript("arguments[0].scrollIntoView(true);", qjElement);
 				qjElement.click();
+				qjElement.clear();
 				qjElement.sendKeys(command);
 				Actions actions = new Actions(driver);
 				actions.sendKeys(Keys.ENTER);
@@ -226,9 +227,14 @@ public class GuideWireAccessors {
 			// occurrence 2 was asked for
 			// as a workaround for now, just click the last?
 			if (occurrence != elements.size()) {
+				System.out.println("element size is :"+elements.size());
 				occurrence = elements.size();
+				optionElement = elements.get(occurrence -1);
 			}
-			optionElement = elements.get(occurrence - 1);
+			else {
+				optionElement = elements.get(occurrence -1);
+				}
+			
 		} else {
 			// we can just take the first or only
 			optionElement = gwDropDown.findElement(By.xpath(optionLocator));
