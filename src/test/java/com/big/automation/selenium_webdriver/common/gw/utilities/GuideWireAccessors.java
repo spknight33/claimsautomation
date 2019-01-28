@@ -6,8 +6,10 @@ import java.util.List;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 
 import com.big.automation.selenium_webdriver.common.utilities.WaitForUtils;
 
@@ -20,6 +22,31 @@ public class GuideWireAccessors {
 	public static final int MAX_RETRY_ON_GETVALUE = 2;
 	public static final int MAX_RETRY_ON_GETTEXT = 3;
 
+	
+	public static void useQuickJump(WebDriver driver, String command) {
+		int findAttempts = 0;
+		WebElement qjElement = driver.findElement(By.id("QuickJump-inputEl"));
+		while (findAttempts < MAX_RETRY_ON_CLICK_ELEMENT) {
+			try {
+				WaitForUtils.waitForElementToBeClickableVariable(driver, qjElement,10);
+				JavascriptExecutor je = (JavascriptExecutor) driver;
+				je.executeScript("arguments[0].scrollIntoView(true);", qjElement);
+				qjElement.click();
+				qjElement.sendKeys(command);
+				Actions actions = new Actions(driver);
+				actions.sendKeys(Keys.ENTER);
+				actions.build().perform();
+				break;
+			} catch (Exception e) {
+				sleep(1);
+				// TODO use a logger
+				System.out.println("useQuickJump Exception caught:" + e.getMessage());
+			}
+			findAttempts++;
+		}
+	}
+	
+	
 	/**
 	 * Common method to click a Guidewire button or link It is possible to get a
 	 * element not clickable exception, even though we have waited for the element

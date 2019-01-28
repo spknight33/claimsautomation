@@ -282,8 +282,13 @@ public class ClaimCenterFNOLVehicleDetailsPOM extends BaseTest{
 		
 	
 	
-	@FindBy(className = "message")
-	private List <WebElement> errorMessages;
+	//@FindBy(className = "message")
+	//private List <WebElement> errorMessages;
+		public boolean containsErrorMessage(String contains)
+		{
+					
+			return GuideWireAccessors.containsErrorMessage(driver, contains, By.className("message"));
+		}
 
 	public String getName() {
 
@@ -925,9 +930,9 @@ public class ClaimCenterFNOLVehicleDetailsPOM extends BaseTest{
 		return style;
 	}
 
-	private List<WebElement> getErrorMessages() {
-		return errorMessages;
-	}
+	//private List<WebElement> getErrorMessages() {
+	//	return errorMessages;
+	//}
 
 	private WebElement getColor() {
 		return color;

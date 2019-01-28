@@ -1,5 +1,5 @@
 @Ignore
-Feature: Regression test for errors for step3 New TP Driver
+Feature: Regression test for errors for step3 New PH Driver
 
   Background: 
     Given I use test data set "regression_set1"
@@ -7,7 +7,7 @@ Feature: Regression test for errors for step3 New TP Driver
 
   Scenario: FNOL Regression - check error messages
     And I will be on step3 for FNOL
-    And I click add Vehicle on step3
+    And I select the insureds vehicle at step3
     And I select "AddDriver" on vehicle screen
     And I will be on Driver screen for FNOL
     And I click ok button on driver screen
