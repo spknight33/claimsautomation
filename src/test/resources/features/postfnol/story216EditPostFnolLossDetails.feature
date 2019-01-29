@@ -1,3 +1,4 @@
+
 Feature: CBPCL-216 As a ClaimCenter user with the role of Adjuster or Manager,
   I want to be able update the details on the loss so that I can make sure that the data on the claim represents our current understanding of the loss.
 
@@ -17,20 +18,15 @@ Feature: CBPCL-216 As a ClaimCenter user with the role of Adjuster or Manager,
     And I complete fields on post FNOL new police details screen
     And I click update button on post FNOL loss details
 
-  
+  @Ignore
   Scenario: CBPCL-216 TC1 ClaimsHandler can edit fields in Loss Details screen post FNOL
     And I Select an existing Claim
     And I select "Loss Details" on the Claim Navigator
     And I will see post FNOL loss details
     When I click edit button on post FNOL loss details
     Then I change data in the Loss Details screen post FNOL
- #   And I can enter data into the Loss Locations fields
- #     | Location | Country | Address 1 | Address 2 | Address 3 | City | PostCode | Location Description | Location Code | Jurisdiction |
- #   And I can enter data into the Incident Question fields
- #   And I can enter data into the Notifcation and Contact fields
-  #    | How Reported | Reported By | Relationship to Insured | Main Contact | Contact Relationship to Insured |
-  #  And I click update button on post FNOL loss details
-
+    
+ 
 @Ignore
   Scenario: CBPCL-216 TC2 ClaimsHandler can add Vehicle from Loss Details post FNOL
     And I Select an existing Claim
@@ -90,7 +86,8 @@ Feature: CBPCL-216 As a ClaimCenter user with the role of Adjuster or Manager,
     When I click edit button on post FNOL loss details
     When I click edit Pedestrian on post FNOL loss details
     Then I will be on edit pedestrian screen on post FNOL
-    And I click cancel button on edit pedestrian screen on post FNOL
+    And I change fields on post FNOL edit pedestrian incident
+    And I click update button on post FNOL loss details 
 
   @Ignore
   Scenario: CBPCL-216 TC16  ClaimsHandler can edit property from Loss Details post FNOL
@@ -110,9 +107,10 @@ Feature: CBPCL-216 As a ClaimCenter user with the role of Adjuster or Manager,
     When I click edit button on post FNOL loss details
     When I click edit PH Driver on post FNOL loss details
     Then I will be on edit Driver screen for post FNOL
-    And I click cancel button on edit driver screen for post FNOL
+    And I change fields on post FNOL edit PH driver incident
+    And I click update button on post FNOL loss details 
 
-  @Ignore
+  
   Scenario: CBPCL-216 TC18  ClaimsHandler can edit TP driver from Loss Details post FNOL
     And I Select an existing Claim
     And I select "Loss Details" on the Claim Navigator
@@ -120,7 +118,8 @@ Feature: CBPCL-216 As a ClaimCenter user with the role of Adjuster or Manager,
     When I click edit button on post FNOL loss details
     When I click edit TP Driver on post FNOL loss details
     Then I will be on edit Driver screen for post FNOL
-    And I click cancel button on edit driver screen for post FNOL
+    And I change fields on post FNOL edit TP driver incident
+     And I click update button on post FNOL loss details 
 
   @Ignore
   Scenario: CBPCL-216 TC19  ClaimsHandler can edit PH passenger from Loss Details post FNOL

@@ -37,7 +37,6 @@ import com.big.automation.selenium_webdriver.claimcenter.pages.common.ClaimCente
 import com.big.automation.selenium_webdriver.claimcenter.pages.desktop.ClaimCenterDesktopQueuesPOM;
 import com.big.automation.selenium_webdriver.claimcenter.pages.fnol.ClaimCenterFNOLClaimSavedPOM;
 import com.big.automation.selenium_webdriver.claimcenter.pages.fnol.ClaimCenterFNOLDriverDetailsPOM;
-import com.big.automation.selenium_webdriver.claimcenter.pages.fnol.ClaimCenterFNOLNewInjuryPOM;
 import com.big.automation.selenium_webdriver.claimcenter.pages.fnol.ClaimCenterFNOLNewPassengerDetailsPOM;
 import com.big.automation.selenium_webdriver.claimcenter.pages.fnol.ClaimCenterFNOLNewPoliceDetailsPOM;
 import com.big.automation.selenium_webdriver.claimcenter.pages.fnol.ClaimCenterFNOLPedestrianDetailsPOM;
@@ -129,7 +128,7 @@ public class BaseTest extends AbstractTestNGCucumberTests{
    
    public static ClaimCenterPersonDetailsPOM personContactDetailsPOM;
    public static ClaimCenterFNOLPropertyDetailsPOM fnolPropertyDetailsPOM;
-   public static ClaimCenterFNOLNewInjuryPOM fnolNewInjuryPOM;
+  
    
    public static ClaimCenterPOSTFNOLExposuresPOM postFnolExposuresPOM;
    public static ClaimCenterPOSTFNOLEditInjuryExposurePOM postFnolEditInjuryExposurePOM;
