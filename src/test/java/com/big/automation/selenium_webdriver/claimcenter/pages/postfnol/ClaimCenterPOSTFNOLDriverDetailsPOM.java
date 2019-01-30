@@ -507,6 +507,15 @@ public class ClaimCenterPOSTFNOLDriverDetailsPOM extends BaseTest {
 
 	// Injury MOJ section
 	// ----------------------------------------------------
+public int getCountMoj() {
+		
+		logger.info(format("%s -  going to get count of MOjs", getName()));
+		String locator="//*[@id=\"PostFNOLContactPopup:FNOLContactScreen:InjuryIncidentStatusInputSet:MOJStatusLV-body\"]//table";
+		List<WebElement> elements = driver.findElements(By.xpath(locator));
+		
+		
+		return elements.size();
+	}
 	public void selectAddMoj() {
 		logger.info(format("%s -  going to click add moj button", getName()));
 
@@ -527,13 +536,16 @@ public class ClaimCenterPOSTFNOLDriverDetailsPOM extends BaseTest {
 
 	public void setMojCreationDate(String text, int sequence) {
 		logger.info(format("%s -  going to set moj creation date :" + text, getName()));
-		sleep(2);
-
+		
 		String locator = "//*[@id=\"PostFNOLContactPopup:FNOLContactScreen:InjuryIncidentStatusInputSet:MOJStatusLV-body\"]//table["
 				+ sequence + "]//tr/td[3]/div";
 		WebElement element = driver.findElement(By.xpath(locator));
-		GuideWireAccessors.clickGWButton(driver, element);
-		GuideWireAccessors.setGWTextBox(driver, text, element);
+		GuideWireAccessors.clickGWButton(driver, element); // this will cause element to go stale, so get again
+		sleep(1);
+		// date setter is actually  in a different part of the page!
+		locator = "//input[contains(@id,\"datefield-\")]";
+		element = driver.findElement(By.xpath(locator));
+		GuideWireAccessors.setGWTextBox(driver, text, element); // use the no wait method for this date field
 
 	}
 

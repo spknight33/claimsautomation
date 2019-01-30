@@ -181,6 +181,12 @@ public class ClaimCenterPOSTFNOLPassengerDetailsPOM extends BaseTest {
 		logger.info(format("%s -found page title for page :" + this.getPageTitle().getText(), getName()));
 		return this.getPageTitle().getText().equalsIgnoreCase(expected);
 	}
+	
+	public void selectEdit() {
+		logger.info(format("%s -  going to click edit", getName()));
+		GuideWireAccessors.clickGWButton(driver, this.getEditButton());
+
+	}
 
 	public void cancel() {
 
@@ -268,6 +274,8 @@ public class ClaimCenterPOSTFNOLPassengerDetailsPOM extends BaseTest {
 
 	public void setPostcode(String text) {
 		logger.info(format("%s -  going to set postcode", getName()));
+		GuideWireAccessors.clickGWButton(driver, this.getPostcode());
+		GuideWireAccessors.setGWTextBox(driver, text, this.getPostcode());
 		GuideWireAccessors.setGWTextBox(driver, text, this.getPostcode());
 		// as postcode causes display off other address fields, but this can take a
 		// couple of seconds - the next method should wait until available but add a
@@ -310,6 +318,24 @@ public class ClaimCenterPOSTFNOLPassengerDetailsPOM extends BaseTest {
 		GuideWireAccessors.setGWTextBox(driver, text, this.getMainEmail());
 
 	}
+	
+	public void setAltEmail(String text) {
+		logger.info(format("%s -  going to set altemail", getName()));
+		GuideWireAccessors.setGWTextBox(driver, text, this.getAltEmail());
+
+	}
+
+	public void setNiNumber(String text) {
+		logger.info(format("%s -  going to set ninumber", getName()));
+		GuideWireAccessors.setGWTextBox(driver, text, this.getNiNumber());
+
+	}
+
+	public void setNotes(String text) {
+		logger.info(format("%s -  going to set notes", getName()));
+		GuideWireAccessors.setGWTextBox(driver, text, this.getNotes());
+
+	}
 
 	// Injury Section
 	// -------------------------------------
@@ -348,19 +374,20 @@ public class ClaimCenterPOSTFNOLPassengerDetailsPOM extends BaseTest {
 		// use to select the area of body for the first (for now) change to be able to
 		// set for any row
 		// just change to use table[x]
-		String locator = "//*[@id=\"FNOLContactPopup:FNOLContactScreen:InjuryIncidentInputSet:EditableBodyPartDetailsLV-body\"]//table["
+		String locator = "//*[@id=\"PostFNOLContactPopup:FNOLContactScreen:InjuryIncidentInputSet:EditableBodyPartDetailsLV-body\"]//table["
 				+ sequence + "]//tr/td[2]/div";
 		WebElement element = driver.findElement(By.xpath(locator));
 		GuideWireAccessors.selectOptionFromGWDropDown(driver, option, element, 1);
 
 	}
+	
 
 	public void selectDetailedInjury(String option, int sequence) {
 		logger.info(format("%s -  going to select detald injury" + option, getName()));
 		// use to select the detailed injury for the first (for now) change to be able
 		// to set for any row
 		sleep(2);
-		String locator = "//*[@id=\"FNOLContactPopup:FNOLContactScreen:InjuryIncidentInputSet:EditableBodyPartDetailsLV-body\"]//table["
+		String locator = "//*[@id=\"PostFNOLContactPopup:FNOLContactScreen:InjuryIncidentInputSet:EditableBodyPartDetailsLV-body\"]//table["
 				+ sequence + "]//tr/td[3]/div";
 		WebElement element = driver.findElement(By.xpath(locator));
 		GuideWireAccessors.selectOptionFromGWDropDown(driver, option, element, 1);
@@ -418,7 +445,18 @@ public class ClaimCenterPOSTFNOLPassengerDetailsPOM extends BaseTest {
 	
 	// Injury MOJ section
 		// ----------------------------------------------------
-		public void selectAddMoj() {
+	public int getCountMoj() {
+		
+		logger.info(format("%s -  going to get count of MOjs", getName()));
+		String locator="//*[@id=\"PostFNOLContactPopup:FNOLContactScreen:InjuryIncidentStatusInputSet:MOJStatusLV-body\"]//table";
+		List<WebElement> elements = driver.findElements(By.xpath(locator));
+		
+		
+		return elements.size();
+	}
+
+	
+	public void selectAddMoj() {
 			logger.info(format("%s -  going to click add moj button", getName()));
 
 			GuideWireAccessors.clickGWButton(driver, this.getAddMojButton());
@@ -438,14 +476,20 @@ public class ClaimCenterPOSTFNOLPassengerDetailsPOM extends BaseTest {
 		}
 		public void setMojCreationDate(String text, int sequence) {
 			logger.info(format("%s -  going to set moj creation date :" + text, getName()));
-			sleep(2);
 			
 			String locator = "//*[@id=\"PostFNOLContactPopup:FNOLContactScreen:InjuryIncidentStatusInputSet:MOJStatusLV-body\"]//table["
 					+ sequence + "]//tr/td[3]/div";
 			WebElement element = driver.findElement(By.xpath(locator));
-			GuideWireAccessors.clickGWButton(driver, element);
-			GuideWireAccessors.setGWTextBox(driver, text, element);
-
+			GuideWireAccessors.clickGWButton(driver, element); // this will cause element to go stale, so get again
+			sleep(1);
+			// date setter is actually  in a different part of the page!
+			locator = "//input[contains(@id,\"datefield-\")]";
+			element = driver.findElement(By.xpath(locator));
+			GuideWireAccessors.setGWTextBox(driver, text, element); // use the no wait method for this date field
+			Actions actions = new Actions(driver);
+			actions.sendKeys(Keys.TAB);
+			actions.build().perform();
+			sleep(1);// needed for next setters
 		}
 
 		
@@ -487,11 +531,7 @@ public class ClaimCenterPOSTFNOLPassengerDetailsPOM extends BaseTest {
 		}
 
 	//TODO getter for read only fields
-		public void setMojTotal(String text) {
-
-			logger.info(format("%s -  going to set moj total:" + text, getName()));
-			GuideWireAccessors.setGWTextBox(driver, text, this.getMojTotalValue());
-		}
+	
 
 	private WebElement getCancelButton() {
 		return cancelButton;

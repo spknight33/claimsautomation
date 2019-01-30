@@ -21,6 +21,10 @@ public class ClaimCenterPOSTFNOLPedestrianDetailsPOM extends BaseTest {
 	@FindBy(id = "PostFNOLContactPopup:FNOLContactScreen:ttlBar")
 	private WebElement pageTitle;
 
+	
+	
+	@FindBy(id = "PostFNOLContactPopup:FNOLContactScreen:Edit")
+	private WebElement editButton;
 	@FindBy(id = "PostFNOLContactPopup:FNOLContactScreen:Update")
 	private WebElement okButton;
 
@@ -166,6 +170,13 @@ public class ClaimCenterPOSTFNOLPedestrianDetailsPOM extends BaseTest {
 
 		logger.info(format("%s -found page title for page :" + this.getPageTitle().getText(), getName()));
 		return this.getPageTitle().getText().equalsIgnoreCase(expected);
+	}
+	
+	public void selectEdit() {
+
+		logger.info(format("%s -  going to click edit", getName()));
+		GuideWireAccessors.clickGWButton(driver, this.getEditButton());
+
 	}
 
 	public void selectCancel() {
@@ -431,6 +442,15 @@ public class ClaimCenterPOSTFNOLPedestrianDetailsPOM extends BaseTest {
 
 	// Injury MOJ section
 	// ----------------------------------------------------
+public int getCountMoj() {
+		
+		logger.info(format("%s -  going to get count of MOjs", getName()));
+		String locator="//*[@id=\"PostFNOLContactPopup:FNOLContactScreen:InjuryIncidentStatusInputSet:MOJStatusLV-body\"]//table";
+		List<WebElement> elements = driver.findElements(By.xpath(locator));
+		
+		
+		return elements.size();
+	}
 	public void selectAddMoj() {
 		logger.info(format("%s -  going to click add moj button", getName()));
 
@@ -451,15 +471,19 @@ public class ClaimCenterPOSTFNOLPedestrianDetailsPOM extends BaseTest {
 	}
 	public void setMojCreationDate(String text, int sequence) {
 		logger.info(format("%s -  going to set moj creation date :" + text, getName()));
-		sleep(2);
 		
 		String locator = "//*[@id=\"PostFNOLContactPopup:FNOLContactScreen:InjuryIncidentStatusInputSet:MOJStatusLV-body\"]//table["
 				+ sequence + "]//tr/td[3]/div";
 		WebElement element = driver.findElement(By.xpath(locator));
-		GuideWireAccessors.clickGWButton(driver, element);
-		GuideWireAccessors.setGWTextBox(driver, text, element);
+		GuideWireAccessors.clickGWButton(driver, element); // this will cause element to go stale, so get again
+		sleep(1);
+		// date setter is actually  in a different part of the page!
+		locator = "//input[contains(@id,\"datefield-\")]";
+		element = driver.findElement(By.xpath(locator));
+		GuideWireAccessors.setGWTextBox(driver, text, element); // use the no wait method for this date field
 
 	}
+	
 
 	
 
@@ -733,5 +757,10 @@ public class ClaimCenterPOSTFNOLPedestrianDetailsPOM extends BaseTest {
 	private WebElement getMojNetTotal() {
 		return mojNetTotal;
 	}
+
+	private WebElement getEditButton() {
+		return editButton;
+	}
+	
 
 }

@@ -114,9 +114,9 @@ public class ClaimCenterPOSTFNOLLossDetailsPOM extends BaseTest {
 	@FindBy(id = "ClaimLossDetails:ClaimLossDetailsScreen:VehicleIncidentIterator:1:VehicleIncidentDV:PassengerLV:driver")
 	private WebElement tpEditDriver;
 
-	@FindBy(id = "ClaimLossDetails:ClaimLossDetailsScreen:VehicleIncidentIterator:0:VehicleIncidentDV:PassengerLV:0:passenger")
+	@FindBy(id = "ClaimLossDetails:ClaimLossDetailsScreen:IncidentPanelRef:IncidentPanelSet:VehicleIncidentIterator:0:VehicleIncidentDV:PassengerLV:0:passenger")
 	private WebElement phEditPassenger;
-	@FindBy(id = "ClaimLossDetails:ClaimLossDetailsScreen:VehicleIncidentIterator:1:VehicleIncidentDV:PassengerLV:0:passenger")
+	@FindBy(id = "ClaimLossDetails:ClaimLossDetailsScreen:IncidentPanelRef:IncidentPanelSet:VehicleIncidentIterator:1:VehicleIncidentDV:PassengerLV:0:passenger")
 	private WebElement tpEditPassenger;
 
 	// PROPERTY edit dropdowns

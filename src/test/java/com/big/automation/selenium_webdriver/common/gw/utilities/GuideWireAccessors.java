@@ -145,9 +145,11 @@ public class GuideWireAccessors {
 		int findAttempts = 0;
 		while (findAttempts < MAX_RETRY_ON_TEXT_INPUT) {
 			try {
+				
 				WaitForUtils.waitForElementToBeClickableVariable(driver, gwTextBox,10);
 				JavascriptExecutor je = (JavascriptExecutor) driver;
 				je.executeScript("arguments[0].scrollIntoView(true);", gwTextBox);
+				gwTextBox.click();
 				gwTextBox.clear();
 				gwTextBox.sendKeys(text);
 				break;
@@ -159,6 +161,13 @@ public class GuideWireAccessors {
 			}
 			findAttempts++;
 		}
+	}
+	
+	
+public static void setGWTextBoxWithPreWait(WebDriver driver, String text, WebElement gwTextBox,int waitSecs) {
+		
+		 sleep(waitSecs);
+		 setGWTextBox(driver,text,gwTextBox);
 	}
 
 	/**

@@ -77,6 +77,26 @@ public class CCNavigatorSteps extends BaseTest {
 	    }
 	}
 	
+	@Given("^I select \"([^\"]*)\" on the Administration Navigator$")
+	public void i_select_on_the_Administration_Navigator(String link) throws Throwable {
+	    
+		
+		switch(link)
+	    {
+	    case "Reference Data":
+	    	navigatorBarPOM.clickAdministrationTopLevel("Effective Dated Reference Data");;
+	    	break;
+	    
+	    
+	    	
+	    	//TODO the rest
+	   
+	    default:
+	    Assert.fail("unknown field :"+ link+" - check cucumber script!");
+	    }
+	}
+	
+	
 	@When("^I select the Actions Popup Menu Hierarchy \"([^\"]*)\"$")
 	public void i_select_the_Actiuons_Popup_Menu_Hierarchy(String menulist) throws Throwable {
 		String[] items = menulist.split(",");
