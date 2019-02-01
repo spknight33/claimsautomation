@@ -130,6 +130,35 @@ public class GuideWireAccessors {
 		}
 		return found;
 	}
+	
+	public static boolean containsErrorMessagePart(WebDriver driver, String contains,By by)
+	{
+		int findAttempts = 0;
+		boolean found=false;
+	
+		while (findAttempts < MAX_RETRY_ON_GETTEXT) {
+			try {
+				List<WebElement> elements = driver.findElements(by);
+				
+				
+				for (WebElement element : elements) 
+				{
+					if (element.getText().contains(contains))
+					{
+						found = true;
+						break;
+					}
+				}
+			}
+		 catch (Exception e) {
+			sleep(1);
+			// TODO use a logger
+			System.out.println("containserrormessagepart Exception caught:" + e.getMessage());
+		}
+		findAttempts++;
+		}
+		return found;
+	}
 
 	/**
 	 * Common method to enter text into a text box or area. It is possible to get a

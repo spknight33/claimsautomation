@@ -1,4 +1,4 @@
-package com.big.automation.selenium_webdriver.claimcenter.pages.postfnol;
+package com.big.automation.selenium_webdriver.claimcenter.pages.postfnol.summary;
 
 import static com.big.automation.selenium_webdriver.common.utilities.ThreadUtils.sleep;
 import static java.lang.String.format;

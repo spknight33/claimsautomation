@@ -1,4 +1,4 @@
-package stepdefs.postfnol;
+package stepdefs.postfnol.services;
 
 import org.testng.Assert;
 
@@ -21,6 +21,27 @@ public class CCPOSTFNOLNewServiceSteps extends BaseTest {
 		postFnolNewServicePOM.submit();
 	}
 	
+	@Given("^I click Search Vendor on New Service screen for post FNOL$")
+	public void searchVendor() {
+		
+		postFnolNewServicePOM.selectSearchVendor();
+	}
+	
+	@Given("^I click Add Service to Perform on New Service screen for post FNOL$")
+	public void addServiceToPerform() {
+		
+		postFnolNewServicePOM.clickAddService();
+	}
+	
+	@Given("^I filter and select service \"([^\"]*)\" on New Service screen for post FNOL$")
+	public void i_filterandselect_service_screen(String fieldValue) throws Throwable {
+		postFnolNewServicePOM.setFilterText(fieldValue);
+		postFnolNewServicePOM.clickFilterService();
+		postFnolNewServicePOM.selectServiceToAdd();
+		postFnolNewServicePOM.clickAddSelectedService();
+		
+	}
+	
 	
 	@Given("^I select \"([^\"]*)\" from \"([^\"]*)\" on New Service screen for post FNOL$")
 	public void i_select_from_field_on_service_screen(String fieldValue, String fieldName) throws Throwable {
@@ -32,11 +53,15 @@ public class CCPOSTFNOLNewServiceSteps extends BaseTest {
 		case "Request Type":
 			postFnolNewServicePOM.selectRequestType(fieldValue);
 		    	break;
-		
-	    
+		case "Customer Contact":
+			postFnolNewServicePOM.selectCustomerContact(fieldValue);
+		    	break;
+		case "Service Address":
+			postFnolNewServicePOM.selectServiceAddress(fieldValue);
+		    	break;
 	
 	    default:
-	    Assert.fail("unknown input field :"+ fieldValue+" - check cucumber script!");
+	    Assert.fail("unknown input field :"+ fieldName+" - check cucumber script!");
 	    }
 	}
 	
@@ -44,8 +69,11 @@ public class CCPOSTFNOLNewServiceSteps extends BaseTest {
 	public void i_input_into_the_box_on_service_screen(String fieldValue, String fieldName) throws Throwable {
 		switch (fieldName) {
 	
-		case "todo":
-		//	postFnolNewServicePOM.setDescription(fieldValue);
+		case "Additional":
+			postFnolNewServicePOM.setAdditionalInstructions(fieldValue);
+			break;
+		case "Completion Date":
+			postFnolNewServicePOM.setRquestedCompletionDate(fieldValue);
 			break;
 
 		default:

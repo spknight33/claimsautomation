@@ -1,4 +1,4 @@
-package com.big.automation.selenium_webdriver.claimcenter.pages.postfnol;
+package com.big.automation.selenium_webdriver.claimcenter.pages.postfnol.activities;
 
 import static java.lang.String.format;
 
@@ -127,6 +127,44 @@ public class ClaimCenterPOSTFNOLWorkplanPOM extends BaseTest{
 		}
 		
 		return found;
+	}
+	
+	public boolean activityPresent(String subject,String overdueTime)
+	{
+		logger.info(format("%s - activityPresent check ", getName()));
+	    sleep(2);
+		String locator = "//*[@id=\"ClaimWorkplan:ClaimWorkplanScreen:WorkplanLV-body\"]//table";
+		List <WebElement> rows = driver.findElements(By.xpath(locator));
+		
+		WebElement actSubject;
+		WebElement actOverdue;
+		
+		
+		// loop till find first with mathcing type
+		int rowTotal = rows.size();
+		String rowLocator = null;
+		for(int i=1; i<=rowTotal; i++)
+		{
+			
+			rowLocator = locator + "[" + i + "]";
+				//find the type
+			actSubject = driver.findElement(By.xpath(rowLocator+"//tr//td[8]"));
+			actOverdue = driver.findElement(By.xpath(rowLocator+"//tr//td[5]"));
+			
+			
+	
+			if (actSubject.getText().equalsIgnoreCase(subject) && actOverdue.getText().equalsIgnoreCase(overdueTime))
+			{
+				logger.info(format("%s - Found match in activity workplan table ", getName()));
+				return true;
+				
+			}
+		}
+		
+		logger.info(format("%s - NO match in activity table: "+subject+" "+overdueTime, getName()));
+		return false;
+	
+		
 	}
 
 

@@ -1,4 +1,4 @@
-package stepdefs.postfnol;
+package stepdefs.postfnol.exposures;
 
 import java.util.List;
 

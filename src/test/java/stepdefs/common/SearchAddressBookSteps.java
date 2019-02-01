@@ -16,6 +16,11 @@ public class SearchAddressBookSteps extends BaseTest {
 	public void i_will_be_on_search_address_book_screen() throws Throwable {
 	    searchAddressBookPOM.isPageTitleDisplayed("Search Address Book");
 	}
+	
+	@Then("^I will be on the search address book screen for Vendors$")
+	public void i_will_be_on_search_address_book_screen_for_vendors() throws Throwable {
+	    searchAddressBookPOM.isPageTitleDisplayed("Search Address Book For Vendors");
+	}
 
 	
 	@Given("^I select \"([^\"]*)\" on search address book screen$")

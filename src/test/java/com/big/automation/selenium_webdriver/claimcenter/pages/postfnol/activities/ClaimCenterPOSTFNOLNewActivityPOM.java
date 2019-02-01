@@ -1,10 +1,11 @@
-package com.big.automation.selenium_webdriver.claimcenter.pages.postfnol;
+package com.big.automation.selenium_webdriver.claimcenter.pages.postfnol.activities;
 
 import static com.big.automation.selenium_webdriver.common.utilities.ThreadUtils.sleep;
 import static java.lang.String.format;
 
 import java.util.List;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
@@ -23,8 +24,6 @@ public class ClaimCenterPOSTFNOLNewActivityPOM extends BaseTest{
 	private WebElement cancelButton;
 	@FindBy(id = "NewActivity:NewActivityScreen:NewActivity_AddDocumentButton")
 	private WebElement linkDocumentButton;	
-		
-
 
 	
 	@FindBy(id = "NewActivity:NewActivityScreen:NewActivityDV:Activity_Subject-inputEl")
@@ -35,6 +34,8 @@ public class ClaimCenterPOSTFNOLNewActivityPOM extends BaseTest{
 	private WebElement relatedToDropdown;
 	@FindBy(id = "NewActivity:NewActivityScreen:NewActivityDV:Activity_DueDate-inputEl")
 	private WebElement dueDate;
+	@FindBy(id = "NewActivity:NewActivityScreen:NewActivityDV:Activity_EscalationDate-inputEl")
+	private WebElement overdueDate;
 	@FindBy(id = "NewActivity:NewActivityScreen:NewActivityDV:Activity_Priority-inputEl")
 	private WebElement priorityDropdown;
 	@FindBy(id = "NewActivity:NewActivityScreen:NewActivityDV:Activity_Importance-inputEl")
@@ -46,18 +47,29 @@ public class ClaimCenterPOSTFNOLNewActivityPOM extends BaseTest{
 	private WebElement externalOwnedNoRadio;
 	@FindBy(id = "NewActivity:NewActivityScreen:NewActivityDV:Activity_ExternalOwner-inputEl")
 	private WebElement externalOwnerDropdown;
+	@FindBy(id = "NewActivity:NewActivityScreen:NewActivityDV:Activity_ExternalOwner:Activity_ExternalOwnerMenuIcon")
+	private WebElement externalOwnerPickerIcon;
+	@FindBy(id = "NewActivity:NewActivityScreen:NewActivityDV:Activity_ExternalOwner:ClaimNewContactPickerMenuItemSet:NewContactPickerMenuItemSet_NewPerson-itemEl")
+	private WebElement externalOwnerPickerNewPerson;
+	@FindBy(id = "NewActivity:NewActivityScreen:NewActivityDV:Activity_ExternalOwner:ClaimNewContactPickerMenuItemSet:NewContactPickerMenuItemSet_NewCompany-itemEl")
+	private WebElement externalOwnerPickerNewCompany;
+	@FindBy(id = "NewActivity:NewActivityScreen:NewActivityDV:Activity_ExternalOwner:MenuItem_Search-itemEl")
+	private WebElement externalOwnerPickerSearch;
+	//TODO - other pickers
 	
 	// TODO document template fields
-	
+	@FindBy(id = "NewActivity:NewActivityScreen:NewActivityDV:Activity_CreateDocument:SelectActivity_CreateDocument")
+	private WebElement documentTemplateFindIcon;
+	@FindBy(id = "NewActivity:NewActivityScreen:NewActivityDV:EmailTemplate:SelectEmailTemplate")
+	private WebElement emailTemplateFindIcon;
 	
 	
 	@FindBy(id = "NewActivity:NewActivityScreen:NewActivityDV:Activity_AssignActivity-inputEl")
 	private WebElement assignToDropdown;
+	@FindBy(id = "NewActivity:NewActivityScreen:NewActivityDV:Activity_AssignActivity:Activity_AssignActivity_PickerButton")
+	private WebElement assignToSearchIcon;
 	
 	
-	
-	@FindBy(className = "message")
-	private List <WebElement> errorMessages;
 
 	public String getName() {
 
@@ -67,9 +79,15 @@ public class ClaimCenterPOSTFNOLNewActivityPOM extends BaseTest{
 	public boolean isPageTitleDisplayed(String expected)
 	{
 		sleep(2);
-		
 		logger.info(format("%s -found page title for page :"+this.getPageTitle().getText(), getName()));
 		return this.getPageTitle().getText().contains(expected); // use contains
+	}
+	
+	public boolean containsErrorMessage(String contains)
+	{
+		// do a partial match on error message as the date messages contain the current time
+				
+		return GuideWireAccessors.containsErrorMessagePart(driver, contains, By.className("message"));
 	}
 	
 	public void cancel() {
@@ -85,20 +103,33 @@ public class ClaimCenterPOSTFNOLNewActivityPOM extends BaseTest{
 		
 	}
 	
+	public void setSubject(String text)
+	{
+		logger.info(format("%s -  going to set subject", getName()));
+		GuideWireAccessors.setGWTextBox(driver, text, this.getSubject());
+	}
 	public void setDescription(String text)
 	{
 		logger.info(format("%s -  going to set description", getName()));
 		GuideWireAccessors.setGWTextBox(driver, text, this.getDescription());
 	}
 	
-	
-	
-	
 	public void selectRelatedTo(String option)
 	{
 		logger.info(format("%s - going to select related to:"+option, getName()));
 		GuideWireAccessors.selectOptionFromGWDropDown(driver, option, this.getRelatedToDropdown(), 1);
 	}
+	public void setDueDate(String text)
+	{
+		logger.info(format("%s -  going to set due date", getName()));
+		GuideWireAccessors.setGWTextBox(driver, text, this.getDueDate());
+	}
+	public void setOverdueDate(String text)
+	{
+		logger.info(format("%s -  going to set overdue date", getName()));
+		GuideWireAccessors.setGWTextBox(driver, text, this.getOverdueDate());
+	}
+	
 	public void selectPriority(String option)
 	{
 		logger.info(format("%s - going to select priority to:"+option, getName()));
@@ -110,13 +141,7 @@ public class ClaimCenterPOSTFNOLNewActivityPOM extends BaseTest{
 		GuideWireAccessors.selectOptionFromGWDropDown(driver, option, this.getCalendarImportanceDropdown(), 1);
 	}
 	
-	public void selectAssignedTo(String option)
-	{
-		logger.info(format("%s - going to select assignedTo to:"+option, getName()));
-		GuideWireAccessors.selectOptionFromGWDropDown(driver, option, this.getAssignToDropdown(), 1);
-	}
-	
-	
+
 	
 	public void selectExternalOwned(boolean attended)
 	{
@@ -132,9 +157,49 @@ public class ClaimCenterPOSTFNOLNewActivityPOM extends BaseTest{
 	
 		
 	}
+	public void selectExternalOwner(String option)
+	{
+		logger.info(format("%s - going to select external owner to:"+option, getName()));
+		GuideWireAccessors.selectOptionFromGWDropDown(driver, option, this.getExternalOwnerDropdown(), 1);
+	}
+	public void selectExternalOwnerNewPerson()
+	{
+		logger.info(format("%s - going to select external owner new person", getName()));
+		GuideWireAccessors.selectOptionFromGWPicker(driver, this.getExternalOwnerPickerIcon(), this.getExternalOwnerPickerNewPerson());
+	}
+	public void selectExternalOwnerNewCompany()
+	{
+		logger.info(format("%s - going to select external owner new company", getName()));
+		GuideWireAccessors.selectOptionFromGWPicker(driver, this.getExternalOwnerPickerIcon(), this.getExternalOwnerPickerNewCompany());
+	}
+	public void selectExternalOwnerSearch()
+	{
+		logger.info(format("%s - going to select external owner search", getName()));
+		GuideWireAccessors.selectOptionFromGWPicker(driver, this.getExternalOwnerPickerIcon(), this.getExternalOwnerPickerSearch());
+	}
+	//TODO other pickers for external, ie new vendor
 	
-
-   
+	
+	// TODO revisit once document solution is sorted
+	public void clickFindDocumentTemplate()
+	{
+		logger.info(format("%s - going to click find Document template", getName()));
+		GuideWireAccessors.clickGWButton(driver, this.getDocumentTemplateFindIcon());
+	}
+	
+	public void clickFindEmailTemplate()
+	{
+		logger.info(format("%s - going to click find Email template", getName()));
+		GuideWireAccessors.clickGWButton(driver, this.getEmailTemplateFindIcon());
+	}
+	
+	
+	public void selectAssignedTo(String option)
+	{
+		logger.info(format("%s - going to select assignedTo to:"+option, getName()));
+		GuideWireAccessors.selectOptionFromGWDropDown(driver, option, this.getAssignToDropdown(), 1);
+	}
+	
 	
 
 	private WebElement getCancelButton() {
@@ -197,8 +262,36 @@ public class ClaimCenterPOSTFNOLNewActivityPOM extends BaseTest{
 		return assignToDropdown;
 	}
 
-	private List<WebElement> getErrorMessages() {
-		return errorMessages;
+	private WebElement getOverdueDate() {
+		return overdueDate;
+	}
+
+	private WebElement getExternalOwnerPickerIcon() {
+		return externalOwnerPickerIcon;
+	}
+
+	private WebElement getExternalOwnerPickerNewPerson() {
+		return externalOwnerPickerNewPerson;
+	}
+
+	private WebElement getExternalOwnerPickerNewCompany() {
+		return externalOwnerPickerNewCompany;
+	}
+
+	private WebElement getExternalOwnerPickerSearch() {
+		return externalOwnerPickerSearch;
+	}
+
+	private WebElement getDocumentTemplateFindIcon() {
+		return documentTemplateFindIcon;
+	}
+
+	private WebElement getEmailTemplateFindIcon() {
+		return emailTemplateFindIcon;
+	}
+
+	private WebElement getAssignToSearchIcon() {
+		return assignToSearchIcon;
 	}
 
 	

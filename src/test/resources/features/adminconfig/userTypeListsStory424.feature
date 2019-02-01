@@ -1,4 +1,4 @@
-
+@Ignore
 Feature: CBPCL-424 admin maintenance of user typeslists
 
   Background: 

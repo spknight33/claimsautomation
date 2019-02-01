@@ -8,6 +8,8 @@ public class UserFactory {
 	public static final String CLAIMSMANAGER = "ClaimsManager";
 	public static final String OPSADMIN = "OpsAdmin";
 	public static final String ITADMIN = "ITAdmin";
+	public static final String SIU = "SIUUser";
+	public static final String SIUMANAGER = "SIUManager";
 	//public static final String DEFAULT = "Default";
 
 	public static UserConfig getUserConfig(String role) {
@@ -25,7 +27,11 @@ public class UserFactory {
 		case (OPSADMIN):
 			return new UserConfig("awilson", "gw","unknown");
 		case (ITADMIN):
-			return new UserConfig("jbutler", "gw","unknonw");
+			return new UserConfig("jbutler", "gw","unknown");
+		case (SIU):
+			return new UserConfig("siu1", "gw","unknown");
+		case (SIUMANAGER):
+			return new UserConfig("siuman1", "gw","unknown");
 		}
 
 		return null;
