@@ -6,6 +6,7 @@ import org.testng.Assert;
 import org.testng.asserts.SoftAssert;
 
 import com.big.automation.selenium_webdriver.common.baseTest.BaseTest;
+import com.big.automation.selenium_webdriver.common.utilities.TimeStampUtils;
 
 import cucumber.api.DataTable;
 import cucumber.api.java.en.Given;
@@ -13,6 +14,7 @@ import cucumber.api.java.en.Then;
 
 public class CCPOSTFNOLNewActivitySteps extends BaseTest {
 	
+	public static String nowStamp=null;
 	
 	@Then("^I will see post FNOL New Activity screen$")
 	public void i_will_see_post_FNOL_workplan_details() throws Throwable {
@@ -93,7 +95,13 @@ public class CCPOSTFNOLNewActivitySteps extends BaseTest {
 			postFnolNewActivityPOM.setDueDate(fieldValue);
 			break;
 		case "Overdue Date":
-			postFnolNewActivityPOM.setOverdueDate(fieldValue);
+			if (fieldValue.equalsIgnoreCase("now")) 
+			{
+				nowStamp = TimeStampUtils.timeHoursMinutes();
+				postFnolNewActivityPOM.setOverdueDate(nowStamp);
+			}
+			else {
+			  postFnolNewActivityPOM.setOverdueDate(fieldValue);}
 			break;
 
 		default:

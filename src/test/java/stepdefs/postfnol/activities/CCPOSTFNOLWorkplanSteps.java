@@ -38,6 +38,10 @@ public class CCPOSTFNOLWorkplanSteps extends BaseTest {
 	
 	@When("^I will see the \"([^\"]*)\" activity on Workplan screen for post FNOL with Overdue Time \"([^\"]*)\"$")
 	public void i_willsee_the_activity_on_the_post_FNOL_workplan_screen_withtime(String subject,String overdueTime) throws Throwable {
+		
+		if (overdueTime.equalsIgnoreCase("now"))
+		  overdueTime = CCPOSTFNOLNewActivitySteps.nowStamp;
+			
 		Assert.assertTrue(postFnolWorkplanPOM.activityPresent(subject, overdueTime), "expected activity to be present");
 	}
 	

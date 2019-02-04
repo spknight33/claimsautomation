@@ -1,8 +1,6 @@
 package com.big.automation.selenium_webdriver.common.utilities;
 
 
-import com.aventstack.extentreports.Status;
-
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;

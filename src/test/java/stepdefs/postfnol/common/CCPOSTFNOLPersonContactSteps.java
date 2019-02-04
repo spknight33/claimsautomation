@@ -1,4 +1,4 @@
-package stepdefs.postfnol;
+package stepdefs.postfnol.common;
 
 import org.testng.Assert;
 

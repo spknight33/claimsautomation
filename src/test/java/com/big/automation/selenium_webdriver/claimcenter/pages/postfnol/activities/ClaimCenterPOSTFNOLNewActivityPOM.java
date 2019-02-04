@@ -105,39 +105,39 @@ public class ClaimCenterPOSTFNOLNewActivityPOM extends BaseTest{
 	
 	public void setSubject(String text)
 	{
-		logger.info(format("%s -  going to set subject", getName()));
+		logger.info(format("%s -  going to set subject: "+text, getName()));
 		GuideWireAccessors.setGWTextBox(driver, text, this.getSubject());
 	}
 	public void setDescription(String text)
 	{
-		logger.info(format("%s -  going to set description", getName()));
+		logger.info(format("%s -  going to set description: "+text, getName()));
 		GuideWireAccessors.setGWTextBox(driver, text, this.getDescription());
 	}
 	
 	public void selectRelatedTo(String option)
 	{
-		logger.info(format("%s - going to select related to:"+option, getName()));
+		logger.info(format("%s - going to select related to: "+option, getName()));
 		GuideWireAccessors.selectOptionFromGWDropDown(driver, option, this.getRelatedToDropdown(), 1);
 	}
 	public void setDueDate(String text)
 	{
-		logger.info(format("%s -  going to set due date", getName()));
+		logger.info(format("%s -  going to set due date: "+text, getName()));
 		GuideWireAccessors.setGWTextBox(driver, text, this.getDueDate());
 	}
 	public void setOverdueDate(String text)
 	{
-		logger.info(format("%s -  going to set overdue date", getName()));
+		logger.info(format("%s -  going to set overdue date: "+text, getName()));
 		GuideWireAccessors.setGWTextBox(driver, text, this.getOverdueDate());
 	}
 	
 	public void selectPriority(String option)
 	{
-		logger.info(format("%s - going to select priority to:"+option, getName()));
+		logger.info(format("%s - going to select priority to: "+option, getName()));
 		GuideWireAccessors.selectOptionFromGWDropDown(driver, option, this.getPriorityDropdown(), 1);
 	}
 	public void selectCalendarImportance(String option)
 	{
-		logger.info(format("%s - going to select calendar importance to:"+option, getName()));
+		logger.info(format("%s - going to select calendar importance to: "+option, getName()));
 		GuideWireAccessors.selectOptionFromGWDropDown(driver, option, this.getCalendarImportanceDropdown(), 1);
 	}
 	
@@ -145,7 +145,7 @@ public class ClaimCenterPOSTFNOLNewActivityPOM extends BaseTest{
 	
 	public void selectExternalOwned(boolean attended)
 	{
-		logger.info(format("%s -  going to set external owned to:"+attended, getName()));
+		logger.info(format("%s -  going to set external owned to: "+attended, getName()));
 	    if (attended)
 	    {
 	    	GuideWireAccessors.clickGWButton(driver, this.getExternalOwnedYesRadio());
@@ -159,7 +159,7 @@ public class ClaimCenterPOSTFNOLNewActivityPOM extends BaseTest{
 	}
 	public void selectExternalOwner(String option)
 	{
-		logger.info(format("%s - going to select external owner to:"+option, getName()));
+		logger.info(format("%s - going to select external owner to: "+option, getName()));
 		GuideWireAccessors.selectOptionFromGWDropDown(driver, option, this.getExternalOwnerDropdown(), 1);
 	}
 	public void selectExternalOwnerNewPerson()

@@ -13,7 +13,23 @@ import static com.big.automation.selenium_webdriver.common.utilities.ThreadUtils
 
 public class TimeStampUtils {
 
-   public static String timeStandardStamp() throws Exception {
+   
+	public static String timeHoursMinutes() throws Exception {
+
+	      Calendar cal = Calendar.getInstance();
+	      SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm");
+	      String strDate = sdf.format(cal.getTime());
+	      //System.out.println("Current date in String Format: " + strDate);
+
+	     // SimpleDateFormat sdf1 = new SimpleDateFormat();
+	     // sdf1.applyPattern("dd/MM/yyyy HH:mm:ss");
+	      Date date = sdf.parse(strDate);
+	      String timestamp = sdf.format(date);
+	      System.out.println("Current date in Date Format: " + timestamp);
+	      return timestamp;
+	   }
+	
+	public static String timeStandardStamp() throws Exception {
 
       Calendar cal = Calendar.getInstance();
       SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss.SS");

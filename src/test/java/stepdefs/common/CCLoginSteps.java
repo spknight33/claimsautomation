@@ -6,6 +6,7 @@ import org.testng.Assert;
 import com.big.automation.selenium_webdriver.common.baseTest.BaseTest;
 import com.big.automation.selenium_webdriver.common.config.UserConfig;
 import com.big.automation.selenium_webdriver.common.config.UserFactory;
+import com.big.automation.selenium_webdriver.common.utilities.excelutils.ExcelUtil;
 
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
@@ -18,10 +19,30 @@ public class CCLoginSteps extends BaseTest {
 	@Given("^I access ClaimCenter login page$")
 	public void i_access_claimcenter_login_page() throws Throwable {
 
+		String url=null;
+		
+		String env = ExcelUtil.getTestDataValue("DevOrTstEnvironment");
+		if (env != null)
+		{
+			if (env.equalsIgnoreCase("DEV"))
+			{
+				url="http://claimcenterdev.cloud.aioinissaydowa.eu/cc/";
+			}
+			else
+			{
+				url="http://claimcentertest.cloud.aioinissaydowa.eu/cc/";
+			}
+		}
+		else {
+			throw new Exception("cannot locate which environment to run in from excel sheet");
+		}
+		
+		driver.get(url);
+		
 		// TST
-		 //driver.get("http://claimcentertest.cloud.aioinissaydowa.eu/cc/");
+		// driver.get("http://claimcentertest.cloud.aioinissaydowa.eu/cc/");
 		//DEV
-		driver.get("http://claimcenterdev.cloud.aioinissaydowa.eu/cc/");
+		//driver.get("http://claimcenterdev.cloud.aioinissaydowa.eu/cc/");
 		
 		// make sure there is no left over alert
 		try {

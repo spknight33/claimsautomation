@@ -1,76 +1,76 @@
-package com.big.automation.selenium_webdriver.claimcenter.pages.postfnol;
+package com.big.automation.selenium_webdriver.claimcenter.pages.postfnol.lossdetails;
 
-import static com.big.automation.selenium_webdriver.common.utilities.ThreadUtils.sleep;
 import static java.lang.String.format;
 
 import java.util.List;
 
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
+import static com.big.automation.selenium_webdriver.common.utilities.ThreadUtils.sleep;
 
 import com.big.automation.selenium_webdriver.common.baseTest.BaseTest;
 import com.big.automation.selenium_webdriver.common.gw.utilities.GuideWireAccessors;
 
-public class ClaimCenterPOSTFNOLEditPropertyPOM extends BaseTest{
+public class ClaimCenterPOSTFNOLNewPropertyPOM extends BaseTest{
 
 	//
 	// Keep this distinct from other property pages for now, they could be combined in future (fnol/postfnol new/edit)
 	//
-	
-	@FindBy(id = "EditFixedPropertyIncidentPopup:EditFixedPropertyIncidentScreen:0")
-	private WebElement pageTitle;
-
-	@FindBy(id = "EditFixedPropertyIncidentPopup:EditFixedPropertyIncidentScreen:Update")
-	private WebElement updateButton;
-	@FindBy(id = "EditFixedPropertyIncidentPopup:EditFixedPropertyIncidentScreen:Cancel")
+	@FindBy(id = "FNOLWizard:Cancel-btnEl")
 	private WebElement cancelButton;
+	
+		
 
 	
-	@FindBy(id = "EditFixedPropertyIncidentPopup:EditFixedPropertyIncidentScreen:FixPropIncidentDetailDV:FixedPropertyIncidentDV:PropertyDescription-inputEl")
+	@FindBy(id = "NewFixedPropertyIncidentPopup:NewFixedPropertyIncidentScreen:0")
+	private WebElement pageTitle;
+		
+	@FindBy(id = "NewFixedPropertyIncidentPopup:NewFixedPropertyIncidentScreen:Update-btnEl")
+	private WebElement okButton;
+
+	
+	@FindBy(id = "NewFixedPropertyIncidentPopup:NewFixedPropertyIncidentScreen:FixPropIncidentDetailDV:FixedPropertyIncidentDV:PropertyDescription-inputEl")
 	private WebElement propertyDesc;
-	@FindBy(id = "EditFixedPropertyIncidentPopup:EditFixedPropertyIncidentScreen:FixPropIncidentDetailDV:FixedPropertyIncidentDV:Description-inputEl")
+	@FindBy(id = "NewFixedPropertyIncidentPopup:NewFixedPropertyIncidentScreen:FixPropIncidentDetailDV:FixedPropertyIncidentDV:Description-inputEl")
 	private WebElement damageDesc;
-	@FindBy(id = "EditFixedPropertyIncidentPopup:EditFixedPropertyIncidentScreen:FixPropIncidentDetailDV:FixedPropertyIncidentDV:LossEstimate-inputEl")
+	@FindBy(id = "NewFixedPropertyIncidentPopup:NewFixedPropertyIncidentScreen:FixPropIncidentDetailDV:FixedPropertyIncidentDV:LossEstimate-inputEl")
 	private WebElement lossEstimate;
-	@FindBy(id = "EditFixedPropertyIncidentPopup:EditFixedPropertyIncidentScreen:FixPropIncidentDetailDV:FixedPropertyIncidentDV:ExtDamagetxt-inputEl")
+	@FindBy(id = "NewFixedPropertyIncidentPopup:NewFixedPropertyIncidentScreen:FixPropIncidentDetailDV:FixedPropertyIncidentDV:ExtDamagetxt-inputEl")
 	private WebElement extentDamage;
 	
 	
 	
-	@FindBy(id = "EditFixedPropertyIncidentPopup:EditFixedPropertyIncidentScreen:FixPropIncidentDetailDV:FixedPropertyIncidentDV:CCAddressInputSet:globalAddressContainer:globalAddress:GlobalAddressInputSet:AddressLine1-inputEl")
+	@FindBy(id = "NewFixedPropertyIncidentPopup:NewFixedPropertyIncidentScreen:FixPropIncidentDetailDV:FixedPropertyIncidentDV:CCAddressInputSet:globalAddressContainer:globalAddress:GlobalAddressInputSet:AddressLine1-inputEl")
 	private WebElement addressLine1;
-	@FindBy(id = "EditFixedPropertyIncidentPopup:EditFixedPropertyIncidentScreen:FixPropIncidentDetailDV:FixedPropertyIncidentDV:CCAddressInputSet:globalAddressContainer:globalAddress:GlobalAddressInputSet:AddressLine2-inputEl")
+	@FindBy(id = "NewFixedPropertyIncidentPopup:NewFixedPropertyIncidentScreen:FixPropIncidentDetailDV:FixedPropertyIncidentDV:CCAddressInputSet:globalAddressContainer:globalAddress:GlobalAddressInputSet:AddressLine2-inputEl")
 	private WebElement addressLine2;
-	@FindBy(id = "EditFixedPropertyIncidentPopup:EditFixedPropertyIncidentScreen:FixPropIncidentDetailDV:FixedPropertyIncidentDV:CCAddressInputSet:globalAddressContainer:globalAddress:GlobalAddressInputSet:AddressLine3-inputEl")
+	@FindBy(id = "NewFixedPropertyIncidentPopup:NewFixedPropertyIncidentScreen:FixPropIncidentDetailDV:FixedPropertyIncidentDV:CCAddressInputSet:globalAddressContainer:globalAddress:GlobalAddressInputSet:AddressLine3-inputEl")
 	private WebElement addressLine3;
-	@FindBy(id = "EditFixedPropertyIncidentPopup:EditFixedPropertyIncidentScreen:FixPropIncidentDetailDV:FixedPropertyIncidentDV:CCAddressInputSet:globalAddressContainer:globalAddress:GlobalAddressInputSet:City-inputEl")
+	@FindBy(id = "NewFixedPropertyIncidentPopup:NewFixedPropertyIncidentScreen:FixPropIncidentDetailDV:FixedPropertyIncidentDV:CCAddressInputSet:globalAddressContainer:globalAddress:GlobalAddressInputSet:City-inputEl")
 	private WebElement city;
-	@FindBy(id = "EditFixedPropertyIncidentPopup:EditFixedPropertyIncidentScreen:FixPropIncidentDetailDV:FixedPropertyIncidentDV:CCAddressInputSet:globalAddressContainer:globalAddress:GlobalAddressInputSet:County-inputEl")
-	private WebElement county;
-	@FindBy(id = "EditFixedPropertyIncidentPopup:EditFixedPropertyIncidentScreen:FixPropIncidentDetailDV:FixedPropertyIncidentDV:CCAddressInputSet:globalAddressContainer:globalAddress:GlobalAddressInputSet:PostalCode-inputEl")
+	@FindBy(id = "NewFixedPropertyIncidentPopup:NewFixedPropertyIncidentScreen:FixPropIncidentDetailDV:FixedPropertyIncidentDV:CCAddressInputSet:globalAddressContainer:globalAddress:GlobalAddressInputSet:PostalCode-inputEl")
 	private WebElement postCode;
-	@FindBy(id = "EditFixedPropertyIncidentPopup:EditFixedPropertyIncidentScreen:FixPropIncidentDetailDV:FixedPropertyIncidentDV:CCAddressInputSet:globalAddressContainer:globalAddress:GlobalAddressInputSet:addresses-inputEl")
-	private WebElement addressDropdown;
-	
-	@FindBy(id = "EditFixedPropertyIncidentPopup:EditFixedPropertyIncidentScreen:FixPropIncidentDetailDV:FixedPropertyIncidentDV:CCAddressInputSet:globalAddressContainer:Address_Description-inputEl")
+	@FindBy(id = "NewFixedPropertyIncidentPopup:NewFixedPropertyIncidentScreen:FixPropIncidentDetailDV:FixedPropertyIncidentDV:CCAddressInputSet:globalAddressContainer:Address_Description-inputEl")
 	private WebElement locationDesc;
 	
-	@FindBy(id = "EditFixedPropertyIncidentPopup:EditFixedPropertyIncidentScreen:FixPropIncidentDetailDV:FixedPropertyIncidentDV:PropertyOwner_itb-inputEl")
+	@FindBy(id = "NewFixedPropertyIncidentPopup:NewFixedPropertyIncidentScreen:FixPropIncidentDetailDV:FixedPropertyIncidentDV:PropertyOwner_itb-inputEl")
 	private WebElement ownerDropDown;
-	@FindBy(id = "EditFixedPropertyIncidentPopup:EditFixedPropertyIncidentScreen:FixPropIncidentDetailDV:FixedPropertyIncidentDV:PropertyOwner_itb:PropertyOwner_itbMenuIcon")
+	@FindBy(id = "NewFixedPropertyIncidentPopup:NewFixedPropertyIncidentScreen:FixPropIncidentDetailDV:FixedPropertyIncidentDV:PropertyOwner_itb:PropertyOwner_itbMenuIcon")
 	private WebElement ownerPicker;
-	@FindBy(id = "EditFixedPropertyIncidentPopup:EditFixedPropertyIncidentScreen:FixPropIncidentDetailDV:FixedPropertyIncidentDV:PropertyOwner_itb:ClaimNewCompanyOrPersonPickerMenuItemSet:NewContactPickerMenuItemSet_NewPerson-textEl")
+	@FindBy(id = "NewFixedPropertyIncidentPopup:NewFixedPropertyIncidentScreen:FixPropIncidentDetailDV:FixedPropertyIncidentDV:PropertyOwner_itb:ClaimNewCompanyOrPersonPickerMenuItemSet:NewContactPickerMenuItemSet_NewPerson-itemEl")
 	private WebElement ownerNewPerson;
-	@FindBy(id = "EditFixedPropertyIncidentPopup:EditFixedPropertyIncidentScreen:FixPropIncidentDetailDV:FixedPropertyIncidentDV:PropertyOwner_itb:ClaimNewCompanyOrPersonPickerMenuItemSet:NewContactPickerMenuItemSet_NewCompany-textEl")
+	@FindBy(id = "NewFixedPropertyIncidentPopup:NewFixedPropertyIncidentScreen:FixPropIncidentDetailDV:FixedPropertyIncidentDV:PropertyOwner_itb:ClaimNewCompanyOrPersonPickerMenuItemSet:NewContactPickerMenuItemSet_NewCompany-itemEl")
 	private WebElement ownerNewCompany;
 	
 	
 	//TODO - services to perform
-	@FindBy(id = "EditFixedPropertyIncidentPopup:EditFixedPropertyIncidentScreen:FixPropIncidentDetailDV:FixedPropertyIncidentDV:AppraisalServiceInputSet:AppraisalServiceInputSet:AppraisalServiceInputGroup:_checkbox")
+	@FindBy(id = "NewFixedPropertyIncidentPopup:NewFixedPropertyIncidentScreen:FixPropIncidentDetailDV:FixedPropertyIncidentDV:AppraisalServiceInputSet:AppraisalServiceInputSet:AppraisalServiceInputGroup:_checkbox")
 	private WebElement appraisalServicesCB;
-	@FindBy(id = "EditFixedPropertyIncidentPopup:EditFixedPropertyIncidentScreen:FixPropIncidentDetailDV:FixedPropertyIncidentDV:OtherServicesLVInputGroupInputSet:OtherServicesInputGroup:_checkbox")
+	@FindBy(id = "NewFixedPropertyIncidentPopup:NewFixedPropertyIncidentScreen:FixPropIncidentDetailDV:FixedPropertyIncidentDV:OtherServicesLVInputGroupInputSet:OtherServicesInputGroup:_checkbox")
 	private WebElement otherServicesCB;
 	//TODO - repairs
 	
@@ -91,12 +91,13 @@ public class ClaimCenterPOSTFNOLEditPropertyPOM extends BaseTest{
 
 	public String getName() {
 
-		return "POST FNOL Edit Property";
+		return "POST FNOL New Property";
 	}
 
 	public boolean isPageTitleDisplayed(String expected)
 	{
 		sleep(2);
+		
 		logger.info(format("%s -found page title for Add Property page :"+this.getPageTitle().getText(), getName()));
 		return this.getPageTitle().getText().equalsIgnoreCase(expected);
 	}
@@ -108,9 +109,9 @@ public class ClaimCenterPOSTFNOLEditPropertyPOM extends BaseTest{
 		
 	}
 	
-	public void update() {
-		logger.info(format("%s -  going to click update", getName()));
-		GuideWireAccessors.clickGWButton(driver,this.getUpdateButton());
+	public void selectOK() {
+		logger.info(format("%s -  going to click OK", getName()));
+		GuideWireAccessors.clickGWButton(driver,this.getOkButton());
 		
 	}
 	
@@ -171,13 +172,6 @@ public class ClaimCenterPOSTFNOLEditPropertyPOM extends BaseTest{
 				actions.build().perform();
 				sleep(2);
 	}	
-	
-	public void selectAddress(String option)
-	{
-		logger.info(format("%s - going to select address:"+option, getName()));
-		GuideWireAccessors.selectOptionFromGWDropDown(driver, option, this.getAddressDropdown(), 1);
-	}
-	
 	public void setLocationDescription(String text)
 	{
 		logger.info(format("%s -  going to set location description", getName()));
@@ -239,7 +233,10 @@ public class ClaimCenterPOSTFNOLEditPropertyPOM extends BaseTest{
 	
 
 	
-	
+	private WebElement getOkButton() {
+		return okButton;
+	}
+
 	private WebElement getPropertyDesc() {
 		return propertyDesc;
 	}
@@ -327,18 +324,6 @@ public class ClaimCenterPOSTFNOLEditPropertyPOM extends BaseTest{
 
 	private List<WebElement> getErrorMessages() {
 		return errorMessages;
-	}
-
-	private WebElement getUpdateButton() {
-		return updateButton;
-	}
-
-	private WebElement getCounty() {
-		return county;
-	}
-
-	private WebElement getAddressDropdown() {
-		return addressDropdown;
 	}
 
 	

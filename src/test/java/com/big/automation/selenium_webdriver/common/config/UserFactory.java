@@ -29,9 +29,9 @@ public class UserFactory {
 		case (ITADMIN):
 			return new UserConfig("jbutler", "gw","unknown");
 		case (SIU):
-			return new UserConfig("siu1", "gw","unknown");
+			return new UserConfig("sknight", "gw","unknown");
 		case (SIUMANAGER):
-			return new UserConfig("siuman1", "gw","unknown");
+			return new UserConfig("siumanager", "gw","unknown");
 		}
 
 		return null;

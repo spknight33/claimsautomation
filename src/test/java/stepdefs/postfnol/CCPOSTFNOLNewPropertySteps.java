@@ -5,6 +5,8 @@ import com.big.automation.selenium_webdriver.common.utilities.excelutils.ExcelUt
 
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
+import stepdefs.postfnol.common.CCPOSTFNOLCompanyContactSteps;
+import stepdefs.postfnol.common.CCPOSTFNOLPersonContactSteps;
 
 public class CCPOSTFNOLNewPropertySteps extends BaseTest {
 	
