@@ -127,6 +127,17 @@ public class ClaimCenterFNOLVehicleDetailsPOM extends BaseTest{
 	@FindBy(id = "FNOLVehicleIncidentPopup:FNOLVehicleIncidentScreen:OtherDetailsDV:PayoffAmount-inputEl")
 	private WebElement financePayOffAmount;
 	
+	//Hire Questions
+	//---------------------
+	@FindBy(id = "FNOLVehicleIncidentPopup:FNOLVehicleIncidentScreen:OtherDetailsDV:CreditHire_true-inputEl")
+	private WebElement creditHireYesOption;
+	@FindBy(id = "FNOLVehicleIncidentPopup:FNOLVehicleIncidentScreen:OtherDetailsDV:CreditHire_false-inputEl")
+	private WebElement creditHireNoOption;
+	@FindBy(id = "FNOLVehicleIncidentPopup:FNOLVehicleIncidentScreen:OtherDetailsDV:HireProtocol_true-inputEl")
+	private WebElement protocolHireYesOption;
+	@FindBy(id = "FNOLVehicleIncidentPopup:FNOLVehicleIncidentScreen:OtherDetailsDV:HireProtocol_false-inputEl")
+	private WebElement protocolHireNoOption;
+	
 	
 	// FIRE section only appears on page for a fire incident for PH vehicle
 		//------------------------------------------------------------------------
@@ -519,6 +530,33 @@ public class ClaimCenterFNOLVehicleDetailsPOM extends BaseTest{
 		GuideWireAccessors.setGWTextBox(driver, text, this.getFinancePayOffAmount());
 	}
 	
+	public void selectCreditHire(boolean hire)
+	{
+		logger.info(format("%s -  going to set credit hire to:"+hire, getName()));
+	    if (hire)
+	    {
+	    	GuideWireAccessors.clickGWButton(driver, this.getCreditHireYesOption());
+	    }
+	    else
+	    {
+	    	GuideWireAccessors.clickGWButton(driver, this.getCreditHireNoOption());
+	    }
+
+	}
+	
+	public void selectProtocolHire(boolean hire)
+	{
+		logger.info(format("%s -  going to set protocol hire to:"+hire, getName()));
+	    if (hire)
+	    {
+	    	GuideWireAccessors.clickGWButton(driver, this.getProtocolHireYesOption());
+	    }
+	    else
+	    {
+	    	GuideWireAccessors.clickGWButton(driver, this.getProtocolHireNoOption());
+	    }
+
+	}
 	
 	
 	//FIRE SECTION, ONLY FOR PH
@@ -1232,6 +1270,22 @@ public class ClaimCenterFNOLVehicleDetailsPOM extends BaseTest{
 
 	private WebElement getFinancePayOffAmount() {
 		return financePayOffAmount;
+	}
+
+	private WebElement getCreditHireYesOption() {
+		return creditHireYesOption;
+	}
+
+	private WebElement getCreditHireNoOption() {
+		return creditHireNoOption;
+	}
+
+	private WebElement getProtocolHireYesOption() {
+		return protocolHireYesOption;
+	}
+
+	private WebElement getProtocolHireNoOption() {
+		return protocolHireNoOption;
 	}
 
 	

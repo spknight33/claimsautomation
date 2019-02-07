@@ -120,7 +120,8 @@ public class CCFNOLVehicleSteps extends BaseTest {
 	{
 		fnolVehicleDetailsPOM.selectFinanceOnVehicle(false);
 	}
-		
+	
+	
 	
 	//FIRE section
 	// For PH, if accident type is fire then complete - se could have a flag on the testdata sheet instead, but we cn use this for now
@@ -419,6 +420,32 @@ public class CCFNOLVehicleSteps extends BaseTest {
 		fieldValue = ExcelUtil.getTestDataValue("Fnol_TPVehicleAirBags");
 		if (fieldValue !=null)
 			fnolVehicleDetailsPOM.selectAirbagsDeployed(fieldValue);
+		
+		
+		fieldValue = ExcelUtil.getTestDataValue("Fnol_TPVehicleCreditHire");
+		if (fieldValue !=null&& fieldValue.equalsIgnoreCase("TRUE"))
+		{
+			fnolVehicleDetailsPOM.selectCreditHire(true);
+			
+			
+		}
+		else
+		{
+			fnolVehicleDetailsPOM.selectCreditHire(false);
+		}
+		fieldValue = ExcelUtil.getTestDataValue("Fnol_TPVehicleProtocolHire");
+		if (fieldValue !=null&& fieldValue.equalsIgnoreCase("TRUE"))
+		{
+			fnolVehicleDetailsPOM.selectProtocolHire(true);
+			
+			
+		}
+		else
+		{
+			fnolVehicleDetailsPOM.selectProtocolHire(false);
+		}
+			
+		
 		// add TP driver if one is required
 		if (ExcelUtil.getTestDataValue("Fnol_TPDriverRequired").equalsIgnoreCase("TRUE"))
 	   {

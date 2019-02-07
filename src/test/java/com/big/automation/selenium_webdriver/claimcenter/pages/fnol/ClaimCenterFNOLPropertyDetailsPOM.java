@@ -68,8 +68,6 @@ public class ClaimCenterFNOLPropertyDetailsPOM extends BaseTest {
 	@FindBy(id = "NewFixedPropertyIncidentPopup:NewFixedPropertyIncidentScreen:FixPropIncidentDetailDV:FixedPropertyIncidentDV:AlreadyRepaired_false-inputEl")
 	private WebElement alreadyRepairedNoRadio;
 
-	//@FindBy(className = "message")
-	//private List<WebElement> errorMessages;
 
 	public String getName() {
 
@@ -80,6 +78,12 @@ public class ClaimCenterFNOLPropertyDetailsPOM extends BaseTest {
 		sleep(2);
 		logger.info(format("%s -found page title for Add Property page :" + this.getPageTitle().getText(), getName()));
 		return this.getPageTitle().getText().equalsIgnoreCase(expected);
+	}
+	
+	public boolean containsErrorMessage(String contains)
+	{
+				
+		return GuideWireAccessors.containsErrorMessage(driver, contains, By.className("message"));
 	}
 
 	public void cancel() {
@@ -156,9 +160,15 @@ public class ClaimCenterFNOLPropertyDetailsPOM extends BaseTest {
 	public void setLocationDescription(String text) {
 		logger.info(format("%s -  going to set location description", getName()));
 		GuideWireAccessors.setGWTextBox(driver, text, this.getLocationDesc());
-		logger.info(format("%s - done, location description set", getName()));
+		
 	}
 
+	public void selectPropertyOwner(String option) {
+		logger.info(format("%s -  going to select property owner:" + option, getName()));
+		GuideWireAccessors.selectOptionFromGWDropDown(driver, option, this.getOwnerDropDown(), 1);
+	
+	}
+	
 	public void selectNewOwnerPerson() {
 		logger.info(format("%s - going to select New Person from owner picker", getName()));
 		sleep(1);
@@ -286,10 +296,6 @@ public class ClaimCenterFNOLPropertyDetailsPOM extends BaseTest {
 		return alreadyRepairedNoRadio;
 	}
 
-	public boolean containsErrorMessage(String contains)
-	{
-				
-		return GuideWireAccessors.containsErrorMessage(driver, contains, By.className("message"));
-	}
+	
 
 }

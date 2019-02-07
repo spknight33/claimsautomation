@@ -139,7 +139,7 @@ public class ClaimCenterPOSTFNOLExposuresPOM extends BaseTest{
 	public String getClaimantForExposure(String type,String coverage)
 	{
 		logger.info(format("%s - get claimant for exposure ", getName()));
-	    sleep(2);
+	    sleep(1);
 		String locator = "//*[@id=\"ClaimExposures:ClaimExposuresScreen:ExposuresLV-body\"]//table";
 		List <WebElement> rows = driver.findElements(By.xpath(locator));
 		
@@ -172,6 +172,92 @@ public class ClaimCenterPOSTFNOLExposuresPOM extends BaseTest{
 		
 		logger.info(format("%s - NO match in exposure table: "+type+" "+coverage, getName()));
 		return null;
+	
+		
+	}
+	
+	public String getReserveForExposure(String type,String coverage,String claimant)
+	{
+		logger.info(format("%s - get reserve for exposure type,coverage and claimant", getName()));
+	    sleep(1);
+		String locator = "//*[@id=\"ClaimExposures:ClaimExposuresScreen:ExposuresLV-body\"]//table";
+		List <WebElement> rows = driver.findElements(By.xpath(locator));
+		
+		WebElement expType;
+		WebElement expCoverage;
+		WebElement expClaimant;
+		WebElement expReserve;
+		
+		// loop till find first with mathcing type
+		int rowTotal = rows.size();
+		String rowLocator = null;
+		for(int i=1; i<=rowTotal; i++)
+		{
+			
+			rowLocator = locator + "[" + i + "]";
+				//find the type
+			expType = driver.findElement(By.xpath(rowLocator+"//tr//td[3]"));
+			expCoverage = driver.findElement(By.xpath(rowLocator+"//tr//td[4]"));
+			expClaimant = driver.findElement(By.xpath(rowLocator+"//tr//td[5]"));
+			expReserve = driver.findElement(By.xpath(rowLocator+"//tr//td[8]"));
+			
+			logger.info(format("%s - get reserve for exposure - check row:"+expType.getText()+" "+expCoverage.getText()+" "+expClaimant.getText(), getName()));
+			
+	
+			if (expType.getText().equalsIgnoreCase(type) && expCoverage.getText().equalsIgnoreCase(coverage)&& expClaimant.getText().equalsIgnoreCase(claimant))
+			{
+				logger.info(format("%s - Found match in exposure table: "+expReserve.getText(), getName()));
+				return expReserve.getText();
+				
+			}
+		}
+		
+		logger.info(format("%s - NO match in exposure table: "+type+" "+coverage, getName()));
+		return null;
+	
+		
+	}
+	
+	public void clickExposure(String type,String coverage, String claimant)
+	{
+		logger.info(format("%s - click exposure type,coverage and claimant", getName()));
+	    sleep(3);
+		String locator = "//*[@id=\"ClaimExposures:ClaimExposuresScreen:ExposuresLV-body\"]//table";
+		List <WebElement> rows = driver.findElements(By.xpath(locator));
+		
+		WebElement expType;
+		WebElement expCoverage;
+		WebElement expClaimant;
+			
+		// loop till find first with mathcing type
+		int rowTotal = rows.size();
+		String rowLocator = null;
+		for(int i=1; i<=rowTotal; i++)
+		{
+			
+			rowLocator = locator + "[" + i + "]";
+				//find the type
+			expType = driver.findElement(By.xpath(rowLocator+"//tr//td[3]"));
+			expCoverage = driver.findElement(By.xpath(rowLocator+"//tr//td[4]"));
+			expClaimant = driver.findElement(By.xpath(rowLocator+"//tr//td[5]"));
+			
+			//logger.info(format("%s - find exposure - check row:"+expType.getText()+" "+expCoverage.getText()+" "+expClaimant.getText(), getName()));
+			
+	
+			if (expType.getText().equalsIgnoreCase(type) && expCoverage.getText().equalsIgnoreCase(coverage)&& expClaimant.getText().equalsIgnoreCase(claimant))
+			{
+				logger.info(format("%s - Found match in exposure table to click", getName()));
+				
+				// now get the anchor link
+				WebElement anchor = driver.findElement(By.xpath(rowLocator+"//tr//td[3]//a"));
+				
+				GuideWireAccessors.clickGWButton(driver, anchor);
+				return;
+				
+			}
+		}
+		
+		logger.info(format("%s - NO match in exposure table: "+type+" "+coverage, getName()));
 	
 		
 	}

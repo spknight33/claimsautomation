@@ -2,9 +2,8 @@ package com.big.automation.selenium_webdriver.claimcenter.pages.fnol;
 
 import static com.big.automation.selenium_webdriver.common.utilities.ThreadUtils.sleep;
 import static java.lang.String.format;
-import org.openqa.selenium.JavascriptExecutor;
+
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import org.openqa.selenium.By;
@@ -13,18 +12,12 @@ import org.openqa.selenium.support.FindBy;
 
 import com.big.automation.selenium_webdriver.common.baseTest.BaseTest;
 import com.big.automation.selenium_webdriver.common.gw.utilities.GuideWireAccessors;
-import com.big.automation.selenium_webdriver.common.types.Brand;
 
 public class ClaimCenterFNOLStep1POM extends BaseTest{
 
-	//private final WebDriver webDriver;
-	//private final WebDriverWait wait;
 
 	@FindBy(id = "FNOLWizard:FNOLWizard_FindPolicyScreen:ttlBar")
 	private WebElement title;
-
-	@FindBy(className = "message")
-	private List<WebElement> errorMessages;
 
 	@FindBy(id = "FNOLWizard:Cancel-btnEl")
 	private WebElement cancelButton;
@@ -92,18 +85,9 @@ public class ClaimCenterFNOLStep1POM extends BaseTest{
 	@FindBy(id = "button-1005-btnEl")
 	private WebElement okDeselectPrompt;
 
-	//public ClaimCenterFNOLStep1POM(WebDriver webDriver) {
-
 		
-	//	this.wait = new WebDriverWait(webDriver,30);
-	//	this.webDriver = webDriver;
-
-	//	AjaxElementLocatorFactory ajaxElementLocatorFactory = new AjaxElementLocatorFactory(webDriver, 60);
-	//	PageFactory.initElements(ajaxElementLocatorFactory, this);
-	//}
-	
-	
 	private Map<String,String> fieldMap;
+	
 	public ClaimCenterFNOLStep1POM()
 	{
 		fieldMap = new HashMap<String, String>();
@@ -137,6 +121,12 @@ public class ClaimCenterFNOLStep1POM extends BaseTest{
 	public String getName() {
 
 		return "FNOL Wizard Step1 Search or Create policy";
+	}
+	
+	public boolean containsErrorMessage(String contains)
+	{
+				
+		return GuideWireAccessors.containsErrorMessage(driver, contains, By.className("message"));
 	}
 	
 	private WebElement getTitle() {
@@ -201,22 +191,7 @@ public class ClaimCenterFNOLStep1POM extends BaseTest{
 		return unselectButton;
 	}
 
-	private List<WebElement> getErrorMessages() {
-		return errorMessages;
-	}
 
-	
-
-	public boolean containsErrorMessage(String contains) {
-		boolean found = false;
-		for (WebElement element : getErrorMessages()) {
-			if (element.getText().equalsIgnoreCase(contains)) {
-				found = true;
-				break;
-			}
-		}
-		return found;
-	}
 	
 	
 	public WebElement getSearchLossDate() {

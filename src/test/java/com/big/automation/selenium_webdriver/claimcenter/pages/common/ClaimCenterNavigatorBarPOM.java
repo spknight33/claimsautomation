@@ -32,7 +32,12 @@ public class ClaimCenterNavigatorBarPOM extends BaseTest {
 	private WebElement summaryMetricsSubmenu;
 	
 	//loss details submenus
-	
+	@FindBy(xpath = "//td[@id='Claim:MenuLinks:Claim_ClaimLossDetailsGroup:ClaimLossDetailsGroup_ClaimLossDetails']//span")
+	private WebElement lossGeneralSubmenu;
+	@FindBy(xpath = "//td[@id='Claim:MenuLinks:Claim_ClaimLossDetailsGroup:ClaimLossDetailsGroup_ClaimAssociations']//span")
+	private WebElement lossAssociationsSubmenu;
+	@FindBy(xpath = "//td[@id='Claim:MenuLinks:Claim_ClaimLossDetailsGroup:ClaimLossDetailsGroup_SIDetails']//span")
+	private WebElement lossSIDetailsSubmenu;
 	
 	//Parties Involved submenus
 	//--------------------
@@ -41,7 +46,12 @@ public class ClaimCenterNavigatorBarPOM extends BaseTest {
 	@FindBy(xpath = "//td[@id='Claim:MenuLinks:Claim_ClaimPartiesGroup:ClaimPartiesGroup_ClaimUsers']//span")
 	private WebElement partiesUsersSubmenu;
 	
-	//TODO policy submenus
+	//policy submenus
+	//--------------------
+	@FindBy(xpath = "//td[@id='Claim:MenuLinks:Claim_ClaimPolicyGroup:ClaimPolicyGroup_ClaimPolicyGeneral']//span")
+	private WebElement policyGeneralSubmenu;
+	@FindBy(xpath = "//td[@id='Claim:MenuLinks:Claim_ClaimPolicyGroup:ClaimPolicyGroup_ClaimPolicyVehicles']//span")
+	private WebElement policyVehiclesSubmenu;
 
 	//Financials submenus
 	//--------------------
@@ -52,8 +62,13 @@ public class ClaimCenterNavigatorBarPOM extends BaseTest {
 	@FindBy(xpath = "//td[@id='Claim:MenuLinks:Claim_ClaimFinancialsGroup:ClaimFinancialsGroup_ClaimFinancialsChecks']//span")
 	private WebElement financeChequesSubmenu;
 	
-	//TODO plan of action submenus
-	
+	// plan of action submenus
+	//--------------------
+	@FindBy(xpath = "//td[@id='Claim:MenuLinks:Claim_ClaimPlanOfActionGroup:ClaimPlanOfActionGroup_ClaimEvaluations']//span")
+	private WebElement planEvaluationsSubmenu;
+	@FindBy(xpath = "//td[@id='Claim:MenuLinks:Claim_ClaimPlanOfActionGroup:ClaimPlanOfActionGroup_ClaimNegotiations']//span")
+	private WebElement planNegotiationsSubmenu;
+
 	
 	//FNOL Snapshot submenus
 	//------------------------
@@ -110,6 +125,83 @@ public class ClaimCenterNavigatorBarPOM extends BaseTest {
     		}
     	}
     	sleep(1);
+    	
+    	if (toplink.equalsIgnoreCase("Summary"))
+    	{
+    		switch(sublink)
+    		{
+    		case ("Overview"):
+    			GuideWireAccessors.clickGWButton(driver,summaryOverviewSubmenu);
+    			break;
+    		case ("Status"):
+    			GuideWireAccessors.clickGWButton(driver,summaryStatusSubmenu);
+    			break;
+    		case ("Health Metrics"):
+    			GuideWireAccessors.clickGWButton(driver,summaryMetricsSubmenu);
+    			break;
+    		}
+    	}
+    	
+    	
+    	
+    	if (toplink.equalsIgnoreCase("Loss Details"))
+    	{
+    		switch(sublink)
+    		{
+    		case ("General"):
+    			GuideWireAccessors.clickGWButton(driver,lossGeneralSubmenu);
+    			break;
+    		case ("Associations"):
+    			GuideWireAccessors.clickGWButton(driver,lossAssociationsSubmenu);
+    			break;
+    		case ("Special Investigation Details"):
+    			GuideWireAccessors.clickGWButton(driver,lossSIDetailsSubmenu);
+    			break;
+    		}
+    	}
+    	
+    	if (toplink.equalsIgnoreCase("Parties Involved"))
+    	{
+    		switch(sublink)
+    		{
+    		case ("Contacts"):
+    			GuideWireAccessors.clickGWButton(driver,partiesContactsSubmenu);
+    			break;
+    		case ("Users"):
+    			GuideWireAccessors.clickGWButton(driver,partiesUsersSubmenu);
+    			break;
+    		
+    		}
+    	}
+    	
+    	if (toplink.equalsIgnoreCase("Policy"))
+    	{
+    		switch(sublink)
+    		{
+    		case ("General"):
+    			GuideWireAccessors.clickGWButton(driver,policyGeneralSubmenu);
+    			break;
+    		case ("Vehicles"):
+    			GuideWireAccessors.clickGWButton(driver,policyVehiclesSubmenu);
+    			break;
+    		
+    		}
+    	}
+    	
+    	if (toplink.equalsIgnoreCase("Plan of Action"))
+    	{
+    		switch(sublink)
+    		{
+    		case ("Evaluations"):
+    			GuideWireAccessors.clickGWButton(driver,planEvaluationsSubmenu);
+    			break;
+    		case ("Negotiations"):
+    			GuideWireAccessors.clickGWButton(driver,planNegotiationsSubmenu);
+    			break;
+    		
+    		}
+    	}
+    	
     	
     	if (toplink.equalsIgnoreCase("Financials"))
     	{

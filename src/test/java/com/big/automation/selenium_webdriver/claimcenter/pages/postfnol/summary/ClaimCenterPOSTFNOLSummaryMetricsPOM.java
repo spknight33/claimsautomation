@@ -1,4 +1,4 @@
-package com.big.automation.selenium_webdriver.claimcenter.pages.postfnol.fnolsnapshot;
+package com.big.automation.selenium_webdriver.claimcenter.pages.postfnol.summary;
 
 import static com.big.automation.selenium_webdriver.common.utilities.ThreadUtils.sleep;
 import static java.lang.String.format;
@@ -10,30 +10,39 @@ import org.openqa.selenium.support.FindBy;
 import com.big.automation.selenium_webdriver.common.baseTest.BaseTest;
 import com.big.automation.selenium_webdriver.common.gw.utilities.GuideWireAccessors;
 
-public class ClaimCenterPOSTFNOLFnolSnapshotPOM extends BaseTest {
+public class ClaimCenterPOSTFNOLSummaryMetricsPOM extends BaseTest{
 
-	@FindBy(id = "ClaimSnapshotLossDetails:ClaimSnapshotLossDetailsScreen:ttlBar")
+	@FindBy(id = "ClaimKeyMetrics:ClaimKeyMetricsScreen:ttlBar")
 	private WebElement pageTitle;
+
+
 
 	public String getName() {
 
-		return "Post FNOL - FNOL Snapshot";
+		return "Post FNOL Summary Health Metrics";
 	}
 
-	public boolean isPageTitleDisplayed(String expected) {
-		sleep(1);
-
-		logger.info(format("%s -found page title:" + this.getPageTitle().getText(), getName()));
+	public boolean isPageTitleDisplayed(String expected)
+	{
+	    sleep(1);
+		logger.info(format("%s -found page title for :"+this.getPageTitle().getText(), getName()));
 		return this.getPageTitle().getText().equalsIgnoreCase(expected);
 	}
-
-	private WebElement getPageTitle() {
-		return pageTitle;
-	}
-
+	
 	public boolean containsErrorMessage(String contains) {
 
 		return GuideWireAccessors.containsErrorMessage(driver, contains, By.className("message"));
 	}
-
+	
+	
+	
+	private WebElement getPageTitle() {
+		return pageTitle;
+	}
+	
+	
+	
+	
+	
+	
 }

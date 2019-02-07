@@ -3,6 +3,8 @@ package com.big.automation.selenium_webdriver.claimcenter.pages.postfnol.summary
 import static com.big.automation.selenium_webdriver.common.utilities.ThreadUtils.sleep;
 import static java.lang.String.format;
 
+import java.util.List;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -10,30 +12,16 @@ import org.openqa.selenium.support.FindBy;
 import com.big.automation.selenium_webdriver.common.baseTest.BaseTest;
 import com.big.automation.selenium_webdriver.common.gw.utilities.GuideWireAccessors;
 
-public class ClaimCenterPOSTFNOLSummaryPOM extends BaseTest{
+public class ClaimCenterPOSTFNOLSummaryStatusPOM extends BaseTest{
 
-	@FindBy(id = "ClaimSummary:ClaimSummaryScreen:ttlBar")
+	@FindBy(id = "ClaimStatus:ttlBar")
 	private WebElement pageTitle;
 
-	
-	//Loss detials section
-	//--------------------------
-	@FindBy(id ="ClaimSummary:ClaimSummaryScreen:ClaimSummaryHeadlinePanelSet:LossDate-inputEl")
-	private WebElement lossDate;
-	@FindBy(id ="ClaimSummary:ClaimSummaryScreen:ClaimSummaryHeadlinePanelSet:ReportDate-inputEl")
-	private WebElement noticeDate;
-	@FindBy(id ="ClaimSummary:ClaimSummaryScreen:ClaimSummaryHeadlinePanelSet:Location-inputEl")
-	private WebElement lossLocation;
-	
-	
-	// Circumstances
-	//-------------------------------
-	@FindBy(id ="ClaimSummary:ClaimSummaryScreen:ClaimSummaryHeadlinePanelSet:Description-inputEl")
-	private WebElement circumstances;
+
 
 	public String getName() {
 
-		return "Post FNOL Summary";
+		return "Post FNOL Summary Status";
 	}
 
 	public boolean isPageTitleDisplayed(String expected)
@@ -48,9 +36,6 @@ public class ClaimCenterPOSTFNOLSummaryPOM extends BaseTest{
 		return GuideWireAccessors.containsErrorMessage(driver, contains, By.className("message"));
 	}
 	
-	private WebElement getCircumstances() {
-		return circumstances;
-	}
 	
 	
 	private WebElement getPageTitle() {
@@ -59,10 +44,5 @@ public class ClaimCenterPOSTFNOLSummaryPOM extends BaseTest{
 	
 	
 
-	private WebElement getLossDate() {
-		return lossDate;
-	}
-
-	
 	
 }

@@ -21,137 +21,267 @@ public class CCPOSTFNOLEditExposureSteps extends BaseTest {
 		
 	}
 	
-	
-	
-	@Given("^I select \"([^\"]*)\" on edit injury exposure screen for Post FNOL$")
-	public void i_select_on_editinjuryexpsoure_screen(String button) throws Throwable {
-		switch(button)
-	    {
-	    case "Update":
-	    	postFnolEditInjuryExposurePOM.selectUpdate();
-	    	break;
-	    case "Cancel":
-	    	postFnolEditInjuryExposurePOM.selectCancel();;
-	    	break;
-	    case "Edit":
-	    	postFnolEditInjuryExposurePOM.selectEdit();
-	    	break;
-	  
-	    default:
-	    Assert.fail("unknown input field :"+ button+" - check cucumber script!");
-	    }
-	}
-	@Given("^I select \"([^\"]*)\" on edit property exposure screen for Post FNOL$")
-	public void i_select_on_editpropertyexpsoure_screen(String button) throws Throwable {
-		switch(button)
-	    {
-	    case "Update":
-	    	postFnolEditPropertyExposurePOM.selectUpdate();
-	    	break;
-	    case "Cancel":
-	    	postFnolEditInjuryExposurePOM.selectCancel();;
-	    	break;
-	    case "Edit":
-	    	postFnolEditInjuryExposurePOM.selectEdit();
-	    	break;
-	  
-	    default:
-	    Assert.fail("unknown input field :"+ button+" - check cucumber script!");
-	    }
-	}
-	@Given("^I select \"([^\"]*)\" on edit vehicle exposure screen for Post FNOL$")
-	public void i_select_on_editvehicleexposure_screen(String button) throws Throwable {
-		switch(button)
-	    {
-	    case "Update":
-	    	postFnolEditVehicleExposurePOM.selectUpdate();
-	    	break;
-	    case "Cancel":
-	    	postFnolEditVehicleExposurePOM.selectCancel();;
-	    	break;
-	    case "Edit":
-	    	postFnolEditVehicleExposurePOM.selectEdit();
-	    	break;
-	  
-	    default:
-	    Assert.fail("unknown input field :"+ button+" - check cucumber script!");
-	    }
-	}
-	@Given("^I select \"([^\"]*)\" on edit Credit Hire exposure screen for Post FNOL$")
-	public void i_select_on_editcredithireexposure_screen(String button) throws Throwable {
-		switch(button)
-	    {
-	    case "Update":
-	    	postFnolEditCreditHireExposurePOM.selectUpdate();
-	    	break;
-	    case "Cancel":
-	    	postFnolEditCreditHireExposurePOM.selectCancel();;
-	    	break;
-	    case "Edit":
-	    	postFnolEditCreditHireExposurePOM.selectEdit();
-	    	break;
-	  
-	    default:
-	    Assert.fail("unknown input field :"+ button+" - check cucumber script!");
-	    }
-	}
-	@Given("^I select \"([^\"]*)\" on edit Protocol Hire exposure screen for Post FNOL$")
-	public void i_select_on_editprotocolhireexposure_screen(String button) throws Throwable {
-		switch(button)
-	    {
-	    case "Update":
-	    	postFnolEditProtocolHireExposurePOM.selectUpdate();
-	    	break;
-	    case "Cancel":
-	    	postFnolEditProtocolHireExposurePOM.selectCancel();;
-	    	break;
-	    case "Edit":
-	    	postFnolEditProtocolHireExposurePOM.selectEdit();
-	    	break;
-	  
-	    default:
-	    Assert.fail("unknown input field :"+ button+" - check cucumber script!");
-	    }
-	}
-	@Given("^I select \"([^\"]*)\" on edit TP Capture exposure screen for Post FNOL$")
-	public void i_select_on_edittpcaptureexposure_screen(String button) throws Throwable {
-		switch(button)
-	    {
-	    case "Update":
-	    	postFnolEditTPCaptureExposurePOM.selectUpdate();
-	    	break;
-	    case "Cancel":
-	    	postFnolEditTPCaptureExposurePOM.selectCancel();;
-	    	break;
-	    case "Edit":
-	    	postFnolEditTPCaptureExposurePOM.selectEdit();
-	    	break;
-	  
-	    default:
-	    Assert.fail("unknown input field :"+ button+" - check cucumber script!");
-	    }
-	}
-	
-	@When("^I click the uptoexposures link on \"([^\"]*)\" exposure screen for Post FNOL$")
-	public void i_click_the_uptoexposures_link_on_exposure_screen_for_Post_FNOL(String exposureType) throws Throwable {
-		switch(exposureType)
-	    {
-	    case "Vehicle":
-	    	postFnolEditVehicleExposurePOM.selectUpToExposures();
-	    	break;
-	    case "Injury":
-	    	postFnolEditInjuryExposurePOM.selectUpToExposures();
-	    	break;
-	    case "Property":
-	    	postFnolEditPropertyExposurePOM.selectUpToExposures();
-	    	break;
-	  
-	    default:
-	    Assert.fail("unknown input field :"+ exposureType+" - check cucumber script!");
-	    }
+	@Then("^I will see post FNOL edit exposure screen for \"([^\"]*)\"$")
+	public void i_will_see_post_FNOL_exposure_screen_for(String type) throws Throwable {
+	   switch (type)
+	   {
+	   case ("1st Party Vehicle"):
+		   postFnolEditVehicleExposurePOM.isPageTitleDisplayed(type);
+	   		break;
+	   case ("3rd Party Vehicle"):
+		   postFnolEditVehicleExposurePOM.isPageTitleDisplayed(type);
+	   		break;
+	   case ("3rd Party Bodily Injury"):
+		   postFnolEditInjuryExposurePOM.isPageTitleDisplayed(type);
+	   		break;
+	   case ("3rd Party Property"):
+		   postFnolEditPropertyExposurePOM.isPageTitleDisplayed(type);
+	   		break;
+	   case ("3rd Party Credit Hire"):
+		   postFnolEditCreditHireExposurePOM.isPageTitleDisplayed(type);
+	   		break;
+	   case ("3rd Party Protocol Hire"):
+		   postFnolEditProtocolHireExposurePOM.isPageTitleDisplayed(type);
+	   		break;
+	   case ("TP Capture"):
+		   postFnolEditTPCaptureExposurePOM.isPageTitleDisplayed(type);
+	   		break;
+	   }
+		
 		
 	}
 	
+	@Then("^I will see \"([^\"]*)\" is \"([^\"]*)\" on post FNOL \"([^\"]*)\" edit exposure screen$")
+	public void i_will_see_is_on_post_FNOL_exposure_screen(String fieldName, String fieldValue, String exposureType) throws Throwable {
+		switch (exposureType)
+		   {
+		   case ("1st Party Vehicle"):
+			   checkFieldValueForVehicleExposure(fieldName,fieldValue);
+		   		break;
+		   case ("3rd Party Vehicle"):
+			   checkFieldValueForVehicleExposure(fieldName,fieldValue);
+		   		break;
+		   case ("3rd Party Bodily Injury"):
+			   checkFieldValueForInjuryExposure(fieldName,fieldValue);
+		   		break;
+		   case ("3rd Party Property"):
+			   checkFieldValueForPropertyExposure(fieldName,fieldValue);
+		   		break;
+		   case ("3rd Party Credit Hire"):
+			   checkFieldValueForCreditHireExposure(fieldName,fieldValue);
+		   		break;
+		   case ("3rd Party Protocol Hire"):
+			   checkFieldValueForProtocolHireExposure(fieldName,fieldValue);
+		   		break;
+		   case ("TP Capture"):
+			   checkFieldValueForTPCaptureExposure(fieldName,fieldValue);
+		   		break;
+		   }
+	}
+	
+	private void checkFieldValueForVehicleExposure(String fieldName,String fieldValue)
+	{
+		switch(fieldName)
+		{
+		case("Claimant Type"):
+			Assert.assertEquals(fieldValue, postFnolEditVehicleExposurePOM.getClaimantType());
+			break;
+		//TODO claimant
+		}
+	}
+	
+	private void checkFieldValueForInjuryExposure(String fieldName,String fieldValue)
+	{
+		
+	}
+	private void checkFieldValueForPropertyExposure(String fieldName,String fieldValue)
+	{
+		
+	}
+	private void checkFieldValueForCreditHireExposure(String fieldName,String fieldValue)
+	{
+		
+	}
+	private void checkFieldValueForProtocolHireExposure(String fieldName,String fieldValue)
+	{
+		
+	}
+	private void checkFieldValueForTPCaptureExposure(String fieldName,String fieldValue)
+	{
+		
+	}
+	
+	
+	@Given("^I click \"([^\"]*)\" on post FNOL \"([^\"]*)\" edit exposure screen$")
+	public void i_select_on_exposure_screen(String button, String exposureType) throws Throwable {
+		switch (exposureType) {
+		case ("1st Party Vehicle"):
+			clickForVehicleExposure(button);
+			break;
+		case ("3rd Party Vehicle"):
+			clickForVehicleExposure(button);
+			break;
+		case ("3rd Party Bodily Injury"):
+			clickForInjuryExposure(button);
+			break;
+		case ("3rd Party Property"):
+			clickForPropertyExposure(button);
+			break;
+		case ("3rd Party Credit Hire"):
+			clickForCreditHireExposure(button);
+			break;
+		case ("3rd Party Protocol Hire"):
+			clickForProtocolHireExposure(button);
+			break;
+			//TODO check title
+		case ("TP Capture"):
+			clickForTPCaptureExposure(button);
+			break;
+
+		}
+
+	}
+	
+	private void clickForVehicleExposure(String button) {
+		switch (button) {
+		case "Update":
+			postFnolEditVehicleExposurePOM.selectUpdate();
+			break;
+		case "Cancel":
+			postFnolEditVehicleExposurePOM.selectCancel();
+			;
+			break;
+		case "Edit":
+			postFnolEditVehicleExposurePOM.selectEdit();
+			break;
+
+		default:
+			Assert.fail("unknown input field :" + button + " - check cucumber script!");
+		}
+	}
+
+	private void clickForInjuryExposure(String button) {
+		switch (button) {
+		case "Update":
+			postFnolEditInjuryExposurePOM.selectUpdate();
+			break;
+		case "Cancel":
+			postFnolEditInjuryExposurePOM.selectCancel();
+			;
+			break;
+		case "Edit":
+			postFnolViewInjuryExposurePOM.selectEdit();
+			break;
+
+		default:
+			Assert.fail("unknown input field :" + button + " - check cucumber script!");
+		}
+	}
+
+	private void clickForPropertyExposure(String button) {
+		switch (button) {
+		case "Update":
+			postFnolEditPropertyExposurePOM.selectUpdate();
+			break;
+		case "Cancel":
+			postFnolEditPropertyExposurePOM.selectCancel();
+			;
+			break;
+		case "Edit":
+			postFnolEditPropertyExposurePOM.selectEdit();
+			break;
+
+		default:
+			Assert.fail("unknown input field :" + button + " - check cucumber script!");
+		}
+	}
+
+	private void clickForCreditHireExposure(String button) {
+		switch (button) {
+		case "Update":
+			postFnolEditCreditHireExposurePOM.selectUpdate();
+			break;
+		case "Cancel":
+			postFnolEditCreditHireExposurePOM.selectCancel();
+			;
+			break;
+		case "Edit":
+			postFnolEditCreditHireExposurePOM.selectEdit();
+			break;
+
+		default:
+			Assert.fail("unknown input field :" + button + " - check cucumber script!");
+		}
+	}
+
+	private void clickForProtocolHireExposure(String button) {
+		switch (button) {
+		case "Update":
+			postFnolEditProtocolHireExposurePOM.selectUpdate();
+			break;
+		case "Cancel":
+			postFnolEditProtocolHireExposurePOM.selectCancel();
+			;
+			break;
+		case "Edit":
+			postFnolEditProtocolHireExposurePOM.selectEdit();
+			break;
+
+		default:
+			Assert.fail("unknown input field :" + button + " - check cucumber script!");
+		}
+	}
+	private void clickForTPCaptureExposure(String button) {
+		switch (button) {
+		case "Update":
+			postFnolEditTPCaptureExposurePOM.selectUpdate();
+			break;
+		case "Cancel":
+			postFnolEditTPCaptureExposurePOM.selectCancel();
+			;
+			break;
+		case "Edit":
+			postFnolEditTPCaptureExposurePOM.selectEdit();
+			break;
+
+		default:
+			Assert.fail("unknown input field :" + button + " - check cucumber script!");
+		}
+	}
+	
+	
+	@When("^I click the uptoexposures link on \"([^\"]*)\" edit exposure screen for Post FNOL$")
+	public void i_click_the_uptoexposures_link_on_exposure_screen_for_Post_FNOL(String exposureType) throws Throwable {
+		switch (exposureType) {
+		case ("1st Party Vehicle"):
+			postFnolEditVehicleExposurePOM.selectUpToExposures();
+			break;
+		case ("3rd Party Vehicle"):
+			postFnolEditVehicleExposurePOM.selectUpToExposures();
+			break;
+		case ("3rd Party Bodily Injury"):
+			postFnolEditInjuryExposurePOM.selectUpToExposures();
+			break;
+		case ("3rd Party Property"):
+			postFnolEditPropertyExposurePOM.selectUpToExposures();
+			break;
+		case ("3rd Party Credit Hire"):
+			postFnolEditCreditHireExposurePOM.selectUpToExposures();
+			break;
+		case ("3rd Party Protocol Hire"):
+			postFnolEditProtocolHireExposurePOM.selectUpToExposures();
+			break;
+		case ("TP Capture"):
+			postFnolEditTPCaptureExposurePOM.selectUpToExposures();
+			break;
+
+		default:
+			Assert.fail("unknown input field :" + exposureType + " - check cucumber script!");
+		}
+
+	}
+
+	//TODO -refactor all of the following 
 	@Given("^I select \"([^\"]*)\" from \"([^\"]*)\" on edit injury exposure screen for Post FNOL$")
 	public void i_select_from_field_on_injuryexposure_screen(String fieldValue, String fieldName) throws Throwable {
 		switch(fieldName)
@@ -314,51 +444,42 @@ public class CCPOSTFNOLEditExposureSteps extends BaseTest {
 
 	}
 	
-	@Then("^I will see the error messages on the edit injury exposure screen for Post FNOL$")
-	public void i_will_see_the_error_messages_on_the_editinjury_Exposures_screen(DataTable dt) throws Throwable {
+	@Then("^I will see the error messages on the \"([^\"]*)\" edit exposure screen for Post FNOL$")
+	public void i_will_see_the_error_messages_on_the_editinjury_Exposures_screen(DataTable dt,String exposureType) throws Throwable {
 	  	List<String> list = dt.asList(String.class);
 	    SoftAssert softAssert = new SoftAssert();
 			for(int i=0; i<list.size(); i++) {
-				softAssert.assertTrue(postFnolEditInjuryExposurePOM.containsErrorMessage(list.get(i)),"Error Message Check: "+ list.get(i));
+				switch (exposureType) {
+				case ("1st Party Vehicle"):
+					softAssert.assertTrue(postFnolEditVehicleExposurePOM.containsErrorMessage(list.get(i)),"Error Message Check: "+ list.get(i));
+					break;
+				case ("3rd Party Vehicle"):
+					softAssert.assertTrue(postFnolEditVehicleExposurePOM.containsErrorMessage(list.get(i)),"Error Message Check: "+ list.get(i));
+					break;
+				case ("3rd Party Bodily Injury"):
+					softAssert.assertTrue(postFnolEditInjuryExposurePOM.containsErrorMessage(list.get(i)),"Error Message Check: "+ list.get(i));
+					break;
+				case ("3rd Party Property"):
+					softAssert.assertTrue(postFnolEditPropertyExposurePOM.containsErrorMessage(list.get(i)),"Error Message Check: "+ list.get(i));
+					break;
+				case ("3rd Party Credit Hire"):
+					softAssert.assertTrue(postFnolEditCreditHireExposurePOM.containsErrorMessage(list.get(i)),"Error Message Check: "+ list.get(i));
+					break;
+				case ("3rd Party Protocol Hire"):
+					softAssert.assertTrue(postFnolEditProtocolHireExposurePOM.containsErrorMessage(list.get(i)),"Error Message Check: "+ list.get(i));
+					break;
+				case ("TP Capture"):
+					softAssert.assertTrue(postFnolEditTPCaptureExposurePOM.containsErrorMessage(list.get(i)),"Error Message Check: "+ list.get(i));
+					break;
+
+				default:
+					Assert.fail("unknown input field :" + exposureType + " - check cucumber script!");
+				}
 				
 			}
 			softAssert.assertAll();
 	}
-	@Then("^I will see the error messages on the edit vehicle exposure screen for Post FNOL$")
-	public void i_will_see_the_error_messages_on_the_editvehicle_Exposures_screen(DataTable dt) throws Throwable {
-	  	List<String> list = dt.asList(String.class);
-	    SoftAssert softAssert = new SoftAssert();
-			for(int i=0; i<list.size(); i++) {
-				softAssert.assertTrue(postFnolEditVehicleExposurePOM.containsErrorMessage(list.get(i)),"Error Message Check: "+ list.get(i));
-				
-			}
-	}
-	@Then("^I will see the error messages on the edit Credit Hire exposure screen for Post FNOL$")
-	public void i_will_see_the_error_messages_on_the_editcredihire_Exposures_screen(DataTable dt) throws Throwable {
-	  	List<String> list = dt.asList(String.class);
-	    SoftAssert softAssert = new SoftAssert();
-			for(int i=0; i<list.size(); i++) {
-				softAssert.assertTrue(postFnolEditCreditHireExposurePOM.containsErrorMessage(list.get(i)),"Error Message Check: "+ list.get(i));
-				
-			}
-	}
-	@Then("^I will see the error messages on the edit Protocol Hire exposure screen for Post FNOL$")
-	public void i_will_see_the_error_messages_on_the_editprotocolhire_Exposures_screen(DataTable dt) throws Throwable {
-	  	List<String> list = dt.asList(String.class);
-	    SoftAssert softAssert = new SoftAssert();
-			for(int i=0; i<list.size(); i++) {
-				softAssert.assertTrue(postFnolEditProtocolHireExposurePOM.containsErrorMessage(list.get(i)),"Error Message Check: "+ list.get(i));
-				
-			}
-	}
-	@Then("^I will see the error messages on the edit TP Capture exposure screen for Post FNOL$")
-	public void i_will_see_the_error_messages_on_the_edittpcapture_Exposures_screen(DataTable dt) throws Throwable {
-	  	List<String> list = dt.asList(String.class);
-	    SoftAssert softAssert = new SoftAssert();
-			for(int i=0; i<list.size(); i++) {
-				softAssert.assertTrue(postFnolEditTPCaptureExposurePOM.containsErrorMessage(list.get(i)),"Error Message Check: "+ list.get(i));
-				
-			}
-	}
+	
+	
 
 }

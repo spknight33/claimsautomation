@@ -1,6 +1,5 @@
 package com.big.automation.selenium_webdriver.common.baseTest;
 
-
 import static com.big.automation.selenium_webdriver.common.utilities.ScreenshotUtils.capture;
 import static com.big.automation.selenium_webdriver.common.utilities.ThreadUtils.sleep;
 
@@ -64,6 +63,12 @@ import com.big.automation.selenium_webdriver.claimcenter.pages.postfnol.exposure
 import com.big.automation.selenium_webdriver.claimcenter.pages.postfnol.exposures.ClaimCenterPOSTFNOLEditTPCaptureExposurePOM;
 import com.big.automation.selenium_webdriver.claimcenter.pages.postfnol.exposures.ClaimCenterPOSTFNOLEditVehicleExposurePOM;
 import com.big.automation.selenium_webdriver.claimcenter.pages.postfnol.exposures.ClaimCenterPOSTFNOLExposuresPOM;
+import com.big.automation.selenium_webdriver.claimcenter.pages.postfnol.exposures.ClaimCenterPOSTFNOLViewCreditHireExposurePOM;
+import com.big.automation.selenium_webdriver.claimcenter.pages.postfnol.exposures.ClaimCenterPOSTFNOLViewInjuryExposurePOM;
+import com.big.automation.selenium_webdriver.claimcenter.pages.postfnol.exposures.ClaimCenterPOSTFNOLViewPropertyExposurePOM;
+import com.big.automation.selenium_webdriver.claimcenter.pages.postfnol.exposures.ClaimCenterPOSTFNOLViewProtocolHireExposurePOM;
+import com.big.automation.selenium_webdriver.claimcenter.pages.postfnol.exposures.ClaimCenterPOSTFNOLViewTPCaptureExposurePOM;
+import com.big.automation.selenium_webdriver.claimcenter.pages.postfnol.exposures.ClaimCenterPOSTFNOLViewVehicleExposurePOM;
 import com.big.automation.selenium_webdriver.claimcenter.pages.postfnol.financials.ClaimCenterPOSTFNOLFinancialChequesPOM;
 import com.big.automation.selenium_webdriver.claimcenter.pages.postfnol.financials.ClaimCenterPOSTFNOLFinancialSummaryPOM;
 import com.big.automation.selenium_webdriver.claimcenter.pages.postfnol.financials.ClaimCenterPOSTFNOLFinancialTransactionsPOM;
@@ -71,7 +76,7 @@ import com.big.automation.selenium_webdriver.claimcenter.pages.postfnol.financia
 import com.big.automation.selenium_webdriver.claimcenter.pages.postfnol.financials.ClaimCenterPOSTFNOLNewChequeStep2POM;
 import com.big.automation.selenium_webdriver.claimcenter.pages.postfnol.financials.ClaimCenterPOSTFNOLNewChequeStep3POM;
 import com.big.automation.selenium_webdriver.claimcenter.pages.postfnol.financials.ClaimCenterPOSTFNOLSetReservesPOM;
-import com.big.automation.selenium_webdriver.claimcenter.pages.postfnol.fnolsnapshot.ClaimCenterPOSTFNOLFnolSnapshotPOM;
+import com.big.automation.selenium_webdriver.claimcenter.pages.postfnol.fnolsnapshot.ClaimCenterPOSTFNOLFnolSnapshotLossPOM;
 import com.big.automation.selenium_webdriver.claimcenter.pages.postfnol.litigation.ClaimCenterPOSTFNOLLitigationPOM;
 import com.big.automation.selenium_webdriver.claimcenter.pages.postfnol.lossdetails.ClaimCenterPOSTFNOLDriverDetailsPOM;
 import com.big.automation.selenium_webdriver.claimcenter.pages.postfnol.lossdetails.ClaimCenterPOSTFNOLEditPropertyPOM;
@@ -84,9 +89,14 @@ import com.big.automation.selenium_webdriver.claimcenter.pages.postfnol.lossdeta
 import com.big.automation.selenium_webdriver.claimcenter.pages.postfnol.lossdetails.ClaimCenterPOSTFNOLPedestrianDetailsPOM;
 import com.big.automation.selenium_webdriver.claimcenter.pages.postfnol.notes.ClaimCenterPOSTFNOLNewNotePOM;
 import com.big.automation.selenium_webdriver.claimcenter.pages.postfnol.parties.ClaimCenterPOSTFNOLPartiesInvolvedPOM;
+import com.big.automation.selenium_webdriver.claimcenter.pages.postfnol.parties.ClaimCenterPOSTFNOLPartiesInvolvedUsersPOM;
+import com.big.automation.selenium_webdriver.claimcenter.pages.postfnol.policy.ClaimCenterPOSTFNOLPolicyGeneralPOM;
+import com.big.automation.selenium_webdriver.claimcenter.pages.postfnol.policy.ClaimCenterPOSTFNOLPolicyVehiclesPOM;
 import com.big.automation.selenium_webdriver.claimcenter.pages.postfnol.services.ClaimCenterPOSTFNOLNewServicePOM;
 import com.big.automation.selenium_webdriver.claimcenter.pages.postfnol.services.ClaimCenterPOSTFNOLServicesPOM;
+import com.big.automation.selenium_webdriver.claimcenter.pages.postfnol.summary.ClaimCenterPOSTFNOLSummaryMetricsPOM;
 import com.big.automation.selenium_webdriver.claimcenter.pages.postfnol.summary.ClaimCenterPOSTFNOLSummaryPOM;
+import com.big.automation.selenium_webdriver.claimcenter.pages.postfnol.summary.ClaimCenterPOSTFNOLSummaryStatusPOM;
 import com.big.automation.selenium_webdriver.common.extent_reports.ExtentManager;
 import com.big.automation.selenium_webdriver.common.rules.ScreenshotTestRule;
 import com.big.automation.selenium_webdriver.common.rules.WebDriverRule;
@@ -97,386 +107,451 @@ import cucumber.api.testng.AbstractTestNGCucumberTests;
 
 @Listeners(com.big.automation.selenium_webdriver.common.testlistener.TestListener.class)
 
-public class BaseTest extends AbstractTestNGCucumberTests{
-	
-	
-   public static final String testDataExcelFilename = "testdata.xlsx";
+public class BaseTest extends AbstractTestNGCucumberTests {
 
-   public static ITestResult result;
-   public static WebDriverRule webDriverRule;
-   public static ExtentHtmlReporter htmlReporter;
-   public static ExtentReports extent;
-   public static ExtentTest logger;
-   public static ScreenshotTestRule screenshotTestRule;
-   public static RemoteWebDriver driver;
-   
-   //public static ClaimCenterData testDataset;
-  
-   
-   
-   public static ClaimCenterLoginPOM loginPOM;
-   public static ClaimCenterMenuBarPOM menuBarPOM;
-   public static ClaimCenterNavigatorBarPOM navigatorBarPOM;
-   public static ClaimCenterFNOLStep1POM fnolStep1POM;
-   public static ClaimCenterFNOLStep2POM fnolStep2POM;
-   public static ClaimCenterFNOLStep3POM fnolStep3POM;
-   public static ClaimCenterFNOLStep4POM fnolStep4POM;
-   public static ClaimCenterFNOLStep5POM fnolStep5POM;
-   public static ClaimCenterFNOLClaimSavedPOM fnolClaimSavedPOM;
-   
-   public static ClaimCenterFNOLNewPoliceDetailsPOM fnolNewPolicePOM;
-   public static ClaimCenterFNOLPedestrianDetailsPOM fnolPedestrianPOM;
-   public static ClaimCenterFNOLVehicleDetailsPOM fnolVehicleDetailsPOM;
-   public static ClaimCenterFNOLDriverDetailsPOM fnolDriverDetailsPOM;
-   public static ClaimCenterFNOLNewExposurePOM fnolNewExposurePOM;
-   public static ClaimCenterFNOLNewPropertyExposurePOM fnolNewPropertyExposurePOM;
-   public static ClaimCenterFNOLNewInjuryExposurePOM fnolNewInjuryExposurePOM;
-   public static ClaimCenterFNOLNewVehicleExposurePOM fnolNewVehicleExposurePOM;
-   public static ClaimCenterFNOLNewCreditHireExposurePOM fnolNewCreditHireExposurePOM;
-   public static ClaimCenterFNOLNewProtocolHireExposurePOM fnolNewProtocolHireExposurePOM;
-   public static ClaimCenterFNOLNewTPCaptureExposurePOM fnolNewTPCaptureExposurePOM;
-   public static ClaimCenterFNOLNewPassengerDetailsPOM fnolNewPassengerPOM;
-   
-   
-   public static ClaimCenterPersonDetailsPOM personContactDetailsPOM;
-   public static ClaimCenterFNOLPropertyDetailsPOM fnolPropertyDetailsPOM;
-  
-   
-   public static ClaimCenterPOSTFNOLExposuresPOM postFnolExposuresPOM;
-   public static ClaimCenterPOSTFNOLEditInjuryExposurePOM postFnolEditInjuryExposurePOM;
-   public static ClaimCenterPOSTFNOLEditPropertyExposurePOM postFnolEditPropertyExposurePOM;
-   public static ClaimCenterPOSTFNOLEditVehicleExposurePOM postFnolEditVehicleExposurePOM;
-   public static ClaimCenterPOSTFNOLEditCreditHireExposurePOM postFnolEditCreditHireExposurePOM;
-   public static ClaimCenterPOSTFNOLEditProtocolHireExposurePOM postFnolEditProtocolHireExposurePOM;
-   public static ClaimCenterPOSTFNOLEditTPCaptureExposurePOM postFnolEditTPCaptureExposurePOM;
-   
-   
-   public static ClaimCenterPOSTFNOLSummaryPOM postFnolSummaryPOM;
-   public static ClaimCenterPOSTFNOLLossDetailsPOM postFnolLossDetailsPOM;
-   public static ClaimCenterPOSTFNOLNewPropertyPOM postFnolNewPropertyPOM;
-   public static ClaimCenterPOSTFNOLEditPropertyPOM postFnolEditPropertyPOM;
-  
-   public static ClaimCenterPOSTFNOLPedestrianDetailsPOM postFnolPedestrianPOM;
-   public static ClaimCenterPOSTFNOLEditVehicleDetailsPOM postFnolEditVehiclePOM;
-   public static ClaimCenterPOSTFNOLDriverDetailsPOM postFnolDriverPOM;
-   public static ClaimCenterPOSTFNOLPassengerDetailsPOM postFnolPassengerPOM;
-   
-   
-   
-   public static ClaimCenterPOSTFNOLNewVehicleDetailsPOM postFnolNewVehiclePOM;
-   public static ClaimCenterPOSTFNOLNewPoliceDetailsPOM postFnolNewPolicePOM;
-   public static ClaimCenterCompanyDetailsPOM companyContactDetailsPOM;
-   public static ClaimCenterSearchAddressBookPOM searchAddressBookPOM;
-   
-   public static ClaimCenterPOSTFNOLWorkplanPOM postFnolWorkplanPOM;
-   public static ClaimCenterPOSTFNOLNewActivityPOM postFnolNewActivityPOM;
-   public static ClaimCenterPOSTFNOLNewNotePOM postFnolNewNotePOM;
-   
-   public static ClaimCenterPOSTFNOLNewServicePOM postFnolNewServicePOM;
-   public static ClaimCenterPOSTFNOLServicesPOM postFnolServicesPOM;
-   
-   public static ClaimCenterPOSTFNOLDocumentsPOM postFnolDocumentsPOM;
-   
-   public static ClaimCenterPOSTFNOLLitigationPOM postFnolLitigationPOM;
-   public static ClaimCenterPOSTFNOLPartiesInvolvedPOM postFnolPartiesInvolvedPOM;
-   
-   
-   
-   public static ClaimCenterTotalLossCalulatorPOM totalLossCalcPOM;
-   
-   // desktop stuff
-   
-   public static ClaimCenterDesktopQueuesPOM desktopQueuesPOM;
-   
-   public static ClaimCenterPOSTFNOLFnolSnapshotPOM postFnolSnapshotPOM;
-   
-   // financials
-   public static ClaimCenterPOSTFNOLFinancialSummaryPOM postFnolFinancialSummaryPOM;
-   public static ClaimCenterPOSTFNOLFinancialTransactionsPOM postFnolFinancialTransactionsPOM;
-   public static ClaimCenterPOSTFNOLFinancialChequesPOM postFnolFinancialChequesPOM;
-   public static ClaimCenterPOSTFNOLSetReservesPOM postFnolSetReservesPOM;
-   public static ClaimCenterPOSTFNOLNewChequeStep1POM postFnolNewChequeStep1POM;
-   public static ClaimCenterPOSTFNOLNewChequeStep2POM postFnolNewChequeStep2POM;
-   public static ClaimCenterPOSTFNOLNewChequeStep3POM postFnolNewChequeStep3POM;
-   
+	public static final String testDataExcelFilename = "testdata.xlsx";
 
-   @BeforeTest(timeOut = 30000)
-   public void beforeTest() {
-      //For extent reports
-	  System.out.println("TestNG @beforeTest in BaseTest - creating Extent folder and instance");
-      File OutputFolder = new File("./target/extent");
-      if (!OutputFolder.exists()) {
-         if (OutputFolder.mkdir()) {
-            System.out.println("Directory is created!");
-         } else {
-            System.out.println("Failed to create Directory");
-         }
-      } else {
-         System.out.println("Directory already exists");
-      }
-      String timeStamp = new SimpleDateFormat("yyyyMMddHHmmss").format(new java.util.Date());
-      htmlReporter = new ExtentHtmlReporter("./target/extent/STMExtentReport.html");
-      extent = ExtentManager.GetExtent();
-      extent.attachReporter(htmlReporter);
-      htmlReporter.config().setChartVisibilityOnOpen(true);
-      htmlReporter.config().setDocumentTitle("Smoke Tests");
-      htmlReporter.config().setReportName("Smoke Tests Report");
-      htmlReporter.config().setTestViewChartLocation(ChartLocation.TOP);
-      htmlReporter.config().setTheme(Theme.DARK);
-   }
+	public static ITestResult result;
+	public static WebDriverRule webDriverRule;
+	public static ExtentHtmlReporter htmlReporter;
+	public static ExtentReports extent;
+	public static ExtentTest logger;
+	public static ScreenshotTestRule screenshotTestRule;
+	public static RemoteWebDriver driver;
 
+	// Authentication/common pages
+	// -------------------------------
+	public static ClaimCenterLoginPOM loginPOM;
+	public static ClaimCenterMenuBarPOM menuBarPOM;
+	public static ClaimCenterNavigatorBarPOM navigatorBarPOM;
+	public static ClaimCenterPersonDetailsPOM personContactDetailsPOM;
+	public static ClaimCenterCompanyDetailsPOM companyContactDetailsPOM;
+	public static ClaimCenterSearchAddressBookPOM searchAddressBookPOM;
+	public static ClaimCenterTotalLossCalulatorPOM totalLossCalcPOM;
 
-   @BeforeClass(timeOut = 50000)
-   public void browserConfig() {
-	   System.out.println("TestNG @beforeClass in BaseTest - creating Webdriver instance and POMs");
-      int count = 0;
-      int maxTries = 5;
-      while (true) {
-         try {
-            System.out.println("Starting Browser Config Setup");
-            //driver.findElement(By.id("lkdjgksdgj"));
-            webDriverRule = new WebDriverRule();
-            driver = webDriverRule.getDriver();
-            //logger = new LoggerRule().getLogger();
-            Dimension dimension = new Dimension(1800, 1200);
-            driver.manage().window().setSize(dimension);
-            driver.manage().window().maximize();
-            driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
-            driver.manage().timeouts().pageLoadTimeout(60, TimeUnit.SECONDS);
-            // disable the exit alert - deosnt work
-            //driver.executeScript("window.onbeforeunload = function() {};");
-            System.out.println("Browser Config Setup Complete");
-            break;
-         } catch (Exception e) {
-            //sleep(2);
-            System.out.println("This test failed to start after 5 attempts");
-            if (++count == maxTries) {
-               logger.log(Status.SKIP, "This test failed to start after 5 attempts");
-               extent.flush();
-               throw e;
-            }
-         }
-      }
-   
-     
-     //AjaxElementLocatorFactory ajaxElementLocatorFactory = new AjaxElementLocatorFactory(driver, 60);
-      loginPOM = PageFactory.initElements(driver, ClaimCenterLoginPOM.class);
-      menuBarPOM = PageFactory.initElements(driver, ClaimCenterMenuBarPOM.class);
-      navigatorBarPOM = PageFactory.initElements(driver, ClaimCenterNavigatorBarPOM.class);
-      fnolStep1POM = PageFactory.initElements(driver, ClaimCenterFNOLStep1POM.class);
-      fnolStep2POM = PageFactory.initElements(driver, ClaimCenterFNOLStep2POM.class);
-      fnolStep3POM = PageFactory.initElements(driver, ClaimCenterFNOLStep3POM.class);
-      fnolStep4POM = PageFactory.initElements(driver, ClaimCenterFNOLStep4POM.class);
-      fnolStep5POM = PageFactory.initElements(driver, ClaimCenterFNOLStep5POM.class);
-      fnolClaimSavedPOM = PageFactory.initElements(driver, ClaimCenterFNOLClaimSavedPOM.class);
-      
-      fnolPedestrianPOM= PageFactory.initElements(driver, ClaimCenterFNOLPedestrianDetailsPOM.class);
-      fnolNewPolicePOM= PageFactory.initElements(driver, ClaimCenterFNOLNewPoliceDetailsPOM.class);
-      fnolNewExposurePOM= PageFactory.initElements(driver, ClaimCenterFNOLNewExposurePOM.class);
-      fnolNewPropertyExposurePOM= PageFactory.initElements(driver, ClaimCenterFNOLNewPropertyExposurePOM.class);
-      fnolNewInjuryExposurePOM= PageFactory.initElements(driver, ClaimCenterFNOLNewInjuryExposurePOM.class);
-      fnolNewVehicleExposurePOM= PageFactory.initElements(driver, ClaimCenterFNOLNewVehicleExposurePOM.class);
-      fnolNewCreditHireExposurePOM= PageFactory.initElements(driver, ClaimCenterFNOLNewCreditHireExposurePOM.class);
-      fnolNewProtocolHireExposurePOM= PageFactory.initElements(driver, ClaimCenterFNOLNewProtocolHireExposurePOM.class);
-      fnolNewTPCaptureExposurePOM= PageFactory.initElements(driver, ClaimCenterFNOLNewTPCaptureExposurePOM.class);
-      
-      
-      fnolVehicleDetailsPOM= PageFactory.initElements(driver, ClaimCenterFNOLVehicleDetailsPOM.class);
-      fnolDriverDetailsPOM= PageFactory.initElements(driver, ClaimCenterFNOLDriverDetailsPOM.class);
-      personContactDetailsPOM= PageFactory.initElements(driver, ClaimCenterPersonDetailsPOM.class);  
-      fnolPropertyDetailsPOM= PageFactory.initElements(driver, ClaimCenterFNOLPropertyDetailsPOM.class);  
-      
-      fnolNewPassengerPOM= PageFactory.initElements(driver, ClaimCenterFNOLNewPassengerDetailsPOM.class);  
-      
-      postFnolExposuresPOM= PageFactory.initElements(driver, ClaimCenterPOSTFNOLExposuresPOM.class);
-      postFnolEditInjuryExposurePOM= PageFactory.initElements(driver, ClaimCenterPOSTFNOLEditInjuryExposurePOM.class);
-      postFnolEditPropertyExposurePOM= PageFactory.initElements(driver, ClaimCenterPOSTFNOLEditPropertyExposurePOM.class);
-      postFnolEditVehicleExposurePOM= PageFactory.initElements(driver, ClaimCenterPOSTFNOLEditVehicleExposurePOM.class);
-      postFnolEditCreditHireExposurePOM= PageFactory.initElements(driver, ClaimCenterPOSTFNOLEditCreditHireExposurePOM.class);
-      postFnolEditProtocolHireExposurePOM= PageFactory.initElements(driver, ClaimCenterPOSTFNOLEditProtocolHireExposurePOM.class);
-      postFnolEditTPCaptureExposurePOM= PageFactory.initElements(driver, ClaimCenterPOSTFNOLEditTPCaptureExposurePOM.class);
-     
-      
-      
-      postFnolSummaryPOM= PageFactory.initElements(driver, ClaimCenterPOSTFNOLSummaryPOM.class); 
-      postFnolLossDetailsPOM= PageFactory.initElements(driver, ClaimCenterPOSTFNOLLossDetailsPOM.class); 
-      postFnolNewPropertyPOM= PageFactory.initElements(driver, ClaimCenterPOSTFNOLNewPropertyPOM.class);
-      postFnolNewVehiclePOM= PageFactory.initElements(driver, ClaimCenterPOSTFNOLNewVehicleDetailsPOM.class);
-      
-      postFnolPedestrianPOM= PageFactory.initElements(driver, ClaimCenterPOSTFNOLPedestrianDetailsPOM.class);
-      postFnolEditVehiclePOM= PageFactory.initElements(driver, ClaimCenterPOSTFNOLEditVehicleDetailsPOM.class);
-      postFnolDriverPOM= PageFactory.initElements(driver, ClaimCenterPOSTFNOLDriverDetailsPOM.class);
-      postFnolPassengerPOM= PageFactory.initElements(driver, ClaimCenterPOSTFNOLPassengerDetailsPOM.class);
-      
-      
-      
-      postFnolNewPolicePOM= PageFactory.initElements(driver, ClaimCenterPOSTFNOLNewPoliceDetailsPOM.class);
-      postFnolEditPropertyPOM= PageFactory.initElements(driver, ClaimCenterPOSTFNOLEditPropertyPOM.class);
-      
-      
-      
-      companyContactDetailsPOM= PageFactory.initElements(driver, ClaimCenterCompanyDetailsPOM.class);
-      searchAddressBookPOM= PageFactory.initElements(driver, ClaimCenterSearchAddressBookPOM.class);
-      
-      postFnolWorkplanPOM= PageFactory.initElements(driver, ClaimCenterPOSTFNOLWorkplanPOM.class);
-      postFnolNewActivityPOM= PageFactory.initElements(driver, ClaimCenterPOSTFNOLNewActivityPOM.class);
-      postFnolNewNotePOM= PageFactory.initElements(driver, ClaimCenterPOSTFNOLNewNotePOM.class);
-      
-      
-      postFnolServicesPOM= PageFactory.initElements(driver, ClaimCenterPOSTFNOLServicesPOM.class);
-      postFnolNewServicePOM= PageFactory.initElements(driver, ClaimCenterPOSTFNOLNewServicePOM.class);
-      
-      postFnolDocumentsPOM= PageFactory.initElements(driver, ClaimCenterPOSTFNOLDocumentsPOM.class);
-      
-      postFnolLitigationPOM= PageFactory.initElements(driver, ClaimCenterPOSTFNOLLitigationPOM.class);
-      postFnolPartiesInvolvedPOM= PageFactory.initElements(driver, ClaimCenterPOSTFNOLPartiesInvolvedPOM.class);
-      
-      
-      totalLossCalcPOM= PageFactory.initElements(driver, ClaimCenterTotalLossCalulatorPOM.class);
-      
-      desktopQueuesPOM= PageFactory.initElements(driver, ClaimCenterDesktopQueuesPOM.class);
-      
-      postFnolSnapshotPOM= PageFactory.initElements(driver, ClaimCenterPOSTFNOLFnolSnapshotPOM.class);
-      
-      
-      // financials
-      postFnolFinancialSummaryPOM= PageFactory.initElements(driver, ClaimCenterPOSTFNOLFinancialSummaryPOM.class);
-      postFnolFinancialTransactionsPOM= PageFactory.initElements(driver, ClaimCenterPOSTFNOLFinancialTransactionsPOM.class);
-      postFnolFinancialChequesPOM= PageFactory.initElements(driver, ClaimCenterPOSTFNOLFinancialChequesPOM.class);
-      postFnolSetReservesPOM= PageFactory.initElements(driver, ClaimCenterPOSTFNOLSetReservesPOM.class);
-      postFnolNewChequeStep1POM= PageFactory.initElements(driver, ClaimCenterPOSTFNOLNewChequeStep1POM.class);
-      postFnolNewChequeStep2POM= PageFactory.initElements(driver, ClaimCenterPOSTFNOLNewChequeStep2POM.class);
-      postFnolNewChequeStep3POM= PageFactory.initElements(driver, ClaimCenterPOSTFNOLNewChequeStep3POM.class);
-   
-      
-   }
+	// FNOL pages
+	// ----------------------------------
+	public static ClaimCenterFNOLStep1POM fnolStep1POM;
+	public static ClaimCenterFNOLStep2POM fnolStep2POM;
+	public static ClaimCenterFNOLStep3POM fnolStep3POM;
+	public static ClaimCenterFNOLStep4POM fnolStep4POM;
+	public static ClaimCenterFNOLStep5POM fnolStep5POM;
+	public static ClaimCenterFNOLClaimSavedPOM fnolClaimSavedPOM;
 
-   
+	public static ClaimCenterFNOLNewPoliceDetailsPOM fnolNewPolicePOM;
+	public static ClaimCenterFNOLPedestrianDetailsPOM fnolPedestrianPOM;
+	public static ClaimCenterFNOLVehicleDetailsPOM fnolVehicleDetailsPOM;
+	public static ClaimCenterFNOLDriverDetailsPOM fnolDriverDetailsPOM;
+	public static ClaimCenterFNOLPropertyDetailsPOM fnolPropertyDetailsPOM;
 
-   @AfterMethod(timeOut = 30000, alwaysRun = true)
-   public void afterMethod(ITestResult result) throws IOException {
-	   System.out.println("TestNG @bafterMethod in BaseTest - capture screen shot if pass or fail");
-	   
-	   // we may get a leave page message, so accept at end of test
-	   //try {
-	   //driver.manage().deleteAllCookies();
-	  // driver.switchTo().alert().accept();
-	  // }
-	   //catch(NoAlertPresentException e) {}
-	   
-	   
-      if (result.getStatus() == ITestResult.FAILURE) {
-         logger.log(Status.FAIL, "This Test Failed - See Below");
-         sleep(2);
-         System.out.println("Starting After Method");
-         System.out.println("Starting After Method");
-         JavascriptExecutor js = (JavascriptExecutor) driver;
+	// FNOL exposures (likely to become redundant once auto generation is done)
+	// ----------------------
+	public static ClaimCenterFNOLNewExposurePOM fnolNewExposurePOM;
+	public static ClaimCenterFNOLNewPropertyExposurePOM fnolNewPropertyExposurePOM;
+	public static ClaimCenterFNOLNewInjuryExposurePOM fnolNewInjuryExposurePOM;
+	public static ClaimCenterFNOLNewVehicleExposurePOM fnolNewVehicleExposurePOM;
+	public static ClaimCenterFNOLNewCreditHireExposurePOM fnolNewCreditHireExposurePOM;
+	public static ClaimCenterFNOLNewProtocolHireExposurePOM fnolNewProtocolHireExposurePOM;
+	public static ClaimCenterFNOLNewTPCaptureExposurePOM fnolNewTPCaptureExposurePOM;
+	public static ClaimCenterFNOLNewPassengerDetailsPOM fnolNewPassengerPOM;
 
-         try {int contentHeight = ((Number) js.executeScript("return document.body.scrollHeight")).intValue();
-         Dimension fullWindowHeight = new Dimension(1300, contentHeight);
-         driver.manage().window().setSize(fullWindowHeight);
-         sleep(1);}
-         catch (Exception failWindowSize){}
+	// POST FNOL Exposures pages
+	// --------------------------
+	public static ClaimCenterPOSTFNOLExposuresPOM postFnolExposuresPOM;
+	public static ClaimCenterPOSTFNOLEditInjuryExposurePOM postFnolEditInjuryExposurePOM;
+	public static ClaimCenterPOSTFNOLViewInjuryExposurePOM postFnolViewInjuryExposurePOM;
 
-         String timeStamp = new SimpleDateFormat("yyyyMMddHHmmss").format(new java.util.Date());
-         String screenShotName = result.getName() + "- part " + timeStamp;
-         String screenShotPath = capture(driver, screenShotName);
-         logger.log(Status.FAIL, "Failed step screenshot part " + screenShotName, MediaEntityBuilder.createScreenCaptureFromPath(screenShotPath).build());
-         Dimension dimensionRestored = new Dimension(1300, 700);
-         driver.manage().window().setSize(dimensionRestored);
-         //Above is a test
+	public static ClaimCenterPOSTFNOLEditPropertyExposurePOM postFnolEditPropertyExposurePOM;
+	public static ClaimCenterPOSTFNOLViewPropertyExposurePOM postFnolViewPropertyExposurePOM;
 
-/*
-         JavascriptExecutor js = (JavascriptExecutor) driver;
-			int contentHeight = ((Number) js.executeScript("return document.body.scrollHeight")).intValue();
-			System.out.println("Page height - " + contentHeight);
-			int standardHeight = 0;
-			int screenshotNumber = 1;
-			js.executeScript("window.scrollTo(0, 0);");
+	public static ClaimCenterPOSTFNOLEditVehicleExposurePOM postFnolEditVehicleExposurePOM;
+	public static ClaimCenterPOSTFNOLViewVehicleExposurePOM postFnolViewVehicleExposurePOM;
 
-			while (contentHeight > standardHeight) {
+	public static ClaimCenterPOSTFNOLEditCreditHireExposurePOM postFnolEditCreditHireExposurePOM;
+	public static ClaimCenterPOSTFNOLViewCreditHireExposurePOM postFnolViewCreditHireExposurePOM;
 
-				String screenshotReportNumber = Integer.toString(screenshotNumber);
-				String timeStamp = new SimpleDateFormat("yyyyMMddHHmmss").format(new java.util.Date());
-				String screenShotName = result.getName() + "- part " + screenshotReportNumber + " - " + timeStamp;
-				String screenShotPath = capture(driver, screenShotName);
-				logger.log(Status.FAIL, "Failed step screenshot part " + screenshotNumber + " : " + screenShotName, MediaEntityBuilder.createScreenCaptureFromPath(screenShotPath).build());
-				js.executeScript("window.scrollBy(0,600)");
-				standardHeight = new Integer(standardHeight + 600);
-				++screenshotNumber;
-				System.out.println("Screenshot down to height " + standardHeight);
-				sleep(2);
+	public static ClaimCenterPOSTFNOLEditProtocolHireExposurePOM postFnolEditProtocolHireExposurePOM;
+	public static ClaimCenterPOSTFNOLViewProtocolHireExposurePOM postFnolViewProtocolHireExposurePOM;
+
+	public static ClaimCenterPOSTFNOLEditTPCaptureExposurePOM postFnolEditTPCaptureExposurePOM;
+	public static ClaimCenterPOSTFNOLViewTPCaptureExposurePOM postFnolViewTPCaptureExposurePOM;
+
+	// POST FNOL Summary pages
+	// ------------------------
+	public static ClaimCenterPOSTFNOLSummaryPOM postFnolSummaryPOM;
+	public static ClaimCenterPOSTFNOLSummaryMetricsPOM postFnolSummaryMetricsPOM;
+	public static ClaimCenterPOSTFNOLSummaryStatusPOM postFnolSummaryStatusPOM;
+
+	// POST FNOL Loss details pages
+	// ------------------------------
+	public static ClaimCenterPOSTFNOLLossDetailsPOM postFnolLossDetailsPOM;
+	// TODO other loss details pages
+
+	public static ClaimCenterPOSTFNOLDriverDetailsPOM postFnolDriverPOM;
+	public static ClaimCenterPOSTFNOLPassengerDetailsPOM postFnolPassengerPOM;
+	public static ClaimCenterPOSTFNOLPedestrianDetailsPOM postFnolPedestrianPOM;
+
+	public static ClaimCenterPOSTFNOLNewPropertyPOM postFnolNewPropertyPOM;
+	public static ClaimCenterPOSTFNOLEditPropertyPOM postFnolEditPropertyPOM;
+
+	public static ClaimCenterPOSTFNOLNewVehicleDetailsPOM postFnolNewVehiclePOM;
+	public static ClaimCenterPOSTFNOLEditVehicleDetailsPOM postFnolEditVehiclePOM;
+
+	public static ClaimCenterPOSTFNOLNewPoliceDetailsPOM postFnolNewPolicePOM;
+
+	// POST FNOL Activities pages
+	// --------------------------
+	public static ClaimCenterPOSTFNOLWorkplanPOM postFnolWorkplanPOM;
+	public static ClaimCenterPOSTFNOLNewActivityPOM postFnolNewActivityPOM;
+
+	// POST FNOL notes pages
+	// -----------------------
+	public static ClaimCenterPOSTFNOLNewNotePOM postFnolNewNotePOM;
+
+	// POST FNOL Policy pages
+	// -----------------------
+	public static ClaimCenterPOSTFNOLPolicyGeneralPOM postFnolPolicyGeneralPOM;
+	public static ClaimCenterPOSTFNOLPolicyVehiclesPOM postFnolPolicyVehiclesPOM;
+
+	// POST FNOL Services pages
+	// -------------------------
+	public static ClaimCenterPOSTFNOLNewServicePOM postFnolNewServicePOM;
+	public static ClaimCenterPOSTFNOLServicesPOM postFnolServicesPOM;
+
+	// POST FNOL Documents pages
+	// --------------------------
+	public static ClaimCenterPOSTFNOLDocumentsPOM postFnolDocumentsPOM;
+
+	// POST FNOL Litigation pages
+	// ---------------------------
+	public static ClaimCenterPOSTFNOLLitigationPOM postFnolLitigationPOM;
+
+	// POST FNOL parties involved pages
+	// --------------------------------
+	public static ClaimCenterPOSTFNOLPartiesInvolvedPOM postFnolPartiesInvolvedPOM;
+	public static ClaimCenterPOSTFNOLPartiesInvolvedUsersPOM postFnolPartiesInvolvedUsersPOM;
+
+	// FNOL Snapshot pages
+	// ---------------------
+	public static ClaimCenterPOSTFNOLFnolSnapshotLossPOM postFnolSnapshotPOM;
+	// TODO rest of snapshot stuff
+
+	// POST FNOL financials pages
+	// -----------------------
+	public static ClaimCenterPOSTFNOLFinancialSummaryPOM postFnolFinancialSummaryPOM;
+	public static ClaimCenterPOSTFNOLFinancialTransactionsPOM postFnolFinancialTransactionsPOM;
+	public static ClaimCenterPOSTFNOLFinancialChequesPOM postFnolFinancialChequesPOM;
+	public static ClaimCenterPOSTFNOLSetReservesPOM postFnolSetReservesPOM;
+	public static ClaimCenterPOSTFNOLNewChequeStep1POM postFnolNewChequeStep1POM;
+	public static ClaimCenterPOSTFNOLNewChequeStep2POM postFnolNewChequeStep2POM;
+	public static ClaimCenterPOSTFNOLNewChequeStep3POM postFnolNewChequeStep3POM;
+
+	// desktop pages
+	// ------------------------
+	public static ClaimCenterDesktopQueuesPOM desktopQueuesPOM;
+
+	@BeforeTest(timeOut = 30000)
+	public void beforeTest() {
+		// For extent reports
+		System.out.println("TestNG @beforeTest in BaseTest - creating Extent folder and instance");
+		File OutputFolder = new File("./target/extent");
+		if (!OutputFolder.exists()) {
+			if (OutputFolder.mkdir()) {
+				System.out.println("Directory is created!");
+			} else {
+				System.out.println("Failed to create Directory");
 			}
-			*/
-         logger.log(Status.FAIL, result.getThrowable());
-         //logger.log(Status.FAIL, "Snapshot below: " + logger.addScreenCaptureFromPath(screenShotPath));
-         System.out.println("After Method");
-         System.out.println("Entering screenshot script from failed test");
-         ///Below 3 lines only needed for the old Junit report
-         ScreenshotUtils.screenshotOnFailForSureFireReports(result, driver);
-         sleep(2);
-      }
-      //SCREENSHOT ON PASS -
-      //
-      //***********JENKINS****************************************************
-      //*********If Jenkins Hangs May Need to Remove screenshot on success****
-      if (result.getStatus() == ITestResult.SUCCESS) {
-         logger.log(Status.PASS, "Test Execution Complete.");
-         sleep(2);
+		} else {
+			System.out.println("Directory already exists");
+		}
+		String timeStamp = new SimpleDateFormat("yyyyMMddHHmmss").format(new java.util.Date());
+		htmlReporter = new ExtentHtmlReporter("./target/extent/STMExtentReport.html");
+		extent = ExtentManager.GetExtent();
+		extent.attachReporter(htmlReporter);
+		htmlReporter.config().setChartVisibilityOnOpen(true);
+		htmlReporter.config().setDocumentTitle("Smoke Tests");
+		htmlReporter.config().setReportName("Smoke Tests Report");
+		htmlReporter.config().setTestViewChartLocation(ChartLocation.TOP);
+		htmlReporter.config().setTheme(Theme.DARK);
+	}
 
-         //this is a test
-         System.out.println("Starting After Method");
-         JavascriptExecutor js = (JavascriptExecutor) driver;
-         int contentHeight = ((Number) js.executeScript("return document.body.scrollHeight")).intValue();
-         Dimension fullWindowHeight = new Dimension(1300, contentHeight);
-         driver.manage().window().setSize(fullWindowHeight);
-         sleep(1);
-         //Above is a test
+	@BeforeClass(timeOut = 50000)
+	public void browserConfig() {
+		System.out.println("TestNG @beforeClass in BaseTest - creating Webdriver instance and POMs");
+		int count = 0;
+		int maxTries = 5;
+		while (true) {
+			try {
+				System.out.println("Starting Browser Config Setup");
+				// driver.findElement(By.id("lkdjgksdgj"));
+				webDriverRule = new WebDriverRule();
+				driver = webDriverRule.getDriver();
+				// logger = new LoggerRule().getLogger();
+				Dimension dimension = new Dimension(1800, 1200);
+				driver.manage().window().setSize(dimension);
+				driver.manage().window().maximize();
+				driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+				driver.manage().timeouts().pageLoadTimeout(60, TimeUnit.SECONDS);
+				// disable the exit alert - deosnt work
+				// driver.executeScript("window.onbeforeunload = function() {};");
+				System.out.println("Browser Config Setup Complete");
+				break;
+			} catch (Exception e) {
+				// sleep(2);
+				System.out.println("This test failed to start after 5 attempts");
+				if (++count == maxTries) {
+					logger.log(Status.SKIP, "This test failed to start after 5 attempts");
+					extent.flush();
+					throw e;
+				}
+			}
+		}
 
-         String finalScreenshotTimeStamp = TimeStampUtils.createTimeStamp("HHmmss-ddMMyyyy");
-         String finalScreenShotName = "Screenshot -";
-         String screenShotPath = capture(driver, finalScreenShotName + finalScreenshotTimeStamp);
-         logger.log(Status.PASS, finalScreenShotName + finalScreenshotTimeStamp, MediaEntityBuilder.createScreenCaptureFromPath(screenShotPath).build());
+		// AjaxElementLocatorFactory ajaxElementLocatorFactory = new
+		// AjaxElementLocatorFactory(driver, 60);
+		loginPOM = PageFactory.initElements(driver, ClaimCenterLoginPOM.class);
+		menuBarPOM = PageFactory.initElements(driver, ClaimCenterMenuBarPOM.class);
+		navigatorBarPOM = PageFactory.initElements(driver, ClaimCenterNavigatorBarPOM.class);
+		fnolStep1POM = PageFactory.initElements(driver, ClaimCenterFNOLStep1POM.class);
+		fnolStep2POM = PageFactory.initElements(driver, ClaimCenterFNOLStep2POM.class);
+		fnolStep3POM = PageFactory.initElements(driver, ClaimCenterFNOLStep3POM.class);
+		fnolStep4POM = PageFactory.initElements(driver, ClaimCenterFNOLStep4POM.class);
+		fnolStep5POM = PageFactory.initElements(driver, ClaimCenterFNOLStep5POM.class);
+		fnolClaimSavedPOM = PageFactory.initElements(driver, ClaimCenterFNOLClaimSavedPOM.class);
 
-         //this is a test
-         Dimension dimensionRestored = new Dimension(1300, 700);
-         driver.manage().window().setSize(dimensionRestored);
-         //Above is a test
+		fnolPedestrianPOM = PageFactory.initElements(driver, ClaimCenterFNOLPedestrianDetailsPOM.class);
+		fnolNewPolicePOM = PageFactory.initElements(driver, ClaimCenterFNOLNewPoliceDetailsPOM.class);
+		fnolNewExposurePOM = PageFactory.initElements(driver, ClaimCenterFNOLNewExposurePOM.class);
+		fnolNewPropertyExposurePOM = PageFactory.initElements(driver, ClaimCenterFNOLNewPropertyExposurePOM.class);
+		fnolNewInjuryExposurePOM = PageFactory.initElements(driver, ClaimCenterFNOLNewInjuryExposurePOM.class);
+		fnolNewVehicleExposurePOM = PageFactory.initElements(driver, ClaimCenterFNOLNewVehicleExposurePOM.class);
+		fnolNewCreditHireExposurePOM = PageFactory.initElements(driver, ClaimCenterFNOLNewCreditHireExposurePOM.class);
+		fnolNewProtocolHireExposurePOM = PageFactory.initElements(driver,
+				ClaimCenterFNOLNewProtocolHireExposurePOM.class);
+		fnolNewTPCaptureExposurePOM = PageFactory.initElements(driver, ClaimCenterFNOLNewTPCaptureExposurePOM.class);
 
-         System.out.println("After Method complete");
-         System.out.println("Final screenshot added");
-         sleep(2);
-      }
-      
-  
-     
-   }
+		fnolVehicleDetailsPOM = PageFactory.initElements(driver, ClaimCenterFNOLVehicleDetailsPOM.class);
+		fnolDriverDetailsPOM = PageFactory.initElements(driver, ClaimCenterFNOLDriverDetailsPOM.class);
+		personContactDetailsPOM = PageFactory.initElements(driver, ClaimCenterPersonDetailsPOM.class);
+		fnolPropertyDetailsPOM = PageFactory.initElements(driver, ClaimCenterFNOLPropertyDetailsPOM.class);
 
+		fnolNewPassengerPOM = PageFactory.initElements(driver, ClaimCenterFNOLNewPassengerDetailsPOM.class);
 
-   @AfterTest(timeOut = 30000, alwaysRun = true)
-   public void afterTest() {
-	   System.out.println("TestNG @afterTest in BaseTest - close webdriver");
-      System.out.println("Starting afterTest method");
-      String className = this.getClass().getSimpleName();
-      logger.log(Status.INFO, "The Test Class Name is - " + className);
-      extent.flush();
-      sleep(2);
-  
-      //((JavascriptExecutor)driver).executeScript("window.onbeforeunload = null;");
-      driver.quit();
-      //driver.switchTo().alert().accept();
-      System.out.println("afterTest method complete");
-   }
+		postFnolExposuresPOM = PageFactory.initElements(driver, ClaimCenterPOSTFNOLExposuresPOM.class);
+		postFnolEditInjuryExposurePOM = PageFactory.initElements(driver,
+				ClaimCenterPOSTFNOLEditInjuryExposurePOM.class);
+		postFnolViewInjuryExposurePOM = PageFactory.initElements(driver,
+				ClaimCenterPOSTFNOLViewInjuryExposurePOM.class);
 
-  /// @AfterClass()
-  // public void AfterClass() {
-	//   driver.switchTo().alert().accept();
-   //}
+		postFnolEditPropertyExposurePOM = PageFactory.initElements(driver,
+				ClaimCenterPOSTFNOLEditPropertyExposurePOM.class);
+		postFnolViewPropertyExposurePOM = PageFactory.initElements(driver,
+				ClaimCenterPOSTFNOLViewPropertyExposurePOM.class);
 
-private static RemoteWebDriver getDriver() {
-	return driver;
-}
-   
-   
-   
+		postFnolEditVehicleExposurePOM = PageFactory.initElements(driver,
+				ClaimCenterPOSTFNOLEditVehicleExposurePOM.class);
+		postFnolViewVehicleExposurePOM = PageFactory.initElements(driver,
+				ClaimCenterPOSTFNOLViewVehicleExposurePOM.class);
+
+		postFnolEditCreditHireExposurePOM = PageFactory.initElements(driver,
+				ClaimCenterPOSTFNOLEditCreditHireExposurePOM.class);
+		postFnolViewCreditHireExposurePOM = PageFactory.initElements(driver,
+				ClaimCenterPOSTFNOLViewCreditHireExposurePOM.class);
+
+		postFnolEditProtocolHireExposurePOM = PageFactory.initElements(driver,
+				ClaimCenterPOSTFNOLEditProtocolHireExposurePOM.class);
+		postFnolViewProtocolHireExposurePOM = PageFactory.initElements(driver,
+				ClaimCenterPOSTFNOLViewProtocolHireExposurePOM.class);
+
+		postFnolEditTPCaptureExposurePOM = PageFactory.initElements(driver,
+				ClaimCenterPOSTFNOLEditTPCaptureExposurePOM.class);
+		postFnolViewTPCaptureExposurePOM = PageFactory.initElements(driver,
+				ClaimCenterPOSTFNOLViewTPCaptureExposurePOM.class);
+
+		// post fnol summary
+		// ------------------
+		postFnolSummaryPOM = PageFactory.initElements(driver, ClaimCenterPOSTFNOLSummaryPOM.class);
+		postFnolSummaryMetricsPOM = PageFactory.initElements(driver, ClaimCenterPOSTFNOLSummaryMetricsPOM.class);
+		postFnolSummaryStatusPOM = PageFactory.initElements(driver, ClaimCenterPOSTFNOLSummaryStatusPOM.class);
+
+		postFnolLossDetailsPOM = PageFactory.initElements(driver, ClaimCenterPOSTFNOLLossDetailsPOM.class);
+		postFnolNewPropertyPOM = PageFactory.initElements(driver, ClaimCenterPOSTFNOLNewPropertyPOM.class);
+		postFnolNewVehiclePOM = PageFactory.initElements(driver, ClaimCenterPOSTFNOLNewVehicleDetailsPOM.class);
+
+		postFnolPedestrianPOM = PageFactory.initElements(driver, ClaimCenterPOSTFNOLPedestrianDetailsPOM.class);
+		postFnolEditVehiclePOM = PageFactory.initElements(driver, ClaimCenterPOSTFNOLEditVehicleDetailsPOM.class);
+		postFnolDriverPOM = PageFactory.initElements(driver, ClaimCenterPOSTFNOLDriverDetailsPOM.class);
+		postFnolPassengerPOM = PageFactory.initElements(driver, ClaimCenterPOSTFNOLPassengerDetailsPOM.class);
+
+		postFnolNewPolicePOM = PageFactory.initElements(driver, ClaimCenterPOSTFNOLNewPoliceDetailsPOM.class);
+		postFnolEditPropertyPOM = PageFactory.initElements(driver, ClaimCenterPOSTFNOLEditPropertyPOM.class);
+
+		companyContactDetailsPOM = PageFactory.initElements(driver, ClaimCenterCompanyDetailsPOM.class);
+		searchAddressBookPOM = PageFactory.initElements(driver, ClaimCenterSearchAddressBookPOM.class);
+
+		postFnolWorkplanPOM = PageFactory.initElements(driver, ClaimCenterPOSTFNOLWorkplanPOM.class);
+		postFnolNewActivityPOM = PageFactory.initElements(driver, ClaimCenterPOSTFNOLNewActivityPOM.class);
+		postFnolNewNotePOM = PageFactory.initElements(driver, ClaimCenterPOSTFNOLNewNotePOM.class);
+
+		// services
+		postFnolServicesPOM = PageFactory.initElements(driver, ClaimCenterPOSTFNOLServicesPOM.class);
+		postFnolNewServicePOM = PageFactory.initElements(driver, ClaimCenterPOSTFNOLNewServicePOM.class);
+
+		// documents
+		postFnolDocumentsPOM = PageFactory.initElements(driver, ClaimCenterPOSTFNOLDocumentsPOM.class);
+
+		// litigation
+		postFnolLitigationPOM = PageFactory.initElements(driver, ClaimCenterPOSTFNOLLitigationPOM.class);
+
+		// parties involved
+		postFnolPartiesInvolvedPOM = PageFactory.initElements(driver, ClaimCenterPOSTFNOLPartiesInvolvedPOM.class);
+		postFnolPartiesInvolvedUsersPOM = PageFactory.initElements(driver,
+				ClaimCenterPOSTFNOLPartiesInvolvedUsersPOM.class);
+
+		totalLossCalcPOM = PageFactory.initElements(driver, ClaimCenterTotalLossCalulatorPOM.class);
+
+		desktopQueuesPOM = PageFactory.initElements(driver, ClaimCenterDesktopQueuesPOM.class);
+
+		// policy
+		postFnolPolicyGeneralPOM = PageFactory.initElements(driver, ClaimCenterPOSTFNOLPolicyGeneralPOM.class);
+		postFnolPolicyVehiclesPOM = PageFactory.initElements(driver, ClaimCenterPOSTFNOLPolicyVehiclesPOM.class);
+
+		// snapshot
+		postFnolSnapshotPOM = PageFactory.initElements(driver, ClaimCenterPOSTFNOLFnolSnapshotLossPOM.class);
+
+		// financials
+		postFnolFinancialSummaryPOM = PageFactory.initElements(driver, ClaimCenterPOSTFNOLFinancialSummaryPOM.class);
+		postFnolFinancialTransactionsPOM = PageFactory.initElements(driver,
+				ClaimCenterPOSTFNOLFinancialTransactionsPOM.class);
+		postFnolFinancialChequesPOM = PageFactory.initElements(driver, ClaimCenterPOSTFNOLFinancialChequesPOM.class);
+		postFnolSetReservesPOM = PageFactory.initElements(driver, ClaimCenterPOSTFNOLSetReservesPOM.class);
+		postFnolNewChequeStep1POM = PageFactory.initElements(driver, ClaimCenterPOSTFNOLNewChequeStep1POM.class);
+		postFnolNewChequeStep2POM = PageFactory.initElements(driver, ClaimCenterPOSTFNOLNewChequeStep2POM.class);
+		postFnolNewChequeStep3POM = PageFactory.initElements(driver, ClaimCenterPOSTFNOLNewChequeStep3POM.class);
+
+	}
+
+	@AfterMethod(timeOut = 30000, alwaysRun = true)
+	public void afterMethod(ITestResult result) throws IOException {
+		System.out.println("TestNG @bafterMethod in BaseTest - capture screen shot if pass or fail");
+
+		// we may get a leave page message, so accept at end of test
+		// try {
+		// driver.manage().deleteAllCookies();
+		// driver.switchTo().alert().accept();
+		// }
+		// catch(NoAlertPresentException e) {}
+
+		if (result.getStatus() == ITestResult.FAILURE) {
+			logger.log(Status.FAIL, "This Test Failed - See Below");
+			sleep(2);
+			System.out.println("Starting After Method");
+			System.out.println("Starting After Method");
+			JavascriptExecutor js = (JavascriptExecutor) driver;
+
+			try {
+				int contentHeight = ((Number) js.executeScript("return document.body.scrollHeight")).intValue();
+				Dimension fullWindowHeight = new Dimension(1300, contentHeight);
+				driver.manage().window().setSize(fullWindowHeight);
+				sleep(1);
+			} catch (Exception failWindowSize) {
+			}
+
+			String timeStamp = new SimpleDateFormat("yyyyMMddHHmmss").format(new java.util.Date());
+			String screenShotName = result.getName() + "- part " + timeStamp;
+			String screenShotPath = capture(driver, screenShotName);
+			logger.log(Status.FAIL, "Failed step screenshot part " + screenShotName,
+					MediaEntityBuilder.createScreenCaptureFromPath(screenShotPath).build());
+			Dimension dimensionRestored = new Dimension(1300, 700);
+			driver.manage().window().setSize(dimensionRestored);
+			// Above is a test
+
+			/*
+			 * JavascriptExecutor js = (JavascriptExecutor) driver; int contentHeight =
+			 * ((Number) js.executeScript("return document.body.scrollHeight")).intValue();
+			 * System.out.println("Page height - " + contentHeight); int standardHeight = 0;
+			 * int screenshotNumber = 1; js.executeScript("window.scrollTo(0, 0);");
+			 * 
+			 * while (contentHeight > standardHeight) {
+			 * 
+			 * String screenshotReportNumber = Integer.toString(screenshotNumber); String
+			 * timeStamp = new SimpleDateFormat("yyyyMMddHHmmss").format(new
+			 * java.util.Date()); String screenShotName = result.getName() + "- part " +
+			 * screenshotReportNumber + " - " + timeStamp; String screenShotPath =
+			 * capture(driver, screenShotName); logger.log(Status.FAIL,
+			 * "Failed step screenshot part " + screenshotNumber + " : " + screenShotName,
+			 * MediaEntityBuilder.createScreenCaptureFromPath(screenShotPath).build());
+			 * js.executeScript("window.scrollBy(0,600)"); standardHeight = new
+			 * Integer(standardHeight + 600); ++screenshotNumber;
+			 * System.out.println("Screenshot down to height " + standardHeight); sleep(2);
+			 * }
+			 */
+			logger.log(Status.FAIL, result.getThrowable());
+			// logger.log(Status.FAIL, "Snapshot below: " +
+			// logger.addScreenCaptureFromPath(screenShotPath));
+			System.out.println("After Method");
+			System.out.println("Entering screenshot script from failed test");
+			/// Below 3 lines only needed for the old Junit report
+			ScreenshotUtils.screenshotOnFailForSureFireReports(result, driver);
+			sleep(2);
+		}
+		// SCREENSHOT ON PASS -
+		//
+		// ***********JENKINS****************************************************
+		// *********If Jenkins Hangs May Need to Remove screenshot on success****
+		if (result.getStatus() == ITestResult.SUCCESS) {
+			logger.log(Status.PASS, "Test Execution Complete.");
+			sleep(2);
+
+			// this is a test
+			System.out.println("Starting After Method");
+			JavascriptExecutor js = (JavascriptExecutor) driver;
+			int contentHeight = ((Number) js.executeScript("return document.body.scrollHeight")).intValue();
+			Dimension fullWindowHeight = new Dimension(1300, contentHeight);
+			driver.manage().window().setSize(fullWindowHeight);
+			sleep(1);
+			// Above is a test
+
+			String finalScreenshotTimeStamp = TimeStampUtils.createTimeStamp("HHmmss-ddMMyyyy");
+			String finalScreenShotName = "Screenshot -";
+			String screenShotPath = capture(driver, finalScreenShotName + finalScreenshotTimeStamp);
+			logger.log(Status.PASS, finalScreenShotName + finalScreenshotTimeStamp,
+					MediaEntityBuilder.createScreenCaptureFromPath(screenShotPath).build());
+
+			// this is a test
+			Dimension dimensionRestored = new Dimension(1300, 700);
+			driver.manage().window().setSize(dimensionRestored);
+			// Above is a test
+
+			System.out.println("After Method complete");
+			System.out.println("Final screenshot added");
+			sleep(2);
+		}
+
+	}
+
+	@AfterTest(timeOut = 30000, alwaysRun = true)
+	public void afterTest() {
+		System.out.println("TestNG @afterTest in BaseTest - close webdriver");
+		System.out.println("Starting afterTest method");
+		String className = this.getClass().getSimpleName();
+		logger.log(Status.INFO, "The Test Class Name is - " + className);
+		extent.flush();
+		sleep(2);
+
+		// ((JavascriptExecutor)driver).executeScript("window.onbeforeunload = null;");
+		driver.quit();
+		// driver.switchTo().alert().accept();
+		System.out.println("afterTest method complete");
+	}
+
+	/// @AfterClass()
+	// public void AfterClass() {
+	// driver.switchTo().alert().accept();
+	// }
+
+	private static RemoteWebDriver getDriver() {
+		return driver;
+	}
+
 }

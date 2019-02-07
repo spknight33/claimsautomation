@@ -10,84 +10,129 @@ import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 
-
 public class CCPOSTFNOLExposuresSteps extends BaseTest {
-	
-	
+
 	@Then("^I will see post FNOL exposures screen$")
 	public void i_will_see_post_FNOL_exposurescreen() throws Throwable {
 		postFnolExposuresPOM.isPageTitleDisplayed("Exposures");
 	}
-	
-	
-	
-	@When("^I select the \"([^\"]*)\" exposure on the post FNOL exposures screen$")
-	public void i_select_the_exposure_on_the_post_FNOL_exposures_screen(String type) throws Throwable {
-		postFnolExposuresPOM.selectExposureOfType(type);
-	}
-	
 
 	
+	@Given("^I select the exposure for type \"([^\"]*)\" for coverage \"([^\"]*)\" and claimant \"([^\"]*)\"$")
+	public void i_select_the_exposure_for_type_for_coverage_and_claimant(String type, String coverage, String claimant)
+			throws Throwable {
+		String claimantName = null;
+		switch (claimant) {
+		case ("TP Driver"):
+			claimantName = ExcelUtil.getTestDataValue("Fnol_TPDriverFullName");
+			break;
+		case ("PH Driver"):
+			claimantName = ExcelUtil.getTestDataValue("Fnol_PHDriverFullName");
+			break;
+		case ("Pedestrian"):
+			claimantName = ExcelUtil.getTestDataValue("Fnol_PedestrianFullName");
+			break;
+		case ("TP Passenger"):
+			claimantName = ExcelUtil.getTestDataValue("Fnol_TPPassengerFullName");
+			break;
+		case ("PH Passenger"):
+			claimantName = ExcelUtil.getTestDataValue("Fnol_PHPassengerFullName");
+			break;
+		case ("TP Property Owner"):
+			claimantName = ExcelUtil.getTestDataValue("Fnol_PropertyNewOwnerFullName");
+			break;
+
+		}
+		postFnolExposuresPOM.clickExposure(type, coverage, claimantName);
+	}
+
 	@Given("^I will see type \"([^\"]*)\" for coverage \"([^\"]*)\" has been assigned to a user in group \"([^\"]*)\"$")
-	public void i_will_see_type_for_coverage_has_been_assigned_to_a_user_in_group(String type, String coverage, String group) throws Throwable {
-	   
+	public void i_will_see_type_for_coverage_has_been_assigned_to_a_user_in_group(String type, String coverage,
+			String group) throws Throwable {
+
 		String handler = postFnolExposuresPOM.getHandlerForExposure(type, coverage);
-	   
-	    // fail if handler not found
-		Assert.assertNotNull(handler,"Cannot find exposure in exposure table");
-	   
-		Assert.assertTrue(UserToGroupMap.getGroupForUser(handler).equalsIgnoreCase(group),"Not in expected group:"+group);
-	   // A handler will belong to a group
-	}
-	
-	@Given("^I will see type \"([^\"]*)\" for coverage \"([^\"]*)\" has been assigned to a user in group \"([^\"]*)\" for Claimant \"([^\"]*)\"$")
-	public void i_will_see_type_for_coverage_has_been_assigned_to_a_user_in_group_for_Claimant(String type, String coverage, String group, String claimant) throws Throwable {
-		String handler = postFnolExposuresPOM.getHandlerForExposure(type, coverage);
-		   
-	    // fail if handler not found
-		Assert.assertNotNull(handler,"Cannot find exposure in exposure table");
-  		Assert.assertTrue(UserToGroupMap.getGroupForUser(handler).equalsIgnoreCase(group),"Not in expected group:"+group);
-	   // A handler will belong to a group
-		
-  		String expClaimant = postFnolExposuresPOM.getClaimantForExposure(type, coverage);
-  		Assert.assertNotNull(expClaimant,"Cannot find exposure in exposure table");
-  		
-  		
-  		// detemrine which claimant type to check against
-  		String fieldValue=null;
-  		switch (claimant)
-  		{
-  		case ("TP Driver"):
-  			fieldValue = ExcelUtil.getTestDataValue("Fnol_TPDriverFullName");
-  		    Assert.assertTrue(expClaimant.equalsIgnoreCase(fieldValue),"expected claimant to be :"+fieldValue+" but was:"+expClaimant);
-  			break;
-  		case ("PH Driver"):
-  			fieldValue = ExcelUtil.getTestDataValue("Fnol_PHDriverFullName");
-  		    Assert.assertTrue(expClaimant.equalsIgnoreCase(fieldValue),"expected claimant to be :"+fieldValue+" but was:"+expClaimant);
-  			break;
-  		case ("Pedestrian"):
-  			fieldValue = ExcelUtil.getTestDataValue("Fnol_PedestrianFullName");
-  		    Assert.assertTrue(expClaimant.equalsIgnoreCase(fieldValue),"expected claimant to be :"+fieldValue+" but was:"+expClaimant);
-  			break;
-  		case ("TP Passenger"):
-  			fieldValue = ExcelUtil.getTestDataValue("Fnol_TPPassengerFullName");
-  		    Assert.assertTrue(expClaimant.equalsIgnoreCase(fieldValue),"expected claimant to be :"+fieldValue+" but was:"+expClaimant);
-  			break;
-  		case ("PH Passenger"):
-  			fieldValue = ExcelUtil.getTestDataValue("Fnol_PHPassengerFullName");
-  		    Assert.assertTrue(expClaimant.equalsIgnoreCase(fieldValue),"expected claimant to be :"+fieldValue+" but was:"+expClaimant);
-  			break;
-  		
-  		}
-  		
-  		
-  		
-  		
-		
+
+		// fail if handler not found
+		Assert.assertNotNull(handler, "Cannot find exposure in exposure table");
+
+		Assert.assertTrue(UserToGroupMap.getGroupForUser(handler).equalsIgnoreCase(group),
+				"Not in expected group:" + group);
+		// A handler will belong to a group
 	}
 
-	
-	
-	
+	@Given("^I will see type \"([^\"]*)\" for coverage \"([^\"]*)\" has been assigned to a user in group \"([^\"]*)\" for Claimant \"([^\"]*)\" with reserves amount \"([^\"]*)\"$")
+	public void i_will_see_type_for_coverage_has_been_assigned_to_a_user_in_group_for_Claimant(String type,
+			String coverage, String group, String claimant, String reserve) throws Throwable {
+
+		// TODO - sort out issue with passing £ from cucumber, must be an encoding issue
+		// as coming across as ?
+		if (!reserve.equalsIgnoreCase("-"))
+			reserve = "£" + reserve;
+
+		// detemrine which claimant type to check against
+		String claimantName = null;
+		switch (claimant) {
+		case ("TP Driver"):
+			claimantName = ExcelUtil.getTestDataValue("Fnol_TPDriverFullName");
+			break;
+		case ("PH Driver"):
+			claimantName = ExcelUtil.getTestDataValue("Fnol_PHDriverFullName");
+			break;
+		case ("Pedestrian"):
+			claimantName = ExcelUtil.getTestDataValue("Fnol_PedestrianFullName");
+			break;
+		case ("TP Passenger"):
+			claimantName = ExcelUtil.getTestDataValue("Fnol_TPPassengerFullName");
+			break;
+		case ("PH Passenger"):
+			claimantName = ExcelUtil.getTestDataValue("Fnol_PHPassengerFullName");
+			break;
+		case ("TP Property Owner"):
+			claimantName = ExcelUtil.getTestDataValue("Fnol_PropertyNewOwnerFullName");
+			break;
+
+		}
+
+		String expReserve = postFnolExposuresPOM.getReserveForExposure(type, coverage, claimantName);
+		Assert.assertNotNull(expReserve, "Cannot find reserve amount in exposure table");
+		Assert.assertTrue(expReserve.equalsIgnoreCase(reserve),
+				"expected TOTAL reserve amount to be :" + reserve + " but was:" + expReserve);
+
+	}
+
+	@Given("^I will NOT see type \"([^\"]*)\" for coverage \"([^\"]*)\" has been assigned to a user in group \"([^\"]*)\" for Claimant \"([^\"]*)\" with reserves amount \"([^\"]*)\"$")
+	public void i_will_notsee_type_for_coverage_has_been_assigned_to_a_user_in_group_for_Claimant(String type,
+			String coverage, String group, String claimant, String reserve) throws Throwable {
+
+		// detemrine which claimant type to check against
+		String claimantName = null;
+		switch (claimant) {
+		case ("TP Driver"):
+			claimantName = ExcelUtil.getTestDataValue("Fnol_TPDriverFullName");
+			break;
+		case ("PH Driver"):
+			claimantName = ExcelUtil.getTestDataValue("Fnol_PHDriverFullName");
+			break;
+		case ("Pedestrian"):
+			claimantName = ExcelUtil.getTestDataValue("Fnol_PedestrianFullName");
+			break;
+		case ("TP Passenger"):
+			claimantName = ExcelUtil.getTestDataValue("Fnol_TPPassengerFullName");
+			break;
+		case ("PH Passenger"):
+			claimantName = ExcelUtil.getTestDataValue("Fnol_PHPassengerFullName");
+			break;
+		case ("TP Property Owner"):
+			claimantName = ExcelUtil.getTestDataValue("Fnol_PropertyNewOwnerFullName");
+			break;
+
+		}
+
+		String expReserve = postFnolExposuresPOM.getReserveForExposure(type, coverage, claimantName);
+
+		Assert.assertNull(expReserve, "should not have found entry in exposure table for:" + type + "," + coverage + ","
+				+ claimantName + ", with reserve:" + expReserve);
+
+	}
 
 }

@@ -53,6 +53,12 @@ public class CCFNOLPropertySteps extends BaseTest {
 					// on select new person page, complete the details
 				   personContactSteps.completeFNOLPropertyOwnerForTestScenario();
 				}
+				else
+				{
+					// select property owner from the list
+					fieldValue = ExcelUtil.getTestDataValue("Fnol_PropertyOwner");
+					fnolPropertyDetailsPOM.selectPropertyOwner(fieldValue);
+				}
 				
 				// moved this to the end as was causing stale elements if done earlier!
 				fieldValue = ExcelUtil.getTestDataValue("Fnol_PropertyLocationDesc");

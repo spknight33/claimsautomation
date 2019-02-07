@@ -82,6 +82,10 @@ public class CCNavigatorSteps extends BaseTest {
 
 			navigatorBarPOM.clickSubLevel("Policy", sublink);
 			break;
+		case "Plan of Action":
+
+			navigatorBarPOM.clickSubLevel("Plan of Action", sublink);
+			break;
 
 		// TODO the rest
 
