@@ -24,11 +24,7 @@ public class ClaimCenterFNOLStep2POM extends BaseTest {
 	@FindBy(id = "FNOLWizard:Prev")
 	private WebElement backButton;
 
-	// do dynamic as get stale elements for repated calls to UI
-	//@FindBy(className = "message")
-	//private List<WebElement> errorMessages;
-
-
+	
 	@FindBy(id = "FNOLWizard:AutoWorkersCompWizardStepSet:FNOLWizard_BasicInfoScreen:PanelRow:RightPanel:FNOLWizard_BasicInfoRightPanelSet:0:InsuredVehicleDV:InsuredVehicleInputGroup:_checkbox")
 	private WebElement firstInsuredVehicleCB;
 
@@ -47,6 +43,9 @@ public class ClaimCenterFNOLStep2POM extends BaseTest {
 	private WebElement reportedByNewCompanyPicker;
 	@FindBy(id = "FNOLWizard:AutoWorkersCompWizardStepSet:FNOLWizard_BasicInfoScreen:PanelRow:BasicInfoDetailViewPanelDV:ReportedBy_Name:MenuItem_Search-itemEl")
 	private WebElement reportedBySearchPicker;
+	@FindBy(id = "FNOLWizard:AutoWorkersCompWizardStepSet:FNOLWizard_BasicInfoScreen:PanelRow:BasicInfoDetailViewPanelDV:ReportedBy_Name:MenuItem_ViewDetails-textEl")
+	private WebElement reportedByViewContactPicker;
+	
 	@FindBy(id = "FNOLWizard:AutoWorkersCompWizardStepSet:FNOLWizard_BasicInfoScreen:PanelRow:BasicInfoDetailViewPanelDV:Claim_ReportedByType-inputEl")
 	private WebElement reportedByRelation;
 	@FindBy(id = "FNOLWizard:AutoWorkersCompWizardStepSet:FNOLWizard_BasicInfoScreen:PanelRow:BasicInfoDetailViewPanelDV:Notification_ReportedDate-inputEl")
@@ -123,6 +122,10 @@ public class ClaimCenterFNOLStep2POM extends BaseTest {
 		logger.info(format("%s -found page title for step2 :" + this.getPageTitle().getText(), getName()));
 		return this.getPageTitle().getText().equalsIgnoreCase(expected);
 	}
+    public boolean containsErrorMessage(String contains) {
+		
+		return GuideWireAccessors.containsErrorMessage(driver, contains, By.className("message"));
+	}
     
     
     public void cancel() {
@@ -168,6 +171,11 @@ public class ClaimCenterFNOLStep2POM extends BaseTest {
 	public void selectSearchReporter() {
 		logger.info(format("%s - going to select search from reportedby picker", getName()));
 		GuideWireAccessors.selectOptionFromGWPicker(driver, this.getReportedByPickerLink(), this.getReportedBySearchPicker());
+	}
+	
+	public void selectViewContactReporter() {
+		logger.info(format("%s - going to select View contact from reportedby picker", getName()));
+		GuideWireAccessors.selectOptionFromGWPicker(driver, this.getReportedByPickerLink(), this.getReportedByViewContactPicker());
 	}
 
 	public void selectRelationToInsured(String option) {
@@ -484,16 +492,10 @@ public class ClaimCenterFNOLStep2POM extends BaseTest {
 		return alertId;
 	}
 
-	public boolean containsErrorMessage(String contains) {
-		/*boolean found = false;
-		for (WebElement element : getErrorMessages()) {
-			if (element.getText().equalsIgnoreCase(contains)) {
-				found = true;
-				break;
-			}
-		}
-		return found;*/
-		return GuideWireAccessors.containsErrorMessage(driver, contains, By.className("message"));
+	private WebElement getReportedByViewContactPicker() {
+		return reportedByViewContactPicker;
 	}
+
+	
 
 }

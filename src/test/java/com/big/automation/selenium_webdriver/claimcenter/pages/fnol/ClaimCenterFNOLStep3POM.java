@@ -107,36 +107,42 @@ public class ClaimCenterFNOLStep3POM extends BaseTest{
 
 	public boolean isPageTitleDisplayed(String expected)
 	{
-		logger.info(format("%s -check page title for step3 :"+expected, getName()));
-		logger.info(format("%s -found page title for step3 :"+this.getPageTitle().getText(), getName()));
+	
+		logger.info(format("%s -found page title :"+this.getPageTitle().getText(), getName()));
 		return this.getPageTitle().getText().equalsIgnoreCase(expected);
+	}
+	
+	public boolean containsErrorMessage(String contains)
+	{
+		
+		return GuideWireAccessors.containsErrorMessage(driver, contains, By.className("message"));
 	}
 	
 	public void cancel() {
 
 		logger.info(format("%s -  going to click cancel", getName()));
 		GuideWireAccessors.clickGWButton(driver,getCancelButton());
-		logger.info(format("%s - done, cancel clicked", getName()));
+		
 	}
 	
 	public void finish() {
 
 		logger.info(format("%s -  going to click finish", getName()));
 		GuideWireAccessors.clickGWButton(driver,getFinishButton());
-		logger.info(format("%s - done, Finish clicked", getName()));
+	
 	}
 	
 	public void next() {
 
 		logger.info(format("%s -  going to click Next", getName()));
 		GuideWireAccessors.clickGWButton(driver,getNextButton());
-		logger.info(format("%s - done, Next clicked", getName()));
+		
 	}
 	
 	public void back() {
 		logger.info(format("%s -  going to click Back", getName()));
 		GuideWireAccessors.clickGWButton(driver,getBackButton());
-		logger.info(format("%s - done, Back clicked", getName()));
+		
 	}
 
 
@@ -469,21 +475,7 @@ private WebElement getFinishButton() {
 		return removePoliceButton;
 	}
 
-	public boolean containsErrorMessage(String contains)
-	{
-		/*boolean found=false;
-		for (WebElement element : getErrorMessages()) 
-		{
-			if (element.getText().equalsIgnoreCase(contains))
-			{
-				found = true;
-				break;
-			}
-		}
-		return found;*/
-		
-		return GuideWireAccessors.containsErrorMessage(driver, contains, By.className("message"));
-	}
+	
 	
 	
 

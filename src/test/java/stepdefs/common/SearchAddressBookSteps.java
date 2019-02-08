@@ -57,6 +57,11 @@ public class SearchAddressBookSteps extends BaseTest {
 	    }
 	}
 	
+	@Then("^I select the first item on search results address book screen$")
+	public void i_select_the_first_item_on_search_results_address_book_screen() throws Throwable {
+		searchAddressBookPOM.selectFirstResult();
+	}
+	
 	// to be called from other steps directly
 	public void searchForContactAndSelectFirst(String type, String name)
 	{
@@ -65,6 +70,13 @@ public class SearchAddressBookSteps extends BaseTest {
 		searchAddressBookPOM.selectSearch();
 		searchAddressBookPOM.selectFirstResult();
 	}
+	
+	// to be called from other steps directly
+		public void searchForVendorAndSelectFirst()
+		{
+			searchAddressBookPOM.selectSearch();
+			searchAddressBookPOM.selectFirstResult();
+		}
 	
 
 }

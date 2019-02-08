@@ -183,7 +183,7 @@ public class CCFNOLStep2Steps extends BaseTest{
 				.containsErrorMessage("Relation to Insured : Missing required field \"Relation to Insured\""));
 	}
 	
-	@Then("^Mandatory field error messages will be shown for step2$")
+	@Then("^Mandatory field error messages will be shown for step2 FNOL$")
 	public void mandatory_field_error_messages_will_be_shown_forstep2(DataTable dt) throws Throwable {
 		List<String> list = dt.asList(String.class);
 	    SoftAssert softAssert = new SoftAssert();
@@ -194,27 +194,27 @@ public class CCFNOLStep2Steps extends BaseTest{
 			softAssert.assertAll();
 		}
 
-	@Given("^I select first insured vehicle on step2$")
+	@Given("^I select first insured vehicle on step2 FNOL$")
 	public void selectFirstInsuredVehicle() {
 
 		fnolStep2POM.selectVehicleCB();
 
 	}
 
-	@Given("^I deselect insured vehicle on step2$")
+	@Given("^I deselect insured vehicle on step2 FNOL$")
 	public void unselectFirstInsuredVehicle() {
 
 		fnolStep2POM.deselectVehicleCB();
 
 	}
 
-	@Given("^I click next button on step2$")
+	@Given("^I click next button on step2 FNOL$")
 	public void next() {
 		
 		fnolStep2POM.next();
 	}
 
-	@Given("^I click previous button on step2$")
+	@Given("^I click previous button on step2 FNOL$")
 	public void previous() {
 		
 		fnolStep2POM.back();
@@ -226,33 +226,13 @@ public class CCFNOLStep2Steps extends BaseTest{
 		fnolStep2POM.setReportedDateValue("21/11/2018");
 	}
 	
-	
-	/*
-	@Then("^the \"([^\"]*)\" list on step2 will contain options$")
-	public void the_list_on_step_will_contain_options(String fieldName,  DataTable dt) throws Throwable {
-		List<String> list = dt.asList(String.class);
-	    SoftAssert softAssert = new SoftAssert();
-			for(int i=0; i<list.size(); i++) {
-				switch(fieldName)
-			    {
-			    case "How Reported":
-			    	
-			    	softAssert.assertTrue(fnolStep2POM.howReportedContainsOption(list.get(i)),fieldName + "Field option Check: "+ list.get(i));
-			    	break;
-			   
-			    
-			    default:
-			    Assert.fail("unknown input field :"+ fieldName+" - check cucumber script!");
-			    }
-				
-				
-				
-			}
-			softAssert.assertAll();
+	@Given("^I click Edit Contact button on step2 FNOL$")
+	public void editContact() {
+		
+		fnolStep2POM.clickEditContact();
 	}
-	*/
 	
-	@Then("^I select \"([^\"]*)\" from \"([^\"]*)\" field on step2$")
+	@Then("^I select \"([^\"]*)\" from \"([^\"]*)\" field on step2 FNOL$")
 	public void i_select_from_field_on_step(String fieldValue, String fieldName) throws Throwable {
 		switch(fieldName)
 	    {
@@ -280,7 +260,7 @@ public class CCFNOLStep2Steps extends BaseTest{
 	    }
 	}
 	
-	@Given("^I click \"([^\"]*)\" on reportby picker on step2$")
+	@Given("^I click \"([^\"]*)\" on reportby picker on step2 FNOL$")
 	public void i_click_on_reportby_picker_on_step2(String option) throws Throwable {
 		switch (option) {
 		case "New Person":
@@ -292,6 +272,9 @@ public class CCFNOLStep2Steps extends BaseTest{
 		case "Search":
 			fnolStep2POM.selectSearchReporter();
 			break;
+		case "View Contact":
+			fnolStep2POM.selectViewContactReporter();
+			break;
 
 		default:
 			Assert.fail("unknown input field :" + option + " - check cucumber script!");
@@ -299,7 +282,7 @@ public class CCFNOLStep2Steps extends BaseTest{
 
 	}
 	
-	@Given("^I input \"([^\"]*)\" into the \"([^\"]*)\" box on step2$")
+	@Given("^I input \"([^\"]*)\" into the \"([^\"]*)\" box on step2 FNOL$")
 	public void i_input_into_the_box_on_step2(String fieldValue, String fieldName) throws Throwable {
 		switch (fieldName) {
 		case "Work Phone":

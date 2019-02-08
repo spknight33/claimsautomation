@@ -7,19 +7,19 @@ Given As a "ClaimsHandler" I am at step1 for FNOL
 
 @Ignore
 Scenario: CBPCL-?? ClaimsHandler Claim Fields are mandatory after selecting a policy
-When I set the policy search criteria fields "policynumber" to "3936932782"
-And I Click Search
-Then I click next button on step1
-Then Mandatory field error messages will be shown
+When I set the policy search criteria field at step1 FNOL "policynumber" to "3936932782"
+And I Click Search at step1 FNOL
+Then I click next button at step1 FNOL
+Then Mandatory field error messages will be shown at step1 FNOL
 | Loss Date : Missing required field "Loss Date" | Loss Time : Missing required field "Loss Time" |
 
 @Ignore
 Scenario: ClaimsHandler can proceed to step2 if all mandatory fields are supplied
-When I set the policy search criteria fields "policynumber" to "3936932782"
-And I Click Search 
-And I Set the Loss Date to "05/12/2018"
-And I Set the Loss Time to "03:00 PM"
-And I click next button on step1
+When I set the policy search criteria field at step1 FNOL "policynumber" to "3936932782"
+And I Click Search at step1 FNOL
+And I Set the Loss Date to "05/12/2018" at step1 FNOL
+And I Set the Loss Time to "03:00 PM" at step1 FNOL
+And I click next button at step1 FNOL
 Then I will be on step2 for FNOL
 
 

@@ -23,16 +23,14 @@ public class CCFNOLStep1Steps extends BaseTest	{
 	CCMenuBarSTeps menuSteps = new CCMenuBarSTeps();
 	
 	
+	
 	public void iCompleteStep1FNOL() throws Throwable 
 	{
-		
-		// need to configure to get a specific configurable pilicy number
-		//i_set_the_policy_search_criteria_fields_to("policynumber",testDataset.getPolicyNumber());
+	
 		i_set_the_policy_search_criteria_fields_to("policynumber",ExcelUtil.getTestDataValue("Fnol_PolicyNumber"));
 		i_Click_Search();
 		this.setLossDate(ExcelUtil.getTestDataValue("Fnol_Step1_LossDate"));
 		this.setLossTime(ExcelUtil.getTestDataValue("Fnol_Step1_LossTime"));
-		fnolStep1POM.setPostcode("NE31PX"); // temp TODO
 		this.next();
 		
 	}
@@ -45,11 +43,14 @@ public class CCFNOLStep1Steps extends BaseTest	{
 	    menuSteps.selectNewClaimsMenuItem();
 	}
 	
+	@Then("^I will be on step1 for FNOL$")
+	public void i_will_be_on_step1_for_FNOL() throws Throwable {
+		fnolStep1POM.isPageTitleDisplayed("Step 1: Search or Create Policy");
+	}
 	
 	
 	
-	
-	@Then("^Mandatory field error message will be shown$")
+	@Then("^Mandatory field error message will be shown at step1 FNOL$")
 	public void mandatory_field_error_message_will_be_shown() throws Throwable {
 		Assert.assertTrue(fnolStep1POM.containsErrorMessage("Loss Date : Missing required field \"Loss Date\""),
 				"Error Message For Loss Date expected");
@@ -58,7 +59,7 @@ public class CCFNOLStep1Steps extends BaseTest	{
 				"Error Message For Loss Time expected");
 	}
 	
-	@Then("^Mandatory field error messages will be shown$")
+	@Then("^Mandatory field error messages will be shown at step1 FNOL$")
 	public void mandatory_field_error_messages_will_be_shown(DataTable dt) throws Throwable {
 		List<String> list = dt.asList(String.class);
 	    SoftAssert softAssert = new SoftAssert();
@@ -72,7 +73,7 @@ public class CCFNOLStep1Steps extends BaseTest	{
 		
 	
 	
-	@When("^I set the policy search criteria fields \"([^\"]*)\" to \"([^\"]*)\"$")
+	@When("^I set the policy search criteria field at step1 FNOL \"([^\"]*)\" to \"([^\"]*)\"$")
 	public void i_set_the_policy_search_criteria_fields_to(String fieldName, String fieldValue) throws Throwable {
 	    switch(fieldName)
 	    {
@@ -98,13 +99,13 @@ public class CCFNOLStep1Steps extends BaseTest	{
 	
 
 
-@Then("^I will see policy search results which contains value \"([^\"]*)\" for the \"([^\"]*)\"$")
+@Then("^I will see policy search results at step1 FNOL which contains value \"([^\"]*)\" for the \"([^\"]*)\"$")
 public void i_will_see_policy_search_results_which_contains_value_for_the(String value, String resultscolumn) throws Throwable {
     Assert.assertTrue(fnolStep1POM.policySearchResultsShownForColumn(value, resultscolumn));
 	
 }
 	
-	@Given("^I Try All Search Variations$")
+	@Given("^I Try All Search Variations at step1 FNOL$")
 public void searchForPolicyByAllVariations() {
 
 		
@@ -143,7 +144,7 @@ public void searchForPolicyByAllVariations() {
 
 	}
 	
-	@Given("^I Search For Policy With Default Criteria$")
+	@Given("^I Search For Policy With Default Criteria at step1 FNOL$")
 	public void searchForPolicyDefaultCriteria() {
 
 		
@@ -151,39 +152,39 @@ public void searchForPolicyByAllVariations() {
 
 	}
 	
-	@When("^I Click Search$")
+	@When("^I Click Search at step1 FNOL$")
 	public void i_Click_Search() throws Throwable {
 		fnolStep1POM.searchPolicy();
 	}
 
 
-	@When("^I select the first policy in the results$")
+	@When("^I select the first policy in the results at step1 FNOL$")
 	public void selectFirstPolicy() {
 
 		
 		fnolStep1POM.selectFirstPolicy();
 	}
 	
-	@Given("^I Set the Loss Date to \"([^\"]*)\"$")
+	@Given("^I Set the Loss Date to \"([^\"]*)\" at step1 FNOL$")
 	public void setLossDate(String date)
 	{
 		
 		fnolStep1POM.setLossDate( date);
 	}
-	@Given("^I Set the Loss Time to \"([^\"]*)\"$")
+	@Given("^I Set the Loss Time to \"([^\"]*)\" at step1 FNOL$")
 	public void setLossTime(String time)
 	{
 		
 		fnolStep1POM.setLossTime( time);
 	}
 
-	@Given("^I click reset button on step1$")
+	@Given("^I click reset button at step1 FNOL$")
 	public void resetPolicySearch() {
 		
 		fnolStep1POM.resetSearchPolicy();
 	}
 	
-	@Given("^I click next button on step1$")
+	@Given("^I click next button at step1 FNOL$")
 	public void next()
 	{
 		
@@ -191,7 +192,7 @@ public void searchForPolicyByAllVariations() {
 	}
 	
 
-	@Then("^I will see the policy search input fields$")
+	@Then("^I will see the policy search input fields at step1 FNOL$")
 	public void i_will_see_the_policy_search_input_fields(DataTable dt) throws Throwable {
 		List<String> list = dt.asList(String.class);
 		SoftAssert softAssert = new SoftAssert();
@@ -205,7 +206,7 @@ public void searchForPolicyByAllVariations() {
 		
 	}
    
-	@Then("^I will not see the policy search input fields$")
+	@Then("^I will not see the policy search input fields at step1 FNOL$")
 	public void i_will_not_see_the_policy_search_input_fields(DataTable dt) throws Throwable {
 		List<String> list = dt.asList(String.class);
 		
@@ -219,7 +220,7 @@ public void searchForPolicyByAllVariations() {
 		softAssert.assertAll();
 	}
 	
-	@Then("^I will see the New Claim fields$")
+	@Then("^I will see the New Claim fields at step1 FNOL$")
 	public void i_will_see_the_New_Claim_fields(DataTable dt) throws Throwable {
     List<String> list = dt.asList(String.class);
     SoftAssert softAssert = new SoftAssert();
