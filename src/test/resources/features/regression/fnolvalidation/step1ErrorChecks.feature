@@ -7,7 +7,7 @@ Feature: Regression test for errors for step1
 
   Scenario: FNOL Regression - check error messages
     And I will be on step1 for FNOL
-    And I click next button at step1 FNOL
+    When I Click Search at step1 FNOL 
     Then Mandatory field error messages will be shown at step1 FNOL
-      | At least one search criteria must be supplied    |
+      | Error: You must enter some criteria    |
     

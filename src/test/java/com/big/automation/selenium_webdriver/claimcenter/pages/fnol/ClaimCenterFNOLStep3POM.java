@@ -3,8 +3,6 @@ package com.big.automation.selenium_webdriver.claimcenter.pages.fnol;
 import static com.big.automation.selenium_webdriver.common.utilities.ThreadUtils.sleep;
 import static java.lang.String.format;
 
-import java.util.List;
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -34,9 +32,6 @@ public class ClaimCenterFNOLStep3POM extends BaseTest{
 	private WebElement pageTitle;
 
 
-	//@FindBy(className = "message")
-	//private List <WebElement> errorMessages;
-	
 	@FindBy(id ="FNOLWizard:AutoWorkersCompWizardStepSet:FNOLWizard_NewLossDetailsScreen:LossDetailsAddressDV:Description-inputEl")
 	private WebElement circumstances;
 

@@ -77,6 +77,13 @@ public class SearchAddressBookSteps extends BaseTest {
 			searchAddressBookPOM.selectSearch();
 			searchAddressBookPOM.selectFirstResult();
 		}
+		
+		public void searchForVendorAndSelectFirst(String name)
+		{
+			searchAddressBookPOM.setSearchName(name);
+			searchAddressBookPOM.selectSearch();
+			searchAddressBookPOM.selectFirstResult();
+		}
 	
 
 }

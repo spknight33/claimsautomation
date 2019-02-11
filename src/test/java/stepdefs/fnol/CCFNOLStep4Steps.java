@@ -13,12 +13,13 @@ import cucumber.api.DataTable;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import stepdefs.common.SearchAddressBookSteps;
+import stepdefs.fnol.services.CCFNOLNewServiceSteps;
 
 public class CCFNOLStep4Steps extends BaseTest{
 	
 	CCFNOLStep3Steps step3Steps = new CCFNOLStep3Steps();
 	SearchAddressBookSteps searchAddressBook = new SearchAddressBookSteps();
-	
+	CCFNOLNewServiceSteps createService = new CCFNOLNewServiceSteps();
 	
 	/**
 	 * for use by regression scripts
@@ -34,55 +35,7 @@ public class CCFNOLStep4Steps extends BaseTest{
 		if (fieldValue !=null && fieldValue.equalsIgnoreCase("TRUE"))
 		{
 			fnolStep4POM.selectPhClaiming(true);
-			fieldValue = ExcelUtil.getTestDataValue("Fnol_Step4_RepairServiceRequired");
-			if (fieldValue !=null && fieldValue.equalsIgnoreCase("TRUE"))
-			{
-				fnolStep4POM.clickRepairServiceBox();
-				fnolStep4POM.selectSearchRepairService();
-				// use a method on address book to just select the first found vendor
-				searchAddressBook.searchForVendorAndSelectFirst();
-				
-			}
-			fieldValue = ExcelUtil.getTestDataValue("Fnol_Step4_RecoveryServiceRequired");
-			if (fieldValue !=null && fieldValue.equalsIgnoreCase("TRUE"))
-			{
-				fnolStep4POM.clickRecoveryServiceBox();
-				fnolStep4POM.selectSearchRecoveryService();
-				// use a method on address book to just select the first found vendor
-				searchAddressBook.searchForVendorAndSelectFirst();
-			}
-			fieldValue = ExcelUtil.getTestDataValue("Fnol_Step4_SalvageServiceRequired");
-			if (fieldValue !=null && fieldValue.equalsIgnoreCase("TRUE"))
-			{
-				fnolStep4POM.clickSalvageServiceBox();
-				fnolStep4POM.selectSearchSalvageService();
-				// use a method on address book to just select the first found vendor
-				searchAddressBook.searchForVendorAndSelectFirst();
-			}
-			fieldValue = ExcelUtil.getTestDataValue("Fnol_Step4_InspectionServiceRequired");
-			if (fieldValue !=null && fieldValue.equalsIgnoreCase("TRUE"))
-			{
-				fnolStep4POM.clickInspectionServiceBox();
-				fnolStep4POM.selectSearchInspectionService();
-				// use a method on address book to just select the first found vendor
-				searchAddressBook.searchForVendorAndSelectFirst();
-			}
-			fieldValue = ExcelUtil.getTestDataValue("Fnol_Step4_NonFaultReferralServiceRequired");
-			if (fieldValue !=null && fieldValue.equalsIgnoreCase("TRUE"))
-			{
-				fnolStep4POM.clickNonFaultReferralServiceBox();
-				fnolStep4POM.selectSearchNonFaultReferralService();
-				// use a method on address book to just select the first found vendor
-				searchAddressBook.searchForVendorAndSelectFirst();
-			}
-			fieldValue = ExcelUtil.getTestDataValue("Fnol_Step4_NonFaultVehicleReferralServiceRequired");
-			if (fieldValue !=null && fieldValue.equalsIgnoreCase("TRUE"))
-			{
-				fnolStep4POM.clickNonFaultVehicleReferralServiceBox();
-				fnolStep4POM.selectSearchNonFaultVehicleReferralService();
-				// use a method on address book to just select the first found vendor
-				searchAddressBook.searchForVendorAndSelectFirst();
-			}
+			
 		
 		
 		}
@@ -91,13 +44,66 @@ public class CCFNOLStep4Steps extends BaseTest{
 			fnolStep4POM.selectPhClaiming(false);
 		}
 		
-		//TODO other CB and services
+		fieldValue = ExcelUtil.getTestDataValue("Fnol_Step4_RepairServiceRequired");
+		if (fieldValue !=null && fieldValue.equalsIgnoreCase("TRUE"))
+		{
+			fnolStep4POM.clickRepairServiceBox();
+			fnolStep4POM.selectSearchRepairService();
+			// use a method on address book to just select the first found vendor
+			searchAddressBook.searchForVendorAndSelectFirst();
+			
+		}
+		fieldValue = ExcelUtil.getTestDataValue("Fnol_Step4_RecoveryServiceRequired");
+		if (fieldValue !=null && fieldValue.equalsIgnoreCase("TRUE"))
+		{
+			fnolStep4POM.clickRecoveryServiceBox();
+			fnolStep4POM.selectSearchRecoveryService();
+			// use a method on address book to just select the first found vendor
+			searchAddressBook.searchForVendorAndSelectFirst();
+		}
+		fieldValue = ExcelUtil.getTestDataValue("Fnol_Step4_SalvageServiceRequired");
+		if (fieldValue !=null && fieldValue.equalsIgnoreCase("TRUE"))
+		{
+			fnolStep4POM.clickSalvageServiceBox();
+			fnolStep4POM.selectSearchSalvageService();
+			// use a method on address book to just select the first found vendor
+			searchAddressBook.searchForVendorAndSelectFirst();
+		}
+		fieldValue = ExcelUtil.getTestDataValue("Fnol_Step4_InspectionServiceRequired");
+		if (fieldValue !=null && fieldValue.equalsIgnoreCase("TRUE"))
+		{
+			fnolStep4POM.clickInspectionServiceBox();
+			fnolStep4POM.selectSearchInspectionService();
+			// use a method on address book to just select the first found vendor
+			searchAddressBook.searchForVendorAndSelectFirst();
+		}
+		fieldValue = ExcelUtil.getTestDataValue("Fnol_Step4_NonFaultReferralServiceRequired");
+		if (fieldValue !=null && fieldValue.equalsIgnoreCase("TRUE"))
+		{
+			fnolStep4POM.clickNonFaultReferralServiceBox();
+			fnolStep4POM.selectSearchNonFaultReferralService();
+			// use a method on address book to just select the first found vendor
+			searchAddressBook.searchForVendorAndSelectFirst();
+		}
+		fieldValue = ExcelUtil.getTestDataValue("Fnol_Step4_NonFaultVehicleReferralServiceRequired");
+		if (fieldValue !=null && fieldValue.equalsIgnoreCase("TRUE"))
+		{
+			fnolStep4POM.clickNonFaultVehicleReferralServiceBox();
+			fnolStep4POM.selectSearchNonFaultVehicleReferralService();
+			// use a method on address book to just select the first found vendor
+			searchAddressBook.searchForVendorAndSelectFirst();
+		}
+		
+	
 		fieldValue = ExcelUtil.getTestDataValue("Fnol_Step4_OtherServiceRequired");
 		if (fieldValue !=null && fieldValue.equalsIgnoreCase("TRUE"))
 		{
-			//fnolStep4POM.clickOtherServiceBox();
-			//fnolStep4POM.clickAddOtherService();
-		//TODO - fill in create service page
+				
+			fnolStep4POM.clickOtherServiceBox();
+			fnolStep4POM.clickAddOtherService();
+			
+			createService.completeFNOLOtherServiceForTestScenario();
+	
 		}
 			
 		fnolStep4POM.next();
@@ -202,6 +208,12 @@ public class CCFNOLStep4Steps extends BaseTest{
     default:
     Assert.fail("unknown input field :"+ fieldName+" - check cucumber script!");
     }
+	}
+	
+	@Given("^I click Add Other Service button on step4 FNOL$")
+	public void addOtherService() {
+		
+		fnolStep4POM.clickAddOtherService();
 	}
 	
 	@Given("^I click the Search menu for the \"([^\"]*)\" service at step4 FNOL$")

@@ -36,25 +36,21 @@ public class ClaimCenterFNOLStep1POM extends BaseTest {
 	@FindBy(id = "FNOLWizard:FNOLWizard_FindPolicyScreen:FNOLWizardFindPolicyPanelSet:GlobalPersonNameInputSet:LastName-inputEl")
 	private WebElement searchLastName;
 
-	@FindBy(id = "FNOLWizard:FNOLWizard_FindPolicyScreen:FNOLWizardFindPolicyPanelSet:GlobalContactNameInputSet:Name-inputEl")
-	private WebElement searchContactName;
-
 	@FindBy(id = "FNOLWizard:FNOLWizard_FindPolicyScreen:FNOLWizardFindPolicyPanelSet:PolicyType-inputEl")
 	private WebElement searchPolicyType;
 
 	@FindBy(id = "FNOLWizard:FNOLWizard_FindPolicyScreen:FNOLWizardFindPolicyPanelSet:date-inputEl")
 	private WebElement searchLossDate;
-
-	@FindBy(id = "FNOLWizard:FNOLWizard_FindPolicyScreen:FNOLWizardFindPolicyPanelSet:FNOLWizard_PolicySearchInputSet:CCAddressInputSet:globalAddressContainer:globalAddress:GlobalAddressInputSet:Country-inputEl")
-	private WebElement searchCountry;
-
+	
 	@FindBy(id = "FNOLWizard:FNOLWizard_FindPolicyScreen:FNOLWizardFindPolicyPanelSet:FNOLWizard_PolicySearchInputSet:CCAddressInputSet:globalAddressContainer:globalAddress:GlobalAddressInputSet:City-inputEl")
 	private WebElement searchTownCity;
+
+	@FindBy(id = "FNOLWizard:FNOLWizard_FindPolicyScreen:FNOLWizardFindPolicyPanelSet:FNOLWizard_PolicySearchInputSet:CCAddressInputSet:globalAddressContainer:globalAddress:GlobalAddressInputSet:County-inputEl")
+	private WebElement searchCounty;
 
 	@FindBy(id = "FNOLWizard:FNOLWizard_FindPolicyScreen:FNOLWizardFindPolicyPanelSet:FNOLWizard_PolicySearchInputSet:CCAddressInputSet:globalAddressContainer:globalAddress:GlobalAddressInputSet:PostalCode-inputEl")
 	private WebElement searchPostcode;
 
-	// TODO check when code deliverd that the locator uses vin?
 	@FindBy(id = "FNOLWizard:FNOLWizard_FindPolicyScreen:FNOLWizardFindPolicyPanelSet:FNOLWizard_PolicySearchInputSet:vin-inputEl")
 	private WebElement searchVRN;
 
@@ -122,186 +118,94 @@ public class ClaimCenterFNOLStep1POM extends BaseTest {
 		return GuideWireAccessors.containsErrorMessage(driver, contains, By.className("message"));
 	}
 
-	private WebElement getFindPolicyRadio() {
-		return findPolicyRadio;
-	}
-
-	private WebElement getSearchPolicyNumber() {
-		return searchPolicyNumber;
-	}
-
-	private WebElement getSearchPolicyType() {
-		return searchPolicyType;
-	}
-
-	private WebElement getResetSearchPolicyButton() {
-		return resetSearchPolicyButton;
-	}
-
-	private WebElement getLossTime() {
-		return lossTime;
-	}
-
-	private WebElement getSearchFirstName() {
-		return searchFirstName;
-	}
-
-	private WebElement getSearchLastName() {
-		return searchLastName;
-	}
-
-	private WebElement getSearchContactName() {
-		return searchContactName;
-	}
-
-	private WebElement getSearchPolicyButton() {
-
-		return searchPolicyButton;
-	}
-
-	private WebElement getConfirmDeselectOkButton() {
-
-		return okDeselectPrompt;
-	}
-
-	private WebElement getNextButton() {
-
-		return nextButton;
-	}
-
-	private WebElement getFirstPolicySelectButton() {
-
-		return firstPolicySelectButton;
-	}
-
-	private WebElement getDeSelectButton() {
-
-		return unselectButton;
-	}
-
-	public WebElement getSearchLossDate() {
-		return searchLossDate;
-	}
-
-	private WebElement getLossDate() {
-		return lossDate;
-	}
-
-	private WebElement getSearchTownCity() {
-		return searchTownCity;
-	}
-
-	private WebElement getSearchVRN() {
-		return searchVRN;
-	}
-
-	private WebElement getCancelButton() {
-		return cancelButton;
-	}
-
-	public void clearSearchCriteria() {
-		this.getSearchPolicyNumber().clear();
-		this.getSearchFirstName().clear();
-		this.getSearchFirstName().clear();
-		this.getSearchContactName().clear();
-		this.getSearchLossDate().clear();
-		logger.info(format("%s - done, cleared search fields", getName()));
-
-	}
-
-	public void setSearchLossDate(String searchLossDate) {
-		GuideWireAccessors.setGWTextBox(driver, searchLossDate, getSearchLossDate());
-		logger.info(format("%s - done, Search Loss Date set:" + searchLossDate, getName()));
-	}
-
-	public void cancel() {
-		GuideWireAccessors.clickGWButton(driver, this.getCancelButton());
-		logger.info(format("%s - done, Cancel clicked", getName()));
-	}
-
-	// TODO
 	public void setFindPolicyRadio() {
-		this.getFindPolicyRadio().click();
-		logger.info(format("%s - done, find policy selected", getName()));
+		logger.info(format("%s - select find policy", getName()));
+		GuideWireAccessors.clickGWButton(driver, this.getFindPolicyRadio());
+		}
+	
+	public void cancel() {
+		logger.info(format("%s - Going to click Cancel", getName()));
+		GuideWireAccessors.clickGWButton(driver, this.getCancelButton());
+		
+	}
+	public void next() {
+		logger.info(format("%s - going to click Next", getName()));
+		GuideWireAccessors.clickGWButton(driver, getNextButton());
+		
 	}
 
-	public void setSearchVRN(String vrn) {
-
-		GuideWireAccessors.setGWTextBox(driver, vrn, getSearchVRN());
-		logger.info(format("%s - done, vrn set: " + vrn, getName()));
-	}
-
+	
+	// Search Criteria Fields
+	//--------------------------------------------------------------------------------
 	public void setSearchPolicyNumber(String policyNumber) {
+		logger.info(format("%s - going to set search pilicy number: " + policyNumber, getName()));
 		GuideWireAccessors.setGWTextBox(driver, policyNumber, getSearchPolicyNumber());
-		logger.info(format("%s - done, policy number set: " + policyNumber, getName()));
 	}
-
 	public void setSearchFirstName(String searchFirstName) {
+		logger.info(format("%s - going to set search first name:" + searchFirstName, getName()));
 		GuideWireAccessors.setGWTextBox(driver, searchFirstName, getSearchFirstName());
-		logger.info(format("%s - done, Search First name set:" + searchFirstName, getName()));
-
 	}
-
 	public void setSearchLastName(String searchLastName) {
+		logger.info(format("%s - Going to set search Lastname:" + searchLastName, getName()));
 		GuideWireAccessors.setGWTextBox(driver, searchLastName, getSearchLastName());
-		logger.info(format("%s - done, Search Lastname set:" + searchLastName, getName()));
-
+	}
+	public void setSearchLossDate(String searchLossDate) {
+		logger.info(format("%s - Going to set search Loss Date:" + searchLossDate, getName()));
+		GuideWireAccessors.setGWTextBox(driver, searchLossDate, getSearchLossDate());
+}
+	public void setSearchTownCity(String text) {
+		logger.info(format("%s - going to set search town city:" + text, getName()));
+		GuideWireAccessors.setGWTextBox(driver, text, this.getSearchTownCity());
+	}
+	public void setSearchCounty(String text) {
+		logger.info(format("%s - going to set search county:" + text, getName()));
+		GuideWireAccessors.setGWTextBox(driver, text, this.getSearchCounty());
+	}
+	public void setSearchPostcode(String text) {
+		logger.info(format("%s - going to set search postcode:" + text, getName()));
+		GuideWireAccessors.setGWTextBox(driver, text, this.getSearchPostcode());
+	}
+	public void setSearchVRN(String vrn) {
+		logger.info(format("%s - going to set search vrn: " + vrn, getName()));
+		GuideWireAccessors.setGWTextBox(driver, vrn, getSearchVRN());
 	}
 
-	public void setSearchContactName(String searchContact) {
-		GuideWireAccessors.setGWTextBox(driver, searchContact, getSearchContactName());
-		logger.info(format("%s - done, Search Contact Name set:" + searchContact, getName()));
-
-	}
-
-	public void resetSearchPolicy() {
-		GuideWireAccessors.clickGWButton(driver, this.getResetSearchPolicyButton());
-		logger.info(format("%s - done, Reset clicked", getName()));
-	}
-
-	public void setLossDate(String lossDate) {
-		GuideWireAccessors.setGWTextBox(driver, lossDate, getLossDate());
-		logger.info(format("%s - done, Loss Date set:" + lossDate, getName()));
-	}
-
-	public void setLossTime(String lossTime) {
-		GuideWireAccessors.setGWTextBox(driver, lossTime, getLossTime());
-		logger.info(format("%s - done, Loss Time set:" + lossTime, getName()));
-	}
-
+	// Search buttons
+	// --------------------------------------------
 	public void searchPolicy() {
-
-		logger.info(format("%s - Search Policy button ready", getName()));
+		logger.info(format("%s - Search Policy button click", getName()));
 		GuideWireAccessors.clickGWButton(driver, this.getSearchPolicyButton());
-		logger.info(format("%s - done, Search Policy clicked", getName()));
+	}
+	public void resetSearchPolicy() {
+		logger.info(format("%s - going to click Reset search", getName()));
+		GuideWireAccessors.clickGWButton(driver, this.getResetSearchPolicyButton());
 	}
 
-	public void selectFirstPolicy() {
 
+	//Policy search results
+	//---------------------------------------------------------------------------------
+	public void selectFirstPolicy() {
 		GuideWireAccessors.clickGWButton(driver, getFirstPolicySelectButton());
 		logger.info(format("%s - done, Search Policy Select (1st) clicked", getName()));
 	}
-
 	public void deselectPolicy() {
 		GuideWireAccessors.clickGWButton(driver, this.getDeSelectButton());
 		logger.info(format("%s - done, deselect polict clicked", getName()));
 	}
-
 	public void confirmDeselectPolicy() {
 		GuideWireAccessors.clickGWButton(driver, this.getConfirmDeselectOkButton());
 		logger.info(format("%s - done, confirm deselect policy clicked", getName()));
 	}
-
-	public void setPostcode(String text) {
-		GuideWireAccessors.setGWTextBox(driver, text, this.getSearchPostcode());
-		logger.info(format("%s - done, postcode set:" + text, getName()));
+	public void setLossDate(String lossDate) {
+		GuideWireAccessors.setGWTextBox(driver, lossDate, getLossDate());
+		logger.info(format("%s - done, Loss Date set:" + lossDate, getName()));
 	}
-
-	public void next() {
-
-		GuideWireAccessors.clickGWButton(driver, getNextButton());
-		logger.info(format("%s - done, Next clicked", getName()));
+	public void setLossTime(String lossTime) {
+		logger.info(format("%s - going to set Loss Time:" + lossTime, getName()));
+		GuideWireAccessors.setGWTextBox(driver, lossTime, getLossTime());
+		
 	}
+	
 
 	public boolean inputFieldOnScreen(String fieldName) throws Exception {
 		boolean onscreen = false;
@@ -356,9 +260,19 @@ public class ClaimCenterFNOLStep1POM extends BaseTest {
 
 		return onscreen;
 	}
+	
+	
+	public void clearSearchCriteria() {
+		this.getSearchPolicyNumber().clear();
+		this.getSearchFirstName().clear();
+		this.getSearchFirstName().clear();
+		this.getSearchLossDate().clear();
+		logger.info(format("%s - done, cleared search fields", getName()));
 
-	private WebElement getSearchCountry() {
-		return searchCountry;
+	}
+
+	private WebElement getSearchCounty() {
+		return searchCounty;
 	}
 
 	private WebElement getSearchPostcode() {
@@ -380,5 +294,76 @@ public class ClaimCenterFNOLStep1POM extends BaseTest {
 	private WebElement getPageTitle() {
 		return pageTitle;
 	}
+	private WebElement getFindPolicyRadio() {
+		return findPolicyRadio;
+	}
 
+	private WebElement getSearchPolicyNumber() {
+		return searchPolicyNumber;
+	}
+
+	private WebElement getSearchPolicyType() {
+		return searchPolicyType;
+	}
+
+	private WebElement getResetSearchPolicyButton() {
+		return resetSearchPolicyButton;
+	}
+
+	private WebElement getLossTime() {
+		return lossTime;
+	}
+
+	private WebElement getSearchFirstName() {
+		return searchFirstName;
+	}
+
+	private WebElement getSearchLastName() {
+		return searchLastName;
+	}
+
+	private WebElement getSearchPolicyButton() {
+
+		return searchPolicyButton;
+	}
+
+	private WebElement getConfirmDeselectOkButton() {
+
+		return okDeselectPrompt;
+	}
+
+	private WebElement getNextButton() {
+
+		return nextButton;
+	}
+
+	private WebElement getFirstPolicySelectButton() {
+
+		return firstPolicySelectButton;
+	}
+
+	private WebElement getDeSelectButton() {
+
+		return unselectButton;
+	}
+
+	public WebElement getSearchLossDate() {
+		return searchLossDate;
+	}
+
+	private WebElement getLossDate() {
+		return lossDate;
+	}
+
+	private WebElement getSearchTownCity() {
+		return searchTownCity;
+	}
+
+	private WebElement getSearchVRN() {
+		return searchVRN;
+	}
+
+	private WebElement getCancelButton() {
+		return cancelButton;
+	}
 }

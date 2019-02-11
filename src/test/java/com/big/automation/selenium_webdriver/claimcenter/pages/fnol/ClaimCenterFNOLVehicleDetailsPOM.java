@@ -292,9 +292,6 @@ public class ClaimCenterFNOLVehicleDetailsPOM extends BaseTest{
 		private WebElement theftPoliceDetails;
 		
 	
-	
-	//@FindBy(className = "message")
-	//private List <WebElement> errorMessages;
 		public boolean containsErrorMessage(String contains)
 		{
 					
