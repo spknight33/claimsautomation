@@ -205,8 +205,7 @@ public class ClaimCenterPOSTFNOLDriverDetailsPOM extends BaseTest {
 	@FindBy(id = "PostFNOLContactPopup:FNOLContactScreen:InjuryIncidentStatusInputSet:TotalValue_TotalIncurredNet-inputEl")
 	private WebElement mojNetTotal;
 
-	@FindBy(className = "message")
-	private List<WebElement> errorMessages;
+	
 
 	public String getName() {
 
@@ -218,6 +217,11 @@ public class ClaimCenterPOSTFNOLDriverDetailsPOM extends BaseTest {
 
 		logger.info(format("%s -found page title for page :" + this.getPageTitle().getText(), getName()));
 		return this.getPageTitle().getText().equalsIgnoreCase(expected);
+	}
+	
+	public boolean containsErrorMessage(String contains) {
+
+		return GuideWireAccessors.containsErrorMessage(driver, contains, By.className("message"));
 	}
 
 	public void cancel() {
@@ -648,10 +652,7 @@ public int getCountMoj() {
 		return addressType;
 	}
 
-	private List<WebElement> getErrorMessages() {
-		return errorMessages;
-	}
-
+	
 	private WebElement getRelationToOwnerDropdown() {
 		return relationToOwnerDropdown;
 	}

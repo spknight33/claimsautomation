@@ -3,8 +3,7 @@ package com.big.automation.selenium_webdriver.claimcenter.pages.postfnol.lossdet
 import static com.big.automation.selenium_webdriver.common.utilities.ThreadUtils.sleep;
 import static java.lang.String.format;
 
-import java.util.List;
-
+import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -86,8 +85,7 @@ public class ClaimCenterPOSTFNOLEditPropertyPOM extends BaseTest{
 	private WebElement repairedFalseRadio;
 	
 	
-	@FindBy(className = "message")
-	private List <WebElement> errorMessages;
+
 
 	public String getName() {
 
@@ -99,6 +97,11 @@ public class ClaimCenterPOSTFNOLEditPropertyPOM extends BaseTest{
 		sleep(2);
 		logger.info(format("%s -found page title for Add Property page :"+this.getPageTitle().getText(), getName()));
 		return this.getPageTitle().getText().equalsIgnoreCase(expected);
+	}
+	
+	public boolean containsErrorMessage(String contains) {
+
+		return GuideWireAccessors.containsErrorMessage(driver, contains, By.className("message"));
 	}
 	
 	public void cancel() {
@@ -325,10 +328,7 @@ public class ClaimCenterPOSTFNOLEditPropertyPOM extends BaseTest{
 		return repairedFalseRadio;
 	}
 
-	private List<WebElement> getErrorMessages() {
-		return errorMessages;
-	}
-
+	
 	private WebElement getUpdateButton() {
 		return updateButton;
 	}

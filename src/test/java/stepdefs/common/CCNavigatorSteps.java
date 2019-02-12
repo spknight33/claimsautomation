@@ -4,12 +4,10 @@ import java.util.Arrays;
 import java.util.List;
 
 import org.testng.Assert;
-import org.testng.asserts.SoftAssert;
 
 import com.big.automation.selenium_webdriver.common.baseTest.BaseTest;
 
 import cucumber.api.java.en.Given;
-import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 
 public class CCNavigatorSteps extends BaseTest {

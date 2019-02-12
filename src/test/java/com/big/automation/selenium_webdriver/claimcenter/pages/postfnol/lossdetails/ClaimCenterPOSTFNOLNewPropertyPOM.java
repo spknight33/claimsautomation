@@ -86,8 +86,6 @@ public class ClaimCenterPOSTFNOLNewPropertyPOM extends BaseTest{
 	private WebElement repairedFalseRadio;
 	
 	
-	@FindBy(className = "message")
-	private List <WebElement> errorMessages;
 
 	public String getName() {
 
@@ -100,6 +98,10 @@ public class ClaimCenterPOSTFNOLNewPropertyPOM extends BaseTest{
 		
 		logger.info(format("%s -found page title for Add Property page :"+this.getPageTitle().getText(), getName()));
 		return this.getPageTitle().getText().equalsIgnoreCase(expected);
+	}
+	public boolean containsErrorMessage(String contains) {
+
+		return GuideWireAccessors.containsErrorMessage(driver, contains, By.className("message"));
 	}
 	
 	public void cancel() {
@@ -322,9 +324,6 @@ public class ClaimCenterPOSTFNOLNewPropertyPOM extends BaseTest{
 		return repairedFalseRadio;
 	}
 
-	private List<WebElement> getErrorMessages() {
-		return errorMessages;
-	}
 
 	
 

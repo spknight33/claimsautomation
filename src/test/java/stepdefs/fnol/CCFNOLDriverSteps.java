@@ -17,6 +17,10 @@ public class CCFNOLDriverSteps extends BaseTest {
 	
 	SearchAddressBookSteps searchAddressBookSteps = new SearchAddressBookSteps();
 	
+	/**
+	 * For Regression script
+	 * @throws Throwable
+	 */
 	public void completeFNOLTPDriverForTestScenario() throws Throwable
 	{
 		
@@ -100,6 +104,10 @@ public class CCFNOLDriverSteps extends BaseTest {
 		fnolDriverDetailsPOM.selectOK();
 	}
 	
+	/**
+	 * For regression script
+	 * @throws Throwable
+	 */
 	public void completeFNOLPHDriverForTestScenario() throws Throwable
 	{
 		if (ExcelUtil.getTestDataValue("Fnol_PHDriverIsInsuredPerson").equalsIgnoreCase("TRUE"))

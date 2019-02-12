@@ -262,6 +262,43 @@ public class ClaimCenterPOSTFNOLExposuresPOM extends BaseTest{
 		
 	}
 	
+	public boolean areAllExposuresAtStatus(String status)
+	{
+	
+		logger.info(format("%s -check all exposures are closed", getName()));
+	    sleep(1);
+		String locator = "//*[@id=\"ClaimExposures:ClaimExposuresScreen:ExposuresLV-body\"]//table";
+		List <WebElement> rows = driver.findElements(By.xpath(locator));
+		
+		WebElement expStatus;
+
+		
+		// loop and check all statuses
+		int rowTotal = rows.size();
+		String rowLocator = null;
+		for(int i=1; i<=rowTotal; i++)
+		{
+			
+			rowLocator = locator + "[" + i + "]";
+				//find the type
+			expStatus = driver.findElement(By.xpath(rowLocator+"//tr//td[7]"));
+		
+		
+	
+			if (!expStatus.getText().equalsIgnoreCase(status) )
+			{
+				
+				return false;
+				
+			}
+		}
+		
+		
+		return true;
+	
+		
+	}
+	
 	
 	private List<WebElement> getErrorMessages(){
 		return errorMessages;

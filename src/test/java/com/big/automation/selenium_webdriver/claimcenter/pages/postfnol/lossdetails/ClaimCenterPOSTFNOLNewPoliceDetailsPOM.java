@@ -5,6 +5,7 @@ import static java.lang.String.format;
 
 import java.util.List;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
@@ -80,9 +81,6 @@ public class ClaimCenterPOSTFNOLNewPoliceDetailsPOM extends BaseTest{
 	private WebElement notes;
 	
 	
-
-	
-	@FindBy(className = "message")
 	private List <WebElement> errorMessages;
 
 	public String getName() {
@@ -96,6 +94,11 @@ public class ClaimCenterPOSTFNOLNewPoliceDetailsPOM extends BaseTest{
 
 		logger.info(format("%s -found page title for Person page :"+this.getPageTitle().getText(), getName()));
 		return this.getPageTitle().getText().equalsIgnoreCase(expected);
+	}
+	
+	public boolean containsErrorMessage(String contains) {
+
+		return GuideWireAccessors.containsErrorMessage(driver, contains, By.className("message"));
 	}
 	
 	public void selectCancel() {
@@ -316,11 +319,6 @@ public class ClaimCenterPOSTFNOLNewPoliceDetailsPOM extends BaseTest{
 		return notes;
 	}
 
-	private List<WebElement> getErrorMessages() {
-		return errorMessages;
-	}
-
-	
 
 	
 	

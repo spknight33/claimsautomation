@@ -5,6 +5,7 @@ import static java.lang.String.format;
 
 import java.util.List;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
@@ -44,9 +45,7 @@ public class ClaimCenterPOSTFNOLNewNotePOM extends BaseTest{
 	
 	//TODO all the template stuff
 
-	
-	@FindBy(className = "message")
-	private List <WebElement> errorMessages;
+
 
 	public String getName() {
 
@@ -59,6 +58,10 @@ public class ClaimCenterPOSTFNOLNewNotePOM extends BaseTest{
 		
 		logger.info(format("%s -found page title for page :"+this.getPageTitle().getText(), getName()));
 		return this.getPageTitle().getText().contains(expected); // use contains
+	}
+	public boolean containsErrorMessage(String contains) {
+
+		return GuideWireAccessors.containsErrorMessage(driver, contains, By.className("message"));
 	}
 	
 	public void cancel() {
@@ -164,10 +167,7 @@ public class ClaimCenterPOSTFNOLNewNotePOM extends BaseTest{
 		return pageTitle;
 	}
 	
-	private List<WebElement> getErrorMessages() {
-		return errorMessages;
-	}
-
+	
 	
 
 

@@ -11,7 +11,7 @@ import com.big.automation.selenium_webdriver.common.utilities.excelutils.ExcelUt
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 
-public class CCMenuBarSTeps extends BaseTest {
+public class CCMenuBarSteps extends BaseTest {
 
 	
 	

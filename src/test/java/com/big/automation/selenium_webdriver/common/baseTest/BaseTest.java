@@ -26,7 +26,9 @@ import com.aventstack.extentreports.Status;
 import com.aventstack.extentreports.reporter.ExtentHtmlReporter;
 import com.aventstack.extentreports.reporter.configuration.ChartLocation;
 import com.aventstack.extentreports.reporter.configuration.Theme;
+import com.big.automation.selenium_webdriver.claimcenter.pages.claimclose.ClaimCenteClaimClosePOM;
 import com.big.automation.selenium_webdriver.claimcenter.pages.common.ClaimCenterCompanyDetailsPOM;
+import com.big.automation.selenium_webdriver.claimcenter.pages.common.ClaimCenterInfoBarPOM;
 import com.big.automation.selenium_webdriver.claimcenter.pages.common.ClaimCenterLoginPOM;
 import com.big.automation.selenium_webdriver.claimcenter.pages.common.ClaimCenterMenuBarPOM;
 import com.big.automation.selenium_webdriver.claimcenter.pages.common.ClaimCenterNavigatorBarPOM;
@@ -79,6 +81,7 @@ import com.big.automation.selenium_webdriver.claimcenter.pages.postfnol.financia
 import com.big.automation.selenium_webdriver.claimcenter.pages.postfnol.financials.ClaimCenterPOSTFNOLReservePOM;
 import com.big.automation.selenium_webdriver.claimcenter.pages.postfnol.financials.ClaimCenterPOSTFNOLSetReservesPOM;
 import com.big.automation.selenium_webdriver.claimcenter.pages.postfnol.fnolsnapshot.ClaimCenterPOSTFNOLFnolSnapshotLossPOM;
+import com.big.automation.selenium_webdriver.claimcenter.pages.postfnol.history.ClaimCenterPOSTFNOLHistoryPOM;
 import com.big.automation.selenium_webdriver.claimcenter.pages.postfnol.litigation.ClaimCenterPOSTFNOLLitigationPOM;
 import com.big.automation.selenium_webdriver.claimcenter.pages.postfnol.lossdetails.ClaimCenterPOSTFNOLDriverDetailsPOM;
 import com.big.automation.selenium_webdriver.claimcenter.pages.postfnol.lossdetails.ClaimCenterPOSTFNOLEditPropertyPOM;
@@ -125,6 +128,7 @@ public class BaseTest extends AbstractTestNGCucumberTests {
 	// -------------------------------
 	public static ClaimCenterLoginPOM loginPOM;
 	public static ClaimCenterMenuBarPOM menuBarPOM;
+	public static ClaimCenterInfoBarPOM infoBarPOM;
 	public static ClaimCenterNavigatorBarPOM navigatorBarPOM;
 	public static ClaimCenterPersonDetailsPOM personContactDetailsPOM;
 	public static ClaimCenterCompanyDetailsPOM companyContactDetailsPOM;
@@ -221,6 +225,11 @@ public class BaseTest extends AbstractTestNGCucumberTests {
 	// -------------------------
 	public static ClaimCenterPOSTFNOLNewServicePOM postFnolNewServicePOM;
 	public static ClaimCenterPOSTFNOLServicesPOM postFnolServicesPOM;
+	
+	//POST FNOL History page
+	//---------------------------
+	public static ClaimCenterPOSTFNOLHistoryPOM postFnolHistoryPOM;
+	
 
 	// POST FNOL Documents pages
 	// --------------------------
@@ -251,6 +260,12 @@ public class BaseTest extends AbstractTestNGCucumberTests {
 	public static ClaimCenterPOSTFNOLNewChequeStep1POM postFnolNewChequeStep1POM;
 	public static ClaimCenterPOSTFNOLNewChequeStep2POM postFnolNewChequeStep2POM;
 	public static ClaimCenterPOSTFNOLNewChequeStep3POM postFnolNewChequeStep3POM;
+	
+	
+	//close claim
+	//-----------------
+	public static ClaimCenteClaimClosePOM closeClaimPOM;
+	
 
 	// desktop pages
 	// ------------------------
@@ -317,6 +332,7 @@ public class BaseTest extends AbstractTestNGCucumberTests {
 		// AjaxElementLocatorFactory(driver, 60);
 		loginPOM = PageFactory.initElements(driver, ClaimCenterLoginPOM.class);
 		menuBarPOM = PageFactory.initElements(driver, ClaimCenterMenuBarPOM.class);
+		infoBarPOM = PageFactory.initElements(driver, ClaimCenterInfoBarPOM.class);
 		navigatorBarPOM = PageFactory.initElements(driver, ClaimCenterNavigatorBarPOM.class);
 		fnolStep1POM = PageFactory.initElements(driver, ClaimCenterFNOLStep1POM.class);
 		fnolStep2POM = PageFactory.initElements(driver, ClaimCenterFNOLStep2POM.class);
@@ -440,6 +456,14 @@ public class BaseTest extends AbstractTestNGCucumberTests {
 		postFnolNewChequeStep1POM = PageFactory.initElements(driver, ClaimCenterPOSTFNOLNewChequeStep1POM.class);
 		postFnolNewChequeStep2POM = PageFactory.initElements(driver, ClaimCenterPOSTFNOLNewChequeStep2POM.class);
 		postFnolNewChequeStep3POM = PageFactory.initElements(driver, ClaimCenterPOSTFNOLNewChequeStep3POM.class);
+		
+		// history
+		postFnolHistoryPOM = PageFactory.initElements(driver, ClaimCenterPOSTFNOLHistoryPOM.class);
+		
+		
+		//close claim
+		closeClaimPOM = PageFactory.initElements(driver, ClaimCenteClaimClosePOM.class);
+		
 
 	}
 

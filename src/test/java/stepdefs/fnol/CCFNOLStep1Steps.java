@@ -15,12 +15,12 @@ import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import stepdefs.common.CCLoginSteps;
-import stepdefs.common.CCMenuBarSTeps;
+import stepdefs.common.CCMenuBarSteps;
 
 public class CCFNOLStep1Steps extends BaseTest {
 
 	CCLoginSteps loginSteps = new CCLoginSteps();
-	CCMenuBarSTeps menuSteps = new CCMenuBarSTeps();
+	CCMenuBarSteps menuSteps = new CCMenuBarSteps();
 
 	/**
 	 * Used for regression runs

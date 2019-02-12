@@ -12,12 +12,12 @@ import cucumber.api.DataTable;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import stepdefs.common.CCLoginSteps;
-import stepdefs.common.CCMenuBarSTeps;
+import stepdefs.common.CCMenuBarSteps;
 
 public class CCFNOLStep2Steps extends BaseTest{
 	
 	CCLoginSteps loginSteps = new CCLoginSteps();
-	CCMenuBarSTeps menuSteps = new CCMenuBarSTeps();
+	CCMenuBarSteps menuSteps = new CCMenuBarSteps();
 	CCFNOLStep1Steps step1Steps = new CCFNOLStep1Steps();
 	CCFNOLPersonContactSteps personContactSteps = new CCFNOLPersonContactSteps();
 	CCFNOLCompanyContactSteps companyContactSteps = new CCFNOLCompanyContactSteps();

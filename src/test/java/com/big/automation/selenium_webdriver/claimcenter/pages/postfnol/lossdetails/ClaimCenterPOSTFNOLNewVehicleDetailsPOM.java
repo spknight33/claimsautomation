@@ -5,6 +5,7 @@ import static java.lang.String.format;
 
 import java.util.List;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
@@ -101,9 +102,6 @@ public class ClaimCenterPOSTFNOLNewVehicleDetailsPOM extends BaseTest{
 	//TODO rest of theft locators
 	
 	
-	@FindBy(className = "message")
-	private List <WebElement> errorMessages;
-
 	public String getName() {
 
 		return "Post FNOL New Vehicle";
@@ -114,6 +112,11 @@ public class ClaimCenterPOSTFNOLNewVehicleDetailsPOM extends BaseTest{
 		sleep(2);
 		logger.info(format("%s -found page title for Vehicle page :"+this.getPageTitle().getText(), getName()));
 		return this.getPageTitle().getText().equalsIgnoreCase(expected);
+	}
+	
+	public boolean containsErrorMessage(String contains) {
+
+		return GuideWireAccessors.containsErrorMessage(driver, contains, By.className("message"));
 	}
 	
 	public void cancel() {
