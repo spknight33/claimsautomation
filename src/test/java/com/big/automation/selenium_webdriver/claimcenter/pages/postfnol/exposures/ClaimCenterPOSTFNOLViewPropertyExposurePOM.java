@@ -33,8 +33,6 @@ public class ClaimCenterPOSTFNOLViewPropertyExposurePOM extends BaseTest{
 	@FindBy(id = "ExposureDetail:ExposureDetailScreen:ExposureDetailDV:PropertyDamageDV:Claimant_Picker-inputEl")
 	private WebElement claimant;
    
-	@FindBy(id = "ExposureDetail:ExposureDetailScreen:ExposureDetailDV:PropertyDamageDV:Claimant_Type-inputEl")
-	private WebElement claimantTypeText;
 	
 	
 
@@ -57,11 +55,7 @@ public class ClaimCenterPOSTFNOLViewPropertyExposurePOM extends BaseTest{
 		return GuideWireAccessors.containsErrorMessage(driver, contains, By.className("message"));
 	}
 	
-	// for readonly page
-			public String getClaimantType() {
-				logger.info(format("%s - going to get Claimant type:", getName()));
-				return GuideWireAccessors.getGWElementText(driver, this.getClaimantTypeText());
-			}
+	
 	
 	public void selectCancel() {
 
@@ -119,9 +113,7 @@ public class ClaimCenterPOSTFNOLViewPropertyExposurePOM extends BaseTest{
 		return claimant;
 	}
 
-	private WebElement getClaimantTypeText() {
-		return claimantTypeText;
-	}
+	
 
 	
 

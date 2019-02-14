@@ -33,8 +33,7 @@ public class ClaimCenterPOSTFNOLViewVehicleExposurePOM extends BaseTest {
 	@FindBy(id = "ExposureDetail:ExposureDetailScreen:ExposureDetailDV:VehicleDamageDV:Claimant_Picker-inputEl")
 	private WebElement claimant;
 
-	@FindBy(id = "ExposureDetail:ExposureDetailScreen:ExposureDetailDV:VehicleDamageDV:Claimant_Type-inputEl")
-	private WebElement claimantTypeText;
+
 
 	public String getName() {
 
@@ -72,11 +71,7 @@ public class ClaimCenterPOSTFNOLViewVehicleExposurePOM extends BaseTest {
 
 	}
 
-	// for readonly page
-	public String getClaimantType() {
-		logger.info(format("%s - going to get Claimant type:", getName()));
-		return GuideWireAccessors.getGWElementText(driver, this.getClaimantTypeText());
-	}
+	
 
 	public void selectUpToExposures() {
 		logger.info(format("%s -  going to click up to exposures link", getName()));
@@ -105,9 +100,7 @@ public class ClaimCenterPOSTFNOLViewVehicleExposurePOM extends BaseTest {
 	}
 	
 
-	private WebElement getClaimantTypeText() {
-		return claimantTypeText;
-	}
+
 
 	private WebElement getCoverage() {
 		return coverage;

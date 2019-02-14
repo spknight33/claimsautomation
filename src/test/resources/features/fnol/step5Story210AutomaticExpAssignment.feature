@@ -11,8 +11,7 @@ Feature: CBPCL-210 As a ClaimCenter user with the role of Claims Adjuster or Man
      And  I will be on the new exposure screen for FNOL
     # And I select "2015 SKODA OCTAVIA (s99sja / United Kingdom)" from "Coverage" on new vehicle exposure screen for FNOL
      And I select the Insured as Claimant on new vehicle exposure screen for FNOL
-     And I select "Insured" from "Claimant Type" on new vehicle exposure screen for FNOL
-     And I select "Ok" on new exposure screen for FNOL
+       And I select "Ok" on new exposure screen for FNOL
      And I click finish button on step5
      And I will be on Claim Saved screen in FNOL
      And I click on the created claim link on Claim Saved screen
@@ -25,8 +24,7 @@ Feature: CBPCL-210 As a ClaimCenter user with the role of Claims Adjuster or Man
     When I select the Add Exposures Popup Menu Hierarchy "Choose by Coverage Type,Medical Expenses"
      Then I will be on the new exposure screen for FNOL
      And I select the Insured as Claimant on new injury exposure screen for FNOL
-       And I select "Insured" from "Claimant Type" on new injury exposure screen for FNOL
-      And I select "Ok" on new exposure screen for FNOL
+           And I select "Ok" on new exposure screen for FNOL
      And I click finish button on step5
      And I will be on Claim Saved screen in FNOL
      And I click on the created claim link on Claim Saved screen
@@ -39,8 +37,7 @@ Feature: CBPCL-210 As a ClaimCenter user with the role of Claims Adjuster or Man
      When I select the Add Exposures Popup Menu Hierarchy "Choose by Coverage Type,Personal Accident"
     Then I will be on the new exposure screen for FNOL
      And I select the Insured as Claimant on new injury exposure screen for FNOL
-    And I select "Insured" from "Claimant Type" on new injury exposure screen for FNOL
-      And I select "Ok" on new exposure screen for FNOL
+          And I select "Ok" on new exposure screen for FNOL
      And I click finish button on step5
      And I will be on Claim Saved screen in FNOL
      And I click on the created claim link on Claim Saved screen
@@ -53,8 +50,7 @@ Feature: CBPCL-210 As a ClaimCenter user with the role of Claims Adjuster or Man
      And I select the Add Exposures Popup Menu Hierarchy "Choose by Coverage Type,Personal Belongings"
      And  I will be on the new exposure screen for FNOL
      And I select the Insured as Claimant on new vehicle exposure screen for FNOL
-     And I select "Insured" from "Claimant Type" on new vehicle exposure screen for FNOL
-     And I select "Ok" on new exposure screen for FNOL
+       And I select "Ok" on new exposure screen for FNOL
      And I click finish button on step5
      And I will be on Claim Saved screen in FNOL
      And I click on the created claim link on Claim Saved screen
@@ -67,8 +63,7 @@ Feature: CBPCL-210 As a ClaimCenter user with the role of Claims Adjuster or Man
    And I select the Add Exposures Popup Menu Hierarchy "Choose by Coverage Type,Personal Belongings and Handbag Cover"
      And  I will be on the new exposure screen for FNOL
      And I select the Insured as Claimant on new vehicle exposure screen for FNOL
-     And I select "Insured" from "Claimant Type" on new vehicle exposure screen for FNOL
-     And I select "Ok" on new exposure screen for FNOL
+         And I select "Ok" on new exposure screen for FNOL
      And I click finish button on step5
      And I will be on Claim Saved screen in FNOL
      And I click on the created claim link on Claim Saved screen
@@ -81,8 +76,7 @@ Feature: CBPCL-210 As a ClaimCenter user with the role of Claims Adjuster or Man
   And I select the Add Exposures Popup Menu Hierarchy "Choose by Coverage Type,Fire"
      And  I will be on the new exposure screen for FNOL
      And I select the Insured as Claimant on new vehicle exposure screen for FNOL
-     And I select "Insured" from "Claimant Type" on new vehicle exposure screen for FNOL
-     And I select "Ok" on new exposure screen for FNOL
+         And I select "Ok" on new exposure screen for FNOL
      And I click finish button on step5
      And I will be on Claim Saved screen in FNOL
      And I click on the created claim link on Claim Saved screen
@@ -95,8 +89,7 @@ Feature: CBPCL-210 As a ClaimCenter user with the role of Claims Adjuster or Man
     And I select the Add Exposures Popup Menu Hierarchy "Choose by Coverage Type,Misfuelling - Vehicle Damage"
      And  I will be on the new exposure screen for FNOL
      And I select the Insured as Claimant on new vehicle exposure screen for FNOL
-     And I select "Insured" from "Claimant Type" on new vehicle exposure screen for FNOL
-      And I select "Ok" on new exposure screen for FNOL
+         And I select "Ok" on new exposure screen for FNOL
       And I click finish button on step5
      And I will be on Claim Saved screen in FNOL
      And I click on the created claim link on Claim Saved screen
@@ -108,8 +101,7 @@ Feature: CBPCL-210 As a ClaimCenter user with the role of Claims Adjuster or Man
 Scenario: CBPCL-210 TC8 Exposure created for THIRD PARTY PERSONAL INJURY is assigned to Personal Injury - MOJ Group
        When I select the Add Exposures Popup Menu Hierarchy "Choose by Coverage Type,Third Party Liability,Liability - Personal Injury"
      And I select the Insured as Claimant on new injury exposure screen for FNOL
-     And I select "Insured" from "Claimant Type" on new injury exposure screen for FNOL
-      And I select "Ok" on new exposure screen for FNOL
+         And I select "Ok" on new exposure screen for FNOL
       And I click finish button on step5
      And I will be on Claim Saved screen in FNOL
      And I click on the created claim link on Claim Saved screen
@@ -122,8 +114,7 @@ Scenario: CBPCL-210 TC8 Exposure created for THIRD PARTY PERSONAL INJURY is assi
      When I select the Add Exposures Popup Menu Hierarchy "Choose by Coverage Type,Third Party Liability,Liability - Vehicle Damage"
      And  I will be on the new exposure screen for FNOL
      And I select the Insured as Claimant on new vehicle exposure screen for FNOL
-     And I select "Insured" from "Claimant Type" on new vehicle exposure screen for FNOL
-     And I select "Ok" on new exposure screen for FNOL
+        And I select "Ok" on new exposure screen for FNOL
      And I click finish button on step5
      And I will be on Claim Saved screen in FNOL
      And I click on the created claim link on Claim Saved screen
@@ -136,13 +127,11 @@ Scenario: CBPCL-210 TC8 Exposure created for THIRD PARTY PERSONAL INJURY is assi
      When I select the Add Exposures Popup Menu Hierarchy "Choose by Coverage Type,Third Party Liability,Liability - Vehicle Damage"
      And  I will be on the new exposure screen for FNOL
      And I select the Insured as Claimant on new vehicle exposure screen for FNOL
-     And I select "Insured" from "Claimant Type" on new vehicle exposure screen for FNOL
-     And I select "Ok" on new exposure screen for FNOL
+         And I select "Ok" on new exposure screen for FNOL
      And I select the Add Exposures Popup Menu Hierarchy "Choose by Coverage Type,Third Party Liability,Liability - Credit Hire"
     And I will be on the new exposure screen for FNOL
     And I select the Insured as Claimant on new Credit Hire exposure screen for FNOL
-    And I select "Insured" from "Claimant Type" on new Credit Hire exposure screen for FNOL
-    And I select "Ok" on new exposure screen for FNOL
+       And I select "Ok" on new exposure screen for FNOL
      And I click finish button on step5
      And I will be on Claim Saved screen in FNOL
      And I click on the created claim link on Claim Saved screen
@@ -156,13 +145,11 @@ Scenario: CBPCL-210 TC8 Exposure created for THIRD PARTY PERSONAL INJURY is assi
      When I select the Add Exposures Popup Menu Hierarchy "Choose by Coverage Type,Third Party Liability,Liability - Vehicle Damage"
      And  I will be on the new exposure screen for FNOL
      And I select the Insured as Claimant on new vehicle exposure screen for FNOL
-     And I select "Insured" from "Claimant Type" on new vehicle exposure screen for FNOL
-     And I select "Ok" on new exposure screen for FNOL
+        And I select "Ok" on new exposure screen for FNOL
        When I select the Add Exposures Popup Menu Hierarchy "Choose by Coverage Type,Personal Accident"
     Then I will be on the new exposure screen for FNOL
      And I select the Insured as Claimant on new injury exposure screen for FNOL
-    And I select "Insured" from "Claimant Type" on new injury exposure screen for FNOL
-      And I select "Ok" on new exposure screen for FNOL
+         And I select "Ok" on new exposure screen for FNOL
      And I click finish button on step5
      And I will be on Claim Saved screen in FNOL
      And I click on the created claim link on Claim Saved screen
@@ -176,13 +163,11 @@ Scenario: CBPCL-210 TC8 Exposure created for THIRD PARTY PERSONAL INJURY is assi
      When I select the Add Exposures Popup Menu Hierarchy "Choose by Coverage Type,Third Party Liability,Liability - Vehicle Damage"
      And  I will be on the new exposure screen for FNOL
      And I select the Insured as Claimant on new vehicle exposure screen for FNOL
-     And I select "Insured" from "Claimant Type" on new vehicle exposure screen for FNOL
-     And I select "Ok" on new exposure screen for FNOL
+         And I select "Ok" on new exposure screen for FNOL
       When I select the Add Exposures Popup Menu Hierarchy "Choose by Coverage Type,Medical Expenses"
      Then I will be on the new exposure screen for FNOL
      And I select the Insured as Claimant on new injury exposure screen for FNOL
-       And I select "Insured" from "Claimant Type" on new injury exposure screen for FNOL
-      And I select "Ok" on new exposure screen for FNOL
+           And I select "Ok" on new exposure screen for FNOL
      And I click finish button on step5
      And I will be on Claim Saved screen in FNOL
      And I click on the created claim link on Claim Saved screen
@@ -196,12 +181,10 @@ Scenario: CBPCL-210 TC8 Exposure created for THIRD PARTY PERSONAL INJURY is assi
      When I select the Add Exposures Popup Menu Hierarchy "Choose by Coverage Type,Third Party Liability,Liability - Vehicle Damage"
      And  I will be on the new exposure screen for FNOL
      And I select the Insured as Claimant on new vehicle exposure screen for FNOL
-     And I select "Insured" from "Claimant Type" on new vehicle exposure screen for FNOL
-     And I select "Ok" on new exposure screen for FNOL
+         And I select "Ok" on new exposure screen for FNOL
       When I select the Add Exposures Popup Menu Hierarchy "Choose by Coverage Type,Third Party Liability,Liability - Personal Injury"
      And I select the Insured as Claimant on new injury exposure screen for FNOL
-     And I select "Insured" from "Claimant Type" on new injury exposure screen for FNOL
-      And I select "Ok" on new exposure screen for FNOL
+           And I select "Ok" on new exposure screen for FNOL
      And I click finish button on step5
      And I will be on Claim Saved screen in FNOL
      And I click on the created claim link on Claim Saved screen
@@ -215,17 +198,14 @@ Scenario: CBPCL-210 TC8 Exposure created for THIRD PARTY PERSONAL INJURY is assi
      When I select the Add Exposures Popup Menu Hierarchy "Choose by Coverage Type,Third Party Liability,Liability - Vehicle Damage"
      And  I will be on the new exposure screen for FNOL
      And I select the Insured as Claimant on new vehicle exposure screen for FNOL
-     And I select "Insured" from "Claimant Type" on new vehicle exposure screen for FNOL
-     And I select "Ok" on new exposure screen for FNOL
+          And I select "Ok" on new exposure screen for FNOL
       When I select the Add Exposures Popup Menu Hierarchy "Choose by Coverage Type,Third Party Liability,Liability - Personal Injury"
      And I select the Insured as Claimant on new injury exposure screen for FNOL
-     And I select "Insured" from "Claimant Type" on new injury exposure screen for FNOL
-      And I select "Ok" on new exposure screen for FNOL
+          And I select "Ok" on new exposure screen for FNOL
       And I select the Add Exposures Popup Menu Hierarchy "Choose by Coverage Type,Third Party Liability,Liability - Credit Hire"
     And I will be on the new exposure screen for FNOL
     And I select the Insured as Claimant on new Credit Hire exposure screen for FNOL
-    And I select "Insured" from "Claimant Type" on new Credit Hire exposure screen for FNOL
-    And I select "Ok" on new exposure screen for FNOL
+        And I select "Ok" on new exposure screen for FNOL
      And I click finish button on step5
      And I will be on Claim Saved screen in FNOL
      And I click on the created claim link on Claim Saved screen
@@ -240,8 +220,7 @@ Scenario: CBPCL-210 TC8 Exposure created for THIRD PARTY PERSONAL INJURY is assi
       And I select the Add Exposures Popup Menu Hierarchy "Choose by Coverage Type,Third Party Liability,Liability - Credit Hire"
     And I will be on the new exposure screen for FNOL
     And I select the Insured as Claimant on new Credit Hire exposure screen for FNOL
-    And I select "Insured" from "Claimant Type" on new Credit Hire exposure screen for FNOL
-    And I select "Ok" on new exposure screen for FNOL
+        And I select "Ok" on new exposure screen for FNOL
         And I click finish button on step5
      And I will be on Claim Saved screen in FNOL
      And I click on the created claim link on Claim Saved screen
@@ -254,8 +233,7 @@ Scenario: CBPCL-210 TC8 Exposure created for THIRD PARTY PERSONAL INJURY is assi
     And I select the Add Exposures Popup Menu Hierarchy "Choose by Coverage Type,Third Party Liability,Liability - TP Capture"
     And I will be on the new exposure screen for FNOL
     And I select the Insured as Claimant on new TP Capture exposure screen for FNOL
-    And I select "Insured" from "Claimant Type" on new TP Capture exposure screen for FNOL
-    And I select "Ok" on new exposure screen for FNOL
+        And I select "Ok" on new exposure screen for FNOL
         And I click finish button on step5
      And I will be on Claim Saved screen in FNOL
      And I click on the created claim link on Claim Saved screen
@@ -268,9 +246,8 @@ Scenario: CBPCL-210 TC8 Exposure created for THIRD PARTY PERSONAL INJURY is assi
      When I select the Add Exposures Popup Menu Hierarchy "Choose by Coverage Type,Third Party Liability,Liability - Property Damage"
     Then I will be on the new exposure screen for FNOL
     And I select the Insured as Claimant on new property exposure screen for FNOL
-    And I select "Insured" from "Claimant Type" on new property exposure screen for FNOL
-     And I click "New Incident..." on property name picker
-    And I complete the "Property" details on the new property screen
+         And I click "New Incident..." on property name picker
+    And I complete the new property screen for FNOL
      And I select "Ok" on new exposure screen for FNOL
      And I click finish button on step5
      And I will be on Claim Saved screen in FNOL
@@ -285,15 +262,13 @@ Scenario: CBPCL-210 TC8 Exposure created for THIRD PARTY PERSONAL INJURY is assi
     When I select the Add Exposures Popup Menu Hierarchy "Choose by Coverage Type,Third Party Liability,Liability - Property Damage"
     Then I will be on the new exposure screen for FNOL
     And I select the Insured as Claimant on new property exposure screen for FNOL
-    And I select "Insured" from "Claimant Type" on new property exposure screen for FNOL
-     And I click "New Incident..." on property name picker
-    And I complete the "Property" details on the new property screen
+        And I click "New Incident..." on property name picker
+    And I complete the new property screen for FNOL
      And I select "Ok" on new exposure screen for FNOL
      And I select the Add Exposures Popup Menu Hierarchy "Choose by Coverage Type,Third Party Liability,Liability - Credit Hire"
     And I will be on the new exposure screen for FNOL
     And I select the Insured as Claimant on new Credit Hire exposure screen for FNOL
-    And I select "Insured" from "Claimant Type" on new Credit Hire exposure screen for FNOL
-    And I select "Ok" on new exposure screen for FNOL
+       And I select "Ok" on new exposure screen for FNOL
      And I click finish button on step5
      And I will be on Claim Saved screen in FNOL
      And I click on the created claim link on Claim Saved screen
@@ -307,15 +282,13 @@ Scenario: CBPCL-210 TC8 Exposure created for THIRD PARTY PERSONAL INJURY is assi
      When I select the Add Exposures Popup Menu Hierarchy "Choose by Coverage Type,Third Party Liability,Liability - Property Damage"
     Then I will be on the new exposure screen for FNOL
     And I select the Insured as Claimant on new property exposure screen for FNOL
-    And I select "Insured" from "Claimant Type" on new property exposure screen for FNOL
-     And I click "New Incident..." on property name picker
-    And I complete the "Property" details on the new property screen
+         And I click "New Incident..." on property name picker
+    And I complete the new property screen for FNOL
      And I select "Ok" on new exposure screen for FNOL
        When I select the Add Exposures Popup Menu Hierarchy "Choose by Coverage Type,Personal Accident"
     Then I will be on the new exposure screen for FNOL
      And I select the Insured as Claimant on new injury exposure screen for FNOL
-    And I select "Insured" from "Claimant Type" on new injury exposure screen for FNOL
-      And I select "Ok" on new exposure screen for FNOL
+          And I select "Ok" on new exposure screen for FNOL
      And I click finish button on step5
      And I will be on Claim Saved screen in FNOL
      And I click on the created claim link on Claim Saved screen
@@ -329,15 +302,13 @@ Scenario: CBPCL-210 TC8 Exposure created for THIRD PARTY PERSONAL INJURY is assi
     When I select the Add Exposures Popup Menu Hierarchy "Choose by Coverage Type,Third Party Liability,Liability - Property Damage"
     Then I will be on the new exposure screen for FNOL
     And I select the Insured as Claimant on new property exposure screen for FNOL
-    And I select "Insured" from "Claimant Type" on new property exposure screen for FNOL
-     And I click "New Incident..." on property name picker
-    And I complete the "Property" details on the new property screen
+         And I click "New Incident..." on property name picker
+    And I complete the new property screen for FNOL
      And I select "Ok" on new exposure screen for FNOL
       When I select the Add Exposures Popup Menu Hierarchy "Choose by Coverage Type,Medical Expenses"
      Then I will be on the new exposure screen for FNOL
      And I select the Insured as Claimant on new injury exposure screen for FNOL
-       And I select "Insured" from "Claimant Type" on new injury exposure screen for FNOL
-      And I select "Ok" on new exposure screen for FNOL
+            And I select "Ok" on new exposure screen for FNOL
      And I click finish button on step5
      And I will be on Claim Saved screen in FNOL
      And I click on the created claim link on Claim Saved screen
@@ -351,14 +322,12 @@ Scenario: CBPCL-210 TC8 Exposure created for THIRD PARTY PERSONAL INJURY is assi
     When I select the Add Exposures Popup Menu Hierarchy "Choose by Coverage Type,Third Party Liability,Liability - Property Damage"
     Then I will be on the new exposure screen for FNOL
     And I select the Insured as Claimant on new property exposure screen for FNOL
-    And I select "Insured" from "Claimant Type" on new property exposure screen for FNOL
-     And I click "New Incident..." on property name picker
-    And I complete the "Property" details on the new property screen
+         And I click "New Incident..." on property name picker
+    And I complete the new property screen for FNOL
      And I select "Ok" on new exposure screen for FNOL
       When I select the Add Exposures Popup Menu Hierarchy "Choose by Coverage Type,Third Party Liability,Liability - Personal Injury"
      And I select the Insured as Claimant on new injury exposure screen for FNOL
-     And I select "Insured" from "Claimant Type" on new injury exposure screen for FNOL
-      And I select "Ok" on new exposure screen for FNOL
+          And I select "Ok" on new exposure screen for FNOL
      And I click finish button on step5
      And I will be on Claim Saved screen in FNOL
      And I click on the created claim link on Claim Saved screen
@@ -372,19 +341,16 @@ Scenario: CBPCL-210 TC8 Exposure created for THIRD PARTY PERSONAL INJURY is assi
      When I select the Add Exposures Popup Menu Hierarchy "Choose by Coverage Type,Third Party Liability,Liability - Property Damage"
     Then I will be on the new exposure screen for FNOL
     And I select the Insured as Claimant on new property exposure screen for FNOL
-    And I select "Insured" from "Claimant Type" on new property exposure screen for FNOL
-     And I click "New Incident..." on property name picker
-    And I complete the "Property" details on the new property screen
+         And I click "New Incident..." on property name picker
+    And I complete the new property screen for FNOL
      And I select "Ok" on new exposure screen for FNOL
       When I select the Add Exposures Popup Menu Hierarchy "Choose by Coverage Type,Third Party Liability,Liability - Personal Injury"
      And I select the Insured as Claimant on new injury exposure screen for FNOL
-     And I select "Insured" from "Claimant Type" on new injury exposure screen for FNOL
-      And I select "Ok" on new exposure screen for FNOL
+          And I select "Ok" on new exposure screen for FNOL
       And I select the Add Exposures Popup Menu Hierarchy "Choose by Coverage Type,Third Party Liability,Liability - Credit Hire"
     And I will be on the new exposure screen for FNOL
     And I select the Insured as Claimant on new Credit Hire exposure screen for FNOL
-    And I select "Insured" from "Claimant Type" on new Credit Hire exposure screen for FNOL
-    And I select "Ok" on new exposure screen for FNOL
+        And I select "Ok" on new exposure screen for FNOL
      And I click finish button on step5
      And I will be on Claim Saved screen in FNOL
      And I click on the created claim link on Claim Saved screen
@@ -400,8 +366,7 @@ Scenario: CBPCL-210 TC8 Exposure created for THIRD PARTY PERSONAL INJURY is assi
    And I select the Add Exposures Popup Menu Hierarchy "Choose by Coverage Type,Third Party Liability,Liability - Protocol Hire"
     And I will be on the new exposure screen for FNOL
     And I select the Insured as Claimant on new Protocol Hire exposure screen for FNOL
-    And I select "Insured" from "Claimant Type" on new Protocol Hire exposure screen for FNOL
-    And I select "Ok" on new exposure screen for FNOL
+        And I select "Ok" on new exposure screen for FNOL
       And I click finish button on step5
      And I will be on Claim Saved screen in FNOL
      And I click on the created claim link on Claim Saved screen
@@ -414,8 +379,7 @@ Scenario: CBPCL-210 TC8 Exposure created for THIRD PARTY PERSONAL INJURY is assi
    And I select the Add Exposures Popup Menu Hierarchy "Choose by Coverage Type,Theft"
      And  I will be on the new exposure screen for FNOL
      And I select the Insured as Claimant on new vehicle exposure screen for FNOL
-     And I select "Insured" from "Claimant Type" on new vehicle exposure screen for FNOL
-     And I select "Ok" on new exposure screen for FNOL
+          And I select "Ok" on new exposure screen for FNOL
       And I click finish button on step5
      And I will be on Claim Saved screen in FNOL
      And I click on the created claim link on Claim Saved screen
@@ -428,8 +392,7 @@ Scenario: CBPCL-210 TC8 Exposure created for THIRD PARTY PERSONAL INJURY is assi
      When I select the Add Exposures Popup Menu Hierarchy "Choose by Coverage Type,Glass - Vehicle Damage"
      And  I will be on the new exposure screen for FNOL
      And I select the Insured as Claimant on new vehicle exposure screen for FNOL
-     And I select "Insured" from "Claimant Type" on new vehicle exposure screen for FNOL
-     And I select "Ok" on new exposure screen for FNOL
+         And I select "Ok" on new exposure screen for FNOL
       And I click finish button on step5
      And I will be on Claim Saved screen in FNOL
      And I click on the created claim link on Claim Saved screen
@@ -448,94 +411,79 @@ Scenario: CBPCL-210 TC8 Exposure created for THIRD PARTY PERSONAL INJURY is assi
     And I select the Add Exposures Popup Menu Hierarchy "Choose by Coverage Type,Third Party Liability,Liability - Credit Hire"
     And I will be on the new exposure screen for FNOL
     And I select the Insured as Claimant on new Credit Hire exposure screen for FNOL
-    And I select "Insured" from "Claimant Type" on new Credit Hire exposure screen for FNOL
-    And I select "Ok" on new exposure screen for FNOL
+       And I select "Ok" on new exposure screen for FNOL
     
     And I select the Add Exposures Popup Menu Hierarchy "Choose by Coverage Type,Third Party Liability,Liability - Protocol Hire"
     And I will be on the new exposure screen for FNOL
     And I select the Insured as Claimant on new Protocol Hire exposure screen for FNOL
-    And I select "Insured" from "Claimant Type" on new Protocol Hire exposure screen for FNOL
-    And I select "Ok" on new exposure screen for FNOL
+        And I select "Ok" on new exposure screen for FNOL
     
     And I select the Add Exposures Popup Menu Hierarchy "Choose by Coverage Type,Third Party Liability,Liability - TP Capture"
     And I will be on the new exposure screen for FNOL
     And I select the Insured as Claimant on new TP Capture exposure screen for FNOL
-    And I select "Insured" from "Claimant Type" on new TP Capture exposure screen for FNOL
-    And I select "Ok" on new exposure screen for FNOL
+        And I select "Ok" on new exposure screen for FNOL
     
      When I select the Add Exposures Popup Menu Hierarchy "Choose by Coverage Type,Accidental Damage - Vehicle Damage"
      And  I will be on the new exposure screen for FNOL
     # And I select "2015 SKODA OCTAVIA (s99sja / United Kingdom)" from "Coverage" on new vehicle exposure screen for FNOL
      And I select the Insured as Claimant on new vehicle exposure screen for FNOL
-     And I select "Insured" from "Claimant Type" on new vehicle exposure screen for FNOL
-     And I select "Ok" on new exposure screen for FNOL
+          And I select "Ok" on new exposure screen for FNOL
      
      When I select the Add Exposures Popup Menu Hierarchy "Choose by Coverage Type,Glass - Vehicle Damage"
      And  I will be on the new exposure screen for FNOL
      And I select the Insured as Claimant on new vehicle exposure screen for FNOL
-     And I select "Insured" from "Claimant Type" on new vehicle exposure screen for FNOL
-     And I select "Ok" on new exposure screen for FNOL
+          And I select "Ok" on new exposure screen for FNOL
      
      And I select the Add Exposures Popup Menu Hierarchy "Choose by Coverage Type,Fire"
      And  I will be on the new exposure screen for FNOL
      And I select the Insured as Claimant on new vehicle exposure screen for FNOL
-     And I select "Insured" from "Claimant Type" on new vehicle exposure screen for FNOL
-     And I select "Ok" on new exposure screen for FNOL
+          And I select "Ok" on new exposure screen for FNOL
      
      And I select the Add Exposures Popup Menu Hierarchy "Choose by Coverage Type,Personal Belongings"
      And  I will be on the new exposure screen for FNOL
      And I select the Insured as Claimant on new vehicle exposure screen for FNOL
-     And I select "Insured" from "Claimant Type" on new vehicle exposure screen for FNOL
-     And I select "Ok" on new exposure screen for FNOL
+          And I select "Ok" on new exposure screen for FNOL
      
      And I select the Add Exposures Popup Menu Hierarchy "Choose by Coverage Type,Theft"
      And  I will be on the new exposure screen for FNOL
      And I select the Insured as Claimant on new vehicle exposure screen for FNOL
-     And I select "Insured" from "Claimant Type" on new vehicle exposure screen for FNOL
-     And I select "Ok" on new exposure screen for FNOL
+          And I select "Ok" on new exposure screen for FNOL
      
      And I select the Add Exposures Popup Menu Hierarchy "Choose by Coverage Type,Personal Belongings and Handbag Cover"
      And  I will be on the new exposure screen for FNOL
      And I select the Insured as Claimant on new vehicle exposure screen for FNOL
-     And I select "Insured" from "Claimant Type" on new vehicle exposure screen for FNOL
-     And I select "Ok" on new exposure screen for FNOL
+          And I select "Ok" on new exposure screen for FNOL
      
      When I select the Add Exposures Popup Menu Hierarchy "Choose by Coverage Type,Third Party Liability,Liability - Vehicle Damage"
      And  I will be on the new exposure screen for FNOL
      And I select the Insured as Claimant on new vehicle exposure screen for FNOL
-     And I select "Insured" from "Claimant Type" on new vehicle exposure screen for FNOL
-     And I select "Ok" on new exposure screen for FNOL
+          And I select "Ok" on new exposure screen for FNOL
      
      And I select the Add Exposures Popup Menu Hierarchy "Choose by Coverage Type,Misfuelling - Vehicle Damage"
      And  I will be on the new exposure screen for FNOL
      And I select the Insured as Claimant on new vehicle exposure screen for FNOL
-     And I select "Insured" from "Claimant Type" on new vehicle exposure screen for FNOL
-      And I select "Ok" on new exposure screen for FNOL
+           And I select "Ok" on new exposure screen for FNOL
      
      When I select the Add Exposures Popup Menu Hierarchy "Choose by Coverage Type,Third Party Liability,Liability - Property Damage"
     Then I will be on the new exposure screen for FNOL
     And I select the Insured as Claimant on new property exposure screen for FNOL
-    And I select "Insured" from "Claimant Type" on new property exposure screen for FNOL
-     And I click "New Incident..." on property name picker
-    And I complete the "Property" details on the new property screen
+        And I click "New Incident..." on property name picker
+    And I complete the new property screen for FNOL
       And I select "Ok" on new exposure screen for FNOL
       
       When I select the Add Exposures Popup Menu Hierarchy "Choose by Coverage Type,Medical Expenses"
      Then I will be on the new exposure screen for FNOL
      And I select the Insured as Claimant on new injury exposure screen for FNOL
-       And I select "Insured" from "Claimant Type" on new injury exposure screen for FNOL
-      And I select "Ok" on new exposure screen for FNOL
+             And I select "Ok" on new exposure screen for FNOL
       
        When I select the Add Exposures Popup Menu Hierarchy "Choose by Coverage Type,Personal Accident"
     Then I will be on the new exposure screen for FNOL
      And I select the Insured as Claimant on new injury exposure screen for FNOL
-    And I select "Insured" from "Claimant Type" on new injury exposure screen for FNOL
-      And I select "Ok" on new exposure screen for FNOL
+          And I select "Ok" on new exposure screen for FNOL
       
      When I select the Add Exposures Popup Menu Hierarchy "Choose by Coverage Type,Third Party Liability,Liability - Personal Injury"
      And I select the Insured as Claimant on new injury exposure screen for FNOL
-     And I select "Insured" from "Claimant Type" on new injury exposure screen for FNOL
-      And I select "Ok" on new exposure screen for FNOL
+           And I select "Ok" on new exposure screen for FNOL
       
       And I click finish button on step5
       And I will be on Claim Saved screen in FNOL

@@ -2,6 +2,7 @@
 Feature: Validation at step3 of FNOL
 
   Background: 
+    Given  I use test data set "regression_set1"
     Given As a "ClaimsHandler" I am at step2 for FNOL
 
   @Ignore @passed
@@ -482,7 +483,7 @@ Feature: Validation at step3 of FNOL
     And I select the insureds vehicle at step3
     And I will be on vehicle screen for FNOL
     And I select "AddDriver" on vehicle screen
-    And I select "Paul Milligan" from "Driver Name" on driver screen
+     And I select the insured as driver of PH vehicle
     And I click ok button on driver screen
     And I click ok button on vehicle screen
     When I select the loss cause types and try to proceed past step3 I will see the validation error message "Add third party vehicle"
@@ -572,7 +573,7 @@ Feature: Validation at step3 of FNOL
     And I select the insureds vehicle at step3
     And I will be on vehicle screen for FNOL
     And I select "AddDriver" on vehicle screen
-    And I select "Paul Milligan" from "Driver Name" on driver screen
+     And I select the insured as driver of PH vehicle
     And I click ok button on driver screen
     And I click ok button on vehicle screen
     When I select the loss cause types and try to proceed past step3 I will see the validation error message "Add third party vehicle"
@@ -629,7 +630,7 @@ Feature: Validation at step3 of FNOL
     And I select the insureds vehicle at step3
     And I will be on vehicle screen for FNOL
     And I select "AddDriver" on vehicle screen
-    And I select "Paul Milligan" from "Driver Name" on driver screen
+     And I select the insured as driver of PH vehicle
     And I click ok button on driver screen
     And I click ok button on vehicle screen
     And I click add Vehicle on step3
@@ -720,13 +721,13 @@ Feature: Validation at step3 of FNOL
       | Accident      | Overtaking                          | Third Party from behind hit off side of vehicle                                               |
       | Accident      | Overtaking                          | Third Party hit oncoming Insured                                                              |
 
-  @Ignore @passed
+
   Scenario: CBPCL-200  TC13-PART2 Fail step3 Validation when IncidentType/Cause/Subcause requires a TP DRIVER incident and none is present
     And I complete step2 for FNOL
     And I select the insureds vehicle at step3
     And I will be on vehicle screen for FNOL
     And I select "AddDriver" on vehicle screen
-    And I select "Paul Milligan" from "Driver Name" on driver screen
+     And I select the insured as driver of PH vehicle
     And I click ok button on driver screen
     And I click ok button on vehicle screen
     And I click add Vehicle on step3
@@ -777,13 +778,31 @@ Feature: Validation at step3 of FNOL
       | Accident      | Collision In Car Park                                | Insured reversed into third party vehicle                                                                        |
       | Accident      | Collision In Car Park                                | Third party reversed into insured vehicle in a car park                                                          |
 
+@Ignore @passed
+ Scenario: CBPCL-200  TC13-PART3 Fail step3 Validation when IncidentType/Cause/Subcause requires a TP DRIVER incident and none is present
+    And I complete step2 for FNOL
+    And I select the insureds vehicle at step3
+    And I will be on vehicle screen for FNOL
+    And I select "AddDriver" on vehicle screen
+     And I select the insured as driver of PH vehicle
+    And I click ok button on driver screen
+    And I click ok button on vehicle screen
+    And I click add Vehicle on step3
+    And I input "ND57HFL" into the "VRN" box on vehicle screen
+    And I click ok button on vehicle screen
+    When I select the loss cause types and try to proceed past step3 I will see the validation error message "Add third party driver"
+      | incident type | cause                                                | sub cause                                                                                                        |
+| Accident | Narrow Road Collision | Third party rounding bend |
+| Accident | Narrow Road Collision | Third party passing parked cars |
+| Accident | Car Door Open | Insured opened car door into path of passing third party |
+
  @Ignore @passed
   Scenario: CBPCL-200 TC14 Fail step3 Validation when IncidentType/Cause/Subcause requires a TP PROPERTY incident and none is present
     And I complete step2 for FNOL
     And I select the insureds vehicle at step3
     And I will be on vehicle screen for FNOL
     And I select "AddDriver" on vehicle screen
-    And I select "Paul Milligan" from "Driver Name" on driver screen
+     And I select the insured as driver of PH vehicle
     And I click ok button on driver screen
     And I click ok button on vehicle screen
     When I select the loss cause types and try to proceed past step3 I will see the validation error message "Add property incident"
@@ -805,7 +824,7 @@ Feature: Validation at step3 of FNOL
     And I select the insureds vehicle at step3
     And I will be on vehicle screen for FNOL
     And I select "AddDriver" on vehicle screen
-    And I select "Paul Milligan" from "Driver Name" on driver screen
+     And I select the insured as driver of PH vehicle
     And I click ok button on driver screen
     And I click ok button on vehicle screen
     When I select the loss cause types and try to proceed past step3 I will see the validation error message "Add pedestrian"

@@ -36,8 +36,7 @@ public class ClaimCenterPOSTFNOLEditInjuryExposurePOM extends BaseTest {
 	@FindBy(id = "ExposureDetail:ExposureDetailScreen:ExposureDetailDV:BodilyInjuryDamageDV:Claimant_Picker:ClaimNewContactPickerMenuItemSet:NewContactPickerMenuItemSet_NewPerson-itemEl")
 	private WebElement claimantPickerNewPerson;
 
-	@FindBy(id = "ExposureDetail:ExposureDetailScreen:ExposureDetailDV:BodilyInjuryDamageDV:Claimant_Type-inputEl")
-	private WebElement claimantTypeDropdown;
+	
 
 	@FindBy(id = "ExposureDetail:ExposureDetailScreen:ExposureDetailDV:BodilyInjuryDamageDV:Claimant_ContactProhibited_true-inputEl")
 	private WebElement claimantContactProhibYes;
@@ -112,10 +111,7 @@ public class ClaimCenterPOSTFNOLEditInjuryExposurePOM extends BaseTest {
 				this.getInjuryPickerNewIncident());
 	}
 
-	public void selectClaimantType(String option) {
-		logger.info(format("%s - going to select Claimant type option:" + option, getName()));
-		GuideWireAccessors.selectOptionFromGWDropDown(driver, option, this.getClaimantTypeDropdown(), 1);
-	}
+	
 
 	private WebElement getCancelButton() {
 		return cancelButton;
@@ -141,9 +137,7 @@ public class ClaimCenterPOSTFNOLEditInjuryExposurePOM extends BaseTest {
 		return claimantPickerNewPerson;
 	}
 
-	private WebElement getClaimantTypeDropdown() {
-		return claimantTypeDropdown;
-	}
+	
 
 	private WebElement getClaimantContactProhibYes() {
 		return claimantContactProhibYes;

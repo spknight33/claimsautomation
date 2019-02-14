@@ -44,6 +44,20 @@ public class CCFNOLStep4Steps extends BaseTest{
 			fnolStep4POM.selectPhClaiming(false);
 		}
 		
+		// complete services section
+		completeFNOLStep4Services();
+		
+		// complete tpcapture section
+		completeFNOLStep4TPCapture();
+		
+			
+		fnolStep4POM.next();
+	}
+	
+	
+	public void completeFNOLStep4Services() throws Throwable
+	{
+		String fieldValue=null;
 		fieldValue = ExcelUtil.getTestDataValue("Fnol_Step4_RepairServiceRequired");
 		if (fieldValue !=null && fieldValue.equalsIgnoreCase("TRUE"))
 		{
@@ -105,8 +119,170 @@ public class CCFNOLStep4Steps extends BaseTest{
 			createService.completeFNOLOtherServiceForTestScenario();
 	
 		}
-			
-		fnolStep4POM.next();
+	}
+	
+	public void completeFNOLStep4TPCapture() 
+	{
+		String fieldValue=null;
+		//The TP capture section will depend on what is created as regards third party in the data, so will be variable
+				// This only 
+				fieldValue = ExcelUtil.getTestDataValue("Fnol_Step3_FaultOverride");
+				if (fieldValue !=null && !fieldValue.equalsIgnoreCase("Non fault"))
+				{
+					// for Fault and split liability, there may be tp capture details to enter at step4
+					
+					// if there is a Pedestrian injury then fill in the tp capture opp
+					if(ExcelUtil.getTestDataValue("Fnol_Step3_PedestrianRequired").equalsIgnoreCase("TRUE"))
+					{
+						if(ExcelUtil.getTestDataValue("Fnol_PedestrianInjured").equalsIgnoreCase("TRUE"))
+						{
+							String claimant = ExcelUtil.getTestDataValue("Fnol_PedestrianFullName");
+							String role = "Pedestrian";
+							String incident = "Injury";
+							
+							fnolStep4POM.selectCaptureOpportunity(claimant, role, incident, ExcelUtil.getTestDataValue("Fnol_Step4_TPC_PedestrianOpp"));
+							if (ExcelUtil.getTestDataValue("Fnol_Step4_TPC_PedestrianOpp").equalsIgnoreCase("N"))
+							{
+								fnolStep4POM.selectCaptureReason(claimant, role, incident, ExcelUtil.getTestDataValue("Fnol_Step4_TPC_PedestrianReason"));
+							}
+							else
+							{
+								fnolStep4POM.selectCaptureLeadType(claimant, role, incident, ExcelUtil.getTestDataValue("Fnol_Step4_TPC_PedestrianLead"));
+							}
+							
+							
+						}
+					}
+					
+					// if there is a Property damage then fill in the tp capture opp
+						if(ExcelUtil.getTestDataValue("Fnol_Step3_PropertyRequired").equalsIgnoreCase("TRUE"))
+								{
+								String claimant=null;
+									if(ExcelUtil.getTestDataValue("Fnol_PropertyNewOwner").equalsIgnoreCase("TRUE"))
+									{
+										 claimant = ExcelUtil.getTestDataValue("Fnol_PropertyNewOwnerFullName");
+									}
+									else
+									{
+										 claimant = ExcelUtil.getTestDataValue("Fnol_PropertyOwner");
+									}
+										
+										String role = "Owner";
+										String incident = "FixedProperty";
+										
+										fnolStep4POM.selectCaptureOpportunity(claimant, role, incident, ExcelUtil.getTestDataValue("Fnol_Step4_TPC_PropertyOpp"));
+										if (ExcelUtil.getTestDataValue("Fnol_Step4_TPC_PropertyOpp").equalsIgnoreCase("N"))
+										{
+											fnolStep4POM.selectCaptureReason(claimant, role, incident, ExcelUtil.getTestDataValue("Fnol_Step4_TPC_PropertyReason"));
+										}
+										else
+										{
+											fnolStep4POM.selectCaptureLeadType(claimant, role, incident, ExcelUtil.getTestDataValue("Fnol_Step4_TPC_PropertyLead"));
+										}
+										
+										
+									
+								}
+						
+						// if there is a TP vehicle then fill in tp capture opp
+						if(ExcelUtil.getTestDataValue("Fnol_Step3_TPVehicleRequired").equalsIgnoreCase("TRUE"))
+						{
+							
+								String claimant = ExcelUtil.getTestDataValue("Fnol_TPDriverFullName");
+								String role = "Driver";
+								String incident = "Vehicle";
+								
+								fnolStep4POM.selectCaptureOpportunity(claimant, role, incident, ExcelUtil.getTestDataValue("Fnol_Step4_TPC_TPDriverVehicleOpp"));
+								if (ExcelUtil.getTestDataValue("Fnol_Step4_TPC_TPDriverVehicleOpp").equalsIgnoreCase("N"))
+								{
+									fnolStep4POM.selectCaptureReason(claimant, role, incident, ExcelUtil.getTestDataValue("Fnol_Step4_TPC_TPDriverVehicleReason"));
+								}
+								else
+								{
+									fnolStep4POM.selectCaptureLeadType(claimant, role, incident, ExcelUtil.getTestDataValue("Fnol_Step4_TPC_TPDriverVehicleLead"));
+								}
+								
+								
+							
+						}
+						
+						// if there is a TP Driver injury then fill in the tp capture opp
+						if(ExcelUtil.getTestDataValue("Fnol_TPDriverRequired").equalsIgnoreCase("TRUE"))
+								{
+							if(ExcelUtil.getTestDataValue("Fnol_TPDriverInjured").equalsIgnoreCase("TRUE"))
+							{
+										String claimant = ExcelUtil.getTestDataValue("Fnol_TPDriverFullName");
+										String role = "Driver";
+										String incident = "Injury";
+										
+										fnolStep4POM.selectCaptureOpportunity(claimant, role, incident, ExcelUtil.getTestDataValue("Fnol_Step4_TPC_TPDriverInjuryOpp"));
+										if (ExcelUtil.getTestDataValue("Fnol_Step4_TPC_TPDriverInjuryOpp").equalsIgnoreCase("N"))
+										{
+											fnolStep4POM.selectCaptureReason(claimant, role, incident, ExcelUtil.getTestDataValue("Fnol_Step4_TPC_TPDriverInjuryReason"));
+										}
+										else
+										{
+											fnolStep4POM.selectCaptureLeadType(claimant, role, incident, ExcelUtil.getTestDataValue("Fnol_Step4_TPC_TPDriverInjuryLead"));
+										}
+										
+							}	
+									
+								}
+						
+						// if there is a TP passenger injury then fill in the tp capture opp
+						if(ExcelUtil.getTestDataValue("Fnol_TPPassengerRequired").equalsIgnoreCase("TRUE"))
+								{
+							if(ExcelUtil.getTestDataValue("Fnol_TPPassengerInjured").equalsIgnoreCase("TRUE"))
+							{
+										String claimant = ExcelUtil.getTestDataValue("Fnol_TPPassengerFullName");
+										String role = "Passenger";
+										String incident = "Injury";
+										
+										fnolStep4POM.selectCaptureOpportunity(claimant, role, incident, ExcelUtil.getTestDataValue("Fnol_Step4_TPC_TPPassengerOpp"));
+										if (ExcelUtil.getTestDataValue("Fnol_Step4_TPC_TPPassengerOpp").equalsIgnoreCase("N"))
+										{
+											fnolStep4POM.selectCaptureReason(claimant, role, incident, ExcelUtil.getTestDataValue("Fnol_Step4_TPC_TPPassengerReason"));
+										}
+										else
+										{
+											fnolStep4POM.selectCaptureLeadType(claimant, role, incident, ExcelUtil.getTestDataValue("Fnol_Step4_TPC_TPPassengerLead"));
+										}
+										
+							}	
+									
+								}
+					
+						// if there is a PH passenger injury then fill in the tp capture opp
+						if(ExcelUtil.getTestDataValue("Fnol_PHPassengerRequired").equalsIgnoreCase("TRUE"))
+								{
+							if(ExcelUtil.getTestDataValue("Fnol_PHPassengerInjured").equalsIgnoreCase("TRUE"))
+							{
+										String claimant = ExcelUtil.getTestDataValue("Fnol_PHPassengerFullName");
+										String role = "Passenger";
+										String incident = "Injury";
+										
+										fnolStep4POM.selectCaptureOpportunity(claimant, role, incident, ExcelUtil.getTestDataValue("Fnol_Step4_TPC_PHPassengerOpp"));
+										if (ExcelUtil.getTestDataValue("Fnol_Step4_TPC_PHPassengerOpp").equalsIgnoreCase("N"))
+										{
+											fnolStep4POM.selectCaptureReason(claimant, role, incident, ExcelUtil.getTestDataValue("Fnol_Step4_TPC_PHPassengerReason"));
+										}
+										else
+										{
+											fnolStep4POM.selectCaptureLeadType(claimant, role, incident, ExcelUtil.getTestDataValue("Fnol_Step4_TPC_PHPassengerLead"));
+										}
+										
+							}	
+									
+								}
+					
+					
+				}
+	}
+	
+	@Given("^I complete the TP Capture details on step4 FNOL$")
+	public void cokmpleteTPcapture() {
+		
+		this.completeFNOLStep4TPCapture();
 	}
 	
 	@Given("^I click finish button on step4 FNOL$")

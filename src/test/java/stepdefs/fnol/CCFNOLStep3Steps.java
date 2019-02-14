@@ -83,9 +83,19 @@ public class CCFNOLStep3Steps extends BaseTest {
 		fnolStep3POM.selectWeather("Fog");
 		// fnolStep3POM.selectRoadConditions("Ice");
 		// fnolStep3POM.selectCctv("Yes");
+		
+		
+		// The user can change the derived fault type - cater for this
+		String fieldValue = ExcelUtil.getTestDataValue("Fnol_Step3_FaultOverride");
+		if (fieldValue !=null)
+		{
+			fnolStep3POM.selectFaultType(fieldValue);	
+		}
+		
 
 		// select the location
 		fnolStep3POM.selectAddressLocation(ExcelUtil.getTestDataValue("Fnol_Insured_Address"));
+		
 
 		fnolStep3POM.next();
 

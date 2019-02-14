@@ -1,6 +1,9 @@
 package com.big.automation.selenium_webdriver.claimcenter.pages.fnol;
 
+import static com.big.automation.selenium_webdriver.common.utilities.ThreadUtils.sleep;
 import static java.lang.String.format;
+
+import java.util.List;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -214,6 +217,86 @@ public class ClaimCenterFNOLStep4POM extends BaseTest {
 	public void clickAddOtherService() {
 		logger.info(format("%s - going to click add other service", getName()));
 		GuideWireAccessors.clickGWButton(driver, this.getOtherServiceAddButton());
+	}
+	
+	
+	//TP capture section
+	//-------------------------------------
+	public void selectCaptureOpportunity(String claimant,String role,String incident,String captureYN)
+	{
+		logger.info(format("%s - select capture opportunity for claimant,role and incident:"+claimant+","+role+","+incident+","+captureYN, getName()));
+		int row = this.getRowForCaptureOpportunity(claimant, role, incident);
+		String locator = "//*[@id=\"FNOLWizard:AutoWorkersCompWizardStepSet:FNOLWizard_ServicesScreen:TPCaptureOpportunitySummaryLVInputSet:TPCaptureOpportunitySummaryLV-body\"]//table["+row+"]//tr//td[5]";
+		
+		WebElement elementDropdown = driver.findElement(By.xpath(locator));
+		
+		GuideWireAccessors.selectOptionFromGWDropDown(driver, captureYN, elementDropdown, 1);
+		
+	}
+	
+	public void selectCaptureLeadType(String claimant,String role,String incident,String leadType)
+	{
+		logger.info(format("%s - select capture leadtype for claimant,role and incident:"+claimant+","+role+","+incident+","+leadType, getName()));
+		int row = this.getRowForCaptureOpportunity(claimant, role, incident);
+		String locator = "//*[@id=\"FNOLWizard:AutoWorkersCompWizardStepSet:FNOLWizard_ServicesScreen:TPCaptureOpportunitySummaryLVInputSet:TPCaptureOpportunitySummaryLV-body\"]//table["+row+"]//tr//td[6]";
+		
+		WebElement elementDropdown = driver.findElement(By.xpath(locator));
+		
+		GuideWireAccessors.selectOptionFromGWDropDown(driver, leadType, elementDropdown, 1);
+		
+	}
+	
+	public void selectCaptureReason(String claimant,String role,String incident,String reason)
+	{
+		logger.info(format("%s - select capture reason for claimant,role and incident:"+claimant+","+role+","+incident+","+reason, getName()));
+		int row = this.getRowForCaptureOpportunity(claimant, role, incident);
+		String locator = "//*[@id=\"FNOLWizard:AutoWorkersCompWizardStepSet:FNOLWizard_ServicesScreen:TPCaptureOpportunitySummaryLVInputSet:TPCaptureOpportunitySummaryLV-body\"]//table["+row+"]//tr//td[7]";
+		
+		WebElement elementDropdown = driver.findElement(By.xpath(locator));
+		
+		GuideWireAccessors.selectOptionFromGWDropDown(driver, reason, elementDropdown, 1);
+		
+	}
+	
+	
+	
+	private int getRowForCaptureOpportunity(String claimant,String role,String incident) 
+	{
+		logger.info(format("%s - get row number for claimant,role and incident:"+claimant+","+role+","+incident, getName()));
+	    sleep(1);
+		String locator = "//*[@id=\"FNOLWizard:AutoWorkersCompWizardStepSet:FNOLWizard_ServicesScreen:TPCaptureOpportunitySummaryLVInputSet:TPCaptureOpportunitySummaryLV-body\"]//table";
+		List <WebElement> rows = driver.findElements(By.xpath(locator));
+		
+		WebElement oppClaimant;
+		WebElement oppRole;
+		WebElement oppIncident;
+			
+		// loop till find first with mathcing type
+		int rowTotal = rows.size();
+		String rowLocator = null;
+		for(int i=1; i<=rowTotal; i++)
+		{
+			
+			rowLocator = locator + "[" + i + "]";
+				//find the type
+			oppClaimant = driver.findElement(By.xpath(rowLocator+"//tr//td[1]"));
+			oppRole = driver.findElement(By.xpath(rowLocator+"//tr//td[2]"));
+			oppIncident = driver.findElement(By.xpath(rowLocator+"//tr//td[3]"));
+		
+		
+	
+			if (oppClaimant.getText().equalsIgnoreCase(claimant) && oppRole.getText().equalsIgnoreCase(role)&& oppIncident.getText().equalsIgnoreCase(incident))
+			{
+				logger.info(format("%s - Found match in TP opportunity table: "+i, getName()));
+				return i;
+				
+			}
+		}
+		
+		logger.info(format("%s - NO match in TP opportuniy tables table", getName()));
+		return 0;
+	
+		
 	}
 
 	private WebElement getCancelButton() {

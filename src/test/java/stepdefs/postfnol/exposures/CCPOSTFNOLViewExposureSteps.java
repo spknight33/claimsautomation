@@ -73,54 +73,54 @@ public class CCPOSTFNOLViewExposureSteps extends BaseTest {
 
 	private void checkFieldValueForVehicleExposure(String fieldName, String fieldValue) {
 		switch (fieldName) {
-		case ("Claimant Type"):
-			Assert.assertEquals(fieldValue, postFnolViewVehicleExposurePOM.getClaimantType());
-			break;
+		//case ("Claimant Type"):
+		//	Assert.assertEquals(fieldValue, postFnolViewVehicleExposurePOM.getClaimantType());
+		//	break;
 		// TODO claimant
 		}
 	}
 
 	private void checkFieldValueForInjuryExposure(String fieldName, String fieldValue) {
 		switch (fieldName) {
-		case ("Claimant Type"):
-			Assert.assertEquals(fieldValue, postFnolViewInjuryExposurePOM.getClaimantType());
-			break;
+		//case ("Claimant Type"):
+		//	Assert.assertEquals(fieldValue, postFnolViewInjuryExposurePOM.getClaimantType());
+		//	break;
 		// TODO claimant
 		}
 	}
 
 	private void checkFieldValueForPropertyExposure(String fieldName, String fieldValue) {
 		switch (fieldName) {
-		case ("Claimant Type"):
-			Assert.assertEquals(fieldValue, postFnolViewPropertyExposurePOM.getClaimantType());
-			break;
+		//case ("Claimant Type"):
+		//	Assert.assertEquals(fieldValue, postFnolViewPropertyExposurePOM.getClaimantType());
+		//	break;
 		// TODO claimant
 		}
 	}
 
 	private void checkFieldValueForCreditHireExposure(String fieldName, String fieldValue) {
 		switch (fieldName) {
-		case ("Claimant Type"):
-			Assert.assertEquals(fieldValue, postFnolViewCreditHireExposurePOM.getClaimantType());
-			break;
+	//	case ("Claimant Type"):
+	//		Assert.assertEquals(fieldValue, postFnolViewCreditHireExposurePOM.getClaimantType());
+	//		break;
 		// TODO claimant
 		}
 	}
 
 	private void checkFieldValueForProtocolHireExposure(String fieldName, String fieldValue) {
 		switch (fieldName) {
-		case ("Claimant Type"):
-			Assert.assertEquals(fieldValue, postFnolViewProtocolHireExposurePOM.getClaimantType());
-			break;
+		//case ("Claimant Type"):
+		//	Assert.assertEquals(fieldValue, postFnolViewProtocolHireExposurePOM.getClaimantType());
+		//	break;
 		// TODO claimant
 		}
 	}
 	
 	private void checkFieldValueForTPCaptureExposure(String fieldName, String fieldValue) {
 		switch (fieldName) {
-		case ("Claimant Type"):
-			Assert.assertEquals(fieldValue, postFnolViewTPCaptureExposurePOM.getClaimantType());
-			break;
+		//case ("Claimant Type"):
+		//	Assert.assertEquals(fieldValue, postFnolViewTPCaptureExposurePOM.getClaimantType());
+		//	break;
 		// TODO claimant
 		}
 	}

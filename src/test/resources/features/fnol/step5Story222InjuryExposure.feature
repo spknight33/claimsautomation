@@ -59,8 +59,7 @@ Feature: CBPCL-422 As a ClaimCenter user with the role of Adjuster or Manager, I
      Given As a "ClaimsHandler" I am at step5 for FNOL
      When I select the Add Exposures Popup Menu Hierarchy "2015 SKODA OCTAVIA (s99sja / United Kingdom),Medical Expenses"
     Then I will be on the new exposure screen for FNOL
-    And I select "Insured" from "Claimant Type" on new injury exposure screen for FNOL
-    And I click "New Person" on claimant picker on new injury exposure screen
+       And I click "New Person" on claimant picker on new injury exposure screen
     And I complete the "Claimant" details on the new person contact screen
     And I click "New Incident..." on injury picker
     And I complete all fields on FNOL new injury incident

@@ -35,8 +35,7 @@ Feature: CBPCL-224 As a ClaimCenter user with the role of Adjuster or Manager, I
     Given As a "ClaimsHandler" I am at step5 for FNOL
     When I select the Add Exposures Popup Menu Hierarchy "BMW 3 SERIES (ND58PFL / United Kingdom),Third Party Liability,Liability - Property Damage"
     Then I will be on the new exposure screen for FNOL
-    And I select "Insured" from "Claimant Type" on new property exposure screen for FNOL
-    And I click "New Person" on claimant picker on new property exposure screen
+        And I click "New Person" on claimant picker on new property exposure screen
     And I complete the "Claimant" details on the new person contact screen
     
     @Ignore
@@ -44,11 +43,10 @@ Feature: CBPCL-224 As a ClaimCenter user with the role of Adjuster or Manager, I
     Given As a "ClaimsHandler" I am at step5 for FNOL
     When I select the Add Exposures Popup Menu Hierarchy "BMW 3 SERIES (ND58PFL / United Kingdom),Third Party Liability,Liability - Property Damage"
     Then I will be on the new exposure screen for FNOL
-    And I select "Insured" from "Claimant Type" on new property exposure screen for FNOL
-    And I click "New Person" on claimant picker on new property exposure screen
+       And I click "New Person" on claimant picker on new property exposure screen
     And I complete the "Claimant" details on the new person contact screen
     And I click "New Incident..." on property name picker
-    And I complete the "Property" details on the new property screen
+    And I complete the new property screen for FNOL
     And I select "Ok" on new exposure screen for FNOL
     And I click finish button on step5
     

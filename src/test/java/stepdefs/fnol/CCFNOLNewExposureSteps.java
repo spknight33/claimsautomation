@@ -46,9 +46,7 @@ public class CCFNOLNewExposureSteps extends BaseTest {
 	public void i_select_from_field_on_exposure_screen(String fieldValue, String fieldName) throws Throwable {
 		switch (fieldName) {
 
-		case "Claimant Type":
-			fnolNewExposurePOM.selectClaimantType(fieldValue);
-			break;
+		
 
 		// TODO
 		default:
@@ -60,9 +58,6 @@ public class CCFNOLNewExposureSteps extends BaseTest {
 	public void i_select_from_field_on_propertyexposure_screen(String fieldValue, String fieldName) throws Throwable {
 		switch (fieldName) {
 
-		case "Claimant Type":
-			fnolNewPropertyExposurePOM.selectClaimantType(fieldValue);
-			break;
 
 		// TODO
 		default:
@@ -74,9 +69,6 @@ public class CCFNOLNewExposureSteps extends BaseTest {
 	public void i_select_from_field_on_injuryexposure_screen(String fieldValue, String fieldName) throws Throwable {
 		switch (fieldName) {
 
-		case "Claimant Type":
-			fnolNewInjuryExposurePOM.selectClaimantType(fieldValue);
-			break;
 
 		// TODO
 		default:
@@ -88,9 +80,7 @@ public class CCFNOLNewExposureSteps extends BaseTest {
 	public void i_select_from_field_on_vehicleexposure_screen(String fieldValue, String fieldName) throws Throwable {
 		switch (fieldName) {
 
-		case "Claimant Type":
-			fnolNewVehicleExposurePOM.selectClaimantType(fieldValue);
-			break;
+	
 
 		case "Coverage":
 			fnolNewVehicleExposurePOM.selectCoverage(fieldValue);
@@ -106,9 +96,10 @@ public class CCFNOLNewExposureSteps extends BaseTest {
 	public void i_select_from_field_on_credithireexposure_screen(String fieldValue, String fieldName) throws Throwable {
 		switch (fieldName) {
 
-		case "Claimant Type":
-			fnolNewCreditHireExposurePOM.selectClaimantType(fieldValue);
-			break;
+	//	case "Claimant Type":
+	//		fnolNewCreditHireExposurePOM.selectClaimantType(fieldValue);
+	//		break;
+		// has been removed from page
 
 		case "Coverage":
 			fnolNewCreditHireExposurePOM.selectCoverage(fieldValue);
@@ -123,10 +114,7 @@ public class CCFNOLNewExposureSteps extends BaseTest {
 	public void i_select_from_field_on_protocolhireexposure_screen(String fieldValue, String fieldName) throws Throwable {
 		switch (fieldName) {
 
-		case "Claimant Type":
-			fnolNewProtocolHireExposurePOM.selectClaimantType(fieldValue);
-			break;
-
+		
 		case "Coverage":
 			fnolNewProtocolHireExposurePOM.selectCoverage(fieldValue);
 			break;
@@ -140,9 +128,7 @@ public class CCFNOLNewExposureSteps extends BaseTest {
 	public void i_select_from_field_on_tpcatptuereexposure_screen(String fieldValue, String fieldName) throws Throwable {
 		switch (fieldName) {
 
-		case "Claimant Type":
-			fnolNewTPCaptureExposurePOM.selectClaimantType(fieldValue);
-			break;
+	
 
 		case "Coverage":
 			fnolNewTPCaptureExposurePOM.selectCoverage(fieldValue);

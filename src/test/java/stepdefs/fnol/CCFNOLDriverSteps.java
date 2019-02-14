@@ -215,6 +215,16 @@ public class CCFNOLDriverSteps extends BaseTest {
 		fnolDriverDetailsPOM.selectAddInjury();
 	}
 	
+	
+	@Given("^I select the insured as driver of PH vehicle$")
+	public void selectinsureddriver() {
+		String fieldValue = ExcelUtil.getTestDataValue("Fnol_PHDriverFullName");
+		fnolDriverDetailsPOM.selectDriverName(fieldValue);
+	}
+	
+		
+		
+	
 	@Given("^I complete fields on FNOL new TP driver incident$")
 	public void i_complete_all_fields() throws Throwable {
 		

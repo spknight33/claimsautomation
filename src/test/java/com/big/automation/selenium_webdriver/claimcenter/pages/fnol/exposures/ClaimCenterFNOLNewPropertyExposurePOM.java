@@ -35,9 +35,7 @@ public class ClaimCenterFNOLNewPropertyExposurePOM extends BaseTest{
 	@FindBy(id = "NewClaimWizard_NewExposurePopup:NewClaimWizard_ExposurePageScreen:NewClaimExposureDV:NewClaimPropertyDamageDV:Claimant_Picker:ClaimNewContactPickerMenuItemSet:NewContactPickerMenuItemSet_NewPerson-itemEl")
 	private WebElement claimantPickerNewPerson;
 	
-	@FindBy(id = "NewClaimWizard_NewExposurePopup:NewClaimWizard_ExposurePageScreen:NewClaimExposureDV:NewClaimPropertyDamageDV:Claimant_Type-inputEl")
-	private WebElement claimantTypeDropdown;
-	
+
 	
 	@FindBy(id = "NewClaimWizard_NewExposurePopup:NewClaimWizard_ExposurePageScreen:NewClaimExposureDV:NewClaimPropertyDamageDV:Claimant_ContactProhibited_true-inputEl")
 	private WebElement claimantContactProhibYes;
@@ -101,11 +99,7 @@ public class ClaimCenterFNOLNewPropertyExposurePOM extends BaseTest{
 		GuideWireAccessors.selectOptionFromGWPicker(driver, this.getPropertyPickerIcon(),this.getPropertyPickerNewIncident());
 	}
 	
-	public void selectClaimantType(String option)
-	{
-		logger.info(format("%s - going to select Claimant type option:"+option, getName()));
-		GuideWireAccessors.selectOptionFromGWDropDown(driver, option, this.getClaimantTypeDropdown(), 1);
-	}
+	
 	
    
 	private WebElement getCancelButton() {
@@ -145,9 +139,7 @@ public class ClaimCenterFNOLNewPropertyExposurePOM extends BaseTest{
 		return claimantPickerNewPerson;
 	}
 
-	private WebElement getClaimantTypeDropdown() {
-		return claimantTypeDropdown;
-	}
+	
 
 	private WebElement getClaimantContactProhibYes() {
 		return claimantContactProhibYes;

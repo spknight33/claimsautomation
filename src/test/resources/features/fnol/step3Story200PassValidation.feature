@@ -2,6 +2,7 @@
 Feature: Validation at step3 of FNOL
 
   Background: 
+    Given  I use test data set "regression_set1"
     Given As a "ClaimsHandler" I am at step2 for FNOL
 
   @Ignore @passed
@@ -85,7 +86,7 @@ Feature: Validation at step3 of FNOL
     And I select the insureds vehicle at step3
     And I will be on vehicle screen for FNOL
     And I select "AddDriver" on vehicle screen
-    And I select "Paul Milligan" from "Driver Name" on driver screen
+    And I select the insured as driver of PH vehicle
     And I click ok button on driver screen
     And I click ok button on vehicle screen
     When I select the loss causes I will be able to proceed past step3 with no validation error
@@ -136,13 +137,13 @@ Feature: Validation at step3 of FNOL
       | Windscreen    | Repair  | Repair    |
       | Windscreen    | Replace | Replace   |
 
-  @Ignore @passed
+@Ignore @passed
   Scenario: CBPCL-200  TC4 Pass step3 validation when IncidentType/Cause/Subcause requires INSURED/DRIVER, TP VEHICLE but no TP DRIVER
     And I complete step2 for FNOL
     And I select the insureds vehicle at step3
     And I will be on vehicle screen for FNOL
     And I select "AddDriver" on vehicle screen
-    And I select "Paul Milligan" from "Driver Name" on driver screen
+    And I select the insured as driver of PH vehicle
     And I click ok button on driver screen
     And I click ok button on vehicle screen
     And I click add Vehicle on step3
@@ -150,10 +151,10 @@ Feature: Validation at step3 of FNOL
     And I click ok button on vehicle screen
     When I select the loss causes I will be able to proceed past step3 with no validation error
       | incident type | cause                      | sub cause                                                |
-      | Accident      | Narrow Road Collision      | Third party rounding bend                                |
-      | Accident      | Narrow Road Collision      | Third party passing parked cars                          |
+    #  | Accident      | Narrow Road Collision      | Third party rounding bend                                |
+    #  | Accident      | Narrow Road Collision      | Third party passing parked cars                          |
       | Accident      | Car Door Open              | Third party opened car door into path of insured         |
-      | Accident      | Car Door Open              | Insured opened car door into path of passing third party |
+     # | Accident      | Car Door Open              | Insured opened car door into path of passing third party |
       | Accident      | Car Door Open              | Insured door already open when hit by third party        |
       | Accident      | Collision Whilst Reversing | Third party reversed into insured vehicle                |
 
@@ -163,7 +164,7 @@ Feature: Validation at step3 of FNOL
     And I select the insureds vehicle at step3
     And I will be on vehicle screen for FNOL
     And I select "AddDriver" on vehicle screen
-    And I select "Paul Milligan" from "Driver Name" on driver screen
+    And I select the insured as driver of PH vehicle
     And I click ok button on driver screen
     And I click ok button on vehicle screen
     And I click add Vehicle on step3
@@ -235,13 +236,13 @@ Feature: Validation at step3 of FNOL
       | Accident      | Multiple Vehicle - Shunt        | Insured shunted from rear into TP in front                                         |
       | Accident      | Multiple Vehicle - Shunt        | Insured from side road - multiple collision on main                                |
 
-  @Ignore @passed
+@Ignore @passed
   Scenario: CBPCL-200  TC5-PART2 Pass step3 validation when IncidentType/Cause/Subcause requires INSURED/DRIVER, TP VEHICLE/DRIVER and they are present
     And I complete step2 for FNOL
     And I select the insureds vehicle at step3
     And I will be on vehicle screen for FNOL
     And I select "AddDriver" on vehicle screen
-    And I select "Paul Milligan" from "Driver Name" on driver screen
+    And I select the insured as driver of PH vehicle
     And I click ok button on driver screen
     And I click ok button on vehicle screen
     And I click add Vehicle on step3
@@ -315,13 +316,33 @@ Feature: Validation at step3 of FNOL
       | Accident      | Collision In Car Park                                | Insured reversed into third party vehicle                                                                        |
       | Accident      | Collision In Car Park                                | Third party reversed into insured vehicle in a car park                                                          |
 
+@Ignore @passed
+Scenario: CBPCL-200/361 TC5-PART3 Pass step3 validation when IncidentType/Cause/Subcause requires INSURED/DRIVER, TP VEHICLE/DRIVER and they are present
+And I complete step2 for FNOL
+And I select the insureds vehicle at step3
+And I will be on vehicle screen for FNOL
+And I select "AddDriver" on vehicle screen
+And I select the insured as driver of PH vehicle
+And I click ok button on driver screen
+And I click ok button on vehicle screen
+And I click add Vehicle on step3
+And I input "ND57HFL" into the "VRN" box on vehicle screen
+And I select "AddDriver" on vehicle screen
+And I complete fields on FNOL new TP driver incident
+And I click ok button on vehicle screen
+When I select the loss causes I will be able to proceed past step3 with no validation error
+| incident type | cause | sub cause |
+| Accident | Narrow Road Collision | Third party rounding bend |
+| Accident | Narrow Road Collision | Third party passing parked cars |
+| Accident | Car Door Open | Insured opened car door into path of passing third party |
+
   @Ignore @passed
   Scenario: CBPCL-200  TC6 Pass step3 validation when IncidentType/Cause/Subcause requires PEDESTRIAN incident which is present on the claim
     And I complete step2 for FNOL
     And I select the insureds vehicle at step3
     And I will be on vehicle screen for FNOL
     And I select "AddDriver" on vehicle screen
-    And I select "Paul Milligan" from "Driver Name" on driver screen
+    And I select the insured as driver of PH vehicle
     And I click ok button on driver screen
     And I click ok button on vehicle screen
     And I click add Pedestrian on step3
@@ -336,17 +357,18 @@ Feature: Validation at step3 of FNOL
       | Accident      | Accident Involving Pedestrian | Struck pedestrian on pelican crossing - lights not in our favour      |
       | Accident      | Collision Whilst Reversing    | Struck pedestrian/child                                               |
 
-  @Ignore @passed
+@Ignore @passed
   Scenario: CBPCL-200  TC7  Pass step3 validation when IncidentType/Cause/Subcause requires just INSURED VEHICLE/DRIVER AND THIRD PARTY PROPERTY incidents which are present
+    And I complete step2 for FNOL
     And I select the insureds vehicle at step3
     And I will be on vehicle screen for FNOL
     And I select "AddDriver" on vehicle screen
-    And I select "Paul Milligan" from "Driver Name" on driver screen
+    And I select the insured as driver of PH vehicle
     And I click ok button on driver screen
     And I click ok button on vehicle screen
     And I click add Property Damage on step3
     And I will be on FNOL new property screen
-    And I complete the "Property" details on the new property contact screen
+    And I complete the new property screen for FNOL
     When I select the loss causes I will be able to proceed past step3 with no validation error
       | incident type | cause                      | sub cause                                                   |
       | Accident      | Collided With Fixed Object | Having swerved to avoid an animal which ran across the road |
@@ -366,7 +388,7 @@ Feature: Validation at step3 of FNOL
     And I select the insureds vehicle at step3
     And I will be on vehicle screen for FNOL
     And I select "AddDriver" on vehicle screen
-    And I select "Paul Milligan" from "Driver Name" on driver screen
+    And I select the insured as driver of PH vehicle
     And I click ok button on driver screen
     And I click ok button on vehicle screen
     And I click add Vehicle on step3

@@ -83,10 +83,7 @@ public class CCPOSTFNOLEditExposureSteps extends BaseTest {
 	{
 		switch(fieldName)
 		{
-		case("Claimant Type"):
-			Assert.assertEquals(fieldValue, postFnolEditVehicleExposurePOM.getClaimantType());
-			break;
-		//TODO claimant
+		
 		}
 	}
 	
@@ -287,9 +284,7 @@ public class CCPOSTFNOLEditExposureSteps extends BaseTest {
 		switch(fieldName)
 		    {
 		
-	    case "Claimant Type":
-	    	postFnolEditInjuryExposurePOM.selectClaimantType(fieldValue);
-	    	break;
+	   
 	    
 	   //TODO
 	    default:
@@ -302,9 +297,7 @@ public class CCPOSTFNOLEditExposureSteps extends BaseTest {
 		switch(fieldName)
 		    {
 		
-	    case "Claimant Type":
-	    	postFnolEditPropertyExposurePOM.selectClaimantType(fieldValue);
-	    	break;
+	   
 	    
 	   //TODO
 	    default:
@@ -316,9 +309,9 @@ public class CCPOSTFNOLEditExposureSteps extends BaseTest {
 		switch(fieldName)
 		    {
 		
-	    case "Claimant Type":
-	    	postFnolEditVehicleExposurePOM.selectClaimantType(fieldValue);
-	    	break;
+	   // case "Claimant Type":
+	   // 	postFnolEditVehicleExposurePOM.selectClaimantType(fieldValue);
+	    //	break;
 	    
 	   //TODO
 	    default:
@@ -330,9 +323,9 @@ public class CCPOSTFNOLEditExposureSteps extends BaseTest {
 		switch(fieldName)
 		    {
 		
-	    case "Claimant Type":
-	    	postFnolEditCreditHireExposurePOM.selectClaimantType(fieldValue);
-	    	break;
+	   // case "Claimant Type":
+	   // 	postFnolEditCreditHireExposurePOM.selectClaimantType(fieldValue);
+	   // 	break;
 	    
 	   //TODO
 	    default:
@@ -344,9 +337,9 @@ public class CCPOSTFNOLEditExposureSteps extends BaseTest {
 		switch(fieldName)
 		    {
 		
-	    case "Claimant Type":
-	    	postFnolEditProtocolHireExposurePOM.selectClaimantType(fieldValue);
-	    	break;
+	  //  case "Claimant Type":
+	  //  	postFnolEditProtocolHireExposurePOM.selectClaimantType(fieldValue);
+	   // 	break;
 	    
 	   //TODO
 	    default:
@@ -358,9 +351,9 @@ public class CCPOSTFNOLEditExposureSteps extends BaseTest {
 		switch(fieldName)
 		    {
 		
-	    case "Claimant Type":
-	    	postFnolEditTPCaptureExposurePOM.selectClaimantType(fieldValue);
-	    	break;
+	  //  case "Claimant Type":
+	  //  	postFnolEditTPCaptureExposurePOM.selectClaimantType(fieldValue);
+	   // 	break;
 	    
 	   //TODO
 	    default:

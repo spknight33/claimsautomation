@@ -116,11 +116,12 @@ And I will see "Claimant Type" is "Insured" on post FNOL "1st Party Vehicle" exp
     And I will see post FNOL exposures screen
     And I will see type "Vehicle" for coverage "Glass" has been assigned to a user in group "Claims Support" for Claimant "PH Driver" with reserves amount "-"
     
- @Ignore
+
 Scenario: CBPCL-201 TC17 For Insureds "Fault" PH VEHICLE DAMAGE Liability where PH is NOT claiming Do not create a PH Vehicle exposure with reserve
 Given I use test data set "autoexposure_set2"
 And As a "ClaimsHandler" I am at step4 for FNOL
 And I select "No" from field "PH Claiming" at step4 FNOL
+And I complete the TP Capture details on step4 FNOL
 And I click finish button on step4 FNOL
 And I will be on Claim Saved screen in FNOL
 And I click on the created claim link on Claim Saved screen

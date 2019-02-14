@@ -83,8 +83,8 @@ public class CCFNOLPropertySteps extends BaseTest {
 	
 
 	
-	@Then("^I complete the \"([^\"]*)\" details on the new property screen$")
-	public void i_complete_the_details_on_the_new_property_contact_screen(String type) throws Throwable {
+	@Then("^I complete the new property screen for FNOL$")
+	public void i_complete_the_details_on_the_new_property_contact_screen() throws Throwable {
 		
 		completeFNOLPropertyForTestScenario();
 		
