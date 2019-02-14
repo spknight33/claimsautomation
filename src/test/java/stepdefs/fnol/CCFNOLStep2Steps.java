@@ -29,6 +29,33 @@ public class CCFNOLStep2Steps extends BaseTest{
 	 */
 	public void completeFNOLStep2ForTestScenario()  throws Throwable
 	{
+		completeFNOLStep2ReportedBySection();
+				
+		completeFNOLStep2ConfirmSection();
+		
+		completeFNOLStep2AlertSection();
+		
+		
+		completeFNOLStep2MainContactSection();
+		
+		
+		
+		
+		
+		if (!ExcelUtil.getTestDataValue("Fnol_Step2_PHVehicleRequired").equalsIgnoreCase("TRUE"))
+		{
+			this.unselectFirstInsuredVehicle();
+		}
+		
+		
+		this.next();
+		
+	
+	}
+	
+	
+	public void completeFNOLStep2ReportedBySection()
+	{
 		String fieldValue=null;
 		fieldValue = ExcelUtil.getTestDataValue("Fnol_Step2_HowReported");
 		if (fieldValue !=null)
@@ -66,35 +93,43 @@ public class CCFNOLStep2Steps extends BaseTest{
 			//dont need to select relation in this case
 			
 		}
-				
+	}
+	
+	
+	public void completeFNOLStep2ConfirmSection()
+	{
 		// confirm section
-		//------------------
-		fieldValue = ExcelUtil.getTestDataValue("Fnol_Step2_Confirm_HasChanges");
-		if (fieldValue !=null && fieldValue.equalsIgnoreCase("TRUE"))
-		{
-		
-			fieldValue = ExcelUtil.getTestDataValue("Fnol_Step2_Confirm_Workphone");
-			if (fieldValue !=null)
-				fnolStep2POM.setWorkPhone(fieldValue);
-			fieldValue = ExcelUtil.getTestDataValue("Fnol_Step2_Confirm_Homephone");
-			if (fieldValue !=null)
-				fnolStep2POM.setHomePhone(fieldValue);
-			fieldValue = ExcelUtil.getTestDataValue("Fnol_Step2_Confirm_Mobile");
-			if (fieldValue !=null)
-				fnolStep2POM.setMobile(fieldValue);
-			
-			fieldValue = ExcelUtil.getTestDataValue("Fnol_Step2_Confirm_Email");
-			if (fieldValue !=null)
-				fnolStep2POM.setEmail(fieldValue);
-			
-			// bug on this - doesnt display unless moved to here!
-					fieldValue = ExcelUtil.getTestDataValue("Fnol_Step2_Confirm_PhoneType");
+				//------------------
+				String fieldValue=null;
+				fieldValue = ExcelUtil.getTestDataValue("Fnol_Step2_Confirm_HasChanges");
+				if (fieldValue !=null && fieldValue.equalsIgnoreCase("TRUE"))
+				{
+				
+					fieldValue = ExcelUtil.getTestDataValue("Fnol_Step2_Confirm_Workphone");
 					if (fieldValue !=null)
-						fnolStep2POM.selectPhoneType(fieldValue);
-		}
-		
-		//dont need to select relation in this case
-		
+						fnolStep2POM.setWorkPhone(fieldValue);
+					fieldValue = ExcelUtil.getTestDataValue("Fnol_Step2_Confirm_Homephone");
+					if (fieldValue !=null)
+						fnolStep2POM.setHomePhone(fieldValue);
+					fieldValue = ExcelUtil.getTestDataValue("Fnol_Step2_Confirm_Mobile");
+					if (fieldValue !=null)
+						fnolStep2POM.setMobile(fieldValue);
+					
+					fieldValue = ExcelUtil.getTestDataValue("Fnol_Step2_Confirm_Email");
+					if (fieldValue !=null)
+						fnolStep2POM.setEmail(fieldValue);
+					
+					// bug on this - doesnt display unless moved to here!
+							fieldValue = ExcelUtil.getTestDataValue("Fnol_Step2_Confirm_PhoneType");
+							if (fieldValue !=null)
+								fnolStep2POM.selectPhoneType(fieldValue);
+				}
+	}
+	
+	
+	public void completeFNOLStep2AlertSection()
+	{
+		String fieldValue=null;
 		if (ExcelUtil.getTestDataValue("Fnol_Step2_AlertNotified").equalsIgnoreCase("TRUE"))
 		{
 			fnolStep2POM.selectAlert(true);
@@ -106,38 +141,28 @@ public class CCFNOLStep2Steps extends BaseTest{
 		{
 			fnolStep2POM.selectAlert(false);
 		}
-		
-		
-		//Main contact section
-		//-----------------------
-		fieldValue = ExcelUtil.getTestDataValue("Fnol_Step2_MainContactSamePerson");
-		if (fieldValue !=null && fieldValue.equalsIgnoreCase("TRUE"))
-		{
-			fnolStep2POM.selectMainContactSame(true);
-		}
-		else
-		{
-			fnolStep2POM.selectMainContactSame(false);
-			// different person, fill in extra fields
-			fnolStep2POM.selectNewPersonDiffContact();
-			personContactSteps.completeFNOLClaimMainContactForTestScenario();
-			// and set relatedto
-			 fieldValue = ExcelUtil.getTestDataValue("Fnol_Step2_MainContactNewPersonRelation");  
-			   fnolStep2POM.selectDiffContactRelation(fieldValue);  
-		}
-		
-		
-		
-		
-		if (!ExcelUtil.getTestDataValue("Fnol_Step2_PHVehicleRequired").equalsIgnoreCase("TRUE"))
-		{
-			this.unselectFirstInsuredVehicle();
-		}
-		
-		
-		this.next();
-		
+	}
 	
+	public void completeFNOLStep2MainContactSection()
+	{
+		//Main contact section
+				//-----------------------
+				String fieldValue=null;
+				fieldValue = ExcelUtil.getTestDataValue("Fnol_Step2_MainContactSamePerson");
+				if (fieldValue !=null && fieldValue.equalsIgnoreCase("TRUE"))
+				{
+					fnolStep2POM.selectMainContactSame(true);
+				}
+				else
+				{
+					fnolStep2POM.selectMainContactSame(false);
+					// different person, fill in extra fields
+					fnolStep2POM.selectNewPersonDiffContact();
+					personContactSteps.completeFNOLClaimMainContactForTestScenario();
+					// and set relatedto
+					 fieldValue = ExcelUtil.getTestDataValue("Fnol_Step2_MainContactNewPersonRelation");  
+					   fnolStep2POM.selectDiffContactRelation(fieldValue);  
+				}
 	}
 	
 	@Given("^As a \"([^\"]*)\" I am at step2 for FNOL$")
@@ -162,14 +187,17 @@ public class CCFNOLStep2Steps extends BaseTest{
 	@Then("I complete step2 for FNOL without insured vehicle$")
 	public void iCompleteStep2FNOLWithoutInsuredVehicle() throws Throwable 
 	{
-		// need to configure to get a specific configurable pilicy number
-
-		this.i_select_from_field_on_step("Portal","How Reported");
-		this.i_select_from_field_on_step(ExcelUtil.getTestDataValue("Fnol_Name"),"name");
-		this.i_select_from_field_on_step("Policyholder","relationship to insured");
-		this.i_input_into_the_box_on_step2("01912228888","Home Phone");
-		this.i_input_into_the_box_on_step2("someguy@gmail.com","Email");
-		this.i_select_from_field_on_step("Work","Phone Type");
+	
+		completeFNOLStep2ReportedBySection();
+		
+		completeFNOLStep2ConfirmSection();
+		
+		completeFNOLStep2AlertSection();
+		
+		
+		completeFNOLStep2MainContactSection();
+		
+		
 		this.unselectFirstInsuredVehicle();
 		this.next();
 		

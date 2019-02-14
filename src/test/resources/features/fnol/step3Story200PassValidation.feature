@@ -336,6 +336,26 @@ When I select the loss causes I will be able to proceed past step3 with no valid
 | Accident | Narrow Road Collision | Third party passing parked cars |
 | Accident | Car Door Open | Insured opened car door into path of passing third party |
 
+@Ignore @passed
+Scenario: CBPCL-200/408 TC5-PART4 Pass step3 validation when IncidentType/Cause/Subcause requires INSURED/DRIVER, TP VEHICLE/DRIVER and they are present
+And I complete step2 for FNOL
+And I select the insureds vehicle at step3
+And I will be on vehicle screen for FNOL
+And I select "AddDriver" on vehicle screen
+And I select the insured as driver of PH vehicle
+And I click ok button on driver screen
+And I click ok button on vehicle screen
+And I click add Vehicle on step3
+And I input "ND57HFL" into the "VRN" box on vehicle screen
+And I select "AddDriver" on vehicle screen
+And I complete fields on FNOL new TP driver incident
+And I click ok button on vehicle screen
+When I select the loss causes I will be able to proceed past step3 with no validation error
+| incident type | cause | sub cause |
+| Accident | Hit in Rear By Third Party | Whilst waiting to enter roundabout |
+| Accident | Hit in Rear By Third Party | Whilst stationary in line of traffic |
+| Accident | Hit in Rear By Third Party | Whilst negotiating a roundabout |
+
   @Ignore @passed
   Scenario: CBPCL-200  TC6 Pass step3 validation when IncidentType/Cause/Subcause requires PEDESTRIAN incident which is present on the claim
     And I complete step2 for FNOL

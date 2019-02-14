@@ -3,6 +3,7 @@ Feature: CBPCL-176 As an Operator, I want to be able to record "Fault" "Split Li
   I want this to be displayed so I am aware which fault code applies. This also needs to be able to be changed.
 
   Background: 
+  Given  I use test data set "regression_set1"
     Given As a "ClaimsHandler" I am at step3 for FNOL
 
   @Ignore
@@ -10,10 +11,14 @@ Feature: CBPCL-176 As an Operator, I want to be able to record "Fault" "Split Li
     Then the "Incident Type" list on step3 will contain options
       | Accident | Fire | Flood/Water Damage | Malicious Damage | Misfuelling | Snow | Storm | Theft | Windscreen |
 
-  @Ignore
+
+
   Scenario: CBPCL-176 TC1 Accident Incident type, cause and subcauses will generate correct fault code
     Then I will see fault based on loss causes
       | incident type | cause                                                | sub cause                                                                                                        | fault type      |
+      | Accident      | Hit in Rear By Third Party                           | Whilst waiting to enter roundabout                                                                               | Non Fault       |
+      | Accident      | Hit in Rear By Third Party                           | Whilst stationary in line of traffic                                                                             | Non Fault       |
+      | Accident      | Hit in Rear By Third Party                           | Whilst negotiating a roundabout                                                                                  | Non Fault       |
       | Accident      | Accident Involving Animal                            | Collided with animal - owner known                                                                               | Fault           |
       | Accident      | Accident Involving Animal                            | Collided with animal - owner unknown                                                                             | Fault           |
       | Accident      | Accident Involving Animal                            | Damage caused by vermin / birds                                                                                  | Fault           |
@@ -25,7 +30,7 @@ Feature: CBPCL-176 As an Operator, I want to be able to record "Fault" "Split Li
       | Accident      | Accident Involving Cyclist                           | Struck Cyclist turning left                                                                                      | Fault           |
       | Accident      | Accident Involving Cyclist                           | Struck Cyclist turning right                                                                                     | Fault           |
       | Accident      | Accident Involving Cyclist                           | Struck Cyclist whilst passing                                                                                    | Fault           |
-      | Accident      | Accident Involving Pedestrian                        | Struck pedestrian crossing from nearside from between parked vehicles                                            | Split Liability       |
+      | Accident      | Accident Involving Pedestrian                        | Struck pedestrian crossing from nearside from between parked vehicles                                            | Split Liability |
       | Accident      | Accident Involving Pedestrian                        | Struck pedestrian on pedestrian crossing                                                                         | Fault           |
       | Accident      | Accident Involving Pedestrian                        | Struck pedestrian crossing road                                                                                  | Fault           |
       | Accident      | Accident Involving Pedestrian                        | Struck pedestrian/child whilst reversing                                                                         | Fault           |
@@ -34,14 +39,14 @@ Feature: CBPCL-176 As an Operator, I want to be able to record "Fault" "Split Li
       | Accident      | Car Door Open                                        | Third party opened car door into path of insured                                                                 | Non Fault       |
       | Accident      | Car Door Open                                        | Insured opened car door into path of passing third party                                                         | Fault           |
       | Accident      | Car Door Open                                        | Insured door already open when hit by third party                                                                | Non Fault       |
-      | Accident      | Caused By Debris On The Road                         | Third party vehicle damaged by Debris from insured vehicle                                                    | Fault           |
+      | Accident      | Caused By Debris On The Road                         | Third party vehicle damaged by Debris from insured vehicle                                                       | Fault           |
       | Accident      | Caused By Debris On The Road                         | Debris from known third party                                                                                    | Non Fault       |
       | Accident      | Caused By Debris On The Road                         | Debris from unknown third party                                                                                  | Fault           |
       | Accident      | Changing Lanes                                       | Insured failed to notice third party vehicle                                                                     | Fault           |
       | Accident      | Changing Lanes                                       | Swerved to avoid a vehicle which did not stop and collided with a third party                                    | Fault           |
       | Accident      | Changing Lanes                                       | Swerved to avoid a vehicle which braked suddenly and collided with third party                                   | Fault           |
       | Accident      | Changing Lanes                                       | Third party failed to notice Insured                                                                             | Non Fault       |
-      | Accident      | Changing Lanes                                       | Third party swerved into my path.                                                                                 | Non Fault       |
+      | Accident      | Changing Lanes                                       | Third party swerved into my path.                                                                                | Non Fault       |
       | Accident      | Collided With Fixed Object                           | Having swerved to avoid an animal which ran across the road                                                      | Fault           |
       | Accident      | Collided With Fixed Object                           | Having swerved to avoid a pedestrian crossing the road                                                           | Fault           |
       | Accident      | Collided With Fixed Object                           | Having had attention distracted                                                                                  | Fault           |
@@ -153,7 +158,7 @@ Feature: CBPCL-176 As an Operator, I want to be able to record "Fault" "Split Li
       | Accident      | Insured Vehicle Damaged Whilst Parked                | On road not outside own home                                                                                     | Non Fault       |
       | Accident      | Insured Vehicle Damaged Whilst Parked                | On road outside own home                                                                                         | Non Fault       |
       | Accident      | Insured Vehicle Damaged Whilst Parked                | In works car park                                                                                                | Non Fault       |
-      | Accident      | Insured's Vehicle Left Road                          | Obstruction / Debris in the road                                                                                | Fault           |
+      | Accident      | Insured's Vehicle Left Road                          | Obstruction / Debris in the road                                                                                 | Fault           |
       | Accident      | Insured's Vehicle Left Road                          | Poor road / weather conditions                                                                                   | Fault           |
       | Accident      | Joining/Leaving Slip Roads/Motorways                 | Insured failed to notice third party vehicle on main road                                                        | Fault           |
       | Accident      | Joining/Leaving Slip Roads/Motorways                 | Insured failed to give way to traffic on main road                                                               | Fault           |
@@ -220,7 +225,6 @@ Feature: CBPCL-176 As an Operator, I want to be able to record "Fault" "Split Li
       | Fire          | Vehicle Damaged By Fire | Whilst undergoing structural repair, including welding, by third party | Non Fault  |
       | Fire          | Vehicle Damaged By Fire | Wiring fault                                                           | Non Fault  |
 
-  
   @Ignore
   Scenario: CBPCL-176 TC4 Flood/Water Damage Incident type, cause and subcauses will generate correct fault code
     Then I will see fault based on loss causes
@@ -230,7 +234,6 @@ Feature: CBPCL-176 As an Operator, I want to be able to record "Fault" "Split Li
       | Flood/Water Damage | Flood / Water Damage | Vehicle immersed in fresh water                       | Fault      |
       | Flood/Water Damage | Flood / Water Damage | Vehicle immersed in sea water                         | Fault      |
 
- 
   @Ignore
   Scenario: CBPCL-176 TC5 Malicious Damage Incident type, cause and subcauses will generate correct fault code
     Then I will see fault based on loss causes
@@ -245,7 +248,6 @@ Feature: CBPCL-176 As an Operator, I want to be able to record "Fault" "Split Li
       | Malicious Damage | Riot or Civil Commotion | Riot / civil commotion - Less than 12 people      | Fault      |
       | Malicious Damage | Riot or Civil Commotion | Riot / civil commotion - More than 12 people      | Fault      |
 
- 
   @Ignore
   Scenario: CBPCL-176 TC6 Misfuelling Incident type, cause and subcauses will generate correct fault code
     Then I will see fault based on loss causes
@@ -253,7 +255,6 @@ Feature: CBPCL-176 As an Operator, I want to be able to record "Fault" "Split Li
       | Misfuelling   | Misfuelling | Misfuelling - Diesel into Petrol | Fault      |
       | Misfuelling   | Misfuelling | Misfuelling - Petrol into Diesel | Fault      |
 
-  
   @Ignore
   Scenario: CBPCL-176 TC7 Snow Incident type, cause and subcauses will generate correct fault code
     Then I will see fault based on loss causes
@@ -263,7 +264,6 @@ Feature: CBPCL-176 As an Operator, I want to be able to record "Fault" "Split Li
       | Snow          | Snow damage | Policyholder Loss of Control  | Fault      |
       | Snow          | Snow damage | Someone Else Loss of Control  | Non Fault  |
 
-  
   @Ignore
   Scenario: CBPCL-176 TC8 Storm Incident type, cause and subcauses will generate correct fault code
     Then I will see fault based on loss causes
@@ -272,8 +272,8 @@ Feature: CBPCL-176 As an Operator, I want to be able to record "Fault" "Split Li
       | Storm         | Storm Damage | Damaged by falling tree / Debris e.g. roof tiles - not own property | Non Fault  |
       | Storm         | Storm Damage | Hail storm damage                                                   | Fault      |
       | Storm         | Storm Damage | Damaged by Lightning                                                | Fault      |
-      | Storm         | Storm Damage | Storm Damage | Fault |
-  
+      | Storm         | Storm Damage | Storm Damage                                                        | Fault      |
+
   @Ignore
   Scenario: CBPCL-176 TC10 Windscreen Incident type, cause and subcauses will generate correct fault code
     Then I will see fault based on loss causes

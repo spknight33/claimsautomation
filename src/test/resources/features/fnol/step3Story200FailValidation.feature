@@ -1,12 +1,12 @@
-@Ignore
+
 Feature: Validation at step3 of FNOL
 
   Background: 
     Given  I use test data set "regression_set1"
     Given As a "ClaimsHandler" I am at step2 for FNOL
 
-  @Ignore @passed
-  Scenario: CBPCL-200  TC10-part1 Fail step3 Validation when IncidentType/Cause/Subcause requires just an INSURED VEHICLE incident and none is present
+@Ignore @passed
+  Scenario: CBPCL-200  TC10-part1 Fail step3 Validation when IncidentType/Cause/Subcause requires an INSURED VEHICLE incident and none is present
     And I complete step2 for FNOL without insured vehicle
     When I select the loss cause types and try to proceed past step3 I will see the validation error message "Add insured vehicle"
       | incident type      | cause                                                | sub cause                                                                                                        |
@@ -216,7 +216,7 @@ Feature: Validation at step3 of FNOL
       | Accident      | Hit Rear Of Third Party             | Hit rear of vehicle waiting to enter main road at 'T' junction                                |
       | Accident      | Hit Rear Of Third Party             | Hit rear of vehicle waiting to enter roundabout                                               |
 
-  @Ignore @passed
+
   Scenario: CBPCL-200  TC10-part3 Fail step3 Validation when IncidentType/Cause/Subcause requires just an INSURED VEHICLE incident and none is present
     And I complete step2 for FNOL without insured vehicle
     When I select the loss cause types and try to proceed past step3 I will see the validation error message "Add insured vehicle"
@@ -274,6 +274,9 @@ Feature: Validation at step3 of FNOL
       | Accident      | Overtaking                            | Third Party hit oncoming Insured                                            |
       | Accident      | Reported by TP                        | Reported by TP                                                              |
       | Accident      | Unknown                               | Unknown                                                                     |
+			| Accident | Hit in Rear By Third Party | Whilst waiting to enter roundabout |
+			| Accident | Hit in Rear By Third Party | Whilst stationary in line of traffic |
+			| Accident | Hit in Rear By Third Party | Whilst negotiating a roundabout |
 
 @Ignore @passed
   Scenario: CBPCL-200 TC11-PART1 Fail step3 Validation when IncidentType/Cause/Subcause requires an INSURED DRIVER incident but none is present
@@ -410,7 +413,7 @@ Feature: Validation at step3 of FNOL
       | Accident      | Hit in Rear By Third Party          | Whilst slowing down for people crossing the road                                                                 |
       | Accident      | Hit in Rear By Third Party          | Whilst stationary at 'X' roads                                                                                   |
 
-@Ignore @passed
+@Ignore @passsed
   Scenario: CBPCL-200 TC11-PART3 Fail step3 Validation when IncidentType/Cause/Subcause requires an INSURED DRIVER incident but none is present
     And I complete step2 for FNOL
     When I select the loss cause types and try to proceed past step3 I will see the validation error message "Add insured driver"
@@ -476,6 +479,10 @@ Feature: Validation at step3 of FNOL
       | Flood/Water Damage | Flood / Water Damage                 | Attempted to drive through Flooded area - fresh water                       |
       | Flood/Water Damage | Flood / Water Damage                 | Attempted to drive through Flooded area - sea water                         |
       | Snow               | Snow damage                          | Policyholder Loss of Control                                                |
+| Accident | Hit in Rear By Third Party | Whilst waiting to enter roundabout |
+| Accident | Hit in Rear By Third Party | Whilst stationary in line of traffic |
+| Accident | Hit in Rear By Third Party | Whilst negotiating a roundabout |
+
 
   @Ignore @passed
   Scenario: CBPCL-200  TC12-PART1 Fail step3 Validation when IncidentType/Cause/Subcause requires a TP VEHICLE incident and none is present
@@ -567,7 +574,7 @@ Feature: Validation at step3 of FNOL
       | Accident      | Collision Between Oncoming Vehicles | Oncoming third party vehicle overtaking on wrong side of road collided with insured           |
       | Accident      | Collision Between Oncoming Vehicles | Oncoming third party vehicle turned right across path of insured                              |
 
-  @Ignore @passed
+@Ignore @passed
   Scenario: CBPCL-200  TC12-PART2 Fail step3 Validation when IncidentType/Cause/Subcause requires a TP VEHICLE incident and none is present
     And I complete step2 for FNOL
     And I select the insureds vehicle at step3
@@ -623,6 +630,9 @@ Feature: Validation at step3 of FNOL
       | Accident      | Collision In Car Park                                | Insured reversed into third party vehicle                                                                        |
       | Accident      | Collision In Car Park                                | Third party reversed into insured vehicle in a car park                                                          |
       | Fire          | Vehicle Damaged By Fire                              | Parked next to or close by a vehicle on fire                                                                     |
+| Accident | Hit in Rear By Third Party | Whilst waiting to enter roundabout |
+| Accident | Hit in Rear By Third Party | Whilst stationary in line of traffic |
+| Accident | Hit in Rear By Third Party | Whilst negotiating a roundabout |
 
  @Ignore @passed
   Scenario: CBPCL-200  TC13-PART1 Fail step3 Validation when IncidentType/Cause/Subcause requires a TP DRIVER incident and none is present
@@ -721,7 +731,7 @@ Feature: Validation at step3 of FNOL
       | Accident      | Overtaking                          | Third Party from behind hit off side of vehicle                                               |
       | Accident      | Overtaking                          | Third Party hit oncoming Insured                                                              |
 
-
+@Ignore @passed
   Scenario: CBPCL-200  TC13-PART2 Fail step3 Validation when IncidentType/Cause/Subcause requires a TP DRIVER incident and none is present
     And I complete step2 for FNOL
     And I select the insureds vehicle at step3
@@ -795,6 +805,24 @@ Feature: Validation at step3 of FNOL
 | Accident | Narrow Road Collision | Third party rounding bend |
 | Accident | Narrow Road Collision | Third party passing parked cars |
 | Accident | Car Door Open | Insured opened car door into path of passing third party |
+
+@Ignore @passed
+Scenario: CBPCL-200/408 TC13-PART4 Fail step3 Validation when IncidentType/Cause/Subcause requires a TP DRIVER incident and none is present
+And I complete step2 for FNOL
+And I select the insureds vehicle at step3
+And I will be on vehicle screen for FNOL
+And I select "AddDriver" on vehicle screen
+And I select "Paul Milligan" from "Driver Name" on driver screen
+And I click ok button on driver screen
+And I click ok button on vehicle screen
+And I click add Vehicle on step3
+And I input "ND57HFL" into the "VRN" box on vehicle screen
+And I click ok button on vehicle screen
+When I select the loss cause types and try to proceed past step3 I will see the validation error message "Add third party driver"
+| incident type | cause | sub cause |
+| Accident | Hit in Rear By Third Party | Whilst waiting to enter roundabout |
+| Accident | Hit in Rear By Third Party | Whilst stationary in line of traffic |
+| Accident | Hit in Rear By Third Party | Whilst negotiating a roundabout |
 
  @Ignore @passed
   Scenario: CBPCL-200 TC14 Fail step3 Validation when IncidentType/Cause/Subcause requires a TP PROPERTY incident and none is present
