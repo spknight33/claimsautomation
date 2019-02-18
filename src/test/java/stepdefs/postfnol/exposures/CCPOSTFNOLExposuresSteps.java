@@ -62,7 +62,7 @@ public class CCPOSTFNOLExposuresSteps extends BaseTest {
 			break;
 
 		}
-		postFnolExposuresPOM.clickExposure(type, coverage, claimantName);
+		postFnolExposuresPOM.clickOpenExposure(type, coverage, claimantName);
 	}
 
 	@Given("^I will see type \"([^\"]*)\" for coverage \"([^\"]*)\" has been assigned to a user in group \"([^\"]*)\"$")

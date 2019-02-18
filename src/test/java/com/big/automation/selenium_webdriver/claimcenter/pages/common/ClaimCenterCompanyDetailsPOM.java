@@ -154,7 +154,7 @@ public class ClaimCenterCompanyDetailsPOM extends BaseTest{
 	}
 	public void setPostCode(String text)
 	{
-		logger.info(format("%s -  going to set postcode", getName()));
+		logger.info(format("%s -  going to set postcode:"+text, getName()));
 		GuideWireAccessors.setGWTextBox(driver, text, this.getPostCode());
 		// as postcode causes display off other address fields, but this can take a couple of seconds - the next method should wait until available but add a slug anyway
 				Actions actions = new Actions(driver);

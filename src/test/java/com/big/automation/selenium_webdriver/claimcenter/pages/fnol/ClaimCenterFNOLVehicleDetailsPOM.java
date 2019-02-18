@@ -31,7 +31,7 @@ public class ClaimCenterFNOLVehicleDetailsPOM extends BaseTest{
 
 	@FindBy(id = "FNOLVehicleIncidentPopup:FNOLVehicleIncidentScreen:OccupantLV_tb:AddDriverButton-btnEl")
 	private WebElement addDriverButton;
-
+	
 	@FindBy(id = "FNOLVehicleIncidentPopup:FNOLVehicleIncidentScreen:OccupantLV_tb:AddPassengerButton-btnEl")
 	private WebElement addPassengerButton;
 	

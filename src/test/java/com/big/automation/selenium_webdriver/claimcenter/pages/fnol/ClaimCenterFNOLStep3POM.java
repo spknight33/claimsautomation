@@ -310,8 +310,7 @@ public class ClaimCenterFNOLStep3POM extends BaseTest{
    public void addVehicle() {
 		logger.info(format("%s -  going to click AddVehicle", getName()));
 		GuideWireAccessors.clickGWButton(driver,getAddVehicleButton());
-		logger.info(format("%s - done, Add Vehicle clicked", getName()));
-	}
+   }
    
    public void selectVehicleUsedFor(String option)
 	{
@@ -323,25 +322,25 @@ public class ClaimCenterFNOLStep3POM extends BaseTest{
    public void selectInsuredVehicle() {
 		logger.info(format("%s -  going to click INSUREDVehicle", getName()));
 		GuideWireAccessors.clickGWButton(driver,this.getInsuredVehicleLink());
-		logger.info(format("%s - done, Insured Vehicle clicked", getName()));
+		
 	}
    
    public void addPedestrian() {
 		logger.info(format("%s -  going to click AddPedestrian", getName()));
 		GuideWireAccessors.clickGWButton(driver,getAddPedestrianButton());
-		logger.info(format("%s - done, Add Pedestrian clicked", getName()));
+		
 	}
    
    public void addPropertyDamage() {
 		logger.info(format("%s -  going to click Add PropertyDamage", getName()));
 		GuideWireAccessors.clickGWButton(driver, getAddPropertyDamageButton());
-		logger.info(format("%s - done, Add PropertyDamage clicked", getName()));
+		
 	}
    
    public void addPoliceDetails() {
 		logger.info(format("%s -  going to click Add Police", getName()));
 		GuideWireAccessors.clickGWButton(driver,getAddPoliceButton());
-		logger.info(format("%s - done, Add Police clicked", getName()));
+		
 	}
    
 	private WebElement getCancelButton() {

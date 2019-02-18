@@ -218,7 +218,7 @@ public class ClaimCenterPOSTFNOLExposuresPOM extends BaseTest{
 		
 	}
 	
-	public void clickExposure(String type,String coverage, String claimant)
+	public void clickOpenExposure(String type,String coverage, String claimant)
 	{
 		logger.info(format("%s - click exposure type,coverage and claimant", getName()));
 	    sleep(3);
@@ -228,6 +228,7 @@ public class ClaimCenterPOSTFNOLExposuresPOM extends BaseTest{
 		WebElement expType;
 		WebElement expCoverage;
 		WebElement expClaimant;
+		WebElement expStatus;
 			
 		// loop till find first with mathcing type
 		int rowTotal = rows.size();
@@ -240,11 +241,12 @@ public class ClaimCenterPOSTFNOLExposuresPOM extends BaseTest{
 			expType = driver.findElement(By.xpath(rowLocator+"//tr//td[3]"));
 			expCoverage = driver.findElement(By.xpath(rowLocator+"//tr//td[4]"));
 			expClaimant = driver.findElement(By.xpath(rowLocator+"//tr//td[5]"));
+			expStatus = driver.findElement(By.xpath(rowLocator+"//tr//td[7]"));
 			
 			//logger.info(format("%s - find exposure - check row:"+expType.getText()+" "+expCoverage.getText()+" "+expClaimant.getText(), getName()));
 			
 	
-			if (expType.getText().equalsIgnoreCase(type) && expCoverage.getText().equalsIgnoreCase(coverage)&& expClaimant.getText().equalsIgnoreCase(claimant))
+			if (expStatus.getText().equalsIgnoreCase("Open") && expType.getText().equalsIgnoreCase(type) && expCoverage.getText().equalsIgnoreCase(coverage)&& expClaimant.getText().equalsIgnoreCase(claimant))
 			{
 				logger.info(format("%s - Found match in exposure table to click", getName()));
 				
