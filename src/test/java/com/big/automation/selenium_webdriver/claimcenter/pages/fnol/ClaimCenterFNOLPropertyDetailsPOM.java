@@ -3,8 +3,6 @@ package com.big.automation.selenium_webdriver.claimcenter.pages.fnol;
 import static com.big.automation.selenium_webdriver.common.utilities.ThreadUtils.sleep;
 import static java.lang.String.format;
 
-import java.util.List;
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
@@ -90,61 +88,60 @@ public class ClaimCenterFNOLPropertyDetailsPOM extends BaseTest {
 
 		logger.info(format("%s -  going to click cancel", getName()));
 		GuideWireAccessors.clickGWButton(driver, this.getCancelButton());
-		logger.info(format("%s - done, cancel clicked", getName()));
+	
 	}
 
 	public void selectOK() {
 		logger.info(format("%s -  going to click OK", getName()));
 		GuideWireAccessors.clickGWButton(driver, this.getOkButton());
-		logger.info(format("%s - done, OK clicked", getName()));
+		
 	}
 
 	public void setPropertyDesc(String text) {
 		logger.info(format("%s -  going to set property desc", getName()));
 		GuideWireAccessors.setGWTextBox(driver, text, this.getPropertyDesc());
-		logger.info(format("%s - done, properrty desc set", getName()));
+	
 	}
 
 	public void setDamageDesc(String text) {
 		logger.info(format("%s -  going to set damage desc", getName()));
 		GuideWireAccessors.setGWTextBox(driver, text, this.getDamageDesc());
-		logger.info(format("%s - done, properrty damage set", getName()));
+		
 	}
 
 	public void setLossEstimate(String text) {
 		logger.info(format("%s -  going to set loss estimate", getName()));
 		GuideWireAccessors.setGWTextBox(driver, text, this.getLossEstimate());
-		logger.info(format("%s - done, loss estimate set", getName()));
 	}
 
 	public void setExtentDamage(String text) {
 		logger.info(format("%s -  going to set extent damage desc", getName()));
 		GuideWireAccessors.setGWTextBox(driver, text, this.getExtentDamage());
-		logger.info(format("%s - done, extent damage set", getName()));
+	
 	}
 
 	public void setAddressLine1(String text) {
 		logger.info(format("%s -  going to set address line1", getName()));
 		GuideWireAccessors.setGWTextBox(driver, text, this.getAddressLine1());
-		logger.info(format("%s - done, address line1 set", getName()));
+		
 	}
 
 	public void setAddressLine2(String text) {
 		logger.info(format("%s -  going to set address line2", getName()));
 		GuideWireAccessors.setGWTextBox(driver, text, this.getAddressLine2());
-		logger.info(format("%s - done, address line2 set", getName()));
+		GuideWireAccessors.setGWTextBox(driver, text, this.getAddressLine2());
 	}
 
 	public void setAddressLine3(String text) {
 		logger.info(format("%s -  going to set address line3", getName()));
 		GuideWireAccessors.setGWTextBox(driver, text, this.getAddressLine3());
-		logger.info(format("%s - done, address line3 set", getName()));
+		
 	}
 
 	public void setCity(String text) {
 		logger.info(format("%s -  going to set city", getName()));
 		GuideWireAccessors.setGWTextBox(driver, text, this.getCity());
-		logger.info(format("%s - done, city set", getName()));
+	
 	}
 
 	public void setPostcode(String text) {

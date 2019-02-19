@@ -38,11 +38,29 @@ public class CCFNOLPropertySteps extends BaseTest {
 		
 		
 		
-		//TODO - get these from datasheet
-		fnolPropertyDetailsPOM.selectEstimateReceived("Yes");
-		fnolPropertyDetailsPOM.setEstimateCost("3000");
-		fnolPropertyDetailsPOM.setEstimateRepairTime("1 hour");
+
+		fieldValue = ExcelUtil.getTestDataValue("Fnol_PropertyEstimateReceived");
+		if (fieldValue !=null && fieldValue.equalsIgnoreCase("Yes"))
+		{
+			fnolPropertyDetailsPOM.selectEstimateReceived("Yes");
+			fieldValue = ExcelUtil.getTestDataValue("Fnol_PropertyEstimateCost");
+			if (fieldValue !=null)
+				fnolPropertyDetailsPOM.setEstimateCost(fieldValue);
+			fieldValue = ExcelUtil.getTestDataValue("Fnol_PropertyEstimateRepairTime");
+			if (fieldValue !=null)
+				fnolPropertyDetailsPOM.setEstimateRepairTime(fieldValue);
+		}
+		
+		
+		fieldValue = ExcelUtil.getTestDataValue("Fnol_PropertyAlreadyRepaired");
+		if (fieldValue !=null && fieldValue.equalsIgnoreCase("TRUE"))
+		{
 		fnolPropertyDetailsPOM.selectAlreadyRepaired(true);
+		}
+		else
+		{
+			fnolPropertyDetailsPOM.selectAlreadyRepaired(false);
+		}
 		
 		
 		// some issue with the clicker on this page-
@@ -61,6 +79,15 @@ public class CCFNOLPropertySteps extends BaseTest {
 				}
 				
 				// moved this to the end as was causing stale elements if done earlier!
+				fieldValue = ExcelUtil.getTestDataValue("Fnol_PropertyAddress1");
+				if (fieldValue !=null)
+					fnolPropertyDetailsPOM.setAddressLine1(fieldValue);
+				fieldValue = ExcelUtil.getTestDataValue("Fnol_PropertyAddress2");
+				if (fieldValue !=null)
+					fnolPropertyDetailsPOM.setAddressLine2(fieldValue);
+				fieldValue = ExcelUtil.getTestDataValue("Fnol_PropertyCity");
+				if (fieldValue !=null)
+					fnolPropertyDetailsPOM.setCity(fieldValue);
 				fieldValue = ExcelUtil.getTestDataValue("Fnol_PropertyLocationDesc");
 				if (fieldValue !=null)
 					fnolPropertyDetailsPOM.setLocationDescription(fieldValue);

@@ -201,32 +201,42 @@ public class ClaimCenterPersonDetailsPOM extends BaseTest{
 	
 	public void selectAddressType(String option)
 	{
-		logger.info(format("%s -  going to select address type", getName()));
+		
+		logger.info(format("%s -  going to select address type:"+option, getName()));
 		GuideWireAccessors.selectOptionFromGWDropDown(driver, option, this.getAddressTypeDropDown(), 1);
 		
 	}
 	
 	public void setAddressLine1(String text)
 	{
-		logger.info(format("%s -  going to set address line1", getName()));
+		logger.info(format("%s -  going to set address line1:"+text, getName()));
 		GuideWireAccessors.setGWTextBox(driver, text, this.getAddressLine1());
 		
 	}
 	public void setAddressLine2(String text)
 	{
-		logger.info(format("%s -  going to set address line2", getName()));
+		
+		logger.info(format("%s -  going to set address line2:"+text, getName()));
+		GuideWireAccessors.setGWTextBox(driver, text, this.getAddressLine2());
 		GuideWireAccessors.setGWTextBox(driver, text, this.getAddressLine2());
 		
 	}
 	public void setAddressLine3(String text)
 	{
-		logger.info(format("%s -  going to set address line3", getName()));
+		logger.info(format("%s -  going to set address line3:"+text, getName()));
 		GuideWireAccessors.setGWTextBox(driver, text, this.getAddressLine3());
+	
+	}
+	
+	public void setAddressCity(String text)
+	{
+		logger.info(format("%s -  going to set address city:"+text, getName()));
+		GuideWireAccessors.setGWTextBox(driver, text, this.getCity());
 	
 	}
 	public void setPostCode(String text)
 	{
-		logger.info(format("%s -  going to set postcode", getName()));
+		logger.info(format("%s -  going to set postcode:"+text, getName()));
 		GuideWireAccessors.setGWTextBox(driver, text, this.getPostCode());
 		// as postcode causes display off other address fields, but this can take a couple of seconds - the next method should wait until available but add a slug anyway
 		Actions actions = new Actions(driver);
@@ -238,7 +248,8 @@ public class ClaimCenterPersonDetailsPOM extends BaseTest{
 	
 	public void setLocationDesc(String text)
 	{
-		logger.info(format("%s -  going to set location description", getName()));
+		logger.info(format("%s -  going to set location description:"+text, getName()));
+		GuideWireAccessors.setGWTextBox(driver, text, this.getLocationDesc());
 		GuideWireAccessors.setGWTextBox(driver, text, this.getLocationDesc());
 	
 	}

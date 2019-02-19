@@ -30,6 +30,23 @@ public class CCFNOLPersonContactSteps extends BaseTest {
 		if (fieldValue !=null)
 			personContactDetailsPOM.setEmail(fieldValue);
 		
+		// put first as other address setter cause stale element
+		fieldValue = ExcelUtil.getTestDataValue("Fnol_PropertyNewOwnerAddressType");
+		if (fieldValue !=null)
+			personContactDetailsPOM.selectAddressType(fieldValue);
+		
+		fieldValue = ExcelUtil.getTestDataValue("Fnol_PropertyNewOwnerAddress1");
+		if (fieldValue !=null)
+			personContactDetailsPOM.setAddressLine1(fieldValue);
+		
+		fieldValue = ExcelUtil.getTestDataValue("Fnol_PropertyNewOwnerAddress2");
+		if (fieldValue !=null)
+			personContactDetailsPOM.setAddressLine2(fieldValue);
+		
+		fieldValue = ExcelUtil.getTestDataValue("Fnol_PropertyNewOwnerCity");
+		if (fieldValue !=null)
+			personContactDetailsPOM.setAddressCity(fieldValue);
+		
 		fieldValue = ExcelUtil.getTestDataValue("Fnol_PropertyNewOwnerLocationDesc");
 		if (fieldValue !=null)
 			personContactDetailsPOM.setLocationDesc(fieldValue);

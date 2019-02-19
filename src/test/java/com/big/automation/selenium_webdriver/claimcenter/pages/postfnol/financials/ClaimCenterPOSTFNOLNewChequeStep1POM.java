@@ -172,6 +172,14 @@ public class ClaimCenterPOSTFNOLNewChequeStep1POM extends BaseTest {
 	{
 		logger.info(format("%s - going to set EFT account number :"+text, getName()));
 		// need to click delete first and can then edit
+		//GuideWireAccessors.selectOptionFromGWPicker(driver, this.getEftAccountNumberPickerIcon(), this.getEftAccountNumberPickerDelete());
+	//	sleep(1);
+		GuideWireAccessors.setGWTextBox(driver, text, this.getEftAccountNumber());
+	}
+	public void changeEFTAccountNumber(String text)
+	{
+		logger.info(format("%s - going to change EFT account number :"+text, getName()));
+		// need to click delete first and can then edit
 		GuideWireAccessors.selectOptionFromGWPicker(driver, this.getEftAccountNumberPickerIcon(), this.getEftAccountNumberPickerDelete());
 		sleep(1);
 		GuideWireAccessors.setGWTextBox(driver, text, this.getEftAccountNumber());

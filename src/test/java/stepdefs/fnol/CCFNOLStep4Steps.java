@@ -168,7 +168,7 @@ public class CCFNOLStep4Steps extends BaseTest{
 									}
 										
 										String role = "Owner";
-										String incident = "FixedProperty";
+										String incident = "Property";
 										
 										fnolStep4POM.selectCaptureOpportunity(claimant, role, incident, ExcelUtil.getTestDataValue("Fnol_Step4_TPC_PropertyOpp"));
 										if (ExcelUtil.getTestDataValue("Fnol_Step4_TPC_PropertyOpp").equalsIgnoreCase("N"))

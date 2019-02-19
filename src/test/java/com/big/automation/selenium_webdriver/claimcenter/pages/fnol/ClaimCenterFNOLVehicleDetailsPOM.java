@@ -55,6 +55,13 @@ public class ClaimCenterFNOLVehicleDetailsPOM extends BaseTest{
 	@FindBy(id = "FNOLVehicleIncidentPopup:FNOLVehicleIncidentScreen:VehicleBasicsDV:Vehicle_VIN-inputEl")
 	private WebElement vin;
 	
+	//TP only
+	@FindBy(id = "FNOLVehicleIncidentPopup:FNOLVehicleIncidentScreen:VehicleBasicsDV:Foreign_Vehicle_true-inputEl")
+	private WebElement foreignYesOption;
+	@FindBy(id = "FNOLVehicleIncidentPopup:FNOLVehicleIncidentScreen:VehicleBasicsDV:Foreign_Vehicle_false-inputEl")
+	private WebElement foreignNoOption;
+	@FindBy(id = "FNOLVehicleIncidentPopup:FNOLVehicleIncidentScreen:VehicleBasicsDV:Foreign_Vehicle_Details-inputEl")
+	private WebElement foreignDetails;
 	
 	// this is the owner picker stuff
 	// first the icon
@@ -305,7 +312,7 @@ public class ClaimCenterFNOLVehicleDetailsPOM extends BaseTest{
 
 	public boolean isPageTitleDisplayed(String expected)
 	{
-		sleep(3);
+		sleep(2);
 	
 		logger.info(format("%s -found page title for Vehicle page :"+this.getPageTitle().getText(), getName()));
 		return this.getPageTitle().getText().equalsIgnoreCase(expected);
@@ -337,32 +344,6 @@ public class ClaimCenterFNOLVehicleDetailsPOM extends BaseTest{
 	}
 	
 	
-	public void selectUsualLocation(String option)
-	{
-		logger.info(format("%s - going to select usual location option :"+option, getName()));
-		GuideWireAccessors.selectOptionFromGWDropDown(driver,option, this.getUsualLocationDropdown(),1); // first on page
-	}
-	public void selectActualLocation(String option)
-	{
-		logger.info(format("%s - going to select actual location option :"+option, getName()));
-		// the problem with this locator is that theere are only some optikns in actual location
-		// which also occur in suaul location, so the workaround of passing the occurence 1st or 2nd on the 
-		// page will not work
-		// TODO
-		
-		GuideWireAccessors.selectOptionFromGWDropDown(driver, option, this.getActualLocationDropdown(),2); // 2nd on page?
-	}
-	public void setVehicleMileage(String text)
-	{
-		logger.info(format("%s - going to select mileage :"+text, getName()));
-		GuideWireAccessors.setGWTextBox(driver, text, this.getCurrentMileageTextBox());
-	}
-	
-	public void selectOwnerName(String option)
-	{
-		logger.info(format("%s - going to select vehgicle owner name option :"+option, getName()));
-		GuideWireAccessors.selectOptionFromGWDropDown(driver, option, this.getOwnerDropdown(),1);
-	}
 	
 	public void selectVehicleType(String option)
 	{
@@ -406,10 +387,60 @@ public class ClaimCenterFNOLVehicleDetailsPOM extends BaseTest{
 		GuideWireAccessors.setGWTextBox(driver, text, this.getVin());
 	}
 	
+	//tp only
+	public void selectForeign(boolean foreign)
+	{
+		logger.info(format("%s -  going to set vehicle foreign to:"+foreign, getName()));
+	    if (foreign)
+	    {
+	    	GuideWireAccessors.clickGWButton(driver, this.getForeignYesOption());
+	    }
+	    else
+	    {
+	    	GuideWireAccessors.clickGWButton(driver, this.getForeignNoOption());
+	    }
+	}
+	public void setForeignDetails(String text)
+	{
+		logger.info(format("%s - going to set foreign details :"+text, getName()));
+		GuideWireAccessors.setGWTextBox(driver, text, this.getForeignDetails());
+	}
+	
+	// owner is for TP only
+	public void selectOwner(String option)
+	{
+		logger.info(format("%s - going to select owner :"+option, getName()));
+		GuideWireAccessors.selectOptionFromGWDropDown(driver, option, this.getOwnerDropdown(), 1);
+	}
 	public void selectNewOwner()
 	{
 		logger.info(format("%s - going to select New Person from owner picker", getName()));
 		GuideWireAccessors.selectOptionFromGWPicker(driver, this.getOwnerPickerLink(),this.getNewPersonSubLink());
+	}
+	
+    // PH vehicle only
+	public void selectUsualLocation(String option)
+	{
+		logger.info(format("%s - going to select usual location option :"+option, getName()));
+		GuideWireAccessors.selectOptionFromGWDropDown(driver,option, this.getUsualLocationDropdown(),1); // first on page
+	}
+	
+	public void selectActualLocation(String option)
+	{
+		logger.info(format("%s - going to select actual location option :"+option, getName()));
+		// the problem with this locator is that theere are only some optikns in actual location
+		// which also occur in suaul location, so the workaround of passing the occurence 1st or 2nd on the 
+		// page will not work
+		// TODO
+		
+		GuideWireAccessors.selectOptionFromGWDropDown(driver, option, this.getActualLocationDropdown(),2); // 2nd on page?
+	}
+	
+
+	public void setVehicleMileage(String text)
+	{
+		logger.info(format("%s - going to select mileage :"+text, getName()));
+		GuideWireAccessors.setGWTextBox(driver, text, this.getCurrentMileageTextBox());
 	}
 	
 	
@@ -1283,6 +1314,18 @@ public class ClaimCenterFNOLVehicleDetailsPOM extends BaseTest{
 
 	private WebElement getProtocolHireNoOption() {
 		return protocolHireNoOption;
+	}
+
+	private WebElement getForeignYesOption() {
+		return foreignYesOption;
+	}
+
+	private WebElement getForeignNoOption() {
+		return foreignNoOption;
+	}
+
+	private WebElement getForeignDetails() {
+		return foreignDetails;
 	}
 
 	

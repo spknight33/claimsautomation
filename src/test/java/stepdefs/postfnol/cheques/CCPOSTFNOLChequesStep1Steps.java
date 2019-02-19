@@ -20,6 +20,13 @@ public class CCPOSTFNOLChequesStep1Steps extends BaseTest {
 		postFnolNewChequeStep1POM.isPageTitleDisplayed("Step 1 of 3: Enter payee information");
 	}
 	
+	
+	@Given("^I click next button on New System Cheque Step1 post FNOL$")
+	public void next() {
+		
+		postFnolNewChequeStep1POM.next();
+	}
+	
 	@Given("^I select \"([^\"]*)\" Payment Method at New System Cheque Step1 post FNOL$")
 	public void i_select_Payment_Method_at_New_System_Cheque_Step_post_FNOL(String fieldName) throws Throwable {
 	switch(fieldName)

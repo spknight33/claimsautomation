@@ -123,241 +123,8 @@ public class CCFNOLVehicleSteps extends BaseTest {
 	
 	
 	
-	//FIRE section
-	// For PH, if accident type is fire then complete - se could have a flag on the testdata sheet instead, but we cn use this for now
-	fieldValue = ExcelUtil.getTestDataValue("Fnol_Step3_IncidentType");
-	if (fieldValue.equalsIgnoreCase("Fire"))
-	{
-		// use the Ph name as last in charge
-		fieldValue = ExcelUtil.getTestDataValue("Fnol_Name");
-		if (fieldValue !=null)
-			fnolVehicleDetailsPOM.selectFireLastInCharge(fieldValue);
-		fieldValue = ExcelUtil.getTestDataValue("Fnol_Name");
-		if (fieldValue !=null)
-			fnolVehicleDetailsPOM.selectFireWhoDiscovered(fieldValue);
-		fieldValue = ExcelUtil.getTestDataValue("Fnol_PHVehicleFireWhenDate");
-		if (fieldValue !=null)
-			fnolVehicleDetailsPOM.setFireWhenDiscovered(fieldValue);
-		fieldValue = ExcelUtil.getTestDataValue("Fnol_PHVehicleFireWhenTime");
-		if (fieldValue !=null)
-			fnolVehicleDetailsPOM.setFireTimeDiscovered(fieldValue);
-		
-		fieldValue = ExcelUtil.getTestDataValue("Fnol_PHVehicleFireGarage");
-		if (fieldValue !=null && fieldValue.equalsIgnoreCase("TRUE"))
-		{
-			fnolVehicleDetailsPOM.selectFireVisitedGarage(true);
-			fieldValue = ExcelUtil.getTestDataValue("Fnol_PHVehicleFireGarageDetails");
-			fnolVehicleDetailsPOM.setFireGarageDetails(fieldValue);
-		}
-		else
-		{
-			fnolVehicleDetailsPOM.selectFireVisitedGarage(false);
-		}
-		
-		fieldValue = ExcelUtil.getTestDataValue("Fnol_PHVehicleFireOtherVehicle");
-		if (fieldValue !=null && fieldValue.equalsIgnoreCase("TRUE"))
-		{
-			fnolVehicleDetailsPOM.selectFireOtherVehicles(true);
-			fieldValue = ExcelUtil.getTestDataValue("Fnol_PHVehicleFireOtherVehicleDetails");
-			fnolVehicleDetailsPOM.setFireOtherVehicleDetails(fieldValue);
-		}
-		else
-		{
-			fnolVehicleDetailsPOM.selectFireOtherVehicles(false);
-		}
-		
-		
-		fieldValue = ExcelUtil.getTestDataValue("Fnol_PHVehicleFireSuspected");
-		if (fieldValue !=null&& fieldValue.equalsIgnoreCase("TRUE"))
-		{
-			fnolVehicleDetailsPOM.selectFireSuspected(true);
-			fieldValue = ExcelUtil.getTestDataValue("Fnol_PHVehicleFireSuspectNewPerson");
-			if (fieldValue.equalsIgnoreCase("TRUE")) {
-				
-				//TODO
-			}
-			else
-			{
-				// use dropdown
-			}
-			fieldValue = ExcelUtil.getTestDataValue("Fnol_PHVehicleFireWhySuspect");
-			if (fieldValue !=null)
-				fnolVehicleDetailsPOM.setFireWhySuspected(fieldValue);
-			fieldValue = ExcelUtil.getTestDataValue("Fnol_PHVehicleFireHowSuspectKnown");
-			if (fieldValue !=null)
-				fnolVehicleDetailsPOM.selectFireHowSuspectKnown(fieldValue);
-			
-		}
-		else {
-			fnolVehicleDetailsPOM.selectFireSuspected(false);
-			}
-		}
-	
-	
-	    //THEFT section
-		// For PH, if accident type is THEFT then complete - se could have a flag on the testdata sheet instead, but we cn use this for now
-		fieldValue = ExcelUtil.getTestDataValue("Fnol_Step3_IncidentType");
-		if (fieldValue.equalsIgnoreCase("Theft"))
-		{
-			fieldValue = ExcelUtil.getTestDataValue("Fnol_PHVehicleTheftLastSeenDate");
-			if (fieldValue !=null)
-				fnolVehicleDetailsPOM.setTheftLastSeenDate(fieldValue);
-			fieldValue = ExcelUtil.getTestDataValue("Fnol_PHVehicleTheftLastSeenTime");
-			if (fieldValue !=null)
-				fnolVehicleDetailsPOM.setTheftLastSeenTime(fieldValue);
-			fieldValue = ExcelUtil.getTestDataValue("Fnol_PHVehicleTheftLossDate");
-			if (fieldValue !=null)
-				fnolVehicleDetailsPOM.setTheftWhenDiscovered(fieldValue);
-			fieldValue = ExcelUtil.getTestDataValue("Fnol_PHVehicleTheftLossTime");
-			if (fieldValue !=null)
-				fnolVehicleDetailsPOM.setTheftTimeDiscovered(fieldValue);
-			
-			
-		
-			fieldValue = ExcelUtil.getTestDataValue("Fnol_Name");
-			if (fieldValue !=null)
-				fnolVehicleDetailsPOM.selectTheftLastDriver(fieldValue);
-			
-			
-			fieldValue = ExcelUtil.getTestDataValue("Fnol_PHVehicleTheftWindowsLocked");
-			if (fieldValue !=null && fieldValue.equalsIgnoreCase("TRUE"))
-			{
-				fnolVehicleDetailsPOM.selectTheftWindowsLocked(true);
-			}
-			else
-			{
-				fnolVehicleDetailsPOM.selectTheftWindowsLocked(false);
-			}
-          
-
-			fieldValue = ExcelUtil.getTestDataValue("Fnol_PHVehicleTheftSecurityFitted");
-			if (fieldValue !=null && fieldValue.equalsIgnoreCase("TRUE"))
-			{
-				fnolVehicleDetailsPOM.selectTheftSecurityFitted(true);
-				
-				fieldValue = ExcelUtil.getTestDataValue("Fnol_PHVehicleTheftSecurityDetails");
-				if (fieldValue !=null)
-					fnolVehicleDetailsPOM.setTheftSecurityDetails(fieldValue);
-				
-				fieldValue = ExcelUtil.getTestDataValue("Fnol_PHVehicleTheftSecurityActive");
-				if (fieldValue !=null && fieldValue.equalsIgnoreCase("TRUE"))
-				{
-					fnolVehicleDetailsPOM.selectTheftSecurityActive(true);
-				}
-				else
-				{
-					fnolVehicleDetailsPOM.selectTheftSecurityActive(false);
-				}
-				
-				
-			}
-			else
-			{
-				fnolVehicleDetailsPOM.selectTheftSecurityFitted(false);
-			}
-			
-			
-			
-			
-			// keys
-			fieldValue = ExcelUtil.getTestDataValue("Fnol_PHVehicleTheftKeysOnPurchase");
-			if (fieldValue !=null)
-				fnolVehicleDetailsPOM.selectKeysPurchased(fieldValue);
-			fieldValue = ExcelUtil.getTestDataValue("Fnol_PHVehicleTheftKeysPossessed");
-			if (fieldValue !=null)
-				fnolVehicleDetailsPOM.selectKeysPossessed(fieldValue);
-			
-			//contactless
-			fieldValue = ExcelUtil.getTestDataValue("Fnol_PHVehicleTheftKeyContactless");
-			if (fieldValue !=null && fieldValue.equalsIgnoreCase("TRUE"))
-			{
-				fnolVehicleDetailsPOM.selectTheftKeysContactless(true);
-			}
-			else
-			{
-				fnolVehicleDetailsPOM.selectTheftKeysContactless(false);
-			}
-			
-			fieldValue = ExcelUtil.getTestDataValue("Fnol_PHVehicleTheftKeyLeftInVehicle");
-			if (fieldValue !=null && fieldValue.equalsIgnoreCase("TRUE"))
-			{
-				fnolVehicleDetailsPOM.selectTheftKeysLeft(true);
-			}
-			else
-			{
-				fnolVehicleDetailsPOM.selectTheftKeysLeft(false);
-			}
-			
-			fieldValue = ExcelUtil.getTestDataValue("Fnol_PHVehicleTheftGarage");
-			if (fieldValue !=null && fieldValue.equalsIgnoreCase("TRUE"))
-			{
-				fnolVehicleDetailsPOM.selectTheftVisitedGarage(true);
-				fieldValue = ExcelUtil.getTestDataValue("Fnol_PHVehicleTheftGarageDetails");
-				fnolVehicleDetailsPOM.setTheftGarageDetails(fieldValue);
-			}
-			else
-			{
-				fnolVehicleDetailsPOM.selectTheftVisitedGarage(false);
-			}
-			
-			fieldValue = ExcelUtil.getTestDataValue("Fnol_PHVehicleTheftVehicleChanged");
-			if (fieldValue !=null &&fieldValue.equalsIgnoreCase("TRUE"))
-			{
-				fnolVehicleDetailsPOM.selectTheftVehicleChanged(true);
-				fieldValue = ExcelUtil.getTestDataValue("Fnol_PHVehicleTheftVehicleChangedDetails");
-				fnolVehicleDetailsPOM.setTheftVehicleChangedDetails(fieldValue);
-			}
-			else
-			{
-				fnolVehicleDetailsPOM.selectTheftVehicleChanged(false);
-			}
-			
-			
-			fieldValue = ExcelUtil.getTestDataValue("Fnol_PHVehicleTheftSuspected");
-			if (fieldValue !=null &&fieldValue.equalsIgnoreCase("TRUE"))
-			{
-				fnolVehicleDetailsPOM.selectTheftSuspected(true);
-				fieldValue = ExcelUtil.getTestDataValue("Fnol_PHVehicleTheftSuspectNewPerson");
-				if (fieldValue.equalsIgnoreCase("TRUE")) {
-					
-					//TODO
-				}
-				else
-				{
-					// use dropdown
-				}
-				fieldValue = ExcelUtil.getTestDataValue("Fnol_PHVehicleTheftWhySuspect");
-				if (fieldValue !=null)
-					fnolVehicleDetailsPOM.setTheftWhySuspected(fieldValue);
-				fieldValue = ExcelUtil.getTestDataValue("Fnol_PHVehicleTheftHowSuspectKnown");
-				if (fieldValue !=null)
-					fnolVehicleDetailsPOM.selectTheftHowSuspectKnown(fieldValue);
-				
-			}
-			else {
-				fnolVehicleDetailsPOM.selectTheftSuspected(true);
-				}
-			
-		
-		// police
-			fieldValue = ExcelUtil.getTestDataValue("Fnol_PHVehicleTheftPoliceTreating");
-			if (fieldValue !=null &&fieldValue.equalsIgnoreCase("FALSE"))
-			{
-				fnolVehicleDetailsPOM.selectTheftPoliceTreating(false);
-				
-				fieldValue = ExcelUtil.getTestDataValue("Fnol_PHVehicleTheftPoliceDetails");
-				if (fieldValue !=null)
-					fnolVehicleDetailsPOM.setTheftPoliceDetails(fieldValue);
-			
-				
-			}
-			else
-			{
-				fnolVehicleDetailsPOM.selectTheftPoliceTreating(true);
-			}
-		
-		}
-	
+	completePHVehicleFireSectionForTestScenario();
+	completeTPVehicleTheftSectionForTestScenario();
 	
 	
 	// add TP passenger if one is requiredd
@@ -372,9 +139,268 @@ public class CCFNOLVehicleSteps extends BaseTest {
 	   fnolVehicleDetailsPOM.selectOK();
 	}
 	
+	
+	public void completePHVehicleFireSectionForTestScenario()
+	{
+		String fieldValue=null;
+		//FIRE section
+		// For PH, if accident type is fire then complete - se could have a flag on the testdata sheet instead, but we cn use this for now
+		fieldValue = ExcelUtil.getTestDataValue("Fnol_Step3_IncidentType");
+		if (fieldValue.equalsIgnoreCase("Fire"))
+		{
+			// use the Ph name as last in charge
+			fieldValue = ExcelUtil.getTestDataValue("Fnol_Name");
+			if (fieldValue !=null)
+				fnolVehicleDetailsPOM.selectFireLastInCharge(fieldValue);
+			fieldValue = ExcelUtil.getTestDataValue("Fnol_Name");
+			if (fieldValue !=null)
+				fnolVehicleDetailsPOM.selectFireWhoDiscovered(fieldValue);
+			fieldValue = ExcelUtil.getTestDataValue("Fnol_PHVehicleFireWhenDate");
+			if (fieldValue !=null)
+				fnolVehicleDetailsPOM.setFireWhenDiscovered(fieldValue);
+			fieldValue = ExcelUtil.getTestDataValue("Fnol_PHVehicleFireWhenTime");
+			if (fieldValue !=null)
+				fnolVehicleDetailsPOM.setFireTimeDiscovered(fieldValue);
+			
+			fieldValue = ExcelUtil.getTestDataValue("Fnol_PHVehicleFireGarage");
+			if (fieldValue !=null && fieldValue.equalsIgnoreCase("TRUE"))
+			{
+				fnolVehicleDetailsPOM.selectFireVisitedGarage(true);
+				fieldValue = ExcelUtil.getTestDataValue("Fnol_PHVehicleFireGarageDetails");
+				fnolVehicleDetailsPOM.setFireGarageDetails(fieldValue);
+			}
+			else
+			{
+				fnolVehicleDetailsPOM.selectFireVisitedGarage(false);
+			}
+			
+			fieldValue = ExcelUtil.getTestDataValue("Fnol_PHVehicleFireOtherVehicle");
+			if (fieldValue !=null && fieldValue.equalsIgnoreCase("TRUE"))
+			{
+				fnolVehicleDetailsPOM.selectFireOtherVehicles(true);
+				fieldValue = ExcelUtil.getTestDataValue("Fnol_PHVehicleFireOtherVehicleDetails");
+				fnolVehicleDetailsPOM.setFireOtherVehicleDetails(fieldValue);
+			}
+			else
+			{
+				fnolVehicleDetailsPOM.selectFireOtherVehicles(false);
+			}
+			
+			
+			fieldValue = ExcelUtil.getTestDataValue("Fnol_PHVehicleFireSuspected");
+			if (fieldValue !=null&& fieldValue.equalsIgnoreCase("TRUE"))
+			{
+				fnolVehicleDetailsPOM.selectFireSuspected(true);
+				fieldValue = ExcelUtil.getTestDataValue("Fnol_PHVehicleFireSuspectNewPerson");
+				if (fieldValue.equalsIgnoreCase("TRUE")) {
+					
+					//TODO
+				}
+				else
+				{
+					// use dropdown
+				}
+				fieldValue = ExcelUtil.getTestDataValue("Fnol_PHVehicleFireWhySuspect");
+				if (fieldValue !=null)
+					fnolVehicleDetailsPOM.setFireWhySuspected(fieldValue);
+				fieldValue = ExcelUtil.getTestDataValue("Fnol_PHVehicleFireHowSuspectKnown");
+				if (fieldValue !=null)
+					fnolVehicleDetailsPOM.selectFireHowSuspectKnown(fieldValue);
+				
+			}
+			else {
+				fnolVehicleDetailsPOM.selectFireSuspected(false);
+				}
+			}
+	}
+	
+	public void completeTPVehicleTheftSectionForTestScenario()
+	{
+		String fieldValue=null;
+		//THEFT section
+				// For PH, if accident type is THEFT then complete - se could have a flag on the testdata sheet instead, but we cn use this for now
+				fieldValue = ExcelUtil.getTestDataValue("Fnol_Step3_IncidentType");
+				if (fieldValue.equalsIgnoreCase("Theft"))
+				{
+					fieldValue = ExcelUtil.getTestDataValue("Fnol_PHVehicleTheftLastSeenDate");
+					if (fieldValue !=null)
+						fnolVehicleDetailsPOM.setTheftLastSeenDate(fieldValue);
+					fieldValue = ExcelUtil.getTestDataValue("Fnol_PHVehicleTheftLastSeenTime");
+					if (fieldValue !=null)
+						fnolVehicleDetailsPOM.setTheftLastSeenTime(fieldValue);
+					fieldValue = ExcelUtil.getTestDataValue("Fnol_PHVehicleTheftLossDate");
+					if (fieldValue !=null)
+						fnolVehicleDetailsPOM.setTheftWhenDiscovered(fieldValue);
+					fieldValue = ExcelUtil.getTestDataValue("Fnol_PHVehicleTheftLossTime");
+					if (fieldValue !=null)
+						fnolVehicleDetailsPOM.setTheftTimeDiscovered(fieldValue);
+					
+					
+				
+					fieldValue = ExcelUtil.getTestDataValue("Fnol_Name");
+					if (fieldValue !=null)
+						fnolVehicleDetailsPOM.selectTheftLastDriver(fieldValue);
+					
+					
+					fieldValue = ExcelUtil.getTestDataValue("Fnol_PHVehicleTheftWindowsLocked");
+					if (fieldValue !=null && fieldValue.equalsIgnoreCase("TRUE"))
+					{
+						fnolVehicleDetailsPOM.selectTheftWindowsLocked(true);
+					}
+					else
+					{
+						fnolVehicleDetailsPOM.selectTheftWindowsLocked(false);
+					}
+		          
+
+					fieldValue = ExcelUtil.getTestDataValue("Fnol_PHVehicleTheftSecurityFitted");
+					if (fieldValue !=null && fieldValue.equalsIgnoreCase("TRUE"))
+					{
+						fnolVehicleDetailsPOM.selectTheftSecurityFitted(true);
+						
+						fieldValue = ExcelUtil.getTestDataValue("Fnol_PHVehicleTheftSecurityDetails");
+						if (fieldValue !=null)
+							fnolVehicleDetailsPOM.setTheftSecurityDetails(fieldValue);
+						
+						fieldValue = ExcelUtil.getTestDataValue("Fnol_PHVehicleTheftSecurityActive");
+						if (fieldValue !=null && fieldValue.equalsIgnoreCase("TRUE"))
+						{
+							fnolVehicleDetailsPOM.selectTheftSecurityActive(true);
+						}
+						else
+						{
+							fnolVehicleDetailsPOM.selectTheftSecurityActive(false);
+						}
+						
+						
+					}
+					else
+					{
+						fnolVehicleDetailsPOM.selectTheftSecurityFitted(false);
+					}
+					
+					
+					
+					
+					// keys
+					fieldValue = ExcelUtil.getTestDataValue("Fnol_PHVehicleTheftKeysOnPurchase");
+					if (fieldValue !=null)
+						fnolVehicleDetailsPOM.selectKeysPurchased(fieldValue);
+					fieldValue = ExcelUtil.getTestDataValue("Fnol_PHVehicleTheftKeysPossessed");
+					if (fieldValue !=null)
+						fnolVehicleDetailsPOM.selectKeysPossessed(fieldValue);
+					
+					//contactless
+					fieldValue = ExcelUtil.getTestDataValue("Fnol_PHVehicleTheftKeyContactless");
+					if (fieldValue !=null && fieldValue.equalsIgnoreCase("TRUE"))
+					{
+						fnolVehicleDetailsPOM.selectTheftKeysContactless(true);
+					}
+					else
+					{
+						fnolVehicleDetailsPOM.selectTheftKeysContactless(false);
+					}
+					
+					fieldValue = ExcelUtil.getTestDataValue("Fnol_PHVehicleTheftKeyLeftInVehicle");
+					if (fieldValue !=null && fieldValue.equalsIgnoreCase("TRUE"))
+					{
+						fnolVehicleDetailsPOM.selectTheftKeysLeft(true);
+					}
+					else
+					{
+						fnolVehicleDetailsPOM.selectTheftKeysLeft(false);
+					}
+					
+					fieldValue = ExcelUtil.getTestDataValue("Fnol_PHVehicleTheftGarage");
+					if (fieldValue !=null && fieldValue.equalsIgnoreCase("TRUE"))
+					{
+						fnolVehicleDetailsPOM.selectTheftVisitedGarage(true);
+						fieldValue = ExcelUtil.getTestDataValue("Fnol_PHVehicleTheftGarageDetails");
+						fnolVehicleDetailsPOM.setTheftGarageDetails(fieldValue);
+					}
+					else
+					{
+						fnolVehicleDetailsPOM.selectTheftVisitedGarage(false);
+					}
+					
+					fieldValue = ExcelUtil.getTestDataValue("Fnol_PHVehicleTheftVehicleChanged");
+					if (fieldValue !=null &&fieldValue.equalsIgnoreCase("TRUE"))
+					{
+						fnolVehicleDetailsPOM.selectTheftVehicleChanged(true);
+						fieldValue = ExcelUtil.getTestDataValue("Fnol_PHVehicleTheftVehicleChangedDetails");
+						fnolVehicleDetailsPOM.setTheftVehicleChangedDetails(fieldValue);
+					}
+					else
+					{
+						fnolVehicleDetailsPOM.selectTheftVehicleChanged(false);
+					}
+					
+					
+					fieldValue = ExcelUtil.getTestDataValue("Fnol_PHVehicleTheftSuspected");
+					if (fieldValue !=null &&fieldValue.equalsIgnoreCase("TRUE"))
+					{
+						fnolVehicleDetailsPOM.selectTheftSuspected(true);
+						fieldValue = ExcelUtil.getTestDataValue("Fnol_PHVehicleTheftSuspectNewPerson");
+						if (fieldValue.equalsIgnoreCase("TRUE")) {
+							
+							//TODO
+						}
+						else
+						{
+							// use dropdown
+						}
+						fieldValue = ExcelUtil.getTestDataValue("Fnol_PHVehicleTheftWhySuspect");
+						if (fieldValue !=null)
+							fnolVehicleDetailsPOM.setTheftWhySuspected(fieldValue);
+						fieldValue = ExcelUtil.getTestDataValue("Fnol_PHVehicleTheftHowSuspectKnown");
+						if (fieldValue !=null)
+							fnolVehicleDetailsPOM.selectTheftHowSuspectKnown(fieldValue);
+						
+					}
+					else {
+						fnolVehicleDetailsPOM.selectTheftSuspected(true);
+						}
+					
+				
+				// police
+					fieldValue = ExcelUtil.getTestDataValue("Fnol_PHVehicleTheftPoliceTreating");
+					if (fieldValue !=null &&fieldValue.equalsIgnoreCase("FALSE"))
+					{
+						fnolVehicleDetailsPOM.selectTheftPoliceTreating(false);
+						
+						fieldValue = ExcelUtil.getTestDataValue("Fnol_PHVehicleTheftPoliceDetails");
+						if (fieldValue !=null)
+							fnolVehicleDetailsPOM.setTheftPoliceDetails(fieldValue);
+					
+						
+					}
+					else
+					{
+						fnolVehicleDetailsPOM.selectTheftPoliceTreating(true);
+					}
+				
+				}
+	}
+	
 
 	public void completeFNOLTPVehicleForTestScenario() throws Throwable
 	{
+		
+
+		// add TP driver if one is required
+		if (ExcelUtil.getTestDataValue("Fnol_TPDriverRequired").equalsIgnoreCase("TRUE"))
+	   {
+		   fnolVehicleDetailsPOM.selectAddDriver();
+		   driverSteps.completeFNOLTPDriverForTestScenario();
+	   }
+		
+		// add TP passenger if one is requiredd
+		if (ExcelUtil.getTestDataValue("Fnol_TPPassengerRequired").equalsIgnoreCase("TRUE"))
+		   {
+			   fnolVehicleDetailsPOM.selectAddPassenger();
+			   passengerSteps.completeFNOLTPPassengerForTestScenario();
+			  
+		   }
 	  // add TP vehicle 
 		
 		String fieldValue = ExcelUtil.getTestDataValue("Fnol_TPVehicleType");
@@ -408,6 +434,31 @@ public class CCFNOLVehicleSteps extends BaseTest {
 		fieldValue = ExcelUtil.getTestDataValue("Fnol_TPVehicleVin");
 		if (fieldValue !=null)
 			fnolVehicleDetailsPOM.setVin(fieldValue);
+		
+		fieldValue = ExcelUtil.getTestDataValue("Fnol_TPVehicleForeign");
+		if (fieldValue !=null && fieldValue.equalsIgnoreCase("TRUE"))
+		{
+			fnolVehicleDetailsPOM.selectForeign(true);
+			fieldValue = ExcelUtil.getTestDataValue("Fnol_TPVehicleForeignDetails");
+			if (fieldValue !=null)
+				fnolVehicleDetailsPOM.setForeignDetails(fieldValue);
+		}
+		else
+		{
+			fnolVehicleDetailsPOM.selectForeign(false);
+		}
+		
+		fieldValue = ExcelUtil.getTestDataValue("Fnol_TPVehicleOwner");
+		if (fieldValue !=null)
+			fnolVehicleDetailsPOM.selectOwner(fieldValue);
+		
+		fieldValue = ExcelUtil.getTestDataValue("Fnol_TPVehicleWhereNow");
+		if (fieldValue !=null)
+			fnolVehicleDetailsPOM.selectActualLocation(fieldValue);
+		
+		fieldValue = ExcelUtil.getTestDataValue("Fnol_TPVehicleMileage");
+		if (fieldValue !=null)
+			fnolVehicleDetailsPOM.setVehicleMileage(fieldValue);
 			
 		fieldValue = ExcelUtil.getTestDataValue("Fnol_TPVehicleDamageDesc");
 		if (fieldValue !=null)
@@ -416,6 +467,17 @@ public class CCFNOLVehicleSteps extends BaseTest {
 		fieldValue = ExcelUtil.getTestDataValue("Fnol_TPVehiclePreDamage");
 		if (fieldValue !=null)
 			fnolVehicleDetailsPOM.setPreDamageDesc(fieldValue);
+		
+		fieldValue = ExcelUtil.getTestDataValue("Fnol_TPVehicleRoadworthy");
+		if (fieldValue !=null && fieldValue.equalsIgnoreCase("TRUE"))
+		{
+			fnolVehicleDetailsPOM.selectRoadworthy(true);
+
+		}
+		else
+		{
+			fnolVehicleDetailsPOM.selectRoadworthy(false);
+		}
 		
 		fieldValue = ExcelUtil.getTestDataValue("Fnol_TPVehicleAirBags");
 		if (fieldValue !=null)
@@ -446,20 +508,6 @@ public class CCFNOLVehicleSteps extends BaseTest {
 		}
 			
 		
-		// add TP driver if one is required
-		if (ExcelUtil.getTestDataValue("Fnol_TPDriverRequired").equalsIgnoreCase("TRUE"))
-	   {
-		   fnolVehicleDetailsPOM.selectAddDriver();
-		   driverSteps.completeFNOLTPDriverForTestScenario();
-	   }
-		
-		// add TP passenger if one is requiredd
-		if (ExcelUtil.getTestDataValue("Fnol_TPPassengerRequired").equalsIgnoreCase("TRUE"))
-		   {
-			   fnolVehicleDetailsPOM.selectAddPassenger();
-			   passengerSteps.completeFNOLTPPassengerForTestScenario();
-			  
-		   }
 			   
 		
 	   fnolVehicleDetailsPOM.selectOK();
@@ -509,7 +557,7 @@ public class CCFNOLVehicleSteps extends BaseTest {
 			fnolVehicleDetailsPOM.selectVehicleType(fieldValue);
 			break;
 		case "Vehicle Owner":
-			fnolVehicleDetailsPOM.selectOwnerName(fieldValue);
+			fnolVehicleDetailsPOM.selectOwner(fieldValue);
 			break;
 
 		default:
