@@ -152,9 +152,11 @@ public class CCFNOLVehicleSteps extends BaseTest {
 			fieldValue = ExcelUtil.getTestDataValue("Fnol_Name");
 			if (fieldValue !=null)
 				fnolVehicleDetailsPOM.selectFireLastInCharge(fieldValue);
+			
 			fieldValue = ExcelUtil.getTestDataValue("Fnol_Name");
 			if (fieldValue !=null)
 				fnolVehicleDetailsPOM.selectFireWhoDiscovered(fieldValue);
+			
 			fieldValue = ExcelUtil.getTestDataValue("Fnol_PHVehicleFireWhenDate");
 			if (fieldValue !=null)
 				fnolVehicleDetailsPOM.setFireWhenDiscovered(fieldValue);

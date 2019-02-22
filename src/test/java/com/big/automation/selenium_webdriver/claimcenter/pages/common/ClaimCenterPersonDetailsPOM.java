@@ -30,6 +30,7 @@ public class ClaimCenterPersonDetailsPOM extends BaseTest{
 	private WebElement duplicatesButton;
 
 	// person section
+	//------------------------------------------
 	@FindBy(id = "NewContactPopup:ContactDetailScreen:ContactBasicsDV:PersonNameInputSet:GlobalPersonNameInputSet:Prefix-inputEl")
 	private WebElement prefix;
 	@FindBy(id = "NewContactPopup:ContactDetailScreen:ContactBasicsDV:PersonNameInputSet:GlobalPersonNameInputSet:FirstName-inputEl")
@@ -42,6 +43,7 @@ public class ClaimCenterPersonDetailsPOM extends BaseTest{
 	private WebElement formerName;
 	
 	// phone section
+	//------------------------
 	@FindBy(id = "NewContactPopup:ContactDetailScreen:ContactBasicsDV:PersonContactInfoInputSet:Work:GlobalPhoneInputSet:NationalSubscriberNumber-inputEl")
 	private WebElement workPhone;
 	@FindBy(id = "NewContactPopup:ContactDetailScreen:ContactBasicsDV:PersonContactInfoInputSet:Home:GlobalPhoneInputSet:NationalSubscriberNumber-inputEl")
@@ -53,23 +55,30 @@ public class ClaimCenterPersonDetailsPOM extends BaseTest{
 	@FindBy(id = "NewContactPopup:ContactDetailScreen:ContactBasicsDV:PersonContactInfoInputSet:PrimaryPhone-inputEl")
 	private WebElement primaryPhoneDropdown;
 	
-	// email
+	// email section
+	//----------------------
 	@FindBy(id = "NewContactPopup:ContactDetailScreen:ContactBasicsDV:PersonContactInfoInputSet:Primary-inputEl")
 	private WebElement mainEmail;
 	@FindBy(id = "NewContactPopup:ContactDetailScreen:ContactBasicsDV:PersonContactInfoInputSet:Secondary-inputEl")
 	private WebElement altEmail;
 	
-	// address
+	// primary address section
+	//---------------------------
 	@FindBy(id = "NewContactPopup:ContactDetailScreen:ContactBasicsDV:PrimaryAddressInputSet:CCAddressInputSet:globalAddressContainer:globalAddress:GlobalAddressInputSet:AddressLine1-inputEl")
 	private WebElement addressLine1;
 	@FindBy(id = "NewContactPopup:ContactDetailScreen:ContactBasicsDV:PrimaryAddressInputSet:CCAddressInputSet:globalAddressContainer:globalAddress:GlobalAddressInputSet:AddressLine2-inputEl")
 	private WebElement addressLine2;
 	@FindBy(id = "NewContactPopup:ContactDetailScreen:ContactBasicsDV:PrimaryAddressInputSet:CCAddressInputSet:globalAddressContainer:globalAddress:GlobalAddressInputSet:AddressLine3-inputEl")
 	private WebElement addressLine3;
+	@FindBy(id = "ClaimContactDetailPopup:ContactDetailScreen:ContactBasicsDV:PrimaryAddressInputSet:CCAddressInputSet:globalAddressContainer:globalAddress:GlobalAddressInputSet:County-inputEl")
+	private WebElement addressCounty;
 	@FindBy(id = "NewContactPopup:ContactDetailScreen:ContactBasicsDV:PrimaryAddressInputSet:CCAddressInputSet:globalAddressContainer:globalAddress:GlobalAddressInputSet:City-inputEl")
 	private WebElement city;
 	@FindBy(id = "NewContactPopup:ContactDetailScreen:ContactBasicsDV:PrimaryAddressInputSet:CCAddressInputSet:globalAddressContainer:globalAddress:GlobalAddressInputSet:PostalCode-inputEl")
 	private WebElement postCode;
+	@FindBy(id = "ClaimContactDetailPopup:ContactDetailScreen:ContactBasicsDV:PrimaryAddressInputSet:CCAddressInputSet:globalAddressContainer:globalAddress:GlobalAddressInputSet:addresses-inputEl")
+	private WebElement postCodeAddressDropdown;
+	
 	@FindBy(id = "NewContactPopup:ContactDetailScreen:ContactBasicsDV:PrimaryAddressInputSet:CCAddressInputSet:globalAddressContainer:Address_Description-inputEl")
 	private WebElement locationDesc;
 	@FindBy(id = "NewContactPopup:ContactDetailScreen:ContactBasicsDV:PrimaryAddressInputSet:CCAddressInputSet:globalAddressContainer:Address_AddressType-inputEl")
@@ -77,14 +86,29 @@ public class ClaimCenterPersonDetailsPOM extends BaseTest{
 	@FindBy(id = "NewContactPopup:ContactDetailScreen:ContactBasicsDV:PrimaryAddressInputSet:CCAddressInputSet:globalAddressContainer:Address_ValidUntil-inputEl")
 	private WebElement addressValidUntil;
 
-	//TODO rest of locators
+	
+	// bank details section
+	//-------------------------------------
+	@FindBy(id = "NewContactPopup:ContactDetailScreen:ContactBasicsDV:ContactEFTLV_tb:Add")
+	private WebElement addBankButton;
+	//TODO - cant seem to set these fields as div not setable
+	@FindBy(xpath = "//*[@id=\"NewContactPopup:ContactDetailScreen:ContactBasicsDV:ContactEFTLV-body\"]//table[1]//tr[1]/td[2]/div")
+	private WebElement bankAcctName;
+	@FindBy(xpath = "//*[@id=\"NewContactPopup:ContactDetailScreen:ContactBasicsDV:ContactEFTLV-body\"]//table[1]//tr[1]/td[3]/div")
+	private WebElement bankName;
+	@FindBy(xpath = "//*[@id=\"NewContactPopup:ContactDetailScreen:ContactBasicsDV:ContactEFTLV-body\"]//table[1]//tr[1]/td[4]/div")
+	private WebElement bankAcctNumber;
+	@FindBy(xpath = "//*[@id=\"NewContactPopup:ContactDetailScreen:ContactBasicsDV:ContactEFTLV-body\"]//table[1]//tr[1]/td[5]/div")
+	private WebElement bankSortcode;
+	
+	
+	
+	//TODO rest of locators once these are sorted out
 	// additonal info
 	// compnay
 	// license
 	// notes
-	
-	@FindBy(className = "message")
-	private List <WebElement> errorMessages;
+
 
 	public String getName() {
 
@@ -93,9 +117,8 @@ public class ClaimCenterPersonDetailsPOM extends BaseTest{
 
 	public boolean isPageTitleDisplayed(String expected)
 	{
-		sleep(4);
-		logger.info(format("%s -check page title for Person page :"+expected, getName()));
-		logger.info(format("%s -found page title for Person page :"+this.getPageTitle().getText(), getName()));
+		sleep(2);
+		logger.info(format("%s -found page title page :"+this.getPageTitle().getText(), getName()));
 		return this.getPageTitle().getText().equalsIgnoreCase(expected);
 	}
 	
@@ -103,7 +126,7 @@ public class ClaimCenterPersonDetailsPOM extends BaseTest{
 
 		logger.info(format("%s -  going to click cancel", getName()));
 		GuideWireAccessors.clickGWButton(driver, this.getCancelButton());
-		logger.info(format("%s - done, cancel clicked", getName()));
+		
 	}
 	
 	public void selectUpdate() {
@@ -117,31 +140,31 @@ public class ClaimCenterPersonDetailsPOM extends BaseTest{
 	//----------------------------------------------------------------
 	public void selectPrefix(String option)
 	{
-		logger.info(format("%s -  going to select prefix ", getName()));
+		logger.info(format("%s -  going to select prefix:"+option, getName()));
 		GuideWireAccessors.selectOptionFromGWDropDown(driver, option, this.getPrefix(), 1);
 		
 	}
 	public void setFirstName(String text)
 	{
-		logger.info(format("%s -  going to set first name", getName()));
+		logger.info(format("%s -  going to set first name:"+text, getName()));
 		GuideWireAccessors.setGWTextBox(driver, text, this.getFirstName());
 		
 	}
 	public void setMiddleName(String text)
 	{
-		logger.info(format("%s -  going to set middle name", getName()));
+		logger.info(format("%s -  going to set middle name:"+text, getName()));
 		GuideWireAccessors.setGWTextBox(driver, text, this.getMiddleName());
 		
 	}
 	public void setLastName(String text)
 	{
-		logger.info(format("%s -  going to set last name", getName()));
+		logger.info(format("%s -  going to set last name:"+text, getName()));
 		GuideWireAccessors.setGWTextBox(driver, text, this.getLastName());
 		
 	}
 	public void setFormerName(String text)
 	{
-		logger.info(format("%s -  going to set former name", getName()));
+		logger.info(format("%s -  going to set former name:"+text, getName()));
 		GuideWireAccessors.setGWTextBox(driver, text, this.getFormerName());
 		
 	}
@@ -151,31 +174,33 @@ public class ClaimCenterPersonDetailsPOM extends BaseTest{
 	
 	public void setWorkPhone(String text)
 	{
-		logger.info(format("%s -  going to set workphone", getName()));
+		logger.info(format("%s -  going to set workphone:"+text, getName()));
 		GuideWireAccessors.setGWTextBox(driver, text, this.getWorkPhone());
 	
 	}
 	public void setHomePhone(String text)
 	{
-		logger.info(format("%s -  going to set homephone", getName()));
+		logger.info(format("%s -  going to set homephone:"+text, getName()));
+		GuideWireAccessors.setGWTextBox(driver, text, this.getHomePhone());
 		GuideWireAccessors.setGWTextBox(driver, text, this.getHomePhone());
 	
 	}
 	public void setMobile(String text)
 	{
-		logger.info(format("%s -  going to set mobile", getName()));
+		logger.info(format("%s -  going to set mobile:"+text, getName()));
 		GuideWireAccessors.setGWTextBox(driver, text, this.getMobile());
-	
+		GuideWireAccessors.setGWTextBox(driver, text, this.getMobile());
 	}
 	public void setFax(String text)
 	{
-		logger.info(format("%s -  going to set fax", getName()));
+		logger.info(format("%s -  going to set fax:"+text, getName()));
 		GuideWireAccessors.setGWTextBox(driver, text, this.getFax());
 	
 	}
 	public void selectPrimaryPhone(String option)
 	{
-		logger.info(format("%s -  going to select primary phone type", getName()));
+		sleep(1);
+		logger.info(format("%s -  going to select primary phone type:"+option, getName()));
 		GuideWireAccessors.selectOptionFromGWDropDown(driver, option, this.getPrimaryPhoneDropdown(), 1);
 		
 	}
@@ -184,13 +209,13 @@ public class ClaimCenterPersonDetailsPOM extends BaseTest{
 	//-------------------------------------------
 	public void setEmail(String text)
 	{
-		logger.info(format("%s -  going to set email", getName()));
+		logger.info(format("%s -  going to set email:"+text, getName()));
 		GuideWireAccessors.setGWTextBox(driver, text, this.getMainEmail());
 		
 	}
 	public void setAltEmail(String text)
 	{
-		logger.info(format("%s -  going to set alt email", getName()));
+		logger.info(format("%s -  going to set alt email:"+text, getName()));
 		GuideWireAccessors.setGWTextBox(driver, text, this.getAltEmail());
 		
 	}
@@ -203,7 +228,7 @@ public class ClaimCenterPersonDetailsPOM extends BaseTest{
 	{
 		
 		logger.info(format("%s -  going to select address type:"+option, getName()));
-		GuideWireAccessors.selectOptionFromGWDropDown(driver, option, this.getAddressTypeDropDown(), 1);
+		GuideWireAccessors.selectOptionFromGWDropDown(driver, option, this.getAddressTypeDropDown(), 2); // there can be entries in phone type  as well
 		
 	}
 	
@@ -234,6 +259,13 @@ public class ClaimCenterPersonDetailsPOM extends BaseTest{
 		GuideWireAccessors.setGWTextBox(driver, text, this.getCity());
 	
 	}
+	
+	public void setAddressCounty(String text)
+	{
+		logger.info(format("%s -  going to set address county:"+text, getName()));
+		GuideWireAccessors.setGWTextBox(driver, text, this.getAddressCounty());
+	
+	}
 	public void setPostCode(String text)
 	{
 		logger.info(format("%s -  going to set postcode:"+text, getName()));
@@ -246,6 +278,14 @@ public class ClaimCenterPersonDetailsPOM extends BaseTest{
 		
 	}
 	
+	public void selectPostcodeAddress(String option)
+	{
+		
+		logger.info(format("%s -  going to select postcode address:"+option, getName()));
+		GuideWireAccessors.selectOptionFromGWDropDown(driver, option, this.getPostCodeAddressDropdown(), 1);
+		
+	}
+	
 	public void setLocationDesc(String text)
 	{
 		logger.info(format("%s -  going to set location description:"+text, getName()));
@@ -253,6 +293,47 @@ public class ClaimCenterPersonDetailsPOM extends BaseTest{
 		GuideWireAccessors.setGWTextBox(driver, text, this.getLocationDesc());
 	
 	}
+	
+	
+	//Bank details
+	//-------------
+	
+	public void clickAddBank()
+	{
+		logger.info(format("%s -  going to click add bank", getName()));
+		GuideWireAccessors.clickGWButton(driver, this.getAddBankButton());
+	}
+	public void setBankAccountName(String text)
+	{
+		
+		logger.info(format("%s -  going to set bank account name:"+text, getName()));
+		GuideWireAccessors.setGWTextBox(driver, text, this.getBankAcctName());
+	
+	}
+	public void setBankName(String text)
+	{
+		
+		logger.info(format("%s -  going to set bank name:"+text, getName()));
+		GuideWireAccessors.setGWTextBox(driver, text, this.getBankName());
+	
+	}
+	
+	public void setBankAccountNumber(String text)
+	{
+		
+		logger.info(format("%s -  going to set bank account number:"+text, getName()));
+		GuideWireAccessors.setGWTextBox(driver, text, this.getBankAcctNumber());
+	
+	}
+	public void setBankSortcode(String text)
+	{
+		
+		logger.info(format("%s -  going to set bank sortcode:"+text, getName()));
+		GuideWireAccessors.setGWTextBox(driver, text, this.getBankSortcode());
+	
+	}
+	
+	
    
 	private WebElement getCancelButton() {
 	return cancelButton;
@@ -304,9 +385,7 @@ public class ClaimCenterPersonDetailsPOM extends BaseTest{
 
 	
 
-	private List<WebElement> getErrorMessages() {
-		return errorMessages;
-	}
+	
 
 	private WebElement getCity() {
 		return city;
@@ -354,6 +433,34 @@ public class ClaimCenterPersonDetailsPOM extends BaseTest{
 
 	private WebElement getAddressValidUntil() {
 		return addressValidUntil;
+	}
+
+	private WebElement getAddBankButton() {
+		return addBankButton;
+	}
+
+	private WebElement getBankAcctName() {
+		return bankAcctName;
+	}
+
+	private WebElement getBankName() {
+		return bankName;
+	}
+
+	private WebElement getBankAcctNumber() {
+		return bankAcctNumber;
+	}
+
+	private WebElement getBankSortcode() {
+		return bankSortcode;
+	}
+
+	private WebElement getAddressCounty() {
+		return addressCounty;
+	}
+
+	private WebElement getPostCodeAddressDropdown() {
+		return postCodeAddressDropdown;
 	}
 	
 

@@ -22,13 +22,48 @@ public class CCFNOLPersonContactSteps extends BaseTest {
 		if (fieldValue !=null)
 			personContactDetailsPOM.setFirstName(fieldValue);
 		
+		fieldValue = ExcelUtil.getTestDataValue("Fnol_PropertyNewOwnerMiddleName");
+		if (fieldValue !=null)
+			personContactDetailsPOM.setMiddleName(fieldValue);
+		
 		fieldValue = ExcelUtil.getTestDataValue("Fnol_PropertyNewOwnerLastName");
 		if (fieldValue !=null)
 			personContactDetailsPOM.setLastName(fieldValue);
 		
+		
+		// phone section
+		//----------------
+		// do primary first
+		fieldValue = ExcelUtil.getTestDataValue("Fnol_PropertyNewOwnerPrimaryPhone");
+		if (fieldValue !=null)
+			personContactDetailsPOM.selectPrimaryPhone(fieldValue);
+		
+		fieldValue = ExcelUtil.getTestDataValue("Fnol_PropertyNewOwnerWorkPhone");
+		if (fieldValue !=null)
+			personContactDetailsPOM.setWorkPhone(fieldValue);
+		
+		fieldValue = ExcelUtil.getTestDataValue("Fnol_PropertyNewOwnerHomePhone");
+		if (fieldValue !=null)
+			personContactDetailsPOM.setHomePhone(fieldValue);
+		
+		fieldValue = ExcelUtil.getTestDataValue("Fnol_PropertyNewOwnerMobile");
+		if (fieldValue !=null)
+			personContactDetailsPOM.setMobile(fieldValue);
+		
+		fieldValue = ExcelUtil.getTestDataValue("Fnol_PropertyNewOwnerFax");
+		if (fieldValue !=null)
+			personContactDetailsPOM.setFax(fieldValue);
+		
+		
+		
+		// email section
+		//-----------------
 		fieldValue = ExcelUtil.getTestDataValue("Fnol_PropertyNewOwnerEmail");
 		if (fieldValue !=null)
 			personContactDetailsPOM.setEmail(fieldValue);
+		fieldValue = ExcelUtil.getTestDataValue("Fnol_PropertyNewOwnerAltEmail");
+		if (fieldValue !=null)
+			personContactDetailsPOM.setAltEmail(fieldValue);
 		
 		// put first as other address setter cause stale element
 		fieldValue = ExcelUtil.getTestDataValue("Fnol_PropertyNewOwnerAddressType");
@@ -39,18 +74,41 @@ public class CCFNOLPersonContactSteps extends BaseTest {
 		if (fieldValue !=null)
 			personContactDetailsPOM.setAddressLine1(fieldValue);
 		
-		fieldValue = ExcelUtil.getTestDataValue("Fnol_PropertyNewOwnerAddress2");
+		fieldValue = ExcelUtil.getTestDataValue("Fnol_PropertyNewOwnerAddress2");				
 		if (fieldValue !=null)
 			personContactDetailsPOM.setAddressLine2(fieldValue);
+		
+		fieldValue = ExcelUtil.getTestDataValue("Fnol_PropertyNewOwnerAddress3");
+		if (fieldValue !=null)
+			personContactDetailsPOM.setAddressLine3(fieldValue);
 		
 		fieldValue = ExcelUtil.getTestDataValue("Fnol_PropertyNewOwnerCity");
 		if (fieldValue !=null)
 			personContactDetailsPOM.setAddressCity(fieldValue);
 		
+		fieldValue = ExcelUtil.getTestDataValue("Fnol_PropertyNewOwnerCounty");
+		if (fieldValue !=null)
+			personContactDetailsPOM.setAddressCounty(fieldValue);
+		
 		fieldValue = ExcelUtil.getTestDataValue("Fnol_PropertyNewOwnerLocationDesc");
 		if (fieldValue !=null)
 			personContactDetailsPOM.setLocationDesc(fieldValue);
 		
+		// TODO add bank details - currently fault in automation in this
+		fieldValue = ExcelUtil.getTestDataValue("Fnol_PropertyNewOwnerAddBank");
+		if (fieldValue !=null && fieldValue.equalsIgnoreCase("TRUE"))
+		{
+			personContactDetailsPOM.clickAddBank();
+			fieldValue = ExcelUtil.getTestDataValue("Fnol_PropertyNewOwnerBankAcctName");
+			personContactDetailsPOM.setBankAccountName(fieldValue);
+			fieldValue = ExcelUtil.getTestDataValue("Fnol_PropertyNewOwnerBankName");
+			personContactDetailsPOM.setBankName(fieldValue);
+			fieldValue = ExcelUtil.getTestDataValue("Fnol_PropertyNewOwnerBankAcctNumber");
+			personContactDetailsPOM.setBankAccountNumber(fieldValue);
+			fieldValue = ExcelUtil.getTestDataValue("Fnol_PropertyNewOwnerBankSortcode");
+			personContactDetailsPOM.setBankSortcode(fieldValue);
+			
+		}
 		
 	
 		personContactDetailsPOM.selectUpdate();

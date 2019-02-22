@@ -22,6 +22,16 @@ public class ClaimCenterPOSTFNOLNewChequeStep3POM extends BaseTest {
 	@FindBy(id = "NormalCreateCheckWizard:Finish")
 	private WebElement finishButton;
 	
+	@FindBy(id = "NormalCreateCheckWizard:CheckWizard_CheckInstructionsScreen:NewPaymentInstructionsDV:CheckWizardCheckSummaryInputSet:Check_Reference-inputEl")
+	private WebElement reference;
+	@FindBy(id = "NormalCreateCheckWizard:CheckWizard_CheckInstructionsScreen:NewPaymentInstructionsDV:CheckWizardCheckSummaryInputSet:Check_PurposeOfPayment-inputEl")
+	private WebElement purpose;
+	
+	@FindBy(id = "NormalCreateCheckWizard:CheckWizard_CheckInstructionsScreen:NewPaymentInstructionsDV:CheckBatching-inputEl")
+	private WebElement chequeBatchingDropdown;
+	@FindBy(id = "NormalCreateCheckWizard:CheckWizard_CheckInstructionsScreen:NewPaymentInstructionsDV:CheckInstructions-inputEl")
+	private WebElement chequeInstructionsDropdown;
+	
 	
 
 	public String getName() {
@@ -66,8 +76,37 @@ public class ClaimCenterPOSTFNOLNewChequeStep3POM extends BaseTest {
 	}
 	
 	
-	//TODO - rest of this page
-
+	public void setReference(String text)
+	{
+		logger.info(format("%s - going to set reference :"+text, getName()));
+		GuideWireAccessors.setGWTextBox(driver, text, this.getReference());
+	}
+	public String getCurrentReference()
+	{
+		logger.info(format("%s - going to get reference ", getName()));
+		return GuideWireAccessors.getGWElementText(driver, this.getReference());
+	}
+	
+	public void setPurpose(String text)
+	{
+		logger.info(format("%s - going to set purpose :"+text, getName()));
+		GuideWireAccessors.setGWTextBox(driver, text, this.getPurpose());
+	}
+	
+	
+	public void selectChequeBatching(String option)
+	{
+		logger.info(format("%s - going to select cheque batching option :"+option, getName()));
+		GuideWireAccessors.selectOptionFromGWDropDown(driver, option, this.getChequeBatchingDropdown(), 1);
+	}
+	
+	public void selectChequeInstructions(String option)
+	{
+		logger.info(format("%s - going to select cheque instructions option :"+option, getName()));
+		GuideWireAccessors.selectOptionFromGWDropDown(driver, option, this.getChequeInstructionsDropdown(), 1);
+	}
+	
+	
 	private WebElement getCancelButton() {
 		return cancelButton;
 	}
@@ -78,6 +117,22 @@ public class ClaimCenterPOSTFNOLNewChequeStep3POM extends BaseTest {
 
 	private WebElement getFinishButton() {
 		return finishButton;
+	}
+
+	private WebElement getReference() {
+		return reference;
+	}
+
+	private WebElement getPurpose() {
+		return purpose;
+	}
+
+	private WebElement getChequeBatchingDropdown() {
+		return chequeBatchingDropdown;
+	}
+
+	private WebElement getChequeInstructionsDropdown() {
+		return chequeInstructionsDropdown;
 	}
 
 

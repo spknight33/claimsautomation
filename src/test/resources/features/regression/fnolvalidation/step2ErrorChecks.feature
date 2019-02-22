@@ -2,7 +2,7 @@
 Feature: Regression test for errors for step2
 
   Background: 
-    Given I use test data set "regression_set1"
+    Given I use test data set "regression_accident_fault"
     And As a "ClaimsHandler" I am at step2 for FNOL
 
   Scenario: FNOL Regression - check error messages

@@ -199,6 +199,42 @@ public static void setGWTextBoxWithPreWait(WebDriver driver, String text, WebEle
 		 setGWTextBox(driver,text,gwTextBox);
 	}
 
+/**
+ * these are slightly different - need to click the div first and then fine the input 
+ * @param driver
+ * @param text
+ * @param gwTextBox
+ */
+public static void setGWTextBoxInTable(WebDriver driver, String text, String locator,String inputLocator) {
+	WebElement element=null;
+	int findAttempts = 0;
+	while (findAttempts < MAX_RETRY_ON_TEXT_INPUT) {
+		try {
+			
+			element = driver.findElement(By.xpath(locator));
+			
+			//WaitForUtils.waitForElementToBeClickableVariable(driver, gwTextBox,10);
+			JavascriptExecutor je = (JavascriptExecutor) driver;
+			je.executeScript("arguments[0].scrollIntoView(true);", element);
+			element.click();
+			
+			sleep(1);
+			// the input tag should be available
+			element = driver.findElement(By.xpath(inputLocator));
+			
+			element.clear();
+			element.sendKeys(text);
+			break;
+		} catch (Exception e) {
+			sleep(2);
+			// TODO use a logger
+			System.out.println("setGWTextBoxInTable Exception caught:" + e.getMessage());
+			System.out.println("setGWTextBoxInTable Exception trying to set text <"+text+"> for element <"+element.getTagName()+">");
+		}
+		findAttempts++;
+	}
+}
+
 	/**
 	 * select an option from a dropdown GW uses an unusual mechanism in that the
 	 * list of items does not appear to be held as children of the dropdown input

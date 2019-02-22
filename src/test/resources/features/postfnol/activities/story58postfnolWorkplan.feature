@@ -2,7 +2,7 @@
 Feature: CBPCL-58 As a ClaimCenter user with the role of Claims Handler or Team Manager I want ClaimCenter to establish the initial claim workplan for a Personal Auto claim.
 
   Background: 
-  And I use test data set "regression_set1"
+  And I use test data set "regression_accident_fault"
   #  Given I access ClaimCenter login page
   #      And I login to ClaimCenter as role "ClaimsHandler"
 

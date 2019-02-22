@@ -61,9 +61,6 @@ public class CCFNOLNewPoliceSteps extends BaseTest {
 			fnolNewPolicePOM.selectPoliceAttended(false);
 		}
 		
-		if (fieldValue !=null)
-			fnolNewPolicePOM.setBadgeNumber(fieldValue);
-		
 	
 		fieldValue = ExcelUtil.getTestDataValue("Fnol_PoliceFutherAction");
 		if (fieldValue !=null && fieldValue.equalsIgnoreCase("TRUE")) 
@@ -90,15 +87,6 @@ public class CCFNOLNewPoliceSteps extends BaseTest {
 		}
 			
 		
-		fieldValue = ExcelUtil.getTestDataValue("Fnol_PoliceDateReported");
-		if (fieldValue !=null)
-			fnolNewPolicePOM.setBadgeNumber(fieldValue);
-		fieldValue = ExcelUtil.getTestDataValue("Fnol_PoliceDateReported");
-		if (fieldValue !=null)
-			fnolNewPolicePOM.setBadgeNumber(fieldValue);
-		fieldValue = ExcelUtil.getTestDataValue("Fnol_PoliceDateReported");
-		if (fieldValue !=null)
-			fnolNewPolicePOM.setBadgeNumber(fieldValue);
 		
 		fnolNewPolicePOM.selectSearchPoliceForce();
 		fieldValue = ExcelUtil.getTestDataValue("Fnol_PoliceForceSearchName");

@@ -81,8 +81,7 @@ public class ClaimCenterFNOLNewPoliceDetailsPOM extends BaseTest{
 	
 
 	
-	//@FindBy(className = "message")
-	//private List <WebElement> errorMessages;
+
 	public boolean containsErrorMessage(String contains)
 	{
 				
@@ -106,13 +105,13 @@ public class ClaimCenterFNOLNewPoliceDetailsPOM extends BaseTest{
 
 		logger.info(format("%s -  going to click cancel", getName()));
 		GuideWireAccessors.clickGWButton(driver, this.getCancelButton());
-		logger.info(format("%s - done, cancel clicked", getName()));
+		
 	}
 	
 	public void selectOK() {
 		logger.info(format("%s -  going to click OK", getName()));
 		GuideWireAccessors.clickGWButton(driver, this.getOkButton());
-		logger.info(format("%s - done, OK clicked", getName()));
+		
 	}
 	
 	
@@ -125,43 +124,43 @@ public class ClaimCenterFNOLNewPoliceDetailsPOM extends BaseTest{
 	
 	public void setDateReported(String text)
 	{
-		logger.info(format("%s -  going to set date reported", getName()));
+		logger.info(format("%s -  going to set date reported:"+text, getName()));
 		GuideWireAccessors.setGWTextBox(driver, text, this.getDateReported());
-		logger.info(format("%s - done, date reported set", getName()));
+		
 	}
 	
 	public void setTimeReported(String text)
 	{
-		logger.info(format("%s -  going to set time reported", getName()));
+		logger.info(format("%s -  going to set time reported:"+text, getName()));
 		GuideWireAccessors.setGWTextBox(driver, text, this.getTimeReported());
-		logger.info(format("%s - done, time reported set", getName()));
+		
 	}
 	
 	public void setIncidentReference(String text)
 	{
-		logger.info(format("%s -  going to set incident ref", getName()));
+		logger.info(format("%s -  going to set incident ref:"+text, getName()));
 		GuideWireAccessors.setGWTextBox(driver, text, this.getIncidentReference());
-		logger.info(format("%s - done, incident ref set", getName()));
+		
 	}
 	
 	public void setCrimeReference(String text)
 	{
-		logger.info(format("%s -  going to set crime ref", getName()));
+		logger.info(format("%s -  going to set crime ref:"+text, getName()));
 		GuideWireAccessors.setGWTextBox(driver, text, this.getCrimeReference());
-		logger.info(format("%s - done, crime ref set", getName()));
+		
 	}
    
 	public void setOfficerName(String text)
 	{
-		logger.info(format("%s -  going to set officername", getName()));
+		logger.info(format("%s -  going to set officername:"+text, getName()));
 		GuideWireAccessors.setGWTextBox(driver, text, this.getOfficerName());
-		logger.info(format("%s - done, officername set", getName()));
+		
 	}
 	public void setBadgeNumber(String text)
 	{
-		logger.info(format("%s -  going to set badge number", getName()));
+		logger.info(format("%s -  going to set badge number:"+text, getName()));
 		GuideWireAccessors.setGWTextBox(driver, text, this.getBadgeNumber());
-		logger.info(format("%s - done, badge number set", getName()));
+	
 	}
 	
 	public void selectPoliceAttended(boolean attended) {
@@ -205,23 +204,23 @@ public class ClaimCenterFNOLNewPoliceDetailsPOM extends BaseTest{
 	
 	public void setFurtherActionDetails(String text)
 	{
-		logger.info(format("%s -  going to set further action details", getName()));
+		logger.info(format("%s -  going to set further action details:"+text, getName()));
 		GuideWireAccessors.setGWTextBox(driver, text, this.getFurtherActionDetails());
-		logger.info(format("%s - done, further action details set", getName()));
+		
 	}
 	
 	public void setApprehendedDetails(String text)
 	{
-		logger.info(format("%s -  going to set apprehended details", getName()));
+		logger.info(format("%s -  going to set apprehended details:"+text, getName()));
 		GuideWireAccessors.setGWTextBox(driver, text, this.getApprehendedDetails());
-		logger.info(format("%s - done, apprehended details set", getName()));
+		
 	}
 	
 	public void setNotes(String text)
 	{
-		logger.info(format("%s -  going to set notes", getName()));
+		logger.info(format("%s -  going to set notes:"+text, getName()));
 		GuideWireAccessors.setGWTextBox(driver, text, this.getNotes());
-		logger.info(format("%s - done, notes set", getName()));
+		
 	}
 	
 	private WebElement getCancelButton() {

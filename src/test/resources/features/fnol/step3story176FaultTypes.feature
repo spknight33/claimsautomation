@@ -3,7 +3,7 @@ Feature: CBPCL-176 As an Operator, I want to be able to record "Fault" "Split Li
   I want this to be displayed so I am aware which fault code applies. This also needs to be able to be changed.
 
   Background: 
-  Given  I use test data set "regression_set1"
+  Given  I use test data set "regression_accident_fault"
     Given As a "ClaimsHandler" I am at step3 for FNOL
 
   @Ignore

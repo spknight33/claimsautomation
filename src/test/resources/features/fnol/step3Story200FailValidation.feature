@@ -2,7 +2,7 @@
 Feature: Validation at step3 of FNOL
 
   Background: 
-    Given  I use test data set "regression_set1"
+    Given  I use test data set "regression_accident_fault"
     Given As a "ClaimsHandler" I am at step2 for FNOL
 
 @Ignore @passed

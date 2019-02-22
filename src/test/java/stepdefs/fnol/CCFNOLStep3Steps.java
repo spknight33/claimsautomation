@@ -45,9 +45,8 @@ public class CCFNOLStep3Steps extends BaseTest {
 		fnolStep3POM.selectClaimCauseType(ExcelUtil.getTestDataValue("Fnol_Step3_Cause"));
 		fnolStep3POM.selectClaimSubCauseType(ExcelUtil.getTestDataValue("Fnol_Step3_SubCause"));
 
-		// add insured driver if required
-		// TODO - update vehicle details
-		if (ExcelUtil.getTestDataValue("Fnol_PHDriverRequired").equalsIgnoreCase("TRUE")) {
+		//update ph vehicle and or driver details details
+		if (ExcelUtil.getTestDataValue("Fnol_Step3_PHVehicleRequired").equalsIgnoreCase("TRUE")) {
 			fnolStep3POM.selectInsuredVehicle();
 			vehicleSteps.completeFNOLPHVehicleForTestScenario();
 		}
@@ -76,17 +75,34 @@ public class CCFNOLStep3Steps extends BaseTest {
 			policeSteps.completeFNOLNewPoliceForTestScenario();
 		}
 
-		// TODO OTHER FIELDS
-		fnolStep3POM.selectVehicleUsedFor("Business");
-		fnolStep3POM.setJourneyPurpose("Just mooching around");
-		fnolStep3POM.selectImpactSpeed("21-30 MPH");
-		fnolStep3POM.selectWeather("Fog");
-		// fnolStep3POM.selectRoadConditions("Ice");
+	
+		String fieldValue = ExcelUtil.getTestDataValue("Fnol_Step3_IncUsingFor");
+		if (fieldValue !=null)
+				fnolStep3POM.selectVehicleUsedFor(fieldValue);
+		
+		fieldValue = ExcelUtil.getTestDataValue("Fnol_Step3_IncPurpose");
+		if (fieldValue !=null)
+			fnolStep3POM.setJourneyPurpose(fieldValue);
+		
+		
+		fieldValue = ExcelUtil.getTestDataValue("Fnol_Step3_IncSpeedImpact");
+		if (fieldValue !=null)
+		fnolStep3POM.selectImpactSpeed(fieldValue);
+		
+		fieldValue = ExcelUtil.getTestDataValue("Fnol_Step3_IncWeather");
+		if (fieldValue !=null)
+			fnolStep3POM.selectWeather(fieldValue);
+		
+		fieldValue = ExcelUtil.getTestDataValue("Fnol_Step3_IncRoadCond");
+		if (fieldValue !=null)
+			fnolStep3POM.selectRoadConditions(fieldValue);
+		
+		//TODO the rest
 		// fnolStep3POM.selectCctv("Yes");
 		
 		
 		// The user can change the derived fault type - cater for this
-		String fieldValue = ExcelUtil.getTestDataValue("Fnol_Step3_FaultOverride");
+		fieldValue = ExcelUtil.getTestDataValue("Fnol_Step3_FaultOverride");
 		if (fieldValue !=null)
 		{
 			fnolStep3POM.selectFaultType(fieldValue);	

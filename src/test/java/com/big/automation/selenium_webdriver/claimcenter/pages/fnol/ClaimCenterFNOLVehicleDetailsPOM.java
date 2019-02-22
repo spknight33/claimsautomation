@@ -537,7 +537,7 @@ public class ClaimCenterFNOLVehicleDetailsPOM extends BaseTest{
 	    }
 	    else
 	    {
-	    	GuideWireAccessors.clickGWButton(driver, this.getFinanceYesOption());
+	    	GuideWireAccessors.clickGWButton(driver, this.getFinanceNoOption());
 	    }
 
 	}
@@ -602,7 +602,7 @@ public class ClaimCenterFNOLVehicleDetailsPOM extends BaseTest{
 	public void selectFireWhoDiscovered(String option)
 	{
 		logger.info(format("%s - going to select fire who discoverede option :"+option, getName()));
-		GuideWireAccessors.selectOptionFromGWDropDown(driver,option, this.getFireLastInChrgeDropdown(),1); // first on page
+		GuideWireAccessors.selectOptionFromGWDropDown(driver,option, this.getFireWhoDiscoveredDropdown(),2); // 2nd on page
 	}
 	public void selectFireWhoDiscoveredNewPerson()
 	{
