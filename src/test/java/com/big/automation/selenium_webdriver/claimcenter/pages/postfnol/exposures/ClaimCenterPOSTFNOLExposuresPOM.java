@@ -259,7 +259,7 @@ public class ClaimCenterPOSTFNOLExposuresPOM extends BaseTest{
 			}
 		}
 		
-		logger.info(format("%s - NO match in exposure table: "+type+" "+coverage, getName()));
+		logger.info(format("%s - NO match in exposure table: "+type+" "+coverage+" "+claimant, getName()));
 	
 		
 	}

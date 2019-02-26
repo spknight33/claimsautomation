@@ -3,7 +3,7 @@ Feature: Regression test for errors for step3 New PH Passenger
 
   Background: 
     Given I use test data set "regression_accident_fault"
-    And As a "ClaimsHandler" I am at step3 for FNOL
+    And As a "ADClaimsHandler" I am at step3 for FNOL
 
   Scenario: FNOL Regression - check error messages
     And I will be on step3 for FNOL

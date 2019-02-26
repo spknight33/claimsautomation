@@ -3,25 +3,25 @@ Feature: CBPCL-224 As a ClaimCenter user with the role of Adjuster or Manager, I
 
   @Ignore
   Scenario: CBPCL-224 TC1_1 ClaimsHandler can create an exposure for TP property damage at Step5 FNOL
-    Given As a "ClaimsHandler" I am at step5 for FNOL
+    Given As a "ADClaimsHandler" I am at step5 for FNOL
     When I select the Add Exposures Popup Menu Hierarchy "BMW 3 SERIES (ND58PFL / United Kingdom),Third Party Liability,Liability - Property Damage"
     Then I will be on the new exposure screen for FNOL
 
   @Ignore
   Scenario: CBPCL-224 TC1_2 ClaimsManager can create an exposure for TP property damage at Step5 FNOL
-    Given As a "ClaimsManager" I am at step5 for FNOL
+    Given As a "ADClaimsManager" I am at step5 for FNOL
     When I select the Add Exposures Popup Menu Hierarchy "BMW 3 SERIES (ND58PFL / United Kingdom),Third Party Liability,Liability - Property Damage"
     Then I will be on the new exposure screen for FNOL
 
   @Ignore
   Scenario: CBPCL-224 TC1_3 TeamManager can create an exposure for TP property damage at Step5 FNOL
-    Given As a "TeamManager" I am at step5 for FNOL
+    Given As a "ADTeamManager" I am at step5 for FNOL
     When I select the Add Exposures Popup Menu Hierarchy "BMW 3 SERIES (ND58PFL / United Kingdom),Third Party Liability,Liability - Property Damage"
     Then I will be on the new exposure screen for FNOL
 
   @Ignore
   Scenario: CBPCL-224 TC2 Mandatory fields are completed in TP Property Damage screen at step5 FNOL
-    Given As a "ClaimsHandler" I am at step5 for FNOL
+    Given As a "ADClaimsHandler" I am at step5 for FNOL
     When I select the Add Exposures Popup Menu Hierarchy "BMW 3 SERIES (ND58PFL / United Kingdom),Third Party Liability,Liability - Property Damage"
     Then I will be on the new exposure screen for FNOL
     When I select "Ok" on new exposure screen for FNOL
@@ -32,7 +32,7 @@ Feature: CBPCL-224 As a ClaimCenter user with the role of Adjuster or Manager, I
 
   @Ignore
   Scenario: CBPCL-224 TC3 New Claimant can be created on exposures TP Property Damage screen at step5 FNOL
-    Given As a "ClaimsHandler" I am at step5 for FNOL
+    Given As a "ADClaimsHandler" I am at step5 for FNOL
     When I select the Add Exposures Popup Menu Hierarchy "BMW 3 SERIES (ND58PFL / United Kingdom),Third Party Liability,Liability - Property Damage"
     Then I will be on the new exposure screen for FNOL
         And I click "New Person" on claimant picker on new property exposure screen
@@ -40,7 +40,7 @@ Feature: CBPCL-224 As a ClaimCenter user with the role of Adjuster or Manager, I
     
     @Ignore
      Scenario: CBPCL-224 TC5 New property can be created on exposures TP Property Damage screen at step5 FNOL
-    Given As a "ClaimsHandler" I am at step5 for FNOL
+    Given As a "ADClaimsHandler" I am at step5 for FNOL
     When I select the Add Exposures Popup Menu Hierarchy "BMW 3 SERIES (ND58PFL / United Kingdom),Third Party Liability,Liability - Property Damage"
     Then I will be on the new exposure screen for FNOL
        And I click "New Person" on claimant picker on new property exposure screen

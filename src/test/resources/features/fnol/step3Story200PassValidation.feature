@@ -3,7 +3,7 @@ Feature: Validation at step3 of FNOL
 
   Background: 
     Given  I use test data set "regression_accident_fault"
-    Given As a "ClaimsHandler" I am at step2 for FNOL
+    Given As a "ADClaimsHandler" I am at step2 for FNOL
 
   @Ignore @passed
   Scenario: CBPCL-200  TC1   Pass step3 validation when IncidentType/Cause/Subcause requires JUST INSURED VEHICLE has one present

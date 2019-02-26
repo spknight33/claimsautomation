@@ -34,7 +34,7 @@ public class ClaimCenterFNOLClaimSavedPOM extends BaseTest{
 
 	public boolean isPageTitleDisplayed(String expected)
 	{
-	    sleep(15);
+	    sleep(20); //it can take a long time to save a claim
 		logger.info(format("%s -found page title for :"+this.getPageTitle().getText(), getName()));
 		return GuideWireAccessors.getGWElementText(driver, this.getPageTitle()).equalsIgnoreCase(expected);
 	}

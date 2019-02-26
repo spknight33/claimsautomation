@@ -7,7 +7,7 @@ Feature: CBPCL-155  Create a payment step1
 
   Scenario: CBPCL-155 TC1  Step1 Cheque for payment
     Given I access ClaimCenter login page
-    And I login to ClaimCenter as role "ClaimsHandler"
+    And I login to ClaimCenter as role "ADClaimsHandler"
     And I Select an existing Claim
     And I select the Actions Popup Menu Hierarchy "Cheque"
     And I will see post FNOL New System Cheque Step1 screen
@@ -29,7 +29,7 @@ Feature: CBPCL-155  Create a payment step1
  @Ignore
    Scenario: CBPCL-155 TC13 - ClaimsHandler creates a new cheque (step1) then the EFT fields account number and sortcode must be in correct format
     Given I access ClaimCenter login page
-    And I login to ClaimCenter as role "ClaimsHandler"
+    And I login to ClaimCenter as role "ADClaimsHandler"
     And I Select an existing Claim
     And I select the Actions Popup Menu Hierarchy "Cheque"
     And I will see post FNOL New System Cheque Step1 screen

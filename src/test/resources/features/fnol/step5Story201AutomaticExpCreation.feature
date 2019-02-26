@@ -15,7 +15,7 @@ Feature: CBPCL-201 As a claims handler once the Fault rating has been completed,
 
   
     Given I use test data set "autoexposure_set1"
-    And As a "ClaimsHandler" I am at step5 for FNOL
+    And As a "ADClaimsHandler" I am at step5 for FNOL
     And I click finish button on step5
     And I will be on Claim Saved screen in FNOL
     And I click on the created claim link on Claim Saved screen
@@ -46,7 +46,7 @@ And I will see "Claimant Type" is "Insured" on post FNOL "1st Party Vehicle" exp
     CBPCL-221 TC6 If PROTOCOL HIRE not set for TP VEHICLE DAMAGE Liability then dont create a Protocol Hire exposure
 
     Given I use test data set "autoexposure_set2"
-    And As a "ClaimsHandler" I am at step5 for FNOL
+    And As a "ADClaimsHandler" I am at step5 for FNOL
     And I click finish button on step5
     And I will be on Claim Saved screen in FNOL
     And I click on the created claim link on Claim Saved screen
@@ -64,7 +64,7 @@ And I will see "Claimant Type" is "Insured" on post FNOL "1st Party Vehicle" exp
   @Ignore
   Scenario: CBPCL-201 TCxx - non fault should only create PH
     Given I use test data set "autoexposure_set5"
-    And As a "ClaimsHandler" I am at step5 for FNOL
+    And As a "ADClaimsHandler" I am at step5 for FNOL
     And I click finish button on step5
     And I will be on Claim Saved screen in FNOL
     And I click on the created claim link on Claim Saved screen
@@ -75,7 +75,7 @@ And I will see "Claimant Type" is "Insured" on post FNOL "1st Party Vehicle" exp
   @Ignore
   Scenario: CBPCL-201 TC18 For "Fire" cause PH VEHICLE DAMAGE Liability where PH is claiming auto create a PH Vehicle exposure with reserve
     Given I use test data set "autoexposure_set3"
-    And As a "ClaimsHandler" I am at step5 for FNOL
+    And As a "ADClaimsHandler" I am at step5 for FNOL
     And I click finish button on step5
     And I will be on Claim Saved screen in FNOL
     And I click on the created claim link on Claim Saved screen
@@ -86,7 +86,7 @@ And I will see "Claimant Type" is "Insured" on post FNOL "1st Party Vehicle" exp
  @Ignore
   Scenario: CBPCL-201 TC20 For "Theft" cause PH VEHICLE DAMAGE Liability where PH is claiming auto create a PH Vehicle exposure with reserve
     Given I use test data set "autoexposure_set4"
-    And As a "ClaimsHandler" I am at step5 for FNOL
+    And As a "ADClaimsHandler" I am at step5 for FNOL
     And I click finish button on step5
     And I will be on Claim Saved screen in FNOL
     And I click on the created claim link on Claim Saved screen
@@ -97,7 +97,7 @@ And I will see "Claimant Type" is "Insured" on post FNOL "1st Party Vehicle" exp
   @Ignore
   Scenario: CBPCL-221 TC1 For "Misfuelling" cause PH VEHICLE DAMAGE Liability where PH is claiming?? auto create a PH Vehicle exposure with no reserve
     Given I use test data set "autoexposure_set5"
-    And As a "ClaimsHandler" I am at step5 for FNOL
+    And As a "ADClaimsHandler" I am at step5 for FNOL
     And I click finish button on step5
     And I will be on Claim Saved screen in FNOL
     And I click on the created claim link on Claim Saved screen
@@ -108,7 +108,7 @@ And I will see "Claimant Type" is "Insured" on post FNOL "1st Party Vehicle" exp
     @Ignore
      Scenario: CBPCL-221 TC2 For "Glass cover" cause PH VEHICLE DAMAGE Liability where PH is claiming?? auto create a PH Vehicle exposure with no reserve
     Given I use test data set "autoexposure_set6"
-    And As a "ClaimsHandler" I am at step5 for FNOL
+    And As a "ADClaimsHandler" I am at step5 for FNOL
     And I click finish button on step5
     And I will be on Claim Saved screen in FNOL
     And I click on the created claim link on Claim Saved screen
@@ -119,7 +119,7 @@ And I will see "Claimant Type" is "Insured" on post FNOL "1st Party Vehicle" exp
 
 Scenario: CBPCL-201 TC17 For Insureds "Fault" PH VEHICLE DAMAGE Liability where PH is NOT claiming Do not create a PH Vehicle exposure with reserve
 Given I use test data set "autoexposure_set2"
-And As a "ClaimsHandler" I am at step4 for FNOL
+And As a "ADClaimsHandler" I am at step4 for FNOL
 And I select "No" from field "PH Claiming" at step4 FNOL
 And I complete the TP Capture details on step4 FNOL
 And I click finish button on step4 FNOL
@@ -132,7 +132,7 @@ And I will see post FNOL exposures screen
  @Ignore
  Scenario: CBPCL-201 TC19 For "Fire" cause PH VEHICLE DAMAGE Liability where PH is Not claiming will not create a PH Vehicle exposure with reserve
  Given I use test data set "autoexposure_set3"
-And As a "ClaimsHandler" I am at step4 for FNOL
+And As a "ADClaimsHandler" I am at step4 for FNOL
 And I select "No" from field "PH Claiming" at step4 FNOL
 And I click finish button on step4 FNOL
 And I will be on Claim Saved screen in FNOL
@@ -144,7 +144,7 @@ And I will NOT see type "Vehicle" for coverage "Fire" has been assigned to a use
  @Ignore
  Scenario: CBPCL-201 TC21 For "Theft" cause PH VEHICLE DAMAGE Liability where PH is claiming auto create a PH Vehicle exposure with reserve
  Given I use test data set "autoexposure_set4"
-And As a "ClaimsHandler" I am at step4 for FNOL
+And As a "ADClaimsHandler" I am at step4 for FNOL
 And I select "No" from field "PH Claiming" at step4 FNOL
 And I click finish button on step4 FNOL
 And I will be on Claim Saved screen in FNOL
@@ -156,7 +156,7 @@ And I will NOT see type "Vehicle" for coverage "Theft" has been assigned to a us
  @Ignore
  Scenario: CBPCL-201 TC27 For non-fault case, there are no TP exposures created
 Given I use test data set "autoexposure_set7"
-And As a "ClaimsHandler" I am at step5 for FNOL
+And As a "ADClaimsHandler" I am at step5 for FNOL
 And I click finish button on step5
 And I will be on Claim Saved screen in FNOL
 And I click on the created claim link on Claim Saved screen

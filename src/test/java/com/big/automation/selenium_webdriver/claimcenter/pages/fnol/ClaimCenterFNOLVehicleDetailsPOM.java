@@ -6,7 +6,9 @@ import static java.lang.String.format;
 import java.util.List;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 
 import com.big.automation.selenium_webdriver.common.baseTest.BaseTest;
@@ -298,6 +300,33 @@ public class ClaimCenterFNOLVehicleDetailsPOM extends BaseTest{
 		@FindBy(id = "FNOLVehicleIncidentPopup:FNOLVehicleIncidentScreen:VehicleTheftQuestionsInputSet:PoliceTreatingAsTheftReason-inputEl")
 		private WebElement theftPoliceDetails;
 		
+		
+		//TP Insurer details Available
+		//------------------------------------
+		@FindBy(id = "NewVehicleIncidentPopup:NewVehicleIncidentScreen:PostFNOLVehicleIncidentDV:ThirdPartyInsurerInputSet:WindowsDoorsLockedInd_true-inputEl")
+		private WebElement tpInsurerYesOption;
+		@FindBy(id = "NewVehicleIncidentPopup:NewVehicleIncidentScreen:PostFNOLVehicleIncidentDV:ThirdPartyInsurerInputSet:WindowsDoorsLockedInd_false-inputEl")
+		private WebElement tpInsurerNoOption;
+		
+		@FindBy(id = "NewVehicleIncidentPopup:NewVehicleIncidentScreen:PostFNOLVehicleIncidentDV:ThirdPartyInsurerInputSet:InsurerDetailsInputSet:ThirdPartyInsuranceCompany_itb-inputEl")
+		private WebElement tpInsurerDropdown;
+		@FindBy(id = "NewVehicleIncidentPopup:NewVehicleIncidentScreen:PostFNOLVehicleIncidentDV:ThirdPartyInsurerInputSet:InsurerDetailsInputSet:ThirdPartyInsuranceCompany_itb:ThirdPartyInsuranceCompany_itbMenuIcon")
+		private WebElement tpInsurerPickerIcon;
+		@FindBy(id = "NewVehicleIncidentPopup:NewVehicleIncidentScreen:PostFNOLVehicleIncidentDV:ThirdPartyInsurerInputSet:InsurerDetailsInputSet:ThirdPartyInsuranceCompany_itb:MenuItem_Search-itemEl")
+		private WebElement tpInsurerPickerSearch;
+		
+		
+		@FindBy(id = "NewVehicleIncidentPopup:NewVehicleIncidentScreen:PostFNOLVehicleIncidentDV:ThirdPartyInsurerInputSet:InsurerDetailsInputSet:ThirdPartyInsuranceCompany_itb_WorkPhone-inputEl")
+		private WebElement tpInsurerPhone;
+		@FindBy(id = "NewVehicleIncidentPopup:NewVehicleIncidentScreen:PostFNOLVehicleIncidentDV:ThirdPartyInsurerInputSet:InsurerDetailsInputSet:ThirdPartyInsuranceCompany_itb_EmailAddress1-inputEl")
+		private WebElement tpInsurerPEmail;
+		@FindBy(id = "NewVehicleIncidentPopup:NewVehicleIncidentScreen:PostFNOLVehicleIncidentDV:ThirdPartyInsurerInputSet:InsurerDetailsInputSet:TPI_PolicyNumber_itb-inputEl")
+		private WebElement tpInsurerPolicyNumber;
+		@FindBy(id = "NewVehicleIncidentPopup:NewVehicleIncidentScreen:PostFNOLVehicleIncidentDV:ThirdPartyInsurerInputSet:InsurerDetailsInputSet:TPI_ClaimNumber_itb-inputEl")
+		private WebElement tpInsurerClaimNumber
+		
+		;
+		
 	
 		public boolean containsErrorMessage(String contains)
 		{
@@ -354,6 +383,11 @@ public class ClaimCenterFNOLVehicleDetailsPOM extends BaseTest{
 	{
 		logger.info(format("%s - going to select VRN :"+text, getName()));
 		GuideWireAccessors.setGWTextBox(driver, text, this.getVrn());
+		
+		Actions actions = new Actions(driver);
+		actions.sendKeys(Keys.TAB);
+		actions.build().perform();
+		sleep(2);
 	}
 	public void setYear(String text)
 	{
@@ -889,6 +923,42 @@ public class ClaimCenterFNOLVehicleDetailsPOM extends BaseTest{
 		GuideWireAccessors.setGWTextBox(driver, text, this.getTheftPoliceDetails());
 	}
 	
+	//TP Insurer details
+	//---------------------------
+	public void selectTPInsurerAvailable(boolean available)
+	{
+		logger.info(format("%s -  going to set TP insurer available to:"+available, getName()));
+	    if (available)
+	    {
+	    	GuideWireAccessors.clickGWButton(driver, this.getTpInsurerYesOption());
+	    }
+	    else
+	    {
+	    	GuideWireAccessors.clickGWButton(driver, this.getTpInsurerNoOption());
+	    }
+
+	}
+	
+	public void selectTPInsurerSearch()
+	{
+		logger.info(format("%s - going to select Searcn from TP Insurer picker", getName()));
+		GuideWireAccessors.selectOptionFromGWPicker(driver, this.getTpInsurerPickerIcon(),this.getTpInsurerPickerSearch());
+	}
+	
+	//TODO address lookup/overwrite
+	
+	
+	public void setTPInsurerPolicyNumber(String text)
+	{
+		logger.info(format("%s - going to set TP insurer policy number :"+text, getName()));
+		GuideWireAccessors.setGWTextBox(driver, text, this.getTpInsurerPolicyNumber());
+	}
+	public void setTPInsurerClaimNumber(String text)
+	{
+		logger.info(format("%s - going to set TP insurer claim number :"+text, getName()));
+		GuideWireAccessors.setGWTextBox(driver, text, this.getTpInsurerClaimNumber());
+	}
+	
    
 	private WebElement getCancelButton() {
 	return cancelButton;
@@ -1326,6 +1396,42 @@ public class ClaimCenterFNOLVehicleDetailsPOM extends BaseTest{
 
 	private WebElement getForeignDetails() {
 		return foreignDetails;
+	}
+
+	private WebElement getTpInsurerYesOption() {
+		return tpInsurerYesOption;
+	}
+
+	private WebElement getTpInsurerNoOption() {
+		return tpInsurerNoOption;
+	}
+
+	private WebElement getTpInsurerDropdown() {
+		return tpInsurerDropdown;
+	}
+
+	private WebElement getTpInsurerPickerIcon() {
+		return tpInsurerPickerIcon;
+	}
+
+	private WebElement getTpInsurerPickerSearch() {
+		return tpInsurerPickerSearch;
+	}
+
+	private WebElement getTpInsurerPhone() {
+		return tpInsurerPhone;
+	}
+
+	private WebElement getTpInsurerPEmail() {
+		return tpInsurerPEmail;
+	}
+
+	private WebElement getTpInsurerPolicyNumber() {
+		return tpInsurerPolicyNumber;
+	}
+
+	private WebElement getTpInsurerClaimNumber() {
+		return tpInsurerClaimNumber;
 	}
 
 	

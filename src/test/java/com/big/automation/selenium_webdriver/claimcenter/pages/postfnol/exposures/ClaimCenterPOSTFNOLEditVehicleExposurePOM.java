@@ -60,6 +60,9 @@ public class ClaimCenterPOSTFNOLEditVehicleExposurePOM extends BaseTest {
 	private WebElement vehiclePickerNewIncident;
 
 	// TODO excess stuff?
+	
+	@FindBy(id = "ExposureDetail:ExposureDetailScreen:ExposureDetailDV:BodilyInjuryDamageDV:EditableRepresentativesLV_tb:Add")
+	private WebElement addRepresentativeButton;
 
 	public String getName() {
 
@@ -114,6 +117,13 @@ public class ClaimCenterPOSTFNOLEditVehicleExposurePOM extends BaseTest {
 	public void selectUpToExposures() {
 		logger.info(format("%s -  going to click up to exposures link", getName()));
 		GuideWireAccessors.clickGWButton(driver, this.getUpToExposuresLink());
+
+	}
+	
+	public void selectAddRepresentative() {
+
+		logger.info(format("%s -  going to click add rep", getName()));
+		GuideWireAccessors.clickGWButton(driver, this.getAddRepresentativeButton());
 
 	}
 
@@ -174,5 +184,11 @@ public class ClaimCenterPOSTFNOLEditVehicleExposurePOM extends BaseTest {
 	private WebElement getUpdateButton() {
 		return updateButton;
 	}
+
+	private WebElement getAddRepresentativeButton() {
+		return addRepresentativeButton;
+	}
+	
+	
 
 }

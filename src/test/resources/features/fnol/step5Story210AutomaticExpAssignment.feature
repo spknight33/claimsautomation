@@ -3,7 +3,7 @@ Feature: CBPCL-210 As a ClaimCenter user with the role of Claims Adjuster or Man
 
   Background: 
    Given I use test data set "autoexposure_set2"
-   And As a "ClaimsHandler" I am at step5 for FNOL
+   And As a "ADClaimsHandler" I am at step5 for FNOL
 
    @Ignore
     Scenario: CBPCL-210 TC1 Exposure created for INSURED ACCIDENTAL DAMAGE is assigned to Accidental Damage Group

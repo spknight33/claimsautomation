@@ -6,7 +6,7 @@ Feature: CBPCL-204
   Scenario: CBPCL-204 TC4
     Given I use test data set "regression_accident_fault"
     Given I access ClaimCenter login page
-    And I login to ClaimCenter as role "ClaimsHandler"
+    And I login to ClaimCenter as role "ADClaimsHandler"
     And I Select an existing Claim
     And I select the Actions Popup Menu Hierarchy "Close Claim"
     And I will be on Claim Close screen

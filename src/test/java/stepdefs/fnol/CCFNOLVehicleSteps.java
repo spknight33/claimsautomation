@@ -124,7 +124,7 @@ public class CCFNOLVehicleSteps extends BaseTest {
 	
 	
 	completePHVehicleFireSectionForTestScenario();
-	completeTPVehicleTheftSectionForTestScenario();
+	completePHVehicleTheftSectionForTestScenario();
 	
 	
 	// add TP passenger if one is requiredd
@@ -140,7 +140,7 @@ public class CCFNOLVehicleSteps extends BaseTest {
 	}
 	
 	
-	public void completePHVehicleFireSectionForTestScenario()
+	private void completePHVehicleFireSectionForTestScenario()
 	{
 		String fieldValue=null;
 		//FIRE section
@@ -216,7 +216,7 @@ public class CCFNOLVehicleSteps extends BaseTest {
 			}
 	}
 	
-	public void completeTPVehicleTheftSectionForTestScenario()
+	private void completePHVehicleTheftSectionForTestScenario()
 	{
 		String fieldValue=null;
 		//THEFT section
@@ -510,9 +510,33 @@ public class CCFNOLVehicleSteps extends BaseTest {
 		}
 			
 		
-			   
+		completeTPVehicleTPInsurerSectionForTestScenario();	   
 		
 	   fnolVehicleDetailsPOM.selectOK();
+	}
+	
+	
+	private void completeTPVehicleTPInsurerSectionForTestScenario(){
+		
+		//TODO
+		String fieldValue=null;
+		fieldValue = ExcelUtil.getTestDataValue("Fnol_TPVehicleInsurerDetailsAvailable");
+		if (fieldValue !=null && fieldValue.equalsIgnoreCase("TRUE"))
+		{
+			
+			
+			
+			
+			
+			
+			
+			
+		}
+		else 
+		{
+			//set to false?
+		}
+		
 	}
 
 	@Then("^I will be on vehicle screen for FNOL$")

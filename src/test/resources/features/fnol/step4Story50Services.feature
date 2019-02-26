@@ -4,7 +4,7 @@ Feature: CBPCL-50
      @Ignore
      Scenario: CBPCL-50 TC2 -ClaimsHandler can select REPAIR service and see search defaults for contact manager for a Repair service
     Given I use test data set "autoexposure_set6"
-    Given As a "ClaimsHandler" I am at step4 for FNOL
+    Given As a "ADClaimsHandler" I am at step4 for FNOL
     And I select "Yes" from field "PH Claiming" at step4 FNOL
     And I click the "Repair" service checkbox at step4 FNOL
     And I click the Search menu for the "Repair" service at step4 FNOL
@@ -39,7 +39,7 @@ Feature: CBPCL-50
     
     Scenario: CBPCL-50 TC3 -ClaimsHandler can select other services
     Given I use test data set "autoexposure_set6"
-    Given As a "ClaimsHandler" I am at step4 for FNOL
+    Given As a "ADClaimsHandler" I am at step4 for FNOL
     And I select "Yes" from field "PH Claiming" at step4 FNOL
     And I click the "Other" service checkbox at step4 FNOL
     And I click Add Other Service button on step4 FNOL

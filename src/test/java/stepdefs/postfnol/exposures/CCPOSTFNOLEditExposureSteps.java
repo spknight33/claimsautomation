@@ -277,6 +277,37 @@ public class CCPOSTFNOLEditExposureSteps extends BaseTest {
 		}
 
 	}
+	
+	@When("^I click the add representative button on \"([^\"]*)\" edit exposure screen for Post FNOL$")
+	public void i_click_the_repbutton_on_exposure_screen_for_Post_FNOL(String exposureType) throws Throwable {
+		switch (exposureType) {
+		case ("1st Party Vehicle"):
+			//postFnolEditVehicleExposurePOM.add;
+			break;
+		case ("3rd Party Vehicle"):
+			postFnolEditVehicleExposurePOM.selectAddRepresentative();
+			break;
+		case ("3rd Party Bodily Injury"):
+			postFnolEditInjuryExposurePOM.selectAddRepresentative();;
+			break;
+		case ("3rd Party Property"):
+			//postFnolEditPropertyExposurePOM.selectUpToExposures();
+			break;
+		case ("3rd Party Credit Hire"):
+		//	postFnolEditCreditHireExposurePOM.selectUpToExposures();
+			break;
+		case ("3rd Party Protocol Hire"):
+			//postFnolEditProtocolHireExposurePOM.selectUpToExposures();
+			break;
+		case ("TP Capture"):
+			//postFnolEditTPCaptureExposurePOM.selectUpToExposures();
+			break;
+
+		default:
+			Assert.fail("unknown input field :" + exposureType + " - check cucumber script!");
+		}
+
+	}
 
 	//TODO -refactor all of the following 
 	@Given("^I select \"([^\"]*)\" from \"([^\"]*)\" on edit injury exposure screen for Post FNOL$")

@@ -3,7 +3,7 @@ Feature: CBPCL-224 As a ClaimCenter user with the role of Adjuster or Manager, I
 
 Background: 
 Given I access ClaimCenter login page
-And I login to ClaimCenter as role "ClaimsHandler"
+And I login to ClaimCenter as role "ADClaimsHandler"
 Scenario: CBPCL-224 TC30 Property Damage Exposure can be edited in post FNOL
 And I Select an existing Claim
 And I select "Exposures" on the Claim Navigator

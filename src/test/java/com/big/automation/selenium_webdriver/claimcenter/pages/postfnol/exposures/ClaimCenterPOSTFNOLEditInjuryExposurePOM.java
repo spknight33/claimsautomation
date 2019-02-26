@@ -56,6 +56,9 @@ public class ClaimCenterPOSTFNOLEditInjuryExposurePOM extends BaseTest {
 	private WebElement injuryPickerIcon;
 	@FindBy(id = "ExposureDetail:ExposureDetailScreen:ExposureDetailDV:BodilyInjuryDamageDV:BIDamageInputSet:Injury_Incident:BodilyInjuryDamageDV_NewIncidentMenuItem-itemEl")
 	private WebElement injuryPickerNewIncident;
+	
+	@FindBy(id = "ExposureDetail:ExposureDetailScreen:ExposureDetailDV:BodilyInjuryDamageDV:EditableRepresentativesLV_tb:Add")
+	private WebElement addRepresentativeButton;
 
 	public String getName() {
 
@@ -109,6 +112,13 @@ public class ClaimCenterPOSTFNOLEditInjuryExposurePOM extends BaseTest {
 		logger.info(format("%s - going to select New Incident from Injury picker", getName()));
 		GuideWireAccessors.selectOptionFromGWPicker(driver, this.getInjuryPickerIcon(),
 				this.getInjuryPickerNewIncident());
+	}
+	
+	public void selectAddRepresentative() {
+
+		logger.info(format("%s -  going to click add rep", getName()));
+		GuideWireAccessors.clickGWButton(driver, this.getAddRepresentativeButton());
+
 	}
 
 	
@@ -182,5 +192,10 @@ public class ClaimCenterPOSTFNOLEditInjuryExposurePOM extends BaseTest {
 	private WebElement getInjuryPickerNewIncident() {
 		return injuryPickerNewIncident;
 	}
+
+	private WebElement getAddRepresentativeButton() {
+		return addRepresentativeButton;
+	}
+	
 
 }
