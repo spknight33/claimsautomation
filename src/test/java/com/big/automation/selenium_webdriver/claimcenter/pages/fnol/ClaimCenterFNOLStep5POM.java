@@ -74,6 +74,11 @@ public class ClaimCenterFNOLStep5POM extends BaseTest{
 	
 	public void finish() {
 
+		// for some reason I need to do this otherwise the finish click wont work!
+		Actions actions = new Actions(driver);
+		actions.sendKeys(Keys.TAB);
+		actions.build().perform();
+		
 		logger.info(format("%s -  going to click finish", getName()));
 		
 		GuideWireAccessors.clickGWButton(driver,getFinishButton());
@@ -93,7 +98,9 @@ public class ClaimCenterFNOLStep5POM extends BaseTest{
 		{
 			logger.info(format("%s - NOT going to warnings window as not open", getName()));
 		}
-	   sleep(3);
+	 
+		// for some reason the the mouse has to be on the page for this to work!!
+		
 		
 	}
 	
@@ -107,14 +114,14 @@ public class ClaimCenterFNOLStep5POM extends BaseTest{
 	public void back() {
 		logger.info(format("%s -  going to click Back", getName()));
 		GuideWireAccessors.clickGWButton(driver,getBackButton());
-		logger.info(format("%s - done, Back clicked", getName()));
+		
 	}
 
 	public void setNote(String text)
 	{
 		logger.info(format("%s -  going to set note", getName()));
 		GuideWireAccessors.setGWTextBox(driver, text, this.getNote());
-		logger.info(format("%s - done, note set", getName()));
+	
 	}
 	
 	public void selectAssignment(String option)

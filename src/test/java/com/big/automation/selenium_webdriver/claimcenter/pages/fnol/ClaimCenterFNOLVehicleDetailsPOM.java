@@ -303,26 +303,26 @@ public class ClaimCenterFNOLVehicleDetailsPOM extends BaseTest{
 		
 		//TP Insurer details Available
 		//------------------------------------
-		@FindBy(id = "NewVehicleIncidentPopup:NewVehicleIncidentScreen:PostFNOLVehicleIncidentDV:ThirdPartyInsurerInputSet:WindowsDoorsLockedInd_true-inputEl")
+		@FindBy(id = "FNOLVehicleIncidentPopup:FNOLVehicleIncidentScreen:ThirdPartyInsurerInputSet:WindowsDoorsLockedInd_true-inputEl")
 		private WebElement tpInsurerYesOption;
-		@FindBy(id = "NewVehicleIncidentPopup:NewVehicleIncidentScreen:PostFNOLVehicleIncidentDV:ThirdPartyInsurerInputSet:WindowsDoorsLockedInd_false-inputEl")
+		@FindBy(id = "FNOLVehicleIncidentPopup:FNOLVehicleIncidentScreen:ThirdPartyInsurerInputSet:WindowsDoorsLockedInd_false-inputEl")
 		private WebElement tpInsurerNoOption;
 		
-		@FindBy(id = "NewVehicleIncidentPopup:NewVehicleIncidentScreen:PostFNOLVehicleIncidentDV:ThirdPartyInsurerInputSet:InsurerDetailsInputSet:ThirdPartyInsuranceCompany_itb-inputEl")
+		@FindBy(id = "FNOLVehicleIncidentPopup:FNOLVehicleIncidentScreen:ThirdPartyInsurerInputSet:InsurerDetailsInputSet:ThirdPartyInsuranceCompany_itb-inputEl")
 		private WebElement tpInsurerDropdown;
-		@FindBy(id = "NewVehicleIncidentPopup:NewVehicleIncidentScreen:PostFNOLVehicleIncidentDV:ThirdPartyInsurerInputSet:InsurerDetailsInputSet:ThirdPartyInsuranceCompany_itb:ThirdPartyInsuranceCompany_itbMenuIcon")
+		@FindBy(id = "FNOLVehicleIncidentPopup:FNOLVehicleIncidentScreen:ThirdPartyInsurerInputSet:InsurerDetailsInputSet:ThirdPartyInsuranceCompany_itb:ThirdPartyInsuranceCompany_itbMenuIcon")
 		private WebElement tpInsurerPickerIcon;
-		@FindBy(id = "NewVehicleIncidentPopup:NewVehicleIncidentScreen:PostFNOLVehicleIncidentDV:ThirdPartyInsurerInputSet:InsurerDetailsInputSet:ThirdPartyInsuranceCompany_itb:MenuItem_Search-itemEl")
+		@FindBy(id = "FNOLVehicleIncidentPopup:FNOLVehicleIncidentScreen:ThirdPartyInsurerInputSet:InsurerDetailsInputSet:ThirdPartyInsuranceCompany_itb:MenuItem_Search-itemEl")
 		private WebElement tpInsurerPickerSearch;
 		
 		
-		@FindBy(id = "NewVehicleIncidentPopup:NewVehicleIncidentScreen:PostFNOLVehicleIncidentDV:ThirdPartyInsurerInputSet:InsurerDetailsInputSet:ThirdPartyInsuranceCompany_itb_WorkPhone-inputEl")
+		@FindBy(id = "FNOLVehicleIncidentPopup:FNOLVehicleIncidentScreen:ThirdPartyInsurerInputSet:InsurerDetailsInputSet:ThirdPartyInsuranceCompany_itb_WorkPhone-inputEl")
 		private WebElement tpInsurerPhone;
-		@FindBy(id = "NewVehicleIncidentPopup:NewVehicleIncidentScreen:PostFNOLVehicleIncidentDV:ThirdPartyInsurerInputSet:InsurerDetailsInputSet:ThirdPartyInsuranceCompany_itb_EmailAddress1-inputEl")
+		@FindBy(id = "FNOLVehicleIncidentPopup:FNOLVehicleIncidentScreen:ThirdPartyInsurerInputSet:InsurerDetailsInputSet:ThirdPartyInsuranceCompany_itb_EmailAddress1-inputEl")
 		private WebElement tpInsurerPEmail;
-		@FindBy(id = "NewVehicleIncidentPopup:NewVehicleIncidentScreen:PostFNOLVehicleIncidentDV:ThirdPartyInsurerInputSet:InsurerDetailsInputSet:TPI_PolicyNumber_itb-inputEl")
+		@FindBy(id = "FNOLVehicleIncidentPopup:FNOLVehicleIncidentScreen:ThirdPartyInsurerInputSet:InsurerDetailsInputSet:TPI_PolicyNumber_itb-inputEl")
 		private WebElement tpInsurerPolicyNumber;
-		@FindBy(id = "NewVehicleIncidentPopup:NewVehicleIncidentScreen:PostFNOLVehicleIncidentDV:ThirdPartyInsurerInputSet:InsurerDetailsInputSet:TPI_ClaimNumber_itb-inputEl")
+		@FindBy(id = "FNOLVehicleIncidentPopup:FNOLVehicleIncidentScreen:ThirdPartyInsurerInputSet:InsurerDetailsInputSet:TPI_ClaimNumber_itb-inputEl")
 		private WebElement tpInsurerClaimNumber
 		
 		;

@@ -1,4 +1,4 @@
-
+@Ignore
 Feature: CBPCL-222 Feature: As a ClaimCenter user with the role of Adjuster or Manager, I want to be able maintain claim related exposures (Injury Damage) so that I can make sure that the data on the claim represents our current understanding of the loss.
   Background: 
     Given I use test data set "regression_accident_fault"

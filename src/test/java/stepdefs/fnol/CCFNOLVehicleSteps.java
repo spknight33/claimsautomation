@@ -11,6 +11,7 @@ import com.big.automation.selenium_webdriver.common.utilities.excelutils.ExcelUt
 import cucumber.api.DataTable;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
+import stepdefs.common.SearchAddressBookSteps;
 import stepdefs.common.TotalLossCalculatorSteps;
 
 public class CCFNOLVehicleSteps extends BaseTest {
@@ -18,6 +19,7 @@ public class CCFNOLVehicleSteps extends BaseTest {
 	CCFNOLDriverSteps driverSteps = new CCFNOLDriverSteps();
 	CCFNOLPassengerSteps passengerSteps = new CCFNOLPassengerSteps();
 	TotalLossCalculatorSteps tlcSteps = new TotalLossCalculatorSteps();
+	SearchAddressBookSteps searchAddressBookSteps = new SearchAddressBookSteps();
 
 	
 	public void completeFNOLPHVehicleForTestScenario() throws Throwable
@@ -405,6 +407,8 @@ public class CCFNOLVehicleSteps extends BaseTest {
 		   }
 	  // add TP vehicle 
 		
+		completeTPVehicleTPInsurerSectionForTestScenario();	  
+		
 		String fieldValue = ExcelUtil.getTestDataValue("Fnol_TPVehicleType");
 		if (fieldValue !=null)
 			fnolVehicleDetailsPOM.selectVehicleType(fieldValue);
@@ -510,31 +514,46 @@ public class CCFNOLVehicleSteps extends BaseTest {
 		}
 			
 		
-		completeTPVehicleTPInsurerSectionForTestScenario();	   
+		 
 		
 	   fnolVehicleDetailsPOM.selectOK();
 	}
 	
 	
-	private void completeTPVehicleTPInsurerSectionForTestScenario(){
+	private void completeTPVehicleTPInsurerSectionForTestScenario() throws Throwable{
 		
-		//TODO
+		
 		String fieldValue=null;
 		fieldValue = ExcelUtil.getTestDataValue("Fnol_TPVehicleInsurerDetailsAvailable");
 		if (fieldValue !=null && fieldValue.equalsIgnoreCase("TRUE"))
 		{
+			fnolVehicleDetailsPOM.selectTPInsurerAvailable(true);
 			
 			
+			// set the claim and policy number
+			fieldValue = ExcelUtil.getTestDataValue("Fnol_TPVehicleInsurerPolicyNumber");
+			if (fieldValue !=null)
+				fnolVehicleDetailsPOM.setTPInsurerPolicyNumber(fieldValue);
 			
+			fieldValue = ExcelUtil.getTestDataValue("Fnol_TPVehicleInsurerClaimNumber");
+			if (fieldValue !=null)
+				fnolVehicleDetailsPOM.setTPInsurerClaimNumber(fieldValue);
 			
+			fnolVehicleDetailsPOM.selectTPInsurerSearch();
+			// now on the search page 
 			
-			
+			searchAddressBookSteps.i_will_be_on_search_address_book_screen();
+			fieldValue = ExcelUtil.getTestDataValue("Fnol_TPVehicleInsurerSearchName");
+	
+			searchAddressBookSteps.i_input_into_the_box_on_search_address_book_screen(fieldValue, "Search Name");
+			searchAddressBookSteps.i_select_on_search_address_book_screen("Search");
+			searchAddressBookSteps.i_select_on_search_address_book_screen("Select First Result");
 			
 			
 		}
 		else 
 		{
-			//set to false?
+			fnolVehicleDetailsPOM.selectTPInsurerAvailable(false);
 		}
 		
 	}
