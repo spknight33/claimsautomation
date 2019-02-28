@@ -25,6 +25,10 @@ public class ClaimCenterFNOLClaimSavedPOM extends BaseTest{
 	@FindBy(id = "NewClaimSaved:NewClaimSavedScreen:NewClaimSavedDV:GoToClaim-inputEl")
 	private WebElement claimLink;
 	
+	@FindBy(id = "NewClaimSaved:NewClaimSavedScreen:NewClaimSavedDV:Header")
+	private WebElement claimSavedMessage;
+	
+	
 	
 	
 	public String getName() {
@@ -54,6 +58,14 @@ public class ClaimCenterFNOLClaimSavedPOM extends BaseTest{
 		
 	} 
 	
+	public String getClaimNumberMessage()
+	{
+		String mess=null;
+		mess = GuideWireAccessors.getGWElementText(driver, this.getClaimSavedMessage());
+		logger.info(format("%s -  claim saved message is:"+mess, getName()));
+		return mess;
+	}
+	
 
 	
 
@@ -73,6 +85,10 @@ public class ClaimCenterFNOLClaimSavedPOM extends BaseTest{
 
 	private WebElement getClaimLink() {
 		return claimLink;
+	}
+
+	private WebElement getClaimSavedMessage() {
+		return claimSavedMessage;
 	}
 	
 	

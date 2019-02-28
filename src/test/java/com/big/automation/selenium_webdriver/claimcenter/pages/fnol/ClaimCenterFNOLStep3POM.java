@@ -4,7 +4,9 @@ import static com.big.automation.selenium_webdriver.common.utilities.ThreadUtils
 import static java.lang.String.format;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 
 import com.big.automation.selenium_webdriver.common.baseTest.BaseTest;
@@ -94,6 +96,26 @@ public class ClaimCenterFNOLStep3POM extends BaseTest{
 	
 	@FindBy(id ="FNOLWizard:AutoWorkersCompWizardStepSet:FNOLWizard_NewLossDetailsScreen:LossDetailsAddressDV:AddressDetailInputSetRef:CCAddressInputSet:globalAddressContainer:Address_Picker-inputEl")
 	private WebElement addressDropdown;
+	
+	@FindBy(id ="FNOLWizard:AutoWorkersCompWizardStepSet:FNOLWizard_NewLossDetailsScreen:LossDetailsAddressDV:AddressDetailInputSetRef:CCAddressInputSet:globalAddressContainer:globalAddress:GlobalAddressInputSet:AddressLine1-inputEl")
+	private WebElement lossLocAddress1;
+	@FindBy(id ="FNOLWizard:AutoWorkersCompWizardStepSet:FNOLWizard_NewLossDetailsScreen:LossDetailsAddressDV:AddressDetailInputSetRef:CCAddressInputSet:globalAddressContainer:globalAddress:GlobalAddressInputSet:AddressLine2-inputEl")
+	private WebElement lossLocAddress2;
+	@FindBy(id ="FNOLWizard:AutoWorkersCompWizardStepSet:FNOLWizard_NewLossDetailsScreen:LossDetailsAddressDV:AddressDetailInputSetRef:CCAddressInputSet:globalAddressContainer:globalAddress:GlobalAddressInputSet:AddressLine3-inputEl")
+	private WebElement lossLocAddress3;
+	@FindBy(id ="FNOLWizard:AutoWorkersCompWizardStepSet:FNOLWizard_NewLossDetailsScreen:LossDetailsAddressDV:AddressDetailInputSetRef:CCAddressInputSet:globalAddressContainer:globalAddress:GlobalAddressInputSet:City-inputEl")
+	private WebElement lossLocAddressCity;
+	
+	@FindBy(id ="FNOLWizard:AutoWorkersCompWizardStepSet:FNOLWizard_NewLossDetailsScreen:LossDetailsAddressDV:AddressDetailInputSetRef:CCAddressInputSet:globalAddressContainer:globalAddress:GlobalAddressInputSet:PostalCode-inputEl")
+	private WebElement lossLocPostcode;
+	@FindBy(id ="FNOLWizard:AutoWorkersCompWizardStepSet:FNOLWizard_NewLossDetailsScreen:LossDetailsAddressDV:AddressDetailInputSetRef:CCAddressInputSet:globalAddressContainer:globalAddress:GlobalAddressInputSet:addresses-inputEl")
+	private WebElement lossLocPostcodeAddress;
+	@FindBy(id ="FNOLWizard:AutoWorkersCompWizardStepSet:FNOLWizard_NewLossDetailsScreen:LossDetailsAddressDV:AddressDetailInputSetRef:CCAddressInputSet:globalAddressContainer:Address_Description-inputEl")
+	private WebElement lossLocDescription;
+	@FindBy(id ="FNOLWizard:AutoWorkersCompWizardStepSet:FNOLWizard_NewLossDetailsScreen:LossDetailsAddressDV:AddressDetailInputSetRef:CCAddressInputSet:globalAddressContainer:Claim_LocationCode-inputEl")
+	private WebElement lossLocCode;
+	
+	
 	
 	public String getName() {
 
@@ -281,7 +303,58 @@ public class ClaimCenterFNOLStep3POM extends BaseTest{
 		logger.info(format("%s - going to select address location option :"+option, getName()));
 		GuideWireAccessors.selectOptionFromGWDropDown(driver,option, this.getAddressDropdown(),1);
 	}
+	
+	public void setLossLocPostcode(String text)
+	{
+		logger.info(format("%s -  going to set loss location postcode", getName()));
+		GuideWireAccessors.setGWTextBox(driver, text, this.getLossLocPostcode());
+		// as postcode causes display off other address fields, but this can take a couple of seconds - the next method should wait until available but add a slug anyway
+				Actions actions = new Actions(driver);
+				actions.sendKeys(Keys.TAB);
+				actions.build().perform();
+				sleep(2);
+		
+	}
+	
+	public void selectLossLocPostcodeAddress(String option)
+	{
+		logger.info(format("%s -  going to select postcode address :"+option, getName()));
+		GuideWireAccessors.selectOptionFromGWDropDown(driver, option, this.getLossLocPostcodeAddress(), 1);
+		
+	}
 
+	
+	public void setLossLocLocationDesc(String text)
+	{
+		logger.info(format("%s -  going to set loss loc location desc", getName()));
+		GuideWireAccessors.setGWTextBox(driver, text, this.getLossLocDescription());
+		
+	}
+	
+	public void setLossLocAddressLine1(String text)
+	{
+		logger.info(format("%s -  going to set address line1", getName()));
+		GuideWireAccessors.setGWTextBox(driver, text, this.getLossLocAddress1());
+		
+	}
+	public void setLossLocAddressLine2(String text)
+	{
+		logger.info(format("%s -  going to set address line2", getName()));
+		GuideWireAccessors.setGWTextBox(driver, text, this.getLossLocAddress2());
+		
+	}
+	public void setLossLocAddressLine3(String text)
+	{
+		logger.info(format("%s -  going to set address line3", getName()));
+		GuideWireAccessors.setGWTextBox(driver, text, this.getLossLocAddress3());
+		
+	}
+	public void setLossLocCity(String text)
+	{
+		logger.info(format("%s -  going to set city", getName()));
+		GuideWireAccessors.setGWTextBox(driver, text, this.getLossLocAddressCity());
+		
+	}
 
 
    public void selectIncidentOnlyCB()
@@ -467,6 +540,38 @@ private WebElement getFinishButton() {
 
 	private WebElement getRemovePoliceButton() {
 		return removePoliceButton;
+	}
+
+	private WebElement getLossLocAddress1() {
+		return lossLocAddress1;
+	}
+
+	private WebElement getLossLocAddress2() {
+		return lossLocAddress2;
+	}
+
+	private WebElement getLossLocAddress3() {
+		return lossLocAddress3;
+	}
+
+	private WebElement getLossLocAddressCity() {
+		return lossLocAddressCity;
+	}
+
+	private WebElement getLossLocPostcode() {
+		return lossLocPostcode;
+	}
+
+	private WebElement getLossLocPostcodeAddress() {
+		return lossLocPostcodeAddress;
+	}
+
+	private WebElement getLossLocDescription() {
+		return lossLocDescription;
+	}
+
+	private WebElement getLossLocCode() {
+		return lossLocCode;
 	}
 
 	

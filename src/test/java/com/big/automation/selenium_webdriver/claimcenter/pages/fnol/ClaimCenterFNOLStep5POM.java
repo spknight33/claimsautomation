@@ -5,12 +5,10 @@ import static java.lang.String.format;
 import java.util.List;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
-import static com.big.automation.selenium_webdriver.common.utilities.ThreadUtils.sleep;
 
 import com.big.automation.selenium_webdriver.common.baseTest.BaseTest;
 import com.big.automation.selenium_webdriver.common.gw.utilities.GuideWireAccessors;
@@ -103,13 +101,7 @@ public class ClaimCenterFNOLStep5POM extends BaseTest{
 		
 		
 	}
-	
-	
 		
-		
-	
-	
-	
 	
 	public void back() {
 		logger.info(format("%s -  going to click Back", getName()));
@@ -119,7 +111,7 @@ public class ClaimCenterFNOLStep5POM extends BaseTest{
 
 	public void setNote(String text)
 	{
-		logger.info(format("%s -  going to set note", getName()));
+		logger.info(format("%s -  going to set note:"+text, getName()));
 		GuideWireAccessors.setGWTextBox(driver, text, this.getNote());
 	
 	}

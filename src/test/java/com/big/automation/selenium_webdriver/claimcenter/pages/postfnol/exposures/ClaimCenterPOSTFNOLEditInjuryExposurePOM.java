@@ -120,6 +120,16 @@ public class ClaimCenterPOSTFNOLEditInjuryExposurePOM extends BaseTest {
 		GuideWireAccessors.clickGWButton(driver, this.getAddRepresentativeButton());
 
 	}
+	
+	public void setAddRepReference(String text)
+	{
+		logger.info(format("%s - going to set Representative reference for new addition:"+text, getName()));
+		
+		String locator = "//*[@id=\"ExposureDetail:ExposureDetailScreen:ExposureDetailDV:BodilyInjuryDamageDV:EditableRepresentativesLV-body\"]//table[1]//tr//td[3]/div";
+		String inputLocator = "//*[@id=\"ExposureDetail:ExposureDetailScreen:ExposureDetailDV:BodilyInjuryDamageDV:EditableRepresentativesLV-body\"]//input";
+		
+		GuideWireAccessors.setGWTextBoxInTable(driver, text, locator, inputLocator);
+	}
 
 	
 

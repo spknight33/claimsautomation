@@ -6,6 +6,7 @@ import java.util.List;
 import org.testng.asserts.SoftAssert;
 
 import com.big.automation.selenium_webdriver.common.baseTest.BaseTest;
+import com.big.automation.selenium_webdriver.common.utilities.excelutils.ExcelUtil;
 
 import cucumber.api.DataTable;
 import cucumber.api.java.en.Given;
@@ -24,11 +25,18 @@ public class CCFNOLStep5Steps extends BaseTest{
 	 */
 	public void completeFNOLStep5ForTestScenario()  throws Throwable
 	{
-		fnolStep5POM.setNote("this is a note added to the claim at step5");
-		//List<String> list = Arrays.asList("BMW 3 SERIES (ND58PFL / United Kingdom)", "Personal Accident");
-		//fnolStep5POM.selectExposureSubMenuHierarchy(list);
+		
+		String fieldValue=null;
+		fieldValue = ExcelUtil.getTestDataValue("Fnol_Step5_Notes");
+		if (fieldValue !=null)
+		{
+			fnolStep5POM.setNote(fieldValue);
+		}
+
 		fnolStep5POM.finish();
 		fnolClaimSavedPOM.isPageTitleDisplayed("New Claim Saved");
+		String message = fnolClaimSavedPOM.getClaimNumberMessage();
+		System.out.println(message);
 	}
 	
 	@Given("^As a \"([^\"]*)\" I am at step5 for FNOL$")

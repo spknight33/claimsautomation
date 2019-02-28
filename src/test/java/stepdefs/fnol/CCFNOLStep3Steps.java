@@ -110,7 +110,30 @@ public class CCFNOLStep3Steps extends BaseTest {
 		
 
 		// select the location
-		fnolStep3POM.selectAddressLocation(ExcelUtil.getTestDataValue("Fnol_Insured_Address"));
+		// We need to check if us insureds address, or do a postcode search or add a location description
+		fieldValue = ExcelUtil.getTestDataValue("Fnol_Step3_LossLocUseInsuredAddress");
+		if (fieldValue !=null && fieldValue.equalsIgnoreCase("TRUE"))
+		{
+			fnolStep3POM.selectAddressLocation(ExcelUtil.getTestDataValue("Fnol_Insured_Address"));
+		}
+		fieldValue = ExcelUtil.getTestDataValue("Fnol_Step3_LossLocUseLocationDesc");
+		if (fieldValue !=null && fieldValue.equalsIgnoreCase("TRUE"))
+		{
+			fnolStep3POM.setLossLocLocationDesc(ExcelUtil.getTestDataValue("Fnol_Step3_LossLocDescription"));
+		}
+		fieldValue = ExcelUtil.getTestDataValue("Fnol_Step3_LossLocUsePostcode");
+		if (fieldValue !=null && fieldValue.equalsIgnoreCase("TRUE"))
+		{
+			fnolStep3POM.setLossLocPostcode(ExcelUtil.getTestDataValue("Fnol_Step3_LossLocPostcode"));
+			fnolStep3POM.selectLossLocPostcodeAddress(ExcelUtil.getTestDataValue("Fnol_Step3_LossLocPostcodeAddress"));
+		}
+		fieldValue = ExcelUtil.getTestDataValue("Fnol_Step3_LossLocUseAddress1");
+		if (fieldValue !=null && fieldValue.equalsIgnoreCase("TRUE"))
+		{
+			fnolStep3POM.setLossLocAddressLine1(ExcelUtil.getTestDataValue("Fnol_Step3_LossLocAddress1"));
+			
+		}
+		
 		
 
 		fnolStep3POM.next();
@@ -223,6 +246,9 @@ public class CCFNOLStep3Steps extends BaseTest {
 		case "Address Location":
 			fnolStep3POM.selectAddressLocation(fieldValue);
 			break;
+		case "Loss Location Postcode Address":
+			fnolStep3POM.selectLossLocPostcodeAddress(fieldValue);
+			break;
 
 		default:
 			Assert.fail("unknown input field :" + fieldName + " - check cucumber script!");
@@ -316,6 +342,24 @@ public class CCFNOLStep3Steps extends BaseTest {
 			break;
 		case "Journey Purpose":
 			fnolStep3POM.setJourneyPurpose(fieldValue);
+			break;
+		case "Loss Location Description":
+			fnolStep3POM.setLossLocLocationDesc(fieldValue);
+			break;
+		case "Loss Location Address1":
+			fnolStep3POM.setLossLocAddressLine1(fieldValue);
+			break;
+		case "Loss Location Address2":
+			fnolStep3POM.setLossLocAddressLine2(fieldValue);
+			break;
+		case "Loss Location Address3":
+			fnolStep3POM.setLossLocAddressLine3(fieldValue);
+			break;
+		case "Loss Location City":
+			fnolStep3POM.setLossLocCity(fieldValue);
+			break;
+		case "Loss Location Postcode":
+			fnolStep3POM.setLossLocPostcode(fieldValue);
 			break;
 
 		default:

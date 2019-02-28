@@ -9,7 +9,7 @@ public class CCDesktopQueuesSteps extends BaseTest {
 	
 	
 	
-	@Then("^I will see desktop queue details$")
+	@Then("^I will see desktop queue details screen$")
 	public void i_will_see_desktop_queue_details() throws Throwable {
 		desktopQueuesPOM.isPageTitleDisplayed("Queued Activities");
 	}

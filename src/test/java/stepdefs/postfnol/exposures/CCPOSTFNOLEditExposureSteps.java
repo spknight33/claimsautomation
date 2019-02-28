@@ -308,6 +308,50 @@ public class CCPOSTFNOLEditExposureSteps extends BaseTest {
 		}
 
 	}
+	
+
+	@When("^I input value \"([^\"]*)\" for field \"([^\"]*)\" on \"([^\"]*)\" edit exposure screen for Post FNOL$")
+	public void i_inputvalueon_exposure_screen_for_Post_FNOL(String fieldValue, String fieldType,String exposureType) throws Throwable {
+		switch (exposureType) {
+		case ("1st Party Vehicle"):
+			//
+			break;
+		case ("3rd Party Vehicle"):
+			//
+			break;
+		case ("3rd Party Bodily Injury"):
+			inputValueForInjuryExposure(fieldValue,fieldType);
+			break;
+		case ("3rd Party Property"):
+			//
+			break;
+		case ("3rd Party Credit Hire"):
+		//	
+			break;
+		case ("3rd Party Protocol Hire"):
+			//
+			break;
+		case ("TP Capture"):
+			//
+			break;
+
+		default:
+			Assert.fail("unknown input field :" + exposureType + " - check cucumber script!");
+		}
+
+	}
+	private void inputValueForInjuryExposure(String fieldValue, String fieldType) {
+		switch (fieldType) {
+		case "Representative Reference":
+			postFnolEditInjuryExposurePOM.setAddRepReference(fieldValue);
+			break;
+
+
+		default:
+			Assert.fail("unknown input field :" + fieldType + " - check cucumber script!");
+		}
+	}
+	
 
 	//TODO -refactor all of the following 
 	@Given("^I select \"([^\"]*)\" from \"([^\"]*)\" on edit injury exposure screen for Post FNOL$")

@@ -15,6 +15,7 @@ And I will see post FNOL edit exposure screen for "3rd Party Bodily Injury"
 And I click "Edit" on post FNOL "3rd Party Bodily Injury" edit exposure screen
 And I click the add representative button on "3rd Party Bodily Injury" edit exposure screen for Post FNOL
 And I click "Update" on post FNOL "3rd Party Bodily Injuryy" edit exposure screen
+And I input value "ABCD1234" for field "Representative Reference" on "3rd Party Bodily Injury" edit exposure screen for Post FNOL
 
 @Ignore
 Scenario: CBPCL-555 test

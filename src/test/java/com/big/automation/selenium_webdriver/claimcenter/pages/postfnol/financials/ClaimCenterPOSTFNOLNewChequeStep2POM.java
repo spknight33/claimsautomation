@@ -166,7 +166,7 @@ public class ClaimCenterPOSTFNOLNewChequeStep2POM extends BaseTest {
 		logger.info(format("%s - going to set line item amount:"+text, getName()));
 		
 		String locator = "//*[@id=\"NormalCreateCheckWizard:CheckWizard_CheckPaymentsScreen:NewCheckPaymentPanelSet:NewPaymentDetailDV:EditablePaymentLineItemsLV-body\"]//table[1]//tr//td[3]/div";
-		String inputLocator = "//*[@id=\"NormalCreateCheckWizard:CheckWizard_CheckPaymentsScreen:NewCheckPaymentPanelSet:NewPaymentDetailDV:EditablePaymentLineItemsLV-body\"]//input";
+		String inputLocator = "//*[@id=\"NormalCreateCheckWizard:CheckWizard_CheckPaymentsScreen:NewCheckPaymentPanelSet:NewPaymentDetailDV:EditablePaymentLineItemsLV-body\"]//input[starts-with(@id,'textfield-')]";
 		
 		GuideWireAccessors.setGWTextBoxInTable(driver, text, locator, inputLocator);
 	}

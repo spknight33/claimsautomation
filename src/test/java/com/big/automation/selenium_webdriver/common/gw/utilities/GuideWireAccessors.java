@@ -218,11 +218,13 @@ public static void setGWTextBoxInTable(WebDriver driver, String text, String loc
 			je.executeScript("arguments[0].scrollIntoView(true);", element);
 			element.click();
 			
-			sleep(1);
+			sleep(2);
 			// the input tag should be available
 			element = driver.findElement(By.xpath(inputLocator));
 			
 			element.clear();
+			System.out.println("setGWTextBoxInTable setting:" + text);
+			
 			element.sendKeys(text);
 			break;
 		} catch (Exception e) {
