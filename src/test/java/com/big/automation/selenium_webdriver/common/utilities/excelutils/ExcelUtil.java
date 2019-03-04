@@ -1,6 +1,13 @@
 package com.big.automation.selenium_webdriver.common.utilities.excelutils;
 
-import org.apache.poi.ss.usermodel.Cell;
+import static com.big.automation.selenium_webdriver.common.baseTest.BaseTest.testDataExcelFilename;
+
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.util.HashMap;
+import java.util.Locale;
+import java.util.Map;
+
 import org.apache.poi.ss.usermodel.DataFormatter;
 import org.apache.poi.xssf.usermodel.XSSFCell;
 import org.apache.poi.xssf.usermodel.XSSFFormulaEvaluator;
@@ -9,21 +16,13 @@ import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.openqa.selenium.Platform;
 
-import java.io.FileInputStream;
-
-import java.io.IOException;
-import java.util.HashMap;
-import java.util.Locale;
-import java.util.Map;
-
-import static com.big.automation.selenium_webdriver.common.baseTest.BaseTest.testDataExcelFilename;
-
 public class ExcelUtil {
 
 	private static Map<String, String> testDataMap = new HashMap<>();
 
 	// Main Directory of the project
 	public static final String currentDir = System.getProperty("user.dir");
+	public static String testDataExcelSheet=null;
 
 	// Location of Test data excel file
 	public static String testDataExcelPath = null;
@@ -68,7 +67,9 @@ public class ExcelUtil {
 	// It creates FileInputStream and set excel file and excel sheet to excelWBook
 	// and excelWSheet variables.
 	public static void setExcelFileSheet(String sheetName) throws Throwable {
+		testDataExcelSheet = sheetName;
 		// MAC or Windows Selection for excel path
+		//TODO sort the filepath out
 		if (Platform.getCurrent().toString().equalsIgnoreCase("MAC")) {
 			testDataExcelPath = currentDir + "//src//test//resources//";
 		} else if (Platform.getCurrent().toString().contains("WIN")) {
@@ -159,6 +160,10 @@ public class ExcelUtil {
 		return testDataMap.get(parameter);
 	}
 
+	private static String getTestDataExcelPath() {
+		return testDataExcelPath;
+	}
+
 	// This method reads the test data from the Excel cell.
 	// We are passing row number and column number as parameters.
 	/*
@@ -175,4 +180,6 @@ public class ExcelUtil {
 	 * excelWSheet.getRow(RowNum); return row; } catch (Exception e) { throw (e); }
 	 * }
 	 */
+	
+	
 }

@@ -1,4 +1,4 @@
-
+@Ignore
 Feature: TP Capture Regression Tests
 
   Background: 
@@ -16,6 +16,15 @@ Feature: TP Capture Regression Tests
     And I select "TP Care" on the Claim Navigator
     And I will be on TP Care screen
     And I click edit button on TP Care screen
+    And I select "Y" from field "Capture Opportunity" on TP Care screen for claimant "Roy Racer" role "Driver" and incident "Vehicle"
+    And I select "High" from field "Lead Type" on TP Care screen for claimant "Roy Racer" role "Driver" and incident "Vehicle"
+    And I select "Contact Made" from field "1st Call Attempt" on TP Care screen for claimant "Roy Racer" role "Driver" and incident "Vehicle"
+    And I select "Y" from field "Captured?" on TP Care screen for claimant "Roy Racer" role "Driver" and incident "Vehicle"
+    And I select "Care Supplier - Vehicle Damage and Hire" from field "Capture Result" on TP Care screen for claimant "Roy Racer" role "Driver" and incident "Vehicle"
     And I select "Y" from field "Capture Opportunity" on TP Care screen for row "1")
     And I select "Low" from field "Lead Type" on TP Care screen for row "1")
+    And I select "Contact Made" from field "1st Call Attempt" on TP Care screen for row "1")
+    And I select "Y" from field "Captured?" on TP Care screen for row "1")
+    And I select "Y" from field "Intervention" on TP Care screen for row "1")
+   
     And I click update button on TP Care screen

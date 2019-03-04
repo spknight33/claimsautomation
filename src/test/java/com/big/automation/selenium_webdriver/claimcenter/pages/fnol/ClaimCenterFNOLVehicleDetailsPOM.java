@@ -303,10 +303,12 @@ public class ClaimCenterFNOLVehicleDetailsPOM extends BaseTest{
 		
 		//TP Insurer details Available
 		//------------------------------------
-		@FindBy(id = "FNOLVehicleIncidentPopup:FNOLVehicleIncidentScreen:ThirdPartyInsurerInputSet:WindowsDoorsLockedInd_true-inputEl")
+		@FindBy(id = "FNOLVehicleIncidentPopup:FNOLVehicleIncidentScreen:ThirdPartyInsurerInputSet:TPI_InsurerDetailAvailable_itb_true-inputEl")
 		private WebElement tpInsurerYesOption;
-		@FindBy(id = "FNOLVehicleIncidentPopup:FNOLVehicleIncidentScreen:ThirdPartyInsurerInputSet:WindowsDoorsLockedInd_false-inputEl")
+		@FindBy(id = "FNOLVehicleIncidentPopup:FNOLVehicleIncidentScreen:ThirdPartyInsurerInputSet:TPI_InsurerDetailAvailable_itb_false-inputEl")
 		private WebElement tpInsurerNoOption;
+		
+	
 		
 		@FindBy(id = "FNOLVehicleIncidentPopup:FNOLVehicleIncidentScreen:ThirdPartyInsurerInputSet:InsurerDetailsInputSet:ThirdPartyInsuranceCompany_itb-inputEl")
 		private WebElement tpInsurerDropdown;

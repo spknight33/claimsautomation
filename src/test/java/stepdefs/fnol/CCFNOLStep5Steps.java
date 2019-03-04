@@ -1,6 +1,7 @@
 package stepdefs.fnol;
 
 import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
 
 import org.testng.asserts.SoftAssert;
@@ -28,10 +29,11 @@ public class CCFNOLStep5Steps extends BaseTest{
 		
 		String fieldValue=null;
 		fieldValue = ExcelUtil.getTestDataValue("Fnol_Step5_Notes");
-		if (fieldValue !=null)
-		{
-			fnolStep5POM.setNote(fieldValue);
-		}
+		
+		String note = "This Claim created by automated regression script using Excel file:"+BaseTest.testDataExcelFilename+ " and Excel sheet:"+ExcelUtil.testDataExcelSheet;
+		note = note + " for :" +fieldValue;
+		fnolStep5POM.setNote(note);
+		
 
 		fnolStep5POM.finish();
 		fnolClaimSavedPOM.isPageTitleDisplayed("New Claim Saved");

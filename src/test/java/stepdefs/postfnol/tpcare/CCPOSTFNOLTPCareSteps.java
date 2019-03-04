@@ -1,19 +1,11 @@
 package stepdefs.postfnol.tpcare;
 
-import java.util.List;
-
 import org.testng.Assert;
-import org.testng.asserts.SoftAssert;
-
 
 import com.big.automation.selenium_webdriver.common.baseTest.BaseTest;
-import com.big.automation.selenium_webdriver.common.utilities.excelutils.ExcelUtil;
 
-import cucumber.api.DataTable;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
-import stepdefs.common.SearchAddressBookSteps;
-import stepdefs.fnol.services.CCFNOLNewServiceSteps;
 
 public class CCPOSTFNOLTPCareSteps extends BaseTest{
 	
@@ -61,7 +53,62 @@ public class CCPOSTFNOLTPCareSteps extends BaseTest{
 		    case "Reason (No Opportunity)":
 		    	postFnolTPCarePOM.selectCaptureReasonForRow(row, fieldValue);
 		    	break;
+		    case "1st Call Attempt":
+		    	postFnolTPCarePOM.select1stCallForRow(row, fieldValue);
+		    	break;
+		    case "2nd Call Attempt":
+		    	postFnolTPCarePOM.select2ndCallForRow(row, fieldValue);
+		    	break;
+		    case "Captured?":
+		    	postFnolTPCarePOM.selectCapturedForRow(row, fieldValue);
+		    	break;
+		    case "Capture Result":
+		    	postFnolTPCarePOM.selectCaptureResultForRow(row, fieldValue);
+		    	break;
+		    case "Reason (Not Captured)":
+		    	postFnolTPCarePOM.selectReasonNotCapturedForRow(row, fieldValue);
+		    	break;
+		    case "Intervention":
+		    	postFnolTPCarePOM.selectInterventionForRow(row, fieldValue);
+		    	break;
 	
+	    default:
+	    Assert.fail("unknown input field :"+ fieldName+" - check cucumber script!");
+	    }
+	}
+	
+	
+	@Given("^I select \"([^\"]*)\" from field \"([^\"]*)\" on TP Care screen for claimant \"([^\"]*)\" role \"([^\"]*)\" and incident \"([^\"]*)\"$")
+	public void i_select_from_field_on_tpcare_screen_for_claimant(String fieldValue, String fieldName, String claimant,String role, String incident) throws Throwable {
+		switch(fieldName)
+		    {
+		    case "Capture Opportunity":
+		    	postFnolTPCarePOM.selectCaptureOpportunity(claimant, role, incident, fieldValue);
+		    	break;
+		    case "Lead Type":
+		    	postFnolTPCarePOM.selectCaptureLeadType(claimant, role, incident, fieldValue);
+		    	break;
+		    case "Reason (No Opportunity)":
+		    	postFnolTPCarePOM.selectCaptureReason(claimant, role, incident,  fieldValue);
+		    	break;
+		    case "1st Call Attempt":
+		    	postFnolTPCarePOM.select1stCall(claimant, role, incident,  fieldValue);
+		    	break;
+		    case "2nd Call Attempt":
+		    	postFnolTPCarePOM.select2ndCall(claimant, role, incident,  fieldValue);
+		    	break;
+		    case "Captured?":
+		    	postFnolTPCarePOM.selectCaptured(claimant, role, incident,  fieldValue);
+		    	break;
+		    case "Capture Result":
+		    	postFnolTPCarePOM.selectCaptureResult(claimant, role, incident,  fieldValue);
+		    	break;
+		    case "Reason (Not Captured)":
+		    	postFnolTPCarePOM.selectReasonNotCaptured(claimant, role, incident, fieldValue);
+		    	break;
+		    case "Intervention":
+		    	postFnolTPCarePOM.selectIntervention(claimant, role, incident,  fieldValue);
+		    	break;
 	
 	    default:
 	    Assert.fail("unknown input field :"+ fieldName+" - check cucumber script!");
