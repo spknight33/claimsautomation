@@ -143,6 +143,38 @@ public class CCNavigatorSteps extends BaseTest {
 			Assert.fail("unknown field :" + link + " - check cucumber script!");
 		}
 	}
+	
+	@Given("^I select \"([^\"]*)\" on the Search Navigator$")
+	public void i_select_on_the_Search_Navigator(String link) throws Throwable {
+
+		switch (link) {
+		case "Claims":
+			navigatorBarPOM.clickDesktopTopLevel("Claims");
+			;
+			break;
+		case "Activities":
+			navigatorBarPOM.clickDesktopTopLevel("Activities");
+			;
+			break;
+		case "Cheques":
+			navigatorBarPOM.clickDesktopTopLevel("Cheques");
+			;
+			break;
+		case "Recoveries":
+			navigatorBarPOM.clickDesktopTopLevel("Recoveries");
+			;
+			break;
+		case "Bulk Invoices":
+			navigatorBarPOM.clickDesktopTopLevel("Bulk Invoices");
+			;
+			break;
+
+		
+
+		default:
+			Assert.fail("unknown field :" + link + " - check cucumber script!");
+		}
+	}
 
 	@When("^I select the Actions Popup Menu Hierarchy \"([^\"]*)\"$")
 	public void i_select_the_Actiuons_Popup_Menu_Hierarchy(String menulist) throws Throwable {
