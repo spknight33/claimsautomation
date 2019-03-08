@@ -17,6 +17,130 @@ public class CCFNOLDriverSteps extends BaseTest {
 	
 	SearchAddressBookSteps searchAddressBookSteps = new SearchAddressBookSteps();
 	
+	
+	/**
+	 * For regression script
+	 * @throws Throwable
+	 */
+	public void completeFNOLPHDriverForTestScenario() throws Throwable
+	{
+		if (ExcelUtil.getTestDataValue("Fnol_PHDriverIsInsuredPerson").equalsIgnoreCase("TRUE"))
+		{
+		     fnolDriverDetailsPOM.selectDriverName(ExcelUtil.getTestDataValue("Fnol_Name"));
+		}
+		//TODO else - create a new driver
+		
+	
+		// add PH injury if required 
+		String fieldValue = ExcelUtil.getTestDataValue("Fnol_PHDriverInjured");
+		if (fieldValue !=null && fieldValue.equalsIgnoreCase("TRUE"))
+		{
+			completeFNOLPHDriverInjuryForTestScenario();
+				     
+		}
+		else
+		{
+			fnolDriverDetailsPOM.selectInjured(false);
+		}
+		
+		
+		completeFNOLPHDriverIndemnityForTestScenario();
+		fnolDriverDetailsPOM.selectOK();
+	}
+	
+	private void completeFNOLPHDriverInjuryForTestScenario() throws Throwable
+	{
+		String fieldValue = null;
+		fnolDriverDetailsPOM.selectInjured(true);
+		 fnolDriverDetailsPOM.selectAddInjury();
+		 
+		 fieldValue = ExcelUtil.getTestDataValue("Fnol_PHDriverInjDesc");
+			if (fieldValue !=null)
+			     fnolDriverDetailsPOM.setInjuryDesc(fieldValue);
+		 
+		 fieldValue = ExcelUtil.getTestDataValue("Fnol_PHDriverInj1BodyArea");
+			if (fieldValue !=null)
+			     fnolDriverDetailsPOM.selectAreaOfBody(fieldValue, 1);
+			fieldValue = ExcelUtil.getTestDataValue("Fnol_PHDriverInj1Detailed");
+			if (fieldValue !=null)
+			     fnolDriverDetailsPOM.selectDetailedInjury(fieldValue, 1);
+			
+			fieldValue = ExcelUtil.getTestDataValue("Fnol_PHDriverInjHospAttend");
+			if (fieldValue !=null && fieldValue.equalsIgnoreCase("TRUE"))
+			{
+	     
+				fnolDriverDetailsPOM.selectHospitalAttend(true);
+				fieldValue = ExcelUtil.getTestDataValue("Fnol_PHDriverInjHospOvernight");
+				if (fieldValue !=null && fieldValue.equalsIgnoreCase("TRUE"))
+				    fnolDriverDetailsPOM.selectOvernightStay(true);
+				else
+					 fnolDriverDetailsPOM.selectOvernightStay(false);
+				
+				fnolDriverDetailsPOM.selectSearchHospital();
+				
+				// on search hospital page
+				searchAddressBookSteps.i_will_be_on_search_address_book_screen();
+				fieldValue = ExcelUtil.getTestDataValue("Fnol_PHDriverInjHospSearchName");
+		
+				searchAddressBookSteps.i_input_into_the_box_on_search_address_book_screen(fieldValue, "Search Name");
+				searchAddressBookSteps.i_select_on_search_address_book_screen("Search");
+				searchAddressBookSteps.i_select_on_search_address_book_screen("Select First Result");
+			}
+	
+	}
+	
+	
+	private void completeFNOLPHDriverIndemnityForTestScenario() throws Throwable
+	{
+		String fieldValue = null;
+		fieldValue = ExcelUtil.getTestDataValue("Fnol_PHDriverOccupation");
+		if (fieldValue !=null)
+		     fnolDriverDetailsPOM.selectFTOccupation(fieldValue);
+		
+		fieldValue = ExcelUtil.getTestDataValue("Fnol_PHDriverLicenseType");
+		if (fieldValue !=null)
+		     fnolDriverDetailsPOM.selectLicenseType(fieldValue);
+		
+		fieldValue = ExcelUtil.getTestDataValue("Fnol_PHDriverLicenseHeldLength");
+		if (fieldValue !=null)
+		     fnolDriverDetailsPOM.selectLicenseLength(fieldValue);
+		
+		fieldValue = ExcelUtil.getTestDataValue("Fnol_PHDriverMedicalConditions");
+		if (fieldValue !=null)
+		{
+		     fnolDriverDetailsPOM.selectMedicalConditions(fieldValue);
+		     if (!fieldValue.equalsIgnoreCase("No"))
+		     {
+		    	 // anything other than no causes details box
+		    	 fieldValue = ExcelUtil.getTestDataValue("Fnol_PHDriverMedicalConditionsDetails");
+		 		if (fieldValue !=null)
+		 		{
+		 			fnolDriverDetailsPOM.setMedicalDetails(fieldValue);
+		 		}
+		     }
+		}
+		fieldValue = ExcelUtil.getTestDataValue("Fnol_PHDriverTestedAtScene");
+		if (fieldValue !=null&& fieldValue.equalsIgnoreCase("TRUE"))
+		{
+			fnolDriverDetailsPOM.selectTestedAtScene(true);
+		     
+		    	 // anything other than no causes details box
+		    	 fieldValue = ExcelUtil.getTestDataValue("Fnol_PHDriverTestedAtSceneDetails");
+		 		if (fieldValue !=null)
+		 		{
+		 			fnolDriverDetailsPOM.setTestedAtSceneDetails(fieldValue);
+		 		}
+		   
+		}
+		else
+		{
+			fnolDriverDetailsPOM.selectTestedAtScene(false);
+		}
+		
+		//TODO the rest
+		
+	}
+	
 	/**
 	 * For Regression script
 	 * @throws Throwable
@@ -104,66 +228,11 @@ public class CCFNOLDriverSteps extends BaseTest {
 		fnolDriverDetailsPOM.selectOK();
 	}
 	
-	/**
-	 * For regression script
-	 * @throws Throwable
-	 */
-	public void completeFNOLPHDriverForTestScenario() throws Throwable
-	{
-		if (ExcelUtil.getTestDataValue("Fnol_PHDriverIsInsuredPerson").equalsIgnoreCase("TRUE"))
-		{
-		     fnolDriverDetailsPOM.selectDriverName(ExcelUtil.getTestDataValue("Fnol_Name"));
-		}
-		//TODO else - create a new driver
 	
-		// add injury if required 
-				String fieldValue = ExcelUtil.getTestDataValue("Fnol_PHDriverInjured");
-				if (fieldValue !=null && fieldValue.equalsIgnoreCase("TRUE"))
-				{
-					 fnolDriverDetailsPOM.selectInjured(true);
-					 fnolDriverDetailsPOM.selectAddInjury();
-					 
-					 fieldValue = ExcelUtil.getTestDataValue("Fnol_PHDriverInjDesc");
-						if (fieldValue !=null)
-						     fnolDriverDetailsPOM.setInjuryDesc(fieldValue);
-					 
-					 fieldValue = ExcelUtil.getTestDataValue("Fnol_PHDriverInj1BodyArea");
-						if (fieldValue !=null)
-						     fnolDriverDetailsPOM.selectAreaOfBody(fieldValue, 1);
-						fieldValue = ExcelUtil.getTestDataValue("Fnol_PHDriverInj1Detailed");
-						if (fieldValue !=null)
-						     fnolDriverDetailsPOM.selectDetailedInjury(fieldValue, 1);
-						
-						fieldValue = ExcelUtil.getTestDataValue("Fnol_PHDriverInjHospAttend");
-						if (fieldValue !=null && fieldValue.equalsIgnoreCase("TRUE"))
-						{
-				     
-							fnolDriverDetailsPOM.selectHospitalAttend(true);
-							fieldValue = ExcelUtil.getTestDataValue("Fnol_PHDriverInjHospOvernight");
-							if (fieldValue !=null && fieldValue.equalsIgnoreCase("TRUE"))
-							    fnolDriverDetailsPOM.selectOvernightStay(true);
-							else
-								 fnolDriverDetailsPOM.selectOvernightStay(false);
-							
-							fnolDriverDetailsPOM.selectSearchHospital();
-							
-							// on search hospital page
-							searchAddressBookSteps.i_will_be_on_search_address_book_screen();
-							fieldValue = ExcelUtil.getTestDataValue("Fnol_PHDriverInjHospSearchName");
-					
-							searchAddressBookSteps.i_input_into_the_box_on_search_address_book_screen(fieldValue, "Search Name");
-							searchAddressBookSteps.i_select_on_search_address_book_screen("Search");
-							searchAddressBookSteps.i_select_on_search_address_book_screen("Select First Result");
-						}
-				     
-				}
-				else
-				{
-					fnolDriverDetailsPOM.selectInjured(false);
-				}
 	
-		fnolDriverDetailsPOM.selectOK();
-	}
+	
+	
+	
 	
 	
 	@Then("^I will be on Driver screen for FNOL$")

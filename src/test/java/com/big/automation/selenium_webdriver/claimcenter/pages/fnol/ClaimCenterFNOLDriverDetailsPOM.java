@@ -106,10 +106,13 @@ public class ClaimCenterFNOLDriverDetailsPOM extends BaseTest{
 	private WebElement indemnityOccupationDropdown;
 	@FindBy(id = "FNOLContactPopup:FNOLContactScreen:ContactDV:DriverIndemnityQuestionsInputSet:ClaimLicenceType-inputEl")
 	private WebElement indemnityLicenseTypeDropdown;
-	@FindBy(id = "FNOLContactPopup:FNOLContactScreen:ContactDV:FNOLContactInputSet:Notes-inputEl")
+	@FindBy(id = "FNOLContactPopup:FNOLContactScreen:ContactDV:DriverIndemnityQuestionsInputSet:ClaimHowLongHasLicence-inputEl")
 	private WebElement indemnityLicenseLengthDropdown;
 	@FindBy(id = "FNOLContactPopup:FNOLContactScreen:ContactDV:DriverIndemnityQuestionsInputSet:ClaimMedicalConditions-inputEl")
 	private WebElement indemnityMedicalDropdown;
+	@FindBy(id = "FNOLContactPopup:FNOLContactScreen:ContactDV:DriverIndemnityQuestionsInputSet:ClaimMedicalDetails-inputEl")
+	private WebElement indemnityMedicalDetails;
+	
 	
 	@FindBy(id = "FNOLContactPopup:FNOLContactScreen:ContactDV:DriverIndemnityQuestionsInputSet:ClaimHasPreviousMotorClaims_true-inputEl")
 	private WebElement indemnityIncLast5YesOption;
@@ -128,6 +131,8 @@ public class ClaimCenterFNOLDriverDetailsPOM extends BaseTest{
 	private WebElement indemnityDriverTestedYesOption;
 	@FindBy(id = "FNOLContactPopup:FNOLContactScreen:ContactDV:DriverIndemnityQuestionsInputSet:DriverTestedAtSceneInd_false-inputEl")
 	private WebElement indemnityDriverTestedNoOption;
+	@FindBy(id = "FNOLContactPopup:FNOLContactScreen:ContactDV:DriverIndemnityQuestionsInputSet:DriverTestDetails-inputEl")
+	private WebElement indemnityDriverTestedDetails;
 	
 	
 	@FindBy(id = "FNOLContactPopup:FNOLContactScreen:ContactDV:DriverIndemnityQuestionsInputSet:WearingSeatbeltInd-inputEl")
@@ -173,9 +178,7 @@ public class ClaimCenterFNOLDriverDetailsPOM extends BaseTest{
 	@FindBy(id = "FNOLContactPopup:FNOLContactScreen:ContactDV:InjuryIncidentInputSet:HospitalDetails_itb:OvernightStayInHospital_itb_false-inputEl")
 	private WebElement hospitalStayNoRadio;
 	
-	
-	//@FindBy(className = "message")
-	//private List <WebElement> errorMessages;
+
 	public boolean containsErrorMessage(String contains)
 	{
 				
@@ -209,7 +212,8 @@ public class ClaimCenterFNOLDriverDetailsPOM extends BaseTest{
 	}
 	
 	
-	
+	//Driver personal details section
+	//--------------------------------------------
 	public void selectDriverName(String option)
 	{
 		logger.info(format("%s - going to select Driver name option :"+option, getName()));
@@ -222,74 +226,77 @@ public class ClaimCenterFNOLDriverDetailsPOM extends BaseTest{
 	}
 	public void selectPrefix(String option)
 	{
-		logger.info(format("%s -  going to select prefix ", getName()));
+		logger.info(format("%s -  going to select prefix:"+option, getName()));
 		GuideWireAccessors.selectOptionFromGWDropDown(driver, option, this.getPrefix(), 1);
 		
 	}
 	public void setFirstName(String text)
 	{
-		logger.info(format("%s -  going to set first name", getName()));
+		logger.info(format("%s -  going to set first name:"+text, getName()));
 		GuideWireAccessors.setGWTextBox(driver, text, this.getFirstName());
 		
 	}
 	public void setMiddleName(String text)
 	{
-		logger.info(format("%s -  going to set middle name", getName()));
+		logger.info(format("%s -  going to set middle name:"+text, getName()));
 		GuideWireAccessors.setGWTextBox(driver, text, this.getMiddleName());
 		
 	}
 	public void setLastName(String text)
 	{
-		logger.info(format("%s -  going to set last name", getName()));
+		logger.info(format("%s -  going to set last name:"+text, getName()));
 		GuideWireAccessors.setGWTextBox(driver, text, this.getLastName());
 		
 	}
 	public void selectGender(String text)
 	{
-		logger.info(format("%s -  going to set gender", getName()));
+		logger.info(format("%s -  going to set gender:"+text, getName()));
 		GuideWireAccessors.setGWTextBox(driver, text, this.getGender());
 		
 	}
 	public void setDob(String text)
 	{
-		logger.info(format("%s -  going to set dob", getName()));
+		logger.info(format("%s -  going to set dob:"+text, getName()));
 		GuideWireAccessors.setGWTextBox(driver, text, this.getDob());
 		
 	}
 	
+	
+	//Driver address section
+	//---------------------
 	public void setAddressLine1(String text)
 	{
-		logger.info(format("%s -  going to set address line1", getName()));
+		logger.info(format("%s -  going to set address line1:"+text, getName()));
 		GuideWireAccessors.setGWTextBox(driver, text, this.getAddressLine1());
 		
 	}
 	public void setAddressLine2(String text)
 	{
-		logger.info(format("%s -  going to set address line2", getName()));
+		logger.info(format("%s -  going to set address line2:"+text, getName()));
 		GuideWireAccessors.setGWTextBox(driver, text, this.getAddressLine2());
 		
 	}
 	public void setAddressLine3(String text)
 	{
-		logger.info(format("%s -  going to set address line3", getName()));
+		logger.info(format("%s -  going to set address line3:"+text, getName()));
 		GuideWireAccessors.setGWTextBox(driver, text, this.getAddressLine3());
 		
 	}
 	public void setCity(String text)
 	{
-		logger.info(format("%s -  going to set city", getName()));
+		logger.info(format("%s -  going to set city:"+text, getName()));
 		GuideWireAccessors.setGWTextBox(driver, text, this.getCity());
 		
 	}
 	public void setCounty(String text)
 	{
-		logger.info(format("%s -  going to set County", getName()));
+		logger.info(format("%s -  going to set County:"+text, getName()));
 		GuideWireAccessors.setGWTextBox(driver, text, this.getCounty());
 		
 	}
 	public void setPostcode(String text)
 	{
-		logger.info(format("%s -  going to set postcode", getName()));
+		logger.info(format("%s -  going to set postcode:"+text, getName()));
 		GuideWireAccessors.setGWTextBox(driver, text, this.getPostcode());
 		// as postcode causes display off other address fields, but this can take a couple of seconds - the next method should wait until available but add a slug anyway
 				Actions actions = new Actions(driver);
@@ -301,36 +308,160 @@ public class ClaimCenterFNOLDriverDetailsPOM extends BaseTest{
 	
 	public void selectPostcodeAddress(String option)
 	{
-		logger.info(format("%s -  going to select address type", getName()));
+		logger.info(format("%s -  going to select address type:"+option, getName()));
 		GuideWireAccessors.selectOptionFromGWDropDown(driver, option, this.getPostCodeAddressDropdown(), 1);
 		
 	}
 
 	public void selectAddressType(String option)
 	{
-		logger.info(format("%s -  going to select address type", getName()));
+		logger.info(format("%s -  going to select address type:"+option, getName()));
 		GuideWireAccessors.selectOptionFromGWDropDown(driver, option, this.getAddressType(), 1);
 		
 	}
 	public void setLocationDesc(String text)
 	{
-		logger.info(format("%s -  going to set location desc", getName()));
+		logger.info(format("%s -  going to set location desc:"+text, getName()));
 		GuideWireAccessors.setGWTextBox(driver, text, this.getLocationDesc());
 		
 	}
 	
-	//TODO - phone etc
-	
+	//Driver contact details
+	//-------------------------
+	public void setWorkPhone(String text)
+	{
+		logger.info(format("%s -  going to set workphone:"+text, getName()));
+		GuideWireAccessors.setGWTextBox(driver, text, this.getWorkPhone());
+		
+	}
+	public void setHomePhone(String text)
+	{
+		logger.info(format("%s -  going to set homephone:"+text, getName()));
+		GuideWireAccessors.setGWTextBox(driver, text, this.getHomePhone());
+		
+	}
 	public void setMobile(String text)
 	{
-		logger.info(format("%s -  going to set mobile", getName()));
+		logger.info(format("%s -  going to set mobile:"+text, getName()));
 		GuideWireAccessors.setGWTextBox(driver, text, this.getMobile());
 		
 	}
+	public void selectPrimaryPhone(String option)
+	{
+		logger.info(format("%s -  going to select primary phone type:"+option, getName()));
+		GuideWireAccessors.selectOptionFromGWDropDown(driver, option, this.getPrimaryPhoneDropdown(), 2);
+		
+	}
+	
+	
 	public void setEmail(String text)
 	{
-		logger.info(format("%s -  going to set email", getName()));
+		logger.info(format("%s -  going to set email:"+text, getName()));
 		GuideWireAccessors.setGWTextBox(driver, text, this.getMainEmail());
+		
+	}
+	public void setAltEmail(String text)
+	{
+		logger.info(format("%s -  going to set altemail:"+text, getName()));
+		GuideWireAccessors.setGWTextBox(driver, text, this.getAltEmail());
+		
+	}
+	public void setNiNumber(String text)
+	{
+		logger.info(format("%s -  going to set ninumber:"+text, getName()));
+		GuideWireAccessors.setGWTextBox(driver, text, this.getNiNumber());
+		
+	}
+	public void setNotes(String text)
+	{
+		logger.info(format("%s -  going to set notes:"+text, getName()));
+		GuideWireAccessors.setGWTextBox(driver, text, this.getNotes());
+		
+	}
+	
+	
+	//Driver Indemnity Section
+	//-----------------------------------------
+	public void selectFTOccupation(String option)
+	{
+		logger.info(format("%s -  going to select fulltime occupation:"+option, getName()));
+		GuideWireAccessors.selectOptionFromGWDropDown(driver, option, this.getIndemnityOccupationDropdown(), 1);
+		
+	}
+	public void selectLicenseType(String option)
+	{
+		logger.info(format("%s -  going to select license type:"+option, getName()));
+		GuideWireAccessors.selectOptionFromGWDropDown(driver, option, this.getIndemnityLicenseTypeDropdown(), 1);
+		
+	}
+	public void selectLicenseLength(String option)
+	{
+		logger.info(format("%s -  going to select license length:"+option, getName()));
+		GuideWireAccessors.selectOptionFromGWDropDown(driver, option, this.getIndemnityLicenseLengthDropdown(), 1);
+		
+	}
+	public void selectMedicalConditions(String option)
+	{
+		logger.info(format("%s -  going to select medical conditions:"+option, getName()));
+		GuideWireAccessors.selectOptionFromGWDropDown(driver, option, this.getIndemnityMedicalDropdown(), 1);
+		
+	}
+	public void setMedicalDetails(String text)
+	{
+		logger.info(format("%s -  going to set medical detials:"+text, getName()));
+		GuideWireAccessors.setGWTextBox(driver, text, this.getIndemnityMedicalDetails());
+		
+	}
+	
+	
+	public void selectIncident5Years(boolean incident)
+	{
+		logger.info(format("%s -  going to set incident in 5 years"+incident, getName()));
+		
+		if (incident)
+		{
+		GuideWireAccessors.clickGWButton(driver, this.getIndemnityIncLast5YesOption());
+		}
+		else
+		{
+			GuideWireAccessors.clickGWButton(driver, this.getIndemnityIncLast5NoOption());
+		}
+		
+	}
+	
+	public void selectOffence5Years(boolean offence)
+	{
+		logger.info(format("%s -  going to set offence in 5 years"+offence, getName()));
+		
+		if (offence)
+		{
+		GuideWireAccessors.clickGWButton(driver, this.getIndemnityOffenceLast5YesOption());
+		}
+		else
+		{
+			GuideWireAccessors.clickGWButton(driver, this.getIndemnityOffenceLast5NoOption());
+		}
+		
+	}
+	
+	public void selectTestedAtScene(boolean tested)
+	{
+		logger.info(format("%s -  going to set tested at scene:"+tested, getName()));
+		
+		if (tested)
+		{
+		GuideWireAccessors.clickGWButton(driver, this.getIndemnityDriverTestedYesOption());
+		}
+		else
+		{
+			GuideWireAccessors.clickGWButton(driver, this.getIndemnityDriverTestedNoOption());
+		}
+		
+	}
+	public void setTestedAtSceneDetails(String text)
+	{
+		logger.info(format("%s -  going to set testatschene details:"+text, getName()));
+		GuideWireAccessors.setGWTextBox(driver, text, this.getIndemnityDriverTestedDetails());
 		
 	}
 	
@@ -689,6 +820,14 @@ public class ClaimCenterFNOLDriverDetailsPOM extends BaseTest{
 
 	private WebElement getHospitalStayNoRadio() {
 		return hospitalStayNoRadio;
+	}
+
+	private WebElement getIndemnityMedicalDetails() {
+		return indemnityMedicalDetails;
+	}
+
+	private WebElement getIndemnityDriverTestedDetails() {
+		return indemnityDriverTestedDetails;
 	}
 
 	

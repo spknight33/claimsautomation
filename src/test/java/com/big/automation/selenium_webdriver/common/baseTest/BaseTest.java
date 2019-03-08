@@ -35,6 +35,7 @@ import com.big.automation.selenium_webdriver.claimcenter.pages.common.ClaimCente
 import com.big.automation.selenium_webdriver.claimcenter.pages.common.ClaimCenterPersonDetailsPOM;
 import com.big.automation.selenium_webdriver.claimcenter.pages.common.ClaimCenterSearchAddressBookPOM;
 import com.big.automation.selenium_webdriver.claimcenter.pages.common.ClaimCenterSearchChequesPOM;
+import com.big.automation.selenium_webdriver.claimcenter.pages.common.ClaimCenterSearchGroupsPOM;
 import com.big.automation.selenium_webdriver.claimcenter.pages.common.ClaimCenterTotalLossCalulatorPOM;
 import com.big.automation.selenium_webdriver.claimcenter.pages.desktop.ClaimCenterDesktopActivitiesPOM;
 import com.big.automation.selenium_webdriver.claimcenter.pages.desktop.ClaimCenterDesktopQueuesPOM;
@@ -138,6 +139,8 @@ public class BaseTest extends AbstractTestNGCucumberTests {
 	public static ClaimCenterSearchAddressBookPOM searchAddressBookPOM;
 	public static ClaimCenterTotalLossCalulatorPOM totalLossCalcPOM;
 	public static ClaimCenterSearchChequesPOM searchChequesPOM;
+	public static ClaimCenterSearchGroupsPOM searchGroupsPOM;
+	
 	
 
 	// FNOL pages
@@ -426,6 +429,8 @@ public class BaseTest extends AbstractTestNGCucumberTests {
 		companyContactDetailsPOM = PageFactory.initElements(driver, ClaimCenterCompanyDetailsPOM.class);
 		searchAddressBookPOM = PageFactory.initElements(driver, ClaimCenterSearchAddressBookPOM.class);
 		searchChequesPOM = PageFactory.initElements(driver, ClaimCenterSearchChequesPOM.class);
+		searchGroupsPOM = PageFactory.initElements(driver, ClaimCenterSearchGroupsPOM.class);
+		
 		
 
 		postFnolWorkplanPOM = PageFactory.initElements(driver, ClaimCenterPOSTFNOLWorkplanPOM.class);
