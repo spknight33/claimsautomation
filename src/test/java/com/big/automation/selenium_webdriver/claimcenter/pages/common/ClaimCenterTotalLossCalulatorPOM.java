@@ -101,7 +101,7 @@ public class ClaimCenterTotalLossCalulatorPOM extends BaseTest{
 
 	public String getName() {
 
-		return "Person Contact Information";
+		return "Total Loss Calculator";
 	}
 
 	public boolean isPageTitleDisplayed(String expected)
@@ -128,7 +128,7 @@ public class ClaimCenterTotalLossCalulatorPOM extends BaseTest{
 	
 	public void selectVehicleAge(String option)
 	{
-		logger.info(format("%s -  going to select vehicle age", getName()));
+		logger.info(format("%s -  going to select vehicle age:"+option, getName()));
 		GuideWireAccessors.selectOptionFromGWDropDown(driver, option, this.getVehicleAgeDropdown(), 1);
 		
 	}

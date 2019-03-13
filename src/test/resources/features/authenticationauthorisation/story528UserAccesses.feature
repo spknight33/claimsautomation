@@ -48,7 +48,7 @@ Feature: CBPCL-528 We require the attached users to be created.The users will al
       | CM1   | gw       | Claims Manager 1         |
       | CM2   | gw       | Claims Manager 2         |
       
-      
+      @Ignore
       Scenario Outline: CBPCL-528 TC2 User has access to Create a System Cheque
     When I login to ClaimCenter as "<user>" with "<password>"
     And I Select an existing Claim

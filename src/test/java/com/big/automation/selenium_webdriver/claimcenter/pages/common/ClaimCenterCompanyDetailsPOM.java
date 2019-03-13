@@ -69,7 +69,7 @@ public class ClaimCenterCompanyDetailsPOM extends BaseTest{
 
 	public String getName() {
 
-		return "Person Contact Information";
+		return "Company Contact Details";
 	}
 
 	public boolean isPageTitleDisplayed(String expected)
@@ -98,57 +98,57 @@ public class ClaimCenterCompanyDetailsPOM extends BaseTest{
 	
 	public void selectAddressType(String option)
 	{
-		logger.info(format("%s -  going to select address type", getName()));
+		logger.info(format("%s -  going to select address type:"+option, getName()));
 		GuideWireAccessors.selectOptionFromGWDropDown(driver, option, this.getAddressType(), 1);
 		
 	}
 	
 	public void setCompanyName(String text)
 	{
-		logger.info(format("%s -  going to set company name", getName()));
+		logger.info(format("%s -  going to set company name:"+text, getName()));
 		GuideWireAccessors.setGWTextBox(driver, text, this.getCompanyName());
 		
 	}
 	
 	public void setWorkPhone(String text)
 	{
-		logger.info(format("%s -  going to set work phone", getName()));
+		logger.info(format("%s -  going to set work phone:"+text, getName()));
 		GuideWireAccessors.setGWTextBox(driver, text, this.getWorkPhone());
 		
 	}
 	public void setMobile(String text)
 	{
-		logger.info(format("%s -  going to set mobile", getName()));
+		logger.info(format("%s -  going to set mobile:"+text, getName()));
 		GuideWireAccessors.setGWTextBox(driver, text, this.getMobile());
 		
 	}
 	public void setEmail(String text)
 	{
-		logger.info(format("%s -  going to set email", getName()));
+		logger.info(format("%s -  going to set email:"+text, getName()));
 		GuideWireAccessors.setGWTextBox(driver, text, this.getMainEmail());
 		
 	}
 	public void setAddressLine1(String text)
 	{
-		logger.info(format("%s -  going to set address line1", getName()));
+		logger.info(format("%s -  going to set address line1:"+text, getName()));
 		GuideWireAccessors.setGWTextBox(driver, text, this.getAddressLine1());
 		
 	}
 	public void setAddressLine2(String text)
 	{
-		logger.info(format("%s -  going to set address line2", getName()));
+		logger.info(format("%s -  going to set address line2:"+text, getName()));
 		GuideWireAccessors.setGWTextBox(driver, text, this.getAddressLine2());
 		
 	}
 	public void setAddressLine3(String text)
 	{
-		logger.info(format("%s -  going to set address line3", getName()));
+		logger.info(format("%s -  going to set address line3:"+text, getName()));
 		GuideWireAccessors.setGWTextBox(driver, text, this.getAddressLine3());
 		
 	}
 	public void setCity(String text)
 	{
-		logger.info(format("%s -  going to set city", getName()));
+		logger.info(format("%s -  going to set city:"+text, getName()));
 		GuideWireAccessors.setGWTextBox(driver, text, this.getCity());
 		
 	}
@@ -164,16 +164,16 @@ public class ClaimCenterCompanyDetailsPOM extends BaseTest{
 	}
 	public void setLocationDesc(String text)
 	{
-		logger.info(format("%s -  going to set location desc", getName()));
+		logger.info(format("%s -  going to set location desc:"+text, getName()));
 		GuideWireAccessors.setGWTextBox(driver, text, this.getLocationDesc());
-		logger.info(format("%s - done, location desc set", getName()));
+		
 	}
 	
 	public void setNotes(String text)
 	{
-		logger.info(format("%s -  going to set notes", getName()));
+		logger.info(format("%s -  going to set notes:"+text, getName()));
 		GuideWireAccessors.setGWTextBox(driver, text, this.getNotes());
-		logger.info(format("%s - done, notes", getName()));
+		
 	}
    
 	private WebElement getCancelButton() {

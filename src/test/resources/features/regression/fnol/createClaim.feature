@@ -1,5 +1,6 @@
 
 Feature: Regression test for create claim FNOL path
+
 @Ignore
  Scenario: FNOL Regression - Create new claim - FIRE claim
     Given I use test data set "regress_fnol_fire"
@@ -29,7 +30,12 @@ Feature: Regression test for create claim FNOL path
     Given I use test data set "regression_accident_nonfault"
     And As a "ADClaimsHandler" I am at step5 for FNOL
     When I create a claim as part of a regression test
-
+@Ignore
+  Scenario: FNOL Regression - Create new claim - ACCIDENT (FAULT/SPLIT)
+    Given I use test data set "regression_accident_fault"
+    And As a "ADClaimsHandler" I am at step5 for FNOL
+    When I create a claim as part of a regression test
+    
   Scenario: FNOL Regression - Create new claim - ACCIDENT (FAULT/SPLIT)
     Given I use test data set "regression_accident_fault"
     And As a "ADClaimsHandler" I am at step5 for FNOL

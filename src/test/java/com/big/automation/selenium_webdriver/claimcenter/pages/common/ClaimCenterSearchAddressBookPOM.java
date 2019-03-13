@@ -35,12 +35,10 @@ public class ClaimCenterSearchAddressBookPOM extends BaseTest{
 	private WebElement selectFirstResultButton;
 		
 	
-	@FindBy(className = "message")
-	private List <WebElement> errorMessages;
 
 	public String getName() {
 
-		return "Person Contact Information";
+		return "Search Address Book";
 	}
 
 	public boolean isPageTitleDisplayed(String expected)
@@ -111,10 +109,6 @@ public class ClaimCenterSearchAddressBookPOM extends BaseTest{
 
 	private WebElement getSelectFirstResultButton() {
 		return selectFirstResultButton;
-	}
-
-	private List<WebElement> getErrorMessages() {
-		return errorMessages;
 	}
 
 	

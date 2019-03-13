@@ -148,7 +148,7 @@ public class ClaimCenterFNOLNewPassengerDetailsPOM extends BaseTest{
 
 	public String getName() {
 
-		return "FNOL Wizard Step3 Add Driver";
+		return "FNOL Wizard Step3 New Passenger";
 	}
 
 	public boolean isPageTitleDisplayed(String expected)
@@ -182,74 +182,74 @@ public class ClaimCenterFNOLNewPassengerDetailsPOM extends BaseTest{
 	
 	public void selectPrefix(String option)
 	{
-		logger.info(format("%s -  going to select prefix ", getName()));
+		logger.info(format("%s -  going to select prefix :"+option, getName()));
 		GuideWireAccessors.selectOptionFromGWDropDown(driver, option, this.getPrefix(), 1);
 		
 	}
 	public void setFirstName(String text)
 	{
-		logger.info(format("%s -  going to set first name", getName()));
+		logger.info(format("%s -  going to set first name:"+text, getName()));
 		GuideWireAccessors.setGWTextBox(driver, text, this.getFirstName());
 		
 	}
 	public void setMiddleName(String text)
 	{
-		logger.info(format("%s -  going to set middle name", getName()));
+		logger.info(format("%s -  going to set middle name:"+text, getName()));
 		GuideWireAccessors.setGWTextBox(driver, text, this.getMiddleName());
 		
 	}
 	public void setLastName(String text)
 	{
-		logger.info(format("%s -  going to set last name", getName()));
+		logger.info(format("%s -  going to set last name:"+text, getName()));
 		GuideWireAccessors.setGWTextBox(driver, text, this.getLastName());
 		
 	}
 	public void selectGender(String text)
 	{
-		logger.info(format("%s -  going to set gender", getName()));
+		logger.info(format("%s -  going to set gender:"+text, getName()));
 		GuideWireAccessors.setGWTextBox(driver, text, this.getGender());
 		
 	}
 	public void setDob(String text)
 	{
-		logger.info(format("%s -  going to set dob", getName()));
+		logger.info(format("%s -  going to set dob:"+text, getName()));
 		GuideWireAccessors.setGWTextBox(driver, text, this.getDob());
 		
 	}
 	
 	public void setAddressLine1(String text)
 	{
-		logger.info(format("%s -  going to set address line1", getName()));
+		logger.info(format("%s -  going to set address line1:"+text, getName()));
 		GuideWireAccessors.setGWTextBox(driver, text, this.getAddressLine1());
 		
 	}
 	public void setAddressLine2(String text)
 	{
-		logger.info(format("%s -  going to set address line2", getName()));
+		logger.info(format("%s -  going to set address line2:"+text, getName()));
 		GuideWireAccessors.setGWTextBox(driver, text, this.getAddressLine2());
 		
 	}
 	public void setAddressLine3(String text)
 	{
-		logger.info(format("%s -  going to set address line3", getName()));
+		logger.info(format("%s -  going to set address line3:"+text, getName()));
 		GuideWireAccessors.setGWTextBox(driver, text, this.getAddressLine3());
 		
 	}
 	public void setCity(String text)
 	{
-		logger.info(format("%s -  going to set city", getName()));
+		logger.info(format("%s -  going to set city:"+text, getName()));
 		GuideWireAccessors.setGWTextBox(driver, text, this.getCity());
 		
 	}
 	public void setCounty(String text)
 	{
-		logger.info(format("%s -  going to set County", getName()));
+		logger.info(format("%s -  going to set County:"+text, getName()));
 		GuideWireAccessors.setGWTextBox(driver, text, this.getCounty());
 		
 	}
 	public void setPostcode(String text)
 	{
-		logger.info(format("%s -  going to set postcode", getName()));
+		logger.info(format("%s -  going to set postcode:"+text, getName()));
 		GuideWireAccessors.setGWTextBox(driver, text, this.getPostcode());
 		// as postcode causes display off other address fields, but this can take a couple of seconds - the next method should wait until available but add a slug anyway
 				Actions actions = new Actions(driver);
@@ -260,20 +260,20 @@ public class ClaimCenterFNOLNewPassengerDetailsPOM extends BaseTest{
 	}
 	public void selectPostcodeAddress(String option)
 	{
-		logger.info(format("%s -  going to select address type", getName()));
+		logger.info(format("%s -  going to select address type:"+option, getName()));
 		GuideWireAccessors.selectOptionFromGWDropDown(driver, option, this.getPostCodeAddressDropdown(), 1);
 		
 	}
 
 	public void selectAddressType(String option)
 	{
-		logger.info(format("%s -  going to select address type", getName()));
+		logger.info(format("%s -  going to select address type:"+option, getName()));
 		GuideWireAccessors.selectOptionFromGWDropDown(driver, option, this.getAddressType(), 1);
 		
 	}
 	public void setLocationDesc(String text)
 	{
-		logger.info(format("%s -  going to set location desc", getName()));
+		logger.info(format("%s -  going to set location desc:"+text, getName()));
 		GuideWireAccessors.setGWTextBox(driver, text, this.getLocationDesc());
 		
 	}
@@ -282,13 +282,13 @@ public class ClaimCenterFNOLNewPassengerDetailsPOM extends BaseTest{
 	
 	public void setMobile(String text)
 	{
-		logger.info(format("%s -  going to set mobile", getName()));
+		logger.info(format("%s -  going to set mobile:"+text, getName()));
 		GuideWireAccessors.setGWTextBox(driver, text, this.getMobile());
 		
 	}
 	public void setEmail(String text)
 	{
-		logger.info(format("%s -  going to set email", getName()));
+		logger.info(format("%s -  going to set email:"+text, getName()));
 		GuideWireAccessors.setGWTextBox(driver, text, this.getMainEmail());
 		
 	}
@@ -321,12 +321,12 @@ public class ClaimCenterFNOLNewPassengerDetailsPOM extends BaseTest{
 	
 	public void setInjuryDesc(String text) {
 		sleep(1);
-		logger.info(format("%s -  going to set injury desc", getName()));
+		logger.info(format("%s -  going to set injury desc:"+text, getName()));
 		GuideWireAccessors.setGWTextBox(driver, text, this.getInjuryDesc());
 	}
 	public void selectAreaOfBody(String option, int sequence)
 	{
-		logger.info(format("%s -  going to select area of body"+option, getName()));
+		logger.info(format("%s -  going to select area of body:"+option, getName()));
 		// use to select the area of body for the first (for now) change to be able to set for any row
 	    // just change to use table[x]
 		String locator = "//*[@id=\"FNOLContactPopup:FNOLContactScreen:ContactDV:InjuryIncidentInputSet:EditableBodyPartDetailsLV-body\"]//table[" + sequence + "]//tr/td[2]/div";
@@ -337,7 +337,7 @@ public class ClaimCenterFNOLNewPassengerDetailsPOM extends BaseTest{
 	
 	public void selectDetailedInjury(String option, int sequence)
 	{
-		logger.info(format("%s -  going to select detald injury"+option, getName()));
+		logger.info(format("%s -  going to select detald injury:"+option, getName()));
 		// use to select the detailed injury for the first (for now) change to be able to set for any row
 		sleep(2);
 		String locator = "//*[@id=\"FNOLContactPopup:FNOLContactScreen:ContactDV:InjuryIncidentInputSet:EditableBodyPartDetailsLV-body\"]//table[" + sequence + "]//tr/td[3]/div";
@@ -348,7 +348,7 @@ public class ClaimCenterFNOLNewPassengerDetailsPOM extends BaseTest{
 	
 	public void selectAmbulanceAttend(boolean attended)
 	{
-		logger.info(format("%s -  going to set ambulance attended"+attended, getName()));
+		logger.info(format("%s -  going to set ambulance attended:"+attended, getName()));
 		
 		if (attended)
 		{
@@ -363,7 +363,7 @@ public class ClaimCenterFNOLNewPassengerDetailsPOM extends BaseTest{
 	
 	public void selectAirAmbulanceAttend(boolean attended)
 	{
-		logger.info(format("%s -  going to set air ambulance attended"+attended, getName()));
+		logger.info(format("%s -  going to set air ambulance attended:"+attended, getName()));
 		
 		if (attended)
 		{
@@ -378,7 +378,7 @@ public class ClaimCenterFNOLNewPassengerDetailsPOM extends BaseTest{
 	
 	public void selectHospitalAttend(boolean attended)
 	{
-		logger.info(format("%s -  going to set hospital attended"+attended, getName()));
+		logger.info(format("%s -  going to set hospital attended;"+attended, getName()));
 		
 		if (attended)
 		{
