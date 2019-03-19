@@ -29,6 +29,14 @@ public class CCFNOLStep2Steps extends BaseTest{
 	 */
 	public void completeFNOLStep2ForTestScenario()  throws Throwable
 	{
+		// check that policy address is helf before we proceed
+		String actualAddress = fnolStep2POM.getPolicyHolderAddress();
+		Assert.assertNotNull(actualAddress, "We MUST have a policy holder address returned form PC, but it was NULL");
+		String fieldValue=null;
+		fieldValue = ExcelUtil.getTestDataValue("Fnol_Insured_Address");
+		Assert.assertEquals(actualAddress, fieldValue,"Expected insured address not correct, should be :<"+fieldValue+"<, but was <"+actualAddress+">");
+		
+		
 		completeFNOLStep2ReportedBySection();
 				
 		completeFNOLStep2ConfirmSection();

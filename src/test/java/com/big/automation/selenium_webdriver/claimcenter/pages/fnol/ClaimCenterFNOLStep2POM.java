@@ -57,6 +57,8 @@ public class ClaimCenterFNOLStep2POM extends BaseTest {
 	@FindBy(id = "FNOLWizard:AutoWorkersCompWizardStepSet:FNOLWizard_BasicInfoScreen:PanelRow:BasicInfoDetailViewPanelDV:DOB-inputEl")
 	private WebElement dob;
 	
+	
+	
 	@FindBy(id = "FNOLWizard:AutoWorkersCompWizardStepSet:FNOLWizard_BasicInfoScreen:PanelRow:BasicInfoDetailViewPanelDV:reporter_Address-inputEl")
 	private WebElement contactAddress;
 	
@@ -200,6 +202,16 @@ public class ClaimCenterFNOLStep2POM extends BaseTest {
 
 		return this.getReportedByName().getAttribute("value");
 
+	}
+	
+	
+	public String getPolicyHolderAddress() {
+
+		String text=null;
+		
+		text=  GuideWireAccessors.getGWElementText(driver, this.getContactAddress());
+		logger.info(format("%s - found policyholder address:" + text, getName()));
+		return text;
 	}
 
 	
