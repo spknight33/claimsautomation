@@ -173,7 +173,7 @@ public class ClaimCenterTotalLossCalulatorPOM extends BaseTest{
 	    }
 	    else
 	    {
-	    	GuideWireAccessors.clickGWButton(driver, this.getCosmeticYesOption());
+	    	GuideWireAccessors.clickGWButton(driver, this.getCosmeticNoOption());
 	    }
 
 	}
@@ -187,7 +187,7 @@ public class ClaimCenterTotalLossCalulatorPOM extends BaseTest{
 	    }
 	    else
 	    {
-	    	GuideWireAccessors.clickGWButton(driver, this.getLightYesOption());
+	    	GuideWireAccessors.clickGWButton(driver, this.getLightNoOption());
 	    }
 
 	}
@@ -201,7 +201,7 @@ public class ClaimCenterTotalLossCalulatorPOM extends BaseTest{
 	    }
 	    else
 	    {
-	    	GuideWireAccessors.clickGWButton(driver, this.getMediumYesOption());
+	    	GuideWireAccessors.clickGWButton(driver, this.getMediumNoOption());
 	    }
 
 	}
@@ -215,7 +215,7 @@ public class ClaimCenterTotalLossCalulatorPOM extends BaseTest{
 	    }
 	    else
 	    {
-	    	GuideWireAccessors.clickGWButton(driver, this.getHeavyYesOption());
+	    	GuideWireAccessors.clickGWButton(driver, this.getHeavyNoOption());
 	    }
 
 	}
@@ -229,7 +229,7 @@ public class ClaimCenterTotalLossCalulatorPOM extends BaseTest{
 	    }
 	    else
 	    {
-	    	GuideWireAccessors.clickGWButton(driver, this.getVeryHeavyYesOption());
+	    	GuideWireAccessors.clickGWButton(driver, this.getVeryHeavyNoOption());
 	    }
 
 	}

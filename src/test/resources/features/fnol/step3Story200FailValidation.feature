@@ -2,7 +2,7 @@
 Feature: Validation at step3 of FNOL
 
   Background: 
-    Given  I use test data set "regression_accident_fault"
+    Given  I use test data set "regress_fnol_accident_fault"
     Given As a "ADClaimsHandler" I am at step2 for FNOL
 
 @Ignore @passed

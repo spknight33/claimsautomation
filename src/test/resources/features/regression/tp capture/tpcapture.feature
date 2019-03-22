@@ -2,7 +2,7 @@
 Feature: TP Capture Regression Tests
 
   Background: 
-    Given I use test data set "regression_accident_fault"
+    Given I use test data set "regress_fnol_accident_fault"
 
   Scenario: TPC Regression -  View queue, activities and TPC table
     Given I access ClaimCenter login page

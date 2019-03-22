@@ -2,7 +2,7 @@
 Feature: CBPCL-424 admin maintenance of user typeslists
 
   Background: 
-   Given  I use test data set "regression_accident_fault"
+   Given  I use test data set "regress_fnol_accident_fault"
   
     
  

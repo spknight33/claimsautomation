@@ -95,9 +95,12 @@ public class CCFNOLVehicleSteps extends BaseTest {
 		
 		// check the total loss number
 		fieldValue = ExcelUtil.getTestDataValue("Fnol_PHVehicleTLCPointsTotal");
-		if (fieldValue !=null)
-			Assert.assertTrue(fieldValue.equals(fnolVehicleDetailsPOM.getLossPoints()),"total loss points not correct, expected:"+fieldValue);
-	}
+		if (fieldValue !=null) {
+		   String points = fnolVehicleDetailsPOM.getLossPoints();
+			Assert.assertTrue(fieldValue.equals(points),"total loss points not correct, expected:"+fieldValue+" but was "+points);
+		
+		}
+		}
 	
 	
 	// OTHER section

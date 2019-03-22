@@ -2,7 +2,7 @@
 Feature: Regression test for errors for step3 New PH Driver
 
   Background: 
-    Given I use test data set "regression_accident_fault"
+    Given I use test data set "regress_fnol_accident_fault"
     And As a "ADClaimsHandler" I am at step3 for FNOL
 
   Scenario: FNOL Regression - check error messages

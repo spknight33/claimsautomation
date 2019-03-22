@@ -2,7 +2,7 @@
 Feature: CBPCL-155  Create a payment step1
 
   Background: 
-    Given I use test data set "regression_accident_fault"
+    Given I use test data set "regress_fnol_accident_fault"
 
 
   Scenario: CBPCL-155 TC1  Step1 Cheque for payment

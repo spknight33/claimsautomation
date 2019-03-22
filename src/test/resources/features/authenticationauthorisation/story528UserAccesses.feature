@@ -4,7 +4,7 @@ Feature: CBPCL-528 We require the attached users to be created.The users will al
   All managers will have the ability to authorise payments and authorise reserves as well as create payments and reserves.
 
   Background: 
-    Given I use test data set "regression_accident_fault"
+    Given I use test data set "regress_fnol_accident_fault"
     Given I access ClaimCenter login page
 
   Scenario Outline: CBPCL-528 TC1 User has access to Create a Reserve

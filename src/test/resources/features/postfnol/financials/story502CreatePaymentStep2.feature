@@ -2,7 +2,7 @@
 Feature: CBPCL-502  Create a payment step2 and 3
 
   Background: 
-    Given I use test data set "regression_accident_fault"
+    Given I use test data set "regress_fnol_accident_fault"
 
   Scenario: CBPCL-502 TC1  Step2 Cheque for payment
     Given I access ClaimCenter login page
