@@ -59,7 +59,7 @@ public class ClaimCenterFNOLStep2POM extends BaseTest {
 	
 	
 	
-	@FindBy(id = "FNOLWizard:AutoWorkersCompWizardStepSet:FNOLWizard_BasicInfoScreen:PanelRow:BasicInfoDetailViewPanelDV:reporter_Address-inputEl")
+	@FindBy(id = "FNOLWizard:AutoWorkersCompWizardStepSet:FNOLWizard_BasicInfoScreen:PanelRow:BasicInfoDetailViewPanelDV:Insured_Address-inputEl")
 	private WebElement contactAddress;
 	
 	@FindBy(id = "FNOLWizard:AutoWorkersCompWizardStepSet:FNOLWizard_BasicInfoScreen:PanelRow:BasicInfoDetailViewPanelDV:reporter_businessphone:GlobalPhoneInputSet:NationalSubscriberNumber-inputEl")

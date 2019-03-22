@@ -46,7 +46,7 @@ public class CCPOSTFNOLExposuresSteps extends BaseTest {
 			claimantName = ExcelUtil.getTestDataValue("Fnol_TPDriverFullName");
 			break;
 		case ("PH Driver"):
-			claimantName = ExcelUtil.getTestDataValue("Fnol_PHDriverFullName");
+			claimantName = ExcelUtil.getTestDataValue("Fnol_Name");
 			break;
 		case ("Pedestrian"):
 			claimantName = ExcelUtil.getTestDataValue("Fnol_PedestrianFullName");
@@ -104,7 +104,7 @@ public class CCPOSTFNOLExposuresSteps extends BaseTest {
 			claimantName = ExcelUtil.getTestDataValue("Fnol_TPDriverFullName");
 			break;
 		case ("PH Driver"):
-			claimantName = ExcelUtil.getTestDataValue("Fnol_PHDriverFullName");
+			claimantName = ExcelUtil.getTestDataValue("Fnol_Name");
 			break;
 		case ("Pedestrian"):
 			claimantName = ExcelUtil.getTestDataValue("Fnol_PedestrianFullName");
@@ -148,7 +148,7 @@ public class CCPOSTFNOLExposuresSteps extends BaseTest {
 			claimantName = ExcelUtil.getTestDataValue("Fnol_TPDriverFullName");
 			break;
 		case ("PH Driver"):
-			claimantName = ExcelUtil.getTestDataValue("Fnol_PHDriverFullName");
+			claimantName = ExcelUtil.getTestDataValue("Fnol_Name");
 			break;
 		case ("Pedestrian"):
 			claimantName = ExcelUtil.getTestDataValue("Fnol_PedestrianFullName");

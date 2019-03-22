@@ -89,6 +89,22 @@ public class ClaimCenterFNOLStep3POM extends BaseTest{
 	@FindBy(id ="FNOLWizard:AutoWorkersCompWizardStepSet:FNOLWizard_NewLossDetailsScreen:LossDetailsAddressDV:IncidentQuestions_CCTVDashcamFootageAvail_itb-inputEl")
 	private WebElement cctv;
 	
+	@FindBy(id="FNOLWizard:AutoWorkersCompWizardStepSet:FNOLWizard_NewLossDetailsScreen:AtTheSceneDV:WitnessLV:EditableWitnessesLV_tb:Add")
+	private WebElement addWitnessButton;
+	@FindBy(id="FNOLWizard:AutoWorkersCompWizardStepSet:FNOLWizard_NewLossDetailsScreen:AtTheSceneDV:WitnessLV:EditableWitnessesLV_tb:Remove")
+	private WebElement removeWitnessButton;
+	// just concerned with the first for now
+	@FindBy(id="FNOLWizard:AutoWorkersCompWizardStepSet:FNOLWizard_NewLossDetailsScreen:AtTheSceneDV:WitnessLV:EditableWitnessesLV:0:Contact:ContactMenuIcon")
+	private WebElement witnessNamePickerIcon;
+	@FindBy(id="FNOLWizard:AutoWorkersCompWizardStepSet:FNOLWizard_NewLossDetailsScreen:AtTheSceneDV:WitnessLV:EditableWitnessesLV:0:Contact:ClaimNewContactPickerMenuItemSet:NewContactPickerMenuItemSet_NewPerson-itemEl")
+	private WebElement witnessNameNewPersonPicker;
+	
+	
+	@FindBy(id="FNOLWizard:AutoWorkersCompWizardStepSet:FNOLWizard_NewLossDetailsScreen:AtTheSceneDV:Claim_Officials:EditableOfficialsLV_tb:Add")
+	private WebElement addOfficialButton;
+	@FindBy(id="FNOLWizard:AutoWorkersCompWizardStepSet:FNOLWizard_NewLossDetailsScreen:AtTheSceneDV:Claim_Officials:EditableOfficialsLV_tb:Remove")
+	private WebElement removeOfficialButton;
+	
 	@FindBy(id="FNOLWizard:AutoWorkersCompWizardStepSet:FNOLWizard_NewLossDetailsScreen:PoliceDetailsLV:PoliceDetailsLV_tb:Add-btnEl")
 	private WebElement addPoliceButton;
 	@FindBy(id="FNOLWizard:AutoWorkersCompWizardStepSet:FNOLWizard_NewLossDetailsScreen:PoliceDetailsLV:PoliceDetailsLV_tb:Remove-btnEl")
@@ -361,24 +377,24 @@ public class ClaimCenterFNOLStep3POM extends BaseTest{
    {
 	   logger.info(format("%s - current Incident only CB selection is :"+this.getIncidentOnlyCB().isSelected(), getName()));
    // can be more than one, but just select first for now
-	   if (!this.getIncidentOnlyCB().isSelected())
-	   {
-		   this.getIncidentOnlyCB().click();
+	  // if (!this.getIncidentOnlyCB().isSelected())
+	 //  {
+	   GuideWireAccessors.clickGWButton(driver, this.getIncidentOnlyCB());
 		   logger.info(format("%s - done, select Incident Only", getName()));
 		   
-	   }
+	  // }
    }
    
-   public void deselectIncidentOnlyCB()
-   {
+  // public void deselectIncidentOnlyCB()
+  // {
    // can be more than one, but just deselect first for now
-	   logger.info(format("%s - done, going to deselect Incident Only", getName()));
-	   if (this.getIncidentOnlyCB().isSelected())
-	   {
-		   this.getIncidentOnlyCB().click();
-		   logger.info(format("%s - done, deselect Incident Only", getName()));
-	   }
-   }
+	//   logger.info(format("%s - done, going to deselect Incident Only", getName()));
+	//   if (this.getIncidentOnlyCB().isSelected())
+	//   {
+	//	   this.getIncidentOnlyCB().click();
+	//	   logger.info(format("%s - done, deselect Incident Only", getName()));
+	//   }
+  // }
    
    public void addVehicle() {
 		logger.info(format("%s -  going to click AddVehicle", getName()));
@@ -407,6 +423,52 @@ public class ClaimCenterFNOLStep3POM extends BaseTest{
    public void addPropertyDamage() {
 		logger.info(format("%s -  going to click Add PropertyDamage", getName()));
 		GuideWireAccessors.clickGWButton(driver, getAddPropertyDamageButton());
+		
+	}
+   
+   public void addWitnessDetails() {
+		logger.info(format("%s -  going to click Add Witness", getName()));
+		GuideWireAccessors.clickGWButton(driver,this.getAddWitnessButton());
+		
+	}
+   
+   public void selectWitnessNewPerson(int sequence)
+	{
+		
+		GuideWireAccessors.selectOptionFromGWPicker(driver, this.getWitnessNamePickerIcon(), this.getWitnessNameNewPersonPicker());
+		
+	}
+   
+   public void selectWitnessStatementObtained(String option, int sequence)
+	{
+		// use to select the witness obtained value
+		String locator = "//*[@id=\"FNOLWizard:AutoWorkersCompWizardStepSet:FNOLWizard_NewLossDetailsScreen:AtTheSceneDV:WitnessLV:EditableWitnessesLV-body\"]//table[" + sequence + "]//tr/td[3]/div";
+		WebElement element = driver.findElement(By.xpath(locator));
+		GuideWireAccessors.selectOptionFromGWDropDown(driver, option, element, 1);
+		
+	}
+   public void selectWitnessLocation(String option, int sequence)
+  	{
+  		// use to select the witness obtained value
+  		String locator = "//*[@id=\"FNOLWizard:AutoWorkersCompWizardStepSet:FNOLWizard_NewLossDetailsScreen:AtTheSceneDV:WitnessLV:EditableWitnessesLV-body\"]//table[" + sequence + "]//tr/td[4]/div";
+  		WebElement element = driver.findElement(By.xpath(locator));
+  		GuideWireAccessors.selectOptionFromGWDropDown(driver, option, element, 1);
+  		
+  	}
+   public void setWitnessPerspective(String text, int sequence)
+  	{
+  		// use to select the witness obtained value
+  		String locator = "//*[@id=\"FNOLWizard:AutoWorkersCompWizardStepSet:FNOLWizard_NewLossDetailsScreen:AtTheSceneDV:WitnessLV:EditableWitnessesLV-body\"]//table[" + sequence + "]//tr/td[5]/div";
+  		//WebElement element = driver.findElement(By.xpath(locator));
+  		String inputLocator = "//*[@id=\"FNOLWizard:AutoWorkersCompWizardStepSet:FNOLWizard_NewLossDetailsScreen:AtTheSceneDV:WitnessLV:EditableWitnessesLV-body\"]//input[starts-with(@id,'textfield-')]";
+		
+  		GuideWireAccessors.setGWTextBoxInTable(driver, text, locator, inputLocator);
+  		
+  	}
+   
+   public void addOfficialDetails() {
+		logger.info(format("%s -  going to click Add Official", getName()));
+		GuideWireAccessors.clickGWButton(driver,this.getAddOfficialButton());
 		
 	}
    
@@ -572,6 +634,31 @@ private WebElement getFinishButton() {
 
 	private WebElement getLossLocCode() {
 		return lossLocCode;
+	}
+
+	private WebElement getAddWitnessButton() {
+		return addWitnessButton;
+	}
+
+	private WebElement getRemoveWitnessButton() {
+		return removeWitnessButton;
+	}
+	
+
+	private WebElement getWitnessNamePickerIcon() {
+		return witnessNamePickerIcon;
+	}
+
+	private WebElement getWitnessNameNewPersonPicker() {
+		return witnessNameNewPersonPicker;
+	}
+
+	private WebElement getAddOfficialButton() {
+		return addOfficialButton;
+	}
+
+	private WebElement getRemoveOfficialButton() {
+		return removeOfficialButton;
 	}
 
 	

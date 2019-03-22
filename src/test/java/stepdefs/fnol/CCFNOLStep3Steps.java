@@ -33,6 +33,7 @@ public class CCFNOLStep3Steps extends BaseTest {
 	CCFNOLPropertySteps propertySteps = new CCFNOLPropertySteps();
 	CCFNOLVehicleSteps vehicleSteps = new CCFNOLVehicleSteps();
 	CCFNOLNewPoliceSteps policeSteps = new CCFNOLNewPoliceSteps();
+	CCFNOLPersonContactSteps personContactSteps = new CCFNOLPersonContactSteps();
 
 	// work for regression FNOL script to be driven by external
 	// configuration
@@ -75,8 +76,11 @@ public class CCFNOLStep3Steps extends BaseTest {
 			policeSteps.completeFNOLNewPoliceForTestScenario();
 		}
 
+		String fieldValue = ExcelUtil.getTestDataValue("Fnol_Step3_IncidentOnly");
+		if (fieldValue !=null && fieldValue.equalsIgnoreCase("TRUE"))
+				fnolStep3POM.selectIncidentOnlyCB();
 	
-		String fieldValue = ExcelUtil.getTestDataValue("Fnol_Step3_IncUsingFor");
+		fieldValue = ExcelUtil.getTestDataValue("Fnol_Step3_IncUsingFor");
 		if (fieldValue !=null)
 				fnolStep3POM.selectVehicleUsedFor(fieldValue);
 		
@@ -101,12 +105,32 @@ public class CCFNOLStep3Steps extends BaseTest {
 		// fnolStep3POM.selectCctv("Yes");
 		
 		
-		// The user can change the derived fault type - cater for this
-		fieldValue = ExcelUtil.getTestDataValue("Fnol_Step3_FaultOverride");
-		if (fieldValue !=null)
+		// witness
+		fieldValue = ExcelUtil.getTestDataValue("Fnol_Step3_WitnessRequired");
+		if (fieldValue !=null && fieldValue.equalsIgnoreCase("TRUE"))
 		{
-			fnolStep3POM.selectFaultType(fieldValue);	
+			fnolStep3POM.addWitnessDetails();
+		
+			fieldValue = ExcelUtil.getTestDataValue("Fnol_Step3_WitnessObtained");
+			fnolStep3POM.selectWitnessStatementObtained(fieldValue, 1);  //mandatory
+			
+			fieldValue = ExcelUtil.getTestDataValue("Fnol_Step3_WitnessLocation");
+			if (fieldValue !=null)
+				fnolStep3POM.selectWitnessLocation(fieldValue,1); //optional
+			
+			fieldValue = ExcelUtil.getTestDataValue("Fnol_Step3_WitnessLocation");
+			fnolStep3POM.setWitnessPerspective(fieldValue , 1); //mandatory
+			
+			fnolStep3POM.selectWitnessNewPerson(1); // mandatory
+			personContactSteps.completeFNOLWitnessForTestScenario();
 		}
+			
+			// The user can change the derived fault type - cater for this
+			fieldValue = ExcelUtil.getTestDataValue("Fnol_Step3_FaultOverride");
+			if (fieldValue !=null)
+			{
+				fnolStep3POM.selectFaultType(fieldValue);	
+			}
 		
 
 		// select the location
@@ -282,7 +306,7 @@ public class CCFNOLStep3Steps extends BaseTest {
 
 	public void unselectIncidentOnly() {
 
-		fnolStep3POM.deselectIncidentOnlyCB();
+		fnolStep3POM.selectIncidentOnlyCB();
 
 	}
 

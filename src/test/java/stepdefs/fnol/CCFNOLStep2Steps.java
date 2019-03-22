@@ -94,8 +94,9 @@ public class CCFNOLStep2Steps extends BaseTest{
 			   fnolStep2POM.selectRelationToInsured(fieldValue);  
 			
 		}
-		else {
-			fieldValue = ExcelUtil.getTestDataValue("Fnol_Step2_ReportedBy");
+		else  {
+			//default to reported by the insured
+			fieldValue = ExcelUtil.getTestDataValue("Fnol_Name");
 			if (fieldValue !=null)
 				fnolStep2POM.selectReportedByName(fieldValue);
 			//dont need to select relation in this case

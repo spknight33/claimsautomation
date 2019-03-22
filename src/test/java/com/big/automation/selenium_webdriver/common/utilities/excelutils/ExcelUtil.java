@@ -80,6 +80,19 @@ public class ExcelUtil {
 			FileInputStream ExcelFile = new FileInputStream(testDataExcelPath + testDataExcelFilename);
 			excelWBook = new XSSFWorkbook(ExcelFile);
 			System.out.println("/n Set the excel workbook");
+			
+			// first we need to get the variable policy data from the policydata sheet for the test case sheet
+			// TODO so that we can read a list of policy details for different sheets, currently all testcases use the same policy
+			
+			excelWSheet = excelWBook.getSheet("POLICYDATA");
+			if (excelWSheet == null) {
+				throw new Exception("Failed to find the worksheet <" + sheetName + "> in the file<" + testDataExcelPath
+						+ testDataExcelFilename + ">");
+
+			}
+			setPolicyFields(excelWSheet,sheetName);
+			
+			
 			excelWSheet = excelWBook.getSheet(sheetName);
 			if (excelWSheet == null) {
 				throw new Exception("Failed to find the worksheet <" + sheetName + "> in the file<" + testDataExcelPath
@@ -98,12 +111,123 @@ public class ExcelUtil {
 			}
 		}
 	}
+	
+	private static void setPolicyFields(XSSFSheet policySheet,String testSheetName) {
+		//this will read the policydata sheet to get:
+		// If TEST or DEV run(to be removed and put into automation config)
+		// read the records and find the appropriate dev or test entry for the appropriate sheet
+		// get the policy number etc for that entry
+		String key = "";
+		String value1 = "";
+		String value2 = "";
+		String value3 = "";
+		String value4 = "";
+		String value5 = "";
+		
+		testDataMap = new HashMap<>(); // reset the map - we are going to add some data to it here
+		
+		XSSFRow row = null;
+
+		XSSFFormulaEvaluator formulaeval = excelWBook.getCreationHelper().createFormulaEvaluator();
+
+		XSSFCell keyCell0 = null;
+		XSSFCell valueCell1 = null;
+		XSSFCell valueCell2 = null;
+		XSSFCell valueCell3 = null;
+		XSSFCell valueCell4 = null;
+		XSSFCell valueCell5 = null;
+	
+		
+		int rows = policySheet.getLastRowNum() + 1;
+
+		System.out.println("Rows to process:" + rows);
+		String devortest = "";
+		for (int i = 0; i < rows; i++) {
+
+			DataFormatter dataFormatter = new DataFormatter(Locale.UK);
+			key = null;
+			value1 = null;
+			value2 = null;
+			value3 = null;
+			value4 = null;
+			value5 = null;
+			
+
+			row = policySheet.getRow(i);
+
+			if (row != null) {
+				keyCell0 = row.getCell(0);
+				valueCell1 = row.getCell(1);
+				valueCell2 = row.getCell(2);
+				valueCell3 = row.getCell(3);
+				valueCell4 = row.getCell(4);
+				valueCell5 = row.getCell(5);
+				
+			}
+
+			if (keyCell0 != null) 
+				key = dataFormatter.formatCellValue(keyCell0, formulaeval);
+			if (valueCell1 != null) 
+				value1 = dataFormatter.formatCellValue(valueCell1, formulaeval);
+			if (valueCell2 != null) 
+				value2 = dataFormatter.formatCellValue(valueCell2, formulaeval);
+			if (valueCell3 != null) 
+				value3 = dataFormatter.formatCellValue(valueCell3, formulaeval);
+			if (valueCell4 != null) 
+				value4 = dataFormatter.formatCellValue(valueCell4, formulaeval);
+			if (valueCell5 != null) 
+				value5 = dataFormatter.formatCellValue(valueCell5, formulaeval);
+			
+			if (key!=null && !key.isEmpty() && value1 != null && !value1.isEmpty()) {
+				    // check if devortest field
+				 if (key.equalsIgnoreCase("DevOrTstEnvironment"))
+				 {
+				    	devortest = value1;
+				    	System.out.println("found devortest:"+devortest);
+				 }
+				 else
+				 {
+					 
+				    if (!devortest.equalsIgnoreCase(""))
+				    {
+				    	// we must have dev or test set
+				    	if (key != null && key.equalsIgnoreCase(devortest)) {
+				    	// this is a matching dev or test entry, but is it a matching sheet entry
+				    		if (value1 !=null && value1.equalsIgnoreCase(testSheetName))
+				    		{
+				    			// this is the matching dev or test entry for the testsheetname, so use it
+				    			testDataMap.put("DevOrTstEnvironment", devortest.trim());
+				    			System.out.println("entry added to map for DevOrTstEnvironment:"+devortest);
+				    			testDataMap.put("Fnol_PolicyNumber", value2.trim());
+				    			System.out.println("entry added to map for Fnol_PolicyNumber:"+value2);
+				    			testDataMap.put("Fnol_Name", value3.trim());
+				    			System.out.println("entry added to map for Fnol_Name:"+value3);
+				    			testDataMap.put("Fnol_Insured_Address", value4.trim());
+				    			System.out.println("entry added to map for Fnol_Insured_Address:"+value4);
+				    			testDataMap.put("Fnol_Step1_LossDate", value5.trim());
+				    			System.out.println("entry added to map for Fnol_Step1_LossDate:"+value5);
+				    			break;
+				    		}
+						}
+				    }
+				 }
+				 
+					
+					
+				} else {
+					if (key != null && !key.isEmpty())
+						System.out.println("Comment:" + key);
+				}
+			
+
+		}
+	}
 
 	private static void populateMap(XSSFSheet sheet) {
 		String key = "";
 		String value = "";
 		String enabled = "";
-		testDataMap = new HashMap<>();
+		//testDataMap = new HashMap<>();
 		XSSFRow row = null;
 
 		XSSFFormulaEvaluator formulaeval = excelWBook.getCreationHelper().createFormulaEvaluator();

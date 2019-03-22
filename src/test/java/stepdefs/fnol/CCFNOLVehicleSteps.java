@@ -159,7 +159,7 @@ public class CCFNOLVehicleSteps extends BaseTest {
 			if (fieldValue !=null)
 				fnolVehicleDetailsPOM.selectFireWhoDiscovered(fieldValue);
 			
-			fieldValue = ExcelUtil.getTestDataValue("Fnol_PHVehicleFireWhenDate");
+			fieldValue = ExcelUtil.getTestDataValue("Fnol_Step1_LossDate");
 			if (fieldValue !=null)
 				fnolVehicleDetailsPOM.setFireWhenDiscovered(fieldValue);
 			fieldValue = ExcelUtil.getTestDataValue("Fnol_PHVehicleFireWhenTime");
@@ -226,13 +226,13 @@ public class CCFNOLVehicleSteps extends BaseTest {
 				fieldValue = ExcelUtil.getTestDataValue("Fnol_Step3_IncidentType");
 				if (fieldValue.equalsIgnoreCase("Theft"))
 				{
-					fieldValue = ExcelUtil.getTestDataValue("Fnol_PHVehicleTheftLastSeenDate");
+					fieldValue = ExcelUtil.getTestDataValue("Fnol_Step1_LossDate");
 					if (fieldValue !=null)
 						fnolVehicleDetailsPOM.setTheftLastSeenDate(fieldValue);
 					fieldValue = ExcelUtil.getTestDataValue("Fnol_PHVehicleTheftLastSeenTime");
 					if (fieldValue !=null)
 						fnolVehicleDetailsPOM.setTheftLastSeenTime(fieldValue);
-					fieldValue = ExcelUtil.getTestDataValue("Fnol_PHVehicleTheftLossDate");
+					fieldValue = ExcelUtil.getTestDataValue("Fnol_Step1_LossDate");
 					if (fieldValue !=null)
 						fnolVehicleDetailsPOM.setTheftWhenDiscovered(fieldValue);
 					fieldValue = ExcelUtil.getTestDataValue("Fnol_PHVehicleTheftLossTime");

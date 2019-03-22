@@ -142,6 +142,34 @@ public class CCFNOLPersonContactSteps extends BaseTest {
 		personContactDetailsPOM.selectUpdate();
 	}
 	
+	public void completeFNOLWitnessForTestScenario()
+	{
+		
+		String fieldValue = ExcelUtil.getTestDataValue("Fnol_WitnessPrefix");
+		if (fieldValue !=null)
+			personContactDetailsPOM.selectPrefix(fieldValue);
+		
+		fieldValue = ExcelUtil.getTestDataValue("Fnol_WitnessFirstName");
+		if (fieldValue !=null)
+			personContactDetailsPOM.setFirstName(fieldValue);
+		
+		fieldValue = ExcelUtil.getTestDataValue("Fnol_WitnessLastName");
+		if (fieldValue !=null)
+			personContactDetailsPOM.setLastName(fieldValue);
+		
+		fieldValue = ExcelUtil.getTestDataValue("Fnol_WitnessEmail");
+		if (fieldValue !=null)
+			personContactDetailsPOM.setEmail(fieldValue);
+		
+		fieldValue = ExcelUtil.getTestDataValue("Fnol_WitnessLocationDesc");
+		if (fieldValue !=null)
+			personContactDetailsPOM.setLocationDesc(fieldValue);
+		
+		
+	
+		personContactDetailsPOM.selectUpdate();
+	}
+	
 	public void completePostFNOLClaimReporterForTestScenario()
 	{
 		

@@ -287,7 +287,7 @@ public class CCFNOLDriverSteps extends BaseTest {
 	
 	@Given("^I select the insured as driver of PH vehicle$")
 	public void selectinsureddriver() {
-		String fieldValue = ExcelUtil.getTestDataValue("Fnol_PHDriverFullName");
+		String fieldValue = ExcelUtil.getTestDataValue("Fnol_Name");
 		fnolDriverDetailsPOM.selectDriverName(fieldValue);
 	}
 	

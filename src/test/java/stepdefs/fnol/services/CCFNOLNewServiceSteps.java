@@ -73,7 +73,7 @@ public class CCFNOLNewServiceSteps extends BaseTest {
 			fnolNewServicePOM.setRquestedCompletionDate(fieldValue);
 	
 		}
-		fieldValue = ExcelUtil.getTestDataValue("Fnol_Step4_OtherServiceCustomerContact");
+		fieldValue = ExcelUtil.getTestDataValue("Fnol_Name"); //use ph
 		if (fieldValue !=null )
 		{
 			fnolNewServicePOM.selectCustomerContact(fieldValue);
