@@ -9,7 +9,7 @@ Feature: CBPCL-166  As a Claims Support Handler, Claims Handler, Team Manager, S
 @Ignore
   Scenario: CBPCL-166 TC1  ClaimsHandler can view Services screen for existing claim and add a new service
   Given I access ClaimCenter login page
-    And I login to ClaimCenter as role "ClaimsHandler"
+    And I login to ClaimCenter as role "ADClaimsHandler"
     And I Select an existing Claim
     And I select the Actions Popup Menu Hierarchy "Service"
     And I will see post FNOL New Service screen

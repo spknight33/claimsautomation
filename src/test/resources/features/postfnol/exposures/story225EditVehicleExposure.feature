@@ -3,7 +3,7 @@ Feature: CBPCL-225 As a ClaimCenter user with the role of Adjuster or Manager, I
 Background: 
     Given I use test data set "autoexposure_set1"
     And I access ClaimCenter login page
-    And I login to ClaimCenter as role "ClaimsHandler"
+    And I login to ClaimCenter as role "ADClaimsHandler"
 
 @Ignore
 Scenario: CBPCL-225 TC30 Vehicle Damage Exposure can be edited in post FNOL

@@ -337,6 +337,64 @@ public class CCPOSTFNOLLossDetailsSteps extends BaseTest {
 				postFnolLossDetailsPOM.selectCctv(fieldValue);
 				
 		}
+     	
+     // notification and contact
+     		//-------------------------
+     		fieldValue = ExcelUtil.getTestDataValue("PostFnol_LossDetails_HowReported");
+     		if (fieldValue !=null)
+     			postFnolLossDetailsPOM.selectHowReported(fieldValue);
+     		
+     		fieldValue = ExcelUtil.getTestDataValue("PostFnol_LossDetails_ReportedByName");
+     		if (fieldValue !=null)
+     			postFnolLossDetailsPOM.selectReportedByName(fieldValue);
+     		//TODO new company picker
+     		fieldValue = ExcelUtil.getTestDataValue("PostFnol_LossDetails_ReportedByNewPerson");
+     		if (fieldValue !=null && fieldValue.equalsIgnoreCase("TRUE"))
+     		{
+     			postFnolLossDetailsPOM.selectNewPersonReporter();
+     			// Need to now fill in th enext contact screen
+     			personContactSteps.completePostFNOLClaimReporterForTestScenario();
+     		}
+     		
+     		
+     		fieldValue = ExcelUtil.getTestDataValue("PostFnol_LossDetails_ReportedByRelation");
+     		if (fieldValue !=null)
+     			postFnolLossDetailsPOM.selectRelationToInsured(fieldValue);
+     		
+     		fieldValue = ExcelUtil.getTestDataValue("PostFnol_LossDetails_MainContactSame");
+     		if (fieldValue !=null && fieldValue.equalsIgnoreCase("TRUE"))
+     		{
+     			postFnolLossDetailsPOM.selectMainContactSame(true);
+     		}
+     		else
+     		{
+     			postFnolLossDetailsPOM.selectMainContactSame(false);
+     			fieldValue = ExcelUtil.getTestDataValue("PostFnol_LossDetails_MainContactNewPerson");
+     			if (fieldValue !=null && fieldValue.equalsIgnoreCase("TRUE"))
+     			{
+     				postFnolLossDetailsPOM.selectNewPersonContact();
+     				// Need to now fill in th enext contact screen
+     				personContactSteps.completePostFNOLClaimMainContactForTestScenario();
+     			}
+     	
+     		
+     			fieldValue = ExcelUtil.getTestDataValue("PostFnol_LossDetails_MainContactRelation"); 
+     			if (fieldValue !=null)
+     				postFnolLossDetailsPOM.selectContactRelationToInsured(fieldValue);
+     		}
+     		
+     		fieldValue = ExcelUtil.getTestDataValue("PostFnol_LossDetails_AlertNotified");
+    		if (fieldValue !=null && fieldValue.equalsIgnoreCase("TRUE"))
+    		{
+    			postFnolLossDetailsPOM.selectAlert(true);
+    			fieldValue = ExcelUtil.getTestDataValue("PostFnol_LossDetails_AlertId");
+    			postFnolLossDetailsPOM.setAlertId(fieldValue);
+    		}
+    		else
+    		{
+    			if (fieldValue !=null)
+    				postFnolLossDetailsPOM.selectAlert(false);
+    		}
 		
 		// LOSS location
      	fieldValue = ExcelUtil.getTestDataValue("PostFnol_LossDetails_AddressLocation");
@@ -367,12 +425,7 @@ public class CCPOSTFNOLLossDetailsSteps extends BaseTest {
 		fieldValue = ExcelUtil.getTestDataValue("PostFnol_LossDetails_County");
 		if (fieldValue !=null)
 			postFnolLossDetailsPOM.setCounty(fieldValue);
-		fieldValue = ExcelUtil.getTestDataValue("PostFnol_LossDetails_LocationDesc");
-		if (fieldValue !=null)
-			postFnolLossDetailsPOM.setLocationDescription(fieldValue);
-		fieldValue = ExcelUtil.getTestDataValue("PostFnol_LossDetails_LocationCode");
-		if (fieldValue !=null)
-			postFnolLossDetailsPOM.setLocationCode(fieldValue);
+		
 		
 		fieldValue = ExcelUtil.getTestDataValue("PostFnol_LossDetails_Postcode");
 		if (fieldValue !=null)
@@ -381,65 +434,16 @@ public class CCPOSTFNOLLossDetailsSteps extends BaseTest {
 		if (fieldValue !=null)
 			postFnolLossDetailsPOM.selectPostCodeAddress(fieldValue);
 		
-     	
-		
-		// notification and contact
-		//-------------------------
-		fieldValue = ExcelUtil.getTestDataValue("PostFnol_LossDetails_HowReported");
+		fieldValue = ExcelUtil.getTestDataValue("PostFnol_LossDetails_LocationDesc");
 		if (fieldValue !=null)
-			postFnolLossDetailsPOM.selectHowReported(fieldValue);
-		
-		fieldValue = ExcelUtil.getTestDataValue("PostFnol_LossDetails_ReportedByName");
+			postFnolLossDetailsPOM.setLocationDescription(fieldValue);
+		fieldValue = ExcelUtil.getTestDataValue("PostFnol_LossDetails_LocationCode");
 		if (fieldValue !=null)
-			postFnolLossDetailsPOM.selectReportedByName(fieldValue);
-		//TODO new company picker
-		fieldValue = ExcelUtil.getTestDataValue("PostFnol_LossDetails_ReportedByNewPerson");
-		if (fieldValue !=null && fieldValue.equalsIgnoreCase("TRUE"))
-		{
-			postFnolLossDetailsPOM.selectNewPersonReporter();
-			// Need to now fill in th enext contact screen
-			personContactSteps.completePostFNOLClaimReporterForTestScenario();
-		}
+			postFnolLossDetailsPOM.setLocationCode(fieldValue);
 		
 		
-		fieldValue = ExcelUtil.getTestDataValue("PostFnol_LossDetails_ReportedByRelation");
-		if (fieldValue !=null)
-			postFnolLossDetailsPOM.selectRelationToInsured(fieldValue);
 		
-		fieldValue = ExcelUtil.getTestDataValue("PostFnol_LossDetails_MainContactSame");
-		if (fieldValue !=null && fieldValue.equalsIgnoreCase("TRUE"))
-		{
-			postFnolLossDetailsPOM.selectMainContactSame(true);
-		}
-		else
-		{
-			postFnolLossDetailsPOM.selectMainContactSame(false);
-			fieldValue = ExcelUtil.getTestDataValue("PostFnol_LossDetails_MainContactNewPerson");
-			if (fieldValue !=null && fieldValue.equalsIgnoreCase("TRUE"))
-			{
-				postFnolLossDetailsPOM.selectNewPersonContact();
-				// Need to now fill in th enext contact screen
-				personContactSteps.completePostFNOLClaimMainContactForTestScenario();
-			}
-	
 		
-			fieldValue = ExcelUtil.getTestDataValue("PostFnol_LossDetails_MainContactRelation"); 
-			if (fieldValue !=null)
-				postFnolLossDetailsPOM.selectContactRelationToInsured(fieldValue);
-		}
-		
-		fieldValue = ExcelUtil.getTestDataValue("PostFnol_LossDetails_AlertNotified");
-		if (fieldValue !=null && fieldValue.equalsIgnoreCase("TRUE"))
-		{
-			postFnolLossDetailsPOM.selectAlert(true);
-			fieldValue = ExcelUtil.getTestDataValue("PostFnol_LossDetails_AlertId");
-			postFnolLossDetailsPOM.setAlertId(fieldValue);
-		}
-		else
-		{
-			if (fieldValue !=null)
-				postFnolLossDetailsPOM.selectAlert(false);
-		}
 		
 	}
 	

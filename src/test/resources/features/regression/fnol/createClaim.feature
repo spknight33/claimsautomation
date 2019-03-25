@@ -1,4 +1,4 @@
-
+@Ignore
 Feature: Regression test for create claim FNOL path
 
 

@@ -28,29 +28,25 @@ public class ClaimCenterPOSTFNOLLossDetailsPOM extends BaseTest {
 	@FindBy(id = "ClaimLossDetails:ClaimLossDetailsScreen:ttlBar")
 	private WebElement pageTitle;
 
-	@FindBy(className = "message")
-	private List<WebElement> errorMessages;
 
 	@FindBy(id = "ClaimLossDetails:ClaimLossDetailsScreen:LossDetailsAddressDV:Description-inputEl")
 	private WebElement circumstances;
-
 	@FindBy(id = "ClaimLossDetails:ClaimLossDetailsScreen:LossDetailsAddressDV:Claim_LossCause-inputEl")
 	private WebElement incidentType;
-
 	@FindBy(id = "ClaimLossDetails:ClaimLossDetailsScreen:LossDetailsAddressDV:Claim_Cause_itb-inputEl")
 	private WebElement claimCause;
-
 	@FindBy(id = "ClaimLossDetails:ClaimLossDetailsScreen:LossDetailsAddressDV:Claim_Subcause_itb-inputEl")
 	private WebElement claimSubCause;
 
 	@FindBy(id = "ClaimLossDetails:ClaimLossDetailsScreen:LossDetailsAddressDV:Notification_Fault-inputEl")
 	private WebElement faultType;
+	
+	
 	@FindBy(id = "ClaimLossDetails:ClaimLossDetailsScreen:LossDetailsAddressDV:Notification_AtFaultPercentage-inputEl")
 	private WebElement insuredsLiability;
 	@FindBy(id = "ClaimLossDetails:ClaimLossDetailsScreen:LossDetailsAddressDV:Catastrophe_CatastropheNumber-inputEl")
 	private WebElement catastropheDropdown;
 
-	// TODO
 	@FindBy(id = "ClaimLossDetails:ClaimLossDetailsScreen:LossDetailsPanelSet:LossDetailsCardCV:LossDetailsDV:LossDate-inputEl")
 	private WebElement lossDate;
 
@@ -210,11 +206,20 @@ public class ClaimCenterPOSTFNOLLossDetailsPOM extends BaseTest {
 
 	@FindBy(id = "ClaimLossDetails:ClaimLossDetailsScreen:AtTheSceneDV:WitnessLV:EditableWitnessesLV_tb:Add")
 	private WebElement addWitnessesButton;
+	@FindBy(id="ClaimLossDetails:ClaimLossDetailsScreen:AtTheSceneDV:WitnessLV:EditableWitnessesLV_tb:Remove")
+	private WebElement removeWitnessButton;
+	// just concerned with the first for now
+	@FindBy(id="ClaimLossDetails:ClaimLossDetailsScreen:AtTheSceneDV:WitnessLV:EditableWitnessesLV:0:Contact:ContactMenuIcon")
+	private WebElement witnessNamePickerIcon;
+	@FindBy(id="ClaimLossDetails:ClaimLossDetailsScreen:AtTheSceneDV:WitnessLV:EditableWitnessesLV:0:Contact:ClaimNewContactPickerMenuItemSet:NewContactPickerMenuItemSet_NewPerson-itemEl")
+	private WebElement witnessNameNewPersonPicker;
+	
+	
 
 	@FindBy(id = "ClaimLossDetails:ClaimLossDetailsScreen:AtTheSceneDV:Claim_Officials:EditableOfficialsLV_tb:Add")
 	private WebElement addOfficialsButton;
 
-	// TODO
+	
 	@FindBy(id = "ClaimLossDetails:ClaimLossDetailsScreen:AtTheSceneDV:PoliceReportLV:MetroReportsLV_tb:Add")
 	private WebElement addPoliceButton;
 
@@ -393,35 +398,36 @@ public class ClaimCenterPOSTFNOLLossDetailsPOM extends BaseTest {
 	
 	public void setAddressLine1(String text)
 	{
-		logger.info(format("%s -  going to set address line1", getName()));
+		logger.info(format("%s -  going to set address line1:"+text, getName()));
 		GuideWireAccessors.setGWTextBox(driver, text, this.getAddressLine1());
 		
 	}
 	public void setAddressLine2(String text)
 	{
-		logger.info(format("%s -  going to set address line2", getName()));
+		logger.info(format("%s -  going to set address line2:"+text, getName()));
 		GuideWireAccessors.setGWTextBox(driver, text, this.getAddressLine2());
 		
 	}
 	public void setAddressLine3(String text)
 	{
-		logger.info(format("%s -  going to set address line3", getName()));
+		logger.info(format("%s -  going to set address line3:"+text, getName()));
 		GuideWireAccessors.setGWTextBox(driver, text, this.getAddressLine3());
 		
 	}
 	public void setCity(String text)
 	{
-		logger.info(format("%s -  going to set city", getName()));
+		logger.info(format("%s -  going to set city:"+text, getName()));
 		GuideWireAccessors.setGWTextBox(driver, text, this.getAddressCity());
 	}	
 	public void setCounty(String text)
 	{
-		logger.info(format("%s -  going to set county", getName()));
+		logger.info(format("%s -  going to set county:"+text, getName()));
 		GuideWireAccessors.setGWTextBox(driver, text, this.getAddressCounty());
 	}	
 	public void setPostcode(String text)
 	{
-		logger.info(format("%s -  going to set postcode", getName()));
+		logger.info(format("%s -  going to set postcode:"+text, getName()));
+		sleep(2);
 		GuideWireAccessors.setGWTextBox(driver, text, this.getAddressPostcode());
 		// as postcode causes display off other address fields, but this can take a couple of seconds - the next method should wait until available but add a slug anyway
 				Actions actions = new Actions(driver);
@@ -437,12 +443,12 @@ public class ClaimCenterPOSTFNOLLossDetailsPOM extends BaseTest {
 	
 	public void setLocationDescription(String text)
 	{
-		logger.info(format("%s -  going to set location description", getName()));
+		logger.info(format("%s -  going to set location description:"+text, getName()));
 		GuideWireAccessors.setGWTextBox(driver, text, this.getAddressLocationDesc());
 	}	
 	public void setLocationCode(String text)
 	{
-		logger.info(format("%s -  going to set location code", getName()));
+		logger.info(format("%s -  going to set location code:"+text, getName()));
 		GuideWireAccessors.setGWTextBox(driver, text, this.getAddressLocationCode());
 	}	
 	public void selectJurisdiction(String option)
@@ -568,6 +574,39 @@ public class ClaimCenterPOSTFNOLLossDetailsPOM extends BaseTest {
 		GuideWireAccessors.clickGWButton(driver, this.getAddWitnessesButton());
 
 	}
+	public void selectWitnessNewPerson(int sequence)
+	{
+		
+		GuideWireAccessors.selectOptionFromGWPicker(driver, this.getWitnessNamePickerIcon(), this.getWitnessNameNewPersonPicker());
+		
+	}
+   
+   public void selectWitnessStatementObtained(String option, int sequence)
+	{
+		// use to select the witness obtained value
+		String locator = "//*[@id=\"ClaimLossDetails:ClaimLossDetailsScreen:AtTheSceneDV:WitnessLV:EditableWitnessesLV-body\"]//table[" + sequence + "]//tr/td[3]/div";
+		WebElement element = driver.findElement(By.xpath(locator));
+		GuideWireAccessors.selectOptionFromGWDropDown(driver, option, element, 1);
+		
+	}
+   public void selectWitnessLocation(String option, int sequence)
+  	{
+  		// use to select the witness obtained value
+  		String locator = "//*[@id=\"ClaimLossDetails:ClaimLossDetailsScreen:AtTheSceneDV:WitnessLV:EditableWitnessesLV-body\"]//table[" + sequence + "]//tr/td[4]/div";
+  		WebElement element = driver.findElement(By.xpath(locator));
+  		GuideWireAccessors.selectOptionFromGWDropDown(driver, option, element, 1);
+  		
+  	}
+   public void setWitnessPerspective(String text, int sequence)
+  	{
+  		// use to select the witness obtained value
+  		String locator = "//*[@id=\"ClaimLossDetails:ClaimLossDetailsScreen:AtTheSceneDV:WitnessLV:EditableWitnessesLV-body\"]//table[" + sequence + "]//tr/td[5]/div";
+  		//WebElement element = driver.findElement(By.xpath(locator));
+  		String inputLocator = "//*[@id=\"ClaimLossDetails:ClaimLossDetailsScreen:AtTheSceneDV:WitnessLV:EditableWitnessesLV-body\"]//input[starts-with(@id,'textfield-')]";
+		
+  		GuideWireAccessors.setGWTextBoxInTable(driver, text, locator, inputLocator);
+  		
+  	}
 
 	public void addOfficials() {
 		logger.info(format("%s -  going to click Add Official", getName()));
@@ -693,9 +732,6 @@ public class ClaimCenterPOSTFNOLLossDetailsPOM extends BaseTest {
 		return addPropertyDamageButton;
 	}
 
-	private List<WebElement> getErrorMessages() {
-		return errorMessages;
-	}
 
 	private WebElement getPageTitle() {
 		return pageTitle;
@@ -948,5 +984,18 @@ public class ClaimCenterPOSTFNOLLossDetailsPOM extends BaseTest {
 	private WebElement getAlertId() {
 		return alertId;
 	}
+
+	private WebElement getRemoveWitnessButton() {
+		return removeWitnessButton;
+	}
+
+	private WebElement getWitnessNamePickerIcon() {
+		return witnessNamePickerIcon;
+	}
+
+	private WebElement getWitnessNameNewPersonPicker() {
+		return witnessNameNewPersonPicker;
+	}
+	
 
 }

@@ -26,26 +26,22 @@ public class ClaimCenterFNOLStep3POM extends BaseTest{
 	
 	@FindBy(id = "FNOLWizard:Finish-btnEl")
 	private WebElement finishButton;
-	
-	@FindBy(id = "title")
-	private WebElement titleDropDown;
-	
+		
 	@FindBy(id = "FNOLWizard:AutoWorkersCompWizardStepSet:FNOLWizard_NewLossDetailsScreen:ttlBar")
 	private WebElement pageTitle;
 
 
 	@FindBy(id ="FNOLWizard:AutoWorkersCompWizardStepSet:FNOLWizard_NewLossDetailsScreen:LossDetailsAddressDV:Description-inputEl")
 	private WebElement circumstances;
-
 	@FindBy(id ="FNOLWizard:AutoWorkersCompWizardStepSet:FNOLWizard_NewLossDetailsScreen:LossDetailsAddressDV:Claim_LossCause-inputEl")
 	private WebElement incidentType;
-	
-	       
-	@FindBy(id="FNOLWizard:AutoWorkersCompWizardStepSet:FNOLWizard_NewLossDetailsScreen:LossDetailsAddressDV:Claim_Cause_itb-inputEl")
+ 	@FindBy(id="FNOLWizard:AutoWorkersCompWizardStepSet:FNOLWizard_NewLossDetailsScreen:LossDetailsAddressDV:Claim_Cause_itb-inputEl")
 	private WebElement claimCause;
-	
-	@FindBy(id="FNOLWizard:AutoWorkersCompWizardStepSet:FNOLWizard_NewLossDetailsScreen:LossDetailsAddressDV:Claim_Subcause_itb-inputEl")
+ 	@FindBy(id="FNOLWizard:AutoWorkersCompWizardStepSet:FNOLWizard_NewLossDetailsScreen:LossDetailsAddressDV:Claim_Subcause_itb-inputEl")
 	private WebElement claimSubCause;
+
+	@FindBy(id ="FNOLWizard:AutoWorkersCompWizardStepSet:FNOLWizard_NewLossDetailsScreen:CategorizationDV:Notification_Fault-inputEl")
+	private WebElement faultType;
 	
 	@FindBy(id="FNOLWizard:AutoWorkersCompWizardStepSet:FNOLWizard_NewLossDetailsScreen:LossDetailsAddressDV:IncidentOnly-inputEl")
 	private WebElement incidentOnlyCB;
@@ -53,18 +49,14 @@ public class ClaimCenterFNOLStep3POM extends BaseTest{
 	
 	@FindBy(id="FNOLWizard:AutoWorkersCompWizardStepSet:FNOLWizard_NewLossDetailsScreen:VehicleIncidentIterator:0:VehicleIncidentDV:VehicleName-inputEl")
 	private WebElement insuredVehicleLink;
-	
 	@FindBy(id="FNOLWizard:AutoWorkersCompWizardStepSet:FNOLWizard_NewLossDetailsScreen:AddVehicleButton-btnEl")
 	private WebElement addVehicleButton;
-	
 	@FindBy(id="FNOLWizard:AutoWorkersCompWizardStepSet:FNOLWizard_NewLossDetailsScreen:AddPedestrianButton-btnEl")
 	private WebElement addPedestrianButton;
-	
 	@FindBy(id="FNOLWizard:AutoWorkersCompWizardStepSet:FNOLWizard_NewLossDetailsScreen:AddPropertyDamageButton-btnEl")
 	private WebElement addPropertyDamageButton;
 
-	@FindBy(id ="FNOLWizard:AutoWorkersCompWizardStepSet:FNOLWizard_NewLossDetailsScreen:CategorizationDV:Notification_Fault-inputEl")
-	private WebElement faultType;
+
 	
 	
 	@FindBy(id ="NewClaimDuplicatesWorksheet:NewClaimDuplicatesScreen:NewClaimDuplicatesWorksheet_CloseButton-btnEl")
@@ -72,10 +64,10 @@ public class ClaimCenterFNOLStep3POM extends BaseTest{
 	private String closeDuplicateClaimLocator = "NewClaimDuplicatesWorksheet:NewClaimDuplicatesScreen:NewClaimDuplicatesWorksheet_CloseButton-btnEl";
 	
 
+	// INCIDENT questions
+	// ----------------------------------
 	@FindBy(id ="FNOLWizard:AutoWorkersCompWizardStepSet:FNOLWizard_NewLossDetailsScreen:LossDetailsAddressDV:IncidentQuestions_PurposeOfJourney_itb-inputEl")
 	private WebElement journeyPurpose;
-	
-	
 	@FindBy(id ="FNOLWizard:AutoWorkersCompWizardStepSet:FNOLWizard_NewLossDetailsScreen:LossDetailsAddressDV:IncidentQuestions_VehicleUsedFor_itb-inputEl")
 	private WebElement vehicleUsedFor;
 	@FindBy(id ="FNOLWizard:AutoWorkersCompWizardStepSet:FNOLWizard_NewLossDetailsScreen:LossDetailsAddressDV:IncidentQuestions_SpeedAtImpact_itb-inputEl")
@@ -584,9 +576,6 @@ private WebElement getFinishButton() {
 	
 	
 
-	private WebElement getTitleDropDown() {
-		return titleDropDown;
-	}
 
 	private WebElement getCloseDuplicateClaimWindow() {
 		return closeDuplicateClaimWindow;

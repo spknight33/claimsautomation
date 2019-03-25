@@ -2,7 +2,7 @@
 Feature: CBPCL-337 As a ClaimCenter user with the role of Adjuster or Manager, I want to be able maintain claim related exposures (Credit hire etc) so that I can make sure that the data on the claim represents our current understanding of the loss.
 Background: 
 Given I access ClaimCenter login page
-And I login to ClaimCenter as role "ClaimsHandler"
+And I login to ClaimCenter as role "ADClaimsHandler"
 
 Scenario: CBPCL-337 TC30 Credit hire Damage Exposure can be edited in post FNOL
 And I Select an existing Claim

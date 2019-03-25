@@ -109,16 +109,22 @@ public class ClaimCenterPOSTFNOLDriverDetailsPOM extends BaseTest {
 	private WebElement indemnityLicenseLengthDropdown;
 	@FindBy(id = "PostFNOLContactPopup:FNOLContactScreen:ContactDV:DriverIndemnityQuestionsInputSet:ClaimMedicalConditions-inputEl")
 	private WebElement indemnityMedicalDropdown;
+	@FindBy(id = "PostFNOLContactPopup:FNOLContactScreen:ContactDV:DriverIndemnityQuestionsInputSet:ClaimMedicalDetails-inputEl")
+	private WebElement indemnityMedicalDetails;
 
 	@FindBy(id = "PostFNOLContactPopup:FNOLContactScreen:ContactDV:DriverIndemnityQuestionsInputSet:ClaimHasPreviousMotorClaims_true-inputEl")
 	private WebElement indemnityIncLast5YesOption;
 	@FindBy(id = "PostFNOLContactPopup:FNOLContactScreen:ContactDV:DriverIndemnityQuestionsInputSet:ClaimHasPreviousMotorClaims_false-inputEl")
 	private WebElement indemnityIncLast5NoOption;
+	@FindBy(id = "PostFNOLContactPopup:FNOLContactScreen:ContactDV:DriverIndemnityQuestionsInputSe:ClaimPreviousClaims:PreviousDriverClaimsLV_tb:Add")
+	private WebElement indemnityIncLast5AddButton;
 
 	@FindBy(id = "PostFNOLContactPopup:FNOLContactScreen:ContactDV:DriverIndemnityQuestionsInputSet:ClaimHasMotorConvictions_true-inputEl")
 	private WebElement indemnityOffenceLast5YesOption;
 	@FindBy(id = "PostFNOLContactPopup:FNOLContactScreen:ContactDV:DriverIndemnityQuestionsInputSet:ClaimHasMotorConvictions_false-inputEl")
 	private WebElement indemnityOffenceLast5NoOption;
+	@FindBy(id = "PostFNOLContactPopup:FNOLContactScreen:ContactDV:DriverIndemnityQuestionsInputSet:ClaimMotorConvictions:MotorConvictionsLV_tb:Add")
+	private WebElement indemnityOffenceLast5AddButton;
 
 	@FindBy(id = "PostFNOLContactPopup:FNOLContactScreen:ContactDV:DriverIndemnityQuestionsInputSet:DrinkOrDrugProsecutionInd-inputEl")
 	private WebElement indemnityProsecutionDropdown;
@@ -127,6 +133,8 @@ public class ClaimCenterPOSTFNOLDriverDetailsPOM extends BaseTest {
 	private WebElement indemnityDriverTestedYesOption;
 	@FindBy(id = "PostFNOLContactPopup:FNOLContactScreen:ContactDV:DriverIndemnityQuestionsInputSet:DriverTestedAtSceneInd_false-inputEl")
 	private WebElement indemnityDriverTestedNoOption;
+	@FindBy(id = "FNOLContactPopup:FNOLContactScreen:ContactDV:DriverIndemnityQuestionsInputSet:DriverTestDetails-inputEl")
+	private WebElement indemnityDriverTestedDetails;
 
 	@FindBy(id = "PostFNOLContactPopup:FNOLContactScreen:ContactDV:DriverIndemnityQuestionsInputSet:WearingSeatbeltInd-inputEl")
 	private WebElement indemnitySeatbeltDropdown;
@@ -237,6 +245,9 @@ public class ClaimCenterPOSTFNOLDriverDetailsPOM extends BaseTest {
 
 	}
 
+
+	//Driver personal details section
+	//--------------------------------------------
 	public void selectDriverName(String option) {
 		logger.info(format("%s - going to select Driver name option :" + option, getName()));
 		GuideWireAccessors.selectOptionFromGWDropDown(driver, option, this.getDriverNameDropdown(), 1);
@@ -286,6 +297,8 @@ public class ClaimCenterPOSTFNOLDriverDetailsPOM extends BaseTest {
 
 	}
 
+	//Driver address section
+		//---------------------
 	public void setAddressLine1(String text) {
 		logger.info(format("%s -  going to set address line1:" + text, getName()));
 		GuideWireAccessors.setGWTextBox(driver, text, this.getAddressLine1());
@@ -347,7 +360,8 @@ public class ClaimCenterPOSTFNOLDriverDetailsPOM extends BaseTest {
 
 	}
 
-	// TODO - phone etc
+	//Driver contact details
+		//-------------------------
 	public void setWorkPhone(String text) {
 		logger.info(format("%s -  going to set workphone:" + text, getName()));
 		GuideWireAccessors.setGWTextBox(driver, text, this.getWorkPhone());
@@ -402,6 +416,169 @@ public class ClaimCenterPOSTFNOLDriverDetailsPOM extends BaseTest {
 		logger.info(format("%s -  going to set notes:" + text, getName()));
 		GuideWireAccessors.setGWTextBox(driver, text, this.getNotes());
 
+	}
+	
+	
+
+	//Driver Indemnity Section
+	//-----------------------------------------
+	public void selectFTOccupation(String option)
+	{
+		logger.info(format("%s -  going to select fulltime occupation:"+option, getName()));
+		GuideWireAccessors.selectOptionFromGWDropDown(driver, option, this.getIndemnityOccupationDropdown(), 1);
+		
+	}
+	public void selectLicenseType(String option)
+	{
+		logger.info(format("%s -  going to select license type:"+option, getName()));
+		GuideWireAccessors.selectOptionFromGWDropDown(driver, option, this.getIndemnityLicenseTypeDropdown(), 1);
+		
+	}
+	public void selectLicenseLength(String option)
+	{
+		logger.info(format("%s -  going to select license length:"+option, getName()));
+		GuideWireAccessors.selectOptionFromGWDropDown(driver, option, this.getIndemnityLicenseLengthDropdown(), 1);
+		
+	}
+	public void selectMedicalConditions(String option)
+	{
+		logger.info(format("%s -  going to select medical conditions:"+option, getName()));
+		GuideWireAccessors.selectOptionFromGWDropDown(driver, option, this.getIndemnityMedicalDropdown(), 1);
+		
+	}
+	public void setMedicalDetails(String text)
+	{
+		logger.info(format("%s -  going to set medical detials:"+text, getName()));
+		GuideWireAccessors.setGWTextBox(driver, text, this.getIndemnityMedicalDetails());
+		
+	}
+	
+	
+	public void selectIncident5Years(boolean incident)
+	{
+		logger.info(format("%s -  going to set incident in 5 years"+incident, getName()));
+		
+		if (incident)
+		{
+		GuideWireAccessors.clickGWButton(driver, this.getIndemnityIncLast5YesOption());
+		}
+		else
+		{
+			GuideWireAccessors.clickGWButton(driver, this.getIndemnityIncLast5NoOption());
+		}
+		
+	}
+	
+
+	public void clickAddIncident5Years()
+	{
+		logger.info(format("%s -  going to click add incident in 5 years", getName()));
+		GuideWireAccessors.clickGWButton(driver, this.getIndemnityIncLast5AddButton());
+		
+	}
+	
+	
+	public void setIncident5YearsDate(String text, int sequence)
+  	{
+  	
+  		String locator = "//*[@id=\"PostFNOLContactPopup:FNOLContactScreen:ContactDV:DriverIndemnityQuestionsInputSet:ClaimPreviousClaims:PreviousDriverClaimsLV-body\"]//table[" + sequence + "]//tr/td[2]/div";
+  		//WebElement element = driver.findElement(By.xpath(locator));
+  		String inputLocator = "//*[@id=\"PostFNOLContactPopup:FNOLContactScreen:ContactDV:DriverIndemnityQuestionsInputSet:ClaimPreviousClaims:PreviousDriverClaimsLV-body\"]//input[starts-with(@id,'datefield-')]";
+		
+  		GuideWireAccessors.setGWTextBoxInTable(driver, text, locator, inputLocator);
+  		
+  	}
+	 public void selectIncident5YearsType(String option, int sequence)
+		{
+		
+			String locator = "//*[@id=\"PostFNOLContactPopup:FNOLContactScreen:ContactDV:DriverIndemnityQuestionsInputSet:ClaimPreviousClaims:PreviousDriverClaimsLV-body\"]//table[" + sequence + "]//tr/td[3]/div";
+			WebElement element = driver.findElement(By.xpath(locator));
+			GuideWireAccessors.selectOptionFromGWDropDown(driver, option, element, 1);
+			
+		}
+	 
+	 
+	
+	public void selectOffence5Years(boolean offence)
+	{
+		logger.info(format("%s -  going to set offence in 5 years"+offence, getName()));
+		
+		if (offence)
+		{
+		GuideWireAccessors.clickGWButton(driver, this.getIndemnityOffenceLast5YesOption());
+		}
+		else
+		{
+			GuideWireAccessors.clickGWButton(driver, this.getIndemnityOffenceLast5NoOption());
+		}
+		
+	}
+
+	public void clickAddOffence5Years()
+	{
+		logger.info(format("%s -  going to click add offence in 5 years", getName()));
+		GuideWireAccessors.clickGWButton(driver, this.getIndemnityOffenceLast5AddButton());
+		
+	}
+	public void setOffence5YearsDate(String text, int sequence)
+  	{
+  	
+  		String locator = "//*[@id=\"PostFNOLContactPopup:FNOLContactScreen:ContactDV:DriverIndemnityQuestionsInputSet:ClaimMotorConvictions:MotorConvictionsLV-body\"]//table[" + sequence + "]//tr/td[2]/div";
+  		//WebElement element = driver.findElement(By.xpath(locator));
+  		String inputLocator = "//*[@id=\"PostFNOLContactPopup:FNOLContactScreen:ContactDV:DriverIndemnityQuestionsInputSet:ClaimMotorConvictions:MotorConvictionsLV-body\"]//input[starts-with(@id,'datefield-')]";
+		
+  		GuideWireAccessors.setGWTextBoxInTable(driver, text, locator, inputLocator);
+  		
+  	}
+	 public void selectOffence5YearsCode(String option, int sequence)
+		{
+		
+			String locator = "//*[@id=\"PostFNOLContactPopup:FNOLContactScreen:ContactDV:DriverIndemnityQuestionsInputSet:ClaimMotorConvictions:MotorConvictionsLV-body\"]//table[" + sequence + "]//tr/td[3]/div";
+			WebElement element = driver.findElement(By.xpath(locator));
+			GuideWireAccessors.selectOptionFromGWDropDown(driver, option, element, 1);
+			
+		}
+	 public void setOffence5YearsPoints(String text, int sequence)
+	  	{
+	  	
+	  		String locator = "//*[@id=\"PostFNOLContactPopup:FNOLContactScreen:ContactDV:DriverIndemnityQuestionsInputSet:ClaimMotorConvictions:MotorConvictionsLV-body\"]//table[" + sequence + "]//tr/td[4]/div";
+	  		//WebElement element = driver.findElement(By.xpath(locator));
+	  		String inputLocator = "//*[@id=\"PostFNOLContactPopup:FNOLContactScreen:ContactDV:DriverIndemnityQuestionsInputSet:ClaimMotorConvictions:MotorConvictionsLV-body\"]//input[starts-with(@id,'textfield-')]";
+			
+	  		GuideWireAccessors.setGWTextBoxInTable(driver, text, locator, inputLocator);
+	  		
+	  	}
+	 
+	 
+	 
+	 public void selectOffence5YearsDisqual(String option, int sequence)
+		{
+		
+			String locator = "//*[@id=\"PostFNOLContactPopup:FNOLContactScreen:ContactDV:DriverIndemnityQuestionsInputSet:ClaimMotorConvictions:MotorConvictionsLV-body\"]//table[" + sequence + "]//tr/td[5]/div";
+			WebElement element = driver.findElement(By.xpath(locator));
+			GuideWireAccessors.selectOptionFromGWDropDown(driver, option, element, 1);
+			
+		}
+	
+	public void selectTestedAtScene(boolean tested)
+	{
+		logger.info(format("%s -  going to set tested at scene:"+tested, getName()));
+		
+		if (tested)
+		{
+		GuideWireAccessors.clickGWButton(driver, this.getIndemnityDriverTestedYesOption());
+		}
+		else
+		{
+			GuideWireAccessors.clickGWButton(driver, this.getIndemnityDriverTestedNoOption());
+		}
+		
+	}
+	public void setTestedAtSceneDetails(String text)
+	{
+		logger.info(format("%s -  going to set testatschene details:"+text, getName()));
+		GuideWireAccessors.setGWTextBox(driver, text, this.getIndemnityDriverTestedDetails());
+		
 	}
 
 	// Injury Section
@@ -892,5 +1069,23 @@ public int getCountMoj() {
 	private WebElement getMojNetTotal() {
 		return mojNetTotal;
 	}
+
+	private WebElement getIndemnityIncLast5AddButton() {
+		return indemnityIncLast5AddButton;
+	}
+
+	private WebElement getIndemnityOffenceLast5AddButton() {
+		return indemnityOffenceLast5AddButton;
+	}
+
+	private WebElement getIndemnityMedicalDetails() {
+		return indemnityMedicalDetails;
+	}
+
+	private WebElement getIndemnityDriverTestedDetails() {
+		return indemnityDriverTestedDetails;
+	}
+	
+	
 
 }
