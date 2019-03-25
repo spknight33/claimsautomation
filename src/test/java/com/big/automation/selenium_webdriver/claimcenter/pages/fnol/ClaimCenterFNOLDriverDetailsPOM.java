@@ -118,11 +118,16 @@ public class ClaimCenterFNOLDriverDetailsPOM extends BaseTest{
 	private WebElement indemnityIncLast5YesOption;
 	@FindBy(id = "FNOLContactPopup:FNOLContactScreen:ContactDV:DriverIndemnityQuestionsInputSet:ClaimHasPreviousMotorClaims_false-inputEl")
 	private WebElement indemnityIncLast5NoOption;
+	@FindBy(id = "FNOLContactPopup:FNOLContactScreen:ContactDV:DriverIndemnityQuestionsInputSet:ClaimPreviousClaims:PreviousDriverClaimsLV_tb:Add")
+	private WebElement indemnityIncLast5AddButton;
 	
 	@FindBy(id = "FNOLContactPopup:FNOLContactScreen:ContactDV:DriverIndemnityQuestionsInputSet:ClaimHasMotorConvictions_true-inputEl")
 	private WebElement indemnityOffenceLast5YesOption;
 	@FindBy(id = "FNOLContactPopup:FNOLContactScreen:ContactDV:DriverIndemnityQuestionsInputSet:ClaimHasMotorConvictions_false-inputEl")
 	private WebElement indemnityOffenceLast5NoOption;
+	@FindBy(id = "FNOLContactPopup:FNOLContactScreen:ContactDV:DriverIndemnityQuestionsInputSet:ClaimMotorConvictions:MotorConvictionsLV_tb:Add")
+	private WebElement indemnityOffenceLast5AddButton;
+	
 	
 	@FindBy(id = "FNOLContactPopup:FNOLContactScreen:ContactDV:DriverIndemnityQuestionsInputSet:DrinkOrDrugProsecutionInd-inputEl")
 	private WebElement indemnityProsecutionDropdown;
@@ -429,6 +434,36 @@ public class ClaimCenterFNOLDriverDetailsPOM extends BaseTest{
 		
 	}
 	
+
+	public void clickAddIncident5Years()
+	{
+		logger.info(format("%s -  going to click add incident in 5 years", getName()));
+		GuideWireAccessors.clickGWButton(driver, this.getIndemnityIncLast5AddButton());
+		
+	}
+	
+	
+	public void setIncident5YearsDate(String text, int sequence)
+  	{
+  	
+  		String locator = "//*[@id=\"FNOLContactPopup:FNOLContactScreen:ContactDV:DriverIndemnityQuestionsInputSet:ClaimPreviousClaims:PreviousDriverClaimsLV-body\"]//table[" + sequence + "]//tr/td[2]/div";
+  		//WebElement element = driver.findElement(By.xpath(locator));
+  		String inputLocator = "//*[@id=\"FNOLContactPopup:FNOLContactScreen:ContactDV:DriverIndemnityQuestionsInputSet:ClaimPreviousClaims:PreviousDriverClaimsLV-body\"]//input[starts-with(@id,'datefield-')]";
+		
+  		GuideWireAccessors.setGWTextBoxInTable(driver, text, locator, inputLocator);
+  		
+  	}
+	 public void selectIncident5YearsType(String option, int sequence)
+		{
+		
+			String locator = "//*[@id=\"FNOLContactPopup:FNOLContactScreen:ContactDV:DriverIndemnityQuestionsInputSet:ClaimPreviousClaims:PreviousDriverClaimsLV-body\"]//table[" + sequence + "]//tr/td[3]/div";
+			WebElement element = driver.findElement(By.xpath(locator));
+			GuideWireAccessors.selectOptionFromGWDropDown(driver, option, element, 1);
+			
+		}
+	 
+	 
+	
 	public void selectOffence5Years(boolean offence)
 	{
 		logger.info(format("%s -  going to set offence in 5 years"+offence, getName()));
@@ -443,6 +478,52 @@ public class ClaimCenterFNOLDriverDetailsPOM extends BaseTest{
 		}
 		
 	}
+
+	public void clickAddOffence5Years()
+	{
+		logger.info(format("%s -  going to click add offence in 5 years", getName()));
+		GuideWireAccessors.clickGWButton(driver, this.getIndemnityOffenceLast5AddButton());
+		
+	}
+	public void setOffence5YearsDate(String text, int sequence)
+  	{
+  	
+  		String locator = "//*[@id=\"FNOLContactPopup:FNOLContactScreen:ContactDV:DriverIndemnityQuestionsInputSet:ClaimMotorConvictions:MotorConvictionsLV-body\"]//table[" + sequence + "]//tr/td[2]/div";
+  		//WebElement element = driver.findElement(By.xpath(locator));
+  		String inputLocator = "//*[@id=\"FNOLContactPopup:FNOLContactScreen:ContactDV:DriverIndemnityQuestionsInputSet:ClaimMotorConvictions:MotorConvictionsLV-body\"]//input[starts-with(@id,'datefield-')]";
+		
+  		GuideWireAccessors.setGWTextBoxInTable(driver, text, locator, inputLocator);
+  		
+  	}
+	 public void selectOffence5YearsCode(String option, int sequence)
+		{
+		
+			String locator = "//*[@id=\"FNOLContactPopup:FNOLContactScreen:ContactDV:DriverIndemnityQuestionsInputSet:ClaimMotorConvictions:MotorConvictionsLV-body\"]//table[" + sequence + "]//tr/td[3]/div";
+			WebElement element = driver.findElement(By.xpath(locator));
+			GuideWireAccessors.selectOptionFromGWDropDown(driver, option, element, 1);
+			
+		}
+	 public void setOffence5YearsPoints(String text, int sequence)
+	  	{
+	  	
+	  		String locator = "//*[@id=\"FNOLContactPopup:FNOLContactScreen:ContactDV:DriverIndemnityQuestionsInputSet:ClaimMotorConvictions:MotorConvictionsLV-body\"]//table[" + sequence + "]//tr/td[4]/div";
+	  		//WebElement element = driver.findElement(By.xpath(locator));
+	  		String inputLocator = "//*[@id=\"FNOLContactPopup:FNOLContactScreen:ContactDV:DriverIndemnityQuestionsInputSet:ClaimMotorConvictions:MotorConvictionsLV-body\"]//input[starts-with(@id,'textfield-')]";
+			
+	  		GuideWireAccessors.setGWTextBoxInTable(driver, text, locator, inputLocator);
+	  		
+	  	}
+	 
+	 
+	 
+	 public void selectOffence5YearsDisqual(String option, int sequence)
+		{
+		
+			String locator = "//*[@id=\"FNOLContactPopup:FNOLContactScreen:ContactDV:DriverIndemnityQuestionsInputSet:ClaimMotorConvictions:MotorConvictionsLV-body\"]//table[" + sequence + "]//tr/td[5]/div";
+			WebElement element = driver.findElement(By.xpath(locator));
+			GuideWireAccessors.selectOptionFromGWDropDown(driver, option, element, 1);
+			
+		}
 	
 	public void selectTestedAtScene(boolean tested)
 	{
@@ -828,6 +909,14 @@ public class ClaimCenterFNOLDriverDetailsPOM extends BaseTest{
 
 	private WebElement getIndemnityDriverTestedDetails() {
 		return indemnityDriverTestedDetails;
+	}
+
+	private WebElement getIndemnityIncLast5AddButton() {
+		return indemnityIncLast5AddButton;
+	}
+
+	private WebElement getIndemnityOffenceLast5AddButton() {
+		return indemnityOffenceLast5AddButton;
 	}
 
 	

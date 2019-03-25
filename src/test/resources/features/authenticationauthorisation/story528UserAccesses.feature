@@ -1,4 +1,3 @@
-
 @Ignore
 Feature: CBPCL-528 We require the attached users to be created.The users will all have the ability to make payments and create reserves.
   All managers will have the ability to authorise payments and authorise reserves as well as create payments and reserves.

@@ -137,7 +137,40 @@ public class CCFNOLDriverSteps extends BaseTest {
 			fnolDriverDetailsPOM.selectTestedAtScene(false);
 		}
 		
-		//TODO the rest
+		
+		fieldValue = ExcelUtil.getTestDataValue("Fnol_PHDriverIncidents5years");
+		if (fieldValue !=null&& fieldValue.equalsIgnoreCase("TRUE"))
+		{
+			
+			fnolDriverDetailsPOM.selectIncident5Years(true);
+			fnolDriverDetailsPOM.clickAddIncident5Years();
+			
+			fieldValue = ExcelUtil.getTestDataValue("Fnol_PHDriverIncidentDate");
+			if (fieldValue !=null)
+				fnolDriverDetailsPOM.setIncident5YearsDate(fieldValue, 1);
+		
+			fieldValue = ExcelUtil.getTestDataValue("Fnol_PHDriverIncidentType");
+			fnolDriverDetailsPOM.selectIncident5YearsType(fieldValue, 1);
+		}
+		
+		fieldValue = ExcelUtil.getTestDataValue("Fnol_PHDriverOffences5years");
+		if (fieldValue !=null&& fieldValue.equalsIgnoreCase("TRUE"))
+		{
+			fnolDriverDetailsPOM.selectOffence5Years(true);
+			fnolDriverDetailsPOM.clickAddOffence5Years();
+			
+			fieldValue = ExcelUtil.getTestDataValue("Fnol_PHDriverOffenceDate");
+			if (fieldValue !=null)
+				fnolDriverDetailsPOM.setOffence5YearsDate(fieldValue, 1);
+			fieldValue = ExcelUtil.getTestDataValue("Fnol_PHDriverOffenceCode");
+			fnolDriverDetailsPOM.selectOffence5YearsCode(fieldValue, 1);
+			fieldValue = ExcelUtil.getTestDataValue("Fnol_PHDriverOffencePoints");
+			if (fieldValue !=null)
+				fnolDriverDetailsPOM.setOffence5YearsPoints(fieldValue, 1);
+			fieldValue = ExcelUtil.getTestDataValue("Fnol_PHDriverOffenceDisqual");
+			if (fieldValue !=null)
+			    fnolDriverDetailsPOM.selectOffence5YearsDisqual(fieldValue, 1);
+		}
 		
 	}
 	
