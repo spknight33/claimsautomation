@@ -14,6 +14,10 @@ public class ClaimCenterPOSTFNOLFinancialTransactionsPOM extends BaseTest {
 
 	@FindBy(id = "ClaimFinancialsTransactions:ClaimFinancialsTransactionsScreen:ttlBar")
 	private WebElement pageTitle;
+	
+	@FindBy(id = "ClaimFinancialsTransactions:ClaimFinancialsTransactionsScreen:TransactionsLVRangeInput-inputEl")
+	private WebElement transactionTypeDropdown;
+	
 
 	public String getName() {
 
@@ -35,5 +39,18 @@ public class ClaimCenterPOSTFNOLFinancialTransactionsPOM extends BaseTest {
 
 		return GuideWireAccessors.containsErrorMessage(driver, contains, By.className("message"));
 	}
+	
+	public void selectTransactionType(String option) {
+
+		logger.info(format("%s -  going to select transaction type:"+option, getName()));
+		GuideWireAccessors.selectOptionFromGWDropDown(driver, option, this.getTransactionTypeDropdown(), 1);
+		
+	}
+
+	private WebElement getTransactionTypeDropdown() {
+		return transactionTypeDropdown;
+	}
+	
+	
 
 }

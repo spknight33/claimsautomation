@@ -15,23 +15,27 @@ public class ClaimCenterPOSTFNOLSetReservesPOM extends BaseTest {
 	@FindBy(id = "NewReserveSet:NewReserveSetScreen:ttlBar")
 	private WebElement pageTitle;
 	
-	@FindBy(id = "NewReserveSet:NewReserveSetScreen:Update")
+	@FindBy(id = "NewReserveAndRecoveryReserveSet:NewReserveAndRecoveryReserveSetScreen:Edit")
+	private WebElement editButton;
+	@FindBy(id = "NewReserveAndRecoveryReserveSet:NewReserveAndRecoveryReserveSetScreen:Update")
 	private WebElement saveButton;
-	@FindBy(id = "NewReserveSet:NewReserveSetScreen:Cancel")
+	@FindBy(id = "NewReserveAndRecoveryReserveSet:NewReserveAndRecoveryReserveSetScreen:Cancel")
 	private WebElement cancelButton;
-	@FindBy(id = "NewReserveSet:NewReserveSetScreen:Add")
+	@FindBy(id = "NewReserveAndRecoveryReserveSet:NewReserveAndRecoveryReserveSetScreen:Add")
 	private WebElement addButton;
-	
-	@FindBy(id = "NewReserveSet:NewReserveSetScreen:Remove")
+	@FindBy(id = "NewReserveAndRecoveryReserveSet:NewReserveAndRecoveryReserveSetScreen:Remove")
 	private WebElement removeButton;
-	@FindBy(id = "NewReserveSet:NewReserveSetScreen:NewReserveSet_ShowGroupedReservesButton")
-	private WebElement showGroupButton;
+	
+	@FindBy(id = "NewReserveAndRecoveryReserveSet:NewReserveAndRecoveryReserveSetScreen:ReserveAndRecoveryReserveListDetailPanel:EditableRecoveryReservesLV_tb:Add")
+	private WebElement addRecoveryReserveButton;
+	@FindBy(id = "NewReserveAndRecoveryReserveSet:NewReserveAndRecoveryReserveSetScreen:ReserveAndRecoveryReserveListDetailPanel:EditableRecoveryReservesLV_tb:Remove")
+	private WebElement removeRecoveryReserveButton;
 	
 	
 
 	public String getName() {
 
-		return "Post FNOL Set Reserves";
+		return "Post FNOL Reserves and recovery reserves";
 	}
 
 	public boolean isPageTitleDisplayed(String expected) {
@@ -50,6 +54,12 @@ public class ClaimCenterPOSTFNOLSetReservesPOM extends BaseTest {
 		return GuideWireAccessors.containsErrorMessage(driver, contains, By.className("message"));
 	}
 	
+	public void edit() {
+
+		logger.info(format("%s -  going to click edit", getName()));
+		GuideWireAccessors.clickGWButton(driver,this.getEditButton());
+		
+	}
 	public void save() {
 
 		logger.info(format("%s -  going to click save", getName()));
@@ -74,18 +84,24 @@ public class ClaimCenterPOSTFNOLSetReservesPOM extends BaseTest {
 		GuideWireAccessors.clickGWButton(driver,this.getRemoveButton());
 		
 	}
+	public void addRecoveryReserve() {
+
+		logger.info(format("%s -  going to click add recovery reserve", getName()));
+		GuideWireAccessors.clickGWButton(driver,this.getAddRecoveryReserveButton());
+		
+	}
 	
 	//TODO - rest of this page
 	// TODO - set values for new reserver
 	//TODO - update values for existing reserve
 	
 
-	private WebElement getSaveButton() {
-		return saveButton;
-	}
-
 	private WebElement getCancelButton() {
 		return cancelButton;
+	}
+
+	private WebElement getEditButton() {
+		return editButton;
 	}
 
 	private WebElement getAddButton() {
@@ -96,9 +112,19 @@ public class ClaimCenterPOSTFNOLSetReservesPOM extends BaseTest {
 		return removeButton;
 	}
 
-	private WebElement getShowGroupButton() {
-		return showGroupButton;
+	private WebElement getSaveButton() {
+		return saveButton;
 	}
+
+	private WebElement getAddRecoveryReserveButton() {
+		return addRecoveryReserveButton;
+	}
+
+	private WebElement getRemoveRecoveryReserveButton() {
+		return removeRecoveryReserveButton;
+	}
+
+	
 	
 	
 	

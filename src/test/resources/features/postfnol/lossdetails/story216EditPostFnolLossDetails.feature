@@ -7,7 +7,7 @@ Feature: CBPCL-216 As a ClaimCenter user with the role of Adjuster or Manager,
     And I access ClaimCenter login page
     And I login to ClaimCenter as role "ADClaimsHandler"
 
-  @Ignore
+
   Scenario: CBPCL-47 TC11 Police details can be added in Loss Details of post FNOL
     And I Select an existing Claim
     And I select "Loss Details" on the Claim Navigator
@@ -18,7 +18,7 @@ Feature: CBPCL-216 As a ClaimCenter user with the role of Adjuster or Manager,
     And I complete fields on post FNOL new police details screen
     And I click update button on post FNOL loss details
 
- 
+ @Ignore
   Scenario: CBPCL-216 TC1 ClaimsHandler can edit fields in Loss Details screen post FNOL
     And I Select an existing Claim
     And I select "Loss Details" on the Claim Navigator
