@@ -303,6 +303,7 @@ public void clickSubMenu(String topmenu, String submenuitem) throws Exception {
 		//openSearchClaimsSubMenu();
 		//searchClaimsSimpleMenuOption.click();
 		//logger.info(format("%s - done, Search Claims simple menu item clicked", getName()));
+		
 		this.getSearchMenu().click();
 		logger.info(format("%s - done, Search menu clicked", getName()));
 	}
@@ -315,10 +316,11 @@ public void clickSubMenu(String topmenu, String submenuitem) throws Exception {
 	// }
 
 	public void logout() {
-		this.getSettingsMenu().click();
+		GuideWireAccessors.clickGWButton(driver, this.getSettingsMenu());
+		//this.getSettingsMenu().click();
 		logger.info(format("%s - done, setting menu link clicked", getName()));
 		sleep(1);
-		this.getLogoutMenuOption().click();
+		GuideWireAccessors.clickGWButton(driver,this.getLogoutMenuOption());
 		logger.info(format("%s - done, logout menu option clicked", getName()));
 		sleep(1);
 

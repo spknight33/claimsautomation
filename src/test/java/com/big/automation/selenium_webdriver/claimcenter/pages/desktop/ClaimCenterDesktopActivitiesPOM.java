@@ -46,6 +46,50 @@ public class ClaimCenterDesktopActivitiesPOM extends BaseTest{
 		return this.getPageTitle().getText().equalsIgnoreCase(expected);
 	}
 	
+	
+	public void clickActivityToAction(String subject,String claim, String insured,String exposure)
+	{
+		logger.info(format("%s - click activity for subject:"+subject+",claim:"+claim+",insured:"+insured+",exposure:"+exposure, getName()));
+	    sleep(1);
+		String locator = "//*[@id=\"DesktopActivities:DesktopActivitiesScreen:DesktopActivitiesLV-body\"]//table";
+		List <WebElement> rows = driver.findElements(By.xpath(locator));
+		
+		WebElement activitySubject;
+		WebElement activityClaim;
+		WebElement activityInsured;
+		WebElement activityExposure;
+			
+		// loop till find first with mathcing type
+		int rowTotal = rows.size();
+		String rowLocator = null;
+		for(int i=1; i<=rowTotal; i++)
+		{
+			
+			rowLocator = locator + "[" + i + "]";
+				//find the type
+			activitySubject = driver.findElement(By.xpath(rowLocator+"//tr//td[7]"));
+			activityClaim = driver.findElement(By.xpath(rowLocator+"//tr//td[8]"));
+			activityInsured = driver.findElement(By.xpath(rowLocator+"//tr//td[9]"));
+			activityExposure = driver.findElement(By.xpath(rowLocator+"//tr//td[10]"));
+		
+			if (activitySubject.getText().equalsIgnoreCase(subject) && activityClaim.getText().equalsIgnoreCase(claim) && activityInsured.getText().equalsIgnoreCase(insured)&& activityExposure.getText().equalsIgnoreCase(exposure))
+			{
+				logger.info(format("%s - Found match in activity table to click", getName()));
+				
+				// now get the anchor link
+				WebElement anchor = driver.findElement(By.xpath(rowLocator+"//tr//td[7]//a"));
+				
+				GuideWireAccessors.clickGWButton(driver, anchor);
+				return;
+				
+			}
+		}
+		
+		logger.info(format("%s - NO match in activity table ", getName()));
+	
+		
+	}
+	
 	//TODO clicking of selected CBox and use of assign buttons etc
 	
 	public void clickOnClaimForActivity()

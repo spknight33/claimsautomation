@@ -1,4 +1,4 @@
-
+@Ignore
 Feature: CBPCL-216 As a ClaimCenter user with the role of Adjuster or Manager,
   I want to be able update the details on the loss so that I can make sure that the data on the claim represents our current understanding of the loss.
 
