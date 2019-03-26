@@ -100,7 +100,7 @@ public class ClaimCenterFNOLDriverDetailsPOM extends BaseTest{
 	//INDEMNITY SECTION 
 	//---------------------------
 	//TODO - the policy retrieved fields
-	@FindBy(id = "FNOLContactPopup:FNOLContactScreen:ContactDV:DriverIndemnityQuestionsInputSet:ClaimFullTimeOccupation-inputEl")
+	@FindBy(id = "FNOLContactPopup:FNOLContactScreen:ContactDV:DriverIndemnityQuestionsInputSet:ClaimPrimaryOccupation-inputEl")
 	private WebElement indemnityOccupationDropdown;
 	@FindBy(id = "FNOLContactPopup:FNOLContactScreen:ContactDV:DriverIndemnityQuestionsInputSet:ClaimLicenceType-inputEl")
 	private WebElement indemnityLicenseTypeDropdown;
@@ -503,7 +503,7 @@ public class ClaimCenterFNOLDriverDetailsPOM extends BaseTest{
 		}
 	 public void setOffence5YearsPoints(String text, int sequence)
 	  	{
-	  	
+	  	    sleep(2);
 	  		String locator = "//*[@id=\"FNOLContactPopup:FNOLContactScreen:ContactDV:DriverIndemnityQuestionsInputSet:ClaimMotorConvictions:MotorConvictionsLV-body\"]//table[" + sequence + "]//tr/td[4]/div";
 	  		//WebElement element = driver.findElement(By.xpath(locator));
 	  		String inputLocator = "//*[@id=\"FNOLContactPopup:FNOLContactScreen:ContactDV:DriverIndemnityQuestionsInputSet:ClaimMotorConvictions:MotorConvictionsLV-body\"]//input[starts-with(@id,'textfield-')]";
