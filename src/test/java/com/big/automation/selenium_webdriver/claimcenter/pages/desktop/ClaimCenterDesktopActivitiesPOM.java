@@ -31,7 +31,10 @@ public class ClaimCenterDesktopActivitiesPOM extends BaseTest{
 	@FindBy(id ="DesktopActivities:DesktopActivitiesScreen:DesktopActivities_RejectButton")
 	private WebElement rejectButton;
 
-	
+	//-------------------------------
+	// worksheet buttons
+	@FindBy(id ="ApprovalDetailWorksheet:ApprovalDetailScreen:ApprovalDetailWorksheet_ApproveButton")
+	private WebElement worksheetApproveButton;
 	
 
 	public String getName() {
@@ -44,6 +47,19 @@ public class ClaimCenterDesktopActivitiesPOM extends BaseTest{
 	    sleep(1);
 		logger.info(format("%s -found page title for :"+this.getPageTitle().getText(), getName()));
 		return this.getPageTitle().getText().equalsIgnoreCase(expected);
+	}
+	
+	public void selectActivityType(String option) {
+
+		logger.info(format("%s -  going to select activity type:"+option, getName()));
+		GuideWireAccessors.selectOptionFromGWDropDown(driver, option, this.getActivityFilterDropdown(), 1);
+		
+	}
+	
+	public void approveActivityOnWorksheet()
+	{
+		logger.info(format("%s - click approve activity on worksheet", getName()));
+		GuideWireAccessors.clickGWButton(driver, this.getWorksheetApproveButton());
 	}
 	
 	
@@ -129,6 +145,10 @@ public class ClaimCenterDesktopActivitiesPOM extends BaseTest{
 
 	private WebElement getRejectButton() {
 		return rejectButton;
+	}
+
+	private WebElement getWorksheetApproveButton() {
+		return worksheetApproveButton;
 	}
 	
 	

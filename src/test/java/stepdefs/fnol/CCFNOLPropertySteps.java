@@ -73,9 +73,17 @@ public class CCFNOLPropertySteps extends BaseTest {
 				}
 				else
 				{
+					fieldValue = ExcelUtil.getTestDataValue("Fnol_PropertyPHOwner");
+					if (fieldValue !=null && fieldValue.equalsIgnoreCase("TRUE"))
+					{
+						// SET THE PH AS THE OWNER
+						fieldValue = ExcelUtil.getTestDataValue("Fnol_Name");
+						fnolPropertyDetailsPOM.selectPropertyOwner(fieldValue);
+						
+					}
 					// select property owner from the list
-					fieldValue = ExcelUtil.getTestDataValue("Fnol_PropertyOwner");
-					fnolPropertyDetailsPOM.selectPropertyOwner(fieldValue);
+					//fieldValue = ExcelUtil.getTestDataValue("Fnol_PropertyOwner");
+					//fnolPropertyDetailsPOM.selectPropertyOwner(fieldValue);
 				}
 				
 				// moved this to the end as was causing stale elements if done earlier!

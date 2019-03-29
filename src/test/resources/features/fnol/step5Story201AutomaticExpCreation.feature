@@ -1,7 +1,7 @@
-@Ignore
+
 Feature: CBPCL-201 As a claims handler once the Fault rating has been completed, and/or a trigger has been selected the system will then create an exposure and an automatic reserve.
 
-@Ignore
+@Ignore @Passed29032019
   Scenario: CBPCL-201 TC1 For "Split Liability" TP VEHICLE DAMAGE Liability auto create a TP Vehicle exposure with reserve,
     TC3 For "Split Liability" TP INJURY (TP Driver) Liability auto create a TP Injury exposure with reserve,
     TC5 For "Split Liability" TP INJURY (TP Passenger) Liability auto create a TP Injury exposure with reserve,
@@ -34,7 +34,7 @@ Then I will see post FNOL exposure screen for "1st Party Vehicle"
 #And I will see "Claimant" is "TP Driver" on post FNOL "1st Party Vehicle" exposure screen
 And I will see "Claimant Type" is "Insured" on post FNOL "1st Party Vehicle" exposure screen
 
-  @Ignore
+
   Scenario: CBPCL-201 TC2 If Insureds "Fault" for TP VEHICLE DAMAGE Liability auto create a TP Vehicle exposure with reserve,
     TC4 For Insureds "Fault" TP INJURY (TP Driver) Liability auto create a TP Injury exposure with reserve,
     TC6 For Insureds "Fault" TP INJURY (TP Passenger) Liability auto create a TP Injury exposure with reserve,
@@ -72,7 +72,7 @@ And I will see "Claimant Type" is "Insured" on post FNOL "1st Party Vehicle" exp
     And I will see post FNOL exposures screen
     And I will see type "Vehicle" for coverage "Accidental Damage" has been assigned to a user in group "Accidental Damage" for Claimant "PH Driver" with reserves amount "1,307.00"
 
-  @Ignore
+ @Ignore @Passed29032019
   Scenario: CBPCL-201 TC18 For "Fire" cause PH VEHICLE DAMAGE Liability where PH is claiming auto create a PH Vehicle exposure with reserve
     Given I use test data set "autoexposure_set3"
     And As a "ADClaimsHandler" I am at step5 for FNOL
@@ -83,7 +83,7 @@ And I will see "Claimant Type" is "Insured" on post FNOL "1st Party Vehicle" exp
     And I will see post FNOL exposures screen
     And I will see type "Vehicle" for coverage "Fire" has been assigned to a user in group "Accidental Damage" for Claimant "PH Driver" with reserves amount "2,107.00"
 
- @Ignore
+ @Ignore @Passed29032019
   Scenario: CBPCL-201 TC20 For "Theft" cause PH VEHICLE DAMAGE Liability where PH is claiming auto create a PH Vehicle exposure with reserve
     Given I use test data set "autoexposure_set4"
     And As a "ADClaimsHandler" I am at step5 for FNOL
@@ -94,7 +94,7 @@ And I will see "Claimant Type" is "Insured" on post FNOL "1st Party Vehicle" exp
     And I will see post FNOL exposures screen
     And I will see type "Vehicle" for coverage "Theft" has been assigned to a user in group "Accidental Damage" for Claimant "PH Driver" with reserves amount "2,107.00"
 
-  @Ignore
+  @Ignore @Passed29032019
   Scenario: CBPCL-221 TC1 For "Misfuelling" cause PH VEHICLE DAMAGE Liability where PH is claiming?? auto create a PH Vehicle exposure with no reserve
     Given I use test data set "autoexposure_set5"
     And As a "ADClaimsHandler" I am at step5 for FNOL
@@ -105,7 +105,7 @@ And I will see "Claimant Type" is "Insured" on post FNOL "1st Party Vehicle" exp
     And I will see post FNOL exposures screen
     And I will see type "Vehicle" for coverage "Misfuelling Cover" has been assigned to a user in group "Accidental Damage" for Claimant "PH Driver" with reserves amount "-"
     
-    @Ignore
+   @Ignore @Passed29032019
      Scenario: CBPCL-221 TC2 For "Glass cover" cause PH VEHICLE DAMAGE Liability where PH is claiming?? auto create a PH Vehicle exposure with no reserve
     Given I use test data set "autoexposure_set6"
     And As a "ADClaimsHandler" I am at step5 for FNOL
@@ -116,7 +116,7 @@ And I will see "Claimant Type" is "Insured" on post FNOL "1st Party Vehicle" exp
     And I will see post FNOL exposures screen
     And I will see type "Vehicle" for coverage "Glass" has been assigned to a user in group "Claims Support" for Claimant "PH Driver" with reserves amount "-"
     
-
+@Ignore @Passed29032019
 Scenario: CBPCL-201 TC17 For Insureds "Fault" PH VEHICLE DAMAGE Liability where PH is NOT claiming Do not create a PH Vehicle exposure with reserve
 Given I use test data set "autoexposure_set2"
 And As a "ADClaimsHandler" I am at step4 for FNOL
@@ -129,7 +129,7 @@ And I select "Exposures" on the Claim Navigator
 And I will see post FNOL exposures screen
  And I will NOT see type "Vehicle" for coverage "Accidental Damage" has been assigned to a user in group "Accidental Damage" for Claimant "PH Driver" with reserves amount ""
 
- @Ignore
+@Ignore @Passed29032019
  Scenario: CBPCL-201 TC19 For "Fire" cause PH VEHICLE DAMAGE Liability where PH is Not claiming will not create a PH Vehicle exposure with reserve
  Given I use test data set "autoexposure_set3"
 And As a "ADClaimsHandler" I am at step4 for FNOL
@@ -141,7 +141,7 @@ And I select "Exposures" on the Claim Navigator
 And I will see post FNOL exposures screen
 And I will NOT see type "Vehicle" for coverage "Fire" has been assigned to a user in group "Accidental Damage" for Claimant "PH Driver" with reserves amount "2,107.00"
  
- @Ignore
+@Ignore @Passed29032019
  Scenario: CBPCL-201 TC21 For "Theft" cause PH VEHICLE DAMAGE Liability where PH is claiming auto create a PH Vehicle exposure with reserve
  Given I use test data set "autoexposure_set4"
 And As a "ADClaimsHandler" I am at step4 for FNOL
@@ -153,7 +153,7 @@ And I select "Exposures" on the Claim Navigator
 And I will see post FNOL exposures screen
 And I will NOT see type "Vehicle" for coverage "Theft" has been assigned to a user in group "Accidental Damage" for Claimant "PH Driver" with reserves amount "2,107.00"
  
- @Ignore
+@Ignore @Passed29032019
  Scenario: CBPCL-201 TC27 For non-fault case, there are no TP exposures created
 Given I use test data set "autoexposure_set7"
 And As a "ADClaimsHandler" I am at step5 for FNOL
@@ -169,7 +169,7 @@ And I will NOT see type "Bodily Injury" for coverage "Third Party Liability" has
 And I will NOT see type "Bodily Injury" for coverage "Third Party Liability" has been assigned to a user in group "Personal Injury - MOJ" for Claimant "Pedestrian" with reserves amount "4,050.00"
 And I will see type "Vehicle" for coverage "Accidental Damage" has been assigned to a user in group "Accidental Damage" for Claimant "PH Driver" with reserves amount "1,307.00"
 And I will see type "Credit Hire" for coverage "Third Party Liability" has been assigned to a user in group "Credit Hire" for Claimant "TP Driver" with reserves amount "1,307.00"
-And I will see type "Protocol Hire" for coverage "Third Party Liability" has been assigned to a user in group "Credit Hire" for Claimant "TP Driver" with reserves amount "-"
-And I will see type "Property" for coverage "Third Party Liability" has been assigned to a user in group "Personal Injury - MOJ" for Claimant "TP Property Owner" with reserves amount "-"
+And I will see type "Protocol Hire" for coverage "Third Party Liability" has been assigned to a user in group "Credit Hire Protocol" for Claimant "TP Driver" with reserves amount "-"
+And I will see type "Property" for coverage "Third Party Liability" has been assigned to a user in group "Credit Hire" for Claimant "TP Property Owner" with reserves amount "-"
  
  

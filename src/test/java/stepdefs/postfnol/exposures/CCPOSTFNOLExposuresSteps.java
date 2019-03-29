@@ -65,17 +65,37 @@ public class CCPOSTFNOLExposuresSteps extends BaseTest {
 		postFnolExposuresPOM.clickOpenExposure(type, coverage, claimantName);
 	}
 
-	@Given("^I will see type \"([^\"]*)\" for coverage \"([^\"]*)\" has been assigned to a user in group \"([^\"]*)\"$")
+	@Given("^I will see type \"([^\"]*)\" for coverage \"([^\"]*)\" and claimant \"([^\"]*)\" has been assigned to a user in group \"([^\"]*)\"$")
 	public void i_will_see_type_for_coverage_has_been_assigned_to_a_user_in_group(String type, String coverage,
-			String group) throws Throwable {
-
-		String handler = postFnolExposuresPOM.getHandlerForExposure(type, coverage);
+			String group,String claimant) throws Throwable {
+		String claimantName = null;
+		switch (claimant) {
+		case ("TP Driver"):
+			claimantName = ExcelUtil.getTestDataValue("Fnol_TPDriverFullName");
+			break;
+		case ("PH Driver"):
+			claimantName = ExcelUtil.getTestDataValue("Fnol_Name");
+			break;
+		case ("Pedestrian"):
+			claimantName = ExcelUtil.getTestDataValue("Fnol_PedestrianFullName");
+			break;
+		case ("TP Passenger"):
+			claimantName = ExcelUtil.getTestDataValue("Fnol_TPPassengerFullName");
+			break;
+		case ("PH Passenger"):
+			claimantName = ExcelUtil.getTestDataValue("Fnol_PHPassengerFullName");
+			break;
+		case ("TP Property Owner"):
+			claimantName = ExcelUtil.getTestDataValue("Fnol_PropertyNewOwnerFullName");
+			break;
+		}
+		
+		String handler = postFnolExposuresPOM.getHandlerForExposure(type, coverage,claimantName);
 
 		// fail if handler not found
 		Assert.assertNotNull(handler, "Cannot find exposure in exposure table");
 
-		Assert.assertTrue(UserToGroupMap.getGroupForUser(handler).equalsIgnoreCase(group),
-				"Not in expected group:" + group);
+		Assert.assertTrue(UserToGroupMap.getGroupForUser(handler).equalsIgnoreCase(group),"Not in expected group:" + group);
 		// A handler will belong to a group
 	}
 
@@ -125,6 +145,9 @@ public class CCPOSTFNOLExposuresSteps extends BaseTest {
 		Assert.assertNotNull(expReserve, "Cannot find reserve amount in exposure table");
 		Assert.assertTrue(expReserve.equalsIgnoreCase(reserve),
 				"expected TOTAL reserve amount to be :" + reserve + " but was:" + expReserve);
+		
+		// NOW CHECK THE GROUP ASSIGNMENT
+		this.i_will_see_type_for_coverage_has_been_assigned_to_a_user_in_group(type, coverage, group,claimant);
 
 	}
 

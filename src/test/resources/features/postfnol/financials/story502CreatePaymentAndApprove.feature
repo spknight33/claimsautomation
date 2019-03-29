@@ -1,4 +1,4 @@
-
+@Ignore
 Feature: CBPCL-502  Create a payment and approve
 
   Background: 
@@ -37,4 +37,6 @@ Feature: CBPCL-502  Create a payment and approve
     And I login to ClaimCenter as role "ADTeamManager"
     And I select "Activities" on the Desktop Navigator
     And I will see desktop activities details screen
+    And I select "All open" from "Activity Type" field on desktop activities details screen
     And I select the activity for subject "Review and approve new payment" for claim "000-00-000149" for insured "Ainsley Lamb" and for exposure "NL68OXW - Ainsley Lamb - 1st Party Vehicle"
+    And I click on approve activity on the desktop activities worksheet screen

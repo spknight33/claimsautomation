@@ -182,5 +182,18 @@ public class CCNavigatorSteps extends BaseTest {
 		List<String> list = Arrays.asList(items);
 		navigatorBarPOM.selectActionsSubMenuHierarchy(list);
 	}
+	
+	@When("^I select the Desktop Actions Popup Menu Hierarchy \"([^\"]*)\"$")
+	public void i_select_the_desktopActiuons_Popup_Menu_Hierarchy(String menulist) throws Throwable {
+		String[] items = menulist.split(",");
+		List<String> list = Arrays.asList(items);
+		navigatorBarPOM.selectDesktopActionsSubMenuHierarchy(list);
+	}
+	@When("^I select the Account Actions Popup Menu Hierarchy \"([^\"]*)\"$")
+	public void i_select_the_accountActiuons_Popup_Menu_Hierarchy(String menulist) throws Throwable {
+		String[] items = menulist.split(",");
+		List<String> list = Arrays.asList(items);
+		navigatorBarPOM.selectAccountActionsSubMenuHierarchy(list);
+	}
 
 }

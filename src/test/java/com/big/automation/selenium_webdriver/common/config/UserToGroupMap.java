@@ -9,35 +9,34 @@ public class UserToGroupMap {
 		// these are Carlos test user - to be changed later
 		switch (user)
 		{
-		case ("Handler 1"):
+		case ("HAD1"):
 			return "Accidental Damage";
-		case ("Handler 2"):
+		case ("HAD2"):
 			return "Accidental Damage";	
-		case ("Support Handler 1"):
+		case ("HCS1"):
 			return "Claims Support";
-		case ("Support Handler 2"):
+		case ("HCS2"):
 			return "Claims Support";
-		case ("Handler 3"):
+		case ("HPI1"):
 			return "Personal Injury - MOJ";	
-		case ("Handler 4"):
+		case ("HPI2"):
 			return "Personal Injury - MOJ";	
-		case ("Handler 5"):
+		case ("HTPD1"):
 			return "Third Party Property damage";	
-		case ("Handler 6"):
+		case ("HTPD2"):
 			return "Third Party Property damage";
-		case ("Handler 7"):
+		case ("HCH1"):
 			return "Credit Hire";
-		case ("Handler 8"):
+		case ("HCH2"):
 			return "Credit Hire";
-		case ("Handler 9"):
+		case ("HTPC1"):
 			return "Third Party Capture";
-		case ("Handler 10"):
+		case ("HTPC2"):
 			return "Third Party Capture";
-		case ("Handler 11"):
+		case ("Pending Assignment"):
 			return "Credit Hire Protocol";
-		case ("Handler 12"):
-			return "Credit Hire Protocol";
-		case ("Team Manager 1"):
+	
+		case ("MCS1"):
 			return "Claims Support";
 		
 		default:

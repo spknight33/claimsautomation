@@ -59,6 +59,11 @@ import com.big.automation.selenium_webdriver.claimcenter.pages.fnol.exposures.Cl
 import com.big.automation.selenium_webdriver.claimcenter.pages.fnol.exposures.ClaimCenterFNOLNewTPCaptureExposurePOM;
 import com.big.automation.selenium_webdriver.claimcenter.pages.fnol.exposures.ClaimCenterFNOLNewVehicleExposurePOM;
 import com.big.automation.selenium_webdriver.claimcenter.pages.fnol.services.ClaimCenterFNOLNewServicePOM;
+import com.big.automation.selenium_webdriver.claimcenter.pages.policycreate.ClaimCenterPolicyAccountCreatePOM;
+import com.big.automation.selenium_webdriver.claimcenter.pages.policycreate.ClaimCenterPolicyAccountPOM;
+import com.big.automation.selenium_webdriver.claimcenter.pages.policycreate.ClaimCenterPolicySubmissionStep1POM;
+import com.big.automation.selenium_webdriver.claimcenter.pages.policycreate.ClaimCenterPolicySubmissionStep2PolicyInfoPOM;
+import com.big.automation.selenium_webdriver.claimcenter.pages.policycreate.ClaimCenterPolicySubmissionStep3DriversPOM;
 import com.big.automation.selenium_webdriver.claimcenter.pages.postfnol.activities.ClaimCenterPOSTFNOLNewActivityPOM;
 import com.big.automation.selenium_webdriver.claimcenter.pages.postfnol.activities.ClaimCenterPOSTFNOLWorkplanPOM;
 import com.big.automation.selenium_webdriver.claimcenter.pages.postfnol.documents.ClaimCenterPOSTFNOLDocumentsPOM;
@@ -127,6 +132,16 @@ public class BaseTest extends AbstractTestNGCucumberTests {
 	public static ExtentTest logger;
 	public static ScreenshotTestRule screenshotTestRule;
 	public static RemoteWebDriver driver;
+	
+	
+	//------------------------------------
+	
+	public static ClaimCenterPolicyAccountPOM policyAccountPOM;
+	public static ClaimCenterPolicyAccountCreatePOM policyCreateAccountPOM;
+	public static ClaimCenterPolicySubmissionStep1POM policyCreateStep1SubmissionPOM;
+	public static ClaimCenterPolicySubmissionStep2PolicyInfoPOM policyCreateStep2PolicyInfoPOM;
+	public static ClaimCenterPolicySubmissionStep3DriversPOM policyCreateStep3DriversPOM;
+
 
 	// Authentication/common pages
 	// -------------------------------
@@ -342,6 +357,13 @@ public class BaseTest extends AbstractTestNGCucumberTests {
 			}
 		}
 
+		
+		policyAccountPOM = PageFactory.initElements(driver, ClaimCenterPolicyAccountPOM.class);
+		policyCreateAccountPOM = PageFactory.initElements(driver, ClaimCenterPolicyAccountCreatePOM.class);
+		policyCreateStep1SubmissionPOM = PageFactory.initElements(driver, ClaimCenterPolicySubmissionStep1POM.class);
+		policyCreateStep2PolicyInfoPOM = PageFactory.initElements(driver, ClaimCenterPolicySubmissionStep2PolicyInfoPOM.class);
+		policyCreateStep3DriversPOM = PageFactory.initElements(driver, ClaimCenterPolicySubmissionStep3DriversPOM.class);
+	
 		// AjaxElementLocatorFactory ajaxElementLocatorFactory = new
 		// AjaxElementLocatorFactory(driver, 60);
 		loginPOM = PageFactory.initElements(driver, ClaimCenterLoginPOM.class);

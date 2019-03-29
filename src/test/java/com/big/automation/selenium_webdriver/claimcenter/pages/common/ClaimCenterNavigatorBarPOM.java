@@ -18,6 +18,12 @@ public class ClaimCenterNavigatorBarPOM extends BaseTest {
 	@FindBy(id = "Claim:ClaimMenuActions-btnEl")
 	private WebElement actionsMenu;
 	
+	@FindBy(id = "Desktop:DesktopMenuActions-btnInnerEl")
+	private WebElement desktopActionsMenu;
+	
+	@FindBy(id = "AccountFile:AccountFileMenuActions")
+	private WebElement accountActionsMenu;
+
 
 	@FindBy(xpath = "//span[@class='x-tree-node-text ']")
 	private List<WebElement> navigationLinks;
@@ -61,6 +67,8 @@ public class ClaimCenterNavigatorBarPOM extends BaseTest {
 	private WebElement financeSummarySubmenu;
 	@FindBy(xpath = "//td[@id='Claim:MenuLinks:Claim_ClaimFinancialsGroup:ClaimFinancialsGroup_ClaimFinancialsChecks']//span")
 	private WebElement financeChequesSubmenu;
+	@FindBy(xpath = "//td[@id='Claim:MenuLinks:Claim_ClaimFinancialsGroup:ClaimFinancialsGroup_ClaimFinancialsSummary']//span")
+	private WebElement financeReservesSubmenu;
 	
 	// plan of action submenus
 	//--------------------
@@ -113,7 +121,7 @@ public class ClaimCenterNavigatorBarPOM extends BaseTest {
     
     
     public void clickSubLevel(String toplink,String sublink) throws Exception {
-    	logger.info(format("%s - done, going to click Navigator sub link", getName()));
+    	logger.info(format("%s -going to click Navigator sub link", getName()));
     	sleep(1);
     	for (WebElement option : navigationLinks) {
     		    		
@@ -210,6 +218,9 @@ public class ClaimCenterNavigatorBarPOM extends BaseTest {
     		case ("Summary"):
     			GuideWireAccessors.clickGWButton(driver,financeSummarySubmenu);
     			break;
+    		case ("Reserves"):
+    			GuideWireAccessors.clickGWButton(driver,financeTransactionSubmenu);
+    			break;
     		case ("Transactions"):
     			GuideWireAccessors.clickGWButton(driver,financeTransactionSubmenu);
     			break;
@@ -292,8 +303,18 @@ public class ClaimCenterNavigatorBarPOM extends BaseTest {
 		logger.info(format("%s - going to select Actions sub menu item ",getName()));
 		GuideWireAccessors.selectOptionFromPopupMenu(driver, menuHierarchy, this.getActionsMenu());
 	}
+    
+    public void selectDesktopActionsSubMenuHierarchy(List<String> menuHierarchy)
+   	{
+   		logger.info(format("%s - going to select Actions sub menu item ",getName()));
+   		GuideWireAccessors.selectOptionFromPopupMenu(driver, menuHierarchy, this.getDesktopActionsMenu());
+   	}
 
-
+    public void selectAccountActionsSubMenuHierarchy(List<String> menuHierarchy)
+   	{
+   		logger.info(format("%s - going to select Actions sub menu item ",getName()));
+   		GuideWireAccessors.selectOptionFromPopupMenu(driver, menuHierarchy, this.getAccountActionsMenu());
+   	}
 
 
 	private WebElement getActionsMenu() {
@@ -305,6 +326,181 @@ public class ClaimCenterNavigatorBarPOM extends BaseTest {
 
 	private List<WebElement> getNavigationLinks() {
 		return navigationLinks;
+	}
+
+
+
+
+	private WebElement getDesktopActionsMenu() {
+		return desktopActionsMenu;
+	}
+
+
+
+
+	private WebElement getSummaryOverviewSubmenu() {
+		return summaryOverviewSubmenu;
+	}
+
+
+
+
+	private WebElement getSummaryStatusSubmenu() {
+		return summaryStatusSubmenu;
+	}
+
+
+
+
+	private WebElement getSummaryMetricsSubmenu() {
+		return summaryMetricsSubmenu;
+	}
+
+
+
+
+	private WebElement getLossGeneralSubmenu() {
+		return lossGeneralSubmenu;
+	}
+
+
+
+
+	private WebElement getLossAssociationsSubmenu() {
+		return lossAssociationsSubmenu;
+	}
+
+
+
+
+	private WebElement getLossSIDetailsSubmenu() {
+		return lossSIDetailsSubmenu;
+	}
+
+
+
+
+	private WebElement getPartiesContactsSubmenu() {
+		return partiesContactsSubmenu;
+	}
+
+
+
+
+	private WebElement getPartiesUsersSubmenu() {
+		return partiesUsersSubmenu;
+	}
+
+
+
+
+	private WebElement getPolicyGeneralSubmenu() {
+		return policyGeneralSubmenu;
+	}
+
+
+
+
+	private WebElement getPolicyVehiclesSubmenu() {
+		return policyVehiclesSubmenu;
+	}
+
+
+
+
+	private WebElement getFinanceTransactionSubmenu() {
+		return financeTransactionSubmenu;
+	}
+
+
+
+
+	private WebElement getFinanceSummarySubmenu() {
+		return financeSummarySubmenu;
+	}
+
+
+
+
+	private WebElement getFinanceChequesSubmenu() {
+		return financeChequesSubmenu;
+	}
+
+
+
+
+	private WebElement getFinanceReservesSubmenu() {
+		return financeReservesSubmenu;
+	}
+
+
+
+
+	private WebElement getPlanEvaluationsSubmenu() {
+		return planEvaluationsSubmenu;
+	}
+
+
+
+
+	private WebElement getPlanNegotiationsSubmenu() {
+		return planNegotiationsSubmenu;
+	}
+
+
+
+
+	private WebElement getFnolSnapshotLossSubmenu() {
+		return fnolSnapshotLossSubmenu;
+	}
+
+
+
+
+	private WebElement getFnolSnapshotPartiesSubmenu() {
+		return fnolSnapshotPartiesSubmenu;
+	}
+
+
+
+
+	private WebElement getFnolSnapshotPolicySubmenu() {
+		return fnolSnapshotPolicySubmenu;
+	}
+
+
+
+
+	private WebElement getFnolSnapshotExposuresSubmenu() {
+		return fnolSnapshotExposuresSubmenu;
+	}
+
+
+
+
+	private WebElement getFnolSnapshotNotesSubmenu() {
+		return fnolSnapshotNotesSubmenu;
+	}
+
+
+
+
+	private WebElement getFnolSnapshotDocumentsSubmenu() {
+		return fnolSnapshotDocumentsSubmenu;
+	}
+
+
+
+
+	private WebElement getFnolSnapshotAdditionalSubmenu() {
+		return fnolSnapshotAdditionalSubmenu;
+	}
+
+
+
+
+	private WebElement getAccountActionsMenu() {
+		return accountActionsMenu;
 	}
     
     

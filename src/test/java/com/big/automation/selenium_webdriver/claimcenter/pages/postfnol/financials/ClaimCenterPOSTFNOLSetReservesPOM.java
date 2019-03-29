@@ -12,7 +12,7 @@ import com.big.automation.selenium_webdriver.common.gw.utilities.GuideWireAccess
 
 public class ClaimCenterPOSTFNOLSetReservesPOM extends BaseTest {
 
-	@FindBy(id = "NewReserveSet:NewReserveSetScreen:ttlBar")
+	@FindBy(id = "NewReserveAndRecoveryReserveSet:NewReserveAndRecoveryReserveSetScreen:ttlBar")
 	private WebElement pageTitle;
 	
 	@FindBy(id = "NewReserveAndRecoveryReserveSet:NewReserveAndRecoveryReserveSetScreen:Edit")

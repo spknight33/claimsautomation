@@ -1,7 +1,8 @@
 package stepdefs.desktop;
 
+import org.testng.Assert;
+
 import com.big.automation.selenium_webdriver.common.baseTest.BaseTest;
-import com.big.automation.selenium_webdriver.common.utilities.excelutils.ExcelUtil;
 
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
@@ -14,6 +15,24 @@ public class CCDesktopActivitiesSteps extends BaseTest {
 	@Then("^I will see desktop activities details screen$")
 	public void i_will_see_desktop_activities_details() throws Throwable {
 		desktopActivitiesPOM.isPageTitleDisplayed("Activities");
+	}
+	
+	@Then("^I select \"([^\"]*)\" from \"([^\"]*)\" field on desktop activities details screen$")
+	public void i_select_from_field(String fieldValue, String fieldName) throws Throwable {
+		switch (fieldName) {
+		case "Activity Type":
+			desktopActivitiesPOM.selectActivityType(fieldValue);
+			break;
+		
+		default:
+			Assert.fail("unknown input field :" + fieldName + " - check cucumber script!");
+		}
+	}
+	
+	
+	@Then("^I click on approve activity on the desktop activities worksheet screen$")
+	public void i_clickonapproveonworksheet() throws Throwable {
+		desktopActivitiesPOM.approveActivityOnWorksheet();
 	}
 	
 	
