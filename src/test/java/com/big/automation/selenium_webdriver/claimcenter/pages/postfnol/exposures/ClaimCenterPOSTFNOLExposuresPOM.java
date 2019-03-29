@@ -93,7 +93,7 @@ public class ClaimCenterPOSTFNOLExposuresPOM extends BaseTest{
 		
 	}
 	
-	public String getHandlerForExposure(String type,String coverage)
+	public String getHandlerForExposure(String type,String coverage,String claimant)
 	{
 		logger.info(format("%s - get handler for exposure ", getName()));
 	    sleep(2);
@@ -102,6 +102,7 @@ public class ClaimCenterPOSTFNOLExposuresPOM extends BaseTest{
 		
 		WebElement expType;
 		WebElement expCoverage;
+		WebElement expClaimant;
 		WebElement expHandler;
 		
 		// loop till find first with mathcing type
@@ -114,6 +115,7 @@ public class ClaimCenterPOSTFNOLExposuresPOM extends BaseTest{
 				//find the type
 			expType = driver.findElement(By.xpath(rowLocator+"//tr//td[3]"));
 			expCoverage = driver.findElement(By.xpath(rowLocator+"//tr//td[4]"));
+			expClaimant = driver.findElement(By.xpath(rowLocator+"//tr//td[5]"));
 			expHandler = driver.findElement(By.xpath(rowLocator+"//tr//td[6]"));
 			
 			logger.info(format("%s - get handler for exposure - check row:"+expType.getText()+" "+expCoverage.getText()+" "+expHandler.getText(), getName()));
@@ -122,7 +124,7 @@ public class ClaimCenterPOSTFNOLExposuresPOM extends BaseTest{
 			//logger.info(format("%s - check exposure table row for matching entry ", getName()));
 			//logger.info(format("%s - check exposure table type "+expType.getText(), getName()));
 			//logger.info(format("%s - check exposure table coverage "+expCoverage.getText(), getName()));
-			if (expType.getText().equalsIgnoreCase(type) && expCoverage.getText().equalsIgnoreCase(coverage))
+			if (expType.getText().equalsIgnoreCase(type) && expCoverage.getText().equalsIgnoreCase(coverage)&& expClaimant.getText().equalsIgnoreCase(claimant))
 			{
 				logger.info(format("%s - Found match in exposure table: "+expHandler.getText(), getName()));
 				return expHandler.getText();

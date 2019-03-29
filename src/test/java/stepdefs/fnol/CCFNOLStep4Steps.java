@@ -155,30 +155,33 @@ public class CCFNOLStep4Steps extends BaseTest{
 					}
 					
 					// if there is a Property damage then fill in the tp capture opp
+					// but only if the property owner is not the Policyholder
 						if(ExcelUtil.getTestDataValue("Fnol_Step3_PropertyRequired").equalsIgnoreCase("TRUE"))
 								{
 								String claimant=null;
 									if(ExcelUtil.getTestDataValue("Fnol_PropertyNewOwner").equalsIgnoreCase("TRUE"))
 									{
 										 claimant = ExcelUtil.getTestDataValue("Fnol_PropertyNewOwnerFullName");
+										 String role = "Owner";
+											String incident = "Property";
+											
+											fnolStep4POM.selectCaptureOpportunity(claimant, role, incident, ExcelUtil.getTestDataValue("Fnol_Step4_TPC_PropertyOpp"));
+											if (ExcelUtil.getTestDataValue("Fnol_Step4_TPC_PropertyOpp").equalsIgnoreCase("N"))
+											{
+												fnolStep4POM.selectCaptureReason(claimant, role, incident, ExcelUtil.getTestDataValue("Fnol_Step4_TPC_PropertyReason"));
+											}
+											else
+											{
+												fnolStep4POM.selectCaptureLeadType(claimant, role, incident, ExcelUtil.getTestDataValue("Fnol_Step4_TPC_PropertyLead"));
+											}
 									}
 									else
 									{
-										 claimant = ExcelUtil.getTestDataValue("Fnol_PropertyOwner");
+										// assum PH for now so no action
+										 //claimant = ExcelUtil.getTestDataValue("Fnol_PropertyOwner");
 									}
 										
-										String role = "Owner";
-										String incident = "Property";
 										
-										fnolStep4POM.selectCaptureOpportunity(claimant, role, incident, ExcelUtil.getTestDataValue("Fnol_Step4_TPC_PropertyOpp"));
-										if (ExcelUtil.getTestDataValue("Fnol_Step4_TPC_PropertyOpp").equalsIgnoreCase("N"))
-										{
-											fnolStep4POM.selectCaptureReason(claimant, role, incident, ExcelUtil.getTestDataValue("Fnol_Step4_TPC_PropertyReason"));
-										}
-										else
-										{
-											fnolStep4POM.selectCaptureLeadType(claimant, role, incident, ExcelUtil.getTestDataValue("Fnol_Step4_TPC_PropertyLead"));
-										}
 										
 										
 									
