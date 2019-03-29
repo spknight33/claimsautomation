@@ -62,7 +62,7 @@ Feature: Check that main components of the claim system are present when viewing
 
     Examples: 
       | role                 |
-      | ADClaimsHandler      |
+      | ADClaimsHandlerTm1      |
    
    @Ignore
     Examples:
@@ -70,7 +70,7 @@ Feature: Check that main components of the claim system are present when viewing
       | PIClaimsHandler      |
       | CHClaimsHandler      |
       | SIUUser              |
-      | ClaimsSupportHandler |
+      | ClaimsSupportHandlerTm1 |
       | TPDClaimsHandler     |
       | ADTeamManager        |
       | TPCTeamManager       |

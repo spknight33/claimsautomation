@@ -4,7 +4,7 @@ Feature: CBPCL-58 As a ClaimCenter user with the role of Claims Handler or Team 
   Background: 
   And I use test data set "regress_fnol_accident_fault"
   #  Given I access ClaimCenter login page
-  #      And I login to ClaimCenter as role "ADClaimsHandler"
+  #      And I login to ClaimCenter as role "ADClaimsHandlerTm1"
 
   Scenario: CBPCL-58 TC1
   #  And I Select an existing Claim

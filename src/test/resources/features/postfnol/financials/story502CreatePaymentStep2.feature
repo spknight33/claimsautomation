@@ -6,7 +6,7 @@ Feature: CBPCL-502  Create a payment step2 and 3
 
   Scenario: CBPCL-502 TC1  Step2 Cheque for payment
     Given I access ClaimCenter login page
-    And I login to ClaimCenter as role "ADClaimsHandler"
+    And I login to ClaimCenter as role "ADClaimsHandlerTm1"
     And I Select an existing Claim
     And I select the Actions Popup Menu Hierarchy "Cheque"
     And I will see post FNOL New System Cheque Step1 screen

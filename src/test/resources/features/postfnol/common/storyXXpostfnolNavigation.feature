@@ -4,7 +4,7 @@ Feature: CBPCL-xx
   Background: 
     And I use test data set "postfnol_set1"
     Given I access ClaimCenter login page
-    And I login to ClaimCenter as role "ADClaimsHandler"
+    And I login to ClaimCenter as role "ADClaimsHandlerTm1"
 
   Scenario: CBPCL-xx TC1
     And I Select an existing Claim

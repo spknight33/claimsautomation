@@ -13,7 +13,7 @@ Feature: CBPCL-71 As a user I want to login to Claims Center with the correct ro
 
     Examples: 
       | role          | menu options                                     | not allowed menu options |
-      | ADClaimsHandler | Desktop,Claim,Search,Address Book                | Administration           |
+      | ADClaimsHandlerTm1 | Desktop,Claim,Search,Address Book                | Administration           |
       | TeamManager   | Desktop,Claim,Search,Address Book,Dashboard,Team | Administration           |
       | ClaimsManager | Desktop,Claim,Search,Address Book,Dashboard,Team | Administration           |
       | OpsAdmin      | Claim                                            | Administration           |
@@ -26,7 +26,7 @@ Feature: CBPCL-71 As a user I want to login to Claims Center with the correct ro
 
     Examples: 
       | role          | menu options                                     |
-      | ADClaimsHandler | Desktop,Claim,Search,Address Book                |
+      | ADClaimsHandlerTm1 | Desktop,Claim,Search,Address Book                |
       | TeamManager   | Desktop,Claim,Search,Address Book,Dashboard,Team |
       | ClaimsManager | Desktop,Claim,Search,Address Book,Dashboard,Team |
       | OpsAdmin      | Claim                                            |
@@ -39,15 +39,15 @@ Feature: CBPCL-71 As a user I want to login to Claims Center with the correct ro
 
     Examples: 
       | role          | top menu | sub menus                                                     |
-      | ADClaimsHandler | Desktop  | Activities                                                    |
-      | ADClaimsHandler | Desktop  | Claims                                                        |
-      | ADClaimsHandler | Desktop  | Exposures                                                     |
-      | ADClaimsHandler | Desktop  | Subrogations                                                  |
-      | ADClaimsHandler | Desktop  | Queues                                                        |
-      | ADClaimsHandler | Desktop  | Bulk Invoices                                                 |
-      | ADClaimsHandler | Search   | Activities                                                    |
-      | ADClaimsHandler | Search   | Checks                                                        |
-      | ADClaimsHandler | Search   | Recoveries                                                    |
-      | ADClaimsHandler | Search   | Bulk Invoices                                                 |
-      | ADClaimsHandler | Desktop  | Activities,Claims,Exposures,Subrogations,Queues,Bulk Invoices |
+      | ADClaimsHandlerTm1 | Desktop  | Activities                                                    |
+      | ADClaimsHandlerTm1 | Desktop  | Claims                                                        |
+      | ADClaimsHandlerTm1 | Desktop  | Exposures                                                     |
+      | ADClaimsHandlerTm1 | Desktop  | Subrogations                                                  |
+      | ADClaimsHandlerTm1 | Desktop  | Queues                                                        |
+      | ADClaimsHandlerTm1 | Desktop  | Bulk Invoices                                                 |
+      | ADClaimsHandlerTm1 | Search   | Activities                                                    |
+      | ADClaimsHandlerTm1 | Search   | Checks                                                        |
+      | ADClaimsHandlerTm1 | Search   | Recoveries                                                    |
+      | ADClaimsHandlerTm1 | Search   | Bulk Invoices                                                 |
+      | ADClaimsHandlerTm1 | Desktop  | Activities,Claims,Exposures,Subrogations,Queues,Bulk Invoices |
  # some of these work individally but not one after another
