@@ -274,9 +274,13 @@ public static void setGWTextBoxInTable(WebDriver driver, String text, String loc
 			findAttempts++;
 		}
 
-		String optionLocator; 
+		String optionLocator;
+
+		String lowerCaseOption = option.toLowerCase();
+		optionLocator = "//li[contains(translate(normalize-space(),'ABCDEFGHIJKLMNOPQRSTUVWXYZ','abcdefghijklmnopqrstuvwxyz'),'" + lowerCaseOption + "')]";
+
 		
-		if (caseSensitive)
+		/*if (caseSensitive)
 		{
 			// need to use double quotes in case therea re any single quotes in the locator text
 			//optionLocator = "//li[contains(text(),\"" + option + "\")]";
@@ -286,8 +290,9 @@ public static void setGWTextBoxInTable(WebDriver driver, String text, String loc
 		{
 			//TODO 
 			//optionLocator = "//li[contains(text(),\"" + option + "\")]";
-			optionLocator = "//li[normalize-space()=\"" + option + "\"]";
-		}
+			String lowerCaseOption = option.toLowerCase();
+			optionLocator = "//li[contains(translate(normalize-space(),'ABCDEFGHIJKLMNOPQRSTUVWXYZ','abcdefghijklmnopqrstuvwxyz'),'" + lowerCaseOption + "')]";
+		}*/
 		
 		//WebDriverWait wait = new WebDriverWait(driver, 10);
 		//wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(optionLocator)));
