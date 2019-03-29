@@ -28,7 +28,7 @@ public class GuideWireAccessors {
 		WebElement qjElement = driver.findElement(By.id("QuickJump-inputEl"));
 		while (findAttempts < MAX_RETRY_ON_CLICK_ELEMENT) {
 			try {
-				WaitForUtils.waitForElementToBeClickableVariable(driver, qjElement,10);
+				WaitForUtils.waitForElementToBeClickableVariable(driver, qjElement,5);
 				JavascriptExecutor je = (JavascriptExecutor) driver;
 				je.executeScript("arguments[0].scrollIntoView(true);", qjElement);
 				qjElement.click();
@@ -60,7 +60,7 @@ public class GuideWireAccessors {
 		int findAttempts = 0;
 		while (findAttempts < MAX_RETRY_ON_CLICK_ELEMENT) {
 			try {
-				WaitForUtils.waitForElementToBeClickableVariable(driver, gwButton,10);
+				WaitForUtils.waitForElementToBeClickableVariable(driver, gwButton,5);
 				JavascriptExecutor je = (JavascriptExecutor) driver;
 				je.executeScript("arguments[0].scrollIntoView(true);", gwButton);
 				gwButton.click();
@@ -175,7 +175,7 @@ public class GuideWireAccessors {
 		while (findAttempts < MAX_RETRY_ON_TEXT_INPUT) {
 			try {
 				
-				WaitForUtils.waitForElementToBeClickableVariable(driver, gwTextBox,10);
+				WaitForUtils.waitForElementToBeClickableVariable(driver, gwTextBox,5);
 				JavascriptExecutor je = (JavascriptExecutor) driver;
 				je.executeScript("arguments[0].scrollIntoView(true);", gwTextBox);
 				gwTextBox.click();
@@ -260,7 +260,7 @@ public static void setGWTextBoxInTable(WebDriver driver, String text, String loc
 		int findAttempts = 0;
 		while (findAttempts < MAX_RETRY_ON_DROPDOWN) {
 			try {
-				WaitForUtils.waitForElementToBeClickableVariable(driver, gwDropDown,10); //10 seconds max
+				WaitForUtils.waitForElementToBeClickableVariable(driver, gwDropDown,5); //10 seconds max
 				// as it might be down the page, always scroll into view
 				JavascriptExecutor je = (JavascriptExecutor) driver;
 				je.executeScript("arguments[0].scrollIntoView(true);", gwDropDown);
@@ -359,7 +359,7 @@ public static void setGWTextBoxInTable(WebDriver driver, String text, String loc
 		int findAttempts = 0;
 		while (findAttempts < MAX_RETRY_ON_PICKER) {
 			try {
-				WaitForUtils.waitForElementToBeClickableVariable(driver, picker,10);
+				WaitForUtils.waitForElementToBeClickableVariable(driver, picker,5);
 				// as it might be down the page, always scroll into view
 				JavascriptExecutor je = (JavascriptExecutor) driver;
 				je.executeScript("arguments[0].scrollIntoView(true);", picker);
@@ -424,7 +424,7 @@ public static void setGWTextBoxInTable(WebDriver driver, String text, String loc
 		int findAttempts = 0;
 		while (findAttempts < MAX_RETRY_ON_DROPDOWN) {
 			try {
-				WaitForUtils.waitForElementToBeClickableVariable(driver, gwDropDown,10); //10 seconds max
+				WaitForUtils.waitForElementToBeClickableVariable(driver, gwDropDown,5); //10 seconds max
 				// as it might be down the page, always scroll into view
 				JavascriptExecutor je = (JavascriptExecutor) driver;
 				je.executeScript("arguments[0].scrollIntoView(true);", gwDropDown);
