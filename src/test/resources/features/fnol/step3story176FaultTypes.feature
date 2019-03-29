@@ -4,7 +4,7 @@ Feature: CBPCL-176 As an Operator, I want to be able to record "Fault" "Split Li
 
   Background: 
   Given  I use test data set "regress_fnol_accident_fault"
-    Given As a "ADClaimsHandler" I am at step3 for FNOL
+    Given As a "ADClaimsHandlerTm1" I am at step3 for FNOL
 
   @Ignore
   Scenario: CBPCL-176 TC1 Valid options are shown in the 'Incident Type' question

@@ -3,7 +3,7 @@ Feature: Policy selected in step1, I want to see the claims loss fields and prog
 
 
 Background:
-Given As a "ADClaimsHandler" I am at step1 for FNOL
+Given As a "ADClaimsHandlerTm1" I am at step1 for FNOL
 
 @Ignore
 Scenario: CBPCL-?? ClaimsHandler Claim Fields are mandatory after selecting a policy

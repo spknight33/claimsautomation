@@ -3,7 +3,7 @@ Feature: CBPCL-222 Feature: As a ClaimCenter user with the role of Adjuster or M
   Background: 
     Given I use test data set "regress_fnol_accident_fault"
     And I access ClaimCenter login page
-    And I login to ClaimCenter as role "ADClaimsHandler"
+    And I login to ClaimCenter as role "ADClaimsHandlerTm1"
 
 
 Scenario: CBPCL-222 TC30 Bodily Injury Exposure can be edited in post FNOL

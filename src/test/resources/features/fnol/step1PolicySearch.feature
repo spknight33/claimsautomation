@@ -4,7 +4,7 @@ I want to see the required search fields so we can easily identify the correct p
 
 
 Background:
-Given As a "ADClaimsHandler" I am at step1 for FNOL
+Given As a "ADClaimsHandlerTm1" I am at step1 for FNOL
 
 @Ignore
 Scenario: CBPCL-62 TC1 OOTB policy search fields are hidden/visible from user

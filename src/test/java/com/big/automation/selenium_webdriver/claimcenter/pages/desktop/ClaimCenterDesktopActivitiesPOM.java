@@ -63,7 +63,7 @@ public class ClaimCenterDesktopActivitiesPOM extends BaseTest{
 	}
 	
 	
-	public void clickActivityToAction(String subject,String claim, String insured,String exposure)
+	public void clickActivityToAction(String subject,String claim, String insured,String exposure) throws Throwable
 	{
 		logger.info(format("%s - click activity for subject:"+subject+",claim:"+claim+",insured:"+insured+",exposure:"+exposure, getName()));
 	    sleep(1);
@@ -102,6 +102,7 @@ public class ClaimCenterDesktopActivitiesPOM extends BaseTest{
 		}
 		
 		logger.info(format("%s - NO match in activity table ", getName()));
+		throw new Exception("cannot find activity in table for:"+subject+",claim:"+claim+",insured:"+insured+",exposure:"+exposure);
 	
 		
 	}

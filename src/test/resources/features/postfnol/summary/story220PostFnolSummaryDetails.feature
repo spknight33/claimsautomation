@@ -4,7 +4,7 @@ Feature: CBPCL-220 todo
   Background: 
     Given I use test data set "postfnol_set1"
     And I access ClaimCenter login page
-    And I login to ClaimCenter as role "ADClaimsHandler"
+    And I login to ClaimCenter as role "ADClaimsHandlerTm1"
 
   @Ignore
   Scenario: CBPCL-220 TC13 Notes seen on summary when added via Actions menu and are limited to 5 before paging is implemented

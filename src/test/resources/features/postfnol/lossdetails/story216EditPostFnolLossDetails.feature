@@ -5,7 +5,7 @@ Feature: CBPCL-216 As a ClaimCenter user with the role of Adjuster or Manager,
   Background: 
     Given I use test data set "postfnol_set1"
     And I access ClaimCenter login page
-    And I login to ClaimCenter as role "ADClaimsHandler"
+    And I login to ClaimCenter as role "ADClaimsHandlerTm1"
 
 
   Scenario: CBPCL-47 TC11 Police details can be added in Loss Details of post FNOL

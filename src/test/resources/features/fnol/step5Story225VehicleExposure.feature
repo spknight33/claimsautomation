@@ -3,7 +3,7 @@ Feature: CBPCL-225 As a ClaimCenter user with the role of Adjuster or Manager, I
   
     
      Scenario: CBPCL-225  TC1,TC2,TC3,TC4,TC4,TC15 Vehicle exposures can be created
-     Given As a "ADClaimsHandler" I am at step5 for FNOL
+     Given As a "ADClaimsHandlerTm1" I am at step5 for FNOL
      When I select the Add Exposures Popup Menu Hierarchy "2015 SKODA OCTAVIA (s99sja / United Kingdom),Accidental Damage - Vehicle Damage"
      And  I will be on the new exposure screen for FNOL
      And I select "2015 SKODA OCTAVIA (s99sja / United Kingdom)" from "Coverage" on new vehicle exposure screen for FNOL
