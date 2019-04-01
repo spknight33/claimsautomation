@@ -3,7 +3,7 @@ Feature: CBPCL-71 As a user I want to login to Claims Center with the correct ro
 
   Background: 
     Given I access ClaimCenter login page
-    
+
   @Ignore
   Scenario Outline: CBPCL-71 TC7 login valid user and check role
     When I login to ClaimCenter as role "<role>"
@@ -12,12 +12,13 @@ Feature: CBPCL-71 As a user I want to login to Claims Center with the correct ro
     And I will not see "<not allowed menu options>" which are not relevant to my "<role>"
 
     Examples: 
-      | role          | menu options                                     | not allowed menu options |
+      | role               | menu options                                     | not allowed menu options |
       | ADClaimsHandlerTm1 | Desktop,Claim,Search,Address Book                | Administration           |
-      | TeamManager   | Desktop,Claim,Search,Address Book,Dashboard,Team | Administration           |
-      | ClaimsManager | Desktop,Claim,Search,Address Book,Dashboard,Team | Administration           |
-      | OpsAdmin      | Claim                                            | Administration           |
-      | ITAdmin       | Desktop,Claim,Search,Address Book,Administration |                          |
+      | TeamManager        | Desktop,Claim,Search,Address Book,Dashboard,Team | Administration           |
+      | ClaimsManager      | Desktop,Claim,Search,Address Book,Dashboard,Team | Administration           |
+      | OpsAdmin           | Claim                                            | Administration           |
+      | ITAdmin            | Desktop,Claim,Search,Address Book,Administration |                          |
+  
 
   @Ignore
   Scenario Outline: top menus are accessible
@@ -25,12 +26,12 @@ Feature: CBPCL-71 As a user I want to login to Claims Center with the correct ro
     Then I can select top level menus "<menu options>"
 
     Examples: 
-      | role          | menu options                                     |
+      | role               | menu options                                     |
       | ADClaimsHandlerTm1 | Desktop,Claim,Search,Address Book                |
-      | TeamManager   | Desktop,Claim,Search,Address Book,Dashboard,Team |
-      | ClaimsManager | Desktop,Claim,Search,Address Book,Dashboard,Team |
-      | OpsAdmin      | Claim                                            |
-      | ITAdmin       | Desktop,Claim,Search,Address Book,Administration |
+      | TeamManager        | Desktop,Claim,Search,Address Book,Dashboard,Team |
+      | ClaimsManager      | Desktop,Claim,Search,Address Book,Dashboard,Team |
+      | OpsAdmin           | Claim                                            |
+      | ITAdmin            | Desktop,Claim,Search,Address Book,Administration |
 
   @Ignore
   Scenario Outline: sub menus are accessible
@@ -38,7 +39,7 @@ Feature: CBPCL-71 As a user I want to login to Claims Center with the correct ro
     Then I can select sub level menus "<sub menus>" for menu "<top menu>"
 
     Examples: 
-      | role          | top menu | sub menus                                                     |
+      | role               | top menu | sub menus                                                     |
       | ADClaimsHandlerTm1 | Desktop  | Activities                                                    |
       | ADClaimsHandlerTm1 | Desktop  | Claims                                                        |
       | ADClaimsHandlerTm1 | Desktop  | Exposures                                                     |

@@ -1,3 +1,4 @@
+@Ignore
 Feature: CBPCL-502  Create a payment and approve
 
   Background: 
