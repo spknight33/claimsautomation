@@ -189,6 +189,7 @@ public class ClaimCenterPolicySubmissionStep4VehiclePOM extends BaseTest{
 	public void clickQuote()
 	{
 		GuideWireAccessors.clickGWButton(driver, this.getQuoteButton());
+		sleep(5);
 	}
 	public void clickAddVehicle()
 	{
@@ -354,7 +355,11 @@ public class ClaimCenterPolicySubmissionStep4VehiclePOM extends BaseTest{
 	{
 		GuideWireAccessors.selectOptionFromGWPicker(driver, this.getAssignDriverButton(), this.getAddDriverNameLink());
 		sleep(2);
-		GuideWireAccessors.clickGWButton(driver, this.getMainDriverCB());
+		
+		// should leae user on checkbox, need to use the space bar
+		Actions actions = new Actions(driver);
+		actions.sendKeys(Keys.SPACE);
+		actions.build().perform();
 	}
 	
 	

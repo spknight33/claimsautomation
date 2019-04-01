@@ -1,4 +1,4 @@
-@Ignore
+
 Feature: tests
 
   Scenario: test policy create
@@ -23,7 +23,7 @@ Feature: tests
     And I set the submission step2 field "HeardAbout" to "Endsleigh"
     And I Click Next at submission step2
     And I Click AddDriver at submission step3
-    And I set the submission step3 field "Title" to "Mr"
+    And I set the submission step3 field "Title" to "Mr."
     And I set the submission step3 field "Occupation" to "Accommodation Officer"
     And I set the submission step3 field "MaritalStatus" to "Single"
     And I set the submission step3 field "Gender" to "Male"
