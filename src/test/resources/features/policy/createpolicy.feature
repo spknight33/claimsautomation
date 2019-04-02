@@ -2,7 +2,7 @@
 Feature: tests
 
   Scenario: test policy create
-    Given I use test data set "regress_fnol_accident_fault"
+    Given I use test data set "policycreate_itb1"
     Given I access PolicyCenter login page
     When I login to PolicyCenter as "su" with "gw"
     And I select the Desktop Actions Popup Menu Hierarchy "New Account"

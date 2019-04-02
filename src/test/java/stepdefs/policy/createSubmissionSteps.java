@@ -114,6 +114,7 @@ public class createSubmissionSteps extends BaseTest {
 		    	else
 		    		policyCreateStep3DriversPOM.selectConvict5(false);
 		    	break;
+		    	//TODO- adding a conviction to table and previous claim to table
 		default:
 			Assert.fail("unknown search field :" + fieldName + " - check cucumber script!");
 		}

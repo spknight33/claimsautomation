@@ -57,46 +57,7 @@ public class CCLoginSteps extends BaseTest {
 
 	}
 	
-	@Given("^I access PolicyCenter login page$")
-	public void i_access_policycenter_login_page() throws Throwable {
-
-		String url=null;
-		
-		String env = ExcelUtil.getTestDataValue("DevOrTstEnvironment");
-		if (env != null)
-		{
-			if (env.equalsIgnoreCase("DEV"))
-			{
-				url="http://policycenterdev.cloud.aioinissaydowa.eu/pc/";
-			}
-			else
-			{
-				url="http://policycentertest.cloud.aioinissaydowa.eu/pc/";
-			}
-		}
-		else {
-			throw new Exception("cannot locate which environment to run in from excel sheet");
-		}
-		
-		driver.get(url);
-		
-		// TST
-		// driver.get("http://claimcentertest.cloud.aioinissaydowa.eu/cc/");
-		//DEV
-		//driver.get("http://claimcenterdev.cloud.aioinissaydowa.eu/cc/");
-		
-		// make sure there is no left over alert
-		try {
-			   
-        	driver.switchTo().alert().accept();
-        	System.out.println("login step - alert has been cleared");
-        
-     	   }
-     	   catch(NoAlertPresentException e) {
-     		   System.out.print("login step - No alert is present");
-     	   }
-
-	}
+	
 
 	
 	@When("^I login to ClaimCenter as role \"([^\"]*)\"$")
@@ -114,12 +75,7 @@ public class CCLoginSteps extends BaseTest {
 		loginPOM.next();
 	}
 	
-	@Given("^I login to PolicyCenter as \"([^\"]*)\" with \"([^\"]*)\"$")
-	public void i_login_to_policyCenter_as_with(String user, String password) throws Throwable {
-		loginPOM.populateUsername(user);
-		loginPOM.populatePassword(password);
-		loginPOM.next();
-	}
+	
 
 	@Then("^an error message \"([^\"]*)\" will be shown$")
 	public void an_error_message_will_be_shown(String message) throws Throwable {

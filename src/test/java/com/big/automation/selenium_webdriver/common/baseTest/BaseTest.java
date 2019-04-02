@@ -61,6 +61,7 @@ import com.big.automation.selenium_webdriver.claimcenter.pages.fnol.exposures.Cl
 import com.big.automation.selenium_webdriver.claimcenter.pages.fnol.services.ClaimCenterFNOLNewServicePOM;
 import com.big.automation.selenium_webdriver.claimcenter.pages.policycreate.ClaimCenterPolicyAccountCreatePOM;
 import com.big.automation.selenium_webdriver.claimcenter.pages.policycreate.ClaimCenterPolicyAccountPOM;
+import com.big.automation.selenium_webdriver.claimcenter.pages.policycreate.ClaimCenterPolicyCenterLoginPOM;
 import com.big.automation.selenium_webdriver.claimcenter.pages.policycreate.ClaimCenterPolicySubmissionStep1POM;
 import com.big.automation.selenium_webdriver.claimcenter.pages.policycreate.ClaimCenterPolicySubmissionStep2PolicyInfoPOM;
 import com.big.automation.selenium_webdriver.claimcenter.pages.policycreate.ClaimCenterPolicySubmissionStep3DriversPOM;
@@ -138,6 +139,8 @@ public class BaseTest extends AbstractTestNGCucumberTests {
 	
 	//------------------------------------
 	
+	
+	public static ClaimCenterPolicyCenterLoginPOM policyCenterLoginPOM;
 	public static ClaimCenterPolicyAccountPOM policyAccountPOM;
 	public static ClaimCenterPolicyAccountCreatePOM policyCreateAccountPOM;
 	public static ClaimCenterPolicySubmissionStep1POM policyCreateStep1SubmissionPOM;
@@ -364,6 +367,7 @@ public class BaseTest extends AbstractTestNGCucumberTests {
 		}
 
 		
+		policyCenterLoginPOM = PageFactory.initElements(driver, ClaimCenterPolicyCenterLoginPOM.class);
 		policyAccountPOM = PageFactory.initElements(driver, ClaimCenterPolicyAccountPOM.class);
 		policyCreateAccountPOM = PageFactory.initElements(driver, ClaimCenterPolicyAccountCreatePOM.class);
 		policyCreateStep1SubmissionPOM = PageFactory.initElements(driver, ClaimCenterPolicySubmissionStep1POM.class);

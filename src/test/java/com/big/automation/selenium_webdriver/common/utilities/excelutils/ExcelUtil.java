@@ -184,6 +184,8 @@ public class ExcelUtil {
 				 {
 				    	devortest = value1;
 				    	System.out.println("found devortest:"+devortest);
+				    	testDataMap.put("DevOrTstEnvironment", devortest.trim());
+		    			System.out.println("entry added to map for DevOrTstEnvironment:"+devortest);
 				 }
 				 else
 				 {
@@ -196,8 +198,7 @@ public class ExcelUtil {
 				    		if (value1 !=null && value1.equalsIgnoreCase(testSheetName))
 				    		{
 				    			// this is the matching dev or test entry for the testsheetname, so use it
-				    			testDataMap.put("DevOrTstEnvironment", devortest.trim());
-				    			System.out.println("entry added to map for DevOrTstEnvironment:"+devortest);
+				    			
 				    			testDataMap.put("Fnol_PolicyNumber", value2.trim());
 				    			System.out.println("entry added to map for Fnol_PolicyNumber:"+value2);
 				    			testDataMap.put("Fnol_Name", value3.trim());

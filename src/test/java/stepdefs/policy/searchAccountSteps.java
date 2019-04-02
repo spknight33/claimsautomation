@@ -1,28 +1,29 @@
 package stepdefs.policy;
 
-import java.util.List;
-
 import org.testng.Assert;
-import org.testng.asserts.SoftAssert;
 
 import com.big.automation.selenium_webdriver.common.baseTest.BaseTest;
-import com.big.automation.selenium_webdriver.common.config.UserConfig;
-import com.big.automation.selenium_webdriver.common.config.UserFactory;
 import com.big.automation.selenium_webdriver.common.utilities.excelutils.ExcelUtil;
 
-import cucumber.api.DataTable;
-import cucumber.api.java.en.Given;
-import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
-import stepdefs.common.CCLoginSteps;
-import stepdefs.common.CCMenuBarSteps;
 
 public class searchAccountSteps extends BaseTest {
 
+	/**
+	 * Used for whole policy creation journey
+	 * @throws Throwable
+	 */
+	public void iSearchForPolicyAccount() throws Throwable {
+	
+		this.i_set_the_policy_search_criteria_field_to("FirstName",ExcelUtil.getTestDataValue("Pol_AccountSearch_FirstName"));
+		this.i_set_the_policy_search_criteria_field_to("LastName",ExcelUtil.getTestDataValue("Pol_AccountSearch_LastName"));
+		this.i_Click_Search();
+
+	}
 	
 
 	@When("^I set the policy account field \"([^\"]*)\" to \"([^\"]*)\"$")
-	public void i_set_the_policy_search_criteria_fields_to(String fieldName, String fieldValue) throws Throwable {
+	public void i_set_the_policy_search_criteria_field_to(String fieldName, String fieldValue) throws Throwable {
 		switch (fieldName) {
 		case "FirstName":
 			policyAccountPOM.setFirstName(fieldValue);
@@ -47,8 +48,43 @@ public class searchAccountSteps extends BaseTest {
 		policyAccountPOM.clickNewPersonAccount();
 		}
 
+	//TODO - select account if found
 	
-	
-	
+	@When("^I set the policy create account field \"([^\"]*)\" to \"([^\"]*)\"$")
+	public void i_set_the_policy_search_criteria_fields_to(String fieldName, String fieldValue) throws Throwable {
+		switch (fieldName) {
+		case "Brand":
+			policyCreateAccountPOM.selectBrand(fieldValue);
+			break;
+		case "AddressType":
+			policyCreateAccountPOM.selectAddressType(fieldValue);
+			break;
+		case "Postcode":
+			policyCreateAccountPOM.setPostcode(fieldValue);
+			break;
+		case "PostcodeAddress":
+			policyCreateAccountPOM.selectPostcodeAddress(fieldValue);
+			break;
+		//TODO - other fields
+		case "PrimaryPhone":
+			policyCreateAccountPOM.selectPrimaryPhone(fieldValue);
+			break;
+		case "Email":
+			policyCreateAccountPOM.setEmail(fieldValue);
+			break;
+		case "Mobile":
+			policyCreateAccountPOM.setMobile(fieldValue);
+			break;
+		
+		default:
+			Assert.fail("unknown search field :" + fieldName + " - check cucumber script!");
+		}
+	}
+
+
+	@When("^I Click Update at create person account$")
+	public void i_Click_Update() throws Throwable {
+		policyCreateAccountPOM.clickUpdate();
+		}
 
 }
