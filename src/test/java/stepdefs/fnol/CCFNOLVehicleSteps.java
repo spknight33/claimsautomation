@@ -445,16 +445,19 @@ public class CCFNOLVehicleSteps extends BaseTest {
 			fnolVehicleDetailsPOM.setVin(fieldValue);
 		
 		fieldValue = ExcelUtil.getTestDataValue("Fnol_TPVehicleForeign");
-		if (fieldValue !=null && fieldValue.equalsIgnoreCase("TRUE"))
-		{
+		if (fieldValue !=null)
+		{  
+			if (fieldValue.equalsIgnoreCase("TRUE"))
+			{
 			fnolVehicleDetailsPOM.selectForeign(true);
 			fieldValue = ExcelUtil.getTestDataValue("Fnol_TPVehicleForeignDetails");
 			if (fieldValue !=null)
 				fnolVehicleDetailsPOM.setForeignDetails(fieldValue);
-		}
-		else
-		{
+			}
+			else
+			{
 			fnolVehicleDetailsPOM.selectForeign(false);
+			}
 		}
 		
 		fieldValue = ExcelUtil.getTestDataValue("Fnol_TPVehicleOwner");
@@ -478,14 +481,16 @@ public class CCFNOLVehicleSteps extends BaseTest {
 			fnolVehicleDetailsPOM.setPreDamageDesc(fieldValue);
 		
 		fieldValue = ExcelUtil.getTestDataValue("Fnol_TPVehicleRoadworthy");
-		if (fieldValue !=null && fieldValue.equalsIgnoreCase("TRUE"))
+		if (fieldValue !=null)
 		{
+			if (fieldValue.equalsIgnoreCase("TRUE"))
+			{
 			fnolVehicleDetailsPOM.selectRoadworthy(true);
-
-		}
-		else
-		{
+			}
+			else
+			{
 			fnolVehicleDetailsPOM.selectRoadworthy(false);
+			}
 		}
 		
 		fieldValue = ExcelUtil.getTestDataValue("Fnol_TPVehicleAirBags");
@@ -494,29 +499,33 @@ public class CCFNOLVehicleSteps extends BaseTest {
 		
 		
 		fieldValue = ExcelUtil.getTestDataValue("Fnol_TPVehicleCreditHire");
-		if (fieldValue !=null&& fieldValue.equalsIgnoreCase("TRUE"))
+		if (fieldValue !=null)
 		{
+			if (fieldValue.equalsIgnoreCase("TRUE"))
+			{
 			fnolVehicleDetailsPOM.selectCreditHire(true);
-			
-			
-		}
-		else
-		{
+			}
+			else
+			{
 			fnolVehicleDetailsPOM.selectCreditHire(false);
+			}
 		}
+		
+		
 		fieldValue = ExcelUtil.getTestDataValue("Fnol_TPVehicleProtocolHire");
-		if (fieldValue !=null&& fieldValue.equalsIgnoreCase("TRUE"))
+		if (fieldValue !=null)
 		{
+			if (fieldValue.equalsIgnoreCase("TRUE"))
+			{
 			fnolVehicleDetailsPOM.selectProtocolHire(true);
 			
-			
-		}
-		else
-		{
+			}
+			else
+			{
 			fnolVehicleDetailsPOM.selectProtocolHire(false);
-		}
+			}
 			
-		
+		}
 		 
 		
 	   fnolVehicleDetailsPOM.selectOK();
