@@ -59,6 +59,8 @@ Feature: tests
     And I set the submission step4 field "ProductMiles" to "8000"
     And I set the submission step4 field "EstimateMiles" to "7900"
     And I set the submission step4 field "VolExcess" to "225"
-    And I set the submission step4 field "Ncd" to "0"
+    And I set the submission step4 field "Ncd" to "10+"
     And I Click AssignDriver at submission step4
     And I Click Quote at submission step4
+    And I Click Issue Policy at submission step5
+    And I Click Confirm Issue Policy at submission step5

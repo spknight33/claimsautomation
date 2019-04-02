@@ -228,5 +228,13 @@ public class createSubmissionSteps extends BaseTest {
 	public void i_Click_quotestep4() throws Throwable {
 		policyCreateStep4VehiclePOM.clickQuote();
 		}
+	@When("^I Click Issue Policy at submission step5$")
+	public void i_Click_issuepolictstep5() throws Throwable {
+		policyCreateStep5QuotePOM.clickIssuePolicy();
+		}
+	@When("^I Click Confirm Issue Policy at submission step5$")
+	public void i_Click_confirmissuepolictstep5() throws Throwable {
+		policyCreateStep5QuotePOM.clickConfirmIssuePolicy();
+		}
 
 }
