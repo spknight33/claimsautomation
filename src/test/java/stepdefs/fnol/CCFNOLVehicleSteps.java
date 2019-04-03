@@ -27,7 +27,26 @@ public class CCFNOLVehicleSteps extends BaseTest {
 		// TODO - 
 		// most cases will have insured vehicle already - so for now leave this and just do the driver checl
 		
-	String fieldValue = ExcelUtil.getTestDataValue("Fnol_PHDriverRequired");
+	// The insured could be claiming for damaging a hire or courtesy car, so cater for change of insured vehicle
+	String fieldValue = ExcelUtil.getTestDataValue("Fnol_PHVehicleNotInsuredsVehicle");
+	if (fieldValue !=null &&fieldValue.equalsIgnoreCase("TRUE"))
+	{
+		
+		fnolVehicleDetailsPOM.selectNewVehicle();
+		fieldValue = ExcelUtil.getTestDataValue("Fnol_PHVehicleType");
+		fnolVehicleDetailsPOM.selectVehicleType(fieldValue);
+		
+		fieldValue = ExcelUtil.getTestDataValue("Fnol_PHVehicleVrn");
+		fnolVehicleDetailsPOM.setVrn(fieldValue);
+		
+		
+		
+	}
+	// otherwise we just leave the selected insureds vehicle
+			
+			
+		
+	fieldValue = ExcelUtil.getTestDataValue("Fnol_PHDriverRequired");
 	if (fieldValue !=null &&fieldValue.equalsIgnoreCase("TRUE"))
 	   {
 		   fnolVehicleDetailsPOM.selectAddDriver();
