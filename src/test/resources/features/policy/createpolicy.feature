@@ -1,4 +1,4 @@
-
+@Ignore
 Feature: tests
 
   Scenario: test policy create
@@ -7,10 +7,10 @@ Feature: tests
     When I login to PolicyCenter as "su" with "gw"
     And I select the Desktop Actions Popup Menu Hierarchy "New Account"
     And I set the policy account field "FirstName" to "Steve"
-    And I set the policy account field "LastName" to "Knight-itb1"
+    And I set the policy account field "LastName" to "Knight-dgt1"
     And I Click Search at account create
     And I Click create new person account
-    And I set the policy create account field "Brand" to "Insure The Box"
+    And I set the policy create account field "Brand" to "Drive Like a Girl"
     And I set the policy create account field "AddressType" to "Garaging Address"
     And I set the policy create account field "PrimaryPhone" to "Mobile"
     And I set the policy create account field "Mobile" to "07791438888"
@@ -56,8 +56,8 @@ Feature: tests
     And I set the submission step4 field "RhDrive" to "true"
     And I set the submission step4 field "Imported" to "false"
     And I set the submission step4 field "Less8Seats" to "true"
-    And I set the submission step4 field "ProductMiles" to "8000"
-    And I set the submission step4 field "EstimateMiles" to "7900"
+    And I set the submission step4 field "ProductMiles" to "7000"
+    And I set the submission step4 field "EstimateMiles" to "6900"
     And I set the submission step4 field "VolExcess" to "225"
     And I set the submission step4 field "Ncd" to "10+"
     And I Click AssignDriver at submission step4

@@ -26,6 +26,10 @@ public class ExcelUtil {
 
 	// Location of Test data excel file
 	public static String testDataExcelPath = null;
+	
+	public static final String BRAND_ITB="ITB";
+	public static final String BRAND_TBB="TBB";
+	public static final String BRAND_DGT="DGT";
 
 	// Excel WorkBook
 	private static XSSFWorkbook excelWBook;
@@ -62,11 +66,13 @@ public class ExcelUtil {
 		return columnNumber;
 	}
 
-	// This method has two parameters: "Test data excel file name" and "Excel sheet
-	// name"
-	// It creates FileInputStream and set excel file and excel sheet to excelWBook
-	// and excelWSheet variables.
-	public static void setExcelFileSheet(String sheetName) throws Throwable {
+	/**
+	 * 
+	 * @param sheetName
+	 * @param Brand
+	 * @throws Throwable
+	 */
+	public static void setExcelFileSheet(String sheetName, String brand) throws Throwable {
 		testDataExcelSheet = sheetName;
 		// MAC or Windows Selection for excel path
 		//TODO sort the filepath out
@@ -84,13 +90,16 @@ public class ExcelUtil {
 			// first we need to get the variable policy data from the policydata sheet for the test case sheet
 			// TODO so that we can read a list of policy details for different sheets, currently all testcases use the same policy
 			
+			if (brand == null)
+				 throw new Exception("Brand is null, but is needed to find the correct column in the POLICYDATA sheet");
+			
 			excelWSheet = excelWBook.getSheet("POLICYDATA");
 			if (excelWSheet == null) {
 				throw new Exception("Failed to find the worksheet <" + sheetName + "> in the file<" + testDataExcelPath
 						+ testDataExcelFilename + ">");
 
 			}
-			setPolicyFields(excelWSheet,sheetName);
+			setPolicyFields(excelWSheet,sheetName,brand);
 			
 			
 			excelWSheet = excelWBook.getSheet(sheetName);
@@ -112,7 +121,7 @@ public class ExcelUtil {
 		}
 	}
 	
-	private static void setPolicyFields(XSSFSheet policySheet,String testSheetName) {
+	private static void setPolicyFields(XSSFSheet policySheet,String testSheetName,String brand) {
 		//this will read the policydata sheet to get:
 		// If TEST or DEV run(to be removed and put into automation config)
 		// read the records and find the appropriate dev or test entry for the appropriate sheet
@@ -123,6 +132,12 @@ public class ExcelUtil {
 		String value3 = "";
 		String value4 = "";
 		String value5 = "";
+		String value6 = "";
+		String value7 = "";
+		String value8 = "";
+		String value9 = "";
+		String value10 = "";
+		String value11 = "";
 		
 		testDataMap = new HashMap<>(); // reset the map - we are going to add some data to it here
 		
@@ -136,6 +151,12 @@ public class ExcelUtil {
 		XSSFCell valueCell3 = null;
 		XSSFCell valueCell4 = null;
 		XSSFCell valueCell5 = null;
+		XSSFCell valueCell6 = null;
+		XSSFCell valueCell7 = null;
+		XSSFCell valueCell8 = null;
+		XSSFCell valueCell9 = null;
+		XSSFCell valueCell10 = null;
+		XSSFCell valueCell11 = null;
 	
 		
 		int rows = policySheet.getLastRowNum() + 1;
@@ -151,8 +172,13 @@ public class ExcelUtil {
 			value3 = null;
 			value4 = null;
 			value5 = null;
+			value6 = null;
+			value7 = null;
+			value8 = null;
+			value9 = null;
+			value10 = null;
+			value11 = null;
 			
-
 			row = policySheet.getRow(i);
 
 			if (row != null) {
@@ -162,6 +188,12 @@ public class ExcelUtil {
 				valueCell3 = row.getCell(3);
 				valueCell4 = row.getCell(4);
 				valueCell5 = row.getCell(5);
+				valueCell6 = row.getCell(6);
+				valueCell7 = row.getCell(7);
+				valueCell8 = row.getCell(8);
+				valueCell9 = row.getCell(9);
+				valueCell10 = row.getCell(10);
+				valueCell11 = row.getCell(11);
 				
 			}
 
@@ -177,6 +209,18 @@ public class ExcelUtil {
 				value4 = dataFormatter.formatCellValue(valueCell4, formulaeval);
 			if (valueCell5 != null) 
 				value5 = dataFormatter.formatCellValue(valueCell5, formulaeval);
+			if (valueCell6 != null) 
+				value6 = dataFormatter.formatCellValue(valueCell6, formulaeval);
+			if (valueCell7 != null) 
+				value7 = dataFormatter.formatCellValue(valueCell7, formulaeval);
+			if (valueCell8 != null) 
+				value8 = dataFormatter.formatCellValue(valueCell8, formulaeval);
+			if (valueCell9 != null) 
+				value9 = dataFormatter.formatCellValue(valueCell9, formulaeval);
+			if (valueCell10 != null) 
+				value10 = dataFormatter.formatCellValue(valueCell10, formulaeval);
+			if (valueCell11 != null) 
+				value11 = dataFormatter.formatCellValue(valueCell11, formulaeval);
 			
 			if (key!=null && !key.isEmpty() && value1 != null && !value1.isEmpty()) {
 				    // check if devortest field
@@ -199,14 +243,38 @@ public class ExcelUtil {
 				    		{
 				    			// this is the matching dev or test entry for the testsheetname, so use it
 				    			
-				    			testDataMap.put("Fnol_PolicyNumber", value2.trim());
-				    			System.out.println("entry added to map for Fnol_PolicyNumber:"+value2);
-				    			testDataMap.put("Fnol_Name", value3.trim());
-				    			System.out.println("entry added to map for Fnol_Name:"+value3);
-				    			testDataMap.put("Fnol_Insured_Address", value4.trim());
-				    			System.out.println("entry added to map for Fnol_Insured_Address:"+value4);
-				    			testDataMap.put("Fnol_Step1_LossDate", value5.trim());
-				    			System.out.println("entry added to map for Fnol_Step1_LossDate:"+value5);
+				    			switch(brand)
+				    			{
+				    			case(BRAND_ITB):
+					    			testDataMap.put("Fnol_PolicyNumber", value2.trim());
+					    			System.out.println("entry added to map for ITB Fnol_PolicyNumber:"+value2);
+					    			testDataMap.put("Fnol_Name", value3.trim());
+					    			System.out.println("entry added to map for ITB Fnol_Name:"+value3);
+					    			testDataMap.put("Fnol_Insured_Address", value4.trim());
+					    			System.out.println("entry added to map for ITB Fnol_Insured_Address:"+value4);
+					    			break;
+				    			case(BRAND_TBB):
+					    			testDataMap.put("Fnol_PolicyNumber", value5.trim());
+					    			System.out.println("entry added to map for TBB Fnol_PolicyNumber:"+value5);
+					    			testDataMap.put("Fnol_Name", value6.trim());
+					    			System.out.println("entry added to map for TBB Fnol_Name:"+value6);
+					    			testDataMap.put("Fnol_Insured_Address", value7.trim());
+					    			System.out.println("entry added to map for TBB Fnol_Insured_Address:"+value7);
+					    			break;
+				    			case(BRAND_DGT):
+					    			testDataMap.put("Fnol_PolicyNumber", value8.trim());
+					    			System.out.println("entry added to map for DGT Fnol_PolicyNumber:"+value8);
+					    			testDataMap.put("Fnol_Name", value9.trim());
+					    			System.out.println("entry added to map for DGT Fnol_Name:"+value9);
+					    			testDataMap.put("Fnol_Insured_Address", value10.trim());
+					    			System.out.println("entry added to map for DGT Fnol_Insured_Address:"+value10);
+					    			break;
+				    			
+				    			}
+				    			
+				    			
+				    			testDataMap.put("Fnol_Step1_LossDate", value11.trim());
+				    			System.out.println("entry added to map for Fnol_Step1_LossDate:"+value11);
 				    			break;
 				    		}
 						}
