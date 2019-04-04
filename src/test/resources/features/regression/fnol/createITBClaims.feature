@@ -1,4 +1,4 @@
-@inprogress @Ignore
+@Ignore
 Feature: Regression test for create claim FNOL path - ITB claims
 
   Scenario: FNOL Regression - Create new claim - FIRE claim

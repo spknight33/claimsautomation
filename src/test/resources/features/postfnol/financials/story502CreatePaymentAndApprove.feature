@@ -1,4 +1,4 @@
-@Ignore
+@Ignore @Passed04042019
 Feature: CBPCL-502  Create a payment and approve
 
   Background: 
@@ -7,15 +7,15 @@ Feature: CBPCL-502  Create a payment and approve
   Scenario Outline: CBPCL-502 create payment and approve
     Given I access ClaimCenter login page
     And I login to ClaimCenter as role "<cheque creator role>"
-    And I Select existing Claim "000-00-000017"
+    And I Select existing Claim "300000015"
     And I select the Actions Popup Menu Hierarchy "Cheque"
     And I will see post FNOL New System Cheque Step1 screen
-    And I select "simon fells" from field "Claimant" at New System Cheque Step1 post FNOL
-    And I select "simon fells" from field "Payee" at New System Cheque Step1 post FNOL
+    And I select "Doug Dimmerdome" from field "Claimant" at New System Cheque Step1 post FNOL
+    And I select "Doug Dimmerdome" from field "Payee" at New System Cheque Step1 post FNOL
     And I select "Cheque" Payment Method at New System Cheque Step1 post FNOL
     And I click next button on New System Cheque Step1 post FNOL
     And I will see post FNOL New System Cheque Step2 screen
-    And I select "LS54CYW - simon fells - 1st Party Vehicle; Claim Cost/Accidental Damage Repair" from field "Reserve Line" at New System Cheque Step2 post FNOL
+    And I select "ND58HFL - Doug Dimmerdome - 1st Party Vehicle; Claim Cost/Accidental Damage Repair" from field "Reserve Line" at New System Cheque Step2 post FNOL
     And I select "Partial" from field "Payment Type" at New System Cheque Step2 post FNOL
     And I input "This is a test comment" into the "Internal Comments" field at New System Cheque Step2 post FNOL
     And I input "<amount>" into the "Line Item Amount" field at New System Cheque Step2 post FNOL
@@ -25,14 +25,14 @@ Feature: CBPCL-502  Create a payment and approve
     And I input "the purpose of this payment is to reimburse you" into the "Purpose" field at New System Cheque Step3 post FNOL
     And I click finish button on New System Cheque Step3 post FNOL
     And I will see post FNOL Financials Cheques screen
-  #  And I will see cheque with status "Pending approval" for Payee "simon fells" for amount "<amount>" on Financials Cheques screen
     And I will log off
+    
     Given I access ClaimCenter login page
     And I login to ClaimCenter as role "<cheque approver role>"
     And I select "Activities" on the Desktop Navigator
     And I will see desktop activities details screen
     And I select "All open" from "Activity Type" field on desktop activities details screen
-    And I select the activity for subject "Review and approve new payment" for claim "000-00-000017" for insured "simon fells" and for exposure "LS54CYW - simon fells - 1st Party Vehicle"
+    And I select the activity for subject "Review and approve new payment" for claim "300000015" for insured "Doug Dimmerdome" and for exposure "ND58HFL - Doug Dimmerdome - 1st Party Vehicle"
     And I click on approve activity on the desktop activities worksheet screen
 
     Examples: 
