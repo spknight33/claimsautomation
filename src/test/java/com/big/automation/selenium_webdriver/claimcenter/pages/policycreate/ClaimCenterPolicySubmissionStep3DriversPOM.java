@@ -27,6 +27,9 @@ public class ClaimCenterPolicySubmissionStep3DriversPOM extends BaseTest{
 	private WebElement addExistingDriverLink;
 	@FindBy(id ="SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PMDriversScreen:PMDriversPanelSet:DriversListDetailPanel:DriversLV_tb:AddDriver:AddExistingContact:0:UnassignedDriver-itemEl")
 	private WebElement addDriverNameLink;
+
+	@FindBy(id ="SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PMDriversScreen:PMDriversPanelSet:DriversListDetailPanel:DriversLV_tb:AddDriver:0:ContactType-textEl")
+	private WebElement addDriverNewPerson;
 	
 	
 	@FindBy(id ="SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PMDriversScreen:PMDriversPanelSet:DriversListDetailPanel:DriverDetailsCV:PolicyContactDetailsDV:PolicyContactRoleNameInputSet:Prefix-inputEl")
@@ -82,16 +85,21 @@ public class ClaimCenterPolicySubmissionStep3DriversPOM extends BaseTest{
 	private WebElement cancelledYesOption;
 	@FindBy(id = "SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PMDriversScreen:PMDriversPanelSet:DriversListDetailPanel:DriverDetailsCV:1:PolicyContactRolePanelSet:PMPolicyDriverInfoPanelSet:CancelledPreviousInsurance_false-inputEl")
 	private WebElement cancelledNoOption;
-	
+
 	@FindBy(id = "SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PMDriversScreen:PMDriversPanelSet:DriversListDetailPanel:DriverDetailsCV:1:PolicyContactRolePanelSet:PMPolicyDriverInfoPanelSet:MotorClaims_true-inputEl")
 	private WebElement claims5YesOption;
 	@FindBy(id = "SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PMDriversScreen:PMDriversPanelSet:DriversListDetailPanel:DriverDetailsCV:1:PolicyContactRolePanelSet:PMPolicyDriverInfoPanelSet:MotorClaims_false-inputEl")
 	private WebElement claims5NoOption;
+	@FindBy(id = "SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PMDriversScreen:PMDriversPanelSet:DriversListDetailPanel:DriverDetailsCV:1:PolicyContactRolePanelSet:PMPolicyDriverInfoPanelSet:driverClaims:PMClaimsLV_tb:Add-btnInnerEl")
+	private WebElement claims5AddButton;
 	
 	@FindBy(id = "SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PMDriversScreen:PMDriversPanelSet:DriversListDetailPanel:DriverDetailsCV:1:PolicyContactRolePanelSet:PMPolicyDriverInfoPanelSet:MotorConvictions_true-inputEl")
 	private WebElement convict5YesOption;
 	@FindBy(id = "SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PMDriversScreen:PMDriversPanelSet:DriversListDetailPanel:DriverDetailsCV:1:PolicyContactRolePanelSet:PMPolicyDriverInfoPanelSet:MotorConvictions_false-inputEl")
 	private WebElement convict5NoOption;
+	@FindBy(id = "SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PMDriversScreen:PMDriversPanelSet:DriversListDetailPanel:DriverDetailsCV:1:PolicyContactRolePanelSet:PMPolicyDriverInfoPanelSet:driverConvictions:PMConvictionsLV_tb:Add-btnInnerEl")
+	private WebElement convict5AddButton;
+
 
 	private WebElement getRolesTab() {
 		return rolesTab;
@@ -127,6 +135,11 @@ public class ClaimCenterPolicySubmissionStep3DriversPOM extends BaseTest{
 		GuideWireAccessors.clickGWButton(driver, this.getAddDriverButton());
 		GuideWireAccessors.clickGWButton(driver, this.getAddExistingDriverLink());
 		GuideWireAccessors.clickGWButton(driver, this.getAddDriverNameLink());
+	}
+
+	public void createDriverNewPerson(){
+		GuideWireAccessors.clickGWButton(driver,this.getAddDriverButton());
+		GuideWireAccessors.clickGWButton(driver,this.getAddDriverNewPerson());
 	}
 	
 	public void selectTitle(String option)
@@ -276,7 +289,34 @@ public class ClaimCenterPolicySubmissionStep3DriversPOM extends BaseTest{
 			GuideWireAccessors.clickGWButton(driver, this.getClaims5NoOption());
 		}
 	}
-	
+
+	public void clickAddClaims5()
+	{
+		logger.info(format("%s -  going to click add Claims in 5 years", getName()));
+		GuideWireAccessors.clickGWButton(driver, this.getClaims5AddButton());
+
+	}
+
+	public void setClaims5Date(String text, int sequence)
+	{
+
+		String locator = "//*[@id=\"SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PMDriversScreen:PMDriversPanelSet:DriversListDetailPanel:DriverDetailsCV:1:PolicyContactRolePanelSet:PMPolicyDriverInfoPanelSet:driverClaims:PMClaimsLV-body\"]//table[" + sequence + "]//tr/td[2]/div";
+		//WebElement element = driver.findElement(By.xpath(locator));
+		String inputLocator = "//*[@id=\"SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PMDriversScreen:PMDriversPanelSet:DriversListDetailPanel:DriverDetailsCV:1:PolicyContactRolePanelSet:PMPolicyDriverInfoPanelSet:driverClaims:PMClaimsLV-body\"]//input[starts-with(@id,'datefield-')]";
+
+		GuideWireAccessors.setGWTextBoxInTable(driver, text, locator, inputLocator);
+
+	}
+
+	public void selectClaims5Type(String option, int sequence)
+	{
+
+		String locator = "//*[@id=\"SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PMDriversScreen:PMDriversPanelSet:DriversListDetailPanel:DriverDetailsCV:1:PolicyContactRolePanelSet:PMPolicyDriverInfoPanelSet:driverClaims:PMClaimsLV-body\"]//table[" + sequence + "]//tr/td[3]/div";
+		WebElement element = driver.findElement(By.xpath(locator));
+		GuideWireAccessors.selectOptionFromGWDropDown(driver, option, element, 1);
+
+	}
+
 	public void selectConvict5(boolean convict)
 	{
 		logger.info(format("%s -  going to set access to convict5"+convict, getName()));
@@ -290,8 +330,55 @@ public class ClaimCenterPolicySubmissionStep3DriversPOM extends BaseTest{
 			GuideWireAccessors.clickGWButton(driver, this.getConvict5NoOption());
 		}
 	}
-	
-	
+
+	public void clickAddConvict5()
+	{
+		logger.info(format("%s -  going to click add Claims in 5 years", getName()));
+		GuideWireAccessors.clickGWButton(driver, this.getConvict5AddButton());
+
+	}
+
+	public void setConvict5Date(String text, int sequence)
+	{
+
+		String locator = "//*[@id=\"SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PMDriversScreen:PMDriversPanelSet:DriversListDetailPanel:DriverDetailsCV:1:PolicyContactRolePanelSet:PMPolicyDriverInfoPanelSet:driverConvictions:PMConvictionsLV-body\"]//table[" + sequence + "]//tr/td[2]/div";
+		//WebElement element = driver.findElement(By.xpath(locator));
+		String inputLocator = "//*[@id=\"SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PMDriversScreen:PMDriversPanelSet:DriversListDetailPanel:DriverDetailsCV:1:PolicyContactRolePanelSet:PMPolicyDriverInfoPanelSet:driverConvictions:PMConvictionsLV-body\"]//input[starts-with(@id,'datefield-')]";
+
+		GuideWireAccessors.setGWTextBoxInTable(driver, text, locator, inputLocator);
+
+	}
+
+	public void selectConvict5Code(String option, int sequence)
+	{
+
+		String locator = "//*[@id=\"SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PMDriversScreen:PMDriversPanelSet:DriversListDetailPanel:DriverDetailsCV:1:PolicyContactRolePanelSet:PMPolicyDriverInfoPanelSet:driverConvictions:PMConvictionsLV-body\"]//table[" + sequence + "]//tr/td[3]/div";
+		WebElement element = driver.findElement(By.xpath(locator));
+		GuideWireAccessors.selectOptionFromGWDropDown(driver, option, element, 1);
+
+	}
+
+	public void setConvict5Points(String text, int sequence)
+	{
+
+		String locator = "//*[@id=\"SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PMDriversScreen:PMDriversPanelSet:DriversListDetailPanel:DriverDetailsCV:1:PolicyContactRolePanelSet:PMPolicyDriverInfoPanelSet:driverConvictions:PMConvictionsLV-body\"]//table[" + sequence + "]//tr/td[4]/div";
+
+		String inputLocator = "//*[@id=\"SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PMDriversScreen:PMDriversPanelSet:DriversListDetailPanel:DriverDetailsCV:1:PolicyContactRolePanelSet:PMPolicyDriverInfoPanelSet:driverConvictions:PMConvictionsLV-body\"]//input[starts-with(@id,'textfield-')]";
+
+		GuideWireAccessors.setGWTextBoxInTable(driver, text, locator, inputLocator);
+
+	}
+
+	public void selectConvict5MonthsDisqualified(String option, int sequence)
+	{
+
+		String locator = "//*[@id=\"SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PMDriversScreen:PMDriversPanelSet:DriversListDetailPanel:DriverDetailsCV:1:PolicyContactRolePanelSet:PMPolicyDriverInfoPanelSet:driverConvictions:PMConvictionsLV-body\"]//table[" + sequence + "]//tr/td[5]/div";
+		WebElement element = driver.findElement(By.xpath(locator));
+		GuideWireAccessors.selectOptionFromGWDropDown(driver, option, element, 1);
+
+	}
+
+
 
 	private WebElement getAddDriverButton() {
 		return addDriverButton;
@@ -302,6 +389,10 @@ public class ClaimCenterPolicySubmissionStep3DriversPOM extends BaseTest{
 	private WebElement getAddExistingDriverLink() {
 		return addExistingDriverLink;
 	}
+
+
+
+	public WebElement getAddDriverNewPerson() { return addDriverNewPerson; }
 
 
 
@@ -449,6 +540,10 @@ public class ClaimCenterPolicySubmissionStep3DriversPOM extends BaseTest{
 
 
 
+	public WebElement getClaims5AddButton() { return claims5AddButton; }
+
+
+
 	private WebElement getConvict5YesOption() {
 		return convict5YesOption;
 	}
@@ -461,20 +556,13 @@ public class ClaimCenterPolicySubmissionStep3DriversPOM extends BaseTest{
 
 
 
+	public WebElement getConvict5AddButton() { return convict5AddButton; }
+
+
+
 	private WebElement getNextButton() {
 		return nextButton;
 	}
 
 
-
-	
-	
-	
-
-
-
-
-	
-	
-	
 }

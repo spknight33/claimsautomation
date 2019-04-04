@@ -8,6 +8,12 @@ import cucumber.api.java.en.When;
 
 public class createSubmissionSteps extends BaseTest {
 
+	public void completeSubmissionStep3ForTestScenario(){
+		//TODO add functionality to pull from test data spreadsheet
+
+
+	}
+
 	@When("^I select product at step1 of submission create$")
 	public void i_Click_Search() throws Throwable {
 		policyCreateStep1SubmissionPOM.clickSelectProduct();
@@ -37,6 +43,11 @@ public class createSubmissionSteps extends BaseTest {
 	public void i_Click_adddriverstep3() throws Throwable {
 		policyCreateStep3DriversPOM.selectNamedDriver();
 		}
+
+	@When("^I create New Person for a new Driver at submission step3$")
+	public void i_Click_New_Person_Step3() throws Throwable {
+		policyCreateStep3DriversPOM.createDriverNewPerson();
+	}
 	
 	@When("^I set the submission step3 field \"([^\"]*)\" to \"([^\"]*)\"$")
 	public void i_set_thestep3_fields_to(String fieldName, String fieldValue) throws Throwable {
@@ -103,8 +114,9 @@ public class createSubmissionSteps extends BaseTest {
 		    		policyCreateStep3DriversPOM.selectCancelled(false);
 		    	break;
 		 case "Claims5Years":
-		    	if (fieldValue.equalsIgnoreCase("true"))
-		    		policyCreateStep3DriversPOM.selectClaims5(true);
+		    	if (fieldValue.equalsIgnoreCase("true")){
+					policyCreateStep3DriversPOM.selectClaims5(true);
+				}
 		    	else
 		    		policyCreateStep3DriversPOM.selectClaims5(false);
 		    	break;
@@ -129,13 +141,52 @@ public class createSubmissionSteps extends BaseTest {
 	public void i_Click_nextstep3() throws Throwable {
 		policyCreateStep3DriversPOM.clickNext();
 		}
+
+	@When("^I click the Add Claim button at submission step 3$")
+	public void i_Click_The_Add_Claim_Button() throws Throwable {
+		policyCreateStep3DriversPOM.clickAddClaims5();
+	}
+
+	@When("^I set the Claim Type field to \"([^\"]*)\" at submission step 3$")
+	public void i_Select_Claim_Type(String claimType) throws Throwable {
+		policyCreateStep3DriversPOM.selectClaims5Type(claimType, 1);
+	}
+
+	@When("^I set the Claim Date field to \"([^\"]*)\" at submission step 3$")
+	public void i_Set_Claim_Date(String claimDate) throws Throwable {
+		policyCreateStep3DriversPOM.setClaims5Date(claimDate, 1);
+	}
+
+	@When("^I click the Add Conviction button at submission step 3$")
+	public void i_Click_The_Add_Conviction_Button() throws Throwable {
+		policyCreateStep3DriversPOM.clickAddConvict5();
+	}
+
+	@When("^I set the Conviction Date field to \"([^\"]*)\" at submission step 3$")
+	public void i_Set_Conviction_Date(String convictionDate) throws Throwable {
+		policyCreateStep3DriversPOM.setConvict5Date(convictionDate, 1);
+	}
+
+	@When("^I set the Conviction Code field to \"([^\"]*)\" at submission step 3$")
+	public void i_Set_Conviction_Code(String convictionCode) throws Throwable {
+		policyCreateStep3DriversPOM.selectConvict5Code(convictionCode, 1);
+	}
+
+	@When("^I set the Conviction Points field to \"([^\"]*)\" at submission step 3$")
+	public void i_Set_Conviction_Points(String convictionPoints) throws Throwable {
+		policyCreateStep3DriversPOM.setConvict5Points(convictionPoints, 1);
+	}
+
+	@When("^I set the Conviction Months Disqualified field to \"([^\"]*)\" at submission step 3$")
+	public void i_Set_Conviction_Months_Disqualified(String monthsDisqualified) throws Throwable {
+		policyCreateStep3DriversPOM.selectConvict5MonthsDisqualified(monthsDisqualified, 1);
+	}
 	
 	@When("^I Click AddVehicle at submission step4$")
 	public void i_Click_addvehiclestep4() throws Throwable {
 		policyCreateStep4VehiclePOM.clickAddVehicle();
 		}
-	
-	
+
 	@When("^I set the submission step4 field \"([^\"]*)\" to \"([^\"]*)\"$")
 	public void i_set_thestep4_fields_to(String fieldName, String fieldValue) throws Throwable {
 		switch (fieldName) {

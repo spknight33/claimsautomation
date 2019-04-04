@@ -452,13 +452,13 @@ public class ClaimCenterFNOLDriverDetailsPOM extends BaseTest{
   		
   	}
 	 public void selectIncident5YearsType(String option, int sequence)
-		{
+	 {
 		
-			String locator = "//*[@id=\"FNOLContactPopup:FNOLContactScreen:ContactDV:DriverIndemnityQuestionsInputSet:ClaimPreviousClaims:PreviousDriverClaimsLV-body\"]//table[" + sequence + "]//tr/td[3]/div";
-			WebElement element = driver.findElement(By.xpath(locator));
-			GuideWireAccessors.selectOptionFromGWDropDown(driver, option, element, 1);
+	 	String locator = "//*[@id=\"FNOLContactPopup:FNOLContactScreen:ContactDV:DriverIndemnityQuestionsInputSet:ClaimPreviousClaims:PreviousDriverClaimsLV-body\"]//table[" + sequence + "]//tr/td[3]/div";
+	 	WebElement element = driver.findElement(By.xpath(locator));
+	 	GuideWireAccessors.selectOptionFromGWDropDown(driver, option, element, 1);
 			
-		}
+	 }
 	 
 	 
 	

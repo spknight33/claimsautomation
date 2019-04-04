@@ -1,13 +1,13 @@
+@Ignore
+Feature: Create Policy with two drivers
 
-Feature: tests
-
-  Scenario: test policy create
+  Scenario: test policy with two drivers create
     Given I use test data set "policycreate_itb1"
     Given I access PolicyCenter login page
     When I login to PolicyCenter as "su" with "gw"
     And I select the Desktop Actions Popup Menu Hierarchy "New Account"
-    And I set the policy account field "FirstName" to "Steve"
-    And I set the policy account field "LastName" to "Bennett"
+    And I set the policy account field "FirstName" to "Doug"
+    And I set the policy account field "LastName" to "Dimmerdome"
     And I Click Search at account create
     And I Click create new person account
     And I set the policy create account field "Brand" to "Insure The Box"
@@ -40,6 +40,36 @@ Feature: tests
     And I set the submission step3 field "Cancelled" to "false"
     And I set the submission step3 field "Claims5Years" to "false"
     And I set the submission step3 field "Convictions5Years" to "false"
+
+    And I create New Person for a new Driver at submission step3
+    And I set the Driver First Name field to "Doug" at new driver creation
+    And I set the Driver DOB field to "11121990" at new driver creation
+    And I set the Driver Title field to "Mr." at new driver creation
+    And I set the Driver Last Name field to "DimmerDizzle" at new driver creation
+    And I set the Driver Gender field to "Female" at new driver creation
+    And I set the Driver Primary Occupation field to "Actor" at new driver creation
+    And I set the Driver Marital Status field to "Single" at new driver creation
+    And I set the Driver UK Resident for 5 Years field to "True" at new driver creation
+    And I set the Driver Own their own home field to "True" at new driver creation
+    And I set the Driver relationship to policyholder field to "Partner" at new driver creation
+    And I set the Driver Primary Phone field to "Mobile" at new driver creation
+    And I set the Driver Home Phone field to "07877676767" at new driver creation
+    And I set the Driver Work Phone field to "07866565656" at new driver creation
+    And I set the Driver Mobile Phone field to "07866565656" at new driver creation
+    And I set the Driver Primary Email field to "dimmerdome@dimmerD.com" at new driver creation
+    And I set the Driver Secondary Email field to "dimmerDizzyD@dimmerD.com" at new driver creation
+    And I set the Driver License Type field to "Full Uk Licence" at new driver creation
+    And I set the Driver License Number field to "11121112" at new driver creation
+    And I set the Driver passed Driving test over 10 years ago field to "True" at new driver creation
+    And I set the Driver Access to other Vehicles field to "false" at new driver creation
+    And I set the Driver Additional Qualifications field to "No" at new driver creation
+    And I set the Driver Medical Conditions field to "DVLA aware - no licence restriction" at new driver creation
+    And I set the Driver Non Motoring Offences field to "false" at new driver creation
+    And I set the Driver Policy Cancelled field to "false" at new driver creation
+    And I set the Driver Other Claims field to "false" at new driver creation
+    And I set the Driver Convictions field to "false" at new driver creation
+    And I Click Ok at new driver creation
+
     And I Click Next at submission step3
     And I Click AddVehicle at submission step4
     And I set the submission step4 field "Vrn" to "ND58HFL"

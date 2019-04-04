@@ -8,6 +8,7 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.concurrent.TimeUnit;
 
+import com.big.automation.selenium_webdriver.claimcenter.pages.policycreate.*;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.remote.RemoteWebDriver;
@@ -59,14 +60,6 @@ import com.big.automation.selenium_webdriver.claimcenter.pages.fnol.exposures.Cl
 import com.big.automation.selenium_webdriver.claimcenter.pages.fnol.exposures.ClaimCenterFNOLNewTPCaptureExposurePOM;
 import com.big.automation.selenium_webdriver.claimcenter.pages.fnol.exposures.ClaimCenterFNOLNewVehicleExposurePOM;
 import com.big.automation.selenium_webdriver.claimcenter.pages.fnol.services.ClaimCenterFNOLNewServicePOM;
-import com.big.automation.selenium_webdriver.claimcenter.pages.policycreate.ClaimCenterPolicyAccountCreatePOM;
-import com.big.automation.selenium_webdriver.claimcenter.pages.policycreate.ClaimCenterPolicyAccountPOM;
-import com.big.automation.selenium_webdriver.claimcenter.pages.policycreate.ClaimCenterPolicyCenterLoginPOM;
-import com.big.automation.selenium_webdriver.claimcenter.pages.policycreate.ClaimCenterPolicySubmissionStep1POM;
-import com.big.automation.selenium_webdriver.claimcenter.pages.policycreate.ClaimCenterPolicySubmissionStep2PolicyInfoPOM;
-import com.big.automation.selenium_webdriver.claimcenter.pages.policycreate.ClaimCenterPolicySubmissionStep3DriversPOM;
-import com.big.automation.selenium_webdriver.claimcenter.pages.policycreate.ClaimCenterPolicySubmissionStep4VehiclePOM;
-import com.big.automation.selenium_webdriver.claimcenter.pages.policycreate.ClaimCenterPolicySubmissionStep5QuotePOM;
 import com.big.automation.selenium_webdriver.claimcenter.pages.postfnol.activities.ClaimCenterPOSTFNOLNewActivityPOM;
 import com.big.automation.selenium_webdriver.claimcenter.pages.postfnol.activities.ClaimCenterPOSTFNOLWorkplanPOM;
 import com.big.automation.selenium_webdriver.claimcenter.pages.postfnol.documents.ClaimCenterPOSTFNOLDocumentsPOM;
@@ -148,6 +141,7 @@ public class BaseTest extends AbstractTestNGCucumberTests {
 	public static ClaimCenterPolicySubmissionStep3DriversPOM policyCreateStep3DriversPOM;
 	public static ClaimCenterPolicySubmissionStep4VehiclePOM policyCreateStep4VehiclePOM;
 	public static ClaimCenterPolicySubmissionStep5QuotePOM policyCreateStep5QuotePOM;
+	public static ClaimsCenterPolicyNewDriverPOM policyCreateNewDriverPOM;
 	
 	
 
@@ -375,6 +369,7 @@ public class BaseTest extends AbstractTestNGCucumberTests {
 		policyCreateStep3DriversPOM = PageFactory.initElements(driver, ClaimCenterPolicySubmissionStep3DriversPOM.class);
 		policyCreateStep4VehiclePOM = PageFactory.initElements(driver, ClaimCenterPolicySubmissionStep4VehiclePOM.class);
 		policyCreateStep5QuotePOM = PageFactory.initElements(driver, ClaimCenterPolicySubmissionStep5QuotePOM.class);
+		policyCreateNewDriverPOM = PageFactory.initElements(driver, ClaimsCenterPolicyNewDriverPOM.class);
 		
 		
 	
