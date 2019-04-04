@@ -27,7 +27,26 @@ public class CCFNOLVehicleSteps extends BaseTest {
 		// TODO - 
 		// most cases will have insured vehicle already - so for now leave this and just do the driver checl
 		
-	String fieldValue = ExcelUtil.getTestDataValue("Fnol_PHDriverRequired");
+	// The insured could be claiming for damaging a hire or courtesy car, so cater for change of insured vehicle
+	String fieldValue = ExcelUtil.getTestDataValue("Fnol_PHVehicleNotInsuredsVehicle");
+	if (fieldValue !=null &&fieldValue.equalsIgnoreCase("TRUE"))
+	{
+		
+		fnolVehicleDetailsPOM.selectNewVehicle();
+		fieldValue = ExcelUtil.getTestDataValue("Fnol_PHVehicleType");
+		fnolVehicleDetailsPOM.selectVehicleType(fieldValue);
+		
+		fieldValue = ExcelUtil.getTestDataValue("Fnol_PHVehicleVrn");
+		fnolVehicleDetailsPOM.setVrn(fieldValue);
+		
+		
+		
+	}
+	// otherwise we just leave the selected insureds vehicle
+			
+			
+		
+	fieldValue = ExcelUtil.getTestDataValue("Fnol_PHDriverRequired");
 	if (fieldValue !=null &&fieldValue.equalsIgnoreCase("TRUE"))
 	   {
 		   fnolVehicleDetailsPOM.selectAddDriver();
@@ -445,16 +464,19 @@ public class CCFNOLVehicleSteps extends BaseTest {
 			fnolVehicleDetailsPOM.setVin(fieldValue);
 		
 		fieldValue = ExcelUtil.getTestDataValue("Fnol_TPVehicleForeign");
-		if (fieldValue !=null && fieldValue.equalsIgnoreCase("TRUE"))
-		{
+		if (fieldValue !=null)
+		{  
+			if (fieldValue.equalsIgnoreCase("TRUE"))
+			{
 			fnolVehicleDetailsPOM.selectForeign(true);
 			fieldValue = ExcelUtil.getTestDataValue("Fnol_TPVehicleForeignDetails");
 			if (fieldValue !=null)
 				fnolVehicleDetailsPOM.setForeignDetails(fieldValue);
-		}
-		else
-		{
+			}
+			else
+			{
 			fnolVehicleDetailsPOM.selectForeign(false);
+			}
 		}
 		
 		fieldValue = ExcelUtil.getTestDataValue("Fnol_TPVehicleOwner");
@@ -478,14 +500,16 @@ public class CCFNOLVehicleSteps extends BaseTest {
 			fnolVehicleDetailsPOM.setPreDamageDesc(fieldValue);
 		
 		fieldValue = ExcelUtil.getTestDataValue("Fnol_TPVehicleRoadworthy");
-		if (fieldValue !=null && fieldValue.equalsIgnoreCase("TRUE"))
+		if (fieldValue !=null)
 		{
+			if (fieldValue.equalsIgnoreCase("TRUE"))
+			{
 			fnolVehicleDetailsPOM.selectRoadworthy(true);
-
-		}
-		else
-		{
+			}
+			else
+			{
 			fnolVehicleDetailsPOM.selectRoadworthy(false);
+			}
 		}
 		
 		fieldValue = ExcelUtil.getTestDataValue("Fnol_TPVehicleAirBags");
@@ -494,29 +518,33 @@ public class CCFNOLVehicleSteps extends BaseTest {
 		
 		
 		fieldValue = ExcelUtil.getTestDataValue("Fnol_TPVehicleCreditHire");
-		if (fieldValue !=null&& fieldValue.equalsIgnoreCase("TRUE"))
+		if (fieldValue !=null)
 		{
+			if (fieldValue.equalsIgnoreCase("TRUE"))
+			{
 			fnolVehicleDetailsPOM.selectCreditHire(true);
-			
-			
-		}
-		else
-		{
+			}
+			else
+			{
 			fnolVehicleDetailsPOM.selectCreditHire(false);
+			}
 		}
+		
+		
 		fieldValue = ExcelUtil.getTestDataValue("Fnol_TPVehicleProtocolHire");
-		if (fieldValue !=null&& fieldValue.equalsIgnoreCase("TRUE"))
+		if (fieldValue !=null)
 		{
+			if (fieldValue.equalsIgnoreCase("TRUE"))
+			{
 			fnolVehicleDetailsPOM.selectProtocolHire(true);
 			
-			
-		}
-		else
-		{
+			}
+			else
+			{
 			fnolVehicleDetailsPOM.selectProtocolHire(false);
-		}
+			}
 			
-		
+		}
 		 
 		
 	   fnolVehicleDetailsPOM.selectOK();

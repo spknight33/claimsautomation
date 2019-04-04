@@ -278,7 +278,7 @@ public static void setGWTextBoxInTable(WebDriver driver, String text, String loc
 
 		String lowerCaseOption = option.toLowerCase();
 		//optionLocator = "//li[contains(translate(normalize-space(),'ABCDEFGHIJKLMNOPQRSTUVWXYZ','abcdefghijklmnopqrstuvwxyz'),'" + lowerCaseOption + "')]";
-		optionLocator = "//li[translate(normalize-space(),'ABCDEFGHIJKLMNOPQRSTUVWXYZ','abcdefghijklmnopqrstuvwxyz') = '" + lowerCaseOption + "']";
+		optionLocator = "//li[translate(normalize-space(),'ABCDEFGHIJKLMNOPQRSTUVWXYZ','abcdefghijklmnopqrstuvwxyz') = \"" + lowerCaseOption + "\"]";
 
 		
 		/*if (caseSensitive)

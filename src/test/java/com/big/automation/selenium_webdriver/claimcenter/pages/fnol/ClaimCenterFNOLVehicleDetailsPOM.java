@@ -3,8 +3,6 @@ package com.big.automation.selenium_webdriver.claimcenter.pages.fnol;
 import static com.big.automation.selenium_webdriver.common.utilities.ThreadUtils.sleep;
 import static java.lang.String.format;
 
-import java.util.List;
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
@@ -27,6 +25,13 @@ public class ClaimCenterFNOLVehicleDetailsPOM extends BaseTest{
 	private WebElement lossPartyInsuredRadio;
 	@FindBy(id = "FNOLVehicleIncidentPopup:FNOLVehicleIncidentScreen:VehicleBasicsDV:LossParty_false-inputEl")
 	private WebElement lossPartyTPRadio;
+	
+	@FindBy(id = "FNOLVehicleIncidentPopup:FNOLVehicleIncidentScreen:VehicleBasicsDV:Vehicle_Picker:Vehicle_PickerMenuIcon")
+	private WebElement insuredVehiclePickerIcon;
+	@FindBy(id = "FNOLVehicleIncidentPopup:FNOLVehicleIncidentScreen:VehicleBasicsDV:Vehicle_Picker:NewVehicleMenuItem-itemEl")
+	private WebElement insuredVehicleNewVehiclePicker;
+	
+
 		
 	@FindBy(id = "FNOLVehicleIncidentPopup:FNOLVehicleIncidentScreen:Update-btnEl")
 	private WebElement okButton;
@@ -374,7 +379,12 @@ public class ClaimCenterFNOLVehicleDetailsPOM extends BaseTest{
 		
 	}
 	
-	
+
+	public void selectNewVehicle()
+	{
+		logger.info(format("%s - going to select new vehicle", getName()));
+		GuideWireAccessors.selectOptionFromGWPicker(driver, this.getInsuredVehiclePickerIcon(), this.getInsuredVehicleNewVehiclePicker());
+	}
 	
 	public void selectVehicleType(String option)
 	{
@@ -1434,6 +1444,14 @@ public class ClaimCenterFNOLVehicleDetailsPOM extends BaseTest{
 
 	private WebElement getTpInsurerClaimNumber() {
 		return tpInsurerClaimNumber;
+	}
+
+	private WebElement getInsuredVehiclePickerIcon() {
+		return insuredVehiclePickerIcon;
+	}
+
+	private WebElement getInsuredVehicleNewVehiclePicker() {
+		return insuredVehicleNewVehiclePicker;
 	}
 
 	
