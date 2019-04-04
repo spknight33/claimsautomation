@@ -1,4 +1,4 @@
-
+@Ignore
 Feature: Regression test for create claim FNOL path - DGT claims
 
 @Ignore
@@ -7,6 +7,7 @@ Feature: Regression test for create claim FNOL path - DGT claims
     And As a "ADClaimsHandlerTm1" I am at step5 for FNOL
     When I create a claim as part of a regression test
 
+@Ignore
   Scenario: FNOL Regression - Create new claim - THEFT claim
     Given I use test data set "regress_fnol_theft" for brand "DGT"
     And As a "ADClaimsHandlerTm1" I am at step5 for FNOL
