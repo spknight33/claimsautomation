@@ -4,6 +4,10 @@ import static com.big.automation.selenium_webdriver.common.baseTest.BaseTest.tes
 
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
@@ -272,6 +276,15 @@ public class ExcelUtil {
 				    			
 				    			}
 				    			
+				    			if (value11 ==null || value11.isEmpty())
+				    			{
+				    				// not is ssheet so use todays date
+				    				
+				    				Calendar cal = Calendar.getInstance();
+				    			    cal.setTime(new Date());
+				    			    value11 = new SimpleDateFormat("dd/MM/yyyy").format(cal.getTime());
+				    			    System.out.println("Using todays date as loss date");
+				    			}
 				    			
 				    			testDataMap.put("Fnol_Step1_LossDate", value11.trim());
 				    			System.out.println("entry added to map for Fnol_Step1_LossDate:"+value11);
