@@ -142,6 +142,9 @@ public class ExcelUtil {
 		String value9 = "";
 		String value10 = "";
 		String value11 = "";
+		String value12 = "";
+		String value13 = "";
+		String value14 = "";
 		
 		testDataMap = new HashMap<>(); // reset the map - we are going to add some data to it here
 		
@@ -161,6 +164,9 @@ public class ExcelUtil {
 		XSSFCell valueCell9 = null;
 		XSSFCell valueCell10 = null;
 		XSSFCell valueCell11 = null;
+		XSSFCell valueCell12 = null;
+		XSSFCell valueCell13 = null;
+		XSSFCell valueCell14 = null;
 	
 		
 		int rows = policySheet.getLastRowNum() + 1;
@@ -182,6 +188,9 @@ public class ExcelUtil {
 			value9 = null;
 			value10 = null;
 			value11 = null;
+			value12 = null;
+			value13 = null;
+			value14 = null;
 			
 			row = policySheet.getRow(i);
 
@@ -198,6 +207,9 @@ public class ExcelUtil {
 				valueCell9 = row.getCell(9);
 				valueCell10 = row.getCell(10);
 				valueCell11 = row.getCell(11);
+				valueCell12 = row.getCell(12);
+				valueCell13 = row.getCell(13);
+				valueCell14 = row.getCell(14);
 				
 			}
 
@@ -225,6 +237,12 @@ public class ExcelUtil {
 				value10 = dataFormatter.formatCellValue(valueCell10, formulaeval);
 			if (valueCell11 != null) 
 				value11 = dataFormatter.formatCellValue(valueCell11, formulaeval);
+			if (valueCell12 != null) 
+				value12 = dataFormatter.formatCellValue(valueCell12, formulaeval);
+			if (valueCell13 != null) 
+				value13 = dataFormatter.formatCellValue(valueCell13, formulaeval);
+			if (valueCell14 != null) 
+				value14 = dataFormatter.formatCellValue(valueCell14, formulaeval);
 			
 			if (key!=null && !key.isEmpty() && value1 != null && !value1.isEmpty()) {
 				    // check if devortest field
@@ -254,40 +272,46 @@ public class ExcelUtil {
 					    			System.out.println("entry added to map for ITB Fnol_PolicyNumber:"+value2);
 					    			testDataMap.put("Fnol_Name", value3.trim());
 					    			System.out.println("entry added to map for ITB Fnol_Name:"+value3);
-					    			testDataMap.put("Fnol_Insured_Address", value4.trim());
-					    			System.out.println("entry added to map for ITB Fnol_Insured_Address:"+value4);
+					    			testDataMap.put("Fnol_Named_Driver", value4.trim());
+					    			System.out.println("entry added to map for ITB Fnol_Named_Driver:"+value4);
+					    			testDataMap.put("Fnol_Insured_Address", value5.trim());
+					    			System.out.println("entry added to map for ITB Fnol_Insured_Address:"+value5);
 					    			break;
 				    			case(BRAND_TBB):
-					    			testDataMap.put("Fnol_PolicyNumber", value5.trim());
-					    			System.out.println("entry added to map for TBB Fnol_PolicyNumber:"+value5);
-					    			testDataMap.put("Fnol_Name", value6.trim());
-					    			System.out.println("entry added to map for TBB Fnol_Name:"+value6);
-					    			testDataMap.put("Fnol_Insured_Address", value7.trim());
-					    			System.out.println("entry added to map for TBB Fnol_Insured_Address:"+value7);
+					    			testDataMap.put("Fnol_PolicyNumber", value6.trim());
+					    			System.out.println("entry added to map for TBB Fnol_PolicyNumber:"+value6);
+					    			testDataMap.put("Fnol_Name", value7.trim());
+					    			System.out.println("entry added to map for TBB Fnol_Name:"+value7);
+					    			testDataMap.put("Fnol_Named_Driver", value8.trim());
+					    			System.out.println("entry added to map for TBB Fnol_Named_Driver:"+value8);
+					    	  			testDataMap.put("Fnol_Insured_Address", value9.trim());
+					    			System.out.println("entry added to map for TBB Fnol_Insured_Address:"+value9);
 					    			break;
 				    			case(BRAND_DGT):
-					    			testDataMap.put("Fnol_PolicyNumber", value8.trim());
-					    			System.out.println("entry added to map for DGT Fnol_PolicyNumber:"+value8);
-					    			testDataMap.put("Fnol_Name", value9.trim());
-					    			System.out.println("entry added to map for DGT Fnol_Name:"+value9);
-					    			testDataMap.put("Fnol_Insured_Address", value10.trim());
-					    			System.out.println("entry added to map for DGT Fnol_Insured_Address:"+value10);
+					    			testDataMap.put("Fnol_PolicyNumber", value10.trim());
+					    			System.out.println("entry added to map for DGT Fnol_PolicyNumber:"+value10);
+					    			testDataMap.put("Fnol_Name", value11.trim());
+					    			System.out.println("entry added to map for DGT Fnol_Name:"+value11);
+					    			testDataMap.put("Fnol_Named_Driver", value12.trim());
+					    			System.out.println("entry added to map for DGT Fnol_Named_Driver:"+value12);
+					    			testDataMap.put("Fnol_Insured_Address", value13.trim());
+					    			System.out.println("entry added to map for DGT Fnol_Insured_Address:"+value13);
 					    			break;
 				    			
 				    			}
 				    			
-				    			if (value11 ==null || value11.isEmpty())
+				    			if (value14 ==null || value14.isEmpty())
 				    			{
-				    				// not is ssheet so use todays date
+				    				// not in sheet so use todays date
 				    				
 				    				Calendar cal = Calendar.getInstance();
 				    			    cal.setTime(new Date());
-				    			    value11 = new SimpleDateFormat("dd/MM/yyyy").format(cal.getTime());
+				    			    value14 = new SimpleDateFormat("dd/MM/yyyy").format(cal.getTime());
 				    			    System.out.println("Using todays date as loss date");
 				    			}
 				    			
-				    			testDataMap.put("Fnol_Step1_LossDate", value11.trim());
-				    			System.out.println("entry added to map for Fnol_Step1_LossDate:"+value11);
+				    			testDataMap.put("Fnol_Step1_LossDate", value14.trim());
+				    			System.out.println("entry added to map for Fnol_Step1_LossDate:"+value14);
 				    			break;
 				    		}
 						}

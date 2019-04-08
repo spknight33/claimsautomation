@@ -45,9 +45,8 @@ Feature: Regression test for create claim FNOL path - TBB claims
     Given I use test data set "regress_fnol_cyclistonly" for brand "TBB"
     And As a "ADClaimsHandlerTm1" I am at step5 for FNOL
     When I create a claim as part of a regression test
-    
-  
-    Scenario: FNOL Regression - Create new claim - MOTORBIKE only
+
+  Scenario: FNOL Regression - Create new claim - MOTORBIKE only
     Given I use test data set "regress_fnol_motorbike" for brand "TBB"
     And As a "ADClaimsHandlerTm1" I am at step5 for FNOL
     When I create a claim as part of a regression test
@@ -57,7 +56,6 @@ Feature: Regression test for create claim FNOL path - TBB claims
     And As a "ADClaimsHandlerTm1" I am at step5 for FNOL
     When I create a claim as part of a regression test
 
-  @Ignore
   Scenario: FNOL Regression - Create new claim - ACCIDENT (NON FAULT)
     Given I use test data set "regress_fnol_accident_nonfault" for brand "TBB"
     And As a "ADClaimsHandlerTm1" I am at step5 for FNOL
@@ -70,5 +68,15 @@ Feature: Regression test for create claim FNOL path - TBB claims
 
   Scenario: FNOL Regression - Create new claim - ACCIDENT (FAULT)
     Given I use test data set "regress_fnol_accident_fault" for brand "TBB"
+    And As a "ADClaimsHandlerTm1" I am at step5 for FNOL
+    When I create a claim as part of a regression test
+
+  Scenario: FNOL Regression - Create new claim - ACCIDENT (FAULT- NAMED DRIVER)
+    Given I use test data set "regress_fnol_accident_namedriv" for brand "TBB"
+    And As a "ADClaimsHandlerTm1" I am at step5 for FNOL
+    When I create a claim as part of a regression test
+
+  Scenario: FNOL Regression - Create new claim - ACCIDENT (FAULT- NOT NAMED DRIVER)
+    Given I use test data set "regress_fnol_accident_notnamed" for brand "TBB"
     And As a "ADClaimsHandlerTm1" I am at step5 for FNOL
     When I create a claim as part of a regression test

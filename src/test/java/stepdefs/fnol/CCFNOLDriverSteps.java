@@ -28,7 +28,49 @@ public class CCFNOLDriverSteps extends BaseTest {
 		{
 		     fnolDriverDetailsPOM.selectDriverName(ExcelUtil.getTestDataValue("Fnol_Name"));
 		}
-		//TODO else - create a new driver
+		else
+		{
+			if (ExcelUtil.getTestDataValue("Fnol_PHDriverIsNamedPerson").equalsIgnoreCase("TRUE"))
+			{
+				fnolDriverDetailsPOM.selectDriverName(ExcelUtil.getTestDataValue("Fnol_Named_Driver"));	
+			}
+			else
+			{
+				// setup new non ph OR NAMED DRIVER
+				String fieldValue = ExcelUtil.getTestDataValue("Fnol_PHDriverPrefix");
+				if (fieldValue !=null)
+				     fnolDriverDetailsPOM.selectPrefix(fieldValue);
+				
+				fieldValue = ExcelUtil.getTestDataValue("Fnol_PHDriverFirstName");
+				if (fieldValue !=null)
+				     fnolDriverDetailsPOM.setFirstName(fieldValue);
+				
+				fieldValue = ExcelUtil.getTestDataValue("Fnol_PHDriverLastName");
+				if (fieldValue !=null)
+				     fnolDriverDetailsPOM.setLastName(fieldValue);
+				
+				fieldValue = ExcelUtil.getTestDataValue("Fnol_PHDriverEmail");
+				if (fieldValue !=null)
+				     fnolDriverDetailsPOM.setEmail(fieldValue);
+				
+
+				// address fields
+				fieldValue = ExcelUtil.getTestDataValue("Fnol_PHDriverPostcodeSearch");
+				if (fieldValue !=null && fieldValue.equalsIgnoreCase("TRUE")) {
+					fieldValue = ExcelUtil.getTestDataValue("Fnol_PHDriverPostcode");
+					fnolDriverDetailsPOM.setPostcode(fieldValue);
+					fieldValue = ExcelUtil.getTestDataValue("Fnol_PHDriverPostcodeAddress");
+					fnolDriverDetailsPOM.selectPostcodeAddress(fieldValue);
+				}
+				else
+				{
+					fnolDriverDetailsPOM.setAddressLine1("some address line"); //TODO
+				}
+				
+				
+			}
+		}
+		
 		
 	
 		// add PH injury if required 
