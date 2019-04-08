@@ -8,7 +8,6 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.concurrent.TimeUnit;
 
-import com.big.automation.selenium_webdriver.claimcenter.pages.policycreate.*;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.remote.RemoteWebDriver;
@@ -60,6 +59,15 @@ import com.big.automation.selenium_webdriver.claimcenter.pages.fnol.exposures.Cl
 import com.big.automation.selenium_webdriver.claimcenter.pages.fnol.exposures.ClaimCenterFNOLNewTPCaptureExposurePOM;
 import com.big.automation.selenium_webdriver.claimcenter.pages.fnol.exposures.ClaimCenterFNOLNewVehicleExposurePOM;
 import com.big.automation.selenium_webdriver.claimcenter.pages.fnol.services.ClaimCenterFNOLNewServicePOM;
+import com.big.automation.selenium_webdriver.claimcenter.pages.policycreate.ClaimCenterPolicyAccountCreatePOM;
+import com.big.automation.selenium_webdriver.claimcenter.pages.policycreate.ClaimCenterPolicyAccountPOM;
+import com.big.automation.selenium_webdriver.claimcenter.pages.policycreate.ClaimCenterPolicyCenterLoginPOM;
+import com.big.automation.selenium_webdriver.claimcenter.pages.policycreate.ClaimCenterPolicySubmissionStep1POM;
+import com.big.automation.selenium_webdriver.claimcenter.pages.policycreate.ClaimCenterPolicySubmissionStep2PolicyInfoPOM;
+import com.big.automation.selenium_webdriver.claimcenter.pages.policycreate.ClaimCenterPolicySubmissionStep3DriversPOM;
+import com.big.automation.selenium_webdriver.claimcenter.pages.policycreate.ClaimCenterPolicySubmissionStep4VehiclePOM;
+import com.big.automation.selenium_webdriver.claimcenter.pages.policycreate.ClaimCenterPolicySubmissionStep5QuotePOM;
+import com.big.automation.selenium_webdriver.claimcenter.pages.policycreate.ClaimsCenterPolicyNewDriverPOM;
 import com.big.automation.selenium_webdriver.claimcenter.pages.postfnol.activities.ClaimCenterPOSTFNOLNewActivityPOM;
 import com.big.automation.selenium_webdriver.claimcenter.pages.postfnol.activities.ClaimCenterPOSTFNOLWorkplanPOM;
 import com.big.automation.selenium_webdriver.claimcenter.pages.postfnol.documents.ClaimCenterPOSTFNOLDocumentsPOM;
@@ -87,15 +95,18 @@ import com.big.automation.selenium_webdriver.claimcenter.pages.postfnol.financia
 import com.big.automation.selenium_webdriver.claimcenter.pages.postfnol.fnolsnapshot.ClaimCenterPOSTFNOLFnolSnapshotLossPOM;
 import com.big.automation.selenium_webdriver.claimcenter.pages.postfnol.history.ClaimCenterPOSTFNOLHistoryPOM;
 import com.big.automation.selenium_webdriver.claimcenter.pages.postfnol.litigation.ClaimCenterPOSTFNOLLitigationPOM;
-import com.big.automation.selenium_webdriver.claimcenter.pages.postfnol.lossdetails.ClaimCenterPOSTFNOLDriverDetailsPOM;
-import com.big.automation.selenium_webdriver.claimcenter.pages.postfnol.lossdetails.ClaimCenterPOSTFNOLEditPropertyPOM;
-import com.big.automation.selenium_webdriver.claimcenter.pages.postfnol.lossdetails.ClaimCenterPOSTFNOLEditVehicleDetailsPOM;
-import com.big.automation.selenium_webdriver.claimcenter.pages.postfnol.lossdetails.ClaimCenterPOSTFNOLLossDetailsPOM;
-import com.big.automation.selenium_webdriver.claimcenter.pages.postfnol.lossdetails.ClaimCenterPOSTFNOLNewPoliceDetailsPOM;
-import com.big.automation.selenium_webdriver.claimcenter.pages.postfnol.lossdetails.ClaimCenterPOSTFNOLNewPropertyPOM;
-import com.big.automation.selenium_webdriver.claimcenter.pages.postfnol.lossdetails.ClaimCenterPOSTFNOLNewVehicleDetailsPOM;
-import com.big.automation.selenium_webdriver.claimcenter.pages.postfnol.lossdetails.ClaimCenterPOSTFNOLPassengerDetailsPOM;
-import com.big.automation.selenium_webdriver.claimcenter.pages.postfnol.lossdetails.ClaimCenterPOSTFNOLPedestrianDetailsPOM;
+import com.big.automation.selenium_webdriver.claimcenter.pages.postfnol.lossdetails.associations.ClaimCenterPOSTFNOLLossDetailsAssociationsPOM;
+import com.big.automation.selenium_webdriver.claimcenter.pages.postfnol.lossdetails.general.ClaimCenterPOSTFNOLDriverDetailsPOM;
+import com.big.automation.selenium_webdriver.claimcenter.pages.postfnol.lossdetails.general.ClaimCenterPOSTFNOLEditPropertyPOM;
+import com.big.automation.selenium_webdriver.claimcenter.pages.postfnol.lossdetails.general.ClaimCenterPOSTFNOLEditVehicleDetailsPOM;
+import com.big.automation.selenium_webdriver.claimcenter.pages.postfnol.lossdetails.general.ClaimCenterPOSTFNOLLossDetailsPOM;
+import com.big.automation.selenium_webdriver.claimcenter.pages.postfnol.lossdetails.general.ClaimCenterPOSTFNOLNewPoliceDetailsPOM;
+import com.big.automation.selenium_webdriver.claimcenter.pages.postfnol.lossdetails.general.ClaimCenterPOSTFNOLNewPropertyPOM;
+import com.big.automation.selenium_webdriver.claimcenter.pages.postfnol.lossdetails.general.ClaimCenterPOSTFNOLNewVehicleDetailsPOM;
+import com.big.automation.selenium_webdriver.claimcenter.pages.postfnol.lossdetails.general.ClaimCenterPOSTFNOLPassengerDetailsPOM;
+import com.big.automation.selenium_webdriver.claimcenter.pages.postfnol.lossdetails.general.ClaimCenterPOSTFNOLPedestrianDetailsPOM;
+import com.big.automation.selenium_webdriver.claimcenter.pages.postfnol.lossdetails.liability.ClaimCenterPOSTFNOLLossDetailsLiabilityPOM;
+import com.big.automation.selenium_webdriver.claimcenter.pages.postfnol.lossdetails.siu.ClaimCenterPOSTFNOLLossDetailsSIUPOM;
 import com.big.automation.selenium_webdriver.claimcenter.pages.postfnol.notes.ClaimCenterPOSTFNOLNewNotePOM;
 import com.big.automation.selenium_webdriver.claimcenter.pages.postfnol.parties.ClaimCenterPOSTFNOLPartiesInvolvedPOM;
 import com.big.automation.selenium_webdriver.claimcenter.pages.postfnol.parties.ClaimCenterPOSTFNOLPartiesInvolvedUsersPOM;
@@ -232,6 +243,13 @@ public class BaseTest extends AbstractTestNGCucumberTests {
 	public static ClaimCenterPOSTFNOLEditVehicleDetailsPOM postFnolEditVehiclePOM;
 
 	public static ClaimCenterPOSTFNOLNewPoliceDetailsPOM postFnolNewPolicePOM;
+	
+	public static ClaimCenterPOSTFNOLLossDetailsLiabilityPOM postFnolLossDetailsLiabilityPOM;
+	public static ClaimCenterPOSTFNOLLossDetailsAssociationsPOM postFnolLossDetailsAssociationsPOM;
+	public static ClaimCenterPOSTFNOLLossDetailsSIUPOM postFnolLossDetailsSIUPOM;
+	
+	
+	
 
 	// POST FNOL Activities pages
 	// --------------------------
@@ -462,8 +480,10 @@ public class BaseTest extends AbstractTestNGCucumberTests {
 		searchChequesPOM = PageFactory.initElements(driver, ClaimCenterSearchChequesPOM.class);
 		searchGroupsPOM = PageFactory.initElements(driver, ClaimCenterSearchGroupsPOM.class);
 		
+		postFnolLossDetailsLiabilityPOM = PageFactory.initElements(driver, ClaimCenterPOSTFNOLLossDetailsLiabilityPOM.class);
+		postFnolLossDetailsAssociationsPOM = PageFactory.initElements(driver, ClaimCenterPOSTFNOLLossDetailsAssociationsPOM.class);
+		postFnolLossDetailsSIUPOM = PageFactory.initElements(driver, ClaimCenterPOSTFNOLLossDetailsSIUPOM.class);
 		
-
 		postFnolWorkplanPOM = PageFactory.initElements(driver, ClaimCenterPOSTFNOLWorkplanPOM.class);
 		postFnolNewActivityPOM = PageFactory.initElements(driver, ClaimCenterPOSTFNOLNewActivityPOM.class);
 		postFnolNewNotePOM = PageFactory.initElements(driver, ClaimCenterPOSTFNOLNewNotePOM.class);

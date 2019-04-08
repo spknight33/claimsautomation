@@ -1,4 +1,4 @@
-package com.big.automation.selenium_webdriver.claimcenter.pages.postfnol.lossdetails;
+package com.big.automation.selenium_webdriver.claimcenter.pages.postfnol.lossdetails.general;
 
 import static java.lang.String.format;
 

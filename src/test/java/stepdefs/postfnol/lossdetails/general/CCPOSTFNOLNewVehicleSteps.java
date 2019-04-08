@@ -1,4 +1,4 @@
-package stepdefs.postfnol;
+package stepdefs.postfnol.lossdetails.general;
 
 import com.big.automation.selenium_webdriver.common.baseTest.BaseTest;
 

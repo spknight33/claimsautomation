@@ -1,4 +1,4 @@
-@Ignore
+@Ignore 
 Feature: Check that main components of the claim system are present when viewing an existing claim
 
   Background: 
@@ -7,25 +7,30 @@ Feature: Check that main components of the claim system are present when viewing
   Scenario Outline: Check All Navigator sections for roles
     Given I access ClaimCenter login page
     And I login to ClaimCenter as role "<role>"
-    And I Select an existing Claim
+    And I Select existing Claim "300000008"
+    And I select "Overview" submenu for "Summary" on the Claim Navigator
+    And I will see post FNOL summary details
+    And I select "Status" submenu for "Summary" on the Claim Navigator
+    And I will see post FNOL summary status screen
+    And I select "Health Metrics" submenu for "Summary" on the Claim Navigator
+    And I will see post FNOL summary health metrics screen
     
-  #  And I select "Overview" submenu for "Summary" on the Claim Navigator
-  #  And I will see post FNOL summary details
-  #  And I select "Status" submenu for "Summary" on the Claim Navigator
-  #  And I will see post FNOL summary status screen
-  #  And I select "Health Metrics" submenu for "Summary" on the Claim Navigator
-  #  And I will see post FNOL summary health metrics screen
+    And I select "TP Care" on the Claim Navigator
+    And I will be on TP Care screen
+    And I select "Workplan" on the Claim Navigator
+    And I will see post FNOL Workplan screen
     
-  #  And I select "TP Care" on the Claim Navigator
-  #  And I will be on TP Care screen
-  #  And I select "Workplan" on the Claim Navigator
-  #  And I will see post FNOL Workplan screen
+    And I select "General" submenu for "Loss Details" on the Claim Navigator
+    And I will see post FNOL loss details
     
+    And I select "Liability" submenu for "Loss Details" on the Claim Navigator
+    And I will see post FNOL loss details liability screen
     
-  #  And I select "General" submenu for "Loss Details" on the Claim Navigator
-  #  And I will see post FNOL loss details
-  #  And I select "Associations" submenu for "Loss Details" on the Claim Navigator
-  #  And I select "Special Investigation Details" submenu for "Loss Details" on the Claim Navigator
+    And I select "Associations" submenu for "Loss Details" on the Claim Navigator
+    And I will see post FNOL loss details associations screen
+    
+    And I select "Special Investigation Details" submenu for "Loss Details" on the Claim Navigator
+    And I will see post FNOL loss details SIU screen
     
     And I select "Exposures" on the Claim Navigator
     And I will see post FNOL exposures screen
@@ -49,8 +54,23 @@ Feature: Check that main components of the claim system are present when viewing
     And I select "Transactions" submenu for "Financials" on the Claim Navigator
     And I will see post FNOL Financials Transactions screen
     
-     And I select "Evaluations" submenu for "Plan of Action" on the Claim Navigator
+    And I select "Notes" on the Claim Navigator
+   # todo
+   And I select "Documents" on the Claim Navigator
+   #todo
+    
+    
+    And I select "Evaluations" submenu for "Plan of Action" on the Claim Navigator
     And I select "Negotiations" submenu for "Plan of Action" on the Claim Navigator
+    
+     And I select "Services" on the Claim Navigator
+     #todo
+     
+     And I select "Litigation" on the Claim Navigator
+     #todo
+     
+     And I select "History" on the Claim Navigator
+     #todo
     
     And I select "Loss Details" submenu for "FNOL Snapshot" on the Claim Navigator
     And I select "Exposures" submenu for "FNOL Snapshot" on the Claim Navigator
@@ -61,23 +81,24 @@ Feature: Check that main components of the claim system are present when viewing
     And I select "Parties Involved" submenu for "FNOL Snapshot" on the Claim Navigator
 
     Examples: 
-      | role                 |
+      | role                    |
       | ADClaimsHandlerTm1      |
-   
-   @Ignore
-    Examples:
-      | TPCClaimsHandler     |
-      | PIClaimsHandler      |
-      | CHClaimsHandler      |
-      | SIUUser              |
-      | ClaimsSupportHandlerTm1 |
-      | TPDClaimsHandler     |
-      | ADTeamManager        |
-      | TPCTeamManager       |
-      | TPDTeamHandler       |
-      | PITeamManager        |
-      | TCHTeamManager       |
-      | CSTeamManager        |
-      | SIUManager           |
-      | ClaimsManager        |
-      | ITAdmin              |
+    #  | ADClaimsHandlerTm2      |
+   #   | ClaimsSupportHandlerTm1 |
+   #   | ClaimsSupportHandlerTm2 |
+  #    | PIClaimsHandlerTm1      |
+  #    | PIClaimsHandlerTm2      |
+  #    | CHClaimsHandlerTm1      |
+   #   | TPCClaimsHandlerTm1     |
+  #    | TPDClaimsHandlerTm1     |
+   #   | SIUUserTm1              |
+  #    | ADTeamManagerTm1        |
+  #    | ADTeamManagerTm2        |
+  #    | CSTeamManagerTm1        |
+  #    | CSTeamManagerTm2        |
+  #    | TPCTeamManagerTm1       |
+  #    | TPDTeamManagerTm1       |
+  ##    | CHTeamManagerTm1        |
+   #   | PITeamManagerTm1        |
+   #   | PITeamManagerTm2        |
+   #   | SIUManagerTm1           |
