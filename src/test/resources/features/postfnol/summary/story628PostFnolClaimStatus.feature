@@ -1,4 +1,4 @@
-@inprogress
+@Ignore
 Feature: CBPCL-628 todo
 
   Background: 
