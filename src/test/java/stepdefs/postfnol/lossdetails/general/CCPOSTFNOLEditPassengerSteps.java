@@ -1,4 +1,4 @@
-package stepdefs.postfnol;
+package stepdefs.postfnol.lossdetails.general;
 
 import org.testng.Assert;
 

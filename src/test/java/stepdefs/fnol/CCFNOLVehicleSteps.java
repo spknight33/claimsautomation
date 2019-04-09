@@ -431,9 +431,15 @@ public class CCFNOLVehicleSteps extends BaseTest {
 		
 		completeTPVehicleTPInsurerSectionForTestScenario();	  
 		
+		
+		
 		String fieldValue = ExcelUtil.getTestDataValue("Fnol_TPVehicleType");
 		if (fieldValue !=null)
 			fnolVehicleDetailsPOM.selectVehicleType(fieldValue);
+		
+		fieldValue = ExcelUtil.getTestDataValue("Fnol_TPVehicleStyle");
+		if (fieldValue !=null)
+			fnolVehicleDetailsPOM.selectVehicleStyle(fieldValue);
 		
 		fieldValue = ExcelUtil.getTestDataValue("Fnol_TPVehicleVrn");
 		if (fieldValue !=null)
@@ -451,9 +457,7 @@ public class CCFNOLVehicleSteps extends BaseTest {
 		if (fieldValue !=null)
 			fnolVehicleDetailsPOM.setModel(fieldValue);
 		
-		fieldValue = ExcelUtil.getTestDataValue("Fnol_TPVehicleStyle");
-		if (fieldValue !=null)
-			fnolVehicleDetailsPOM.selectVehicleStyle(fieldValue);
+		
 		
 		fieldValue = ExcelUtil.getTestDataValue("Fnol_TPVehicleColor");
 		if (fieldValue !=null)

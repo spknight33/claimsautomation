@@ -40,6 +40,8 @@ public class ClaimCenterNavigatorBarPOM extends BaseTest {
 	//loss details submenus
 	@FindBy(xpath = "//td[@id='Claim:MenuLinks:Claim_ClaimLossDetailsGroup:ClaimLossDetailsGroup_ClaimLossDetails']//span")
 	private WebElement lossGeneralSubmenu;
+	@FindBy(xpath = "//td[@id='Claim:MenuLinks:Claim_ClaimLossDetailsGroup:ClaimLossDetailsGroup_ClaimLiability']//span")
+	private WebElement lossLiabilitySubmenu;
 	@FindBy(xpath = "//td[@id='Claim:MenuLinks:Claim_ClaimLossDetailsGroup:ClaimLossDetailsGroup_ClaimAssociations']//span")
 	private WebElement lossAssociationsSubmenu;
 	@FindBy(xpath = "//td[@id='Claim:MenuLinks:Claim_ClaimLossDetailsGroup:ClaimLossDetailsGroup_SIDetails']//span")
@@ -67,7 +69,7 @@ public class ClaimCenterNavigatorBarPOM extends BaseTest {
 	private WebElement financeSummarySubmenu;
 	@FindBy(xpath = "//td[@id='Claim:MenuLinks:Claim_ClaimFinancialsGroup:ClaimFinancialsGroup_ClaimFinancialsChecks']//span")
 	private WebElement financeChequesSubmenu;
-	@FindBy(xpath = "//td[@id='Claim:MenuLinks:Claim_ClaimFinancialsGroup:ClaimFinancialsGroup_ClaimFinancialsSummary']//span")
+	@FindBy(xpath = "//td[@id='Claim:MenuLinks:Claim_ClaimFinancialsGroup:ClaimFinancialsGroup_NewReserveAndRecoveryReserveSet']//span")
 	private WebElement financeReservesSubmenu;
 	
 	// plan of action submenus
@@ -159,6 +161,9 @@ public class ClaimCenterNavigatorBarPOM extends BaseTest {
     		case ("General"):
     			GuideWireAccessors.clickGWButton(driver,lossGeneralSubmenu);
     			break;
+    		case ("Liability"):
+    			GuideWireAccessors.clickGWButton(driver,lossLiabilitySubmenu);
+    			break;
     		case ("Associations"):
     			GuideWireAccessors.clickGWButton(driver,lossAssociationsSubmenu);
     			break;
@@ -219,7 +224,7 @@ public class ClaimCenterNavigatorBarPOM extends BaseTest {
     			GuideWireAccessors.clickGWButton(driver,financeSummarySubmenu);
     			break;
     		case ("Reserves"):
-    			GuideWireAccessors.clickGWButton(driver,financeTransactionSubmenu);
+    			GuideWireAccessors.clickGWButton(driver,financeReservesSubmenu);
     			break;
     		case ("Transactions"):
     			GuideWireAccessors.clickGWButton(driver,financeTransactionSubmenu);

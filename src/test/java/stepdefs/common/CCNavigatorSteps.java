@@ -48,6 +48,26 @@ public class CCNavigatorSteps extends BaseTest {
 			navigatorBarPOM.clickTopLevel("TP Care");
 			
 			break;
+		case "Notes":
+			navigatorBarPOM.clickTopLevel("Notes");
+			
+			break;
+		case "Services":
+			navigatorBarPOM.clickTopLevel("Services");
+			
+			break;
+		case "History":
+			navigatorBarPOM.clickTopLevel("History");
+			
+			break;
+		case "Litigation":
+			navigatorBarPOM.clickTopLevel("Litigation");
+			
+			break;
+		case "Documents":
+			navigatorBarPOM.clickTopLevel("Documents");
+			
+			break;
 
 		// TODO the rest
 
