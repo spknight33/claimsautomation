@@ -3,6 +3,7 @@ package com.big.automation.selenium_webdriver.claimcenter.pages.policycreate;
 import com.big.automation.selenium_webdriver.common.baseTest.BaseTest;
 import com.big.automation.selenium_webdriver.common.gw.utilities.GuideWireAccessors;
 import com.sun.jna.platform.win32.Guid;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
@@ -112,11 +113,17 @@ public class ClaimsCenterPolicyNewDriverPOM extends BaseTest {
     private WebElement claims5YearsYesRadio;
     @FindBy(id ="NewPMPolicyDriver_itbPopup:ContactDetailScreen:PMPolicyDriverInfoPanelSet:MotorClaims_false-inputEl")
     private WebElement claims5YearsNoRadio;
+    @FindBy(id ="NewPMPolicyDriver_itbPopup:ContactDetailScreen:PMPolicyDriverInfoPanelSet:driverClaims:PMClaimsLV_tb:Add-btnInnerEl")
+    private WebElement claims5YearsAddButton;
+    @FindBy(xpath = "NewPMPolicyDriver_itbPopup:ContactDetailScreen:PMPolicyDriverInfoPanelSet:driverClaims:PMClaimsLV_tb:Add-btnInnerEl")
+    private WebElement claimDropDownBox;
 
     @FindBy(id ="NewPMPolicyDriver_itbPopup:ContactDetailScreen:PMPolicyDriverInfoPanelSet:MotorConvictions_true-boxLabelEl")
     private WebElement convictions5YearsYesRadio;
     @FindBy(id ="NewPMPolicyDriver_itbPopup:ContactDetailScreen:PMPolicyDriverInfoPanelSet:MotorConvictions_false-inputEl")
     private WebElement convictions5YearsNoRadio;
+    @FindBy(id ="NewPMPolicyDriver_itbPopup:ContactDetailScreen:PMPolicyDriverInfoPanelSet:driverConvictions:PMConvictionsLV_tb:Add-btnInnerEl")
+    private WebElement convictions5YearsAddButton;
 
 
     //
@@ -289,6 +296,22 @@ public class ClaimsCenterPolicyNewDriverPOM extends BaseTest {
         }
     }
 
+    public void clickAddPreviousClaimButton(){
+        GuideWireAccessors.clickGWButton(driver,getClaims5YearsAddButton());
+    }
+
+    public void selectPreviousClaimType(String option, int sequence){
+        String typeLocator = "//div[@id = 'NewPMPolicyDriver_itbPopup:ContactDetailScreen:PMPolicyDriverInfoPanelSet:driverClaims:PMClaimsLV-body']//table[" + sequence + "]//td[3]";
+        WebElement typeElement = driver.findElement(By.xpath(typeLocator));
+        GuideWireAccessors.selectOptionFromGWDropDown(driver,option,typeElement,1);
+    }
+
+    public void setPreviousClaimDate(String date, int sequence){
+        String dateLocator = "//div[@id = 'NewPMPolicyDriver_itbPopup:ContactDetailScreen:PMPolicyDriverInfoPanelSet:driverClaims:PMClaimsLV-body']//table[" + sequence + "]//td[2]";
+        String dateInputLocator = "//div[@id = 'NewPMPolicyDriver_itbPopup:ContactDetailScreen:PMPolicyDriverInfoPanelSet:driverClaims:PMClaimsLV-body']//input[starts-with(@id,'datefield-')]";
+        GuideWireAccessors.setGWTextBoxInTable(driver, date, dateLocator, dateInputLocator);
+    }
+
     public void selectConvictions5Years(Boolean b){
         if(b == true){
             GuideWireAccessors.clickGWButton(driver,getConvictions5YearsYesRadio());
@@ -433,6 +456,8 @@ public class ClaimsCenterPolicyNewDriverPOM extends BaseTest {
         return claims5YearsNoRadio;
     }
 
+    public WebElement getClaims5YearsAddButton() { return claims5YearsAddButton; }
+
     public WebElement getConvictions5YearsYesRadio() {
         return convictions5YearsYesRadio;
     }
@@ -440,5 +465,7 @@ public class ClaimsCenterPolicyNewDriverPOM extends BaseTest {
     public WebElement getConvictions5YearsNoRadio() {
         return convictions5YearsNoRadio;
     }
+
+    public WebElement getConvictions5YearsAddButton() { return convictions5YearsAddButton; }
 
 }

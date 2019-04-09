@@ -2,7 +2,10 @@ package stepdefs.policy;
 
 import com.big.automation.selenium_webdriver.claimcenter.pages.policycreate.ClaimsCenterPolicyNewDriverPOM;
 import com.big.automation.selenium_webdriver.common.baseTest.BaseTest;
+import cucumber.api.DataTable;
 import cucumber.api.java.en.When;
+
+import java.util.List;
 
 public class createNewDriverSteps extends BaseTest {
 
@@ -142,4 +145,45 @@ public class createNewDriverSteps extends BaseTest {
     public void i_Set_Driver_Convictions(Boolean option) throws Throwable {
         policyCreateNewDriverPOM.selectConvictions5Years(option);
     }
+
+    @When("^I Create drivers with different previous claims$")
+    public void i_Create_Drivers_With_Different_Previous_Claims(DataTable dt) throws Throwable {
+        List<List<String>> list = dt.asLists(String.class);
+
+        for(int i = 1; i < list.size(); i++){ // i starts from 1 because i=0 represents the header
+            policyCreateStep3DriversPOM.createDriverNewPerson();
+            policyCreateNewDriverPOM.selectTitle("Mr.");
+            policyCreateNewDriverPOM.setFirstName(list.get(i).get(0));
+            policyCreateNewDriverPOM.setLastName("Dimmerdome");
+            policyCreateNewDriverPOM.setDateOfBirth("11021990");
+            policyCreateNewDriverPOM.selectGender("Male");
+            policyCreateNewDriverPOM.selectPrimaryOcupation("Actor");
+            policyCreateNewDriverPOM.selectMaritalStatus("Single");
+            policyCreateNewDriverPOM.selectUkResident5(true);
+            policyCreateNewDriverPOM.selectOwnHome(true);
+            policyCreateNewDriverPOM.selectRelationshipToPolicyholder("Other");
+            policyCreateNewDriverPOM.selectPrimaryPhone("Mobile");
+            policyCreateNewDriverPOM.setHomePhone("07855085749");
+            policyCreateNewDriverPOM.setWorkPhone("07855085741");
+            policyCreateNewDriverPOM.setMobilePhone("07855085748");
+            policyCreateNewDriverPOM.setPrimaryEmail("DougDimmerdome@DimmerMail.com");
+            policyCreateNewDriverPOM.setSecondaryEmail("");
+            policyCreateNewDriverPOM.selectDrivingLicenceType("Full Uk Licence");
+            policyCreateNewDriverPOM.setLicenceNumberText("111222");
+            policyCreateNewDriverPOM.selectDrivingTestPassed10YearsAgo(true);
+            policyCreateNewDriverPOM.selectAccessToOtherVehicles(false);
+            policyCreateNewDriverPOM.selectAdditionalDrivingQualifications("No");
+            policyCreateNewDriverPOM.selectMedicalConditionsAffectingYourDriving("DVLA aware - no licence restriction");
+            policyCreateNewDriverPOM.selectNonMotoringOffenses(false);
+            policyCreateNewDriverPOM.selectCancelledPolicy(false);
+            policyCreateNewDriverPOM.selectClaimsAccidentsOrLosses(true);
+            policyCreateNewDriverPOM.clickAddPreviousClaimButton();
+            policyCreateNewDriverPOM.selectPreviousClaimType(list.get(i).get(1),1);
+            policyCreateNewDriverPOM.setPreviousClaimDate(list.get(i).get(2), 1);
+            policyCreateNewDriverPOM.selectConvictions5Years(false);
+            policyCreateNewDriverPOM.clickOk();
+        }
+    }
+
+
 }

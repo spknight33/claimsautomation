@@ -49,6 +49,12 @@ public class ClaimCenterPolicySubmissionStep3DriversPOM extends BaseTest{
 	private WebElement residentYesOption;
 	@FindBy(id = "SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PMDriversScreen:PMDriversPanelSet:DriversListDetailPanel:DriverDetailsCV:PolicyContactDetailsDV:PolicyContactRoleNameInputSet:UKResident5Years_false-inputEl")
 	private WebElement residentNoOption;
+
+	@FindBy(id = "SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PMDriversScreen:PMDriversPanelSet:DriversListDetailPanel:DriverDetailsCV:PolicyContactDetailsDV:PolicyContactRoleNameInputSet:UKResidencyInputSet:ResidencyMonth-trigger-picker")
+	private WebElement residentMonthDropDown;
+	@FindBy(id = "SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PMDriversScreen:PMDriversPanelSet:DriversListDetailPanel:DriverDetailsCV:PolicyContactDetailsDV:PolicyContactRoleNameInputSet:UKResidencyInputSet:ResidencyYear-inputEl")
+	private WebElement residentYearDropDown;
+
 	@FindBy(id = "SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PMDriversScreen:PMDriversPanelSet:DriversListDetailPanel:DriverDetailsCV:PolicyContactDetailsDV:PolicyContactRoleNameInputSet:Homeowner_true-inputEl")
 	private WebElement ownHomeYesOption;
 	@FindBy(id = "SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PMDriversScreen:PMDriversPanelSet:DriversListDetailPanel:DriverDetailsCV:PolicyContactDetailsDV:PolicyContactRoleNameInputSet:Homeowner_false-inputEl")
@@ -178,6 +184,14 @@ public class ClaimCenterPolicySubmissionStep3DriversPOM extends BaseTest{
 			GuideWireAccessors.clickGWButton(driver, this.getResidentNoOption());
 		}
 		
+	}
+
+	public void setResidencyMonth(String option){
+		GuideWireAccessors.selectOptionFromGWDropDown(driver,option,this.getResidentMonthDropDown(),1);
+	}
+
+	public void setResidencyYear(String text){
+		GuideWireAccessors.setGWTextBox(driver,text,this.getResidentYearDropDown());
 	}
 	
 	public void selectOwnHome(boolean own)
@@ -447,6 +461,14 @@ public class ClaimCenterPolicySubmissionStep3DriversPOM extends BaseTest{
 	private WebElement getResidentNoOption() {
 		return residentNoOption;
 	}
+
+
+
+	public WebElement getResidentMonthDropDown() { return residentMonthDropDown; }
+
+
+
+	public WebElement getResidentYearDropDown() { return residentYearDropDown; }
 
 
 

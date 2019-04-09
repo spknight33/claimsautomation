@@ -363,7 +363,6 @@ public class ClaimCenterPolicySubmissionStep4VehiclePOM extends BaseTest{
 	}
 	
 	
-	
 
 	private WebElement getNextButton() {
 		return nextButton;

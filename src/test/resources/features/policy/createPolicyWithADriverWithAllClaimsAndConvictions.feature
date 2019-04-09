@@ -1,13 +1,13 @@
 @Ignore
-Feature: tests
+Feature: Creating a policy with a driver with 3 claims and one conviction
 
   Scenario: test policy create
     Given I use test data set "policycreate_itb1"
     Given I access PolicyCenter login page
     When I login to PolicyCenter as "su" with "gw"
     And I select the Desktop Actions Popup Menu Hierarchy "New Account"
-    And I set the policy account field "FirstName" to "Doug"
-    And I set the policy account field "LastName" to "Dimmerdome"
+    And I set the policy account field "FirstName" to "MultipleClaims"
+    And I set the policy account field "LastName" to "AndOneConviction"
     And I Click Search at account create
     And I Click create new person account
     And I set the policy create account field "Brand" to "Tesco Bank Box"
@@ -15,8 +15,8 @@ Feature: tests
     And I set the policy create account field "PrimaryPhone" to "Mobile"
     And I set the policy create account field "Mobile" to "07791438888"
     And I set the policy create account field "Email" to "sk@gmail.com"
-    And I set the policy create account field "Postcode" to "NE31PX"
-    And I set the policy create account field "PostcodeAddress" to "6 Dene Grove, Newcastle upon Tyne, Tyne and Wear, NE3 1PX"
+    And I set the policy create account field "Postcode" to "HG35NY"
+    And I set the policy create account field "PostcodeAddress" to "1 Panorama Close, Pateley Bridge, Harrogate, North Yorkshire, HG3 5NY"
     And I Click Update at create person account
     And I select the Account Actions Popup Menu Hierarchy "New Submission"
     And I select product at step1 of submission create
@@ -39,15 +39,16 @@ Feature: tests
     And I set the submission step3 field "Rehab" to "false"
     And I set the submission step3 field "Cancelled" to "false"
     And I set the submission step3 field "Claims5Years" to "true"
-    And I click the Add Claim button at submission step 3
-    And I set the Claim Type field to "Theft of Car" at submission step 3
-    And I set the Claim Date field to "11112016" at submission step 3
+    And I add multiple claims at submission step3
+      | Claims                                                       | Claim Date |
+      | Accident will be or has been settled in your favour          | 12112014   |
+      | Accident will be or has been settled in your favour          | 12112014   |
     And I set the submission step3 field "Convictions5Years" to "true"
     And I click the Add Conviction button at submission step 3
-    And I set the Conviction Date field to "11112016" at submission step 3
-    And I set the Conviction Code field to "AC12" at submission step 3
-    And I set the Conviction Points field to "6" at submission step 3
-    And I set the Conviction Months Disqualified field to "None" at submission step 3
+    And I set the Conviction Points field to "10" at submission step 3
+    And I set the Conviction Months Disqualified field to "0-6 Months" at submission step 3
+    And I set the Conviction Code field to "AC10" at submission step 3
+    And I set the Conviction Date field to "11122014" at submission step 3
     And I Click Next at submission step3
     And I Click AddVehicle at submission step4
     And I set the submission step4 field "Vrn" to "ND58HFL"
@@ -66,7 +67,7 @@ Feature: tests
     And I set the submission step4 field "Less8Seats" to "true"
     And I set the submission step4 field "ProductMiles" to "6000"
     And I set the submission step4 field "EstimateMiles" to "5000"
-    And I set the submission step4 field "VolExcess" to "225"
+    And I set the submission step4 field "VolExcess" to "1000"
     And I set the submission step4 field "Ncd" to "10+"
     And I Click AssignDriver at submission step4
     And I Click Quote at submission step4

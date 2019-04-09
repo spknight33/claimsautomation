@@ -1,16 +1,16 @@
 @Ignore
-Feature: tests
+Feature: ITB Policy Creation
 
   Scenario: test policy create
     Given I use test data set "policycreate_itb1"
     Given I access PolicyCenter login page
     When I login to PolicyCenter as "su" with "gw"
     And I select the Desktop Actions Popup Menu Hierarchy "New Account"
-    And I set the policy account field "FirstName" to "Doug"
-    And I set the policy account field "LastName" to "Dimmerdome"
+    And I set the policy account field "FirstName" to "ITB"
+    And I set the policy account field "LastName" to "Policy"
     And I Click Search at account create
     And I Click create new person account
-    And I set the policy create account field "Brand" to "Tesco Bank Box"
+    And I set the policy create account field "Brand" to "Insure The Box"
     And I set the policy create account field "AddressType" to "Garaging Address"
     And I set the policy create account field "PrimaryPhone" to "Mobile"
     And I set the policy create account field "Mobile" to "07791438888"

@@ -1,16 +1,16 @@
-@Ignore
-Feature: tests
 
-  Scenario: test policy create
+Feature: Create Policy with multiple drivers with different claims
+
+  Scenario: test policy with two drivers create
     Given I use test data set "policycreate_itb1"
     Given I access PolicyCenter login page
     When I login to PolicyCenter as "su" with "gw"
     And I select the Desktop Actions Popup Menu Hierarchy "New Account"
-    And I set the policy account field "FirstName" to "Doug"
-    And I set the policy account field "LastName" to "Dimmerdome"
+    And I set the policy account field "FirstName" to "Multiple"
+    And I set the policy account field "LastName" to "Drivers"
     And I Click Search at account create
     And I Click create new person account
-    And I set the policy create account field "Brand" to "Tesco Bank Box"
+    And I set the policy create account field "Brand" to "Insure The Box"
     And I set the policy create account field "AddressType" to "Garaging Address"
     And I set the policy create account field "PrimaryPhone" to "Mobile"
     And I set the policy create account field "Mobile" to "07791438888"
@@ -27,7 +27,9 @@ Feature: tests
     And I set the submission step3 field "Occupation" to "Accommodation Officer"
     And I set the submission step3 field "MaritalStatus" to "Single"
     And I set the submission step3 field "Gender" to "Male"
-    And I set the submission step3 field "Resident" to "true"
+    And I set the submission step3 field "Resident" to "false"
+    And I set residency month to "May" at submission step3
+    And I set residency year to "2010" at submission step3
     And I set the submission step3 field "OwnHome" to "true"
     And I set the submission step3 field "Dob" to "21/01/1990"
     And I Click Roles at submission step3
@@ -38,16 +40,17 @@ Feature: tests
     And I set the submission step3 field "Medicals" to "DVLA aware - No licence restriction"
     And I set the submission step3 field "Rehab" to "false"
     And I set the submission step3 field "Cancelled" to "false"
-    And I set the submission step3 field "Claims5Years" to "true"
-    And I click the Add Claim button at submission step 3
-    And I set the Claim Type field to "Theft of Car" at submission step 3
-    And I set the Claim Date field to "11112016" at submission step 3
-    And I set the submission step3 field "Convictions5Years" to "true"
-    And I click the Add Conviction button at submission step 3
-    And I set the Conviction Date field to "11112016" at submission step 3
-    And I set the Conviction Code field to "AC12" at submission step 3
-    And I set the Conviction Points field to "6" at submission step 3
-    And I set the Conviction Months Disqualified field to "None" at submission step 3
+    And I set the submission step3 field "Claims5Years" to "false"
+    And I set the submission step3 field "Convictions5Years" to "false"
+
+
+    And I Create drivers with different previous claims
+      | First Name | Claims                                                       | Claim Date |
+      | Against    | Accident will be or has been settled against you             | 12112014          |
+      | For        | Accident will be or has been settled in your favour          | 12112014          |
+      | Split      | Accident settlement will be or has been split beween parties | 12112014          |
+      | Fire       | Fire                                                         | 12112014          |
+
     And I Click Next at submission step3
     And I Click AddVehicle at submission step4
     And I set the submission step4 field "Vrn" to "ND58HFL"
@@ -64,11 +67,11 @@ Feature: tests
     And I set the submission step4 field "RhDrive" to "true"
     And I set the submission step4 field "Imported" to "false"
     And I set the submission step4 field "Less8Seats" to "true"
-    And I set the submission step4 field "ProductMiles" to "6000"
-    And I set the submission step4 field "EstimateMiles" to "5000"
+    And I set the submission step4 field "ProductMiles" to "8000"
+    And I set the submission step4 field "EstimateMiles" to "7900"
     And I set the submission step4 field "VolExcess" to "225"
     And I set the submission step4 field "Ncd" to "10+"
-    And I Click AssignDriver at submission step4
+    And I Click AssignDriver "5" times to assign mutiple drivers at submission step4
     And I Click Quote at submission step4
     And I Click Issue Policy at submission step5
     And I Click Confirm Issue Policy at submission step5

@@ -1,16 +1,16 @@
 @Ignore
-Feature: tests
+Feature: DGT Policy Creation
 
   Scenario: test policy create
-    Given I use test data set "policycreate_itb1"
+    Given I use test data set "policycreate_dgt1"
     Given I access PolicyCenter login page
     When I login to PolicyCenter as "su" with "gw"
     And I select the Desktop Actions Popup Menu Hierarchy "New Account"
-    And I set the policy account field "FirstName" to "Doug"
-    And I set the policy account field "LastName" to "Dimmerdome"
+    And I set the policy account field "FirstName" to "DGT"
+    And I set the policy account field "LastName" to "Policy"
     And I Click Search at account create
     And I Click create new person account
-    And I set the policy create account field "Brand" to "Tesco Bank Box"
+    And I set the policy create account field "Brand" to "Drive Like A Girl"
     And I set the policy create account field "AddressType" to "Garaging Address"
     And I set the policy create account field "PrimaryPhone" to "Mobile"
     And I set the policy create account field "Mobile" to "07791438888"
@@ -64,7 +64,7 @@ Feature: tests
     And I set the submission step4 field "RhDrive" to "true"
     And I set the submission step4 field "Imported" to "false"
     And I set the submission step4 field "Less8Seats" to "true"
-    And I set the submission step4 field "ProductMiles" to "6000"
+    And I set the submission step4 field "ProductMiles" to "7000"
     And I set the submission step4 field "EstimateMiles" to "5000"
     And I set the submission step4 field "VolExcess" to "225"
     And I set the submission step4 field "Ncd" to "10+"

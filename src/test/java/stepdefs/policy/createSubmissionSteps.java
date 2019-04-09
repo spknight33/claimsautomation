@@ -1,10 +1,13 @@
 package stepdefs.policy;
 
+import cucumber.api.DataTable;
 import org.testng.Assert;
 
 import com.big.automation.selenium_webdriver.common.baseTest.BaseTest;
 
 import cucumber.api.java.en.When;
+
+import java.util.List;
 
 public class createSubmissionSteps extends BaseTest {
 
@@ -130,6 +133,16 @@ public class createSubmissionSteps extends BaseTest {
 		default:
 			Assert.fail("unknown search field :" + fieldName + " - check cucumber script!");
 		}
+	}
+
+	@When("^I set residency month to \"([^\"]*)\" at submission step3$")
+	public void i_Set_Residency_Months(String option) throws Throwable {
+		policyCreateStep3DriversPOM.setResidencyMonth(option);
+	}
+
+	@When("^I set residency year to \"([^\"]*)\" at submission step3$")
+	public void i_Set_Residency_Year(String option) throws Throwable {
+		policyCreateStep3DriversPOM.setResidencyYear(option);
 	}
 	
 	@When("^I Click Roles at submission step3$")
@@ -271,6 +284,13 @@ public class createSubmissionSteps extends BaseTest {
 	public void i_Click_assigndriverstep4() throws Throwable {
 		policyCreateStep4VehiclePOM.selectAssignDriver();
 		}
+
+	@When("^I Click AssignDriver \"([^\"]*)\" times to assign mutiple drivers at submission step4$")
+	public void i_Click_assignmultipledriverstep4(int x) throws Throwable {
+		for(int i = 0;i<x;i++){
+			policyCreateStep4VehiclePOM.selectAssignDriver();
+		}
+	}
 	
 	@When("^I Click Next at submission step4$")
 	public void i_Click_nextstep4() throws Throwable {
@@ -288,5 +308,16 @@ public class createSubmissionSteps extends BaseTest {
 	public void i_Click_confirmissuepolictstep5() throws Throwable {
 		policyCreateStep5QuotePOM.clickConfirmIssuePolicy();
 		}
+
+	@When("^I add multiple claims at submission step3$") //Note requires convictions within past 5 years to be ticked
+	public void i_add_multiple_claims_at_submission_step3(DataTable dt) throws Throwable {
+		List<List<String>> list = dt.asLists(String.class);
+
+		for(int i = 1; i < list.size(); i++) { // i starts from 1 because i=0 represents the header
+			policyCreateStep3DriversPOM.clickAddClaims5();
+			policyCreateStep3DriversPOM.selectClaims5Type(list.get(i).get(0), i);
+			policyCreateStep3DriversPOM.setClaims5Date(list.get(i).get(1),i);
+		}
+	}
 
 }
