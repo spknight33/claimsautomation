@@ -184,7 +184,8 @@ public class CCFNOLVehicleSteps extends BaseTest {
 			fieldValue = ExcelUtil.getTestDataValue("Fnol_Step1_LossDate");
 			if (fieldValue !=null)
 				fnolVehicleDetailsPOM.setFireWhenDiscovered(fieldValue);
-			fieldValue = ExcelUtil.getTestDataValue("Fnol_PHVehicleFireWhenTime");
+			
+			fieldValue = ExcelUtil.getTestDataValue("Fnol_Step1_LossDate");
 			if (fieldValue !=null)
 				fnolVehicleDetailsPOM.setFireTimeDiscovered(fieldValue);
 			
@@ -251,13 +252,13 @@ public class CCFNOLVehicleSteps extends BaseTest {
 					fieldValue = ExcelUtil.getTestDataValue("Fnol_Step1_LossDate");
 					if (fieldValue !=null)
 						fnolVehicleDetailsPOM.setTheftLastSeenDate(fieldValue);
-					fieldValue = ExcelUtil.getTestDataValue("Fnol_PHVehicleTheftLastSeenTime");
+					fieldValue = ExcelUtil.getTestDataValue("Fnol_Step1_LossTime");
 					if (fieldValue !=null)
 						fnolVehicleDetailsPOM.setTheftLastSeenTime(fieldValue);
 					fieldValue = ExcelUtil.getTestDataValue("Fnol_Step1_LossDate");
 					if (fieldValue !=null)
 						fnolVehicleDetailsPOM.setTheftWhenDiscovered(fieldValue);
-					fieldValue = ExcelUtil.getTestDataValue("Fnol_PHVehicleTheftLossTime");
+					fieldValue = ExcelUtil.getTestDataValue("Fnol_Step1_LossTime");
 					if (fieldValue !=null)
 						fnolVehicleDetailsPOM.setTheftTimeDiscovered(fieldValue);
 					
