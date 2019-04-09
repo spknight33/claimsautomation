@@ -1,4 +1,4 @@
-
+@Ignore
 Feature: Create DGT Policy with multiple drivers with different claims
 
   Scenario: test policy with two drivers create

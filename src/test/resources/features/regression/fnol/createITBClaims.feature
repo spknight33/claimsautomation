@@ -1,26 +1,31 @@
 @Ignore
 Feature: Regression test for create claim FNOL path - ITB claims
 
+
   Scenario: FNOL Regression - Create new claim - FIRE claim
     Given I use test data set "regress_fnol_fire" for brand "ITB"
     And As a "ADClaimsHandlerTm1" I am at step5 for FNOL
     When I create a claim as part of a regression test
 
+@inprogress
   Scenario: FNOL Regression - Create new claim - THEFT claim
     Given I use test data set "regress_fnol_theft" for brand "ITB"
     And As a "ADClaimsHandlerTm1" I am at step5 for FNOL
     When I create a claim as part of a regression test
 
+@inprogress
   Scenario: FNOL Regression - Create new claim - GLASS REPAIR claim
     Given I use test data set "regress_fnol_glass_repair" for brand "ITB"
     And As a "ADClaimsHandlerTm1" I am at step5 for FNOL
     When I create a claim as part of a regression test
 
+@inprogress
   Scenario: FNOL Regression - Create new claim - GLASS REPLACE claim
     Given I use test data set "regress_fnol_glass_replace" for brand "ITB"
     And As a "ADClaimsHandlerTm1" I am at step5 for FNOL
     When I create a claim as part of a regression test
 
+@inprogress
   Scenario: FNOL Regression - Create new claim - MISFUELLING claim
     Given I use test data set "regress_fnol_misfuelling" for brand "ITB"
     And As a "ADClaimsHandlerTm1" I am at step5 for FNOL
@@ -36,11 +41,13 @@ Feature: Regression test for create claim FNOL path - ITB claims
     And As a "ADClaimsHandlerTm1" I am at step5 for FNOL
     When I create a claim as part of a regression test
 
+@inprogress
   Scenario: FNOL Regression - Create new claim - PROPERTY only
     Given I use test data set "regress_fnol_propertyonly" for brand "ITB"
     And As a "ADClaimsHandlerTm1" I am at step5 for FNOL
     When I create a claim as part of a regression test
 
+@inprogress
   Scenario: FNOL Regression - Create new claim - CYCLIST only
     Given I use test data set "regress_fnol_cyclistonly" for brand "ITB"
     And As a "ADClaimsHandlerTm1" I am at step5 for FNOL

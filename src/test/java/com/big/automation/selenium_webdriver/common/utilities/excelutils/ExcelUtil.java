@@ -145,6 +145,7 @@ public class ExcelUtil {
 		String value12 = "";
 		String value13 = "";
 		String value14 = "";
+		String value15 = "";
 		
 		testDataMap = new HashMap<>(); // reset the map - we are going to add some data to it here
 		
@@ -167,6 +168,7 @@ public class ExcelUtil {
 		XSSFCell valueCell12 = null;
 		XSSFCell valueCell13 = null;
 		XSSFCell valueCell14 = null;
+		XSSFCell valueCell15 = null;
 	
 		
 		int rows = policySheet.getLastRowNum() + 1;
@@ -191,6 +193,7 @@ public class ExcelUtil {
 			value12 = null;
 			value13 = null;
 			value14 = null;
+			value15 = null;
 			
 			row = policySheet.getRow(i);
 
@@ -210,6 +213,7 @@ public class ExcelUtil {
 				valueCell12 = row.getCell(12);
 				valueCell13 = row.getCell(13);
 				valueCell14 = row.getCell(14);
+				valueCell15 = row.getCell(15);
 				
 			}
 
@@ -243,6 +247,8 @@ public class ExcelUtil {
 				value13 = dataFormatter.formatCellValue(valueCell13, formulaeval);
 			if (valueCell14 != null) 
 				value14 = dataFormatter.formatCellValue(valueCell14, formulaeval);
+			if (valueCell15 != null) 
+				value15 = dataFormatter.formatCellValue(valueCell15, formulaeval);
 			
 			if (key!=null && !key.isEmpty() && value1 != null && !value1.isEmpty()) {
 				    // check if devortest field
@@ -309,9 +315,22 @@ public class ExcelUtil {
 				    			    value14 = new SimpleDateFormat("dd/MM/yyyy").format(cal.getTime());
 				    			    System.out.println("Using todays date as loss date");
 				    			}
+				    			if (value15 ==null || value15.isEmpty())
+				    			{
+				    				// not in sheet so use todays date
+				    				
+				    				Calendar cal = Calendar.getInstance();
+				    			    cal.setTime(new Date());
+				    			    cal.add(Calendar.HOUR, -1); 
+				    			    //TODO change whne server time changed
+				    			    value15 = new SimpleDateFormat("HH:mm").format(cal.getTime());
+				    			    System.out.println("Using todays date as loss time");
+				    			}
 				    			
 				    			testDataMap.put("Fnol_Step1_LossDate", value14.trim());
 				    			System.out.println("entry added to map for Fnol_Step1_LossDate:"+value14);
+				    			testDataMap.put("Fnol_Step1_LossTime", value15.trim());
+				    			System.out.println("entry added to map for Fnol_Step1_LossTime:"+value15);
 				    			break;
 				    		}
 						}
