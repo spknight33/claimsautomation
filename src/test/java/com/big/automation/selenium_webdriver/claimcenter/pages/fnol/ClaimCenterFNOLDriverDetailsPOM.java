@@ -106,6 +106,17 @@ public class ClaimCenterFNOLDriverDetailsPOM extends BaseTest{
 	private WebElement indemnityLicenseTypeDropdown;
 	@FindBy(id = "FNOLContactPopup:FNOLContactScreen:ContactDV:DriverIndemnityQuestionsInputSet:ClaimHowLongHasLicence-inputEl")
 	private WebElement indemnityLicenseLengthDropdown;
+	
+	@FindBy(id = "FNOLContactPopup:FNOLContactScreen:ContactDV:DriverIndemnityQuestionsInputSet:UKResident_true-inputEl")
+	private WebElement resident5YearsYesOption;
+	@FindBy(id = "FNOLContactPopup:FNOLContactScreen:ContactDV:DriverIndemnityQuestionsInputSet:UKResident_false-inputEl")
+	private WebElement resident5YearsNoOption;
+	@FindBy(id = "FNOLContactPopup:FNOLContactScreen:ContactDV:DriverIndemnityQuestionsInputSet:UKResidencyInputSet:ResidencyMonth-inputEl")
+	private WebElement residentSinceMonthDropdown;
+	@FindBy(id = "FNOLContactPopup:FNOLContactScreen:ContactDV:DriverIndemnityQuestionsInputSet:UKResidencyInputSet:ResidencyYear-inputEl")
+	private WebElement residentSinceYear;
+	
+		
 	@FindBy(id = "FNOLContactPopup:FNOLContactScreen:ContactDV:DriverIndemnityQuestionsInputSet:ClaimMedicalConditions-inputEl")
 	private WebElement indemnityMedicalDropdown;
 	@FindBy(id = "FNOLContactPopup:FNOLContactScreen:ContactDV:DriverIndemnityQuestionsInputSet:ClaimMedicalDetails-inputEl")
@@ -403,6 +414,35 @@ public class ClaimCenterFNOLDriverDetailsPOM extends BaseTest{
 		GuideWireAccessors.selectOptionFromGWDropDown(driver, option, this.getIndemnityLicenseLengthDropdown(), 1);
 		
 	}
+	
+	public void selectResidentOver5Years(boolean resident)
+	{
+		logger.info(format("%s -  going to set offence in 5 years"+resident, getName()));
+		
+		if (resident)
+		{
+		GuideWireAccessors.clickGWButton(driver, this.getResident5YearsYesOption());
+		}
+		else
+		{
+			GuideWireAccessors.clickGWButton(driver, this.getResident5YearsNoOption());
+		}
+		
+	}
+	
+	public void selectResidentSinceMonth(String option)
+	{
+		logger.info(format("%s -  going to select resident since month:"+option, getName()));
+		GuideWireAccessors.selectOptionFromGWDropDown(driver, option, this.getResidentSinceMonthDropdown(), 1);
+	}
+	public void setResidentSinceYear(String text)
+	{
+		logger.info(format("%s -  going to set resident since year:"+text, getName()));
+		GuideWireAccessors.setGWTextBox(driver, text, this.getResidentSinceYear());
+		
+	}
+	
+	
 	public void selectMedicalConditions(String option)
 	{
 		logger.info(format("%s -  going to select medical conditions:"+option, getName()));
@@ -499,6 +539,8 @@ public class ClaimCenterFNOLDriverDetailsPOM extends BaseTest{
 			String locator = "//*[@id=\"FNOLContactPopup:FNOLContactScreen:ContactDV:DriverIndemnityQuestionsInputSet:ClaimMotorConvictions:MotorConvictionsLV-body\"]//table[" + sequence + "]//tr/td[3]/div";
 			WebElement element = driver.findElement(By.xpath(locator));
 			GuideWireAccessors.selectOptionFromGWDropDown(driver, option, element, 1);
+			//need detal
+			sleep(2);
 			
 		}
 	 public void setOffence5YearsPoints(String text, int sequence)
@@ -915,6 +957,22 @@ public class ClaimCenterFNOLDriverDetailsPOM extends BaseTest{
 
 	private WebElement getIndemnityOffenceLast5AddButton() {
 		return indemnityOffenceLast5AddButton;
+	}
+
+	private WebElement getResident5YearsYesOption() {
+		return resident5YearsYesOption;
+	}
+
+	private WebElement getResident5YearsNoOption() {
+		return resident5YearsNoOption;
+	}
+
+	private WebElement getResidentSinceMonthDropdown() {
+		return residentSinceMonthDropdown;
+	}
+
+	private WebElement getResidentSinceYear() {
+		return residentSinceYear;
 	}
 
 	
