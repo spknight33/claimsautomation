@@ -320,6 +320,53 @@ public class ClaimsCenterPolicyNewDriverPOM extends BaseTest {
             GuideWireAccessors.clickGWButton(driver,getConvictions5YearsNoRadio());
         }
     }
+    
+    public void clickAddConvict5()
+	{
+		logger.info(format("%s -  going to click add Claims in 5 years", getName()));
+		GuideWireAccessors.clickGWButton(driver, this.getConvictions5YearsAddButton());
+
+	}
+
+	public void setConvict5Date(String text, int sequence)
+	{
+
+		String locator = "//*[@id=\"NewPMPolicyDriver_itbPopup:ContactDetailScreen:PMPolicyDriverInfoPanelSet:driverConvictions:PMConvictionsLV-body\"]//table[" + sequence + "]//tr/td[2]/div";
+		//WebElement element = driver.findElement(By.xpath(locator));
+		String inputLocator = "//*[@id=\"NewPMPolicyDriver_itbPopup:ContactDetailScreen:PMPolicyDriverInfoPanelSet:driverConvictions:PMConvictionsLV-body\"]//input[starts-with(@id,'datefield-')]";
+
+		GuideWireAccessors.setGWTextBoxInTable(driver, text, locator, inputLocator);
+
+	}
+
+	public void selectConvict5Code(String option, int sequence)
+	{
+
+		String locator = "//*[@id=\"NewPMPolicyDriver_itbPopup:ContactDetailScreen:PMPolicyDriverInfoPanelSet:driverConvictions:PMConvictionsLV-body\"]//table[" + sequence + "]//tr/td[3]/div";
+		WebElement element = driver.findElement(By.xpath(locator));
+		GuideWireAccessors.selectOptionFromGWDropDown(driver, option, element, 1);
+
+	}
+
+	public void setConvict5Points(String text, int sequence)
+	{
+
+		String locator = "//*[@id=\"NewPMPolicyDriver_itbPopup:ContactDetailScreen:PMPolicyDriverInfoPanelSet:driverConvictions:PMConvictionsLV-body\"]//table[" + sequence + "]//tr/td[4]/div";
+
+		String inputLocator = "//*[@id=\"NewPMPolicyDriver_itbPopup:ContactDetailScreen:PMPolicyDriverInfoPanelSet:driverConvictions:PMConvictionsLV-body\"]//input[starts-with(@id,'textfield-')]";
+
+		GuideWireAccessors.setGWTextBoxInTable(driver, text, locator, inputLocator);
+
+	}
+
+	public void selectConvict5MonthsDisqualified(String option, int sequence)
+	{
+
+		String locator = "//*[@id=\"NewPMPolicyDriver_itbPopup:ContactDetailScreen:PMPolicyDriverInfoPanelSet:driverConvictions:PMConvictionsLV-body\"]//table[" + sequence + "]//tr/td[5]/div";
+		WebElement element = driver.findElement(By.xpath(locator));
+		GuideWireAccessors.selectOptionFromGWDropDown(driver, option, element, 1);
+
+	}
 
     //
     //Getters

@@ -284,6 +284,11 @@ public class createSubmissionSteps extends BaseTest {
 	public void i_Click_assigndriverstep4() throws Throwable {
 		policyCreateStep4VehiclePOM.selectAssignDriver();
 		}
+	
+	@When("^I Click AssignDriver who is not main driver at submission step4$")
+	public void i_Click_assigndrivernotmainstep4() throws Throwable {
+		policyCreateStep4VehiclePOM.selectOnlyAssignDriver();
+		}
 
 	@When("^I Click AssignDriver \"([^\"]*)\" times to assign mutiple drivers at submission step4$")
 	public void i_Click_assignmultipledriverstep4(int x) throws Throwable {
@@ -317,6 +322,19 @@ public class createSubmissionSteps extends BaseTest {
 			policyCreateStep3DriversPOM.clickAddClaims5();
 			policyCreateStep3DriversPOM.selectClaims5Type(list.get(i).get(0), i);
 			policyCreateStep3DriversPOM.setClaims5Date(list.get(i).get(1),i);
+		}
+	}
+	
+	@When("^I add multiple convictions at submission step3$")
+	public void i_add_multiple_convictions_at_submission_step3(DataTable dt) throws Throwable {
+		List<List<String>> list = dt.asLists(String.class);
+
+		for(int i = 1; i < list.size(); i++) { // i starts from 1 because i=0 represents the header
+			policyCreateStep3DriversPOM.clickAddConvict5();
+			policyCreateStep3DriversPOM.setConvict5Points(list.get(i).get(0), i);
+			policyCreateStep3DriversPOM.selectConvict5MonthsDisqualified(list.get(i).get(1),i);
+			policyCreateStep3DriversPOM.selectConvict5Code(list.get(i).get(2),i);
+			policyCreateStep3DriversPOM.setConvict5Date(list.get(i).get(3), i);
 		}
 	}
 
