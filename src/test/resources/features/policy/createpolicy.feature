@@ -1,4 +1,4 @@
-@Ignore 
+@Ignore
 Feature: tests
 
   Scenario: test policy create
@@ -6,7 +6,7 @@ Feature: tests
     Given I access PolicyCenter login page
     When I login to PolicyCenter as "su" with "gw"
     And I select the Desktop Actions Popup Menu Hierarchy "New Account"
-    And I set the policy account field "FirstName" to "Doug"
+    And I set the policy account field "FirstName" to "The Dougiest Doug"
     And I set the policy account field "LastName" to "Dimmerdome"
     And I Click Search at account create
     And I Click create new person account

@@ -1,4 +1,4 @@
-@Ignore
+
 Feature: Create Policy with two drivers
 
   Scenario: test policy with two drivers create
@@ -6,8 +6,8 @@ Feature: Create Policy with two drivers
     Given I access PolicyCenter login page
     When I login to PolicyCenter as "su" with "gw"
     And I select the Desktop Actions Popup Menu Hierarchy "New Account"
-    And I set the policy account field "FirstName" to "Doug"
-    And I set the policy account field "LastName" to "Dimmerdome"
+    And I set the policy account field "FirstName" to "Two"
+    And I set the policy account field "LastName" to "DriversPolicy"
     And I Click Search at account create
     And I Click create new person account
     And I set the policy create account field "Brand" to "Insure The Box"
