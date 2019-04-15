@@ -1,4 +1,4 @@
-@Ignore 
+@Ignore @inprogress
 Feature: Check that main components of the claim system are present when viewing an existing claim
 
   Background: 
@@ -7,7 +7,7 @@ Feature: Check that main components of the claim system are present when viewing
   Scenario Outline: Check All Navigator sections for roles
     Given I access ClaimCenter login page
     And I login to ClaimCenter as role "<role>"
-    And I Select existing Claim "300000008"
+    And I Select existing Claim "300000112"
     And I select "Overview" submenu for "Summary" on the Claim Navigator
     And I will see post FNOL summary details
     And I select "Status" submenu for "Summary" on the Claim Navigator
@@ -55,22 +55,25 @@ Feature: Check that main components of the claim system are present when viewing
     And I will see post FNOL Financials Transactions screen
     
     And I select "Notes" on the Claim Navigator
-   # todo
-   And I select "Documents" on the Claim Navigator
-   #todo
+    And I will see post FNOL Notes screen
+ 
+    And I select "Documents" on the Claim Navigator
+    And I will see post FNOL Documents screen
     
     
     And I select "Evaluations" submenu for "Plan of Action" on the Claim Navigator
+    #todo
     And I select "Negotiations" submenu for "Plan of Action" on the Claim Navigator
+    #todo
     
      And I select "Services" on the Claim Navigator
-     #todo
+     And I will see post FNOL Services screen
      
      And I select "Litigation" on the Claim Navigator
-     #todo
+     And I will see post FNOL Litigation screen
      
      And I select "History" on the Claim Navigator
-     #todo
+     And I will see post FNOL History screen
     
     And I select "Loss Details" submenu for "FNOL Snapshot" on the Claim Navigator
     And I select "Exposures" submenu for "FNOL Snapshot" on the Claim Navigator

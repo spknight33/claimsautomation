@@ -140,11 +140,35 @@ public class createNewDriverSteps extends BaseTest {
     public void i_Set_Driver_Other_Claims(Boolean option) throws Throwable {
         policyCreateNewDriverPOM.selectClaimsAccidentsOrLosses(option);
     }
+    
+    @When("^I add multiple claims at new driver creation$") 
+	public void i_add_multiple_claims_at_new_driver(DataTable dt) throws Throwable {
+		List<List<String>> list = dt.asLists(String.class);
+
+		for(int i = 1; i < list.size(); i++) { // i starts from 1 because i=0 represents the header
+			policyCreateNewDriverPOM.clickAddPreviousClaimButton();
+			policyCreateNewDriverPOM.selectPreviousClaimType(list.get(i).get(0), i);
+			policyCreateNewDriverPOM.setPreviousClaimDate(list.get(i).get(1),i);
+		}
+	}
 
     @When("^I set the Driver Convictions field to \"([^\"]*)\" at new driver creation$")
     public void i_Set_Driver_Convictions(Boolean option) throws Throwable {
         policyCreateNewDriverPOM.selectConvictions5Years(option);
     }
+    
+    @When("^I add multiple convictions at new driver creation$")
+	public void i_add_multiple_convictions_at_newderiver(DataTable dt) throws Throwable {
+		List<List<String>> list = dt.asLists(String.class);
+
+		for(int i = 1; i < list.size(); i++) { // i starts from 1 because i=0 represents the header
+			policyCreateNewDriverPOM.clickAddConvict5();
+			policyCreateNewDriverPOM.setConvict5Points(list.get(i).get(0), i);
+			policyCreateNewDriverPOM.selectConvict5MonthsDisqualified(list.get(i).get(1),i);
+			policyCreateNewDriverPOM.selectConvict5Code(list.get(i).get(2),i);
+			policyCreateNewDriverPOM.setConvict5Date(list.get(i).get(3), i);
+		}
+	}
 
     @When("^I Create drivers with different previous claims$")
     public void i_Create_Drivers_With_Different_Previous_Claims(DataTable dt) throws Throwable {

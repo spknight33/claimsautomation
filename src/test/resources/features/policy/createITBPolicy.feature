@@ -1,10 +1,10 @@
-@Ignore
-Feature: ITB Policy Creation
+@Ignore 
+Feature: ITB Policy Creation - Single Driver 
 
-  Scenario: test policy create
+  Scenario: test policy create - single driver
     Given I use test data set "policycreate_itb1"
     Given I access PolicyCenter login page
-    When I login to PolicyCenter as "su" with "gw"
+    When I login to PolicyCenter as "tu1" with "Password1"
     And I select the Desktop Actions Popup Menu Hierarchy "New Account"
     And I set the policy account field "FirstName" to "Steve"
     And I set the policy account field "LastName" to "Knight-itb1"
@@ -14,7 +14,7 @@ Feature: ITB Policy Creation
     And I set the policy create account field "AddressType" to "Garaging Address"
     And I set the policy create account field "PrimaryPhone" to "Mobile"
     And I set the policy create account field "Mobile" to "07791438888"
-    And I set the policy create account field "Email" to "sk@gmail.com"
+    And I set the policy create account field "Email" to "skitb@gmail.com"
     And I set the policy create account field "Postcode" to "NE31PX"
     And I set the policy create account field "PostcodeAddress" to "6 Dene Grove, Newcastle upon Tyne, Tyne and Wear, NE3 1PX"
     And I Click Update at create person account

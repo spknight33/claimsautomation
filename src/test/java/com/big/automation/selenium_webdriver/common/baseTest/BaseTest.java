@@ -108,6 +108,7 @@ import com.big.automation.selenium_webdriver.claimcenter.pages.postfnol.lossdeta
 import com.big.automation.selenium_webdriver.claimcenter.pages.postfnol.lossdetails.liability.ClaimCenterPOSTFNOLLossDetailsLiabilityPOM;
 import com.big.automation.selenium_webdriver.claimcenter.pages.postfnol.lossdetails.siu.ClaimCenterPOSTFNOLLossDetailsSIUPOM;
 import com.big.automation.selenium_webdriver.claimcenter.pages.postfnol.notes.ClaimCenterPOSTFNOLNewNotePOM;
+import com.big.automation.selenium_webdriver.claimcenter.pages.postfnol.notes.ClaimCenterPOSTFNOLNotesPOM;
 import com.big.automation.selenium_webdriver.claimcenter.pages.postfnol.parties.ClaimCenterPOSTFNOLPartiesInvolvedPOM;
 import com.big.automation.selenium_webdriver.claimcenter.pages.postfnol.parties.ClaimCenterPOSTFNOLPartiesInvolvedUsersPOM;
 import com.big.automation.selenium_webdriver.claimcenter.pages.postfnol.policy.ClaimCenterPOSTFNOLPolicyGeneralPOM;
@@ -259,6 +260,8 @@ public class BaseTest extends AbstractTestNGCucumberTests {
 	// POST FNOL notes pages
 	// -----------------------
 	public static ClaimCenterPOSTFNOLNewNotePOM postFnolNewNotePOM;
+	public static ClaimCenterPOSTFNOLNotesPOM postFnolNotesPOM;
+	
 
 	// POST FNOL Policy pages
 	// -----------------------
@@ -487,6 +490,8 @@ public class BaseTest extends AbstractTestNGCucumberTests {
 		postFnolWorkplanPOM = PageFactory.initElements(driver, ClaimCenterPOSTFNOLWorkplanPOM.class);
 		postFnolNewActivityPOM = PageFactory.initElements(driver, ClaimCenterPOSTFNOLNewActivityPOM.class);
 		postFnolNewNotePOM = PageFactory.initElements(driver, ClaimCenterPOSTFNOLNewNotePOM.class);
+		postFnolNotesPOM = PageFactory.initElements(driver, ClaimCenterPOSTFNOLNotesPOM.class);
+		
 
 		// services
 		postFnolServicesPOM = PageFactory.initElements(driver, ClaimCenterPOSTFNOLServicesPOM.class);

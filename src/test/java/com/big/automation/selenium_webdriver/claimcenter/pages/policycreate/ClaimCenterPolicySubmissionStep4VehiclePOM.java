@@ -362,6 +362,14 @@ public class ClaimCenterPolicySubmissionStep4VehiclePOM extends BaseTest{
 		actions.build().perform();
 	}
 	
+	public void selectOnlyAssignDriver()
+	{
+		GuideWireAccessors.selectOptionFromGWPicker(driver, this.getAssignDriverButton(), this.getAddDriverNameLink());
+		sleep(2);
+		
+		// dont make main driver, just assign
+	}
+	
 	
 
 	private WebElement getNextButton() {

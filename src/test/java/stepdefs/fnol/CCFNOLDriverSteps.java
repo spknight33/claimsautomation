@@ -147,6 +147,24 @@ public class CCFNOLDriverSteps extends BaseTest {
 		if (fieldValue !=null)
 		     fnolDriverDetailsPOM.selectLicenseLength(fieldValue);
 		
+		fieldValue = ExcelUtil.getTestDataValue("Fnol_PHDriverResidentOver5years");
+		if (fieldValue !=null)
+		{
+			if (fieldValue.equalsIgnoreCase("TRUE"))
+			{
+				fnolDriverDetailsPOM.selectResidentOver5Years(true);
+			}
+			else
+			{
+				fnolDriverDetailsPOM.selectResidentOver5Years(false);
+				fieldValue = ExcelUtil.getTestDataValue("Fnol_PHDriverResidentSinceMonth");
+				fnolDriverDetailsPOM.selectResidentSinceMonth(fieldValue);
+		
+				fieldValue = ExcelUtil.getTestDataValue("Fnol_PHDriverResidentSinceYear");
+				fnolDriverDetailsPOM.setResidentSinceYear(fieldValue);
+			}
+		}
+		
 		fieldValue = ExcelUtil.getTestDataValue("Fnol_PHDriverMedicalConditions");
 		if (fieldValue !=null)
 		{

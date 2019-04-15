@@ -1,13 +1,13 @@
+@Ignore 
+Feature: Create ITB Policy with two drivers
 
-Feature: Create Policy with two drivers
-
-  Scenario: test policy with two drivers create
+  Scenario: test policy with two ITB drivers create
     Given I use test data set "policycreate_itb1"
     Given I access PolicyCenter login page
-    When I login to PolicyCenter as "su" with "gw"
+    When I login to PolicyCenter as "tu1" with "Password1"
     And I select the Desktop Actions Popup Menu Hierarchy "New Account"
-    And I set the policy account field "FirstName" to "Two"
-    And I set the policy account field "LastName" to "DriversPolicy"
+    And I set the policy account field "FirstName" to "Steve"
+    And I set the policy account field "LastName" to "Knight-itb1TwoDrivers"
     And I Click Search at account create
     And I Click create new person account
     And I set the policy create account field "Brand" to "Insure The Box"
@@ -38,14 +38,20 @@ Feature: Create Policy with two drivers
     And I set the submission step3 field "Medicals" to "DVLA aware - No licence restriction"
     And I set the submission step3 field "Rehab" to "false"
     And I set the submission step3 field "Cancelled" to "false"
-    And I set the submission step3 field "Claims5Years" to "false"
-    And I set the submission step3 field "Convictions5Years" to "false"
-
+    And I set the submission step3 field "Claims5Years" to "true"
+    And I add multiple claims at submission step3
+      | Claims                                           | Claim Date |
+      | Accident will be or has been settled against you |   12112014 |
+      | Accident will be or has been settled against you |   12112015 |
+    And I set the submission step3 field "Convictions5Years" to "true"
+    And I add multiple convictions at submission step3
+      | points | disqualified | code | date     |
+      |     10 | 0-6 Months   | AC10 | 11122014 |
     And I create New Person for a new Driver at submission step3
-    And I set the Driver First Name field to "Doug" at new driver creation
+    And I set the Driver First Name field to "Mary" at new driver creation
     And I set the Driver DOB field to "11121990" at new driver creation
-    And I set the Driver Title field to "Mr." at new driver creation
-    And I set the Driver Last Name field to "DimmerDizzle" at new driver creation
+    And I set the Driver Title field to "Mrs." at new driver creation
+    And I set the Driver Last Name field to "NamedDriver1" at new driver creation
     And I set the Driver Gender field to "Female" at new driver creation
     And I set the Driver Primary Occupation field to "Actor" at new driver creation
     And I set the Driver Marital Status field to "Single" at new driver creation
@@ -56,8 +62,8 @@ Feature: Create Policy with two drivers
     And I set the Driver Home Phone field to "07877676767" at new driver creation
     And I set the Driver Work Phone field to "07866565656" at new driver creation
     And I set the Driver Mobile Phone field to "07866565656" at new driver creation
-    And I set the Driver Primary Email field to "dimmerdome@dimmerD.com" at new driver creation
-    And I set the Driver Secondary Email field to "dimmerDizzyD@dimmerD.com" at new driver creation
+    And I set the Driver Primary Email field to "nameddriver1@gmail.com" at new driver creation
+    And I set the Driver Secondary Email field to "named@gmail.com" at new driver creation
     And I set the Driver License Type field to "Full Uk Licence" at new driver creation
     And I set the Driver License Number field to "11121112" at new driver creation
     And I set the Driver passed Driving test over 10 years ago field to "True" at new driver creation
@@ -66,10 +72,15 @@ Feature: Create Policy with two drivers
     And I set the Driver Medical Conditions field to "DVLA aware - no licence restriction" at new driver creation
     And I set the Driver Non Motoring Offences field to "false" at new driver creation
     And I set the Driver Policy Cancelled field to "false" at new driver creation
-    And I set the Driver Other Claims field to "false" at new driver creation
-    And I set the Driver Convictions field to "false" at new driver creation
+    And I set the Driver Other Claims field to "true" at new driver creation
+    And I add multiple claims at new driver creation
+      | Claims                                           | Claim Date |
+      | Accident will be or has been settled against you |   12112016 |
+    And I set the Driver Convictions field to "true" at new driver creation
+    And I add multiple convictions at new driver creation
+      | points | disqualified | code | date     |
+      |     10 | 0-6 Months   | AC10 | 11122015 |
     And I Click Ok at new driver creation
-
     And I Click Next at submission step3
     And I Click AddVehicle at submission step4
     And I set the submission step4 field "Vrn" to "ND58HFL"
@@ -91,7 +102,7 @@ Feature: Create Policy with two drivers
     And I set the submission step4 field "VolExcess" to "225"
     And I set the submission step4 field "Ncd" to "10+"
     And I Click AssignDriver at submission step4
-    And I Click AssignDriver at submission step4
+    And I Click AssignDriver who is not main driver at submission step4
     And I Click Quote at submission step4
     And I Click Issue Policy at submission step5
     And I Click Confirm Issue Policy at submission step5

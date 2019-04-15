@@ -70,6 +70,11 @@ Feature: Regression test for create claim FNOL path - TBB claims
     Given I use test data set "regress_fnol_accident_fault" for brand "TBB"
     And As a "ADClaimsHandlerTm1" I am at step5 for FNOL
     When I create a claim as part of a regression test
+    
+          Scenario: FNOL Regression - Create new claim - ACCIDENT (CREDITHIRE)
+    Given I use test data set "regress_fnol_accident_credhire" for brand "TBB"
+    And As a "ADClaimsHandlerTm1" I am at step5 for FNOL
+    When I create a claim as part of a regression test
 
   Scenario: FNOL Regression - Create new claim - ACCIDENT (FAULT- NAMED DRIVER)
     Given I use test data set "regress_fnol_accident_namedriv" for brand "TBB"
