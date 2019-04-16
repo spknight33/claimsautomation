@@ -197,10 +197,10 @@ public class ClaimCenterPOSTFNOLEditVehicleDetailsPOM extends BaseTest{
 	private WebElement lastDriverNewPersonPicker;
 	
 	//TODO the rest
-	@FindBy(id = "FNOLVehicleIncidentPopup:FNOLVehicleIncidentScreen:VehicleTheftQuestionsInputSet:NumberOfSetsOfKeysProvided-inputEl")
+	@FindBy(id = "EditVehicleIncidentPopup:EditVehicleIncidentScreen:PostFNOLVehicleIncidentDV:VehicleTheftQuestionsInputSet:NumberOfSetsOfKeysProvided-inputEl")
 	private WebElement purchaseKeysDropdown;
 	
-	@FindBy(id = "FNOLVehicleIncidentPopup:FNOLVehicleIncidentScreen:VehicleTheftQuestionsInputSet:NumberOfSetsOfKeysInPossesion-inputEl")
+	@FindBy(id = "EditVehicleIncidentPopup:EditVehicleIncidentScreen:PostFNOLVehicleIncidentDV:VehicleTheftQuestionsInputSet:NumberOfSetsOfKeysInPossesion-inputEl")
 	private WebElement possessedKeysDropdown;
 	
 	

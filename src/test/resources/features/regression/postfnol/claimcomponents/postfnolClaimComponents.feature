@@ -1,5 +1,5 @@
-@Ignore @inprogress
-Feature: Check that main components of the claim system are present when viewing an existing claim
+@Ignore
+Feature: Check that main components of the claim system are present when viewing an existing claim - for each user type
 
   Background: 
     Given I use test data set "postfnol_set1"
@@ -86,22 +86,22 @@ Feature: Check that main components of the claim system are present when viewing
     Examples: 
       | role                    |
       | ADClaimsHandlerTm1      |
-    #  | ADClaimsHandlerTm2      |
-   #   | ClaimsSupportHandlerTm1 |
-   #   | ClaimsSupportHandlerTm2 |
-  #    | PIClaimsHandlerTm1      |
-  #    | PIClaimsHandlerTm2      |
-  #    | CHClaimsHandlerTm1      |
-   #   | TPCClaimsHandlerTm1     |
-  #    | TPDClaimsHandlerTm1     |
-   #   | SIUUserTm1              |
-  #    | ADTeamManagerTm1        |
-  #    | ADTeamManagerTm2        |
-  #    | CSTeamManagerTm1        |
-  #    | CSTeamManagerTm2        |
-  #    | TPCTeamManagerTm1       |
-  #    | TPDTeamManagerTm1       |
-  ##    | CHTeamManagerTm1        |
-   #   | PITeamManagerTm1        |
-   #   | PITeamManagerTm2        |
-   #   | SIUManagerTm1           |
+      | ADClaimsHandlerTm2      |
+      | ClaimsSupportHandlerTm1 |
+      | ClaimsSupportHandlerTm2 |
+      | PIClaimsHandlerTm1      |
+      | PIClaimsHandlerTm2      |
+      | CHClaimsHandlerTm1      |
+      | TPCClaimsHandlerTm1     |
+      | TPDClaimsHandlerTm1     |
+      | SIUUserTm1              |
+      | ADTeamManagerTm1        |
+      | ADTeamManagerTm2        |
+      | CSTeamManagerTm1        |
+      | CSTeamManagerTm2        |
+      | TPCTeamManagerTm1       |
+      | TPDTeamManagerTm1       |
+      | CHTeamManagerTm1        |
+      | PITeamManagerTm1        |
+      | PITeamManagerTm2        |
+      | SIUManagerTm1           |

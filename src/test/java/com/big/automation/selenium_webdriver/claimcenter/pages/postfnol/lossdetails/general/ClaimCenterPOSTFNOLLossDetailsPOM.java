@@ -79,13 +79,13 @@ public class ClaimCenterPOSTFNOLLossDetailsPOM extends BaseTest {
 
 	// VEHICLE, PREDESTRIANS AND PROPERTY
 	// ----------------------------------------
-	@FindBy(id = "ClaimLossDetails:ClaimLossDetailsScreen:AddVehicleButton")
+	@FindBy(id = "ClaimLossDetails:ClaimLossDetailsScreen:IncidentPanelRef:IncidentPanelSet_tb:AddVehicleButton")
 	private WebElement addVehicleButton;
 
-	@FindBy(id = "ClaimLossDetails:ClaimLossDetailsScreen:AddPedestrianButton")
+	@FindBy(id = "ClaimLossDetails:ClaimLossDetailsScreen:IncidentPanelRef:IncidentPanelSet_tb:AddPedestrianButton")
 	private WebElement addPedestrianButton;
 
-	@FindBy(id = "ClaimLossDetails:ClaimLossDetailsScreen:AddPropertyDamageButton")
+	@FindBy(id = "ClaimLossDetails:ClaimLossDetailsScreen:IncidentPanelRef:IncidentPanelSet_tb:AddPropertyDamageButton")
 	private WebElement addPropertyDamageButton;
 
 	// VEHICLE edit dropdowns

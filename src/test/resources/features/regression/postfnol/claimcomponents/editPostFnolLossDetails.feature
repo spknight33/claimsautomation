@@ -1,63 +1,46 @@
 @Ignore
-Feature: CBPCL-216 As a ClaimCenter user with the role of Adjuster or Manager,
-  I want to be able update the details on the loss so that I can make sure that the data on the claim represents our current understanding of the loss.
+Feature: POST FNOL REGRESSION - various test of the Loss Details pages
+
 
   Background: 
     Given I use test data set "postfnol_set1"
     And I access ClaimCenter login page
     And I login to ClaimCenter as role "ADClaimsHandlerTm1"
-
-
-  Scenario: CBPCL-47 TC11 Police details can be added in Loss Details of post FNOL
     And I Select existing Claim "300000143"
     And I select "Loss Details" on the Claim Navigator
     And I will see post FNOL loss details
-    When I click edit button on post FNOL loss details
-    When I click add Police details on post FNOL loss details
-    Then I will be on new police details screen for post FNOL
-    And I complete fields on post FNOL new police details screen
-    And I click update button on post FNOL loss details
 
- @Ignore
-  Scenario: CBPCL-216 TC1 ClaimsHandler can edit fields in Loss Details screen post FNOL
-    And I Select an existing Claim
-    And I select "Loss Details" on the Claim Navigator
-    And I will see post FNOL loss details
-    When I click edit button on post FNOL loss details
-    Then I change data in the Loss Details screen post FNOL
-    
+
+  Scenario: LOSS DETAILS POST FNOL Regression TC1 ClaimsHandler can edit field in Loss Details screen post FNOL
+    And I click edit button on post FNOL loss details
+    When I input "Purpose changed by regression script test" into the "Journey Purpose" field on Loss Details post FNOL
+    And I click update button on post FNOL loss details
  
-@Ignore
-  Scenario: CBPCL-216 TC2 ClaimsHandler can add Vehicle from Loss Details post FNOL
-    And I Select an existing Claim
-    And I select "Loss Details" on the Claim Navigator
-    And I will see post FNOL loss details
-    When I click edit button on post FNOL loss details
-    When I click add Vehicle on post FNOL loss details
-    Then I will be on new vehicle screen on post FNOL
+  @inprogress
+  Scenario: LOSS DETAILS POST FNOL Regression TC2 ClaimsHandler can add Vehicle from Loss Details post FNOL and VRN lookup works
+    And I click edit button on post FNOL loss details
+    And I click add Vehicle on post FNOL loss details
+    And I will be on new vehicle screen on post FNOL
+    And I input "CY17NBX" into the "VRN" box on new vehicle screen on post FNOL
+    And I input "DAMAGE DESC ADDED BY REGRESSION SCRIPT" into the "Damage Description" box on new vehicle screen on post FNOL
+    #todo - check vrn lookup has returned modeletc
+    And I click "Ok" on new vehicle screen on post FNOL
 
   @Ignore
   Scenario: CBPCL-216 TC3 ClaimsHandler can add Property from Loss Details post FNOL
-    And I Select an existing Claim
-    And I select "Loss Details" on the Claim Navigator
-    And I will see post FNOL loss details
-    When I click edit button on post FNOL loss details
+      When I click edit button on post FNOL loss details
     When I click add Property Damage on post FNOL loss details
     Then I will be on new property screen
     And I complete all fields on post FNOL new property incident
     And I click update button on post FNOL loss details
 
-  @Ignore
-  Scenario: CBPCL-216 TC4 ClaimsHandler can add Pedestrian from Loss Details post FNOL
-    And I Select an existing Claim
-    And I select "Loss Details" on the Claim Navigator
-    And I will see post FNOL loss details
+  @inprogress
+  Scenario: LOSS DETAILS POST FNOL Regression TC4 ClaimsHandler can add Pedestrian from Loss Details post FNOL
     When I click edit button on post FNOL loss details
     When I click add Pedestrian on post FNOL loss details
     Then I will be on new pedestrian screen on post FNOL
-    And I complete all fields on post FNOL new pedestrian incident
-    And I click update button on post FNOL loss details
-
+  #  And I complete all fields on post FNOL new pedestrian incident
+   
   @Ignore
   Scenario: CBPCL-216 TC13  ClaimsHandler can edit PH Vehicle from Loss Details post FNOL
     And I Select an existing Claim
