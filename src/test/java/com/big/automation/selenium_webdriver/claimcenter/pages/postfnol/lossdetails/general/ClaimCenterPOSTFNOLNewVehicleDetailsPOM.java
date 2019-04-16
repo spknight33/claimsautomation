@@ -4,7 +4,9 @@ import static com.big.automation.selenium_webdriver.common.utilities.ThreadUtils
 import static java.lang.String.format;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 
 import com.big.automation.selenium_webdriver.common.baseTest.BaseTest;
@@ -29,8 +31,7 @@ public class ClaimCenterPOSTFNOLNewVehicleDetailsPOM extends BaseTest{
 	@FindBy(id = "NewVehicleIncidentPopup:NewVehicleIncidentScreen:PostFNOLVehicleIncidentDV:VehicleBasicsIS:LossParty_option2-inputEl")
 	private WebElement lossPartyTPRadio;
 		
-	//TODO selectVEhicleDropdown?
-		
+	
 	// only for PH 
 	@FindBy(id = "NewVehicleIncidentPopup:NewVehicleIncidentScreen:PostFNOLVehicleIncidentDV:VehicleBasicsIS:Vehicle_Picker-inputEl")
 	private WebElement selectVehicleDropdown;
@@ -131,208 +132,207 @@ public class ClaimCenterPOSTFNOLNewVehicleDetailsPOM extends BaseTest{
 	
 	
 	//FINANCE section
-		//-------------------------------
-		@FindBy(id = "FNOLVehicleIncidentPopup:FNOLVehicleIncidentScreen:OtherDetailsDV:LoanInformation_Loan_true-inputEl")
-		private WebElement financeYesOption;
-		@FindBy(id = "FNOLVehicleIncidentPopup:FNOLVehicleIncidentScreen:OtherDetailsDV:LoanInformation_Loan_false-inputEl")
-		private WebElement financeNoOption;
-		@FindBy(id = "FNOLVehicleIncidentPopup:FNOLVehicleIncidentScreen:OtherDetailsDV:MonthlyPayment-inputEl")
-		private WebElement financeMonthlyPayment;
-		@FindBy(id = "FNOLVehicleIncidentPopup:FNOLVehicleIncidentScreen:OtherDetailsDV:MonthsRemaining-inputEl")
-		private WebElement financeMonthsRemaining;
-		@FindBy(id = "FNOLVehicleIncidentPopup:FNOLVehicleIncidentScreen:OtherDetailsDV:PayoffAmount-inputEl")
-		private WebElement financePayOffAmount;
+	//-------------------------------
+	@FindBy(id = "NewVehicleIncidentPopup:NewVehicleIncidentScreen:PostFNOLVehicleIncidentDV:LoanInformation_Loan_true-inputEl")
+	private WebElement financeYesOption;
+	@FindBy(id = "NewVehicleIncidentPopup:NewVehicleIncidentScreen:PostFNOLVehicleIncidentDV:LoanInformation_Loan_false-inputEl")
+	private WebElement financeNoOption;
+	@FindBy(id = "NewVehicleIncidentPopup:NewVehicleIncidentScreen:PostFNOLVehicleIncidentDV:MonthlyPayment-inputEl")
+	private WebElement financeMonthlyPayment;
+	@FindBy(id = "NewVehicleIncidentPopup:NewVehicleIncidentScreen:PostFNOLVehicleIncidentDV:MonthsRemaining-inputEl")
+	private WebElement financeMonthsRemaining;
+	@FindBy(id = "NewVehicleIncidentPopup:NewVehicleIncidentScreen:PostFNOLVehicleIncidentDV:PayoffAmount-inputEl")
+	private WebElement financePayOffAmount;
 		
-		//Hire Questions
-		//---------------------
-		@FindBy(id = "FNOLVehicleIncidentPopup:FNOLVehicleIncidentScreen:OtherDetailsDV:CreditHire_true-inputEl")
-		private WebElement creditHireYesOption;
-		@FindBy(id = "FNOLVehicleIncidentPopup:FNOLVehicleIncidentScreen:OtherDetailsDV:CreditHire_false-inputEl")
-		private WebElement creditHireNoOption;
-		@FindBy(id = "FNOLVehicleIncidentPopup:FNOLVehicleIncidentScreen:OtherDetailsDV:HireProtocol_true-inputEl")
-		private WebElement protocolHireYesOption;
-		@FindBy(id = "FNOLVehicleIncidentPopup:FNOLVehicleIncidentScreen:OtherDetailsDV:HireProtocol_false-inputEl")
-		private WebElement protocolHireNoOption;
+	//Hire Questions
+	//---------------------
+	@FindBy(id = "NewVehicleIncidentPopup:NewVehicleIncidentScreen:PostFNOLVehicleIncidentDV:CreditHire_true-inputEl")
+	private WebElement creditHireYesOption;
+	@FindBy(id = "NewVehicleIncidentPopup:NewVehicleIncidentScreen:PostFNOLVehicleIncidentDV:CreditHire_false-inputEl")
+	private WebElement creditHireNoOption;
+	@FindBy(id = "NewVehicleIncidentPopup:NewVehicleIncidentScreen:PostFNOLVehicleIncidentDV:HireProtocol_true-inputEl")
+	private WebElement protocolHireYesOption;
+	@FindBy(id = "NewVehicleIncidentPopup:NewVehicleIncidentScreen:PostFNOLVehicleIncidentDV:HireProtocol_false-inputEl")
+	private WebElement protocolHireNoOption;
 		
 		
-		// FIRE section only appears on page for a fire incident for PH vehicle
-			//------------------------------------------------------------------------
-			@FindBy(id = "FNOLVehicleIncidentPopup:FNOLVehicleIncidentScreen:FireAndVandalismQuestionsInputSet_itb:FireAndVandalismQuestionsInputSet:0")
-			private WebElement fireQuestionsSectionLabel;
+	// FIRE section only appears on page for a fire incident for PH vehicle
+	//------------------------------------------------------------------------
+	@FindBy(id = "NewVehicleIncidentPopup:NewVehicleIncidentScreen:PostFNOLVehicleIncidentDV:FireAndVandalismQuestionsInputSet:0")
+	private WebElement fireQuestionsSectionLabel;
 			
-			@FindBy(id = "FNOLVehicleIncidentPopup:FNOLVehicleIncidentScreen:FireAndVandalismQuestionsInputSet_itb:FireAndVandalismQuestionsInputSet:LastPersonInCharge-inputEl")
-			private WebElement fireLastInChrgeDropdown;
-			@FindBy(id = "FNOLVehicleIncidentPopup:FNOLVehicleIncidentScreen:FireAndVandalismQuestionsInputSet_itb:FireAndVandalismQuestionsInputSet:LastPersonInCharge:LastPersonInChargeMenuIcon")
-			private WebElement fireLastInChrgePickerIcon;
-			@FindBy(id = "FNOLVehicleIncidentPopup:FNOLVehicleIncidentScreen:FireAndVandalismQuestionsInputSet_itb:FireAndVandalismQuestionsInputSet:LastPersonInCharge:ClaimNewPersonOnlyPickerMenuItemSet:ClaimNewPersonOnlyPickerMenuItemSet_NewPersonMenuItem-itemEl")
-			private WebElement fireLastInChrgeNewPersonPicker;
+	@FindBy(id = "NewVehicleIncidentPopup:NewVehicleIncidentScreen:PostFNOLVehicleIncidentDV:FireAndVandalismQuestionsInputSet:LastPersonInCharge-inputEl")
+	private WebElement fireLastInChrgeDropdown;
+	@FindBy(id = "NewVehicleIncidentPopup:NewVehicleIncidentScreen:PostFNOLVehicleIncidentDV:FireAndVandalismQuestionsInputSet:LastPersonInCharge:LastPersonInChargeMenuIcon")
+	private WebElement fireLastInChrgePickerIcon;
+	@FindBy(id = "NewVehicleIncidentPopup:NewVehicleIncidentScreen:PostFNOLVehicleIncidentDV:FireAndVandalismQuestionsInputSet:LastPersonInCharge:ClaimNewPersonOnlyPickerMenuItemSet:ClaimNewPersonOnlyPickerMenuItemSet_NewPersonMenuItem-itemEl")
+	private WebElement fireLastInChrgeNewPersonPicker;
 				
 			
-			@FindBy(id = "FNOLVehicleIncidentPopup:FNOLVehicleIncidentScreen:FireAndVandalismQuestionsInputSet_itb:FireAndVandalismQuestionsInputSet:WhoDiscoveredVehicleDamaged-inputEl")
-			private WebElement fireWhoDiscoveredDropdown;
-			@FindBy(id = "FNOLVehicleIncidentPopup:FNOLVehicleIncidentScreen:FireAndVandalismQuestionsInputSet_itb:FireAndVandalismQuestionsInputSet:WhoDiscoveredVehicleDamaged:WhoDiscoveredVehicleDamagedMenuIcon")
-			private WebElement fireWhoDiscoveredPickerIcon;
-			@FindBy(id = "FNOLVehicleIncidentPopup:FNOLVehicleIncidentScreen:FireAndVandalismQuestionsInputSet_itb:FireAndVandalismQuestionsInputSet:WhoDiscoveredVehicleDamaged:ClaimNewPersonOnlyPickerMenuItemSet:ClaimNewPersonOnlyPickerMenuItemSet_NewPersonMenuItem-itemEl")
-			private WebElement fireWhoDiscoveredNewPersonPicker;
+	@FindBy(id = "NewVehicleIncidentPopup:NewVehicleIncidentScreen:PostFNOLVehicleIncidentDV:FireAndVandalismQuestionsInputSet:WhoDiscoveredVehicleDamaged-inputEl")
+	private WebElement fireWhoDiscoveredDropdown;
+	@FindBy(id = "NewVehicleIncidentPopup:NewVehicleIncidentScreen:PostFNOLVehicleIncidentDV:FireAndVandalismQuestionsInputSet:WhoDiscoveredVehicleDamaged:WhoDiscoveredVehicleDamagedMenuIcon")
+	private WebElement fireWhoDiscoveredPickerIcon;
+	@FindBy(id = "NewVehicleIncidentPopup:NewVehicleIncidentScreen:PostFNOLVehicleIncidentDV:FireAndVandalismQuestionsInputSet:WhoDiscoveredVehicleDamaged:ClaimNewPersonOnlyPickerMenuItemSet:ClaimNewPersonOnlyPickerMenuItemSet_NewPersonMenuItem-itemEl")
+	private WebElement fireWhoDiscoveredNewPersonPicker;
 			
 			
 			
-			@FindBy(id = "FNOLVehicleIncidentPopup:FNOLVehicleIncidentScreen:FireAndVandalismQuestionsInputSet_itb:FireAndVandalismQuestionsInputSet:AndWhenDate-inputEl")
-			private WebElement fireWhenDiscovered;
-			@FindBy(id = "FNOLVehicleIncidentPopup:FNOLVehicleIncidentScreen:FireAndVandalismQuestionsInputSet_itb:FireAndVandalismQuestionsInputSet:AndWhenTime-inputEl")
-			private WebElement fireTimeDiscovered;
+	@FindBy(id = "NewVehicleIncidentPopup:NewVehicleIncidentScreen:PostFNOLVehicleIncidentDV:FireAndVandalismQuestionsInputSet:AndWhenDate-inputEl")
+	private WebElement fireWhenDiscovered;
+	@FindBy(id = "NewVehicleIncidentPopup:NewVehicleIncidentScreen:PostFNOLVehicleIncidentDV:FireAndVandalismQuestionsInputSet:AndWhenTime-inputEl")
+	private WebElement fireTimeDiscovered;
 			
-			@FindBy(id = "FNOLVehicleIncidentPopup:FNOLVehicleIncidentScreen:FireAndVandalismQuestionsInputSet_itb:FireAndVandalismQuestionsInputSet:AnyPreExistingMechanicalDamage_true-inputEl")
-			private WebElement fireVisitedGarageYesOption;
-			@FindBy(id = "FNOLVehicleIncidentPopup:FNOLVehicleIncidentScreen:FireAndVandalismQuestionsInputSet_itb:FireAndVandalismQuestionsInputSet:AnyPreExistingMechanicalDamage_false-inputEl")
-			private WebElement fireVisitedGarageNoOption;
-			@FindBy(id = "FNOLVehicleIncidentPopup:FNOLVehicleIncidentScreen:FireAndVandalismQuestionsInputSet_itb:FireAndVandalismQuestionsInputSet:PreExistingMechanicalDamageDet-inputEl")
-			private WebElement fireGarageDetails;
+	@FindBy(id = "NewVehicleIncidentPopup:NewVehicleIncidentScreen:PostFNOLVehicleIncidentDV:FireAndVandalismQuestionsInputSet:AnyPreExistingMechanicalDamage_true-inputEl")
+	private WebElement fireVisitedGarageYesOption;
+	@FindBy(id = "NewVehicleIncidentPopup:NewVehicleIncidentScreen:PostFNOLVehicleIncidentDV:FireAndVandalismQuestionsInputSet:AnyPreExistingMechanicalDamage_false-inputEl")
+	private WebElement fireVisitedGarageNoOption;
+	@FindBy(id = "NewVehicleIncidentPopup:NewVehicleIncidentScreen:PostFNOLVehicleIncidentDV:FireAndVandalismQuestionsInputSet:PreExistingMechanicalDamageDet-inputEl")
+	private WebElement fireGarageDetails;
 			
-			@FindBy(id = "FNOLVehicleIncidentPopup:FNOLVehicleIncidentScreen:FireAndVandalismQuestionsInputSet_itb:FireAndVandalismQuestionsInputSet:OtherVehiclesDamaged_true-inputEl")
-			private WebElement fireOtherVehicleDamageYesOption;
-			@FindBy(id = "FNOLVehicleIncidentPopup:FNOLVehicleIncidentScreen:FireAndVandalismQuestionsInputSet_itb:FireAndVandalismQuestionsInputSet:OtherVehiclesDamaged_false-inputEl")
-			private WebElement fireOtherVehicleDamageNoOption;
-			@FindBy(id = "FNOLVehicleIncidentPopup:FNOLVehicleIncidentScreen:FireAndVandalismQuestionsInputSet_itb:FireAndVandalismQuestionsInputSet:VehiclesDamagedDetail-inputEl")
-			private WebElement fireOtherVehicleDamageDetails;
+	@FindBy(id = "NewVehicleIncidentPopup:NewVehicleIncidentScreen:PostFNOLVehicleIncidentDV:FireAndVandalismQuestionsInputSet:OtherVehiclesDamaged_true-inputEl")
+	private WebElement fireOtherVehicleDamageYesOption;
+	@FindBy(id = "NewVehicleIncidentPopup:NewVehicleIncidentScreen:PostFNOLVehicleIncidentDV:FireAndVandalismQuestionsInputSet:OtherVehiclesDamaged_false-inputEl")
+	private WebElement fireOtherVehicleDamageNoOption;
+	@FindBy(id = "NewVehicleIncidentPopup:NewVehicleIncidentScreen:PostFNOLVehicleIncidentDV:FireAndVandalismQuestionsInputSet:VehiclesDamagedDetail-inputEl")
+	private WebElement fireOtherVehicleDamageDetails;
 			
-			@FindBy(id = "FNOLVehicleIncidentPopup:FNOLVehicleIncidentScreen:FireAndVandalismQuestionsInputSet_itb:FireAndVandalismQuestionsInputSet:SuspectAnyoneOfStartingTheFire_true-inputEl")
-			private WebElement fireSuspectYesOption;
-			@FindBy(id = "FNOLVehicleIncidentPopup:FNOLVehicleIncidentScreen:FireAndVandalismQuestionsInputSet_itb:FireAndVandalismQuestionsInputSet:SuspectAnyoneOfStartingTheFire_false-boxLabelEl")
-			private WebElement fireSuspectNoOption;
+	@FindBy(id = "NewVehicleIncidentPopup:NewVehicleIncidentScreen:PostFNOLVehicleIncidentDV:FireAndVandalismQuestionsInputSet:SuspectAnyoneOfStartingTheFire_true-inputEl")
+	private WebElement fireSuspectYesOption;
+	@FindBy(id = "NewVehicleIncidentPopup:NewVehicleIncidentScreen:PostFNOLVehicleIncidentDV:FireAndVandalismQuestionsInputSet:SuspectAnyoneOfStartingTheFire_false-boxLabelEl")
+	private WebElement fireSuspectNoOption;
 			
-			@FindBy(id = "FNOLVehicleIncidentPopup:FNOLVehicleIncidentScreen:FireAndVandalismQuestionsInputSet_itb:FireAndVandalismQuestionsInputSet:SuspectStartingTheFireInputSet:SuspectStartingTheFire-inputEl")
-			private WebElement fireSuspectDropdown;
-			@FindBy(id = "FNOLVehicleIncidentPopup:FNOLVehicleIncidentScreen:FireAndVandalismQuestionsInputSet_itb:FireAndVandalismQuestionsInputSet:SuspectStartingTheFireInputSet:SuspectStartingTheFire:SuspectStartingTheFireMenuIcon")
-			private WebElement fireSuspectPickerIcon;
-			@FindBy(id = "FNOLVehicleIncidentPopup:FNOLVehicleIncidentScreen:FireAndVandalismQuestionsInputSet_itb:FireAndVandalismQuestionsInputSet:SuspectStartingTheFireInputSet:SuspectStartingTheFire:ClaimNewPersonOnlyPickerMenuItemSet:ClaimNewPersonOnlyPickerMenuItemSet_NewPersonMenuItem-itemEl")
-			private WebElement fireSuspectNewPersonPicker;
-			@FindBy(id = "FNOLVehicleIncidentPopup:FNOLVehicleIncidentScreen:FireAndVandalismQuestionsInputSet_itb:FireAndVandalismQuestionsInputSet:SuspectStartingTheFireInputSet:WhyDoYouSuspectThisPerson-inputEl")
-			private WebElement fireSuspectWhy;
-			@FindBy(id = "FNOLVehicleIncidentPopup:FNOLVehicleIncidentScreen:FireAndVandalismQuestionsInputSet_itb:FireAndVandalismQuestionsInputSet:SuspectStartingTheFireInputSet:HowDoYouKnowThePerson-inputEl")
-			private WebElement fireSuspectHowKnownDropdown;
-			
-			
-			//THEFT section only appears on page for a theft incident for ph vehicle
-			//---------------------------------------------------------------------------------
-			@FindBy(id = "FNOLVehicleIncidentPopup:FNOLVehicleIncidentScreen:VehicleTheftQuestionsInputSet:0")
-			private WebElement theftQuestionsSectionLabel;
-			
-			@FindBy(id = "FNOLVehicleIncidentPopup:FNOLVehicleIncidentScreen:VehicleTheftQuestionsInputSet:LastSeenDate-inputEl")
-			private WebElement theftLastSeenDate;
-			@FindBy(id = "FNOLVehicleIncidentPopup:FNOLVehicleIncidentScreen:VehicleTheftQuestionsInputSet:LastSeenTime-inputEl")
-			private WebElement theftLastSeenTime;
-			@FindBy(id = "FNOLVehicleIncidentPopup:FNOLVehicleIncidentScreen:VehicleTheftQuestionsInputSet:LossDiscoveredDate-inputEl")
-			private WebElement theftLossDiscoveredDate;
-			@FindBy(id = "FNOLVehicleIncidentPopup:FNOLVehicleIncidentScreen:VehicleTheftQuestionsInputSet:LossDiscoveredTime-inputEl")
-			private WebElement theftLossDiscoveredTime;
-			
-			@FindBy(id = "FNOLVehicleIncidentPopup:FNOLVehicleIncidentScreen:VehicleTheftQuestionsInputSet:LastDriver-inputEl")
-			private WebElement theftLastDriverDropdown;
-			@FindBy(id = "FNOLVehicleIncidentPopup:FNOLVehicleIncidentScreen:VehicleTheftQuestionsInputSet:LastDriver:LastDriverMenuIcon")
-			private WebElement theftLastDriverPickerIcon;
-			@FindBy(id = "FNOLVehicleIncidentPopup:FNOLVehicleIncidentScreen:VehicleTheftQuestionsInputSet:LastDriver:ClaimNewPersonOnlyPickerMenuItemSet:ClaimNewPersonOnlyPickerMenuItemSet_NewPersonMenuItem-textEl")
-			private WebElement theftLastDriverNewPersonPicker;
+	@FindBy(id = "NewVehicleIncidentPopup:NewVehicleIncidentScreen:PostFNOLVehicleIncidentDV:FireAndVandalismQuestionsInputSet:SuspectStartingTheFireInputSet:SuspectStartingTheFire-inputEl")
+	private WebElement fireSuspectDropdown;
+	@FindBy(id = "NewVehicleIncidentPopup:NewVehicleIncidentScreen:PostFNOLVehicleIncidentDV:FireAndVandalismQuestionsInputSet:SuspectStartingTheFireInputSet:SuspectStartingTheFire:SuspectStartingTheFireMenuIcon")
+	private WebElement fireSuspectPickerIcon;
+	@FindBy(id = "NewVehicleIncidentPopup:NewVehicleIncidentScreen:PostFNOLVehicleIncidentDV:FireAndVandalismQuestionsInputSet:SuspectStartingTheFireInputSet:SuspectStartingTheFire:ClaimNewPersonOnlyPickerMenuItemSet:ClaimNewPersonOnlyPickerMenuItemSet_NewPersonMenuItem-itemEl")
+	private WebElement fireSuspectNewPersonPicker;
+	@FindBy(id = "NewVehicleIncidentPopup:NewVehicleIncidentScreen:PostFNOLVehicleIncidentDV:FireAndVandalismQuestionsInputSet:SuspectStartingTheFireInputSet:WhyDoYouSuspectThisPerson-inputEl")
+	private WebElement fireSuspectWhy;
+	@FindBy(id = "NewVehicleIncidentPopup:NewVehicleIncidentScreen:PostFNOLVehicleIncidentDV:FireAndVandalismQuestionsInputSet:SuspectStartingTheFireInputSet:HowDoYouKnowThePerson-inputEl")
+	private WebElement fireSuspectHowKnownDropdown;
 			
 			
-			@FindBy(id = "FNOLVehicleIncidentPopup:FNOLVehicleIncidentScreen:VehicleTheftQuestionsInputSet:WindowsDoorsLockedInd_true-inputEl")
-			private WebElement theftWindowsLockedYesOption;
-			@FindBy(id = "FNOLVehicleIncidentPopup:FNOLVehicleIncidentScreen:VehicleTheftQuestionsInputSet:WindowsDoorsLockedInd_true-bodyEl")
-			private WebElement theftWindowsLockedNoOption;
+	//THEFT section only appears on page for a theft incident for ph vehicle
+	//---------------------------------------------------------------------------------
+	@FindBy(id = "NewVehicleIncidentPopup:NewVehicleIncidentScreen:PostFNOLVehicleIncidentDV:VehicleTheftQuestionsInputSet:0")
+	private WebElement theftQuestionsSectionLabel;
 			
-			@FindBy(id = "FNOLVehicleIncidentPopup:FNOLVehicleIncidentScreen:VehicleTheftQuestionsInputSet:SecurityDevicesInd_true-inputEl")
-			private WebElement theftSecurityDeviceYesOption;
-			@FindBy(id = "FNOLVehicleIncidentPopup:FNOLVehicleIncidentScreen:VehicleTheftQuestionsInputSet:SecurityDevicesInd_false-inputEl")
-			private WebElement theftSecurityDeviceNoOption;
-			@FindBy(id = "FNOLVehicleIncidentPopup:FNOLVehicleIncidentScreen:VehicleTheftQuestionsInputSet:SecurityDevicesSection:SecurityDevicesDetails-inputEl")
-			private WebElement theftSecurityDeviceDetails;
+	@FindBy(id = "NewVehicleIncidentPopup:NewVehicleIncidentScreen:PostFNOLVehicleIncidentDV:VehicleTheftQuestionsInputSet:LastSeenDate-inputEl")
+	private WebElement theftLastSeenDate;
+	@FindBy(id = "NewVehicleIncidentPopup:NewVehicleIncidentScreen:PostFNOLVehicleIncidentDV:VehicleTheftQuestionsInputSet:LastSeenTime-inputEl")
+	private WebElement theftLastSeenTime;
+	@FindBy(id = "NewVehicleIncidentPopup:NewVehicleIncidentScreen:PostFNOLVehicleIncidentDV:VehicleTheftQuestionsInputSet:LossDiscoveredDate-inputEl")
+	private WebElement theftLossDiscoveredDate;
+	@FindBy(id = "NewVehicleIncidentPopup:NewVehicleIncidentScreen:PostFNOLVehicleIncidentDV:VehicleTheftQuestionsInputSet:LossDiscoveredTime-inputEl")
+	private WebElement theftLossDiscoveredTime;
 			
-			@FindBy(id = "FNOLVehicleIncidentPopup:FNOLVehicleIncidentScreen:VehicleTheftQuestionsInputSet:SecurityDevicesSection:SecurityDevicesActiveInd_true-inputEl")
-			private WebElement theftDeviceActiveYesOption;
-			@FindBy(id = "FNOLVehicleIncidentPopup:FNOLVehicleIncidentScreen:VehicleTheftQuestionsInputSet:SecurityDevicesSection:SecurityDevicesActiveInd_false-inputEl")
-			private WebElement theftDeviceActiveNoOption;
+	@FindBy(id = "NewVehicleIncidentPopup:NewVehicleIncidentScreen:PostFNOLVehicleIncidentDV:VehicleTheftQuestionsInputSet:LastDriver-inputEl")
+	private WebElement theftLastDriverDropdown;
+	@FindBy(id = "NewVehicleIncidentPopup:NewVehicleIncidentScreen:PostFNOLVehicleIncidentDV:VehicleTheftQuestionsInputSet:LastDriver:LastDriverMenuIcon")
+	private WebElement theftLastDriverPickerIcon;
+	@FindBy(id = "NewVehicleIncidentPopup:NewVehicleIncidentScreen:PostFNOLVehicleIncidentDV:VehicleTheftQuestionsInputSet:LastDriver:ClaimNewPersonOnlyPickerMenuItemSet:ClaimNewPersonOnlyPickerMenuItemSet_NewPersonMenuItem-textEl")
+	private WebElement theftLastDriverNewPersonPicker;
+			
+			
+	@FindBy(id = "NewVehicleIncidentPopup:NewVehicleIncidentScreen:PostFNOLVehicleIncidentDV:VehicleTheftQuestionsInputSet:WindowsDoorsLockedInd_true-inputEl")
+	private WebElement theftWindowsLockedYesOption;
+	@FindBy(id = "NewVehicleIncidentPopup:NewVehicleIncidentScreen:PostFNOLVehicleIncidentDV:VehicleTheftQuestionsInputSet:WindowsDoorsLockedInd_true-bodyEl")
+	private WebElement theftWindowsLockedNoOption;
+			
+	@FindBy(id = "NewVehicleIncidentPopup:NewVehicleIncidentScreen:PostFNOLVehicleIncidentDV:VehicleTheftQuestionsInputSet:SecurityDevicesInd_true-inputEl")
+	private WebElement theftSecurityDeviceYesOption;
+	@FindBy(id = "NewVehicleIncidentPopup:NewVehicleIncidentScreen:PostFNOLVehicleIncidentDV:VehicleTheftQuestionsInputSet:SecurityDevicesInd_false-inputEl")
+	private WebElement theftSecurityDeviceNoOption;
+	@FindBy(id = "NewVehicleIncidentPopup:NewVehicleIncidentScreen:PostFNOLVehicleIncidentDV:VehicleTheftQuestionsInputSet:SecurityDevicesSection:SecurityDevicesDetails-inputEl")
+	private WebElement theftSecurityDeviceDetails;
+			
+	@FindBy(id = "NewVehicleIncidentPopup:NewVehicleIncidentScreen:PostFNOLVehicleIncidentDV:VehicleTheftQuestionsInputSet:SecurityDevicesSection:SecurityDevicesActiveInd_true-inputEl")
+	private WebElement theftDeviceActiveYesOption;
+	@FindBy(id = "NewVehicleIncidentPopup:NewVehicleIncidentScreen:PostFNOLVehicleIncidentDV:VehicleTheftQuestionsInputSet:SecurityDevicesSection:SecurityDevicesActiveInd_false-inputEl")
+	private WebElement theftDeviceActiveNoOption;
 				
 			
-			@FindBy(id = "FNOLVehicleIncidentPopup:FNOLVehicleIncidentScreen:VehicleTheftQuestionsInputSet:NumberOfSetsOfKeysProvided-inputEl")
-			private WebElement theftPurchaseKeysDropdown;
-		    @FindBy(id = "FNOLVehicleIncidentPopup:FNOLVehicleIncidentScreen:VehicleTheftQuestionsInputSet:NumberOfSetsOfKeysInPossesion-inputEl")
-			private WebElement theftPossessedKeysDropdown;
+	@FindBy(id = "NewVehicleIncidentPopup:NewVehicleIncidentScreen:PostFNOLVehicleIncidentDV:VehicleTheftQuestionsInputSet:NumberOfSetsOfKeysProvided-inputEl")
+	private WebElement theftPurchaseKeysDropdown;
+	@FindBy(id = "NewVehicleIncidentPopup:NewVehicleIncidentScreen:PostFNOLVehicleIncidentDV:VehicleTheftQuestionsInputSet:NumberOfSetsOfKeysInPossesion-inputEl")
+	private WebElement theftPossessedKeysDropdown;
 		    
-		    @FindBy(id = "FNOLVehicleIncidentPopup:FNOLVehicleIncidentScreen:VehicleTheftQuestionsInputSet:ContactlessKeysInd_true-inputEl")
-			private WebElement theftKeysContactlessYesOption;
-			@FindBy(id = "FNOLVehicleIncidentPopup:FNOLVehicleIncidentScreen:VehicleTheftQuestionsInputSet:ContactlessKeysInd_false-inputEl")
-			private WebElement theftKeysContactlessNoOption;
+	@FindBy(id = "NewVehicleIncidentPopup:NewVehicleIncidentScreen:PostFNOLVehicleIncidentDV:VehicleTheftQuestionsInputSet:ContactlessKeysInd_true-inputEl")
+	private WebElement theftKeysContactlessYesOption;
+	@FindBy(id = "NewVehicleIncidentPopup:NewVehicleIncidentScreen:PostFNOLVehicleIncidentDV:VehicleTheftQuestionsInputSet:ContactlessKeysInd_false-inputEl")
+	private WebElement theftKeysContactlessNoOption;
 			
-			@FindBy(id = "FNOLVehicleIncidentPopup:FNOLVehicleIncidentScreen:VehicleTheftQuestionsInputSet:KeysLeftInVehicleInd_true-inputEl")
-			private WebElement theftKeysInVehicleYesOption;
-			@FindBy(id = "FNOLVehicleIncidentPopup:FNOLVehicleIncidentScreen:VehicleTheftQuestionsInputSet:KeysLeftInVehicleInd_false-inputEl")
-			private WebElement theftKeysInVehicleNoOption;
+	@FindBy(id = "NewVehicleIncidentPopup:NewVehicleIncidentScreen:PostFNOLVehicleIncidentDV:VehicleTheftQuestionsInputSett:KeysLeftInVehicleInd_true-inputEl")
+	private WebElement theftKeysInVehicleYesOption;
+	@FindBy(id = "NewVehicleIncidentPopup:NewVehicleIncidentScreen:PostFNOLVehicleIncidentDV:VehicleTheftQuestionsInputSet:KeysLeftInVehicleInd_false-inputEl")
+	private WebElement theftKeysInVehicleNoOption;
 			
-			@FindBy(id = "FNOLVehicleIncidentPopup:FNOLVehicleIncidentScreen:VehicleTheftQuestionsInputSet:GarageVisitInd_true-inputEl")
-			private WebElement theftVisitedGarageYesOption;
-			@FindBy(id = "FNOLVehicleIncidentPopup:FNOLVehicleIncidentScreen:VehicleTheftQuestionsInputSet:GarageVisitInd_false-inputEl")
-			private WebElement theftVisitedGarageNoOption;
-			@FindBy(id = "FNOLVehicleIncidentPopup:FNOLVehicleIncidentScreen:VehicleTheftQuestionsInputSet:GarageVisitDetails-inputEl")
-			private WebElement theftVisitedGarageDetails;
+	@FindBy(id = "NewVehicleIncidentPopup:NewVehicleIncidentScreen:PostFNOLVehicleIncidentDV:VehicleTheftQuestionsInputSet:GarageVisitInd_true-inputEl")
+	private WebElement theftVisitedGarageYesOption;
+	@FindBy(id = "NewVehicleIncidentPopup:NewVehicleIncidentScreen:PostFNOLVehicleIncidentDV:VehicleTheftQuestionsInputSet:GarageVisitInd_false-inputEl")
+	private WebElement theftVisitedGarageNoOption;
+	@FindBy(id = "NewVehicleIncidentPopup:NewVehicleIncidentScreen:PostFNOLVehicleIncidentDV:VehicleTheftQuestionsInputSet:GarageVisitDetails-inputEl")
+	private WebElement theftVisitedGarageDetails;
 			
-			@FindBy(id = "FNOLVehicleIncidentPopup:FNOLVehicleIncidentScreen:VehicleTheftQuestionsInputSet:VehicleChangedInd_true-inputEl")
-			private WebElement theftVehicleChangedYesOption;
-			@FindBy(id = "FNOLVehicleIncidentPopup:FNOLVehicleIncidentScreen:VehicleTheftQuestionsInputSet:VehicleChangedInd_false-inputEl")
-			private WebElement theftVehicleChangedNoOption;
-			@FindBy(id = "FNOLVehicleIncidentPopup:FNOLVehicleIncidentScreen:VehicleTheftQuestionsInputSet:VehicleChangedDetails-inputEl")
-			private WebElement theftVehicleChangedDetails;
+	@FindBy(id = "NewVehicleIncidentPopup:NewVehicleIncidentScreen:PostFNOLVehicleIncidentDV:VehicleTheftQuestionsInputSet:VehicleChangedInd_true-inputEl")
+	private WebElement theftVehicleChangedYesOption;
+	@FindBy(id = "NewVehicleIncidentPopup:NewVehicleIncidentScreen:PostFNOLVehicleIncidentDV:VehicleTheftQuestionsInputSet:VehicleChangedInd_false-inputEl")
+	private WebElement theftVehicleChangedNoOption;
+	@FindBy(id = "NewVehicleIncidentPopup:NewVehicleIncidentScreen:PostFNOLVehicleIncidentDV:VehicleTheftQuestionsInputSet:VehicleChangedDetails-inputEl")
+	private WebElement theftVehicleChangedDetails;
 		    
 		
 
-			@FindBy(id = "FNOLVehicleIncidentPopup:FNOLVehicleIncidentScreen:VehicleTheftQuestionsInputSet:SuspicionInd_true-inputEl")
-			private WebElement theftSuspectYesOption;
-			@FindBy(id = "FNOLVehicleIncidentPopup:FNOLVehicleIncidentScreen:VehicleTheftQuestionsInputSet:SuspicionInd_false-inputEl")
-			private WebElement theftSuspectNoOption;
+	@FindBy(id = "NewVehicleIncidentPopup:NewVehicleIncidentScreen:PostFNOLVehicleIncidentDV:VehicleTheftQuestionsInputSet:SuspicionInd_true-inputEl")
+	private WebElement theftSuspectYesOption;
+	@FindBy(id = "NewVehicleIncidentPopup:NewVehicleIncidentScreen:PostFNOLVehicleIncidentDV:VehicleTheftQuestionsInputSet:SuspicionInd_false-inputEl")
+	private WebElement theftSuspectNoOption;
 			
-			@FindBy(id = "FNOLVehicleIncidentPopup:FNOLVehicleIncidentScreen:VehicleTheftQuestionsInputSet:SuspicionSection:Suspect-inputEl")
-			private WebElement theftSuspectDropdown;
-			@FindBy(id = "FNOLVehicleIncidentPopup:FNOLVehicleIncidentScreen:VehicleTheftQuestionsInputSet:SuspicionSection:Suspect:SuspectMenuIcon")
-			private WebElement theftSuspectPickerIcon;
-			@FindBy(id = "FNOLVehicleIncidentPopup:FNOLVehicleIncidentScreen:VehicleTheftQuestionsInputSet:SuspicionSection:Suspect:ClaimNewPersonOnlyPickerMenuItemSet:ClaimNewPersonOnlyPickerMenuItemSet_NewPersonMenuItem-itemEl")
-			private WebElement theftSuspectNewPersonPicker;
-			@FindBy(id = "FNOLVehicleIncidentPopup:FNOLVehicleIncidentScreen:VehicleTheftQuestionsInputSet:SuspicionSection:SuspicionHowPersonIsKnown-inputEl")
-			private WebElement theftSuspectHowKnownDropdown;
-	    	@FindBy(id = "FNOLVehicleIncidentPopup:FNOLVehicleIncidentScreen:VehicleTheftQuestionsInputSet:SuspicionSection:SuspicionReason-inputEl")
-			private WebElement theftSuspectWhy;
+	@FindBy(id = "NewVehicleIncidentPopup:NewVehicleIncidentScreen:PostFNOLVehicleIncidentDV:VehicleTheftQuestionsInputSet:SuspicionSection:Suspect-inputEl")
+	private WebElement theftSuspectDropdown;
+	@FindBy(id = "NewVehicleIncidentPopup:NewVehicleIncidentScreen:PostFNOLVehicleIncidentDV:VehicleTheftQuestionsInputSet:SuspicionSection:Suspect:SuspectMenuIcon")
+	private WebElement theftSuspectPickerIcon;
+	@FindBy(id = "NewVehicleIncidentPopup:NewVehicleIncidentScreen:PostFNOLVehicleIncidentDV:VehicleTheftQuestionsInputSet:SuspicionSection:Suspect:ClaimNewPersonOnlyPickerMenuItemSet:ClaimNewPersonOnlyPickerMenuItemSet_NewPersonMenuItem-itemEl")
+	private WebElement theftSuspectNewPersonPicker;
+	@FindBy(id = "NewVehicleIncidentPopup:NewVehicleIncidentScreen:PostFNOLVehicleIncidentDV:VehicleTheftQuestionsInputSet:SuspicionSection:SuspicionHowPersonIsKnown-inputEl")
+	private WebElement theftSuspectHowKnownDropdown;
+	@FindBy(id = "NewVehicleIncidentPopup:NewVehicleIncidentScreen:PostFNOLVehicleIncidentDV:VehicleTheftQuestionsInputSet:SuspicionSection:SuspicionReason-inputEl")
+	private WebElement theftSuspectWhy;
 	    	
-	    	@FindBy(id = "FNOLVehicleIncidentPopup:FNOLVehicleIncidentScreen:VehicleTheftQuestionsInputSet:PoliceTreatingAsTheftInd_true-inputEl")
-			private WebElement theftPoliceYesOption;
-			@FindBy(id = "FNOLVehicleIncidentPopup:FNOLVehicleIncidentScreen:VehicleTheftQuestionsInputSet:PoliceTreatingAsTheftInd_false-inputEl")
-			private WebElement theftPoliceNoOption;
-			@FindBy(id = "FNOLVehicleIncidentPopup:FNOLVehicleIncidentScreen:VehicleTheftQuestionsInputSet:PoliceTreatingAsTheftReason-inputEl")
-			private WebElement theftPoliceDetails;
+	@FindBy(id = "NewVehicleIncidentPopup:NewVehicleIncidentScreen:PostFNOLVehicleIncidentDV:VehicleTheftQuestionsInputSett:PoliceTreatingAsTheftInd_true-inputEl")
+	private WebElement theftPoliceYesOption;
+	@FindBy(id = "NewVehicleIncidentPopup:NewVehicleIncidentScreen:PostFNOLVehicleIncidentDV:VehicleTheftQuestionsInputSet:PoliceTreatingAsTheftInd_false-inputEl")
+	private WebElement theftPoliceNoOption;
+	@FindBy(id = "NewVehicleIncidentPopup:NewVehicleIncidentScreen:PostFNOLVehicleIncidentDV:VehicleTheftQuestionsInputSet:PoliceTreatingAsTheftReason-inputEl")
+	private WebElement theftPoliceDetails;
 			
 			
-			//TP Insurer details Available
-			//------------------------------------
-			@FindBy(id = "FNOLVehicleIncidentPopup:FNOLVehicleIncidentScreen:ThirdPartyInsurerInputSet:TPI_InsurerDetailAvailable_itb_true-inputEl")
-			private WebElement tpInsurerYesOption;
-			@FindBy(id = "FNOLVehicleIncidentPopup:FNOLVehicleIncidentScreen:ThirdPartyInsurerInputSet:TPI_InsurerDetailAvailable_itb_false-inputEl")
-			private WebElement tpInsurerNoOption;
-			
+	//TP Insurer details Available
+	//------------------------------------
+	@FindBy(id = "NewVehicleIncidentPopup:NewVehicleIncidentScreen:PostFNOLVehicleIncidentDV:ThirdPartyInsurerInputSet:TPI_InsurerDetailAvailable_itb_true-inputEl")
+	private WebElement tpInsurerYesOption;
+	@FindBy(id = "NewVehicleIncidentPopup:NewVehicleIncidentScreen:PostFNOLVehicleIncidentDV:ThirdPartyInsurerInputSet:TPI_InsurerDetailAvailable_itb_false-inputEl")
+	private WebElement tpInsurerNoOption;
 		
 			
-			@FindBy(id = "FNOLVehicleIncidentPopup:FNOLVehicleIncidentScreen:ThirdPartyInsurerInputSet:InsurerDetailsInputSet:ThirdPartyInsuranceCompany_itb-inputEl")
-			private WebElement tpInsurerDropdown;
-			@FindBy(id = "FNOLVehicleIncidentPopup:FNOLVehicleIncidentScreen:ThirdPartyInsurerInputSet:InsurerDetailsInputSet:ThirdPartyInsuranceCompany_itb:ThirdPartyInsuranceCompany_itbMenuIcon")
-			private WebElement tpInsurerPickerIcon;
-			@FindBy(id = "FNOLVehicleIncidentPopup:FNOLVehicleIncidentScreen:ThirdPartyInsurerInputSet:InsurerDetailsInputSet:ThirdPartyInsuranceCompany_itb:MenuItem_Search-itemEl")
-			private WebElement tpInsurerPickerSearch;
+	@FindBy(id = "NewVehicleIncidentPopup:NewVehicleIncidentScreen:PostFNOLVehicleIncidentDV:ThirdPartyInsurerInputSet:ThirdPartyInsuranceCompany_itb-inputEl")
+	private WebElement tpInsurerDropdown;
+	@FindBy(id = "NewVehicleIncidentPopup:NewVehicleIncidentScreen:PostFNOLVehicleIncidentDV:ThirdPartyInsurerInputSet:ThirdPartyInsuranceCompany_itb:ThirdPartyInsuranceCompany_itbMenuIcon")
+	private WebElement tpInsurerPickerIcon;
+	@FindBy(id = "NewVehicleIncidentPopup:NewVehicleIncidentScreen:PostFNOLVehicleIncidentDV:ThirdPartyInsurerInputSet:ThirdPartyInsuranceCompany_itb:MenuItem_Search-itemEl")
+	private WebElement tpInsurerPickerSearch;
 			
 			
-			@FindBy(id = "FNOLVehicleIncidentPopup:FNOLVehicleIncidentScreen:ThirdPartyInsurerInputSet:InsurerDetailsInputSet:ThirdPartyInsuranceCompany_itb_WorkPhone-inputEl")
-			private WebElement tpInsurerPhone;
-			@FindBy(id = "FNOLVehicleIncidentPopup:FNOLVehicleIncidentScreen:ThirdPartyInsurerInputSet:InsurerDetailsInputSet:ThirdPartyInsuranceCompany_itb_EmailAddress1-inputEl")
-			private WebElement tpInsurerPEmail;
-			@FindBy(id = "FNOLVehicleIncidentPopup:FNOLVehicleIncidentScreen:ThirdPartyInsurerInputSet:InsurerDetailsInputSet:TPI_PolicyNumber_itb-inputEl")
-			private WebElement tpInsurerPolicyNumber;
-			@FindBy(id = "FNOLVehicleIncidentPopup:FNOLVehicleIncidentScreen:ThirdPartyInsurerInputSet:InsurerDetailsInputSet:TPI_ClaimNumber_itb-inputEl")
-			private WebElement tpInsurerClaimNumber;
+	@FindBy(id = "NewVehicleIncidentPopup:NewVehicleIncidentScreen:PostFNOLVehicleIncidentDV:ThirdPartyInsurerInputSet:ThirdPartyInsuranceCompany_itb_WorkPhone-inputEl")
+	private WebElement tpInsurerPhone;
+	@FindBy(id = "NewVehicleIncidentPopup:NewVehicleIncidentScreen:PostFNOLVehicleIncidentDV:ThirdPartyInsurerInputSet:ThirdPartyInsuranceCompany_itb_EmailAddress1-inputEl")
+	private WebElement tpInsurerPEmail;
+	@FindBy(id = "NewVehicleIncidentPopup:NewVehicleIncidentScreen:PostFNOLVehicleIncidentDV:ThirdPartyInsurerInputSet:TPI_PolicyNumber_itb-inputEl")
+	private WebElement tpInsurerPolicyNumber;
+	@FindBy(id = "NewVehicleIncidentPopup:NewVehicleIncidentScreen:PostFNOLVehicleIncidentDV:ThirdPartyInsurerInputSet:TPI_ClaimNumber_itb-inputEl")
+	private WebElement tpInsurerClaimNumber;
 		
 		
 
@@ -417,6 +417,10 @@ public class ClaimCenterPOSTFNOLNewVehicleDetailsPOM extends BaseTest{
 	{
 		logger.info(format("%s - going to select VRN :"+text, getName()));
 		GuideWireAccessors.setGWTextBox(driver, text, this.getVrn());
+		Actions actions = new Actions(driver);
+		actions.sendKeys(Keys.TAB);
+		actions.build().perform();
+		sleep(3);
 	}
 	//TODO value?
 	public void setYear(String text)
@@ -433,6 +437,13 @@ public class ClaimCenterPOSTFNOLNewVehicleDetailsPOM extends BaseTest{
 	{
 		logger.info(format("%s - going to select Model :"+text, getName()));
 		GuideWireAccessors.setGWTextBox(driver, text, this.getModel());
+	}
+	public String getModelValue()
+	{
+		logger.info(format("%s - going to get Model", getName()));
+		String model = GuideWireAccessors.getGWElementTextFromValue(driver,  this.getModel());
+		logger.info(format("%s -Model got is:"+model, getName()));
+		return model;
 	}
 	public void selectStyle(String option)
 	{
@@ -561,6 +572,9 @@ public class ClaimCenterPOSTFNOLNewVehicleDetailsPOM extends BaseTest{
 			logger.info(format("%s - going to select airbags deployed option :"+option, getName()));
 			GuideWireAccessors.selectOptionFromGWDropDown(driver,option, this.getAirBagsDropdown(),1); // first on page
 		}
+		
+		
+		
 		public void clickCalculateTotalLoss()
 		{
 			logger.info(format("%s - going to click calculate total loss ", getName()));

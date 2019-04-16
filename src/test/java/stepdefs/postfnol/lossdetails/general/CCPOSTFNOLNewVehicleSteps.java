@@ -14,7 +14,7 @@ public class CCPOSTFNOLNewVehicleSteps extends BaseTest {
 		postFnolNewVehiclePOM.isPageTitleDisplayed("New Vehicle Incident");
 	}
 	
-	
+
 	@Given("^I select \"([^\"]*)\" from \"([^\"]*)\" on new vehicle screen on post FNOL$")
 	public void i_select_from_field_on_vehicle_screen(String fieldValue, String fieldName) throws Throwable {
 		switch (fieldName) {
@@ -26,6 +26,12 @@ public class CCPOSTFNOLNewVehicleSteps extends BaseTest {
 			break;
 		case "Style":
 			postFnolNewVehiclePOM.selectStyle(fieldValue);
+			break;
+		case "Foreign":
+			if (fieldValue.equalsIgnoreCase("Yes"))
+				postFnolNewVehiclePOM.selectForeignVehicle(true);
+			else
+				postFnolNewVehiclePOM.selectForeignVehicle(false);
 			break;
 		case "Usual Location":
 			postFnolNewVehiclePOM.selectUsualLocation(fieldValue);
@@ -39,7 +45,21 @@ public class CCPOSTFNOLNewVehicleSteps extends BaseTest {
 		case "Airbags Deployed":
 			postFnolNewVehiclePOM.selectAirbagsDeployed(fieldValue);;
 			break;
-			// theft only
+		case "Credit Hire":
+			if (fieldValue.equalsIgnoreCase("Yes"))
+				postFnolNewVehiclePOM.selectCreditHire(true);
+			else
+				postFnolNewVehiclePOM.selectCreditHire(false);
+			break;
+		case "Protocol Hire":
+			if (fieldValue.equalsIgnoreCase("Yes"))
+				postFnolNewVehiclePOM.selectProtocolHire(true);
+			else
+				postFnolNewVehiclePOM.selectProtocolHire(false);
+			break;
+		// fire only
+			
+		// theft only
 		case "Keys Purchased":
 			postFnolNewVehiclePOM.selectKeysPurchased(fieldValue);
 			break;
@@ -97,6 +117,9 @@ public class CCPOSTFNOLNewVehicleSteps extends BaseTest {
 		case "Ok":
 			postFnolNewVehiclePOM.selectOK();
 			break;
+		case "Update":
+			postFnolNewVehiclePOM.selectOK();
+			break;
 		case "Cancel":
 			postFnolNewVehiclePOM.cancel();
 			break;
@@ -119,8 +142,14 @@ public class CCPOSTFNOLNewVehicleSteps extends BaseTest {
 	}
 	
 	
-	
-	
+	@Given("^The value is \"([^\"]*)\" for field \"([^\"]*)\" on new vehicle screen on post FNOL$")
+	public void the_value_forfield_onvehiclescreen(String fieldValue, String fieldName) throws Throwable {
+		switch (fieldName) {
+		case "Model":
+			Assert.assertTrue(postFnolNewVehiclePOM.getModelValue().equalsIgnoreCase(fieldValue));
+			break;
+		}
+	}
 	
 	
 	

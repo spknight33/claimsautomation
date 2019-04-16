@@ -94,12 +94,27 @@ public class GuideWireAccessors {
 		return text;
 	}
 	
-	//public static List<WebElement> getErrorMessages(WebDriver driver) {
-		// add a delay to allow any messages 
-		//sleep(1);
-	//	List<WebElement> elements = driver.findElements(By.className("messages"));
-	//	return elements;
-	//}
+	public static String getGWElementTextFromValue(WebDriver driver, WebElement gwElement) {
+		int findAttempts = 0;
+		String text="";
+		while (findAttempts < MAX_RETRY_ON_GETTEXT) {
+			try {
+				
+				JavascriptExecutor je = (JavascriptExecutor) driver;
+				je.executeScript("arguments[0].scrollIntoView(true);", gwElement);
+				text = gwElement.getAttribute("value");
+				break;
+			} catch (Exception e) {
+				sleep(1);
+				// TODO use a logger
+				System.out.println("getext Exception caught:" + e.getMessage());
+			}
+			findAttempts++;
+		}
+		return text;
+	}
+	
+
 	
 	
 	public static boolean containsErrorMessage(WebDriver driver, String contains,By by)

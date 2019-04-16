@@ -91,23 +91,23 @@ public class ClaimCenterPOSTFNOLLossDetailsPOM extends BaseTest {
 	// VEHICLE edit dropdowns
 	// -----------------------------------------
 	// assumes 1st vehicle is insureds
-	@FindBy(id = "ClaimLossDetails:ClaimLossDetailsScreen:VehicleIncidentIterator:0:VehicleIncidentDV:VehicleName:VehicleNameMenuIcon")
+	@FindBy(id = "ClaimLossDetails:ClaimLossDetailsScreen:IncidentPanelRef:IncidentPanelSet:VehicleIncidentIterator:0:VehicleIncidentDV:VehicleName:VehicleNameMenuIcon")
 	private WebElement phEditVehiclePickerIcon;
-	@FindBy(id = "ClaimLossDetails:ClaimLossDetailsScreen:VehicleIncidentIterator:0:VehicleIncidentDV:VehicleName:EditVehicleMenu-itemEl")
+	@FindBy(id = "ClaimLossDetails:ClaimLossDetailsScreen:IncidentPanelRef:IncidentPanelSet:VehicleIncidentIterator:0:VehicleIncidentDV:VehicleName:EditVehicleMenu-itemEl")
 	private WebElement phEditVehiclePickerEditVehicle;
-	@FindBy(id = "ClaimLossDetails:ClaimLossDetailsScreen:VehicleIncidentIterator:0:VehicleIncidentDV:VehicleName:RemoveVehicleMenu-textEl")
+	@FindBy(id = "ClaimLossDetails:ClaimLossDetailsScreen:IncidentPanelRef:IncidentPanelSet:VehicleIncidentIterator:0:VehicleIncidentDV:VehicleName:RemoveVehicleMenu-textEl")
 	private WebElement phEditVehiclePickerRemoveVehicle;
 	// assumes 2nd vehicle is insureds
-	@FindBy(id = "ClaimLossDetails:ClaimLossDetailsScreen:VehicleIncidentIterator:1:VehicleIncidentDV:VehicleName:VehicleNameMenuIcon")
+	@FindBy(id = "ClaimLossDetails:ClaimLossDetailsScreen:IncidentPanelRef:IncidentPanelSet:VehicleIncidentIterator:1:VehicleIncidentDV:VehicleName:VehicleNameMenuIcon")
 	private WebElement tpEditVehiclePickerIcon;
-	@FindBy(id = "ClaimLossDetails:ClaimLossDetailsScreen:VehicleIncidentIterator:1:VehicleIncidentDV:VehicleName:EditVehicleMenu-itemEl")
+	@FindBy(id = "ClaimLossDetails:ClaimLossDetailsScreen:IncidentPanelRef:IncidentPanelSet:VehicleIncidentIterator:1:VehicleIncidentDV:VehicleName:EditVehicleMenu-itemEl")
 	private WebElement tpEditVehiclePickerEditVehicle;
-	@FindBy(id = "ClaimLossDetails:ClaimLossDetailsScreen:VehicleIncidentIterator:1:VehicleIncidentDV:VehicleName:RemoveVehicleMenu-textEl")
+	@FindBy(id = "ClaimLossDetails:ClaimLossDetailsScreen:IncidentPanelRef:IncidentPanelSet:VehicleIncidentIterator:1:VehicleIncidentDV:VehicleName:RemoveVehicleMenu-textEl")
 	private WebElement tpEditVehiclePickerRemoveVehicle;
 
-	@FindBy(id = "ClaimLossDetails:ClaimLossDetailsScreen:VehicleIncidentIterator:0:VehicleIncidentDV:PassengerLV:driver")
+	@FindBy(id = "ClaimLossDetails:ClaimLossDetailsScreen:IncidentPanelRef:IncidentPanelSet:VehicleIncidentIterator:0:VehicleIncidentDV:PassengerLV:driver")
 	private WebElement phEditDriver;
-	@FindBy(id = "ClaimLossDetails:ClaimLossDetailsScreen:VehicleIncidentIterator:1:VehicleIncidentDV:PassengerLV:driver")
+	@FindBy(id = "ClaimLossDetails:ClaimLossDetailsScreen:IncidentPanelRef:IncidentPanelSet:VehicleIncidentIterator:1:VehicleIncidentDV:PassengerLV:driver")
 	private WebElement tpEditDriver;
 
 	@FindBy(id = "ClaimLossDetails:ClaimLossDetailsScreen:IncidentPanelRef:IncidentPanelSet:VehicleIncidentIterator:0:VehicleIncidentDV:PassengerLV:0:passenger")
@@ -116,6 +116,7 @@ public class ClaimCenterPOSTFNOLLossDetailsPOM extends BaseTest {
 	private WebElement tpEditPassenger;
 
 	// PROPERTY edit dropdowns
+	//TODO
 	// -----------------------------------------
 	// just do the 1st for now
 	@FindBy(id = "ClaimLossDetails:ClaimLossDetailsScreen:PropertyIncidentIterator:0:PropertyIncidentDV:PropertyName:PropertyNameMenuIcon")
@@ -128,11 +129,11 @@ public class ClaimCenterPOSTFNOLLossDetailsPOM extends BaseTest {
 	// PEDESTRIAN edit dropdowns
 	// -----------------------------------------
 	// just do the 1st for now
-	@FindBy(id = "ClaimLossDetails:ClaimLossDetailsScreen:PedestrianIterator:0:PedestrianDV:PersonName:PersonNameMenuIcon")
+	@FindBy(id = "ClaimLossDetails:ClaimLossDetailsScreen:IncidentPanelRef:IncidentPanelSet:PedestrianIterator:0:PedestrianDV:PersonName:PersonNameMenuIcon")
 	private WebElement editPedestrianPickerIcon;
-	@FindBy(id = "ClaimLossDetails:ClaimLossDetailsScreen:PedestrianIterator:0:PedestrianDV:PersonName:EditPedestrian-textEl")
+	@FindBy(id = "ClaimLossDetails:ClaimLossDetailsScreen:IncidentPanelRef:IncidentPanelSet:PedestrianIterator:0:PedestrianDV:PersonName:EditPedestrian-textEl")
 	private WebElement editPedestrianPickerEditPedestrian;
-	@FindBy(id = "ClaimLossDetails:ClaimLossDetailsScreen:PedestrianIterator:0:PedestrianDV:PersonName:RemovePedestrian-textEl")
+	@FindBy(id = "ClaimLossDetails:ClaimLossDetailsScreen:IncidentPanelRef:IncidentPanelSet:PedestrianIterator:0:PedestrianDV:PersonName:RemovePedestrian-textEl")
 	private WebElement editPedestrianPickerRemovePedestrian;
 
 	// LOSS LOCATION
