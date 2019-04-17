@@ -21,7 +21,7 @@ Feature: Regression test for errors for step3 edit PH Vehicle - Theft and Fire
      And I click ok button on vehicle screen
   #  Then Mandatory field error messages will be shown for Vehicle screen in FNOL
  
-
+ @regression
  Scenario: FNOL Regression for PH vehicle - check error messages for Theft type
     And I will be on step3 for FNOL
     And I select "Theft" from "Incident Type" field on step3

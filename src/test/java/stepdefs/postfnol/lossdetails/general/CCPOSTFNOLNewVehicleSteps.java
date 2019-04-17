@@ -58,16 +58,48 @@ public class CCPOSTFNOLNewVehicleSteps extends BaseTest {
 				postFnolNewVehiclePOM.selectProtocolHire(false);
 			break;
 		// fire only
-			
+		case "Fire Visited Garage":
+			if (fieldValue.equalsIgnoreCase("Yes"))
+				postFnolNewVehiclePOM.selectFireVisitedGarage(true);
+			else
+				postFnolNewVehiclePOM.selectFireVisitedGarage(false);
+			break;
+		
+		case "Fire Other Vehicles":
+			if (fieldValue.equalsIgnoreCase("Yes"))
+				postFnolNewVehiclePOM.selectFireOtherVehicles(true);
+			else
+				postFnolNewVehiclePOM.selectFireOtherVehicles(false);
+		
+			break;
 		// theft only
-		case "Keys Purchased":
+		case "Theft Windows Locked":
+			if (fieldValue.equalsIgnoreCase("Yes"))
+				postFnolNewVehiclePOM.selectTheftWindowsLocked(true);
+			else
+				postFnolNewVehiclePOM.selectTheftWindowsLocked(false);
+		
+			break;
+		case "Theft Security Devices":
+			if (fieldValue.equalsIgnoreCase("Yes"))
+				postFnolNewVehiclePOM.selectTheftSecurityFitted(true);
+			else
+				postFnolNewVehiclePOM.selectTheftSecurityFitted(false);
+		
+			break;
+		case "Theft Keys Purchased":
 			postFnolNewVehiclePOM.selectKeysPurchased(fieldValue);
 			break;
-		case "Keys Possessed":
+		case "Theft Keys Possessed":
 			postFnolNewVehiclePOM.selectKeysPossessed(fieldValue);
 			break;
 		
-		
+		case "TP Insurer Details Available":
+			if (fieldValue.equalsIgnoreCase("Yes"))
+				postFnolNewVehiclePOM.selectTPInsurerAvailable(true);
+			else
+				postFnolNewVehiclePOM.selectTPInsurerAvailable(false);
+			break;
 
 		default:
 			Assert.fail("unknown input field :" + fieldValue + " - check cucumber script!");
@@ -103,6 +135,14 @@ public class CCPOSTFNOLNewVehicleSteps extends BaseTest {
 			break;
 		case "Pre-existing Damage":
 			postFnolNewVehiclePOM.setPreDamageDesc(fieldValue);
+			break;
+		// fire only
+		case "Fire Visited Garage Details":
+			postFnolNewVehiclePOM.setFireGarageDetails(fieldValue);
+			break;
+		// theft only
+		case "Theft Security Devices Details":
+			postFnolNewVehiclePOM.setTheftSecurityDetails(fieldValue);
 			break;
 		default:
 			Assert.fail("unknown input field :" + fieldName + " - check cucumber script!");
@@ -151,6 +191,18 @@ public class CCPOSTFNOLNewVehicleSteps extends BaseTest {
 		}
 	}
 	
+	@Given("^I click \"([^\"]*)\" on TP owner picker on new vehicle screen on post FNOL$")
+	public void i_click_on_owner_picker(String option) throws Throwable {
+		switch (option) {
+		case "New Person":
+			postFnolNewVehiclePOM.selectNewTPOwner();
+			break;
+
+		default:
+			Assert.fail("unknown input field :" + option + " - check cucumber script!");
+		}
+
+	}
 	
 	
 	

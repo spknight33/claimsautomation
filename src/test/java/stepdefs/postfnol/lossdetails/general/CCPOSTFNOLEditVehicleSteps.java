@@ -96,7 +96,12 @@ public class CCPOSTFNOLEditVehicleSteps extends BaseTest {
 			postFnolEditVehiclePOM.selectKeysPossessed(fieldValue);
 			break;
 		
-		
+		case "TP Insurer Details Available":
+			if (fieldValue.equalsIgnoreCase("Yes"))
+				postFnolEditVehiclePOM.selectTPInsurerAvailable(true);
+			else
+				postFnolEditVehiclePOM.selectTPInsurerAvailable(false);
+			break;
 
 		default:
 			Assert.fail("unknown input field :" + fieldValue + " - check cucumber script!");
@@ -168,6 +173,9 @@ public class CCPOSTFNOLEditVehicleSteps extends BaseTest {
 			break;
 		case "Calculate Total Loss":
 			postFnolEditVehiclePOM.clickCalculateTotalLoss();
+			break;
+		case "Search Insurance Company":
+			postFnolEditVehiclePOM.selectTPInsurerSearch();
 			break;
 
 		default:

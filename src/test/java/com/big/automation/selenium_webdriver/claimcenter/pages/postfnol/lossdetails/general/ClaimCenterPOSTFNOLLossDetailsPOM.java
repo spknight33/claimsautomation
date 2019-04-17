@@ -116,14 +116,13 @@ public class ClaimCenterPOSTFNOLLossDetailsPOM extends BaseTest {
 	private WebElement tpEditPassenger;
 
 	// PROPERTY edit dropdowns
-	//TODO
 	// -----------------------------------------
 	// just do the 1st for now
-	@FindBy(id = "ClaimLossDetails:ClaimLossDetailsScreen:PropertyIncidentIterator:0:PropertyIncidentDV:PropertyName:PropertyNameMenuIcon")
+	@FindBy(id = "ClaimLossDetails:ClaimLossDetailsScreen:IncidentPanelRef:IncidentPanelSet:PropertyIncidentIterator:0:PropertyIncidentDV:PropertyName:PropertyNameMenuIcon")
 	private WebElement editPropertyPickerIcon;
-	@FindBy(id = "ClaimLossDetails:ClaimLossDetailsScreen:PropertyIncidentIterator:0:PropertyIncidentDV:PropertyName:EditProperty-itemEl")
+	@FindBy(id = "ClaimLossDetails:ClaimLossDetailsScreen:IncidentPanelRef:IncidentPanelSet:PropertyIncidentIterator:0:PropertyIncidentDV:PropertyName:EditProperty-itemEl")
 	private WebElement editPropertyPickerEditProperty;
-	@FindBy(id = "ClaimLossDetails:ClaimLossDetailsScreen:PropertyIncidentIterator:0:PropertyIncidentDV:PropertyName:RemoveProperty-textEl")
+	@FindBy(id = "ClaimLossDetails:ClaimLossDetailsScreen:IncidentPanelRef:IncidentPanelSet:PropertyIncidentIterator:0:PropertyIncidentDV:PropertyName:RemoveProperty-itemEl")
 	private WebElement editPropertyPickerRemoveProperty;
 
 	// PEDESTRIAN edit dropdowns
