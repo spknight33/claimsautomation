@@ -32,6 +32,11 @@ public class ClaimCenterPOSTFNOLNewChequeStep3POM extends BaseTest {
 	@FindBy(id = "NormalCreateCheckWizard:CheckWizard_CheckInstructionsScreen:NewPaymentInstructionsDV:CheckInstructions-inputEl")
 	private WebElement chequeInstructionsDropdown;
 	
+	@FindBy(id ="WebMessageWorksheet:WebMessageWorksheetScreen:WebMessageWorksheet_ClearButton")
+	private WebElement closeWarningsWindow;
+	private String closeWarningsLocator = "WebMessageWorksheet:WebMessageWorksheetScreen:WebMessageWorksheet_ClearButton";
+	
+	
 	
 
 	public String getName() {
@@ -72,6 +77,23 @@ public class ClaimCenterPOSTFNOLNewChequeStep3POM extends BaseTest {
 
 		logger.info(format("%s -  going to click finish", getName()));
 		GuideWireAccessors.clickGWButton(driver,this.getFinishButton());
+		
+		// we may get prompt for validation warnings
+		//clear any if necessary
+		logger.info(format("%s - going to close warnings window if its open", getName()));
+
+		String xpathLocator = "//*[@id='"+  this.closeWarningsLocator + "']";
+		if(driver.findElements( By.xpath(xpathLocator) ).size() > 0)
+		{
+				logger.info(format("%s - going to close warnings window as its open", getName()));
+					// close it if present
+					driver.findElement(By.xpath(xpathLocator)).click();
+					GuideWireAccessors.clickGWButton(driver,getFinishButton());
+		}
+		else
+			{
+				logger.info(format("%s - NOT going to warnings window as not open", getName()));
+			}
 		
 	}
 	
