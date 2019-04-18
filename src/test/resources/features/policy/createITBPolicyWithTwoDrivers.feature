@@ -1,4 +1,4 @@
-@Ignore 
+@Ignore @createpolicy
 Feature: Create ITB Policy with two drivers
 
   Scenario: test policy with two ITB drivers create
@@ -83,7 +83,7 @@ Feature: Create ITB Policy with two drivers
     And I Click Ok at new driver creation
     And I Click Next at submission step3
     And I Click AddVehicle at submission step4
-    And I set the submission step4 field "Vrn" to "ND58HFL"
+    And I set the submission step4 field "Vrn" to "S99SJA"
     And I set the submission step4 field "SecurityDevice" to "Alarm"
     And I set the submission step4 field "Tracker" to "true"
     And I set the submission step4 field "Value" to "3575"
