@@ -1,4 +1,4 @@
-@Ignore 
+@Ignore @regressionlossdetails
 Feature: POST FNOL REGRESSION - various test of the Loss Details pages
 
   Background: 
@@ -163,7 +163,7 @@ Feature: POST FNOL REGRESSION - various test of the Loss Details pages
     And I click update button on post FNOL loss details
 
 
-  Scenario: LOSS DETAILS POST FNOL Regression TC8 - ClaimsHandler can add/edit PH PASSENGER DRIVER from Loss Details post FNOL, to include changing PH Passenger injury details
+  Scenario: LOSS DETAILS POST FNOL Regression TC9 - ClaimsHandler can add/edit PH PASSENGER DRIVER from Loss Details post FNOL, to include changing PH Passenger injury details
     When I click edit button on post FNOL loss details
     And I click edit PH Vehicle on post FNOL loss details
     And I click "AddPassenger" on edit vehicle screen on post FNOL
@@ -186,11 +186,4 @@ Feature: POST FNOL REGRESSION - various test of the Loss Details pages
     #And I click update button on post FNOL loss details 
 
 
-  Scenario: CBPCL-216 TC20  ClaimsHandler can edit TP passenger from Loss Details post FNOL
-    And I Select an existing Claim
-    And I select "Loss Details" on the Claim Navigator
-    And I will see post FNOL loss details
-    When I click edit button on post FNOL loss details
-    When I click edit TP Passenger on post FNOL loss details
-    Then I will be on Edit Passenger screen for post FNOL
-    And I click cancel button on edit passenger screen for post FNOL
+  
