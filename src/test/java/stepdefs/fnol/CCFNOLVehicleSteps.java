@@ -145,7 +145,20 @@ public class CCFNOLVehicleSteps extends BaseTest {
 		fnolVehicleDetailsPOM.selectFinanceOnVehicle(false);
 	}
 	
+	//TODO
 	
+	// occupants - mandatory
+	fieldValue = ExcelUtil.getTestDataValue("Fnol_PHVehicleKnowOccupantNumber");
+	if (fieldValue !=null&& fieldValue.equalsIgnoreCase("TRUE"))
+	{
+		fnolVehicleDetailsPOM.selectOccupantsKnown(true);
+		fieldValue = ExcelUtil.getTestDataValue("Fnol_PHVehicleOccupantNumber");
+		fnolVehicleDetailsPOM.setOccupantsNumber(fieldValue);
+	}
+	else
+	{
+		fnolVehicleDetailsPOM.selectOccupantsKnown(false);
+	}
 	
 	completePHVehicleFireSectionForTestScenario();
 	completePHVehicleTheftSectionForTestScenario();
@@ -550,6 +563,20 @@ public class CCFNOLVehicleSteps extends BaseTest {
 			}
 			
 		}
+	
+		// occupants - mandatory
+		
+		fieldValue = ExcelUtil.getTestDataValue("Fnol_TPVehicleKnowOccupantNumber");
+		if (fieldValue !=null&& fieldValue.equalsIgnoreCase("TRUE"))
+		{
+			fnolVehicleDetailsPOM.selectOccupantsKnown(true);
+			fieldValue = ExcelUtil.getTestDataValue("Fnol_TPVehicleOccupantNumber");
+			fnolVehicleDetailsPOM.setOccupantsNumber(fieldValue);
+		}
+		else
+		{
+			fnolVehicleDetailsPOM.selectOccupantsKnown(false);
+		}
 		 
 		
 	   fnolVehicleDetailsPOM.selectOK();
@@ -622,6 +649,19 @@ public class CCFNOLVehicleSteps extends BaseTest {
 	@Given("^I select \"([^\"]*)\" from \"([^\"]*)\" on vehicle screen$")
 	public void i_select_from_field_on_vehicle_screen(String fieldValue, String fieldName) throws Throwable {
 		switch (fieldName) {
+		
+		case "Vehicle Type":
+			fnolVehicleDetailsPOM.selectVehicleType(fieldValue);
+			break;
+		case "Style":
+			fnolVehicleDetailsPOM.selectVehicleStyle(fieldValue);
+			break;
+		case "Foreign":
+			if (fieldValue.equalsIgnoreCase("Yes"))
+				fnolVehicleDetailsPOM.selectForeign(true);
+			else
+				fnolVehicleDetailsPOM.selectForeign(false);
+			break;
 		case "Usual Location":
 			fnolVehicleDetailsPOM.selectUsualLocation(fieldValue);
 			break;
@@ -634,11 +674,78 @@ public class CCFNOLVehicleSteps extends BaseTest {
 		case "Keys Possessed":
 			fnolVehicleDetailsPOM.selectKeysPossessed(fieldValue);
 			break;
-		case "Vehicle Type":
-			fnolVehicleDetailsPOM.selectVehicleType(fieldValue);
-			break;
+		
 		case "Vehicle Owner":
 			fnolVehicleDetailsPOM.selectOwner(fieldValue);
+			break;
+			
+		
+			
+		case "Airbags Deployed":
+			fnolVehicleDetailsPOM.selectAirbagsDeployed(fieldValue);;
+			break;
+		case "Credit Hire":
+			if (fieldValue.equalsIgnoreCase("Yes"))
+				fnolVehicleDetailsPOM.selectCreditHire(true);
+			else
+				fnolVehicleDetailsPOM.selectCreditHire(false);
+			break;
+		case "Protocol Hire":
+			if (fieldValue.equalsIgnoreCase("Yes"))
+				fnolVehicleDetailsPOM.selectProtocolHire(true);
+			else
+				fnolVehicleDetailsPOM.selectProtocolHire(false);
+			break;
+			
+		case "Occupants Known":
+			if (fieldValue.equalsIgnoreCase("Yes"))
+				fnolVehicleDetailsPOM.selectOccupantsKnown(true);
+			else
+				fnolVehicleDetailsPOM.selectOccupantsKnown(false);
+			break;
+			
+		// fire only ph
+		case "Fire Visited Garage":
+			if (fieldValue.equalsIgnoreCase("Yes"))
+				fnolVehicleDetailsPOM.selectFireVisitedGarage(true);
+			else
+				fnolVehicleDetailsPOM.selectFireVisitedGarage(false);
+			break;
+		
+		case "Fire Other Vehicles":
+			if (fieldValue.equalsIgnoreCase("Yes"))
+				fnolVehicleDetailsPOM.selectFireOtherVehicles(true);
+			else
+				fnolVehicleDetailsPOM.selectFireOtherVehicles(false);
+		
+			break;
+		// theft only
+		case "Theft Windows Locked":
+			if (fieldValue.equalsIgnoreCase("Yes"))
+				fnolVehicleDetailsPOM.selectTheftWindowsLocked(true);
+			else
+				fnolVehicleDetailsPOM.selectTheftWindowsLocked(false);
+		
+			break;
+		case "Theft Security Devices":
+			if (fieldValue.equalsIgnoreCase("Yes"))
+				fnolVehicleDetailsPOM.selectTheftSecurityFitted(true);
+			else
+				fnolVehicleDetailsPOM.selectTheftSecurityFitted(false);
+		
+			break;
+		case "Theft Keys Purchased":
+			fnolVehicleDetailsPOM.selectKeysPurchased(fieldValue);
+			break;
+		case "Theft Keys Possessed":
+			fnolVehicleDetailsPOM.selectKeysPossessed(fieldValue);
+			break;
+		
+		case "TP Insurer Details Available":
+			if (fieldValue.equalsIgnoreCase("Yes"))
+				fnolVehicleDetailsPOM.selectTPInsurerAvailable(true);
+			else
+				fnolVehicleDetailsPOM.selectTPInsurerAvailable(false);
 			break;
 
 		default:
@@ -660,6 +767,9 @@ public class CCFNOLVehicleSteps extends BaseTest {
 			break;
 		case "Model":
 			fnolVehicleDetailsPOM.setModel(fieldValue);
+			break;
+		case "Occupants Number":
+			fnolVehicleDetailsPOM.setOccupantsNumber(fieldValue);
 			break;
 
 		default:

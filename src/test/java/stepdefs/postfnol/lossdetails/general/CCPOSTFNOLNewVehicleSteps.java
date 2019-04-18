@@ -57,6 +57,14 @@ public class CCPOSTFNOLNewVehicleSteps extends BaseTest {
 			else
 				postFnolNewVehiclePOM.selectProtocolHire(false);
 			break;
+			
+		case "Occupants Known":
+			if (fieldValue.equalsIgnoreCase("Yes"))
+				postFnolNewVehiclePOM.selectOccupantsKnown(true);
+			else
+				postFnolNewVehiclePOM.selectOccupantsKnown(false);
+			break;
+			
 		// fire only
 		case "Fire Visited Garage":
 			if (fieldValue.equalsIgnoreCase("Yes"))
@@ -135,6 +143,9 @@ public class CCPOSTFNOLNewVehicleSteps extends BaseTest {
 			break;
 		case "Pre-existing Damage":
 			postFnolNewVehiclePOM.setPreDamageDesc(fieldValue);
+			break;
+		case "Occupants Number":
+			postFnolNewVehiclePOM.setOccupantsNumber(fieldValue);
 			break;
 		// fire only
 		case "Fire Visited Garage Details":

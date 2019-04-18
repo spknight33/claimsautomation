@@ -5,7 +5,7 @@ Feature: POST FNOL REGRESSION - various test of the Loss Details pages
     Given I use test data set "postfnol_set1"
     And I access ClaimCenter login page
     And I login to ClaimCenter as role "ADClaimsHandlerTm1"
-    And I Select existing Claim "300000015"
+    And I Select existing Claim "300000002"
     And I select "Loss Details" on the Claim Navigator
     And I will see post FNOL loss details
 
@@ -15,7 +15,7 @@ Feature: POST FNOL REGRESSION - various test of the Loss Details pages
     When I input "Purpose changed by regression script test" into the "Journey Purpose" field on Loss Details post FNOL
     And I click update button on post FNOL loss details
  
-  @regression
+ 
   Scenario: LOSS DETAILS POST FNOL Regression TC2  - ClaimsHandler can add and re-edit TP VEHICLE from Loss Details post FNOL and VRN lookup works
     And I click edit button on post FNOL loss details
     And I click add Vehicle on post FNOL loss details
@@ -23,12 +23,14 @@ Feature: POST FNOL REGRESSION - various test of the Loss Details pages
     And I select "Motor Car" from "Style" on new vehicle screen on post FNOL
     And I select "Owned" from "Vehicle Type" on new vehicle screen on post FNOL
     And I input "CY17NBX" into the "VRN" box on new vehicle screen on post FNOL
-   # And The value is "TRANSPORTER" for field "Model" on new vehicle screen on post FNOL
+    And The value is "TRANSPORTER" for field "Model" on new vehicle screen on post FNOL
     And I select "Yes" from "Foreign" on new vehicle screen on post FNOL
     And I input "16000" into the "Mileage" box on new vehicle screen on post FNOL
     And I input "DAMAGE DESC ADDED BY REGRESSION SCRIPT" into the "Damage Description" box on new vehicle screen on post FNOL
     And I select "Yes" from "Credit Hire" on new vehicle screen on post FNOL
     And I select "Yes" from "Protocol Hire" on new vehicle screen on post FNOL
+    And I select "Yes" from "Occupants Known" on new vehicle screen on post FNOL
+    And I input "1" into the "Occupants Number" box on new vehicle screen on post FNOL
     And I click "Update" on new vehicle screen on post FNOL
     When I click edit TP Vehicle on post FNOL loss details
     Then I will be on edit vehicle screen on post FNOL
@@ -160,7 +162,7 @@ Feature: POST FNOL REGRESSION - various test of the Loss Details pages
     And I click "Update" on driver screen on post FNOL
     And I click update button on post FNOL loss details
 
-@inprogress
+
   Scenario: LOSS DETAILS POST FNOL Regression TC8 - ClaimsHandler can add/edit PH PASSENGER DRIVER from Loss Details post FNOL, to include changing PH Passenger injury details
     When I click edit button on post FNOL loss details
     And I click edit PH Vehicle on post FNOL loss details
