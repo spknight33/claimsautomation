@@ -35,7 +35,7 @@ public class CCPOSTFNOLChequesStep2Steps extends BaseTest {
 		default:
 			Assert.fail("unknown input field :" + fieldName + " - check cucumber script!");
 		}
-		postFnolNewChequeStep2POM.next();
+		
 	}
 	@Given("^I click add payment button on New System Cheque Step2 post FNOL$")
 	public void next() {

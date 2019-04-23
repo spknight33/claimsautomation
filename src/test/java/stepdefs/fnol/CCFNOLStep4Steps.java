@@ -35,9 +35,6 @@ public class CCFNOLStep4Steps extends BaseTest{
 		if (fieldValue !=null && fieldValue.equalsIgnoreCase("TRUE"))
 		{
 			fnolStep4POM.selectPhClaiming(true);
-			
-		
-		
 		}
 		else
 		{
@@ -55,7 +52,7 @@ public class CCFNOLStep4Steps extends BaseTest{
 	}
 	
 	
-	public void completeFNOLStep4Services() throws Throwable
+	private void completeFNOLStep4Services() throws Throwable
 	{
 		String fieldValue=null;
 		fieldValue = ExcelUtil.getTestDataValue("Fnol_Step4_RepairServiceRequired");
@@ -121,7 +118,7 @@ public class CCFNOLStep4Steps extends BaseTest{
 		}
 	}
 	
-	public void completeFNOLStep4TPCapture() 
+	private void completeFNOLStep4TPCapture() 
 	{
 		String fieldValue=null;
 		//The TP capture section will depend on what is created as regards third party in the data, so will be variable
@@ -317,6 +314,13 @@ public class CCFNOLStep4Steps extends BaseTest{
 	@Then("^I will be on step4 for FNOL$")
 	public void i_will_be_on_step4_for_FNOL() throws Throwable {
 		fnolStep4POM.isPageTitleDisplayed("Step 4 of 5: Services");
+	}
+	
+	@Then("I complete step4 for FNOL$")
+	public void iCompleteStep4FNOL() throws Throwable 
+	{
+		completeFNOLStep4ForTestScenario();
+		
 	}
 	
 	// for use by step3 validation tests

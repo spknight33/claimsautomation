@@ -372,12 +372,82 @@ public class CCFNOLDriverSteps extends BaseTest {
 	    case "Gender":
 	    	fnolDriverDetailsPOM.selectGender(fieldValue);
 	    	break;
-	    case "Injured":
-	    	if (fieldValue.equalsIgnoreCase("true"))
-	      	  fnolDriverDetailsPOM.selectInjured(true);
-	    	else
-	    		fnolDriverDetailsPOM.selectInjured(false);
+	    case "Primary Phone":
+	    	fnolDriverDetailsPOM.selectPrimaryPhone(fieldValue);
 	    	break;
+	    	
+	    case "ThirdParty Seatbelt":
+	    	if (fieldValue.equalsIgnoreCase("Yes"))
+	    		fnolDriverDetailsPOM.selectTPSeatBelt(true);
+	    	else
+	    		fnolDriverDetailsPOM.selectTPSeatBelt(false);
+	    	break;
+	    case "Indemnity Occupation":
+	    	fnolDriverDetailsPOM.selectFTOccupation(fieldValue);
+	    	break;
+	    case "Indemnity License":
+	    	fnolDriverDetailsPOM.selectLicenseType(fieldValue);
+	    	break;
+	    case "Indemnity License Length":
+	    	fnolDriverDetailsPOM.selectLicenseLength(fieldValue);
+	    	break;
+	    case "Indemnity Medicals":
+	    	fnolDriverDetailsPOM.selectMedicalConditions(fieldValue);
+	    	break;
+	    case "Indemnity Incidents 5Years":
+	    	if (fieldValue.equalsIgnoreCase("Yes"))
+	    		fnolDriverDetailsPOM.selectIncident5Years(true);
+	    	else
+	    		fnolDriverDetailsPOM.selectIncident5Years(false);
+	    	break;
+	    case "Indemnity Offences 5Years":
+	    	if (fieldValue.equalsIgnoreCase("Yes"))
+	    		fnolDriverDetailsPOM.selectOffence5Years(true);
+	    	else
+	    		fnolDriverDetailsPOM.selectOffence5Years(false);
+	    	break;
+	    	//TODO finish thes eoff
+	    case "Indemnity Prosecutions":
+	    	fnolDriverDetailsPOM.selectProsecuted(fieldValue);
+	    	break;
+	    case "Indemnity Seatbelt":
+	    	fnolDriverDetailsPOM.selectIndemnitySeatbelt(fieldValue);
+	    	break;
+	    case "Indemnity Tested At Scene":
+	    	if (fieldValue.equalsIgnoreCase("Yes"))
+	    		fnolDriverDetailsPOM.selectTestedAtScene(true);
+	    	else
+	    		fnolDriverDetailsPOM.selectTestedAtScene(false);
+	    	break;
+	    case "Injured":
+			if (fieldValue.equalsIgnoreCase("Yes"))
+				fnolDriverDetailsPOM.selectInjured(true);
+			else
+				fnolDriverDetailsPOM.selectInjured(false);
+			break;
+	    	
+			// injury section
+	    case "Severity":
+	    	fnolDriverDetailsPOM.selectInjurySeverity(fieldValue);
+		    	break;
+	    case "Ambulance Attended":
+			if (fieldValue.equalsIgnoreCase("Yes"))
+				fnolDriverDetailsPOM.selectAmbulanceAttend(true);
+			else
+				fnolDriverDetailsPOM.selectAmbulanceAttend(false);
+			break;
+	    case "Air Ambulance Attended":
+			if (fieldValue.equalsIgnoreCase("Yes"))
+				fnolDriverDetailsPOM.selectAirAmbulanceAttend(true);
+			else
+				fnolDriverDetailsPOM.selectAirAmbulanceAttend(false);
+			break;
+	    case "Hospital Attended":
+			if (fieldValue.equalsIgnoreCase("Yes"))
+				fnolDriverDetailsPOM.selectHospitalAttend(true);
+			else
+				fnolDriverDetailsPOM.selectHospitalAttend(false);
+			break;
 	  
 	    default:
 	    Assert.fail("unknown input field :"+ fieldValue+" - check cucumber script!");

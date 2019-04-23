@@ -8,7 +8,7 @@ Feature: REGRESSION FOR CREATE PAYMENT AND APPROVE
 
   Scenario Outline: TC1 create payment and approve (cheque) partial
   And I login to ClaimCenter as role "<cheque creator role>"
-    And I Select existing Claim "300000002"
+    And I Select existing Claim "300000033"
     And I select the Actions Popup Menu Hierarchy "Cheque"
     And I will see post FNOL New System Cheque Step1 screen
     And I select "Steve Knight-itb1" from field "Claimant" at New System Cheque Step1 post FNOL
@@ -33,7 +33,7 @@ Feature: REGRESSION FOR CREATE PAYMENT AND APPROVE
     And I select "Activities" on the Desktop Navigator
     And I will see desktop activities details screen
     And I select "All open" from "Activity Type" field on desktop activities details screen
-    And I select the activity for subject "Review and approve new payment" for claim "300000002" for insured "Steve Knight-itb1" and for exposure "S99SJA - Steve Knight-itb1 - 1st Party Vehicle"
+    And I select the activity for subject "Review and approve new payment" for claim "300000033" for insured "Steve Knight-itb1" and for exposure "S99SJA - Steve Knight-itb1 - 1st Party Vehicle"
     And I click on approve activity on the desktop activities worksheet screen
 
     Examples: 
@@ -63,7 +63,7 @@ Feature: REGRESSION FOR CREATE PAYMENT AND APPROVE
    
    Scenario Outline: TC2 create payment and approve (BACS) partial 
    And I login to ClaimCenter as role "<cheque creator role>"
-    And I Select existing Claim "300000002"
+    And I Select existing Claim "300000033"
     And I select the Actions Popup Menu Hierarchy "Cheque"
     And I will see post FNOL New System Cheque Step1 screen
     And I select "Steve Knight-itb1" from field "Claimant" at New System Cheque Step1 post FNOL
@@ -97,7 +97,7 @@ Feature: REGRESSION FOR CREATE PAYMENT AND APPROVE
     And I select "Activities" on the Desktop Navigator
     And I will see desktop activities details screen
     And I select "All open" from "Activity Type" field on desktop activities details screen
-    And I select the activity for subject "Review and approve new payment" for claim "300000002" for insured "Steve Knight-itb1" and for exposure "S99SJA - Steve Knight-itb1 - 1st Party Vehicle"
+    And I select the activity for subject "Review and approve new payment" for claim "300000033" for insured "Steve Knight-itb1" and for exposure "S99SJA - Steve Knight-itb1 - 1st Party Vehicle"
     And I click on approve activity on the desktop activities worksheet screen
 
     Examples: 

@@ -23,52 +23,40 @@ public class CCFNOLStep2Steps extends BaseTest{
 	CCFNOLCompanyContactSteps companyContactSteps = new CCFNOLCompanyContactSteps();
 	
 	/**
-	 * This method used for regression scripts, driven by scenario data
-	 * @param scenarioData
+	 * This method used for regression scripts, driven by data from spreadsheet
 	 * @throws Throwable
 	 */
 	public void completeFNOLStep2ForTestScenario()  throws Throwable
 	{
-		// check that policy address is helf before we proceed
+		// check that policy address is held before we proceed
 		String actualAddress = fnolStep2POM.getPolicyHolderAddress();
 		Assert.assertNotNull(actualAddress, "We MUST have a policy holder address returned form PC, but it was NULL");
 		String fieldValue=null;
 		fieldValue = ExcelUtil.getTestDataValue("Fnol_Insured_Address");
 		Assert.assertEquals(actualAddress, fieldValue,"Expected insured address not correct, should be :<"+fieldValue+"<, but was <"+actualAddress+">");
 		
-		
 		completeFNOLStep2ReportedBySection();
-				
 		completeFNOLStep2ConfirmSection();
-		
 		completeFNOLStep2AlertSection();
-		
-		
 		completeFNOLStep2MainContactSection();
-		
-		
-		
-		
-		
+	
 		if (!ExcelUtil.getTestDataValue("Fnol_Step2_PHVehicleRequired").equalsIgnoreCase("TRUE"))
 		{
 			this.unselectFirstInsuredVehicle();
 		}
 		
-		
 		this.next();
-		
-	
 	}
 	
-	
-	public void completeFNOLStep2ReportedBySection()
+	/**
+	 * Spreadsheet driven helper method
+	 */
+	private void completeFNOLStep2ReportedBySection()
 	{
 		String fieldValue=null;
 		fieldValue = ExcelUtil.getTestDataValue("Fnol_Step2_HowReported");
 		if (fieldValue !=null)
 			fnolStep2POM.selectHowReported(fieldValue);
-		
 		
 		// check if new person or new company to be done
 		fieldValue = ExcelUtil.getTestDataValue("Fnol_Step2_ReportedByNewPerson");
@@ -104,8 +92,10 @@ public class CCFNOLStep2Steps extends BaseTest{
 		}
 	}
 	
-	
-	public void completeFNOLStep2ConfirmSection()
+	/**
+	 * Spreadsheet driven helper method
+	 */
+	private void completeFNOLStep2ConfirmSection()
 	{
 		// confirm section
 				//------------------
@@ -135,8 +125,10 @@ public class CCFNOLStep2Steps extends BaseTest{
 				}
 	}
 	
-	
-	public void completeFNOLStep2AlertSection()
+	/**
+	 * Spreadsheet driven helper method
+	 */
+	private void completeFNOLStep2AlertSection()
 	{
 		String fieldValue=null;
 		if (ExcelUtil.getTestDataValue("Fnol_Step2_AlertNotified").equalsIgnoreCase("TRUE"))
@@ -152,7 +144,10 @@ public class CCFNOLStep2Steps extends BaseTest{
 		}
 	}
 	
-	public void completeFNOLStep2MainContactSection()
+	/**
+	 * Spreadsheet driven helper method
+	 */
+	private void completeFNOLStep2MainContactSection()
 	{
 		//Main contact section
 				//-----------------------
@@ -174,6 +169,10 @@ public class CCFNOLStep2Steps extends BaseTest{
 				}
 	}
 	
+	
+	//------------------------------------------------------------------------------------------------------------
+	// Cucumber methods
+	
 	@Given("^As a \"([^\"]*)\" I am at step2 for FNOL$")
 	public void as_a_user_I_am_at_step2_for_FNOL(String userType) throws Throwable {
 		step1Steps.as_a_user_I_am_at_step1_for_FNOL(userType);
@@ -192,24 +191,16 @@ public class CCFNOLStep2Steps extends BaseTest{
 		
 	}
 	
-	//
+	
 	@Then("I complete step2 for FNOL without insured vehicle$")
 	public void iCompleteStep2FNOLWithoutInsuredVehicle() throws Throwable 
 	{
-	
 		completeFNOLStep2ReportedBySection();
-		
 		completeFNOLStep2ConfirmSection();
-		
 		completeFNOLStep2AlertSection();
-		
-		
 		completeFNOLStep2MainContactSection();
-		
-		
 		this.unselectFirstInsuredVehicle();
 		this.next();
-		
 	}
 	
 	public void mandatoryFieldErrorMessagesAreShownForStep2() {
@@ -257,12 +248,7 @@ public class CCFNOLStep2Steps extends BaseTest{
 		fnolStep2POM.back();
 	}
 	
-	public void setReportedDate(String date)
-	{
 		
-		fnolStep2POM.setReportedDateValue("21/11/2018");
-	}
-	
 	@Given("^I click Edit Contact button on step2 FNOL$")
 	public void editContact() {
 		
@@ -276,20 +262,26 @@ public class CCFNOLStep2Steps extends BaseTest{
 	    case "How Reported":
 	    	fnolStep2POM.selectHowReported(fieldValue);
 	    	break;
-	    case "name":
+	    case "Name":
 	    	fnolStep2POM.selectReportedByName(fieldValue);
 	    	break;
-	    case "relationship to insured":
+	    case "Relationship To Insured":
 	    	fnolStep2POM.selectRelationToInsured(fieldValue);
 	    	break;
 	    case "Phone Type":
 	    	fnolStep2POM.selectPhoneType(fieldValue);
 	    	break;
 	    case "Alert Notified":
-	    	if (fieldValue.equalsIgnoreCase("true"))
+	    	if (fieldValue.equalsIgnoreCase("Yes"))
 	    	    fnolStep2POM.selectAlert(true);
 	    	else
 	    		fnolStep2POM.selectAlert(false);
+	    	break;
+	    case "Main Contact Same":
+	    	if (fieldValue.equalsIgnoreCase("Yes"))
+	    	    fnolStep2POM.selectMainContactSame(true);
+	    	else
+	    		fnolStep2POM.selectMainContactSame(false);
 	    	break;
 	    
 	    default:
@@ -322,6 +314,9 @@ public class CCFNOLStep2Steps extends BaseTest{
 	@Given("^I input \"([^\"]*)\" into the \"([^\"]*)\" box on step2 FNOL$")
 	public void i_input_into_the_box_on_step2(String fieldValue, String fieldName) throws Throwable {
 		switch (fieldName) {
+		case "Date Of Notice":
+			fnolStep2POM.setReportedDateValue(fieldValue);
+			break;
 		case "Work Phone":
 			fnolStep2POM.setWorkPhone(fieldValue);
 			break;

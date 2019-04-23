@@ -169,6 +169,14 @@ public class CCFNOLStep3Steps extends BaseTest {
 		fnolStep3POM.isPageTitleDisplayed("Step 3 of 5: Add claim information");
 
 	}
+	
+	
+	@Then("I complete step3 for FNOL$")
+	public void iCompleteStep3FNOL() throws Throwable 
+	{
+		completeFNOLStep3ForTestScenario();
+		
+	}
 
 	@Given("^As a \"([^\"]*)\" I am at step3 for FNOL$")
 	public void as_a_user_I_am_at_step3_for_FNOL(String userType) throws Throwable {
