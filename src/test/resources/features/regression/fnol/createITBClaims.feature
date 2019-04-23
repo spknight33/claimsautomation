@@ -1,4 +1,4 @@
-@Ignore 
+@Ignore @createclaimsitb
 Feature: Regression test for create claim FNOL path - ITB claims
 
 
@@ -7,7 +7,7 @@ Feature: Regression test for create claim FNOL path - ITB claims
     And As a "ADClaimsHandlerTm1" I am at step5 for FNOL
     When I create a claim as part of a regression test
 
-@createclaimsitb
+
   Scenario: FNOL Regression - Create new claim - THEFT claim
     Given I use test data set "regress_fnol_theft" for brand "ITB"
     And As a "ADClaimsHandlerTm1" I am at step5 for FNOL
@@ -19,7 +19,7 @@ Feature: Regression test for create claim FNOL path - ITB claims
     And As a "ADClaimsHandlerTm1" I am at step5 for FNOL
     When I create a claim as part of a regression test
 
-@createclaimsitb
+
   Scenario: FNOL Regression - Create new claim - GLASS REPLACE claim
     Given I use test data set "regress_fnol_glass_replace" for brand "ITB"
     And As a "ADClaimsHandlerTm1" I am at step5 for FNOL
