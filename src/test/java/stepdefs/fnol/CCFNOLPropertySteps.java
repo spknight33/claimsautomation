@@ -2,6 +2,7 @@ package stepdefs.fnol;
 
 import java.util.List;
 
+import org.testng.Assert;
 import org.testng.asserts.SoftAssert;
 
 import com.big.automation.selenium_webdriver.common.baseTest.BaseTest;
@@ -110,10 +111,104 @@ public class CCFNOLPropertySteps extends BaseTest {
 	}
 	
 	
-	@Given("^I click ok button on FNOL new property incident$")
-	public void ok() {
+	
+	
+	@Given("^I click \"([^\"]*)\" on new property screen for FNOL$")
+	public void i_click_on_property_screen(String button) throws Throwable {
+		switch (button) {
+		case "Update":
+			//fnolPropertyDetailsPOM.selectuupdate();
+			break;
+		case "Ok":
+			fnolPropertyDetailsPOM.selectOK();
+			break;
+		case "Cancel":
+			fnolPropertyDetailsPOM.cancel();
+			break;
+		case "New Person Owner":
+			fnolPropertyDetailsPOM.selectNewOwnerPerson();
+			break;
+		case "New Company Owner":
+			fnolPropertyDetailsPOM.selectNewOwnerCompany();
+			break;
 		
-		fnolPropertyDetailsPOM.selectOK();
+		default:
+			Assert.fail("unknown input field :" + button + " - check cucumber script!");
+		}
+	}
+	
+	@Given("^I select \"([^\"]*)\" from \"([^\"]*)\" on new property screen for FNOL$")
+	public void i_select_from_field_on_property_screen(String fieldValue, String fieldName) throws Throwable {
+		switch (fieldName) {
+		case "Postcode Address":
+			fnolPropertyDetailsPOM.selectPostcodeAddress(fieldValue);
+			break;
+			
+		case "Property Owner":
+			fnolPropertyDetailsPOM.selectPropertyOwner(fieldValue);
+			break;
+			
+		case "Estimate Received":
+			fnolPropertyDetailsPOM.selectEstimateReceived(fieldValue);
+			break;
+			
+		case "Already Repaired":
+			if (fieldValue.equalsIgnoreCase("Yes"))
+				fnolPropertyDetailsPOM.selectAlreadyRepaired(true);
+			else
+				fnolPropertyDetailsPOM.selectAlreadyRepaired(false);
+			break;
+		
+
+		default:
+			Assert.fail("unknown input field :" + fieldValue + " - check cucumber script!");
+		}
+	}
+	
+	@Given("^I input \"([^\"]*)\" into the \"([^\"]*)\" box on new property screen for FNOL$")
+	public void i_input_into_the_box_on_property_screen(String fieldValue, String fieldName) throws Throwable {
+		
+	    	switch (fieldName) {
+			case "Property Description":
+				fnolPropertyDetailsPOM.setPropertyDesc(fieldValue);
+				break;
+			case "Damage Description":
+				fnolPropertyDetailsPOM.setDamageDesc(fieldValue);
+				break;
+			case "Loss Estimate":
+				fnolPropertyDetailsPOM.setLossEstimate(fieldValue);
+				break;
+			case "Damage Extent":
+				fnolPropertyDetailsPOM.setExtentDamage(fieldValue);
+				break;
+			case "Address Line1":
+				fnolPropertyDetailsPOM.setAddressLine1(fieldValue);
+				break;
+			case "Address Line2":
+				fnolPropertyDetailsPOM.setAddressLine2(fieldValue);
+				break;
+			case "Address Line3":
+				fnolPropertyDetailsPOM.setAddressLine3(fieldValue);
+				break;
+			case "City":
+				fnolPropertyDetailsPOM.setCity(fieldValue);
+				break;
+			case "Postcode":
+				fnolPropertyDetailsPOM.setPostcode(fieldValue);
+				break;
+			case "Location Description":
+				fnolPropertyDetailsPOM.setLocationDescription(fieldValue);
+				break;
+			case "Estimated Repair Cost":
+				fnolPropertyDetailsPOM.setEstimateCost(fieldValue);
+				break;
+			case "Estimated Repair Time":
+				fnolPropertyDetailsPOM.setEstimateRepairTime(fieldValue);
+				break;
+		
+			default:
+				Assert.fail("unknown input field :" + fieldName + " - check cucumber script!");
+			}
 	}
 	
 

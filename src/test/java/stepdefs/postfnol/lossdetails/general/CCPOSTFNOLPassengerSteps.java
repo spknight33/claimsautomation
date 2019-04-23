@@ -24,6 +24,9 @@ public class CCPOSTFNOLPassengerSteps extends BaseTest {
 		case "Ok":
 			postFnolPassengerPOM.selectOKorUpdate();
 			break;
+		case "Edit":
+			postFnolPassengerPOM.selectEdit();
+			break;
 		case "Update":
 			postFnolPassengerPOM.selectOKorUpdate();
 			break;

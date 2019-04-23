@@ -1,4 +1,4 @@
-@Ignore
+@Ignore @regressionchequecreate
 Feature: REGRESSION FOR CREATE PAYMENT AND APPROVE
 
   Background: 
@@ -60,7 +60,7 @@ Feature: REGRESSION FOR CREATE PAYMENT AND APPROVE
    #   | SIUManagerTm1           |  10.01 | TechOpsTeamManager   |
    
    
-   @regressionchequecreate
+   
    Scenario Outline: TC2 create payment and approve (BACS) partial 
    And I login to ClaimCenter as role "<cheque creator role>"
     And I Select existing Claim "300000002"

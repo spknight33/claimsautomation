@@ -179,11 +179,33 @@ Feature: POST FNOL REGRESSION - various test of the Loss Details pages
     And I input "I was badly hurt as a passenger" into the "Injury Description" box on passenger screen on post FNOL
 	  And I click "Ok" on passenger screen on post FNOL
 	  And I click "Ok" on edit vehicle screen on post FNOL
-    #And I click edit button on edit passenger screen on post FNOL
-   
-    #And I click ok button on edit passenger screen for post FNOL
+	  And I click edit PH Passenger on post FNOL loss details
+    And I click "Edit" on passenger screen on post FNOL
+    And I input "Toddy" into the "Lastname" box on passenger screen on post FNOL
+    And I click "Ok" on passenger screen on post FNOL
     
     #And I click update button on post FNOL loss details 
 
+  Scenario: LOSS DETAILS POST FNOL Regression TC10 - ClaimsHandler can add/edit TP PASSENGER DRIVER from Loss Details post FNOL, to include changing PH Passenger injury details
+    When I click edit button on post FNOL loss details
+    And I click edit TP Vehicle on post FNOL loss details
+    And I click "AddPassenger" on edit vehicle screen on post FNOL
+     Then I will be on passenger screen on post FNOL
+     And I select "Mr." from "Prefix" on passenger screen on post FNOL
+    And I input "Jeremiah" into the "Firstname" box on passenger screen on post FNOL
+    And I input "Jones" into the "Lastname" box on passenger screen on post FNOL
+    And I input "NE31PX" into the "Postcode" box on passenger screen on post FNOL
+    And I select "29 Dene Grove, Newcastle upon Tyne, Tyne and Wear, NE3 1PX" from "Postcode Address" on passenger screen on post FNOL
+    And I input "These are some notes" into the "Notes" box on passenger screen on post FNOL
+    And I click "Injuries Tab" on passenger screen on post FNOL
+    And I select "Yes" from "Injured" on passenger screen on post FNOL
+    And I input "I was badly hurt as a TP passenger" into the "Injury Description" box on passenger screen on post FNOL
+	  And I click "Ok" on passenger screen on post FNOL
+	  And I click "Ok" on edit vehicle screen on post FNOL
+	  And I click edit TP Passenger on post FNOL loss details
+    And I click "Edit" on passenger screen on post FNOL
+    And I input "Jones-smith" into the "Lastname" box on passenger screen on post FNOL
+    And I click "Ok" on passenger screen on post FNOL
+    
 
   

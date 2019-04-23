@@ -1,4 +1,4 @@
-@Ignore
+@Ignore @regressionmandatoryfields 
 Feature: Regression test for errors for step3 edit PH Vehicle - Theft and Fire
 
   Background: 
@@ -6,7 +6,7 @@ Feature: Regression test for errors for step3 edit PH Vehicle - Theft and Fire
     And As a "ADClaimsHandlerTm1" I am at step3 for FNOL
 
 
-  Scenario: FNOL Regression for PH vehicle - check error messages for Accident type
+  Scenario: FNOL Regression for PH vehicle - TC1 - check error messages for Accident type
     And I will be on step3 for FNOL
     And I select "Accident" from "Incident Type" field on step3
     And I select the insureds vehicle at step3
@@ -16,7 +16,7 @@ Feature: Regression test for errors for step3 edit PH Vehicle - Theft and Fire
  
     
   
-  Scenario: FNOL Regression for PH vehicle - check error messages for Accident type
+  Scenario: FNOL Regression for PH vehicle - TC2 - check error messages for Accident type when known number of occupants
     And I will be on step3 for FNOL
     And I select "Accident" from "Incident Type" field on step3
     And I select the insureds vehicle at step3
@@ -25,7 +25,7 @@ Feature: Regression test for errors for step3 edit PH Vehicle - Theft and Fire
    Then Mandatory field error messages will be shown for Vehicle screen in FNOL
     | Number of Occupants : Missing required field "Number of Occupants" |
  
-  Scenario: FNOL Regression for PH vehicle - check error messages for Fire type
+  Scenario: FNOL Regression for PH vehicle - TC3 - check error messages for Fire type
     And I will be on step3 for FNOL
     And I select "Fire" from "Incident Type" field on step3
     And I select the insureds vehicle at step3
@@ -35,7 +35,7 @@ Feature: Regression test for errors for step3 edit PH Vehicle - Theft and Fire
 
  
 
- Scenario: FNOL Regression for PH vehicle - check error messages for Theft type
+ Scenario: FNOL Regression for PH vehicle - TC4 - check error messages for Theft type
     And I will be on step3 for FNOL
     And I select "Theft" from "Incident Type" field on step3
     And I select the insureds vehicle at step3

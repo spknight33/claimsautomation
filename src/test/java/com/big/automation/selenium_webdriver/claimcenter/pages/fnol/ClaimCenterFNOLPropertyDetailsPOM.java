@@ -42,6 +42,9 @@ public class ClaimCenterFNOLPropertyDetailsPOM extends BaseTest {
 	private WebElement city;
 	@FindBy(id = "NewFixedPropertyIncidentPopup:NewFixedPropertyIncidentScreen:FixPropIncidentDetailDV:FixedPropertyIncidentDV:CCAddressInputSet:globalAddressContainer:globalAddress:GlobalAddressInputSet:PostalCode-inputEl")
 	private WebElement postCode;
+	@FindBy(id = "NewFixedPropertyIncidentPopup:NewFixedPropertyIncidentScreen:FixPropIncidentDetailDV:FixedPropertyIncidentDV:CCAddressInputSet:globalAddressContainer:globalAddress:GlobalAddressInputSet:addresses-inputEl")
+	private WebElement postCodeAddressDropdown;
+	
 	@FindBy(id = "NewFixedPropertyIncidentPopup:NewFixedPropertyIncidentScreen:FixPropIncidentDetailDV:FixedPropertyIncidentDV:CCAddressInputSet:globalAddressContainer:Address_Description-inputEl")
 	private WebElement locationDesc;
 
@@ -152,6 +155,12 @@ public class ClaimCenterFNOLPropertyDetailsPOM extends BaseTest {
 				actions.sendKeys(Keys.TAB);
 				actions.build().perform();
 				sleep(2);
+	}
+	
+	public void selectPostcodeAddress(String option)
+	{
+		logger.info(format("%s - going to select postcode address:"+option, getName()));
+		GuideWireAccessors.selectOptionFromGWDropDown(driver, option, this.getPostCodeAddressDropdown(), 1);
 	}
 
 	public void setLocationDescription(String text) {
@@ -291,6 +300,10 @@ public class ClaimCenterFNOLPropertyDetailsPOM extends BaseTest {
 
 	private WebElement getAlreadyRepairedNoRadio() {
 		return alreadyRepairedNoRadio;
+	}
+
+	private WebElement getPostCodeAddressDropdown() {
+		return postCodeAddressDropdown;
 	}
 
 	
