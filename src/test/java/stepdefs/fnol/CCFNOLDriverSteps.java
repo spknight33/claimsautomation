@@ -323,7 +323,26 @@ public class CCFNOLDriverSteps extends BaseTest {
 	
 	
 	
+	@Given("^I complete fields on FNOL new TP driver incident$")
+	public void i_complete_all_fields() throws Throwable {
+		
+		String fieldValue = ExcelUtil.getTestDataValue("Fnol_TPDriverPrefix");
+		if (fieldValue !=null)
+		     fnolDriverDetailsPOM.selectPrefix(fieldValue);
+		
+		fieldValue = ExcelUtil.getTestDataValue("Fnol_TPDriverFirstName");
+		if (fieldValue !=null)
+		     fnolDriverDetailsPOM.setFirstName(fieldValue);
+		
+		fieldValue = ExcelUtil.getTestDataValue("Fnol_TPDriverLastName");
+		if (fieldValue !=null)
+		     fnolDriverDetailsPOM.setLastName(fieldValue);
+		
+		
 	
+		fnolDriverDetailsPOM.selectOK();
+		
+	}
 	
 	
 	
@@ -387,26 +406,7 @@ public class CCFNOLDriverSteps extends BaseTest {
 		
 		
 	
-	@Given("^I complete fields on FNOL new TP driver incident$")
-	public void i_complete_all_fields() throws Throwable {
-		
-		String fieldValue = ExcelUtil.getTestDataValue("Fnol_TPDriverPrefix");
-		if (fieldValue !=null)
-		     fnolDriverDetailsPOM.selectPrefix(fieldValue);
-		
-		fieldValue = ExcelUtil.getTestDataValue("Fnol_TPDriverFirstName");
-		if (fieldValue !=null)
-		     fnolDriverDetailsPOM.setFirstName(fieldValue);
-		
-		fieldValue = ExcelUtil.getTestDataValue("Fnol_TPDriverLastName");
-		if (fieldValue !=null)
-		     fnolDriverDetailsPOM.setLastName(fieldValue);
-		
-		
 	
-		fnolDriverDetailsPOM.selectOK();
-		
-	}
 	
 	@Then("^Mandatory field error messages will be shown for New Driver screen in FNOL$")
 	public void mandatory_field_error_messages_will_be_shown_forstep3newdriver(DataTable dt) throws Throwable {

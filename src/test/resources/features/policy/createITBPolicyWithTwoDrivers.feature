@@ -72,14 +72,14 @@ Feature: Create ITB Policy with two drivers
     And I set the Driver Medical Conditions field to "DVLA aware - no licence restriction" at new driver creation
     And I set the Driver Non Motoring Offences field to "false" at new driver creation
     And I set the Driver Policy Cancelled field to "false" at new driver creation
-    And I set the Driver Other Claims field to "true" at new driver creation
-    And I add multiple claims at new driver creation
-      | Claims                                           | Claim Date |
-      | Accident will be or has been settled against you |   12112016 |
-    And I set the Driver Convictions field to "true" at new driver creation
-    And I add multiple convictions at new driver creation
-      | points | disqualified | code | date     |
-      |     10 | 0-6 Months   | AC10 | 11122015 |
+    And I set the Driver Other Claims field to "false" at new driver creation
+  #  And I add multiple claims at new driver creation
+  #    | Claims                                           | Claim Date |
+  #    | Accident will be or has been settled against you |   12112016 |
+    And I set the Driver Convictions field to "false" at new driver creation
+  #  And I add multiple convictions at new driver creation
+  #    | points | disqualified | code | date     |
+  #    |     10 | 0-6 Months   | AC10 | 11122015 |
     And I Click Ok at new driver creation
     And I Click Next at submission step3
     And I Click AddVehicle at submission step4

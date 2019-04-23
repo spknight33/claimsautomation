@@ -47,7 +47,16 @@ public class CCFNOLPedestrianSteps extends BaseTest {
 		fieldValue = ExcelUtil.getTestDataValue("Fnol_PedestrianEmail");
 		if (fieldValue !=null)
 			fnolPedestrianPOM.setEmail(fieldValue);
+		fieldValue = ExcelUtil.getTestDataValue("Fnol_PedestrianAltEmail");
+		if (fieldValue !=null)
+			fnolPedestrianPOM.setAltEmail(fieldValue);
 		
+		fieldValue = ExcelUtil.getTestDataValue("Fnol_PedestrianWorkPhone");
+		if (fieldValue !=null)
+			fnolPedestrianPOM.setWorkPhone(fieldValue);
+		fieldValue = ExcelUtil.getTestDataValue("Fnol_PedestrianHomePhone");
+		if (fieldValue !=null)
+			fnolPedestrianPOM.setHomePhone(fieldValue);
 		fieldValue = ExcelUtil.getTestDataValue("Fnol_PedestrianMobile");
 		if (fieldValue !=null)
 			fnolPedestrianPOM.setMobile(fieldValue);
@@ -128,6 +137,9 @@ public class CCFNOLPedestrianSteps extends BaseTest {
 	    case "Cancel":
 	    	fnolPedestrianPOM.selectCancel();
 	    	break;
+	    case "Add Injury":
+	    	fnolPedestrianPOM.selectAddInjury();
+	    	break;
 	  
 	    default:
 	    Assert.fail("unknown input field :"+ button+" - check cucumber script!");
@@ -141,11 +153,47 @@ public class CCFNOLPedestrianSteps extends BaseTest {
 		case "Prefix":
 			fnolPedestrianPOM.selectPrefix(fieldValue);
 		    	break;
+		case "Gender":
+			fnolPedestrianPOM.selectGender(fieldValue);
+		    	break;
+		case "Postcode Address":
+			fnolPedestrianPOM.selectPostcodeAddress(fieldValue);
+		    	break;
 	    case "Address Type":
 	    	fnolPedestrianPOM.selectAddressType(fieldValue);
 	    	break;
-	    
-	   //TODO
+	    case "Primary Phone":
+			fnolPedestrianPOM.selectPrimaryPhone(fieldValue);
+		    	break;
+	    case "Injured":
+			if (fieldValue.equalsIgnoreCase("Yes"))
+				fnolPedestrianPOM.selectInjured(true);
+			else
+				fnolPedestrianPOM.selectInjured(false);
+			break;
+		// injury section
+	    case "Severity":
+			fnolPedestrianPOM.selectInjurySeverity(fieldValue);
+		    	break;
+	    case "Ambulance Attended":
+			if (fieldValue.equalsIgnoreCase("Yes"))
+				fnolPedestrianPOM.selectAmbulanceAttend(true);
+			else
+				fnolPedestrianPOM.selectAmbulanceAttend(false);
+			break;
+	    case "Air Ambulance Attended":
+			if (fieldValue.equalsIgnoreCase("Yes"))
+				fnolPedestrianPOM.selectAirAmbulanceAttend(true);
+			else
+				fnolPedestrianPOM.selectAirAmbulanceAttend(false);
+			break;
+	    case "Hospital Attended":
+			if (fieldValue.equalsIgnoreCase("Yes"))
+				fnolPedestrianPOM.selectHospitalAttend(true);
+			else
+				fnolPedestrianPOM.selectHospitalAttend(false);
+			break;
+	  
 	    default:
 	    Assert.fail("unknown input field :"+ fieldValue+" - check cucumber script!");
 	    }
@@ -158,15 +206,16 @@ public class CCFNOLPedestrianSteps extends BaseTest {
 	    case "First Name":
 	    	fnolPedestrianPOM.setFirstName(fieldValue);
 	    	break;
+	    case "Middle Name":
+	    	fnolPedestrianPOM.setMiddleName(fieldValue);
+	    	break;
 	    case "Last Name":
 	    	fnolPedestrianPOM.setLastName(fieldValue);
 	    	break;
-	    case "Mobile":
-	    	fnolPedestrianPOM.setMobile(fieldValue);
+	    case "Dob":
+	    	fnolPedestrianPOM.setDob(fieldValue);
 	    	break;
-	    case "Email":
-	    	fnolPedestrianPOM.setEmail(fieldValue);
-	    	break;
+	    	
 	    case "Address Line1":
 	    	fnolPedestrianPOM.setAddressLine1(fieldValue);
 	    	break;
@@ -176,10 +225,60 @@ public class CCFNOLPedestrianSteps extends BaseTest {
 	    case "Address Line3":
 	    	fnolPedestrianPOM.setAddressLine3(fieldValue);
 	    	break;
+	    case "City":
+	    	fnolPedestrianPOM.setCity(fieldValue);
+	    	break;
+	    case "County":
+	    	fnolPedestrianPOM.setCounty(fieldValue);
+	    	break;
+	    case "Postcode":
+	    	fnolPedestrianPOM.setPostcode(fieldValue);
+	    	break;
+	    case "Location Description":
+	    	fnolPedestrianPOM.setLocationDescription(fieldValue);
+	    	break;
+	    case "Work Phone":
+	    	fnolPedestrianPOM.setWorkPhone(fieldValue);
+	    	break;
+	    case "Home Phone":
+	    	fnolPedestrianPOM.setHomePhone(fieldValue);
+	    	break;
+	    case "Mobile":
+	    	fnolPedestrianPOM.setMobile(fieldValue);
+	    	break;
+	    case "Email":
+	    	fnolPedestrianPOM.setEmail(fieldValue);
+	    	break;
+	    case "Alt Email":
+	    	fnolPedestrianPOM.setAltEmail(fieldValue);
+	    	break;
+	    case "NiNumber":
+	    	fnolPedestrianPOM.setNiNumber(fieldValue);
+	    	break;
+	    case "Notes":
+	    	fnolPedestrianPOM.setNotes(fieldValue);
+	    	break;
+	    	// injury section
+	    case "Injury Description":
+	    	fnolPedestrianPOM.setInjuryDesc(fieldValue);
+	    	break;
 	    
 	    default:
 	    Assert.fail("unknown input field :"+ fieldName+" - check cucumber script!");
 	    }
+	}
+	
+
+	@Then("^Mandatory field error messages will be shown for New Pedestrian screen in FNOL$")
+	public void mandatory_field_error_messages_will_be_shown_forstep3newpedestrian(DataTable dt) throws Throwable {
+		List<String> list = dt.asList(String.class);
+		SoftAssert softAssert = new SoftAssert();
+		for (int i = 0; i < list.size(); i++) {
+			softAssert.assertTrue(fnolPedestrianPOM.containsErrorMessage(list.get(i)),
+					"Error Message Check: " + list.get(i));
+
+		}
+		softAssert.assertAll();
 	}
 	
 
@@ -196,16 +295,5 @@ public class CCFNOLPedestrianSteps extends BaseTest {
 	}
 	
 	
-	@Then("^Mandatory field error messages will be shown for New Pedestrian screen in FNOL$")
-	public void mandatory_field_error_messages_will_be_shown_forstep3newpedestrian(DataTable dt) throws Throwable {
-		List<String> list = dt.asList(String.class);
-		SoftAssert softAssert = new SoftAssert();
-		for (int i = 0; i < list.size(); i++) {
-			softAssert.assertTrue(fnolPedestrianPOM.containsErrorMessage(list.get(i)),
-					"Error Message Check: " + list.get(i));
-
-		}
-		softAssert.assertAll();
-	}
 
 }

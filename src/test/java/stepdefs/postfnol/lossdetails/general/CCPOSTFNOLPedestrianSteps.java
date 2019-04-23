@@ -24,9 +24,18 @@ public class CCPOSTFNOLPedestrianSteps extends BaseTest {
 		case "Prefix":
 			postFnolPedestrianPOM.selectPrefix(fieldValue);
 			break;
+		case "Gender":
+			postFnolPedestrianPOM.selectGender(fieldValue);
+		    	break;
 		case "Postcode Address":
 			postFnolPedestrianPOM.selectAddress(fieldValue);
 			break;
+		case "Address Type":
+			postFnolPedestrianPOM.selectAddressType(fieldValue);
+	    	break;
+		 case "Primary Phone":
+			 postFnolPedestrianPOM.selectPrimaryPhone(fieldValue);
+			    	break;
 		case "Injured":
 			if (fieldValue.equalsIgnoreCase("Yes"))
 				postFnolPedestrianPOM.selectInjured(true);

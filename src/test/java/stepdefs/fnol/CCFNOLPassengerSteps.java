@@ -17,6 +17,10 @@ public class CCFNOLPassengerSteps extends BaseTest {
 	
 	SearchAddressBookSteps searchAddressBookSteps = new SearchAddressBookSteps();
 	
+	/**
+	 * used by regression features
+	 * @throws Throwable
+	 */
 	public void completeFNOLTPPassengerForTestScenario() throws Throwable
 	{
 		
@@ -99,6 +103,10 @@ public class CCFNOLPassengerSteps extends BaseTest {
 		fnolNewPassengerPOM.selectOK();
 	}
 	
+	/**
+	 * used by regression features
+	 * @throws Throwable
+	 */
 	public void completeFNOLPHPassengerForTestScenario() throws Throwable
 	{
 		
@@ -195,7 +203,7 @@ public class CCFNOLPassengerSteps extends BaseTest {
 	    case "Passenger Name":
 	    	fnolNewPassengerPOM.selectPassengerName(fieldValue);
 	    	break;
-	       case "Prefix":
+	    case "Prefix":
 	    	fnolNewPassengerPOM.selectPrefix(fieldValue);
 	    	break;
 	    case "Address Type":
@@ -204,9 +212,115 @@ public class CCFNOLPassengerSteps extends BaseTest {
 	    case "Gender":
 	    	fnolNewPassengerPOM.selectGender(fieldValue);
 	    	break;
+	   
+		case "Postcode Address":
+			fnolNewPassengerPOM.selectPostcodeAddress(fieldValue);
+		    	break;
+	   
+	    case "Primary Phone":
+	    	fnolNewPassengerPOM.selectPrimaryPhone(fieldValue);
+		    	break;
+	    case "Injured":
+			if (fieldValue.equalsIgnoreCase("Yes"))
+				fnolNewPassengerPOM.selectInjured(true);
+			else
+				fnolNewPassengerPOM.selectInjured(false);
+			break;
+		// injury section
+	    case "Severity":
+	    	fnolNewPassengerPOM.selectInjurySeverity(fieldValue);
+		    	break;
+	    case "Ambulance Attended":
+			if (fieldValue.equalsIgnoreCase("Yes"))
+				fnolNewPassengerPOM.selectAmbulanceAttend(true);
+			else
+				fnolNewPassengerPOM.selectAmbulanceAttend(false);
+			break;
+	    case "Air Ambulance Attended":
+			if (fieldValue.equalsIgnoreCase("Yes"))
+				fnolNewPassengerPOM.selectAirAmbulanceAttend(true);
+			else
+				fnolNewPassengerPOM.selectAirAmbulanceAttend(false);
+			break;
+	    case "Hospital Attended":
+			if (fieldValue.equalsIgnoreCase("Yes"))
+				fnolNewPassengerPOM.selectHospitalAttend(true);
+			else
+				fnolNewPassengerPOM.selectHospitalAttend(false);
+			break;
+	  
 	  
 	    default:
 	    Assert.fail("unknown input field :"+ fieldValue+" - check cucumber script!");
+	    }
+	}
+	
+	@Given("^I input \"([^\"]*)\" into the \"([^\"]*)\" box on New Passenger screen on FNOL$")
+	public void i_input_into_the_box_on_passenger_screen(String fieldValue, String fieldName) throws Throwable {
+		switch(fieldName)
+	    {
+	    case "First Name":
+	    	fnolNewPassengerPOM.setFirstName(fieldValue);
+	    	break;
+	    case "Middle Name":
+	    	fnolNewPassengerPOM.setMiddleName(fieldValue);
+	    	break;
+	    case "Last Name":
+	    	fnolNewPassengerPOM.setLastName(fieldValue);
+	    	break;
+	    case "Dob":
+	    	fnolNewPassengerPOM.setDob(fieldValue);
+	    	break;
+	    	
+	    case "Address Line1":
+	    	fnolNewPassengerPOM.setAddressLine1(fieldValue);
+	    	break;
+	    case "Address Line2":
+	    	fnolNewPassengerPOM.setAddressLine2(fieldValue);
+	    	break;
+	    case "Address Line3":
+	    	fnolNewPassengerPOM.setAddressLine3(fieldValue);
+	    	break;
+	    case "City":
+	    	fnolNewPassengerPOM.setCity(fieldValue);
+	    	break;
+	    case "County":
+	    	fnolNewPassengerPOM.setCounty(fieldValue);
+	    	break;
+	    case "Postcode":
+	    	fnolNewPassengerPOM.setPostcode(fieldValue);
+	    	break;
+	    case "Location Description":
+	    	fnolNewPassengerPOM.setLocationDesc(fieldValue);
+	    	break;
+	    case "Work Phone":
+	    	fnolNewPassengerPOM.setWorkPhone(fieldValue);
+	    	break;
+	    case "Home Phone":
+	    	fnolNewPassengerPOM.setHomePhone(fieldValue);
+	    	break;
+	    case "Mobile":
+	    	fnolNewPassengerPOM.setMobile(fieldValue);
+	    	break;
+	    case "Email":
+	    	fnolNewPassengerPOM.setEmail(fieldValue);
+	    	break;
+	    case "Alt Email":
+	    	fnolNewPassengerPOM.setAltEmail(fieldValue);
+	    	break;
+	    case "NiNumber":
+	    	fnolNewPassengerPOM.setNiNumber(fieldValue);
+	    	break;
+	    case "Notes":
+	    	fnolNewPassengerPOM.setNotes(fieldValue);
+	    	break;
+	    	// injury section
+	    case "Injury Description":
+	    	fnolNewPassengerPOM.setInjuryDesc(fieldValue);
+	    	break;
+	    
+	    default:
+	    Assert.fail("unknown input field :"+ fieldName+" - check cucumber script!");
 	    }
 	}
 	
