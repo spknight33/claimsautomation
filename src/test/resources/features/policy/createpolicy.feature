@@ -1,4 +1,4 @@
-@Ignore
+
 Feature: tests
 
   Scenario: test policy create
@@ -50,7 +50,7 @@ Feature: tests
     And I set the Conviction Months Disqualified field to "None" at submission step 3
     And I Click Next at submission step3
     And I Click AddVehicle at submission step4
-    And I set the submission step4 field "Vrn" to "ND58HFL"
+    And I set the submission step4 field "Vrn" to "S99 SJA"
     And I set the submission step4 field "SecurityDevice" to "Alarm"
     And I set the submission step4 field "Tracker" to "true"
     And I set the submission step4 field "Value" to "3575"
@@ -70,5 +70,14 @@ Feature: tests
     And I set the submission step4 field "Ncd" to "10+"
     And I Click AssignDriver at submission step4
     And I Click Quote at submission step4
-    And I Click Issue Policy at submission step5
+    And I Click Next at submission quote step
+    And I set is the card registered to you to "true" at the payment step of submission
+    And I set Document preference to "Paper" at the payment step of submission
+    And I set installment plan to "Monthly" at the payment step of submission
+    #And I click to add bank payment at the payment step of submission
+    #And I set account type to "Individual" at the payment step of submission
+    #And I set account number to "02149187" at the payment step of submission
+    #And I set account sort code to "938611" at the payment step of submission
+    #And I set solely authorised to make payments to "true" at the payment step of submission
+    And I click issue policy at payment step
     And I Click Confirm Issue Policy at submission step5

@@ -18,8 +18,10 @@ public class ClaimCenterPolicySubmissionStep5QuotePOM extends BaseTest{
 
 	@FindBy(id = "SubmissionWizard:SubmissionWizard_QuoteScreen:ttlBar")
 	private WebElement pageTitle;
-	
-	
+
+	@FindBy(id = "SubmissionWizard:Next-btnInnerEl")
+	private WebElement nextButton;
+
 	@FindBy(id ="SubmissionWizard:SubmissionWizard_QuoteScreen:JobWizardToolbarButtonSet:BindAndIssue")
 	private WebElement issuePolicyButton;
 	
@@ -52,6 +54,10 @@ public class ClaimCenterPolicySubmissionStep5QuotePOM extends BaseTest{
 		GuideWireAccessors.clickGWButton(driver, this.getIssuePolicyButton());
 	}
 
+	public void clickNext(){
+		GuideWireAccessors.clickGWButton(driver,getNextButton());
+	}
+
 	public void clickConfirmIssuePolicy()
 	{
 		GuideWireAccessors.clickGWButton(driver, this.getConfirmCreatePolicyButton());
@@ -62,7 +68,7 @@ public class ClaimCenterPolicySubmissionStep5QuotePOM extends BaseTest{
 		return issuePolicyButton;
 	}
 
-
+	public WebElement getNextButton() { return nextButton; }
 
 	private WebElement getConfirmCreatePolicyButton() {
 		return confirmCreatePolicyButton;

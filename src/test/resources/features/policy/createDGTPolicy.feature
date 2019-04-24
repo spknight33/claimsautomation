@@ -1,4 +1,4 @@
-@Ignore 
+@Ignore
 Feature: DGT Policy Creation
 
   Scenario: test policy create
