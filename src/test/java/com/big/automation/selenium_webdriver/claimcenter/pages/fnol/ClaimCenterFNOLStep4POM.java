@@ -30,6 +30,12 @@ public class ClaimCenterFNOLStep4POM extends BaseTest {
 	private WebElement phClaimingYesOption;
 	@FindBy(id = "FNOLWizard:AutoWorkersCompWizardStepSet:FNOLWizard_ServicesScreen:0:policyholderclaiming_false-inputEl")
 	private WebElement phClaimingNoOption;
+	
+	@FindBy(id = "FNOLWizard:AutoWorkersCompWizardStepSet:FNOLWizard_ServicesScreen:0:WaiveExcess_itb-inputEl")
+	private WebElement waiveExcessCheckBox;
+	@FindBy(id = "FNOLWizard:AutoWorkersCompWizardStepSet:FNOLWizard_ServicesScreen:0:BonusStatus_itb-inputEl")
+	private WebElement bonusStatusDropdown;
+	
 
 	@FindBy(id = "FNOLWizard:AutoWorkersCompWizardStepSet:FNOLWizard_ServicesScreen:0:servicesbyvendor:VehicleIncidentServicePanelSet:0:AutoRepairPanel:VehicleIncidentServiceRequestDV:ServiceRequestInputGroup:_checkbox")
 	private WebElement repairServiceCheckbox;
@@ -139,6 +145,26 @@ public class ClaimCenterFNOLStep4POM extends BaseTest {
 		} else {
 			GuideWireAccessors.clickGWButton(driver, this.getPhClaimingNoOption());
 		}
+
+	}
+	
+	public void selectWaiveExcess(boolean waive) {
+
+		logger.info(format("%s -  going to set waive excess to:" + waive, getName()));
+		if (waive) {
+			GuideWireAccessors.clickGWButton(driver, this.getWaiveExcessCheckBox());
+		} else {
+			// do nothing
+		}
+
+	}
+	
+	public void selectBonusStatus(String option) {
+
+		logger.info(format("%s -  going to set bonus status to:" + option, getName()));
+	
+			GuideWireAccessors.selectOptionFromGWDropDown(driver, option, this.getBonusStatusDropdown(), 1);
+		
 
 	}
 
@@ -400,5 +426,15 @@ public class ClaimCenterFNOLStep4POM extends BaseTest {
 	private WebElement getNonFaultVehicleServicePickerSearch() {
 		return nonFaultVehicleServicePickerSearch;
 	}
+
+	private WebElement getWaiveExcessCheckBox() {
+		return waiveExcessCheckBox;
+	}
+
+	private WebElement getBonusStatusDropdown() {
+		return bonusStatusDropdown;
+	}
+	
+	
 
 }

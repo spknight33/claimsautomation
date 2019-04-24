@@ -47,6 +47,21 @@ public class CCFNOLStep4Steps extends BaseTest{
 		// complete tpcapture section
 		completeFNOLStep4TPCapture();
 		
+		fieldValue = ExcelUtil.getTestDataValue("Fnol_Step4_WaiveExcess");
+		if (fieldValue !=null && fieldValue.equalsIgnoreCase("TRUE"))
+		{
+			fnolStep4POM.selectWaiveExcess(true);
+		}
+		else
+		{
+			fnolStep4POM.selectWaiveExcess(false);
+		}
+		
+		fieldValue = ExcelUtil.getTestDataValue("Fnol_Step4_BonusStatus");
+		if (fieldValue !=null)
+		{
+			fnolStep4POM.selectBonusStatus(fieldValue);
+		}
 			
 		fnolStep4POM.next();
 	}
@@ -351,6 +366,15 @@ public class CCFNOLStep4Steps extends BaseTest{
 				fnolStep4POM.selectPhClaiming(true);
 				else
 					fnolStep4POM.selectPhClaiming(false);	
+		    	break;
+		case "Waive Excess":
+			if (fieldValue.equalsIgnoreCase("True"))
+				fnolStep4POM.selectWaiveExcess(true);
+				else
+					fnolStep4POM.selectWaiveExcess(false);	
+		    	break;
+		case "Bonus Status":
+				fnolStep4POM.selectBonusStatus(fieldValue);
 		    	break;
 	
 	
