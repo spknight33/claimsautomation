@@ -1,4 +1,4 @@
-@Ignore @createpolicy @inprogress
+@Ignore @createpolicy 
 Feature: Create DGT Policy with two drivers
 
   Scenario: test policy with two TBB drivers create

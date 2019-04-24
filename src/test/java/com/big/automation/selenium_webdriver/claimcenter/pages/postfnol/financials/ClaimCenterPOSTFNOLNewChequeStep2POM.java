@@ -54,10 +54,7 @@ public class ClaimCenterPOSTFNOLNewChequeStep2POM extends BaseTest {
 	@FindBy(id = "NormalCreateCheckWizard:CheckWizard_CheckPaymentsScreen:NewCheckPaymentPanelSet:NewPaymentDetailDV:Transaction_AvailableReserves-inputEl")
 	private WebElement availableReserves;
 	
-	@FindBy(id = "NormalCreateCheckWizard:CheckWizard_CheckPaymentsScreen:NewCheckPaymentPanelSet:NewPaymentDetailDV:Payment_SelfAuthority_itb_true-inputEl")
-	private WebElement selfAuthorityYesOption;
-	@FindBy(id = "NormalCreateCheckWizard:CheckWizard_CheckPaymentsScreen:NewCheckPaymentPanelSet:NewPaymentDetailDV:Payment_SelfAuthority_itb_false-inputEl")
-	private WebElement selfAuthorityNoOption;
+
 	
 	@FindBy(id = "NormalCreateCheckWizard:CheckWizard_CheckPaymentsScreen:NewCheckPaymentPanelSet:NewPaymentDetailDV:Transaction_Comments-inputEl")
 	private WebElement internalComments;
@@ -230,13 +227,7 @@ public class ClaimCenterPOSTFNOLNewChequeStep2POM extends BaseTest {
 		return availableReserves;
 	}
 
-	private WebElement getSelfAuthorityYesOption() {
-		return selfAuthorityYesOption;
-	}
-
-	private WebElement getSelfAuthorityNoOption() {
-		return selfAuthorityNoOption;
-	}
+	
 
 	private WebElement getInternalComments() {
 		return internalComments;

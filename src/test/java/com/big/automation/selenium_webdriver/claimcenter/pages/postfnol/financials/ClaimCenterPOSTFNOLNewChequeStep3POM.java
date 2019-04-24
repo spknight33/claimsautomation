@@ -27,9 +27,14 @@ public class ClaimCenterPOSTFNOLNewChequeStep3POM extends BaseTest {
 	@FindBy(id = "NormalCreateCheckWizard:CheckWizard_CheckInstructionsScreen:NewPaymentInstructionsDV:CheckWizardCheckSummaryInputSet:Check_PurposeOfPayment-inputEl")
 	private WebElement purpose;
 	
-	@FindBy(id = "NormalCreateCheckWizard:CheckWizard_CheckInstructionsScreen:NewPaymentInstructionsDV:CheckBatching-inputEl")
+	@FindBy(id = "NormalCreateCheckWizard:CheckWizard_CheckPaymentsScreen:NewCheckPaymentPanelSet:NewPaymentDetailDV:Payment_SelfAuthority_itb_true-inputEl")
+	private WebElement selfAuthorityYesOption;
+	@FindBy(id = "NormalCreateCheckWizard:CheckWizard_CheckPaymentsScreen:NewCheckPaymentPanelSet:NewPaymentDetailDV:Payment_SelfAuthority_itb_false-inputEl")
+	private WebElement selfAuthorityNoOption;
+	
+	@FindBy(id = "NormalCreateCheckWizard:CheckWizard_CheckInstructionsScreen:NewPaymentInstructionsDV:CheckWizardCheckSummaryInputSet:SelfAuthority_itb_true-inputEl")
 	private WebElement chequeBatchingDropdown;
-	@FindBy(id = "NormalCreateCheckWizard:CheckWizard_CheckInstructionsScreen:NewPaymentInstructionsDV:CheckInstructions-inputEl")
+	@FindBy(id = "NormalCreateCheckWizard:CheckWizard_CheckInstructionsScreen:NewPaymentInstructionsDV:CheckWizardCheckSummaryInputSet:SelfAuthority_itb_false-inputEl")
 	private WebElement chequeInstructionsDropdown;
 	
 	@FindBy(id ="WebMessageWorksheet:WebMessageWorksheetScreen:WebMessageWorksheet_ClearButton")
@@ -159,7 +164,13 @@ public class ClaimCenterPOSTFNOLNewChequeStep3POM extends BaseTest {
 
 
 
-	
+	private WebElement getSelfAuthorityYesOption() {
+		return selfAuthorityYesOption;
+	}
+
+	private WebElement getSelfAuthorityNoOption() {
+		return selfAuthorityNoOption;
+	}
 	
 
 
