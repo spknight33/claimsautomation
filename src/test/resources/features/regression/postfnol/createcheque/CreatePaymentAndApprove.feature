@@ -9,7 +9,7 @@ Feature: REGRESSION FOR CREATE PAYMENT AND APPROVE
   Scenario Outline: TC1 create payment and approve (cheque) partial
   And I login to ClaimCenter as role "<cheque creator role>"
     And I Select existing Claim "300000033"
-    And I select the Actions Popup Menu Hierarchy "Cheque"
+    And I select the Actions Popup Menu Hierarchy "Cheque" for parent "New Transaction"
     And I will see post FNOL New System Cheque Step1 screen
     And I select "Steve Knight-itb1" from field "Claimant" at New System Cheque Step1 post FNOL
     And I select "Steve Knight-itb1" from field "Payee" at New System Cheque Step1 post FNOL
@@ -64,7 +64,7 @@ Feature: REGRESSION FOR CREATE PAYMENT AND APPROVE
    Scenario Outline: TC2 create payment and approve (BACS) partial 
    And I login to ClaimCenter as role "<cheque creator role>"
     And I Select existing Claim "300000033"
-    And I select the Actions Popup Menu Hierarchy "Cheque"
+    And I select the Actions Popup Menu Hierarchy "Cheque" for parent "New Transaction"
     And I will see post FNOL New System Cheque Step1 screen
     And I select "Steve Knight-itb1" from field "Claimant" at New System Cheque Step1 post FNOL
     And I select "Steve Knight-itb1" from field "Payee" at New System Cheque Step1 post FNOL

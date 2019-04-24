@@ -8,7 +8,7 @@ Feature: CBPCL-502  Create a payment and approve
     Given I access ClaimCenter login page
     And I login to ClaimCenter as role "<cheque creator role>"
     And I Select existing Claim "300000015"
-    And I select the Actions Popup Menu Hierarchy "Cheque"
+    And I select the Actions Popup Menu Hierarchy "Cheque" for parent "New Transaction"
     And I will see post FNOL New System Cheque Step1 screen
     And I select "Doug Dimmerdome" from field "Claimant" at New System Cheque Step1 post FNOL
     And I select "Doug Dimmerdome" from field "Payee" at New System Cheque Step1 post FNOL

@@ -11,7 +11,7 @@ Feature: CBPCL-166  As a Claims Support Handler, Claims Handler, Team Manager, S
   Given I access ClaimCenter login page
     And I login to ClaimCenter as role "ADClaimsHandlerTm1"
     And I Select an existing Claim
-    And I select the Actions Popup Menu Hierarchy "Service"
+    And I select the Actions Popup Menu Hierarchy "Service" for parent "New"
     And I will see post FNOL New Service screen
     And I select "Claim" from "Related To" on New Service screen for post FNOL
     And I click Add Service to Perform on New Service screen for post FNOL
@@ -35,7 +35,7 @@ Feature: CBPCL-166  As a Claims Support Handler, Claims Handler, Team Manager, S
     Given I access ClaimCenter login page
     And I login to ClaimCenter as role "ClaimsSupport"
     And I Select an existing Claim
-    And I select the Actions Popup Menu Hierarchy "Service"
+    And I select the Actions Popup Menu Hierarchy "Service" for parent "New"
     And I will see post FNOL New Service screen
     And I select "Claim" from "Related To" on New Service screen for post FNOL
     And I click Add Service to Perform on New Service screen for post FNOL
@@ -59,7 +59,7 @@ Feature: CBPCL-166  As a Claims Support Handler, Claims Handler, Team Manager, S
     Given I access ClaimCenter login page
     And I login to ClaimCenter as role "TeamManager"
     And I Select an existing Claim
-    And I select the Actions Popup Menu Hierarchy "Service"
+    And I select the Actions Popup Menu Hierarchy "Service" for parent "New"
     And I will see post FNOL New Service screen
     And I select "Claim" from "Related To" on New Service screen for post FNOL
     And I click Add Service to Perform on New Service screen for post FNOL
@@ -83,7 +83,7 @@ Feature: CBPCL-166  As a Claims Support Handler, Claims Handler, Team Manager, S
     Given I access ClaimCenter login page
     And I login to ClaimCenter as role "SIUManager"
     And I Select an existing Claim
-    And I select the Actions Popup Menu Hierarchy "Service"
+    And I select the Actions Popup Menu Hierarchy "Service" for parent "New"
     And I will see post FNOL New Service screen
     And I select "Claim" from "Related To" on New Service screen for post FNOL
     And I click Add Service to Perform on New Service screen for post FNOL
@@ -106,7 +106,7 @@ Feature: CBPCL-166  As a Claims Support Handler, Claims Handler, Team Manager, S
     Given I access ClaimCenter login page
     And I login to ClaimCenter as role "SIUUser"
     And I Select an existing Claim
-    And I select the Actions Popup Menu Hierarchy "Service"
+    And I select the Actions Popup Menu Hierarchy "Service" for parent "New"
     And I will see post FNOL New Service screen
     And I select "Claim" from "Related To" on New Service screen for post FNOL
     And I click Add Service to Perform on New Service screen for post FNOL

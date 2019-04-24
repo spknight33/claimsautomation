@@ -309,6 +309,38 @@ public class ClaimCenterNavigatorBarPOM extends BaseTest {
 		GuideWireAccessors.selectOptionFromPopupMenu(driver, menuHierarchy, this.getActionsMenu());
 	}
     
+    
+    
+    public void selectActionsSubMenuHierarchyForParent(String parentMenu,List<String> menuHierarchy)
+	{
+		logger.info(format("%s - going to select Actions sub menu item for parent:"+parentMenu,getName()));
+		String parentPartialId=null;
+		switch(parentMenu)
+		{
+		case ("New Activity"):
+			parentPartialId="Claim:ClaimMenuActions:ClaimMenuActions_NewActivity:NewActivityMenuItemSet:";
+			break;
+		case ("New Transaction"):
+			parentPartialId="Claim:ClaimMenuActions:ClaimMenuActions_NewTransaction:";
+			break;
+		case ("New"):
+			parentPartialId="Claim:ClaimMenuActions:ClaimNewOtherMenuItemSet:ClaimMenuActions_NewOther:";
+			break;
+		case ("New Document"):
+			parentPartialId="Claim:ClaimMenuActions:ClaimMenuActions_NewDocument:ClaimNewDocumentMenuItemSet:";
+			break;
+		case ("New Exposure"):
+			parentPartialId="Claim:ClaimMenuActions:ClaimMenuActions_NewExposure:NewExposureMenuItemSet:";
+			break;
+		case ("Claim Actions"):
+			parentPartialId="Claim:ClaimMenuActions:ClaimFileMenuItemSet:ClaimMenuActions_ClaimActions:";
+			break;
+		
+		}
+		
+		GuideWireAccessors.selectOptionFromPopupMenuForParent(driver, menuHierarchy, this.getActionsMenu(),parentPartialId);
+	}
+    
     public void selectDesktopActionsSubMenuHierarchy(List<String> menuHierarchy)
    	{
    		logger.info(format("%s - going to select Actions sub menu item ",getName()));

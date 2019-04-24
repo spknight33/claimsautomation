@@ -486,5 +486,79 @@ public static void setGWTextBoxInTable(WebDriver driver, String text, String loc
 
 		
 	}
+	
+	/**
+	 * In progress work - the current menu hierarchy stuff for actions doesnt cater for duplicate submenu items
+	 * This is a start to address that - so far it will limit to finidng withn the top parent (e.g. New Activity)
+	 * @param driver
+	 * @param menuHierarchy
+	 * @param gwTopMenu
+	 * @param parentElementIdPart
+	 */
+	public static void selectOptionFromPopupMenuForParent(WebDriver driver, List<String> menuHierarchy, WebElement gwTopMenu,String parentElementIdPart) {
+		int findAttempts = 0;
+		while (findAttempts < MAX_RETRY_ON_DROPDOWN) {
+			try {
+				WaitForUtils.waitForElementToBeClickableVariable(driver, gwTopMenu,5); //10 seconds max
+				// as it might be down the page, always scroll into view
+				JavascriptExecutor je = (JavascriptExecutor) driver;
+				je.executeScript("arguments[0].scrollIntoView(true);", gwTopMenu);
+				gwTopMenu.click();
+				break;
+			} catch (Exception e) {
+				sleep(1);
+				// TODO use a logger
+				System.out.println("selectOptionFromPopupMenu Exception caught:" + e.getMessage());
+			}
+			findAttempts++;
+		}
+
+		
+		// we need to loop round the list of items in the supplied hierarchy
+		// finding each and clicking on each until the list is exhausted
+		String optionLocator; 
+		List<WebElement> menuElements = null;
+		WebElement menuElement=null;
+				
+		for (String menuItem: menuHierarchy)
+		{
+			menuElement=null;
+			menuElements = null;
+			optionLocator = "//span[normalize-space()=\"" + menuItem + "\"]";
+			menuElements = driver.findElements(By.xpath(optionLocator));
+			// the element found must match the partial parent id (eg Claim:ClaimMenuActions:ClaimMenuActions_NewActivity:NewActivityMenuItemSet)
+			for (WebElement foundMenuItem: menuElements)
+			{
+				String id =foundMenuItem.getAttribute("id");
+				if (id.startsWith(parentElementIdPart))
+				{
+					menuElement = foundMenuItem;
+					break;
+				}
+			}
+			
+			
+			findAttempts = 0;
+			while (findAttempts < MAX_RETRY_ON_MENUITEM) {
+				try {
+					JavascriptExecutor je = (JavascriptExecutor) driver;
+					je.executeScript("arguments[0].scrollIntoView(true);", menuElement);
+					menuElement.click();
+					break;
+				} catch (Exception e) {
+					sleep(1);
+					// TODO use a logger
+					System.out.println("selectOptionFromPopupMenu2 (option) Exception caught:" + e.getMessage());
+				}
+				findAttempts++;
+			}
+			
+		}
+			
+		
+		
+
+		
+	}
 
 }
