@@ -165,6 +165,9 @@ public class ClaimCenterFNOLDriverDetailsPOM extends BaseTest{
 	@FindBy(id = "FNOLContactPopup:FNOLContactScreen:ContactDV:InjuryIncidentInputSet:EditableBodyPartDetailsLV_tb:Add")
 	private WebElement addInjuryButton;
 	
+	@FindBy(id = "FNOLContactPopup:FNOLContactScreen:ContactDV:InjuryIncidentInputSet:Severity-inputEl")
+	private WebElement severityDropdown;
+	
 	@FindBy(id = "FNOLContactPopup:FNOLContactScreen:ContactDV:InjuryIncidentInputSet:AmbulanceAttended_itb_true-inputEl")
 	private WebElement ambulanceYesRadio;
 	@FindBy(id = "FNOLContactPopup:FNOLContactScreen:ContactDV:InjuryIncidentInputSet:AmbulanceAttended_itb_false-inputEll")
@@ -564,7 +567,29 @@ public class ClaimCenterFNOLDriverDetailsPOM extends BaseTest{
 			GuideWireAccessors.selectOptionFromGWDropDown(driver, option, element, 1);
 			
 		}
+	 
+	 public void selectProsecuted(String option)
+		{
+			logger.info(format("%s -  going to select prosecuted:"+option, getName()));
+			GuideWireAccessors.selectOptionFromGWDropDown(driver, option, this.getIndemnityProsecutionDropdown(), 1);
+		}
 	
+	//TP only question
+		public void selectTPSeatBelt(boolean tpSeatBelt)
+		{
+			logger.info(format("%s -  going to set TP seat belt:"+tpSeatBelt, getName()));
+			
+			if (tpSeatBelt)
+			{
+			GuideWireAccessors.clickGWButton(driver, this.getTpWearingSeatbeltYesOption());
+			}
+			else
+			{
+				GuideWireAccessors.clickGWButton(driver, this.getTpWearingSeatbeltNoOption());
+			}
+			
+		}
+	 
 	public void selectTestedAtScene(boolean tested)
 	{
 		logger.info(format("%s -  going to set tested at scene:"+tested, getName()));
@@ -585,6 +610,11 @@ public class ClaimCenterFNOLDriverDetailsPOM extends BaseTest{
 		GuideWireAccessors.setGWTextBox(driver, text, this.getIndemnityDriverTestedDetails());
 		
 	}
+	 public void selectIndemnitySeatbelt(String option)
+		{
+			logger.info(format("%s -  going to select indemnity seatbelt:"+option, getName()));
+			GuideWireAccessors.selectOptionFromGWDropDown(driver, option, this.getIndemnitySeatbeltDropdown(), 2);
+		}
 	
 	
 	// Injury Section
@@ -636,6 +666,14 @@ public class ClaimCenterFNOLDriverDetailsPOM extends BaseTest{
 		String locator = "//*[@id=\"FNOLContactPopup:FNOLContactScreen:ContactDV:InjuryIncidentInputSet:EditableBodyPartDetailsLV-body\"]//table[" + sequence + "]//tr/td[3]/div";
 		WebElement element = driver.findElement(By.xpath(locator));
 		GuideWireAccessors.selectOptionFromGWDropDown(driver, option, element, 1);
+		
+	}
+	
+
+	public void selectInjurySeverity(String option)
+	{
+		logger.info(format("%s -  going to select injury severity:"+option, getName()));
+		GuideWireAccessors.selectOptionFromGWDropDown(driver, option, this.getSeverityDropdown(), 1);
 		
 	}
 	
@@ -973,6 +1011,10 @@ public class ClaimCenterFNOLDriverDetailsPOM extends BaseTest{
 
 	private WebElement getResidentSinceYear() {
 		return residentSinceYear;
+	}
+
+	private WebElement getSeverityDropdown() {
+		return severityDropdown;
 	}
 
 	

@@ -1,4 +1,4 @@
-@Ignore
+@Ignore @createpolicy
 Feature: DGT Policy Creation
 
   Scenario: test policy create
@@ -50,7 +50,7 @@ Feature: DGT Policy Creation
     And I set the Conviction Months Disqualified field to "None" at submission step 3
     And I Click Next at submission step3
     And I Click AddVehicle at submission step4
-    And I set the submission step4 field "Vrn" to "ND58HFL"
+    And I set the submission step4 field "Vrn" to "S99SJA"
     And I set the submission step4 field "SecurityDevice" to "Alarm"
     And I set the submission step4 field "Tracker" to "true"
     And I set the submission step4 field "Value" to "3575"

@@ -26,6 +26,7 @@ public class CCFNOLStep1Steps extends BaseTest {
 	 * Used for regression runs
 	 * @throws Throwable
 	 */
+	@Then("I complete step1 for FNOL$")
 	public void iCompleteStep1FNOL() throws Throwable {
 
 		i_set_the_policy_search_criteria_fields_to("policynumber", ExcelUtil.getTestDataValue("Fnol_PolicyNumber"));

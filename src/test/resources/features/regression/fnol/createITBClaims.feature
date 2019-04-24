@@ -1,4 +1,4 @@
-@Ignore 
+@Ignore @createclaimsitb
 Feature: Regression test for create claim FNOL path - ITB claims
 
 
@@ -83,6 +83,7 @@ Feature: Regression test for create claim FNOL path - ITB claims
     Given I use test data set "regress_fnol_accident_credhire" for brand "ITB"
     And As a "ADClaimsHandlerTm1" I am at step5 for FNOL
     When I create a claim as part of a regression test
+
 
   Scenario: FNOL Regression - Create new claim - ACCIDENT (FAULT- NAMED DRIVER)
     Given I use test data set "regress_fnol_accident_namedriv" for brand "ITB"

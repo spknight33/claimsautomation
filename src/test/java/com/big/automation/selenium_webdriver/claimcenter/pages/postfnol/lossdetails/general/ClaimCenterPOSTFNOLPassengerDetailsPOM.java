@@ -171,7 +171,7 @@ public class ClaimCenterPOSTFNOLPassengerDetailsPOM extends BaseTest {
 
 	public String getName() {
 
-		return "POST fnol Edit Passenger";
+		return "POST fnol Passenger SCreen";
 	}
 
 	public boolean isPageTitleDisplayed(String expected) {
@@ -211,73 +211,94 @@ public class ClaimCenterPOSTFNOLPassengerDetailsPOM extends BaseTest {
 	}
 
 	public void selectPrefix(String option) {
-		logger.info(format("%s -  going to select prefix ", getName()));
+		logger.info(format("%s -  going to select prefix:"+option, getName()));
 		GuideWireAccessors.selectOptionFromGWDropDown(driver, option, this.getPrefix(), 1);
 
 	}
 
 	public void setFirstName(String text) {
-		logger.info(format("%s -  going to set first name", getName()));
+		logger.info(format("%s -  going to set first name:"+text, getName()));
 		GuideWireAccessors.setGWTextBox(driver, text, this.getFirstName());
 
 	}
 
 	public void setMiddleName(String text) {
-		logger.info(format("%s -  going to set middle name", getName()));
+		logger.info(format("%s -  going to set middle name:"+text, getName()));
 		GuideWireAccessors.setGWTextBox(driver, text, this.getMiddleName());
 
 	}
 
 	public void setLastName(String text) {
-		logger.info(format("%s -  going to set last name", getName()));
+		logger.info(format("%s -  going to set last name:"+text, getName()));
 		GuideWireAccessors.setGWTextBox(driver, text, this.getLastName());
 
 	}
 
-	public void selectGender(String text) {
-		logger.info(format("%s -  going to set gender", getName()));
-		GuideWireAccessors.setGWTextBox(driver, text, this.getGender());
+	public void selectGender(String option) {
+		logger.info(format("%s -  going to set gender:"+option, getName()));
+		GuideWireAccessors.selectOptionFromGWDropDown(driver, option, this.getGender(), 1);
 
 	}
 
 	public void setDob(String text) {
-		logger.info(format("%s -  going to set dob", getName()));
+		logger.info(format("%s -  going to set dob:"+text, getName()));
 		GuideWireAccessors.setGWTextBox(driver, text, this.getDob());
 
 	}
+	
+	public void selectWhereInVehicle(String option) {
+		logger.info(format("%s -  going to select where in vehicle:", getName()));
+		GuideWireAccessors.selectOptionFromGWDropDown(driver, option, this.getWhereInVehicleDropdown(), 1);
+
+	}
+	//TP only question
+	public void selectPassengerSeatBelt(boolean tpSeatBelt)
+		{
+			logger.info(format("%s -  going to set passenger seat belt:"+tpSeatBelt, getName()));
+			
+			if (tpSeatBelt)
+			{
+			GuideWireAccessors.clickGWButton(driver, this.getPassengerWearingSeatbeltYesOption());
+			}
+			else
+			{
+				GuideWireAccessors.clickGWButton(driver, this.getPassengerWearingSeatbeltYesOption());
+			}
+			
+		}
 
 	public void setAddressLine1(String text) {
-		logger.info(format("%s -  going to set address line1", getName()));
+		logger.info(format("%s -  going to set address line1:"+text, getName()));
 		GuideWireAccessors.setGWTextBox(driver, text, this.getAddressLine1());
 
 	}
 
 	public void setAddressLine2(String text) {
-		logger.info(format("%s -  going to set address line2", getName()));
+		logger.info(format("%s -  going to set address line2:"+text, getName()));
 		GuideWireAccessors.setGWTextBox(driver, text, this.getAddressLine2());
 
 	}
 
 	public void setAddressLine3(String text) {
-		logger.info(format("%s -  going to set address line3", getName()));
+		logger.info(format("%s -  going to set address line3:"+text, getName()));
 		GuideWireAccessors.setGWTextBox(driver, text, this.getAddressLine3());
 
 	}
 
 	public void setCity(String text) {
-		logger.info(format("%s -  going to set city", getName()));
+		logger.info(format("%s -  going to set city:"+text, getName()));
 		GuideWireAccessors.setGWTextBox(driver, text, this.getCity());
 
 	}
 
 	public void setCounty(String text) {
-		logger.info(format("%s -  going to set County", getName()));
+		logger.info(format("%s -  going to set County:"+text, getName()));
 		GuideWireAccessors.setGWTextBox(driver, text, this.getCounty());
 
 	}
 
 	public void setPostcode(String text) {
-		logger.info(format("%s -  going to set postcode", getName()));
+		logger.info(format("%s -  going to set postcode:"+text, getName()));
 		GuideWireAccessors.clickGWButton(driver, this.getPostcode());
 		GuideWireAccessors.setGWTextBox(driver, text, this.getPostcode());
 		GuideWireAccessors.setGWTextBox(driver, text, this.getPostcode());
@@ -292,51 +313,72 @@ public class ClaimCenterPOSTFNOLPassengerDetailsPOM extends BaseTest {
 	}
 
 	public void selectPostcodeAddress(String option) {
-		logger.info(format("%s -  going to select address type", getName()));
+		logger.info(format("%s -  going to select address type:"+option, getName()));
 		GuideWireAccessors.selectOptionFromGWDropDown(driver, option, this.getPostCodeAddressDropdown(), 1);
 
 	}
 
 	public void selectAddressType(String option) {
-		logger.info(format("%s -  going to select address type", getName()));
+		logger.info(format("%s -  going to select address type:"+option, getName()));
 		GuideWireAccessors.selectOptionFromGWDropDown(driver, option, this.getAddressType(), 1);
 
 	}
 
 	public void setLocationDesc(String text) {
-		logger.info(format("%s -  going to set location desc", getName()));
+		logger.info(format("%s -  going to set location desc:"+text, getName()));
 		GuideWireAccessors.setGWTextBox(driver, text, this.getLocationDesc());
 
 	}
 
 	// TODO - phone etc
 
+	public void setWorkPhone(String text) {
+		logger.info(format("%s -  going to set workphone:" + text, getName()));
+		GuideWireAccessors.setGWTextBox(driver, text, this.getWorkPhone());
+		GuideWireAccessors.setGWTextBox(driver, text, this.getWorkPhone());
+
+	}
+
+	public void setHomePhone(String text) {
+		logger.info(format("%s -  going to set homephone:" + text, getName()));
+		GuideWireAccessors.setGWTextBox(driver, text, this.getHomePhone());
+		GuideWireAccessors.setGWTextBox(driver, text, this.getHomePhone());
+
+	}
+
 	public void setMobile(String text) {
-		logger.info(format("%s -  going to set mobile", getName()));
+		logger.info(format("%s -  going to set mobile:" + text, getName()));
 		GuideWireAccessors.setGWTextBox(driver, text, this.getMobile());
 
 	}
 
+	public void selectPrimaryPhone(String option) {
+		logger.info(format("%s -  going to select primary phone type:"+option, getName()));
+		sleep(1);
+		GuideWireAccessors.selectOptionFromGWDropDown(driver, option, this.getPrimaryPhoneDropdown(), 1);
+
+	}
+
 	public void setEmail(String text) {
-		logger.info(format("%s -  going to set email", getName()));
+		logger.info(format("%s -  going to set email:"+text, getName()));
 		GuideWireAccessors.setGWTextBox(driver, text, this.getMainEmail());
 
 	}
 	
 	public void setAltEmail(String text) {
-		logger.info(format("%s -  going to set altemail", getName()));
+		logger.info(format("%s -  going to set altemail:"+text, getName()));
 		GuideWireAccessors.setGWTextBox(driver, text, this.getAltEmail());
 
 	}
 
 	public void setNiNumber(String text) {
-		logger.info(format("%s -  going to set ninumber", getName()));
+		logger.info(format("%s -  going to set ninumber:"+text, getName()));
 		GuideWireAccessors.setGWTextBox(driver, text, this.getNiNumber());
 
 	}
 
 	public void setNotes(String text) {
-		logger.info(format("%s -  going to set notes", getName()));
+		logger.info(format("%s -  going to set notes:"+text, getName()));
 		GuideWireAccessors.setGWTextBox(driver, text, this.getNotes());
 
 	}

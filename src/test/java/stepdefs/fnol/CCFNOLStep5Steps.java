@@ -48,15 +48,16 @@ public class CCFNOLStep5Steps extends BaseTest{
 	
 	}
 	
+	@Then("I complete step5 for FNOL$")
+	public void iCompleteStep5FNOL() throws Throwable 
+	{
+		completeFNOLStep5ForTestScenario();
+		
+	}
+	
 	@Then("^I will be on step5 for FNOL$")
 	public void i_will_be_on_step5_for_FNOL() throws Throwable {
 		fnolStep5POM.isPageTitleDisplayed("Step 5 of 5: Save and Assign Claim");
-	}
-	
-	// for use by step4
-	public boolean step5isDisplayed()
-	{
-		return fnolStep5POM.isPageTitleDisplayed("Step 5 of 5: Save and Assign Claim");
 	}
 	
 	

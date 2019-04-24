@@ -27,10 +27,20 @@ public class ClaimCenterPOSTFNOLNewChequeStep3POM extends BaseTest {
 	@FindBy(id = "NormalCreateCheckWizard:CheckWizard_CheckInstructionsScreen:NewPaymentInstructionsDV:CheckWizardCheckSummaryInputSet:Check_PurposeOfPayment-inputEl")
 	private WebElement purpose;
 	
-	@FindBy(id = "NormalCreateCheckWizard:CheckWizard_CheckInstructionsScreen:NewPaymentInstructionsDV:CheckBatching-inputEl")
+	@FindBy(id = "NormalCreateCheckWizard:CheckWizard_CheckPaymentsScreen:NewCheckPaymentPanelSet:NewPaymentDetailDV:Payment_SelfAuthority_itb_true-inputEl")
+	private WebElement selfAuthorityYesOption;
+	@FindBy(id = "NormalCreateCheckWizard:CheckWizard_CheckPaymentsScreen:NewCheckPaymentPanelSet:NewPaymentDetailDV:Payment_SelfAuthority_itb_false-inputEl")
+	private WebElement selfAuthorityNoOption;
+	
+	@FindBy(id = "NormalCreateCheckWizard:CheckWizard_CheckInstructionsScreen:NewPaymentInstructionsDV:CheckWizardCheckSummaryInputSet:SelfAuthority_itb_true-inputEl")
 	private WebElement chequeBatchingDropdown;
-	@FindBy(id = "NormalCreateCheckWizard:CheckWizard_CheckInstructionsScreen:NewPaymentInstructionsDV:CheckInstructions-inputEl")
+	@FindBy(id = "NormalCreateCheckWizard:CheckWizard_CheckInstructionsScreen:NewPaymentInstructionsDV:CheckWizardCheckSummaryInputSet:SelfAuthority_itb_false-inputEl")
 	private WebElement chequeInstructionsDropdown;
+	
+	@FindBy(id ="WebMessageWorksheet:WebMessageWorksheetScreen:WebMessageWorksheet_ClearButton")
+	private WebElement closeWarningsWindow;
+	private String closeWarningsLocator = "WebMessageWorksheet:WebMessageWorksheetScreen:WebMessageWorksheet_ClearButton";
+	
 	
 	
 
@@ -72,6 +82,23 @@ public class ClaimCenterPOSTFNOLNewChequeStep3POM extends BaseTest {
 
 		logger.info(format("%s -  going to click finish", getName()));
 		GuideWireAccessors.clickGWButton(driver,this.getFinishButton());
+		
+		// we may get prompt for validation warnings
+		//clear any if necessary
+		logger.info(format("%s - going to close warnings window if its open", getName()));
+
+		String xpathLocator = "//*[@id='"+  this.closeWarningsLocator + "']";
+		if(driver.findElements( By.xpath(xpathLocator) ).size() > 0)
+		{
+				logger.info(format("%s - going to close warnings window as its open", getName()));
+					// close it if present
+					driver.findElement(By.xpath(xpathLocator)).click();
+					GuideWireAccessors.clickGWButton(driver,getFinishButton());
+		}
+		else
+			{
+				logger.info(format("%s - NOT going to warnings window as not open", getName()));
+			}
 		
 	}
 	
@@ -137,7 +164,13 @@ public class ClaimCenterPOSTFNOLNewChequeStep3POM extends BaseTest {
 
 
 
-	
+	private WebElement getSelfAuthorityYesOption() {
+		return selfAuthorityYesOption;
+	}
+
+	private WebElement getSelfAuthorityNoOption() {
+		return selfAuthorityNoOption;
+	}
 	
 
 

@@ -1,4 +1,4 @@
-@Ignore
+@Ignore @regressionmandatoryfields 
 Feature: Regression test for errors for step2
 
   Background: 
@@ -12,7 +12,7 @@ Feature: Regression test for errors for step2
       | Name : Missing required field "Name"                               |
       | Relation to Insured : Missing required field "Relation to Insured" |
       | Notified by Alert? : Missing required field "Notified by Alert?"   |
-    When I select "true" from "Alert Notified" field on step2 FNOL
+    When I select "Yes" from "Alert Notified" field on step2 FNOL
     And I click next button on step2 FNOL
     Then Mandatory field error messages will be shown for step2 FNOL
       | Name : Missing required field "Name"                               |

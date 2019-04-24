@@ -9,32 +9,130 @@ import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import stepdefs.common.SearchAddressBookSteps;
 
-public class CCPOSTFNOLEditPassengerSteps extends BaseTest {
+public class CCPOSTFNOLPassengerSteps extends BaseTest {
 
 	SearchAddressBookSteps searchAddressBookSteps = new SearchAddressBookSteps();
 
-	@Then("^I will be on Edit Passenger screen for post FNOL$")
-	public void i_will_be_on_editpassenger_screen_for_postFNOL() throws Throwable {
+	@Then("^I will be on passenger screen on post FNOL$")
+	public void i_will_be_on_passenger_screen_for_postFNOL() throws Throwable {
 		postFnolPassengerPOM.isPageTitleDisplayed("Passenger Details");
 	}
 	
-	@Given("^I click edit button on edit passenger screen on post FNOL$")
-	public void edit() {
+	@Given("^I click \"([^\"]*)\" on passenger screen on post FNOL$")
+	public void i_click_on_passenger_screen(String button) throws Throwable {
+		switch (button) {
+		case "Ok":
+			postFnolPassengerPOM.selectOKorUpdate();
+			break;
+		case "Edit":
+			postFnolPassengerPOM.selectEdit();
+			break;
+		case "Update":
+			postFnolPassengerPOM.selectOKorUpdate();
+			break;
+		case "Cancel":
+			postFnolPassengerPOM.cancel();
+			break;
+		case "Injuries Tab":
+			postFnolPassengerPOM.clickInjuryTab();
+			break;
+		case "Add Moj Status":
+			postFnolPassengerPOM.selectAddMoj();
+			break;
+		default:
+			Assert.fail("unknown input field :" + button + " - check cucumber script!");
+		}
+	}
+	
+	@Given("^I select \"([^\"]*)\" from \"([^\"]*)\" on passenger screen on post FNOL$")
+	public void i_select_from_field_on_passenger_screen(String fieldValue, String fieldName) throws Throwable {
+		switch (fieldName) {
+		case "Passenger Name":
+			postFnolPassengerPOM.selectPassengerName(fieldValue);
+			break;
+		case "Prefix":
+			postFnolPassengerPOM.selectPrefix(fieldValue);
+			break;
+		case "Address Type":
+			postFnolPassengerPOM.selectAddressType(fieldValue);
+			break;
+		case "Gender":
+			postFnolPassengerPOM.selectGender(fieldValue);
+			break;
 		
-		postFnolPassengerPOM.selectEdit();
+	    case "Primary Phone":
+	    	postFnolPassengerPOM.selectPrimaryPhone(fieldValue);
+	    	break;
+	    case "ThirdParty Seatbelt":
+	    	if (fieldValue.equalsIgnoreCase("Yes"))
+	    		postFnolPassengerPOM.selectPassengerSeatBelt(true);
+	    	else
+	    		postFnolPassengerPOM.selectPassengerSeatBelt(false);
+	    	break;
+	    case "Postcode Address":
+	    	postFnolPassengerPOM.selectPostcodeAddress(fieldValue);
+	    	break;
+	    case "Injured":
+			if (fieldValue.equalsIgnoreCase("Yes"))
+				postFnolPassengerPOM.selectInjured(true);
+			else
+				postFnolPassengerPOM.selectInjured(false);
+			break;
+		default:
+			Assert.fail("unknown input field :" + fieldValue + " - check cucumber script!");
+		}
 	}
 
-	@Given("^I click ok button on edit passenger screen for post FNOL$")
-	public void okorupdate() {
-
-		postFnolPassengerPOM.selectOKorUpdate();
+	
+	@Given("^I input \"([^\"]*)\" into the \"([^\"]*)\" box on passenger screen on post FNOL$")
+	public void i_input_into_the_box_on_passenger_screen(String fieldValue, String fieldName) throws Throwable {
+		switch (fieldName) {
+		case "Firstname":
+			postFnolPassengerPOM.setFirstName(fieldValue);
+			break;
+		case "Lastname":
+			postFnolPassengerPOM.setLastName(fieldValue);
+			break;
+		case "Postcode":
+			postFnolPassengerPOM.setPostcode(fieldValue);
+			break;
+		case "Email":
+			postFnolPassengerPOM.setEmail(fieldValue);
+			break;
+		case "Mobile":
+			postFnolPassengerPOM.setMobile(fieldValue);
+			break;
+		case "Notes":
+			postFnolPassengerPOM.setNotes(fieldValue);
+			break;
+		// injury fields
+		case "Injury Description":
+			postFnolPassengerPOM.setInjuryDesc(fieldValue);
+			break;
+		case "Moj Insured Liability":
+			postFnolPassengerPOM.setMojInsuredLiability(fieldValue);
+			break;
+		case "Moj Claimant Liability":
+			postFnolPassengerPOM.setMojClaimantLiability(fieldValue);
+			break;
+		case "Moj Other Liability":
+			postFnolPassengerPOM.setMojOtherLiability(fieldValue);
+			break;
+		case "Moj Low Damages":
+			postFnolPassengerPOM.setMojLowDamages(fieldValue);
+			break;
+		case "Moj High Damages":
+			postFnolPassengerPOM.setMojHighDamages(fieldValue);
+			break;
+		case "Moj Offer Damages":
+			postFnolPassengerPOM.setMojOfferDamages(fieldValue);
+			break;
+		default:
+			Assert.fail("unknown input field :" + fieldName + " - check cucumber script!");
+		}
 	}
-
-	@Given("^I click cancel button on edit passenger screen for post FNOL$")
-	public void cancel() {
-
-		postFnolPassengerPOM.cancel();
-	}
+	
+	
 	
 	
 	@Given("^I change fields on post FNOL edit PH passenger incident$")
@@ -171,25 +269,5 @@ public class CCPOSTFNOLEditPassengerSteps extends BaseTest {
 			
 	}
 
-	@Given("^I select \"([^\"]*)\" from \"([^\"]*)\" on edit Passenger screen for post FNOL$")
-	public void i_select_from_field_on_passenger_screen(String fieldValue, String fieldName) throws Throwable {
-		switch (fieldName) {
-		case "Passenger Name":
-			postFnolPassengerPOM.selectPassengerName(fieldValue);
-			break;
-		case "Prefix":
-			postFnolPassengerPOM.selectPrefix(fieldValue);
-			break;
-		case "Address Type":
-			postFnolPassengerPOM.selectAddressType(fieldValue);
-			break;
-		case "Gender":
-			postFnolPassengerPOM.selectGender(fieldValue);
-			break;
-
-		default:
-			Assert.fail("unknown input field :" + fieldValue + " - check cucumber script!");
-		}
-	}
-
+	
 }

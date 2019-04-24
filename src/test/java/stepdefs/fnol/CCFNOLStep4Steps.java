@@ -35,9 +35,6 @@ public class CCFNOLStep4Steps extends BaseTest{
 		if (fieldValue !=null && fieldValue.equalsIgnoreCase("TRUE"))
 		{
 			fnolStep4POM.selectPhClaiming(true);
-			
-		
-		
 		}
 		else
 		{
@@ -50,12 +47,27 @@ public class CCFNOLStep4Steps extends BaseTest{
 		// complete tpcapture section
 		completeFNOLStep4TPCapture();
 		
+		fieldValue = ExcelUtil.getTestDataValue("Fnol_Step4_WaiveExcess");
+		if (fieldValue !=null && fieldValue.equalsIgnoreCase("TRUE"))
+		{
+			fnolStep4POM.selectWaiveExcess(true);
+		}
+		else
+		{
+			fnolStep4POM.selectWaiveExcess(false);
+		}
+		
+		fieldValue = ExcelUtil.getTestDataValue("Fnol_Step4_BonusStatus");
+		if (fieldValue !=null)
+		{
+			fnolStep4POM.selectBonusStatus(fieldValue);
+		}
 			
 		fnolStep4POM.next();
 	}
 	
 	
-	public void completeFNOLStep4Services() throws Throwable
+	private void completeFNOLStep4Services() throws Throwable
 	{
 		String fieldValue=null;
 		fieldValue = ExcelUtil.getTestDataValue("Fnol_Step4_RepairServiceRequired");
@@ -121,7 +133,7 @@ public class CCFNOLStep4Steps extends BaseTest{
 		}
 	}
 	
-	public void completeFNOLStep4TPCapture() 
+	private void completeFNOLStep4TPCapture() 
 	{
 		String fieldValue=null;
 		//The TP capture section will depend on what is created as regards third party in the data, so will be variable
@@ -319,6 +331,13 @@ public class CCFNOLStep4Steps extends BaseTest{
 		fnolStep4POM.isPageTitleDisplayed("Step 4 of 5: Services");
 	}
 	
+	@Then("I complete step4 for FNOL$")
+	public void iCompleteStep4FNOL() throws Throwable 
+	{
+		completeFNOLStep4ForTestScenario();
+		
+	}
+	
 	// for use by step3 validation tests
 	public boolean step4isDisplayed()
 	{
@@ -347,6 +366,15 @@ public class CCFNOLStep4Steps extends BaseTest{
 				fnolStep4POM.selectPhClaiming(true);
 				else
 					fnolStep4POM.selectPhClaiming(false);	
+		    	break;
+		case "Waive Excess":
+			if (fieldValue.equalsIgnoreCase("True"))
+				fnolStep4POM.selectWaiveExcess(true);
+				else
+					fnolStep4POM.selectWaiveExcess(false);	
+		    	break;
+		case "Bonus Status":
+				fnolStep4POM.selectBonusStatus(fieldValue);
 		    	break;
 	
 	

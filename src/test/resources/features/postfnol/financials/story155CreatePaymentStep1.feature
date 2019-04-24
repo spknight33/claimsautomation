@@ -9,7 +9,7 @@ Feature: CBPCL-155  Create a payment step1
     Given I access ClaimCenter login page
     And I login to ClaimCenter as role "ADClaimsHandlerTm1"
     And I Select an existing Claim
-    And I select the Actions Popup Menu Hierarchy "Cheque"
+    And I select the Actions Popup Menu Hierarchy "Cheque" for parent "New Transaction"
     And I will see post FNOL New System Cheque Step1 screen
     And I select "John SideBottom" from field "Claimant" at New System Cheque Step1 post FNOL
     And I select "John SideBottom" from field "Payee" at New System Cheque Step1 post FNOL
@@ -31,7 +31,7 @@ Feature: CBPCL-155  Create a payment step1
     Given I access ClaimCenter login page
     And I login to ClaimCenter as role "ADClaimsHandlerTm1"
     And I Select an existing Claim
-    And I select the Actions Popup Menu Hierarchy "Cheque"
+    And I select the Actions Popup Menu Hierarchy "Cheque" for parent "New Transaction"
     And I will see post FNOL New System Cheque Step1 screen
     And I select "Roy Racer" from field "Claimant" at New System Cheque Step1 post FNOL
     And I select "Roy Racer" from field "Payee" at New System Cheque Step1 post FNOL

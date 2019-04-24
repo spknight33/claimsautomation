@@ -152,6 +152,14 @@ public class ClaimCenterFNOLVehicleDetailsPOM extends BaseTest{
 	@FindBy(id = "FNOLVehicleIncidentPopup:FNOLVehicleIncidentScreen:OtherDetailsDV:HireProtocol_false-inputEl")
 	private WebElement protocolHireNoOption;
 	
+	// Occupants
+	@FindBy(id = "FNOLVehicleIncidentPopup:FNOLVehicleIncidentScreen:NoOfOccupants_true-inputEl")
+	private WebElement occupantsYesOption;
+	@FindBy(id = "FNOLVehicleIncidentPopup:FNOLVehicleIncidentScreen:NoOfOccupants_false-inputEl")
+	private WebElement occupantsNoOption;
+	@FindBy(id = "FNOLVehicleIncidentPopup:FNOLVehicleIncidentScreen:Vehicle_NoOfOccupants-inputEl")
+	private WebElement occupantsNumber;
+	
 	
 	// FIRE section only appears on page for a fire incident for PH vehicle
 		//------------------------------------------------------------------------
@@ -378,6 +386,7 @@ public class ClaimCenterFNOLVehicleDetailsPOM extends BaseTest{
 		GuideWireAccessors.clickGWButton(driver, this.getAddPassengerButton());
 		
 	}
+	
 	
 
 	public void selectNewVehicle()
@@ -632,6 +641,26 @@ public class ClaimCenterFNOLVehicleDetailsPOM extends BaseTest{
 
 	}
 	
+	// Occupants
+	//------------------------------
+	public void selectOccupantsKnown(boolean known)
+	{
+		logger.info(format("%s -  going to set occuoant known to:"+known, getName()));
+	    if (known)
+	    {
+	    	GuideWireAccessors.clickGWButton(driver, this.getOccupantsYesOption());
+	    }
+	    else
+	    {
+	    	GuideWireAccessors.clickGWButton(driver, this.getOccupantsNoOption());
+	    }
+	    sleep(2);
+	}
+	public void setOccupantsNumber(String text)
+	{
+		logger.info(format("%s - going to set occupants number :"+text, getName()));
+		GuideWireAccessors.setGWTextBox(driver, text, this.getOccupantsNumber());
+	}
 	
 	//FIRE SECTION, ONLY FOR PH
 	//--------------------------------------------------
@@ -1452,6 +1481,18 @@ public class ClaimCenterFNOLVehicleDetailsPOM extends BaseTest{
 
 	private WebElement getInsuredVehicleNewVehiclePicker() {
 		return insuredVehicleNewVehiclePicker;
+	}
+
+	private WebElement getOccupantsYesOption() {
+		return occupantsYesOption;
+	}
+
+	private WebElement getOccupantsNoOption() {
+		return occupantsNoOption;
+	}
+
+	private WebElement getOccupantsNumber() {
+		return occupantsNumber;
 	}
 
 	

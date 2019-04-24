@@ -9,16 +9,173 @@ import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import stepdefs.common.SearchAddressBookSteps;
 
-public class CCPOSTFNOLEditDriverSteps extends BaseTest {
+public class CCPOSTFNOLDriverSteps extends BaseTest {
 	
 	SearchAddressBookSteps searchAddressBookSteps = new SearchAddressBookSteps();
 	
 	
 	
-	@Then("^I will be on edit Driver screen for post FNOL$")
+	@Then("^I will be on driver screen on post FNOL$")
 	public void i_will_be_on_driver_screen_for_postFNOL() throws Throwable {
 	    postFnolDriverPOM.isPageTitleDisplayed("Driver Details");
 	}
+	
+	
+	@Given("^I select \"([^\"]*)\" from \"([^\"]*)\" on driver screen on post FNOL$")
+	public void i_select_from_field_on_driver_screen(String fieldValue, String fieldName) throws Throwable {
+		switch(fieldName)
+		    {
+	    case "Driver Name":
+	    	postFnolDriverPOM.selectDriverName(fieldValue);
+	    	break;
+	    case "Related To":
+	    	postFnolDriverPOM.selectRelationToOwner(fieldValue);
+	    	break;
+	    case "Prefix":
+	    	postFnolDriverPOM.selectPrefix(fieldValue);
+	    	break;
+	    case "Gender":
+	    	postFnolDriverPOM.selectGender(fieldValue);
+	    	break;
+	    case "Address Type":
+	    	postFnolDriverPOM.selectAddressType(fieldValue);
+	    	break;
+	    case "Primary Phone":
+	    	postFnolDriverPOM.selectPrimaryPhone(fieldValue);
+	    	break;
+	    case "ThirdParty Seatbelt":
+	    	if (fieldValue.equalsIgnoreCase("Yes"))
+	    		postFnolDriverPOM.selectTPSeatBelt(true);
+	    	else
+	    		postFnolDriverPOM.selectTPSeatBelt(false);
+	    	break;
+	    case "Indemnity Occupation":
+	    	postFnolDriverPOM.selectFTOccupation(fieldValue);
+	    	break;
+	    case "Indemnity License":
+	    	postFnolDriverPOM.selectLicenseType(fieldValue);
+	    	break;
+	    case "Indemnity License Length":
+	    	postFnolDriverPOM.selectLicenseLength(fieldValue);
+	    	break;
+	    case "Indemnity Medicals":
+	    	postFnolDriverPOM.selectMedicalConditions(fieldValue);
+	    	break;
+	    case "Indemnity Incidents 5Years":
+	    	if (fieldValue.equalsIgnoreCase("Yes"))
+	    		postFnolDriverPOM.selectIncident5Years(true);
+	    	else
+	    		postFnolDriverPOM.selectIncident5Years(false);
+	    	break;
+	    case "Indemnity Offences 5Years":
+	    	if (fieldValue.equalsIgnoreCase("Yes"))
+	    		postFnolDriverPOM.selectOffence5Years(true);
+	    	else
+	    		postFnolDriverPOM.selectOffence5Years(false);
+	    	break;
+	    	//TODO finish thes eoff
+	    case "Indemnity Prosecutions":
+	    	postFnolDriverPOM.selectProsecuted(fieldValue);
+	    	break;
+	    case "Indemnity Seatbelt":
+	    	postFnolDriverPOM.selectIndemnitySeatbelt(fieldValue);
+	    	break;
+	    case "Indemnity Tested At Scene":
+	    	if (fieldValue.equalsIgnoreCase("Yes"))
+	    		postFnolDriverPOM.selectTestedAtScene(true);
+	    	else
+	    		postFnolDriverPOM.selectTestedAtScene(false);
+	    	break;
+	    case "Injured":
+			if (fieldValue.equalsIgnoreCase("Yes"))
+				postFnolDriverPOM.selectInjured(true);
+			else
+				postFnolDriverPOM.selectInjured(false);
+			break;
+	    default:
+	    Assert.fail("unknown input field :"+ fieldName+" - check cucumber script!");
+	    }
+	}
+	
+	@Given("^I input \"([^\"]*)\" into the \"([^\"]*)\" box on driver screen on post FNOL$")
+	public void i_input_into_the_box_on_driver_screen(String fieldValue, String fieldName) throws Throwable {
+		switch (fieldName) {
+		case "Firstname":
+			postFnolDriverPOM.setFirstName(fieldValue);
+			break;
+		case "Lastname":
+			postFnolDriverPOM.setLastName(fieldValue);
+			break;
+		case "Postcode":
+			postFnolDriverPOM.setPostcode(fieldValue);
+			break;
+		case "Email":
+			postFnolDriverPOM.setEmail(fieldValue);
+			break;
+		case "Mobile":
+			postFnolDriverPOM.setMobile(fieldValue);
+			break;
+		case "Notes":
+			postFnolDriverPOM.setNotes(fieldValue);
+			break;
+		// injury fields
+		case "Injury Description":
+			postFnolDriverPOM.setInjuryDesc(fieldValue);
+			break;
+		case "Moj Insured Liability":
+			postFnolDriverPOM.setMojInsuredLiability(fieldValue);
+			break;
+		case "Moj Claimant Liability":
+			postFnolDriverPOM.setMojClaimantLiability(fieldValue);
+			break;
+		case "Moj Other Liability":
+			postFnolDriverPOM.setMojOtherLiability(fieldValue);
+			break;
+		case "Moj Low Damages":
+			postFnolDriverPOM.setMojLowDamages(fieldValue);
+			break;
+		case "Moj High Damages":
+			postFnolDriverPOM.setMojHighDamages(fieldValue);
+			break;
+		case "Moj Offer Damages":
+			postFnolDriverPOM.setMojOfferDamages(fieldValue);
+			break;
+		default:
+			Assert.fail("unknown input field :" + fieldName + " - check cucumber script!");
+		}
+	}
+	
+	@Given("^I click \"([^\"]*)\" on driver screen on post FNOL$")
+	public void i_click_on_driver_screen(String button) throws Throwable {
+		switch (button) {
+		case "Edit":
+			postFnolDriverPOM.selectEdit();
+			break;
+		case "Ok":
+			postFnolDriverPOM.selectOKOrUpdate();
+			break;
+		case "Update":
+			postFnolDriverPOM.selectOKOrUpdate();
+			break;
+		case "Cancel":
+			postFnolDriverPOM.cancel();
+			break;
+		case "Injuries Tab":
+			postFnolDriverPOM.clickInjuryTab();
+			break;
+		case "Add Moj Status":
+			postFnolDriverPOM.selectAddMoj();
+			break;
+		default:
+			Assert.fail("unknown input field :" + button + " - check cucumber script!");
+		}
+	}
+	
+	
+	
+	
+	
+	
 	
 	@Given("^I change fields on post FNOL edit PH driver incident$")
 	public void changePostFNOLPHDriverForTestScenario() throws Throwable
@@ -315,42 +472,6 @@ public class CCPOSTFNOLEditDriverSteps extends BaseTest {
 
 	}
 	
-	@Given("^I select \"([^\"]*)\" from \"([^\"]*)\" on edit driver screen for post FNOL$")
-	public void i_select_from_field_on_driver_screen(String fieldValue, String fieldName) throws Throwable {
-		switch(fieldName)
-		    {
-	    case "Driver Name":
-	    	postFnolDriverPOM.selectDriverName(fieldValue);
-	    	break;
-	    case "Related To":
-	    	postFnolDriverPOM.selectRelationToOwner(fieldValue);
-	    	break;
-	    case "Prefix":
-	    	postFnolDriverPOM.selectPrefix(fieldValue);
-	    	break;
-	    case "Address Type":
-	    	postFnolDriverPOM.selectAddressType(fieldValue);
-	    	break;
-	    case "Gender":
-	    	postFnolDriverPOM.selectGender(fieldValue);
-	    	break;
-	  
-	    default:
-	    Assert.fail("unknown input field :"+ fieldValue+" - check cucumber script!");
-	    }
-	}
-	
-	@Given("^I click ok button on edit driver screen for post FNOL$")
-	public void okorupdate() {
-		
-		postFnolDriverPOM.selectOKOrUpdate();
-	}
-	
-	@Given("^I click cancel button on edit driver screen for post FNOL$")
-	public void cancel() {
-		
-		postFnolDriverPOM.cancel();
-	}
 	
 	
 }

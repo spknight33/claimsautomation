@@ -6,6 +6,21 @@ Feature: CBPCL-243 As a TPC Handler I want to be able to set subsequent call att
     Given I use test data set "postfnol_set1"
 
 
+
+ 
+
+  Scenario: TC1 create payment and approve (cheque) partial
+  Given I access ClaimCenter login page
+     And I login to ClaimCenter as role "ADClaimsHandlerTm1"
+    And I Select existing Claim "300000050"
+    And I select the Actions Popup Menu Hierarchy "Reminder,30 day diary" for parent "New Activity"
+    And I select the Actions Popup Menu Hierarchy "Interview,Get a statement from witness" for parent "New Activity"
+    And I select the Actions Popup Menu Hierarchy "Cheque" for parent "New Transaction"
+     And I select the Actions Popup Menu Hierarchy "Service" for parent "New"
+      And I select the Actions Popup Menu Hierarchy "Close Claim" for parent "Claim Actions"
+      And I select the Actions Popup Menu Hierarchy "Choose by Coverage Type,Fire" for parent "New Exposure"
+   
+
   Scenario: CBPCL-243 TC1, TC2 -When creating a new activity on a claim, the due date and overdue date will include the time in 24 hour format
     Given I access ClaimCenter login page
     And I login to ClaimCenter as role "ADClaimsHandlerTm1"

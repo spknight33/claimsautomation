@@ -15,7 +15,7 @@ import com.big.automation.selenium_webdriver.common.gw.utilities.GuideWireAccess
 public class ClaimCenterPOSTFNOLEditPropertyPOM extends BaseTest{
 
 	//
-	// Keep this distinct from other property pages for now, they could be combined in future (fnol/postfnol new/edit)
+	// Keep this distinct from other property pages as they use different tags
 	//
 	
 	@FindBy(id = "EditFixedPropertyIncidentPopup:EditFixedPropertyIncidentScreen:0")
@@ -51,7 +51,7 @@ public class ClaimCenterPOSTFNOLEditPropertyPOM extends BaseTest{
 	@FindBy(id = "EditFixedPropertyIncidentPopup:EditFixedPropertyIncidentScreen:FixPropIncidentDetailDV:FixedPropertyIncidentDV:CCAddressInputSet:globalAddressContainer:globalAddress:GlobalAddressInputSet:PostalCode-inputEl")
 	private WebElement postCode;
 	@FindBy(id = "EditFixedPropertyIncidentPopup:EditFixedPropertyIncidentScreen:FixPropIncidentDetailDV:FixedPropertyIncidentDV:CCAddressInputSet:globalAddressContainer:globalAddress:GlobalAddressInputSet:addresses-inputEl")
-	private WebElement addressDropdown;
+	private WebElement postCodeAddressDropdown;
 	
 	@FindBy(id = "EditFixedPropertyIncidentPopup:EditFixedPropertyIncidentScreen:FixPropIncidentDetailDV:FixedPropertyIncidentDV:CCAddressInputSet:globalAddressContainer:Address_Description-inputEl")
 	private WebElement locationDesc;
@@ -65,23 +65,17 @@ public class ClaimCenterPOSTFNOLEditPropertyPOM extends BaseTest{
 	@FindBy(id = "EditFixedPropertyIncidentPopup:EditFixedPropertyIncidentScreen:FixPropIncidentDetailDV:FixedPropertyIncidentDV:PropertyOwner_itb:ClaimNewCompanyOrPersonPickerMenuItemSet:NewContactPickerMenuItemSet_NewCompany-textEl")
 	private WebElement ownerNewCompany;
 	
+
 	
-	//TODO - services to perform
-	@FindBy(id = "EditFixedPropertyIncidentPopup:EditFixedPropertyIncidentScreen:FixPropIncidentDetailDV:FixedPropertyIncidentDV:AppraisalServiceInputSet:AppraisalServiceInputSet:AppraisalServiceInputGroup:_checkbox")
-	private WebElement appraisalServicesCB;
-	@FindBy(id = "EditFixedPropertyIncidentPopup:EditFixedPropertyIncidentScreen:FixPropIncidentDetailDV:FixedPropertyIncidentDV:OtherServicesLVInputGroupInputSet:OtherServicesInputGroup:_checkbox")
-	private WebElement otherServicesCB;
-	//TODO - repairs
-	
-	@FindBy(id = "NewFixedPropertyIncidentPopup:NewFixedPropertyIncidentScreen:FixPropIncidentDetailDV:FixedPropertyIncidentDV:EstimatedReceived-inputEl")
+	@FindBy(id = "EditFixedPropertyIncidentPopup:EditFixedPropertyIncidentScreen:FixPropIncidentDetailDV:FixedPropertyIncidentDV:EstimatedReceived-inputEl")
 	private WebElement estimateRecievedDropdown;
-	@FindBy(id = "NewFixedPropertyIncidentPopup:NewFixedPropertyIncidentScreen:FixPropIncidentDetailDV:FixedPropertyIncidentDV:EstimateCost-inputEl")
+	@FindBy(id = "EditFixedPropertyIncidentPopup:EditFixedPropertyIncidentScreen:FixPropIncidentDetailDV:FixedPropertyIncidentDV:EstimateCost-inputEl")
 	private WebElement estimatedRepairCost;
-	@FindBy(id = "NewFixedPropertyIncidentPopup:NewFixedPropertyIncidentScreen:FixPropIncidentDetailDV:FixedPropertyIncidentDV:EstimateTime-inputEl")
+	@FindBy(id = "EditFixedPropertyIncidentPopup:EditFixedPropertyIncidentScreen:FixPropIncidentDetailDV:FixedPropertyIncidentDV:EstimateTime-inputEl")
 	private WebElement estimatedRepairTime;
-	@FindBy(id = "NewFixedPropertyIncidentPopup:NewFixedPropertyIncidentScreen:FixPropIncidentDetailDV:FixedPropertyIncidentDV:AlreadyRepaired_true-inputEl")
+	@FindBy(id = "EditFixedPropertyIncidentPopup:EditFixedPropertyIncidentScreen:FixPropIncidentDetailDV:FixedPropertyIncidentDV:AlreadyRepaired_true-inputEl")
 	private WebElement repairedTrueRadio;
-	@FindBy(id = "NewFixedPropertyIncidentPopup:NewFixedPropertyIncidentScreen:FixPropIncidentDetailDV:FixedPropertyIncidentDV:AlreadyRepaired_false-inputEl")
+	@FindBy(id = "EditFixedPropertyIncidentPopup:EditFixedPropertyIncidentScreen:FixPropIncidentDetailDV:FixedPropertyIncidentDV:AlreadyRepaired_false-inputEl")
 	private WebElement repairedFalseRadio;
 	
 	
@@ -113,6 +107,11 @@ public class ClaimCenterPOSTFNOLEditPropertyPOM extends BaseTest{
 	
 	public void update() {
 		logger.info(format("%s -  going to click update", getName()));
+		GuideWireAccessors.clickGWButton(driver,this.getUpdateButton());
+		
+	}
+	public void ok() {
+		logger.info(format("%s -  going to click ok", getName()));
 		GuideWireAccessors.clickGWButton(driver,this.getUpdateButton());
 		
 	}
@@ -175,10 +174,10 @@ public class ClaimCenterPOSTFNOLEditPropertyPOM extends BaseTest{
 				sleep(2);
 	}	
 	
-	public void selectAddress(String option)
+	public void selectPostcodeAddress(String option)
 	{
-		logger.info(format("%s - going to select address:"+option, getName()));
-		GuideWireAccessors.selectOptionFromGWDropDown(driver, option, this.getAddressDropdown(), 1);
+		logger.info(format("%s - going to select postcode address:"+option, getName()));
+		GuideWireAccessors.selectOptionFromGWDropDown(driver, option, this.getPostCodeAddressDropdown(), 1);
 	}
 	
 	public void setLocationDescription(String text)
@@ -186,6 +185,12 @@ public class ClaimCenterPOSTFNOLEditPropertyPOM extends BaseTest{
 		logger.info(format("%s -  going to set location description", getName()));
 		GuideWireAccessors.setGWTextBox(driver, text, this.getLocationDesc());
 	}	
+	
+	public void selectPropertyOwner(String option)
+	{
+		logger.info(format("%s - going to select Property owner:"+option, getName()));
+		GuideWireAccessors.selectOptionFromGWDropDown(driver, option, this.getOwnerDropDown(), 1);
+	}
 	
 	public void selectNewOwnerPerson()
 	{
@@ -300,14 +305,6 @@ public class ClaimCenterPOSTFNOLEditPropertyPOM extends BaseTest{
 	}
 	
 
-	private WebElement getAppraisalServicesCB() {
-		return appraisalServicesCB;
-	}
-
-	private WebElement getOtherServicesCB() {
-		return otherServicesCB;
-	}
-
 	private WebElement getEstimateRecievedDropdown() {
 		return estimateRecievedDropdown;
 	}
@@ -337,10 +334,11 @@ public class ClaimCenterPOSTFNOLEditPropertyPOM extends BaseTest{
 		return county;
 	}
 
-	private WebElement getAddressDropdown() {
-		return addressDropdown;
+	private WebElement getPostCodeAddressDropdown() {
+		return postCodeAddressDropdown;
 	}
 
+	
 	
 
 

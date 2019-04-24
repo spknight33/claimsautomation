@@ -21,7 +21,23 @@ public class CCPOSTFNOLChequesStep2Steps extends BaseTest {
 	}
 	
 	
-	@Given("^I click next button on New System Cheque Step2 post FNOL$")
+	@Given("^I click \"([^\"]*)\" button on New System Cheque Step2 post FNOL$")
+	public void i_click_button(String fieldName) {
+		switch (fieldName) {
+		case "next":
+			postFnolNewChequeStep2POM.next();
+			break;
+		case "add payment":
+			postFnolNewChequeStep2POM.addPayment();
+			break;
+
+
+		default:
+			Assert.fail("unknown input field :" + fieldName + " - check cucumber script!");
+		}
+		
+	}
+	@Given("^I click add payment button on New System Cheque Step2 post FNOL$")
 	public void next() {
 		
 		postFnolNewChequeStep2POM.next();

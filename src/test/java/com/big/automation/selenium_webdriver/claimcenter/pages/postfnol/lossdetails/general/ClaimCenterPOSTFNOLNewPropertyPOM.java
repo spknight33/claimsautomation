@@ -1,16 +1,13 @@
 package com.big.automation.selenium_webdriver.claimcenter.pages.postfnol.lossdetails.general;
 
+import static com.big.automation.selenium_webdriver.common.utilities.ThreadUtils.sleep;
 import static java.lang.String.format;
 
-import java.util.List;
-
 import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
-import static com.big.automation.selenium_webdriver.common.utilities.ThreadUtils.sleep;
 
 import com.big.automation.selenium_webdriver.common.baseTest.BaseTest;
 import com.big.automation.selenium_webdriver.common.gw.utilities.GuideWireAccessors;
@@ -18,20 +15,17 @@ import com.big.automation.selenium_webdriver.common.gw.utilities.GuideWireAccess
 public class ClaimCenterPOSTFNOLNewPropertyPOM extends BaseTest{
 
 	//
-	// Keep this distinct from other property pages for now, they could be combined in future (fnol/postfnol new/edit)
+	// Keep this distinct from other property pages as use different html tags
 	//
-	@FindBy(id = "FNOLWizard:Cancel-btnEl")
-	private WebElement cancelButton;
-	
-		
-
-	
 	@FindBy(id = "NewFixedPropertyIncidentPopup:NewFixedPropertyIncidentScreen:0")
 	private WebElement pageTitle;
+	
+	@FindBy(id = "NewFixedPropertyIncidentPopup:NewFixedPropertyIncidentScreen:Update")
+	private WebElement updateButton;
+	@FindBy(id = "NewFixedPropertyIncidentPopup:NewFixedPropertyIncidentScreen:Cancel")
+	private WebElement cancelButton;
 		
-	@FindBy(id = "NewFixedPropertyIncidentPopup:NewFixedPropertyIncidentScreen:Update-btnEl")
-	private WebElement okButton;
-
+	
 	
 	@FindBy(id = "NewFixedPropertyIncidentPopup:NewFixedPropertyIncidentScreen:FixPropIncidentDetailDV:FixedPropertyIncidentDV:PropertyDescription-inputEl")
 	private WebElement propertyDesc;
@@ -54,6 +48,9 @@ public class ClaimCenterPOSTFNOLNewPropertyPOM extends BaseTest{
 	private WebElement city;
 	@FindBy(id = "NewFixedPropertyIncidentPopup:NewFixedPropertyIncidentScreen:FixPropIncidentDetailDV:FixedPropertyIncidentDV:CCAddressInputSet:globalAddressContainer:globalAddress:GlobalAddressInputSet:PostalCode-inputEl")
 	private WebElement postCode;
+	@FindBy(id = "NewFixedPropertyIncidentPopup:NewFixedPropertyIncidentScreen:FixPropIncidentDetailDV:FixedPropertyIncidentDV:CCAddressInputSet:globalAddressContainer:globalAddress:GlobalAddressInputSet:addresses-inputEl")
+	private WebElement postCodeAddressDropdown;
+	
 	@FindBy(id = "NewFixedPropertyIncidentPopup:NewFixedPropertyIncidentScreen:FixPropIncidentDetailDV:FixedPropertyIncidentDV:CCAddressInputSet:globalAddressContainer:Address_Description-inputEl")
 	private WebElement locationDesc;
 	
@@ -66,13 +63,6 @@ public class ClaimCenterPOSTFNOLNewPropertyPOM extends BaseTest{
 	@FindBy(id = "NewFixedPropertyIncidentPopup:NewFixedPropertyIncidentScreen:FixPropIncidentDetailDV:FixedPropertyIncidentDV:PropertyOwner_itb:ClaimNewCompanyOrPersonPickerMenuItemSet:NewContactPickerMenuItemSet_NewCompany-itemEl")
 	private WebElement ownerNewCompany;
 	
-	
-	//TODO - services to perform
-	@FindBy(id = "NewFixedPropertyIncidentPopup:NewFixedPropertyIncidentScreen:FixPropIncidentDetailDV:FixedPropertyIncidentDV:AppraisalServiceInputSet:AppraisalServiceInputSet:AppraisalServiceInputGroup:_checkbox")
-	private WebElement appraisalServicesCB;
-	@FindBy(id = "NewFixedPropertyIncidentPopup:NewFixedPropertyIncidentScreen:FixPropIncidentDetailDV:FixedPropertyIncidentDV:OtherServicesLVInputGroupInputSet:OtherServicesInputGroup:_checkbox")
-	private WebElement otherServicesCB;
-	//TODO - repairs
 	
 	@FindBy(id = "NewFixedPropertyIncidentPopup:NewFixedPropertyIncidentScreen:FixPropIncidentDetailDV:FixedPropertyIncidentDV:EstimatedReceived-inputEl")
 	private WebElement estimateRecievedDropdown;
@@ -95,7 +85,6 @@ public class ClaimCenterPOSTFNOLNewPropertyPOM extends BaseTest{
 	public boolean isPageTitleDisplayed(String expected)
 	{
 		sleep(2);
-		
 		logger.info(format("%s -found page title for Add Property page :"+this.getPageTitle().getText(), getName()));
 		return this.getPageTitle().getText().equalsIgnoreCase(expected);
 	}
@@ -106,15 +95,19 @@ public class ClaimCenterPOSTFNOLNewPropertyPOM extends BaseTest{
 	
 	public void cancel() {
 
-		logger.info(format("%s -  going to click cancel", getName()));
+		logger.info(format("%s -  going to click Cancel", getName()));
 		GuideWireAccessors.clickGWButton(driver,this.getCancelButton());
 		
 	}
 	
-	public void selectOK() {
-		logger.info(format("%s -  going to click OK", getName()));
-		GuideWireAccessors.clickGWButton(driver,this.getOkButton());
+	public void update() {
+		logger.info(format("%s -  going to click upate", getName()));
+		GuideWireAccessors.clickGWButton(driver,this.getUpdateButton());
 		
+	}
+	public void ok() {
+		logger.info(format("%s -  going to click ok", getName()));
+		GuideWireAccessors.clickGWButton(driver,this.getUpdateButton());
 	}
 	
 	public void setPropertyDesc(String text)
@@ -174,11 +167,23 @@ public class ClaimCenterPOSTFNOLNewPropertyPOM extends BaseTest{
 				actions.build().perform();
 				sleep(2);
 	}	
+	public void selectPostcodeAddress(String option)
+	{
+		logger.info(format("%s - going to select postcode address:"+option, getName()));
+		GuideWireAccessors.selectOptionFromGWDropDown(driver, option, this.getPostCodeAddressDropdown(), 1);
+	}
+	
 	public void setLocationDescription(String text)
 	{
 		logger.info(format("%s -  going to set location description", getName()));
 		GuideWireAccessors.setGWTextBox(driver, text, this.getLocationDesc());
 	}	
+	
+	public void selectPropertyOwner(String option)
+	{
+		logger.info(format("%s - going to select Property owner:"+option, getName()));
+		GuideWireAccessors.selectOptionFromGWDropDown(driver, option, this.getOwnerDropDown(), 1);
+	}
 	
 	public void selectNewOwnerPerson()
 	{
@@ -222,21 +227,17 @@ public class ClaimCenterPOSTFNOLNewPropertyPOM extends BaseTest{
 	
 		
 	}
-	
-
-   
-	private WebElement getCancelButton() {
-	return cancelButton;
-}
 
 	private WebElement getPageTitle() {
 		return pageTitle;
 	}
-	
 
-	
-	private WebElement getOkButton() {
-		return okButton;
+	private WebElement getUpdateButton() {
+		return updateButton;
+	}
+
+	private WebElement getCancelButton() {
+		return cancelButton;
 	}
 
 	private WebElement getPropertyDesc() {
@@ -275,6 +276,10 @@ public class ClaimCenterPOSTFNOLNewPropertyPOM extends BaseTest{
 		return postCode;
 	}
 
+	private WebElement getPostCodeAddressDropdown() {
+		return postCodeAddressDropdown;
+	}
+
 	private WebElement getLocationDesc() {
 		return locationDesc;
 	}
@@ -293,15 +298,6 @@ public class ClaimCenterPOSTFNOLNewPropertyPOM extends BaseTest{
 
 	private WebElement getOwnerNewCompany() {
 		return ownerNewCompany;
-	}
-	
-
-	private WebElement getAppraisalServicesCB() {
-		return appraisalServicesCB;
-	}
-
-	private WebElement getOtherServicesCB() {
-		return otherServicesCB;
 	}
 
 	private WebElement getEstimateRecievedDropdown() {
@@ -323,9 +319,9 @@ public class ClaimCenterPOSTFNOLNewPropertyPOM extends BaseTest{
 	private WebElement getRepairedFalseRadio() {
 		return repairedFalseRadio;
 	}
-
-
 	
-
+	//Private getters
+	//------------------------------------------------------
+	
 
 }

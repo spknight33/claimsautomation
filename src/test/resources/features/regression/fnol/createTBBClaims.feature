@@ -1,5 +1,6 @@
-@Ignore
+@Ignore @createclaimstbb
 Feature: Regression test for create claim FNOL path - TBB claims
+
 
   Scenario: FNOL Regression - Create new claim - FIRE claim
     Given I use test data set "regress_fnol_fire" for brand "TBB"

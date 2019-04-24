@@ -93,8 +93,6 @@ public class ClaimCenterFNOLNewPassengerDetailsPOM extends BaseTest{
 	@FindBy(id = "FNOLContactPopup:FNOLContactScreen:ContactDV:FNOLContactInputSet:NationalInsurance_itb-inputEl")
 	private WebElement niNumber;
 	
-	@FindBy(id = "FNOLContactPopup:FNOLContactScreen:ContactDV:FNOLContactInputSet:DriverLicense-inputEl")
-	private WebElement licenseNumber;
 	@FindBy(id = "FNOLContactPopup:FNOLContactScreen:ContactDV:FNOLContactInputSet:Notes-inputEl")
 	private WebElement notes;
 	
@@ -111,6 +109,11 @@ public class ClaimCenterFNOLNewPassengerDetailsPOM extends BaseTest{
 	private WebElement injuryDesc;
 	@FindBy(id = "FNOLContactPopup:FNOLContactScreen:ContactDV:InjuryIncidentInputSet:EditableBodyPartDetailsLV_tb:Add")
 	private WebElement addInjuryButton;
+	
+	@FindBy(id = "FNOLContactPopup:FNOLContactScreen:ContactDV:InjuryIncidentInputSet:Severity-inputEl")
+	private WebElement severityDropdown;
+	
+	
 	@FindBy(id = "FNOLContactPopup:FNOLContactScreen:ContactDV:InjuryIncidentInputSet:AmbulanceAttended_itb_true-inputEl")
 	private WebElement ambulanceYesRadio;
 	@FindBy(id = "FNOLContactPopup:FNOLContactScreen:ContactDV:InjuryIncidentInputSet:AmbulanceAttended_itb_false-inputEll")
@@ -278,12 +281,28 @@ public class ClaimCenterFNOLNewPassengerDetailsPOM extends BaseTest{
 		
 	}
 	
-	//TODO - phone etc
-	
+	public void setWorkPhone(String text)
+	{
+		logger.info(format("%s -  going to set workphone:"+text, getName()));
+		GuideWireAccessors.setGWTextBox(driver, text, this.getWorkPhone());
+		
+	}
+	public void setHomePhone(String text)
+	{
+		logger.info(format("%s -  going to set homephone:"+text, getName()));
+		GuideWireAccessors.setGWTextBox(driver, text, this.getHomePhone());
+		
+	}
 	public void setMobile(String text)
 	{
 		logger.info(format("%s -  going to set mobile:"+text, getName()));
 		GuideWireAccessors.setGWTextBox(driver, text, this.getMobile());
+		
+	}
+	public void selectPrimaryPhone(String option)
+	{
+		logger.info(format("%s -  going to select primary phone type:"+option, getName()));
+		GuideWireAccessors.selectOptionFromGWDropDown(driver, option, this.getPrimaryPhoneDropdown(), 1);
 		
 	}
 	public void setEmail(String text)
@@ -291,6 +310,23 @@ public class ClaimCenterFNOLNewPassengerDetailsPOM extends BaseTest{
 		logger.info(format("%s -  going to set email:"+text, getName()));
 		GuideWireAccessors.setGWTextBox(driver, text, this.getMainEmail());
 		
+	}
+	public void setAltEmail(String text)
+	{
+		logger.info(format("%s -  going to set altemail:"+text, getName()));
+		GuideWireAccessors.setGWTextBox(driver, text, this.getAltEmail());
+		
+	}
+	public void setNiNumber(String text)
+	{
+		logger.info(format("%s -  going to set niNumber:"+text, getName()));
+		GuideWireAccessors.setGWTextBox(driver, text, this.getNiNumber());
+	}
+	
+	public void setNotes(String text)
+	{
+		logger.info(format("%s -  going to set notes:"+text, getName()));
+		GuideWireAccessors.setGWTextBox(driver, text, this.getNotes());
 	}
 	
 	
@@ -343,6 +379,12 @@ public class ClaimCenterFNOLNewPassengerDetailsPOM extends BaseTest{
 		String locator = "//*[@id=\"FNOLContactPopup:FNOLContactScreen:ContactDV:InjuryIncidentInputSet:EditableBodyPartDetailsLV-body\"]//table[" + sequence + "]//tr/td[3]/div";
 		WebElement element = driver.findElement(By.xpath(locator));
 		GuideWireAccessors.selectOptionFromGWDropDown(driver, option, element, 1);
+		
+	}
+	public void selectInjurySeverity(String option)
+	{
+		logger.info(format("%s -  going to select injury severity:"+option, getName()));
+		GuideWireAccessors.selectOptionFromGWDropDown(driver, option, this.getSeverityDropdown(), 1);
 		
 	}
 	
@@ -515,9 +557,7 @@ public class ClaimCenterFNOLNewPassengerDetailsPOM extends BaseTest{
 		return niNumber;
 	}
 
-	private WebElement getLicenseNumber() {
-		return licenseNumber;
-	}
+	
 
 	private WebElement getNotes() {
 		return notes;
@@ -598,6 +638,10 @@ public class ClaimCenterFNOLNewPassengerDetailsPOM extends BaseTest{
 
 	private WebElement getHospitalStayNoRadio() {
 		return hospitalStayNoRadio;
+	}
+
+	private WebElement getSeverityDropdown() {
+		return severityDropdown;
 	}
 
 	

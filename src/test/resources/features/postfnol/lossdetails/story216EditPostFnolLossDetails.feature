@@ -9,7 +9,7 @@ Feature: CBPCL-216 As a ClaimCenter user with the role of Adjuster or Manager,
 
 
   Scenario: CBPCL-47 TC11 Police details can be added in Loss Details of post FNOL
-    And I Select an existing Claim
+    And I Select existing Claim "300000143"
     And I select "Loss Details" on the Claim Navigator
     And I will see post FNOL loss details
     When I click edit button on post FNOL loss details

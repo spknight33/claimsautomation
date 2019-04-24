@@ -44,7 +44,7 @@ public class ClaimCenterPOSTFNOLDriverDetailsPOM extends BaseTest {
 	@FindBy(id = "PostFNOLContactPopup:FNOLContactScreen:ContactDV:FNOLContactInputSet:DateOfBirth-inputEl")
 	private WebElement dob;
 
-	// tp only here TODO
+	// tp only here 
 	@FindBy(id = "PostFNOLContactPopup:FNOLContactScreen:ContactDV:FNOLContactInputSet:PedestrianOrDriverOrPassengerDetails:PedestrianOrDriverOrPassengerRoleInputSet:WereTheyWearingASeatBelt_itb_true-inputEl")
 	private WebElement tpWearingSeatbeltYesOption;
 	@FindBy(id = "PostFNOLContactPopup:FNOLContactScreen:ContactDV:FNOLContactInputSet:PedestrianOrDriverOrPassengerDetails:PedestrianOrDriverOrPassengerRoleInputSet:WereTheyWearingASeatBelt_itb_false-boxLabelEl")
@@ -101,11 +101,11 @@ public class ClaimCenterPOSTFNOLDriverDetailsPOM extends BaseTest {
 	// INDEMNITY SECTION
 	// ---------------------------
 	// TODO - the policy retrieved fields
-	@FindBy(id = "PostFNOLContactPopup:FNOLContactScreen:ContactDV:DriverIndemnityQuestionsInputSet:ClaimFullTimeOccupation-inputEl")
+	@FindBy(id = "PostFNOLContactPopup:FNOLContactScreen:ContactDV:DriverIndemnityQuestionsInputSet:ClaimPrimaryOccupation-inputEl")
 	private WebElement indemnityOccupationDropdown;
 	@FindBy(id = "PostFNOLContactPopup:FNOLContactScreen:ContactDV:DriverIndemnityQuestionsInputSet:ClaimLicenceType-inputEl")
 	private WebElement indemnityLicenseTypeDropdown;
-	@FindBy(id = "PostFNOLContactPopup:FNOLContactScreen:ContactDV:FNOLContactInputSet:Notes-inputEl")
+	@FindBy(id = "PostFNOLContactPopup:FNOLContactScreen:ContactDV:DriverIndemnityQuestionsInputSet:ClaimHowLongHasLicence-inputEl")
 	private WebElement indemnityLicenseLengthDropdown;
 	@FindBy(id = "PostFNOLContactPopup:FNOLContactScreen:ContactDV:DriverIndemnityQuestionsInputSet:ClaimMedicalConditions-inputEl")
 	private WebElement indemnityMedicalDropdown;
@@ -116,7 +116,7 @@ public class ClaimCenterPOSTFNOLDriverDetailsPOM extends BaseTest {
 	private WebElement indemnityIncLast5YesOption;
 	@FindBy(id = "PostFNOLContactPopup:FNOLContactScreen:ContactDV:DriverIndemnityQuestionsInputSet:ClaimHasPreviousMotorClaims_false-inputEl")
 	private WebElement indemnityIncLast5NoOption;
-	@FindBy(id = "PostFNOLContactPopup:FNOLContactScreen:ContactDV:DriverIndemnityQuestionsInputSe:ClaimPreviousClaims:PreviousDriverClaimsLV_tb:Add")
+	@FindBy(id = "PostFNOLContactPopup:FNOLContactScreen:ContactDV:DriverIndemnityQuestionsInputSet:ClaimPreviousClaims:PreviousDriverClaimsLV_tb:Add")
 	private WebElement indemnityIncLast5AddButton;
 
 	@FindBy(id = "PostFNOLContactPopup:FNOLContactScreen:ContactDV:DriverIndemnityQuestionsInputSet:ClaimHasMotorConvictions_true-inputEl")
@@ -133,7 +133,7 @@ public class ClaimCenterPOSTFNOLDriverDetailsPOM extends BaseTest {
 	private WebElement indemnityDriverTestedYesOption;
 	@FindBy(id = "PostFNOLContactPopup:FNOLContactScreen:ContactDV:DriverIndemnityQuestionsInputSet:DriverTestedAtSceneInd_false-inputEl")
 	private WebElement indemnityDriverTestedNoOption;
-	@FindBy(id = "FNOLContactPopup:FNOLContactScreen:ContactDV:DriverIndemnityQuestionsInputSet:DriverTestDetails-inputEl")
+	@FindBy(id = "PostFNOLContactPopup:FNOLContactScreen:ContactDV:DriverIndemnityQuestionsInputSet:DriverTestDetails-inputEl")
 	private WebElement indemnityDriverTestedDetails;
 
 	@FindBy(id = "PostFNOLContactPopup:FNOLContactScreen:ContactDV:DriverIndemnityQuestionsInputSet:WearingSeatbeltInd-inputEl")
@@ -239,6 +239,12 @@ public class ClaimCenterPOSTFNOLDriverDetailsPOM extends BaseTest {
 
 	}
 
+	public void selectEdit() {
+		logger.info(format("%s -  going to click edit", getName()));
+		GuideWireAccessors.clickGWButton(driver, this.getEditButton());
+
+	}
+
 	public void selectOKOrUpdate() {
 		logger.info(format("%s -  going to click OK OR UPDATE", getName()));
 		GuideWireAccessors.clickGWButton(driver, this.getOkupdateButton());
@@ -295,6 +301,22 @@ public class ClaimCenterPOSTFNOLDriverDetailsPOM extends BaseTest {
 		sleep(1);
 		GuideWireAccessors.setGWTextBox(driver, text, this.getDob());
 
+	}
+	
+	//TP only question
+	public void selectTPSeatBelt(boolean tpSeatBelt)
+	{
+		logger.info(format("%s -  going to set TP seat belt:"+tpSeatBelt, getName()));
+		
+		if (tpSeatBelt)
+		{
+		GuideWireAccessors.clickGWButton(driver, this.getTpWearingSeatbeltYesOption());
+		}
+		else
+		{
+			GuideWireAccessors.clickGWButton(driver, this.getTpWearingSeatbeltNoOption());
+		}
+		
 	}
 
 	//Driver address section
@@ -559,6 +581,14 @@ public class ClaimCenterPOSTFNOLDriverDetailsPOM extends BaseTest {
 			GuideWireAccessors.selectOptionFromGWDropDown(driver, option, element, 1);
 			
 		}
+	 
+	 public void selectProsecuted(String option)
+		{
+			logger.info(format("%s -  going to select prosecuted:"+option, getName()));
+			GuideWireAccessors.selectOptionFromGWDropDown(driver, option, this.getIndemnityProsecutionDropdown(), 1);
+		}
+	 
+			
 	
 	public void selectTestedAtScene(boolean tested)
 	{
@@ -580,6 +610,12 @@ public class ClaimCenterPOSTFNOLDriverDetailsPOM extends BaseTest {
 		GuideWireAccessors.setGWTextBox(driver, text, this.getIndemnityDriverTestedDetails());
 		
 	}
+	
+	 public void selectIndemnitySeatbelt(String option)
+		{
+			logger.info(format("%s -  going to select indemnity seatbelt:"+option, getName()));
+			GuideWireAccessors.selectOptionFromGWDropDown(driver, option, this.getIndemnitySeatbeltDropdown(), 2);
+		}
 
 	// Injury Section
 	// -------------------------------------

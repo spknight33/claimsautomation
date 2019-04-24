@@ -14,16 +14,9 @@ public class CCPOSTFNOLEditVehicleSteps extends BaseTest {
 		postFnolEditVehiclePOM.isPageTitleDisplayed("Vehicle Details");
 	}
 	
-	@Given("^I click cancel button on edit vehicle screen on post FNOL edit$")
-	public void cancel() {
-		
-		postFnolEditVehiclePOM.cancel();
-	}
+
 	
-	//TODO
-	// check if fire section is visible
-	// check if theft section is visible
-	// 
+
 	@Given("^I select \"([^\"]*)\" from \"([^\"]*)\" on edit vehicle screen on post FNOL$")
 	public void i_select_from_field_on_vehicle_screen(String fieldValue, String fieldName) throws Throwable {
 		switch (fieldName) {
@@ -35,6 +28,12 @@ public class CCPOSTFNOLEditVehicleSteps extends BaseTest {
 			break;
 		case "Style":
 			postFnolEditVehiclePOM.selectStyle(fieldValue);
+			break;
+		case "Foreign":
+			if (fieldValue.equalsIgnoreCase("Yes"))
+				postFnolEditVehiclePOM.selectForeignVehicle(true);
+			else
+				postFnolEditVehiclePOM.selectForeignVehicle(false);
 			break;
 		case "Usual Location":
 			postFnolEditVehiclePOM.selectUsualLocation(fieldValue);
@@ -48,15 +47,69 @@ public class CCPOSTFNOLEditVehicleSteps extends BaseTest {
 		case "Airbags Deployed":
 			postFnolEditVehiclePOM.selectAirbagsDeployed(fieldValue);;
 			break;
-			// theft only
-		case "Keys Purchased":
+		case "Credit Hire":
+			if (fieldValue.equalsIgnoreCase("Yes"))
+				postFnolEditVehiclePOM.selectCreditHire(true);
+			else
+				postFnolEditVehiclePOM.selectCreditHire(false);
+			break;
+		case "Protocol Hire":
+			if (fieldValue.equalsIgnoreCase("Yes"))
+				postFnolEditVehiclePOM.selectProtocolHire(true);
+			else
+				postFnolEditVehiclePOM.selectProtocolHire(false);
+			break;
+			
+		case "Occupants Known":
+			if (fieldValue.equalsIgnoreCase("Yes"))
+				postFnolEditVehiclePOM.selectOccupantsKnown(true);
+			else
+				postFnolEditVehiclePOM.selectOccupantsKnown(false);
+			break;
+			
+		// fire only ph
+		case "Fire Visited Garage":
+			if (fieldValue.equalsIgnoreCase("Yes"))
+				postFnolEditVehiclePOM.selectFireVisitedGarage(true);
+			else
+				postFnolEditVehiclePOM.selectFireVisitedGarage(false);
+			break;
+		
+		case "Fire Other Vehicles":
+			if (fieldValue.equalsIgnoreCase("Yes"))
+				postFnolEditVehiclePOM.selectFireOtherVehicles(true);
+			else
+				postFnolEditVehiclePOM.selectFireOtherVehicles(false);
+		
+			break;
+		// theft only
+		case "Theft Windows Locked":
+			if (fieldValue.equalsIgnoreCase("Yes"))
+				postFnolEditVehiclePOM.selectTheftWindowsLocked(true);
+			else
+				postFnolEditVehiclePOM.selectTheftWindowsLocked(false);
+		
+			break;
+		case "Theft Security Devices":
+			if (fieldValue.equalsIgnoreCase("Yes"))
+				postFnolEditVehiclePOM.selectTheftSecurityFitted(true);
+			else
+				postFnolEditVehiclePOM.selectTheftSecurityFitted(false);
+		
+			break;
+		case "Theft Keys Purchased":
 			postFnolEditVehiclePOM.selectKeysPurchased(fieldValue);
 			break;
-		case "Keys Possessed":
+		case "Theft Keys Possessed":
 			postFnolEditVehiclePOM.selectKeysPossessed(fieldValue);
 			break;
 		
-		
+		case "TP Insurer Details Available":
+			if (fieldValue.equalsIgnoreCase("Yes"))
+				postFnolEditVehiclePOM.selectTPInsurerAvailable(true);
+			else
+				postFnolEditVehiclePOM.selectTPInsurerAvailable(false);
+			break;
 
 		default:
 			Assert.fail("unknown input field :" + fieldValue + " - check cucumber script!");
@@ -93,6 +146,17 @@ public class CCPOSTFNOLEditVehicleSteps extends BaseTest {
 		case "Pre-existing Damage":
 			postFnolEditVehiclePOM.setPreExistDamage(fieldValue);
 			break;
+		case "Occupants Number":
+			postFnolEditVehiclePOM.setOccupantsNumber(fieldValue);
+			break;
+		// fire only
+		case "Fire Visited Garage Details":
+			postFnolEditVehiclePOM.setFireGarageDetails(fieldValue);
+			break;
+		// theft only
+		case "Theft Security Devices Details":
+			postFnolEditVehiclePOM.setTheftSecurityDetails(fieldValue);
+			break;
 		default:
 			Assert.fail("unknown input field :" + fieldName + " - check cucumber script!");
 		}
@@ -120,6 +184,9 @@ public class CCPOSTFNOLEditVehicleSteps extends BaseTest {
 			break;
 		case "Calculate Total Loss":
 			postFnolEditVehiclePOM.clickCalculateTotalLoss();
+			break;
+		case "Search Insurance Company":
+			postFnolEditVehiclePOM.selectTPInsurerSearch();
 			break;
 
 		default:

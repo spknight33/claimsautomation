@@ -195,6 +195,14 @@ public class CCNavigatorSteps extends BaseTest {
 			Assert.fail("unknown field :" + link + " - check cucumber script!");
 		}
 	}
+	
+	
+	@When("^I select the Actions Popup Menu Hierarchy \"([^\"]*)\" for parent \"([^\"]*)\"$")
+	public void i_select_the_Actiuons_Popup_Menu_Hierarchy(String menulist,String parentMenu) throws Throwable {
+		String[] items = menulist.split(",");
+		List<String> list = Arrays.asList(items);
+		navigatorBarPOM.selectActionsSubMenuHierarchyForParent(parentMenu,list);
+	}
 
 	@When("^I select the Actions Popup Menu Hierarchy \"([^\"]*)\"$")
 	public void i_select_the_Actiuons_Popup_Menu_Hierarchy(String menulist) throws Throwable {
