@@ -42,12 +42,16 @@ public class ClaimCenterPolicySubmissionPaymentPOM extends BaseTest {
 
     @FindBy(xpath = "//div[@id = 'SubmissionWizard:SubmissionWizard_PaymentScreen:BankPaymentDetailsDV:ContactEFTLV-body']//td[3]")
     private WebElement bankPaymentDetailsTableAccountType;
-    @FindBy(xpath = "//div[@id = 'SubmissionWizard:SubmissionWizard_PaymentScreen:BankPaymentDetailsDV:ContactEFTLV-body']//td[4]")
-    private WebElement bankPaymentDetailsTableAccountNumber;
-    @FindBy(xpath = "//div[@id = 'SubmissionWizard:SubmissionWizard_PaymentScreen:BankPaymentDetailsDV:ContactEFTLV-body']//td[5]")
-    private WebElement bankPaymentDetailsTableAccountSortCode;
+
+    String bankPaymentDetailsTableAccountNumber = "//div[@id = 'SubmissionWizard:SubmissionWizard_PaymentScreen:BankPaymentDetailsDV:ContactEFTLV-body']//td[4]";
+    String bankPaymentDetailsTableAccountNumberInputBox = "//input[@name = 'BankAccountNumber']";
+
+    String bankPaymentDetailsTableAccountSortCode = "//div[@id = 'SubmissionWizard:SubmissionWizard_PaymentScreen:BankPaymentDetailsDV:ContactEFTLV-body']//td[5]";
+    String bankPaymentDetailsTableAccountSortCodeInputBox = "//input[@name = 'BankSortCode']";
+
     @FindBy(xpath = "//div[@id = 'SubmissionWizard:SubmissionWizard_PaymentScreen:BankPaymentDetailsDV:ContactEFTLV-body']//td[6]//label[text() = 'Yes']")
     private WebElement bankPaymentDetailsTableAccountAuthorisedYes;
+
     @FindBy(xpath = "//div[@id = 'SubmissionWizard:SubmissionWizard_PaymentScreen:BankPaymentDetailsDV:ContactEFTLV-body']//td[6]//label[text() = 'No']")
     private WebElement bankPaymentDetailsTableAccountAuthorisedNo;
 
@@ -102,12 +106,12 @@ public class ClaimCenterPolicySubmissionPaymentPOM extends BaseTest {
     }
 
     public void setAccountNumber(String number){
-        GuideWireAccessors.setGWTextBox(driver,number,getBankPaymentDetailsTableAccountNumber());
+        GuideWireAccessors.setGWTextBoxInTable(driver,number,getBankPaymentDetailsTableAccountNumber(),getBankPaymentDetailsTableAccountNumberInputBox());
         logger.info("Attempting to set account number to " + number);
     }
 
     public void setSortCode(String sortCode){
-        GuideWireAccessors.setGWTextBox(driver,sortCode,getBankPaymentDetailsTableAccountSortCode());
+        GuideWireAccessors.setGWTextBoxInTable(driver,sortCode,getBankPaymentDetailsTableAccountSortCode(),getBankPaymentDetailsTableAccountSortCodeInputBox());
         logger.info("Attempting to set sort code to " + sortCode);
     }
 
@@ -164,12 +168,20 @@ public class ClaimCenterPolicySubmissionPaymentPOM extends BaseTest {
         return bankPaymentDetailsTableAccountType;
     }
 
-    public WebElement getBankPaymentDetailsTableAccountNumber() {
+    public String getBankPaymentDetailsTableAccountNumber() {
         return bankPaymentDetailsTableAccountNumber;
     }
 
-    public WebElement getBankPaymentDetailsTableAccountSortCode() {
+    public String getBankPaymentDetailsTableAccountSortCode() {
         return bankPaymentDetailsTableAccountSortCode;
+    }
+
+    public String getBankPaymentDetailsTableAccountNumberInputBox() {
+        return bankPaymentDetailsTableAccountNumberInputBox;
+    }
+
+    public String getBankPaymentDetailsTableAccountSortCodeInputBox() {
+        return bankPaymentDetailsTableAccountSortCodeInputBox;
     }
 
     public WebElement getBankPaymentDetailsTableAccountAuthorisedYes() {
