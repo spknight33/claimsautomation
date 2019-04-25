@@ -1,7 +1,6 @@
 @Ignore @createclaimsitb
 Feature: Regression test for create claim FNOL path - ITB claims
 
-
   Scenario: FNOL Regression - Create new claim - FIRE claim
     Given I use test data set "regress_fnol_fire" for brand "ITB"
     And As a "ADClaimsHandlerTm1" I am at step5 for FNOL
@@ -57,9 +56,20 @@ Feature: Regression test for create claim FNOL path - ITB claims
     Given I use test data set "regress_fnol_motorbike" for brand "ITB"
     And As a "ADClaimsHandlerTm1" I am at step5 for FNOL
     When I create a claim as part of a regression test
+    
+  
+     Scenario: FNOL Regression - Create new claim - PEDESTRIAN only
+    Given I use test data set "regress_fnol_accident_pedest" for brand "ITB"
+    And As a "ADClaimsHandlerTm1" I am at step5 for FNOL
+    When I create a claim as part of a regression test
 
   Scenario: FNOL Regression - Create new claim - PH COURTESY CAR only
     Given I use test data set "regress_fnol_courtesycar" for brand "ITB"
+    And As a "ADClaimsHandlerTm1" I am at step5 for FNOL
+    When I create a claim as part of a regression test
+    
+     Scenario: FNOL Regression - Create new claim - ACCIDENT (PH ONLY	)
+    Given I use test data set "regress_fnol_accident_phonly" for brand "ITB"
     And As a "ADClaimsHandlerTm1" I am at step5 for FNOL
     When I create a claim as part of a regression test
 
