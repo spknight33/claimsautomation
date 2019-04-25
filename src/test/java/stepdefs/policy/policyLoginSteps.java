@@ -10,7 +10,6 @@ import cucumber.api.java.en.Given;
 public class policyLoginSteps extends BaseTest {
 
 	
-
 	@Given("^I access PolicyCenter login page$")
 	public void i_access_policycenter_login_page() throws Throwable {
 
