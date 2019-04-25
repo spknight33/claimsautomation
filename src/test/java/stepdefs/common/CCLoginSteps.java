@@ -28,9 +28,13 @@ public class CCLoginSteps extends BaseTest {
 			{
 				url="http://claimcenterdev.cloud.aioinissaydowa.eu/cc/";
 			}
-			else
+			else if (env.equalsIgnoreCase("TEST"))
 			{
 				url="http://claimcentertest.cloud.aioinissaydowa.eu/cc/";
+			}
+			else if (env.equalsIgnoreCase("NONPROD"))
+			{
+				url="https://cbp-nonprod-qa.cloud.aioinissaydowa.eu/cc/";
 			}
 		}
 		else {

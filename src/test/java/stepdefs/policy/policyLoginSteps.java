@@ -23,9 +23,13 @@ public class policyLoginSteps extends BaseTest {
 			{
 				url="http://policycenterdev.cloud.aioinissaydowa.eu/pc/";
 			}
-			else
+			else if (env.equalsIgnoreCase("TEST"))
 			{
 				url="http://policycentertest.cloud.aioinissaydowa.eu/pc/";
+			}
+			else if (env.equalsIgnoreCase("NONPROD"))
+			{
+				url="https://cbp-nonprod-qa.cloud.aioinissaydowa.eu/pc/";
 			}
 		}
 		else {
