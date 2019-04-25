@@ -41,7 +41,7 @@ public class createSubmissionSteps extends BaseTest {
 	public void i_Click_nextstep2() throws Throwable {
 		policyCreateStep2PolicyInfoPOM.clickNext();
 		}
-	
+
 	@When("^I Click AddDriver at submission step3$")
 	public void i_Click_adddriverstep3() throws Throwable {
 		policyCreateStep3DriversPOM.selectNamedDriver();
@@ -336,6 +336,11 @@ public class createSubmissionSteps extends BaseTest {
 			policyCreateStep3DriversPOM.selectConvict5Code(list.get(i).get(2),i);
 			policyCreateStep3DriversPOM.setConvict5Date(list.get(i).get(3), i);
 		}
+	}
+
+	@When("^I Click Next at submission quote step")
+	public void I_CLICK_NEXT_QUOTE_STEP() throws Throwable {
+		policyCreateStep5QuotePOM.clickNext();
 	}
 
 }
