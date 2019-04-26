@@ -13,7 +13,7 @@ Feature: Regression test for errors for step3 New TP Driver
     And I click ok button on driver screen
     Then Mandatory field error messages will be shown for New Driver screen in FNOL
         | Last name : Missing required field "Last name"                       |
-    And I select "true" from "Injured" on driver screen
+    And I select "Yes" from "Injured" on driver screen
     And I click addinjury button on driver screen
     And I click ok button on driver screen
     Then Mandatory field error messages will be shown for New Driver screen in FNOL

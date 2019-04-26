@@ -89,7 +89,7 @@ public class ClaimCenterPOSTFNOLEditPropertyPOM extends BaseTest{
 	public boolean isPageTitleDisplayed(String expected)
 	{
 		sleep(2);
-		logger.info(format("%s -found page title for Add Property page :"+this.getPageTitle().getText(), getName()));
+		logger.info(format("%s -found page title for Edit Property page :"+this.getPageTitle().getText(), getName()));
 		return this.getPageTitle().getText().equalsIgnoreCase(expected);
 	}
 	
@@ -118,54 +118,54 @@ public class ClaimCenterPOSTFNOLEditPropertyPOM extends BaseTest{
 	
 	public void setPropertyDesc(String text)
 	{
-		logger.info(format("%s -  going to set property desc", getName()));
+		logger.info(format("%s -  going to set property desc:"+text, getName()));
 		GuideWireAccessors.setGWTextBox(driver, text, this.getPropertyDesc());
 		
 	}
 	public void setDamageDesc(String text)
 	{
-		logger.info(format("%s -  going to set damage desc", getName()));
+		logger.info(format("%s -  going to set damage desc:"+text, getName()));
 		GuideWireAccessors.setGWTextBox(driver, text, this.getDamageDesc());
 		
 	}
 	public void setLossEstimate(String text)
 	{
-		logger.info(format("%s -  going to set loss estimate", getName()));
+		logger.info(format("%s -  going to set loss estimate:"+text, getName()));
 		GuideWireAccessors.setGWTextBox(driver, text, this.getLossEstimate());
 		
 	}
 	public void setExtentDamage(String text)
 	{
-		logger.info(format("%s -  going to set extent damage desc", getName()));
+		logger.info(format("%s -  going to set extent damage desc:"+text, getName()));
 		GuideWireAccessors.setGWTextBox(driver, text, this.getExtentDamage());
 		
 	}
 	public void setAddressLine1(String text)
 	{
-		logger.info(format("%s -  going to set address line1", getName()));
+		logger.info(format("%s -  going to set address line1:"+text, getName()));
 		GuideWireAccessors.setGWTextBox(driver, text, this.getAddressLine1());
 		
 	}
 	public void setAddressLine2(String text)
 	{
-		logger.info(format("%s -  going to set address line2", getName()));
+		logger.info(format("%s -  going to set address line2:"+text, getName()));
 		GuideWireAccessors.setGWTextBox(driver, text, this.getAddressLine2());
 		
 	}
 	public void setAddressLine3(String text)
 	{
-		logger.info(format("%s -  going to set address line3", getName()));
+		logger.info(format("%s -  going to set address line3:"+text, getName()));
 		GuideWireAccessors.setGWTextBox(driver, text, this.getAddressLine3());
 		
 	}
 	public void setCity(String text)
 	{
-		logger.info(format("%s -  going to set city", getName()));
+		logger.info(format("%s -  going to set city:"+text, getName()));
 		GuideWireAccessors.setGWTextBox(driver, text, this.getCity());
 	}	
 	public void setPostcode(String text)
 	{
-		logger.info(format("%s -  going to set postcode", getName()));
+		logger.info(format("%s -  going to set postcode:"+text, getName()));
 		GuideWireAccessors.setGWTextBox(driver, text, this.getPostCode());
 		// as postcode causes display off other address fields, but this can take a couple of seconds - the next method should wait until available but add a slug anyway
 				Actions actions = new Actions(driver);
@@ -182,7 +182,7 @@ public class ClaimCenterPOSTFNOLEditPropertyPOM extends BaseTest{
 	
 	public void setLocationDescription(String text)
 	{
-		logger.info(format("%s -  going to set location description", getName()));
+		logger.info(format("%s -  going to set location description:"+text, getName()));
 		GuideWireAccessors.setGWTextBox(driver, text, this.getLocationDesc());
 	}	
 	
@@ -212,12 +212,12 @@ public class ClaimCenterPOSTFNOLEditPropertyPOM extends BaseTest{
 	
 	public void setEstimatedRepairCost(String text)
 	{
-		logger.info(format("%s -  going to set estimated repair cost", getName()));
+		logger.info(format("%s -  going to set estimated repair cost:"+text, getName()));
 		GuideWireAccessors.setGWTextBox(driver, text, this.getEstimatedRepairCost());
 	}	
 	public void setEstimatedRepairTime(String text)
 	{
-		logger.info(format("%s -  going to set estimated repair time", getName()));
+		logger.info(format("%s -  going to set estimated repair time:"+text, getName()));
 		GuideWireAccessors.setGWTextBox(driver, text, this.getEstimatedRepairTime());
 	}
 	public void selectAlreadyRepaired(boolean repaired)

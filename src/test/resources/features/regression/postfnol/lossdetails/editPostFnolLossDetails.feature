@@ -1,11 +1,11 @@
 @Ignore @regressionlossdetails
-Feature: POST FNOL REGRESSION - various test of the Loss Details pages
+Feature: POST FNOL REGRESSION - various test of the Loss Details pages, some tests requires a claim with tp vehicle and driver
 
   Background: 
     Given I use test data set "postfnol_set1"
     And I access ClaimCenter login page
     And I login to ClaimCenter as role "ADClaimsHandlerTm1"
-    And I Select existing Claim "300000002"
+    And I Select existing Claim "300000017"
     And I select "Loss Details" on the Claim Navigator
     And I will see post FNOL loss details
 
@@ -15,8 +15,7 @@ Feature: POST FNOL REGRESSION - various test of the Loss Details pages
     When I input "Purpose changed by regression script test" into the "Journey Purpose" field on Loss Details post FNOL
     And I click update button on post FNOL loss details
  
- 
-  Scenario: LOSS DETAILS POST FNOL Regression TC2  - ClaimsHandler can add and re-edit TP VEHICLE from Loss Details post FNOL and VRN lookup works
+ Scenario: LOSS DETAILS POST FNOL Regression TC2_1  - ClaimsHandler can add and TP VEHICLE from Loss Details post FNOL and VRN lookup works
     And I click edit button on post FNOL loss details
     And I click add Vehicle on post FNOL loss details
     And I will be on new vehicle screen on post FNOL
@@ -24,6 +23,16 @@ Feature: POST FNOL REGRESSION - various test of the Loss Details pages
     And I select "Owned" from "Vehicle Type" on new vehicle screen on post FNOL
     And I input "CY17NBX" into the "VRN" box on new vehicle screen on post FNOL
     And The value is "TRANSPORTER" for field "Model" on new vehicle screen on post FNOL
+   
+ 
+ 
+  Scenario: LOSS DETAILS POST FNOL Regression TC2_2  - ClaimsHandler can add and re-edit TP VEHICLE from Loss Details post FNOL and VRN lookup works
+    And I click edit button on post FNOL loss details
+    And I click add Vehicle on post FNOL loss details
+    And I will be on new vehicle screen on post FNOL
+    And I select "Motor Car" from "Style" on new vehicle screen on post FNOL
+    And I select "Owned" from "Vehicle Type" on new vehicle screen on post FNOL
+    And I input "CY17NBX" into the "VRN" box on new vehicle screen on post FNOL
     And I select "Yes" from "Foreign" on new vehicle screen on post FNOL
     And I input "16000" into the "Mileage" box on new vehicle screen on post FNOL
     And I input "DAMAGE DESC ADDED BY REGRESSION SCRIPT" into the "Damage Description" box on new vehicle screen on post FNOL
@@ -103,7 +112,7 @@ Feature: POST FNOL REGRESSION - various test of the Loss Details pages
     And I input "Loads of damage" into the "Damage Description" box on new property screen on post FNOL
     And I input "5000" into the "Loss Estimate" box on new property screen on post FNOL
     And I input "NE31PX" into the "Postcode" box on new property screen on post FNOL
-    And I select "12 Dene Grove, Newcastle upon Tyne, Tyne and Wear, NE3 1PX" from "Postcode Address" on new property screen on post FNOL
+    And I select "6 Dene Grove, Newcastle upon Tyne, Tyne and Wear, NE3 1PX" from "Postcode Address" on new property screen on post FNOL
     And I select "Yes" from "Estimate Received" on new property screen on post FNOL
     And I input "4399" into the "Estimated Repair Cost" box on new property screen on post FNOL
     And I select "Yes" from "Already Repaired" on new property screen on post FNOL
@@ -113,14 +122,12 @@ Feature: POST FNOL REGRESSION - various test of the Loss Details pages
     And I input "Leblanc" into the "Last Name" box on person details screen for Post FNOL
     And I input "Lives in the property" into the "Location Description" box on person details screen for Post FNOL
     And I select "Update" on person details screen for Post FNOL
+    Then I will be on new property screen on post FNOL
     And I click "Ok" on new property screen on post FNOL
     And I click edit Property on post FNOL loss details
     Then I will be on edit property screen on post FNOL
-    And I select "Yes" from "Estimate Received" on edit property screen on post FNOL
     And I input "5300" into the "Estimated Repair Cost" box on edit property screen on post FNOL
     And I input "This is my new house" into the "Property Description" box on edit property screen on post FNOL
-    And I input "NE31PX" into the "Postcode" box on edit property screen on post FNOL
-    And I select "14 Dene Grove, Newcastle upon Tyne, Tyne and Wear, NE3 1PX" from "Postcode Address" on edit property screen on post FNOL
     And I click "Update" on edit property screen on post FNOL
     #And I click update button on post FNOL loss details
 

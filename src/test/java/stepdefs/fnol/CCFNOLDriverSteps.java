@@ -487,7 +487,7 @@ public class CCFNOLDriverSteps extends BaseTest {
 					"Error Message Check: " + list.get(i));
 
 		}
-	
+	    softAssert.assertAll();
 	
 }
 }

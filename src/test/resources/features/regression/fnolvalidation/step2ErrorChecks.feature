@@ -5,7 +5,7 @@ Feature: Regression test for errors for step2
     Given I use test data set "regress_fnol_accident_fault"
     And As a "ADClaimsHandlerTm1" I am at step2 for FNOL
 
-  Scenario: FNOL Regression - check error messages
+  Scenario: FNOL Regression - check error messages for step2
     And I will be on step2 for FNOL
     And I click next button on step2 FNOL
     Then Mandatory field error messages will be shown for step2 FNOL

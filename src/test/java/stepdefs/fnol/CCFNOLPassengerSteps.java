@@ -340,6 +340,6 @@ public class CCFNOLPassengerSteps extends BaseTest {
 
 		}
 	
-	
+		softAssert.assertAll();
 }
 }
