@@ -121,6 +121,7 @@ public class GuideWireAccessors {
 	{
 		int findAttempts = 0;
 		boolean found=false;
+		sleep(1);
 	
 		while (findAttempts < MAX_RETRY_ON_GETTEXT) {
 			try {
