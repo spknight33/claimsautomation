@@ -126,6 +126,21 @@ public static UserConfig getUserConfig(String role) {
 			
 ```
 
+##Main Structure (TestNG/CucumberRunner/BaseTest):
+
+As this framework was based on the original ITB automation framework, it has retained the use of TestNG.
+
+1) The Maven pom.xml defines the location of the TestNG suite xml e.g. **Testsuite.xml/test/ClaimsCenterRegressionTests.xml**
+
+2) The test suite xml defines the **CucumberRunner** as the test class to run
+
+3) CucumberRunner is used to run the cucumber tests, and itself extends **BaseTest**
+
+4) BaseTest has methods to setup the extent reports, initialise Selemenium Webdriver, and also initialise all the POMs used in the tests.
+
+5) Java class **Hooks** holds methods to tidy up some Guidewire alert dialogues at the start/end of tests by utilising the **cucumber.api.java.Before** and **cucumber.api.java.After** cucumber tags.
+
+
 # Running Tests in Eclipse:
 
 ## Use of Cucumber tags to run specific tests:
