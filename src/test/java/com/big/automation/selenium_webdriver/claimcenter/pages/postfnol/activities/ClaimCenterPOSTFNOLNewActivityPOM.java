@@ -135,6 +135,20 @@ public class ClaimCenterPOSTFNOLNewActivityPOM extends BaseTest{
 		logger.info(format("%s - going to select priority to: "+option, getName()));
 		GuideWireAccessors.selectOptionFromGWDropDown(driver, option, this.getPriorityDropdown(), 1);
 	}
+	
+	public boolean priorityIsSetTo(String option)
+	{
+		boolean found=false;
+		logger.info(format("%s - going to check if priority is set to :"+option, getName()));
+		int initialWait=1;
+		String selectedOption = GuideWireAccessors.getSelectedValueFromGWDropdown(driver, this.getPriorityDropdown(),initialWait);
+		logger.info(format("%s - selected option in priority:"+selectedOption, getName()));
+		if (option.equalsIgnoreCase(selectedOption))
+		{
+			found = true;
+		}
+		return found;
+	}
 	public void selectCalendarImportance(String option)
 	{
 		logger.info(format("%s - going to select calendar importance to: "+option, getName()));

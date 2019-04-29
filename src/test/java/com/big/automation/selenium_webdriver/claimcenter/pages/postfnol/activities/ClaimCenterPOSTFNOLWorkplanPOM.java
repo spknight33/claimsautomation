@@ -166,6 +166,50 @@ public class ClaimCenterPOSTFNOLWorkplanPOM extends BaseTest{
 	
 		
 	}
+	
+	public boolean activityPresent(String subject,String assignedTo,String relatedExposure)
+	{
+		logger.info(format("%s - activityPresent check for subjecy,assignedto and relatedexposure|"+subject+"|"+assignedTo+"|"+relatedExposure+"|", getName()));
+	
+		String locator = "//*[@id=\"ClaimWorkplan:ClaimWorkplanScreen:WorkplanLV-body\"]//table";
+		List <WebElement> rows = driver.findElements(By.xpath(locator));
+		
+		WebElement actSubject;
+		WebElement actAssignedTo;
+		WebElement actExposure;
+		
+		
+		// loop till find first with matching type
+		int rowTotal = rows.size();
+		String rowLocator = null;
+		for(int i=1; i<=rowTotal; i++)
+		{
+			
+			rowLocator = locator + "[" + i + "]";
+			//find the subject
+			actSubject = driver.findElement(By.xpath(rowLocator+"//tr//td[8]"));
+			actAssignedTo = driver.findElement(By.xpath(rowLocator+"//tr//td[13]"));
+			actExposure = driver.findElement(By.xpath(rowLocator+"//tr//td[9]"));
+			
+		
+			if (actSubject.getText().equalsIgnoreCase(subject)  && actAssignedTo.getText().equalsIgnoreCase(assignedTo)&& actExposure.getText().equalsIgnoreCase(relatedExposure))
+			{
+				logger.info(format("%s - Found match in activity workplan table ", getName()));
+				return true;
+				
+			}
+			else
+			{
+				//temp
+				//System.out.println(actSubject.getText()+"|"+actAssignedTo.getText()+"|"+actExposure.getText()+"|");
+			}
+		}
+		
+		logger.info(format("%s - NO match in activity table: |"+subject+"|"+assignedTo+"|"+relatedExposure+"|", getName()));
+		return false;
+	
+		
+	}
 
 
 	private WebElement getPageTitle() {

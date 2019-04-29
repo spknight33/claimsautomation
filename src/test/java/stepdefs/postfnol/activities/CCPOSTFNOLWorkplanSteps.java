@@ -45,6 +45,12 @@ public class CCPOSTFNOLWorkplanSteps extends BaseTest {
 		Assert.assertTrue(postFnolWorkplanPOM.activityPresent(subject, overdueTime), "expected activity to be present");
 	}
 	
+	@Given("^I will see the activity for \"([^\"]*)\" is assigned to \"([^\"]*)\" with no related exposure set$")
+	public void i_will_see_the_activity_for_is_assigned_to_with_no_related_exposure_set(String subject, String assignedTo) throws Throwable {
+	    
+		Assert.assertTrue(postFnolWorkplanPOM.activityPresent(subject, assignedTo," "), "expected activity to be present");
+		
+	}
 	
 	
 	

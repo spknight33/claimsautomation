@@ -26,6 +26,11 @@ public class CCPOSTFNOLNewActivitySteps extends BaseTest {
 		
 		postFnolNewActivityPOM.update();
 	}
+	@Given("^I click cancel button on New Activity screen for post FNOL$")
+	public void cancel() {
+		
+		postFnolNewActivityPOM.cancel();
+	}
 	
 	@Given("^I click find External Owner icon on New Activity screen for post FNOL$")
 	public void findExternalOwner() {
@@ -47,6 +52,21 @@ public class CCPOSTFNOLNewActivitySteps extends BaseTest {
 	public void findEmail() {
 		
 		postFnolNewActivityPOM.clickFindEmailTemplate();
+	}
+	
+	
+	@Given("^Field \"([^\"]*)\" is set to \"([^\"]*)\" on New Activity screen for post FNOL$")
+	public void fieldissetto_on_activity_screen(String fieldName, String fieldValue) throws Throwable {
+		switch(fieldName)
+		    {
+		case "Priority":
+			Assert.assertTrue(postFnolNewActivityPOM.priorityIsSetTo(fieldValue));
+		    	break;
+		
+	
+	    default:
+	    Assert.fail("unknown input field :"+ fieldValue+" - check cucumber script!");
+	    }
 	}
 	
 	@Given("^I select \"([^\"]*)\" from \"([^\"]*)\" on New Activity screen for post FNOL$")
@@ -119,4 +139,5 @@ public class CCPOSTFNOLNewActivitySteps extends BaseTest {
 			}
 			softAssert.assertAll();
 		}
+	
 }
