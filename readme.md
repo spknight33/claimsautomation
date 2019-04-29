@@ -109,7 +109,22 @@ public void selectBonusStatus(String option) {
 	}
 ```
 
+##Main Structure (Utilities/helpers):
 
+Access to guidwire screen objects from POMs has been centralised in Java class **GuideWireAccessors**
+
+Access to load data from Excel spreadsheet at the start of a test is located in java class **ExcelUtils**
+
+Getting the correct user for login is currently coded in Java class **UserFactory** - partial method extract is:
+```
+public static final String ADHANDLERTM1 = "ADClaimsHandlerTm1";
+public static UserConfig getUserConfig(String role) {
+		switch (role) {
+		case (ADHANDLERTM1):
+			return new UserConfig("had1", "gw","unknown");
+			
+			
+```
 
 # Running Tests in Eclipse:
 
