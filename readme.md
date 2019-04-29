@@ -28,7 +28,18 @@ Within Step definition java classes, there are two types of method present.
 
 1) Typical regex mapped methods used by gherkin scripts, following the given, when,then syntax. These are used for most adhoc automation tests and regression tests.
 
-2) Data driven methods used to construct a user journery through the FNOL process as part of claim creation. These are used mainly to build claims of various types and incidents. They are Excel Spreadsheet driven - data is preloaded from the sp
+Example:
+```
+@Then("^I will be on step4 for FNOL$")
+	public void i_will_be_on_step4_for_FNOL() throws Throwable {
+		fnolStep4POM.isPageTitleDisplayed("Step 4 of 5: Services");
+	}
+```
+
+2) Data driven methods used to construct a user journery through the FNOL process as part of claim creation. These are used mainly to build claims of various types and incidents. 
+They are Excel Spreadsheet driven - data is preloaded from the
+
+
 
 ##Main Structure (Page Objects):
 
