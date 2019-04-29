@@ -16,6 +16,23 @@ Cucumber feature files are located at src/test/resources/features in which subfo
 
 In addition a folder for specific regression tests is used.
 
+Example feature file:
+
+```
+@Ignore @regressionmandatoryfields 
+Feature: Regression test for errors for step1
+
+  Background: 
+    Given I use test data set "regress_fnol_accident_fault"
+    And As a "ADClaimsHandlerTm1" I am at step1 for FNOL
+
+  Scenario: FNOL Regression - check error messages for Step1 of FNOL
+    And I will be on step1 for FNOL
+    When I Click Search at step1 FNOL
+    Then Mandatory field error messages will be shown at step1 FNOL
+           | Error: You must enter some criteria    |
+```
+
 ##Main Structure (Steps):
 
 As per the norm, statements in the feature files map on to step definition java classes.
@@ -36,14 +53,62 @@ Example:
 	}
 ```
 
-2) Data driven methods used to construct a user journery through the FNOL process as part of claim creation. These are used mainly to build claims of various types and incidents. 
-They are Excel Spreadsheet driven - data is preloaded from the
+2) Data driven methods used to construct a user journery through the FNOL process as part of claim creation. These are used mainly to build claims of various types and incidents.They are Excel Spreadsheet driven - data is preloaded from the spreadsheet into a java map at the start of the test.
 
+Example:
+```
+public void completeFNOLStep4ForTestScenario()  throws Throwable
+	{
+		String fieldValue=null;
+		
+		fieldValue = ExcelUtil.getTestDataValue("Fnol_Step4_PhClaiming");
+		if (fieldValue !=null && fieldValue.equalsIgnoreCase("TRUE"))
+		{
+			fnolStep4POM.selectPhClaiming(true);
+		}
+		else
+		{
+			fnolStep4POM.selectPhClaiming(false);
+		}
+	
+		completeFNOLStep4Services();
+
+		completeFNOLStep4TPCapture();
+		
+		fieldValue = ExcelUtil.getTestDataValue("Fnol_Step4_WaiveExcess");
+		if (fieldValue !=null && fieldValue.equalsIgnoreCase("TRUE"))
+		{
+			fnolStep4POM.selectWaiveExcess(true);
+		}
+		else
+		{
+			fnolStep4POM.selectWaiveExcess(false);
+		}
+		
+		fieldValue = ExcelUtil.getTestDataValue("Fnol_Step4_BonusStatus");
+		if (fieldValue !=null)
+		{
+			fnolStep4POM.selectBonusStatus(fieldValue);
+		}
+			
+		fnolStep4POM.next();
+	}
+```
 
 
 ##Main Structure (Page Objects):
 
 Page object java classes are used to represent the screens. As per the norm, they have no test specific functionality other than to set fields, return data from fields, or check for the presence of data on fields.
+
+
+Example POM method:
+```
+public void selectBonusStatus(String option) {
+		logger.info(format("%s -  going to set bonus status to:" + option, getName()));
+		GuideWireAccessors.selectOptionFromGWDropDown(driver, option, this.getBonusStatusDropdown(), 1);
+	}
+```
+
 
 
 # Running Tests in Eclipse:
