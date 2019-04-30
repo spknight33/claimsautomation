@@ -1,4 +1,4 @@
-@Ignore @createpolicy 
+@Ignore @createpolicy @inprogress
 Feature: Create DGT Policy with two drivers
 
   Scenario: test policy with two TBB drivers create
@@ -65,8 +65,7 @@ Feature: Create DGT Policy with two drivers
     And I set the Driver Primary Email field to "nameddriver1@gmail.com" at new driver creation
     And I set the Driver Secondary Email field to "named@gmail.com" at new driver creation
     And I set the Driver License Type field to "Full Uk Licence" at new driver creation
-    And I set the Driver License Number field to "11121112" at new driver creation
-    And I set the Driver passed Driving test over 10 years ago field to "True" at new driver creation
+      And I set the Driver passed Driving test over 10 years ago field to "True" at new driver creation
     And I set the Driver Access to other Vehicles field to "false" at new driver creation
     And I set the Driver Additional Qualifications field to "No" at new driver creation
     And I set the Driver Medical Conditions field to "DVLA aware - no licence restriction" at new driver creation
