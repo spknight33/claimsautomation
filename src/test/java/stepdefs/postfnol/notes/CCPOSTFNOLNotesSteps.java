@@ -18,5 +18,11 @@ public class CCPOSTFNOLNotesSteps extends BaseTest {
 		
 		postFnolNotesPOM.search();
 	}
+
+	@Given("^I set the find text box to Doc Type: \"([^\"]*)\" with the Subtype: \"([^\"]*)\" on post FNOL Notes Screen$")
+	public void search_for_document(String docType, String docSubType) throws Throwable {
+		String input = postFnolNotesPOM.concatenateDocTypeAndDocSubType(docType,docSubType);
+		postFnolNotesPOM.setFindTextInput(input);
+	}
 	
 }
