@@ -15,7 +15,7 @@ Feature: migration support - create recovery
     And I click "Add" on post FNOL Recovery screen
    
     And I create a recovery for reserve "S99SJA - Steve Knight-itb1 - 1st Party Vehicle; Claim Cost/Accidental Damage Repair" and category "Salvage" and amount "100"
-   
+    And I click "Update" on post FNOL Recovery screen
     
     
 
