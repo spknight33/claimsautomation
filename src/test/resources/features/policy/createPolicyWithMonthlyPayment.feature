@@ -1,4 +1,4 @@
-
+@Ignore
 Feature: Policy with monthly payment
 
   Scenario: Policy with montly payments
