@@ -1,4 +1,4 @@
-@Ignore @InProgress
+@Ignore 
 Feature: POST FNOL check auto generated document notes
 
   Background:
