@@ -98,7 +98,12 @@ public class ClaimCenterPOSTFNOLCreateRecoveryPOM extends BaseTest {
 	}
 	
 	
+	public void selectPayer(String option) {
 
+		logger.info(format("%s -  going to select payer: "+option, getName()));
+		GuideWireAccessors.selectOptionFromGWDropDown(driver, option, this.getPayerDropdown(), 1);
+		
+	}
 	
 	
 	
@@ -115,7 +120,7 @@ public class ClaimCenterPOSTFNOLCreateRecoveryPOM extends BaseTest {
 	{
 		this.selectReserveLine(reserveLine, 1);
 	   this.selectRecoveryCategory(category, 1);	
-	
+	   this.setRecoveryAmount(amount, 1);
 		
 		
 	}
@@ -140,13 +145,14 @@ public class ClaimCenterPOSTFNOLCreateRecoveryPOM extends BaseTest {
 		
 	}
 	
-	private void setRecoveryReserveAmount(String text, int sequence)
+
+	private void setRecoveryAmount(String text, int sequence)
 	{
 		//TODO make this line specfici
-		logger.info(format("%s - going to set recovery reserve amount:"+text, getName()));
+		logger.info(format("%s - going to set recovery  amount:"+text, getName()));
 		
-		String locator = "//*[@id=\"NewReserveAndRecoveryReserveSet:NewReserveAndRecoveryReserveSetScreen:ReserveAndRecoveryReserveListDetailPanel:EditableRecoveryReservesLV-body\"]//table[" + sequence + "]//tr//td[4]/div";
-		String inputLocator = "//*[@id=\"NewReserveAndRecoveryReserveSet:NewReserveAndRecoveryReserveSetScreen:ReserveAndRecoveryReserveListDetailPanel:EditableRecoveryReservesLV-body\"]//input[starts-with(@id,'textfield-')]";
+		String locator = "//*[@id=\"NewMultipleRecoverySet:NewRecoveryScreen:1-body\"]//table[" + sequence + "]//tr//td[4]/div";
+		String inputLocator = "//*[@id=\"NewMultipleRecoverySet:NewRecoveryScreen:1-body\"]//input[starts-with(@id,'textfield-')]";
 		
 		GuideWireAccessors.setGWTextBoxInTable(driver, text, locator, inputLocator);
 	}
