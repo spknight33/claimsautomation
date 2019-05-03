@@ -11,7 +11,7 @@ public class UserToGroupMap {
 		{
 		case ("HAD1"):
 		case ("HAD2"):
-		case ("MAD1"): // temp uintil fix done
+		case ("MAD1"): // TODO temp uintil fix done
 		case ("MAD2"): // temp uintil fix done
 			return "Accidental Damage";	
 		case ("HCS1"):
@@ -25,11 +25,14 @@ public class UserToGroupMap {
 			return "Personal Injury - MOJ";	
 		case ("HTPD1"):
 		case ("HTPD2"):
-			return "Third Party Property damage";
+		case ("MTPD1"): // temp until fix done
+		case ("MTPD2"): // temp until fix done
+			return "Third Party Property Damage";
 		case ("HCH1"):
 		case ("HCH2"):
 		case ("MCH1"): // temp until fix done
 		case ("MCH2"): // temp until fix done
+		case ("MTPC1"): // temp until fix done
 			return "Credit Hire";
 		case ("HTPC1"):
 		case ("HTPC2"):

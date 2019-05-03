@@ -76,6 +76,9 @@ public class CCPOSTFNOLExposuresSteps extends BaseTest {
 		case ("PH Driver"):
 			claimantName = ExcelUtil.getTestDataValue("Fnol_Name");
 			break;
+		case ("PH Named Driver"):
+			claimantName = ExcelUtil.getTestDataValue("Fnol_Named_Driver");
+			break;
 		case ("Pedestrian"):
 			claimantName = ExcelUtil.getTestDataValue("Fnol_PedestrianFullName");
 			break;
