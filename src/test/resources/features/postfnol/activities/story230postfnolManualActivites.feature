@@ -1,11 +1,11 @@
-@Ignore
+@Ignore 
 Feature: CBPCL-230 Manual Activities
 
   Background: 
     Given I use test data set "postfnol_set1"
     Given I access ClaimCenter login page
     And I login to ClaimCenter as role "ADClaimsHandlerTm1"
-    And I Select existing Claim "300000017"
+    And I Select existing Claim "300000101"
 
   Scenario Outline: CBPCL-230 TC1 - When creating a new activity on a claim from the actions menu, correct hierarchy is shown for "Customer" main category
     And I select the Actions Popup Menu Hierarchy "<MenuHierarchy>" for parent "New Activity"

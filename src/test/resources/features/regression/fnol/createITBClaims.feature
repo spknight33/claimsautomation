@@ -79,10 +79,24 @@ Feature: Regression test for create claim FNOL path - ITB claims
     When I create a claim as part of a regression test
 
 
-  Scenario: FNOL Regression - Create new claim - ACCIDENT (SPLIT)
+  Scenario: FNOL Regression - Create new claim - ACCIDENT (SPLIT) - also check expsoure assignments
     Given I use test data set "regress_fnol_accident_split" for brand "ITB"
     And As a "ADClaimsHandlerTm1" I am at step5 for FNOL
     When I create a claim as part of a regression test
+    And I will be on Claim Saved screen in FNOL
+    And I click on the created claim link on Claim Saved screen
+    And I select "Exposures" on the Claim Navigator
+    And I will see post FNOL exposures screen
+    And I will see type "Vehicle" for coverage "Accidental Damage" and claimant "PH Driver" has been assigned to a user in group "Accidental Damage"
+    And I will see type "Vehicle" for coverage "Third Party Liability" and claimant "TP Driver" has been assigned to a user in group "Personal Injury - MOJ"
+    And I will see type "Credit Hire" for coverage "Third Party Liability" and claimant "TP Driver" has been assigned to a user in group "Credit Hire"
+    And I will see type "Protocol Hire" for coverage "Third Party Liability" and claimant "TP Driver" has been assigned to a user in group "Credit Hire Protocol"
+     And I will see type "Bodily Injury" for coverage "Third Party Liability" and claimant "TP Driver" has been assigned to a user in group "Personal Injury - MOJ"
+    And I will see type "Bodily Injury" for coverage "Third Party Liability" and claimant "TP Passenger" has been assigned to a user in group "Personal Injury - MOJ"
+    And I will see type "Bodily Injury" for coverage "Third Party Liability" and claimant "PH Passenger" has been assigned to a user in group "Personal Injury - MOJ"
+    And I will see type "Bodily Injury" for coverage "Third Party Liability" and claimant "Pedestrian" has been assigned to a user in group "Personal Injury - MOJ"
+    And I will see type "Property" for coverage "Third Party Liability" and claimant "TP Property Owner" has been assigned to a user in group "Personal Injury - MOJ"
+ 
 
   Scenario: FNOL Regression - Create new claim - ACCIDENT (FAULT)
     Given I use test data set "regress_fnol_accident_fault" for brand "ITB"

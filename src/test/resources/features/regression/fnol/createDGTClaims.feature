@@ -58,6 +58,7 @@ Feature: Regression test for create claim FNOL path - DGT claims
     And As a "ADClaimsHandlerTm1" I am at step5 for FNOL
     When I create a claim as part of a regression test
 
+
   Scenario: FNOL Regression - Create new claim - PH COURTESY CAR only
     Given I use test data set "regress_fnol_courtesycar" for brand "DGT"
     And As a "ADClaimsHandlerTm1" I am at step5 for FNOL
@@ -72,6 +73,7 @@ Feature: Regression test for create claim FNOL path - DGT claims
     Given I use test data set "regress_fnol_accident_nonfault" for brand "DGT"
     And As a "ADClaimsHandlerTm1" I am at step5 for FNOL
     When I create a claim as part of a regression test
+
 
   Scenario: FNOL Regression - Create new claim - ACCIDENT (SPLIT)
     Given I use test data set "regress_fnol_accident_split" for brand "DGT"
