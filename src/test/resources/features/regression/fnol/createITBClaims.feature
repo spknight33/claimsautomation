@@ -1,10 +1,16 @@
 @Ignore @createclaimsitb
 Feature: Regression test for create claim FNOL path - ITB claims
 
-  Scenario: FNOL Regression - Create new claim - FIRE claim
+  Scenario: FNOL Regression - Create new claim - FIRE claim with exposure
     Given I use test data set "regress_fnol_fire" for brand "ITB"
     And As a "ADClaimsHandlerTm1" I am at step5 for FNOL
     When I create a claim as part of a regression test
+    And I will be on Claim Saved screen in FNOL
+    And I click on the created claim link on Claim Saved screen
+    And I select "Workplan" on the Claim Navigator
+    And I will see post FNOL Workplan screen
+    And I select "All open activities" from "Activities" on Workplan screen for post FNOL
+    #And I will see the "New Fire" activity on Workplan screen for post FNOL
 
 
   Scenario: FNOL Regression - Create new claim - THEFT claim
@@ -146,8 +152,8 @@ Feature: Regression test for create claim FNOL path - ITB claims
     And I will see type "Vehicle" for coverage "Accidental Damage" and claimant "PH Driver" has been assigned to a user in group "Accidental Damage"
     And I will see type "Credit Hire" for coverage "Third Party Liability" and claimant "TP Driver" has been assigned to a user in group "Credit Hire"
     And I will see type "Vehicle" for coverage "Third Party Liability" and claimant "TP Driver" has been assigned to a user in group "Credit Hire"
-    And I will see type "Property" for coverage "Third Party Liability" and claimant "TP Property Owner" has been assigned to a user in group "Credit Hire"
- 
+    And I will see type "Protocol Hire" for coverage "Third Party Liability" and claimant "TP Driver" has been assigned to a user in group "Credit Hire Protocol"
+  
 
   Scenario: FNOL Regression - Create new claim - ACCIDENT (FAULT- NAMED DRIVER)
     Given I use test data set "regress_fnol_accident_namedriv" for brand "ITB"
