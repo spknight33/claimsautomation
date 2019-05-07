@@ -1,4 +1,4 @@
-@Ignore @regressionmandatoryfields @
+@Ignore @regressionmandatoryfields 
 Feature: Regression test for errors for step4
 
   Background: 
