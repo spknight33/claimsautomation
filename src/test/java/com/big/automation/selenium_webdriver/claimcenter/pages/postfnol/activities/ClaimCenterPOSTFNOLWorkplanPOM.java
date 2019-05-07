@@ -113,7 +113,7 @@ public class ClaimCenterPOSTFNOLWorkplanPOM extends BaseTest{
 	{
 		boolean found = false;
 	    sleep(1);
-		String locator = "//*[@id=\"ClaimWorkplan:ClaimWorkplanScreen:WorkplanLV-body\"]//table//tr/td[7]//a";
+		String locator = "//*[@id=\"ClaimWorkplan:ClaimWorkplanScreen:WorkplanLV-body\"]//table//tr/td[8]//a";
 		List <WebElement> elements = driver.findElements(By.xpath(locator));
 		
 		// loop till find first with mathcing type

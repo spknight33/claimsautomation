@@ -12,5 +12,5 @@ Feature: Regression test for errors for step3 New TP Driver
     And I click ok button on vehicle screen
     Then Mandatory field error messages will be shown for Vehicle screen in FNOL
     | Do you know the number of occupants, including the driver? : Missing required field "Do you know the number of occupants, including the driver?" |
-   | Insurer Details Available :Missing required field "Insured Details Available" |
-   | Style :Missing required field "Style" |
+    | Insurer Details Available? : Missing required field "Insurer Details Available?" |
+    | Style :Missing required field "Style" |
