@@ -1,4 +1,4 @@
-@Ignore
+@Ignore @Experiment
 Feature: tests
 
   Scenario: test policy create

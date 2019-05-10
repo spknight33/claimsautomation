@@ -5,7 +5,7 @@ Feature: POST FNOL check auto generated document notes
     Given I use test data set "postfnol_set1"
     And I access ClaimCenter login page
     And I login to ClaimCenter as role "ADClaimsHandlerTm1"
-    And I Select existing Claim "300000017"
+    And I Select existing Claim "300000008"
     And I select "Notes" on the Claim Navigator
     And I will see post FNOL Notes screen
 
@@ -13,6 +13,8 @@ Feature: POST FNOL check auto generated document notes
   Scenario Outline: check auto generated notes
     And I set the find text box to Doc Type: "<DocType>" with the Subtype: "<DocSubType>" on post FNOL Notes Screen
     And I click search button on Notes screen for post FNOL
+    And I check that the 'No Results' error is present on post FNOL Notes Screen
+    And I check that the 'No Results' error is not present on post FNOL Notes Screen
 
 
 

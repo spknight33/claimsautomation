@@ -19,8 +19,8 @@ public class ClaimCenterPOSTFNOLNotesPOM extends BaseTest{
 	@FindBy(id = "ClaimNotes:NotesSearchScreen:NoteSearchDV:SearchAndResetInputSet:SearchLinksInputSet:Search")
 	private WebElement searchButton;
 
-	@FindBy(xpath = "//div[@class = 'message'][text() = 'The search returned zero results.']")
-	private WebElement searchReturnedZeroResultsError;
+	@FindBy(xpath = "//div[@class = 'message']")
+	private By errorMessage;
 
 	@FindBy(id = "ClaimNotes:NotesSearchScreen:NoteSearchDV:TextSearch-inputEl")
 	private WebElement findTextInput;
@@ -88,8 +88,16 @@ public class ClaimCenterPOSTFNOLNotesPOM extends BaseTest{
 	}
 
 	public void setFindTextInput(String input){
+		logger.info(format("I set the find text box to - %s", getName()));
 		GuideWireAccessors.setGWTextBox(driver,input,getFindTextInput());
 	}
+
+	public Boolean checkIfNoResultErrorIsPresent(){
+		logger.info(format("Check that the no results error is present", getName()));
+		return GuideWireAccessors.containsErrorMessage(driver, "The search returned zero results.", By.className("message"));
+	}
+
+
 
 	private WebElement getPageTitle() {
 		return pageTitle;
@@ -99,8 +107,8 @@ public class ClaimCenterPOSTFNOLNotesPOM extends BaseTest{
 		return searchButton;
 	}
 
-	public WebElement getSearchReturnedZeroResultsError() {
-		return searchReturnedZeroResultsError;
+	public By getErrorMessage() {
+		return errorMessage;
 	}
 
 	public WebElement getFindTextInput() {
