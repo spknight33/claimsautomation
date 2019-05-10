@@ -306,7 +306,7 @@ public class CCFNOLStep4Steps extends BaseTest{
 		fnolStep4POM.finish();
 	}
 	
-	@Given("^I click next button on step4 FNOL $")
+	@Given("^I click next button on step4 FNOL$")
 	public void next() {
 		
 		fnolStep4POM.next();

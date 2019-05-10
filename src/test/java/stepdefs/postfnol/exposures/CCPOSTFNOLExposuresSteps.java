@@ -67,7 +67,7 @@ public class CCPOSTFNOLExposuresSteps extends BaseTest {
 
 	@Given("^I will see type \"([^\"]*)\" for coverage \"([^\"]*)\" and claimant \"([^\"]*)\" has been assigned to a user in group \"([^\"]*)\"$")
 	public void i_will_see_type_for_coverage_has_been_assigned_to_a_user_in_group(String type, String coverage,
-			String group,String claimant) throws Throwable {
+			String claimant,String group) throws Throwable {
 		String claimantName = null;
 		switch (claimant) {
 		case ("TP Driver"):
@@ -75,6 +75,9 @@ public class CCPOSTFNOLExposuresSteps extends BaseTest {
 			break;
 		case ("PH Driver"):
 			claimantName = ExcelUtil.getTestDataValue("Fnol_Name");
+			break;
+		case ("PH Named Driver"):
+			claimantName = ExcelUtil.getTestDataValue("Fnol_Named_Driver");
 			break;
 		case ("Pedestrian"):
 			claimantName = ExcelUtil.getTestDataValue("Fnol_PedestrianFullName");
@@ -88,6 +91,9 @@ public class CCPOSTFNOLExposuresSteps extends BaseTest {
 		case ("TP Property Owner"):
 			claimantName = ExcelUtil.getTestDataValue("Fnol_PropertyNewOwnerFullName");
 			break;
+			
+		default:
+			Assert.fail("unknown claimant type :" + claimant + " - check cucumber script!");
 		}
 		
 		String handler = postFnolExposuresPOM.getHandlerForExposure(type, coverage,claimantName);

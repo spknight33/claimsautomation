@@ -95,7 +95,7 @@ public class ClaimCenterPOSTFNOLExposuresPOM extends BaseTest{
 	
 	public String getHandlerForExposure(String type,String coverage,String claimant)
 	{
-		logger.info(format("%s - get handler for exposure ", getName()));
+		logger.info(format("%s - get handler for exposure |"+type+"|"+coverage+"|"+claimant, getName()));
 	    sleep(2);
 		String locator = "//*[@id=\"ClaimExposures:ClaimExposuresScreen:ExposuresLV-body\"]//table";
 		List <WebElement> rows = driver.findElements(By.xpath(locator));

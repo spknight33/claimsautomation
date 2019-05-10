@@ -237,8 +237,10 @@ public static void setGWTextBoxInTable(WebDriver driver, String text, String loc
 			sleep(2);
 			// the input tag should be available
 			element = driver.findElement(By.xpath(inputLocator));
-			
 			element.clear();
+		
+			
+			
 			System.out.println("setGWTextBoxInTable setting:" + text);
 			
 			element.sendKeys(text);
@@ -247,7 +249,7 @@ public static void setGWTextBoxInTable(WebDriver driver, String text, String loc
 			sleep(2);
 			// TODO use a logger
 			System.out.println("setGWTextBoxInTable Exception caught:" + e.getMessage());
-			System.out.println("setGWTextBoxInTable Exception trying to set text <"+text+"> for element <"+element.getTagName()+">");
+			System.out.println("setGWTextBoxInTable Exception trying to set text <"+text+"> for element ");
 		}
 		findAttempts++;
 	}

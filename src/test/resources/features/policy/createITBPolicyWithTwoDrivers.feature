@@ -1,4 +1,4 @@
-@Ignore @createpolicy @inprogress
+@Ignore @createpolicy 
 Feature: Create ITB Policy with two drivers
 
   Scenario: test policy with two ITB drivers create
@@ -67,7 +67,7 @@ Feature: Create ITB Policy with two drivers
     And I set the Driver License Type field to "Full Uk Licence" at new driver creation
     And I set the Driver passed Driving test over 10 years ago field to "True" at new driver creation
     And I set the Driver Access to other Vehicles field to "false" at new driver creation
-    And I set the Driver Additional Qualifications field to "No" at new driver creation
+    And I set the Driver Additional Qualifications field to "Pass Plus" at new driver creation
     And I set the Driver Medical Conditions field to "DVLA aware - no licence restriction" at new driver creation
     And I set the Driver Non Motoring Offences field to "false" at new driver creation
     And I set the Driver Policy Cancelled field to "false" at new driver creation

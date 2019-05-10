@@ -76,6 +76,7 @@ import com.big.automation.selenium_webdriver.claimcenter.pages.postfnol.exposure
 import com.big.automation.selenium_webdriver.claimcenter.pages.postfnol.exposures.ClaimCenterPOSTFNOLViewProtocolHireExposurePOM;
 import com.big.automation.selenium_webdriver.claimcenter.pages.postfnol.exposures.ClaimCenterPOSTFNOLViewTPCaptureExposurePOM;
 import com.big.automation.selenium_webdriver.claimcenter.pages.postfnol.exposures.ClaimCenterPOSTFNOLViewVehicleExposurePOM;
+import com.big.automation.selenium_webdriver.claimcenter.pages.postfnol.financials.ClaimCenterPOSTFNOLCreateRecoveryPOM;
 import com.big.automation.selenium_webdriver.claimcenter.pages.postfnol.financials.ClaimCenterPOSTFNOLFinancialChequesPOM;
 import com.big.automation.selenium_webdriver.claimcenter.pages.postfnol.financials.ClaimCenterPOSTFNOLFinancialSummaryPOM;
 import com.big.automation.selenium_webdriver.claimcenter.pages.postfnol.financials.ClaimCenterPOSTFNOLFinancialTransactionsPOM;
@@ -295,6 +296,9 @@ public class BaseTest extends AbstractTestNGCucumberTests {
 	public static ClaimCenterPOSTFNOLFinancialTransactionsPOM postFnolFinancialTransactionsPOM;
 	public static ClaimCenterPOSTFNOLFinancialChequesPOM postFnolFinancialChequesPOM;
 	public static ClaimCenterPOSTFNOLReservePOM postFnolReservePOM;
+	public static ClaimCenterPOSTFNOLCreateRecoveryPOM postFnolRecoveryPOM;
+	
+	
 	
 	public static ClaimCenterPOSTFNOLSetReservesPOM postFnolSetReservesPOM;
 	public static ClaimCenterPOSTFNOLNewChequeStep1POM postFnolNewChequeStep1POM;
@@ -522,6 +526,8 @@ public class BaseTest extends AbstractTestNGCucumberTests {
 		postFnolFinancialChequesPOM = PageFactory.initElements(driver, ClaimCenterPOSTFNOLFinancialChequesPOM.class);
 		postFnolSetReservesPOM = PageFactory.initElements(driver, ClaimCenterPOSTFNOLSetReservesPOM.class);
 		postFnolReservePOM = PageFactory.initElements(driver, ClaimCenterPOSTFNOLReservePOM.class);
+		postFnolRecoveryPOM = PageFactory.initElements(driver, ClaimCenterPOSTFNOLCreateRecoveryPOM.class);
+		 
 		
 		postFnolNewChequeStep1POM = PageFactory.initElements(driver, ClaimCenterPOSTFNOLNewChequeStep1POM.class);
 		postFnolNewChequeStep2POM = PageFactory.initElements(driver, ClaimCenterPOSTFNOLNewChequeStep2POM.class);

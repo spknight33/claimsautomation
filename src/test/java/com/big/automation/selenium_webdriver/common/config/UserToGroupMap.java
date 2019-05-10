@@ -10,37 +10,41 @@ public class UserToGroupMap {
 		switch (user)
 		{
 		case ("HAD1"):
-			return "Accidental Damage";
 		case ("HAD2"):
+		case ("MAD1"): // TODO temp uintil fix done
+		case ("MAD2"): // temp uintil fix done
 			return "Accidental Damage";	
 		case ("HCS1"):
-			return "Claims Support";
 		case ("HCS2"):
+		case ("MCS1"):
 			return "Claims Support";
 		case ("HPI1"):
-			return "Personal Injury - MOJ";	
 		case ("HPI2"):
+		case ("MPI1"): // temp until fix done
+		case ("MPI2"): // temp until fix done
 			return "Personal Injury - MOJ";	
 		case ("HTPD1"):
-			return "Third Party Property damage";	
 		case ("HTPD2"):
-			return "Third Party Property damage";
+		case ("MTPD1"): // temp until fix done
+		case ("MTPD2"): // temp until fix done
+			return "Third Party Property Damage";
 		case ("HCH1"):
-			return "Credit Hire";
 		case ("HCH2"):
+		case ("MCH1"): // temp until fix done
+		case ("MCH2"): // temp until fix done
+		case ("MTPC1"): // temp until fix done
 			return "Credit Hire";
 		case ("HTPC1"):
-			return "Third Party Capture";
 		case ("HTPC2"):
 			return "Third Party Capture";
 		case ("Pending Assignment"):
 			return "Credit Hire Protocol";
 	
-		case ("MCS1"):
-			return "Claims Support";
+		
+			
 		
 		default:
-		throw new Exception("Cannot find user");
+		throw new Exception("Cannot find expected user "+user);
 		
 	}
 	}
