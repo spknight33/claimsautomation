@@ -30,8 +30,8 @@ public class CCFNOLStep5Steps extends BaseTest{
 		String fieldValue=null;
 		fieldValue = ExcelUtil.getTestDataValue("Fnol_Step5_Notes");
 		
-		String note = "This Claim created by automated regression script using Excel file:"+BaseTest.testDataExcelFilename+ " and Excel sheet:"+ExcelUtil.testDataExcelSheet;
-		note = note + " for :" +fieldValue;
+		String note = fieldValue +" - This Claim created by automated regression script using Excel file:"+BaseTest.testDataExcelFilename+ " and Excel sheet:"+ExcelUtil.testDataExcelSheet;
+		
 		fnolStep5POM.setNote(note);
 		
 

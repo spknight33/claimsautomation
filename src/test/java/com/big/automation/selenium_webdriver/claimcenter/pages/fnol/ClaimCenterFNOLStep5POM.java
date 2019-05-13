@@ -1,6 +1,7 @@
 package com.big.automation.selenium_webdriver.claimcenter.pages.fnol;
 
 import static java.lang.String.format;
+import static com.big.automation.selenium_webdriver.common.utilities.ThreadUtils.sleep;
 
 import java.util.List;
 
@@ -82,6 +83,8 @@ public class ClaimCenterFNOLStep5POM extends BaseTest{
 		GuideWireAccessors.clickGWButton(driver,getFinishButton());
 		// we may get prompt for validation warnings
 		//clear any if necessary
+		// need to slug this
+		sleep(10);
 		logger.info(format("%s - going to close warnings window if its open", getName()));
 		//*[@id="NewClaimDuplicatesWorksheet:NewClaimDuplicatesScreen:NewClaimDuplicatesWorksheet_CloseButton-btnEl"]
 		String xpathLocator = "//*[@id='"+  this.closeWarningsLocator + "']";
