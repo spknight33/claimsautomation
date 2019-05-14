@@ -87,20 +87,32 @@ public class CCFNOLPropertySteps extends BaseTest {
 					//fnolPropertyDetailsPOM.selectPropertyOwner(fieldValue);
 				}
 				
-				// moved this to the end as was causing stale elements if done earlier!
-				fieldValue = ExcelUtil.getTestDataValue("Fnol_PropertyAddress1");
-				if (fieldValue !=null)
-					fnolPropertyDetailsPOM.setAddressLine1(fieldValue);
-				fieldValue = ExcelUtil.getTestDataValue("Fnol_PropertyAddress2");
-				if (fieldValue !=null)
-					fnolPropertyDetailsPOM.setAddressLine2(fieldValue);
-				fieldValue = ExcelUtil.getTestDataValue("Fnol_PropertyCity");
-				if (fieldValue !=null)
-					fnolPropertyDetailsPOM.setCity(fieldValue);
-				fieldValue = ExcelUtil.getTestDataValue("Fnol_PropertyLocationDesc");
-				if (fieldValue !=null)
-					fnolPropertyDetailsPOM.setLocationDescription(fieldValue);
+				fieldValue = ExcelUtil.getTestDataValue("Fnol_PropertyPostcodeSearch");
+				if (fieldValue !=null && fieldValue.equalsIgnoreCase("TRUE"))
+				{
+					fieldValue = ExcelUtil.getTestDataValue("Fnol_PropertyPostcode");
+					fnolPropertyDetailsPOM.setPostcode(fieldValue);
+					fieldValue = ExcelUtil.getTestDataValue("Fnol_PropertyPostcodeAddress");
+					fnolPropertyDetailsPOM.selectPostcodeAddress(fieldValue);
 				
+				}
+				else
+				{
+				
+					// moved this to the end as was causing stale elements if done earlier!
+					fieldValue = ExcelUtil.getTestDataValue("Fnol_PropertyAddress1");
+					if (fieldValue !=null)
+						fnolPropertyDetailsPOM.setAddressLine1(fieldValue);
+					fieldValue = ExcelUtil.getTestDataValue("Fnol_PropertyAddress2");
+					if (fieldValue !=null)
+						fnolPropertyDetailsPOM.setAddressLine2(fieldValue);
+					fieldValue = ExcelUtil.getTestDataValue("Fnol_PropertyCity");
+					if (fieldValue !=null)
+						fnolPropertyDetailsPOM.setCity(fieldValue);
+					fieldValue = ExcelUtil.getTestDataValue("Fnol_PropertyLocationDesc");
+					if (fieldValue !=null)
+						fnolPropertyDetailsPOM.setLocationDescription(fieldValue);
+				}
 		
 		fnolPropertyDetailsPOM.selectOK();
 	}

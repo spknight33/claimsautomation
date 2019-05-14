@@ -70,29 +70,44 @@ public class CCFNOLPersonContactSteps extends BaseTest {
 		if (fieldValue !=null)
 			personContactDetailsPOM.selectAddressType(fieldValue);
 		
-		fieldValue = ExcelUtil.getTestDataValue("Fnol_PropertyNewOwnerAddress1");
-		if (fieldValue !=null)
-			personContactDetailsPOM.setAddressLine1(fieldValue);
 		
-		fieldValue = ExcelUtil.getTestDataValue("Fnol_PropertyNewOwnerAddress2");				
-		if (fieldValue !=null)
-			personContactDetailsPOM.setAddressLine2(fieldValue);
+		fieldValue = ExcelUtil.getTestDataValue("Fnol_PropertyNewOwnerPostcodeSearch");
+		if (fieldValue !=null && fieldValue.equalsIgnoreCase("TRUE"))
+		{
+			fieldValue = ExcelUtil.getTestDataValue("Fnol_PropertyNewOwnerPostcode");
+			personContactDetailsPOM.setPostCode(fieldValue);
+			fieldValue = ExcelUtil.getTestDataValue("Fnol_PropertyNewOwnerPostcodeAddress");
+			personContactDetailsPOM.selectPostcodeAddress(fieldValue);
 		
-		fieldValue = ExcelUtil.getTestDataValue("Fnol_PropertyNewOwnerAddress3");
-		if (fieldValue !=null)
-			personContactDetailsPOM.setAddressLine3(fieldValue);
+		}
+		else
+		{
 		
-		fieldValue = ExcelUtil.getTestDataValue("Fnol_PropertyNewOwnerCity");
-		if (fieldValue !=null)
-			personContactDetailsPOM.setAddressCity(fieldValue);
+			fieldValue = ExcelUtil.getTestDataValue("Fnol_PropertyNewOwnerAddress1");
+			if (fieldValue !=null)
+				personContactDetailsPOM.setAddressLine1(fieldValue);
+			
+			fieldValue = ExcelUtil.getTestDataValue("Fnol_PropertyNewOwnerAddress2");				
+			if (fieldValue !=null)
+				personContactDetailsPOM.setAddressLine2(fieldValue);
+			
+			fieldValue = ExcelUtil.getTestDataValue("Fnol_PropertyNewOwnerAddress3");
+			if (fieldValue !=null)
+				personContactDetailsPOM.setAddressLine3(fieldValue);
+			
+			fieldValue = ExcelUtil.getTestDataValue("Fnol_PropertyNewOwnerCity");
+			if (fieldValue !=null)
+				personContactDetailsPOM.setAddressCity(fieldValue);
+			
+			fieldValue = ExcelUtil.getTestDataValue("Fnol_PropertyNewOwnerCounty");
+			if (fieldValue !=null)
+				personContactDetailsPOM.setAddressCounty(fieldValue);
+			
+			fieldValue = ExcelUtil.getTestDataValue("Fnol_PropertyNewOwnerLocationDesc");
+			if (fieldValue !=null)
+				personContactDetailsPOM.setLocationDesc(fieldValue);
+		}
 		
-		fieldValue = ExcelUtil.getTestDataValue("Fnol_PropertyNewOwnerCounty");
-		if (fieldValue !=null)
-			personContactDetailsPOM.setAddressCounty(fieldValue);
-		
-		fieldValue = ExcelUtil.getTestDataValue("Fnol_PropertyNewOwnerLocationDesc");
-		if (fieldValue !=null)
-			personContactDetailsPOM.setLocationDesc(fieldValue);
 		
 		// TODO add bank details - currently fault in automation in this
 		fieldValue = ExcelUtil.getTestDataValue("Fnol_PropertyNewOwnerAddBank");
@@ -161,10 +176,24 @@ public class CCFNOLPersonContactSteps extends BaseTest {
 		if (fieldValue !=null)
 			personContactDetailsPOM.setEmail(fieldValue);
 		
+		
+		// use postcode if present, otherwise location
+		fieldValue = ExcelUtil.getTestDataValue("Fnol_WitnessPostcodeSearch");
+		if (fieldValue !=null && fieldValue.equalsIgnoreCase("TRUE"))
+		{
+			fieldValue = ExcelUtil.getTestDataValue("Fnol_WitnessPostcode");
+			personContactDetailsPOM.setPostCode(fieldValue);
+			fieldValue = ExcelUtil.getTestDataValue("Fnol_WitnessPostcodeAddress");
+			personContactDetailsPOM.selectPostcodeAddress(fieldValue);
+		
+		}
+		else
+		{
+		
 		fieldValue = ExcelUtil.getTestDataValue("Fnol_WitnessLocationDesc");
 		if (fieldValue !=null)
 			personContactDetailsPOM.setLocationDesc(fieldValue);
-		
+		}
 		
 	
 		personContactDetailsPOM.selectUpdate();

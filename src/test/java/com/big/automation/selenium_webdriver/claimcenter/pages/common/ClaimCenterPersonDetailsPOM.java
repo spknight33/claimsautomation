@@ -76,7 +76,8 @@ public class ClaimCenterPersonDetailsPOM extends BaseTest{
 	private WebElement city;
 	@FindBy(id = "NewContactPopup:ContactDetailScreen:ContactBasicsDV:PrimaryAddressInputSet:CCAddressInputSet:globalAddressContainer:globalAddress:GlobalAddressInputSet:PostalCode-inputEl")
 	private WebElement postCode;
-	@FindBy(id = "ClaimContactDetailPopup:ContactDetailScreen:ContactBasicsDV:PrimaryAddressInputSet:CCAddressInputSet:globalAddressContainer:globalAddress:GlobalAddressInputSet:addresses-inputEl")
+	
+	@FindBy(id = "NewContactPopup:ContactDetailScreen:ContactBasicsDV:PrimaryAddressInputSet:CCAddressInputSet:globalAddressContainer:globalAddress:GlobalAddressInputSet:addresses-inputEl")
 	private WebElement postCodeAddressDropdown;
 	
 	@FindBy(id = "NewContactPopup:ContactDetailScreen:ContactBasicsDV:PrimaryAddressInputSet:CCAddressInputSet:globalAddressContainer:Address_Description-inputEl")
@@ -210,6 +211,7 @@ public class ClaimCenterPersonDetailsPOM extends BaseTest{
 	public void setEmail(String text)
 	{
 		logger.info(format("%s -  going to set email:"+text, getName()));
+		GuideWireAccessors.setGWTextBox(driver, text, this.getMainEmail());
 		GuideWireAccessors.setGWTextBox(driver, text, this.getMainEmail());
 		
 	}

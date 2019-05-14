@@ -1,6 +1,7 @@
 @Ignore @createclaimsitb
 Feature: Regression test for create claim FNOL path - ITB claims
 
+
   Scenario: FNOL Regression - Create new claim - FIRE claim with exposure
     Given I use test data set "regress_fnol_fire" for brand "ITB"
     And As a "ADClaimsHandlerTm1" I am at step5 for FNOL
@@ -69,7 +70,6 @@ Feature: Regression test for create claim FNOL path - ITB claims
     And I will see post FNOL exposures screen
     And I will see type "Property" for coverage "Third Party Liability" and claimant "TP Property Owner" has been assigned to a user in group "Third Party Property Damage"
 
-
   Scenario: FNOL Regression - Create new claim - CYCLIST only no injury
     Given I use test data set "regress_fnol_cyclistonly" for brand "ITB"
     And As a "ADClaimsHandlerTm1" I am at step5 for FNOL
@@ -86,11 +86,12 @@ Feature: Regression test for create claim FNOL path - ITB claims
     And As a "ADClaimsHandlerTm1" I am at step5 for FNOL
     When I create a claim as part of a regression test
     
-  
+ 
      Scenario: FNOL Regression - Create new claim - PEDESTRIAN only
     Given I use test data set "regress_fnol_accident_pedest" for brand "ITB"
     And As a "ADClaimsHandlerTm1" I am at step5 for FNOL
     When I create a claim as part of a regression test
+
 
   Scenario: FNOL Regression - Create new claim - PH COURTESY CAR only
     Given I use test data set "regress_fnol_courtesycar" for brand "ITB"
@@ -101,6 +102,7 @@ Feature: Regression test for create claim FNOL path - ITB claims
     Given I use test data set "regress_fnol_accident_phonly" for brand "ITB"
     And As a "ADClaimsHandlerTm1" I am at step5 for FNOL
     When I create a claim as part of a regression test
+
 
   Scenario: FNOL Regression - Create new claim - ACCIDENT (NON FAULT) in credit hire but no injuries
     Given I use test data set "regress_fnol_accident_nonfault" for brand "ITB"
@@ -141,7 +143,8 @@ Feature: Regression test for create claim FNOL path - ITB claims
     And As a "ADClaimsHandlerTm1" I am at step5 for FNOL
     When I create a claim as part of a regression test
     
-      Scenario: FNOL Regression - Create new claim - ACCIDENT (CREDITHIRE)collision with TP , No Injuries WITH Credit Hire
+    
+   Scenario: FNOL Regression - Create new claim - ACCIDENT (CREDITHIRE)collision with TP , No Injuries WITH Credit Hire
     Given I use test data set "regress_fnol_accident_credhire" for brand "ITB"
     And As a "ADClaimsHandlerTm1" I am at step5 for FNOL
     When I create a claim as part of a regression test
