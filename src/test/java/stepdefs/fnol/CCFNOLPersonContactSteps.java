@@ -177,6 +177,7 @@ public class CCFNOLPersonContactSteps extends BaseTest {
 			personContactDetailsPOM.setEmail(fieldValue);
 		
 		
+
 		// use postcode if present, otherwise location
 		fieldValue = ExcelUtil.getTestDataValue("Fnol_WitnessPostcodeSearch");
 		if (fieldValue !=null && fieldValue.equalsIgnoreCase("TRUE"))
@@ -194,6 +195,37 @@ public class CCFNOLPersonContactSteps extends BaseTest {
 		if (fieldValue !=null)
 			personContactDetailsPOM.setLocationDesc(fieldValue);
 		}
+		
+		// phone section
+				//----------------
+				// do primary first
+				fieldValue = ExcelUtil.getTestDataValue("Fnol_WitnessPrimaryPhone");
+				if (fieldValue !=null)
+					personContactDetailsPOM.selectPrimaryPhone(fieldValue);
+				
+				fieldValue = ExcelUtil.getTestDataValue("Fnol_WitnessWorkPhone");
+				if (fieldValue !=null)
+					personContactDetailsPOM.setWorkPhone(fieldValue);
+				
+				fieldValue = ExcelUtil.getTestDataValue("Fnol_WitnessHomePhone");
+				if (fieldValue !=null)
+					personContactDetailsPOM.setHomePhone(fieldValue);
+				
+				fieldValue = ExcelUtil.getTestDataValue("Fnol_WitnessMobile");
+				if (fieldValue !=null)
+					personContactDetailsPOM.setMobile(fieldValue);
+				
+				fieldValue = ExcelUtil.getTestDataValue("Fnol_WitnessFax");
+				if (fieldValue !=null)
+					personContactDetailsPOM.setFax(fieldValue);
+		
+		
+		
+		
+		
+		
+		
+		
 		
 	
 		personContactDetailsPOM.selectUpdate();

@@ -118,7 +118,7 @@ public class CCFNOLStep3Steps extends BaseTest {
 			if (fieldValue !=null)
 				fnolStep3POM.selectWitnessLocation(fieldValue,1); //optional
 			
-			fieldValue = ExcelUtil.getTestDataValue("Fnol_Step3_WitnessLocation");
+			fieldValue = ExcelUtil.getTestDataValue("Fnol_Step3_WitnessPerspective");
 			fnolStep3POM.setWitnessPerspective(fieldValue , 1); //mandatory
 			
 			fnolStep3POM.selectWitnessNewPerson(1); // mandatory
