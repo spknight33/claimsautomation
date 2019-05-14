@@ -157,7 +157,7 @@ Feature: Regression test for create claim FNOL path - ITB claims
     And I will see type "Vehicle" for coverage "Third Party Liability" and claimant "TP Driver" has been assigned to a user in group "Credit Hire"
     And I will see type "Protocol Hire" for coverage "Third Party Liability" and claimant "TP Driver" has been assigned to a user in group "Credit Hire Protocol"
   
-@inprogress
+
   Scenario: FNOL Regression - Create new claim - ACCIDENT (FAULT- NAMED DRIVER)
     Given I use test data set "regress_fnol_accident_namedriv" for brand "ITB"
     And As a "ADClaimsHandlerTm1" I am at step5 for FNOL

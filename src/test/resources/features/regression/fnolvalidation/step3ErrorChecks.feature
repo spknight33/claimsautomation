@@ -19,7 +19,7 @@ Feature: Regression test for errors for step3
     And I click next button on step3
     Then Mandatory field error messages will be shown for step3
    #   | Add Address Line 1, Postcode or Location Description |
-      | Add Circumstances, Circumstances |
+      | Circumstances : Missing required field "Circumstances" |
 
     And I input "some circumstances" into the "Circumstances" box on step3
     And I click next button on step3
