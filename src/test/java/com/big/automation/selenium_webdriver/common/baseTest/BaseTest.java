@@ -9,6 +9,7 @@ import java.text.SimpleDateFormat;
 import java.util.concurrent.TimeUnit;
 
 import com.big.automation.selenium_webdriver.claimcenter.pages.policycreate.*;
+import com.big.automation.selenium_webdriver.claimcenter.pages.postfnol.documents.ClaimCenterPOSTFNOLCreateDocumentFromTemplatePOM;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.remote.RemoteWebDriver;
@@ -275,6 +276,7 @@ public class BaseTest extends AbstractTestNGCucumberTests {
 	// POST FNOL Documents pages
 	// --------------------------
 	public static ClaimCenterPOSTFNOLDocumentsPOM postFnolDocumentsPOM;
+	public static ClaimCenterPOSTFNOLCreateDocumentFromTemplatePOM postFnolCreateDocumentFromTemplatePOM;
 
 	// POST FNOL Litigation pages
 	// ---------------------------
@@ -497,6 +499,7 @@ public class BaseTest extends AbstractTestNGCucumberTests {
 
 		// documents
 		postFnolDocumentsPOM = PageFactory.initElements(driver, ClaimCenterPOSTFNOLDocumentsPOM.class);
+		postFnolCreateDocumentFromTemplatePOM = PageFactory.initElements(driver, ClaimCenterPOSTFNOLCreateDocumentFromTemplatePOM.class);
 
 		// litigation
 		postFnolLitigationPOM = PageFactory.initElements(driver, ClaimCenterPOSTFNOLLitigationPOM.class);

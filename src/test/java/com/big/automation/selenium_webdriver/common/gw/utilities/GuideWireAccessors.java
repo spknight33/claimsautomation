@@ -271,7 +271,6 @@ public static void setGWTextBoxInTable(WebDriver driver, String text, String loc
 	 * @param occurrence
 	 */
 	
-	
 	public static void selectOptionFromGWDropDown(WebDriver driver, String option, WebElement gwDropDown,
 			int occurrence, boolean caseSensitive) {
 		
