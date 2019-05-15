@@ -7,6 +7,6 @@ Feature: Regression test for errors for step1
 
   Scenario: Regression Step1 Fnol - TC1_1 Mandatory fields must be supplied
     And I will be on step1 for FNOL
-    When I Click Search at step1 FNOL
-    Then Mandatory field error messages will be shown at step1 FNOL
+   When I Click Search at step1 FNOL
+   Then Mandatory field error messages will be shown at step1 FNOL
            | Error: You must enter some criteria    |

@@ -1,4 +1,4 @@
-@Ignore @createpolicy 
+@Ignore @createpolicy @inprogress
 Feature: ITB Policy Creation - Single Driver 
 
   Scenario: test policy create - single driver

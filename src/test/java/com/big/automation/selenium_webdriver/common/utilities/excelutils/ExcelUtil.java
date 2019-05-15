@@ -76,7 +76,7 @@ public class ExcelUtil {
 	 * @param Brand
 	 * @throws Throwable
 	 */
-	public static void setExcelFileSheet(String sheetName, String brand) throws Throwable {
+	public static void setExcelFileSheet(String sheetName, String brand,String envType) throws Throwable {
 		testDataExcelSheet = sheetName;
 		// MAC or Windows Selection for excel path
 		//TODO sort the filepath out
@@ -97,13 +97,16 @@ public class ExcelUtil {
 			if (brand == null)
 				 throw new Exception("Brand is null, but is needed to find the correct column in the POLICYDATA sheet");
 			
+			if (envType == null)
+				 throw new Exception("environment type is null, but is needed to find the correct columns in the POLICYDATA sheet");
+			
 			excelWSheet = excelWBook.getSheet("POLICYDATA");
 			if (excelWSheet == null) {
 				throw new Exception("Failed to find the worksheet <" + sheetName + "> in the file<" + testDataExcelPath
 						+ testDataExcelFilename + ">");
 
 			}
-			setPolicyFields(excelWSheet,sheetName,brand);
+			setPolicyFields(excelWSheet,sheetName,brand,envType);
 			
 			
 			excelWSheet = excelWBook.getSheet(sheetName);
@@ -125,11 +128,15 @@ public class ExcelUtil {
 		}
 	}
 	
-	private static void setPolicyFields(XSSFSheet policySheet,String testSheetName,String brand) {
+	private static void setPolicyFields(XSSFSheet policySheet,String testSheetName,String brand,String envType) {
 		//this will read the policydata sheet to get:
 		// If TEST or DEV run(to be removed and put into automation config)
 		// read the records and find the appropriate dev or test entry for the appropriate sheet
 		// get the policy number etc for that entry
+		
+		String devortest = envType;
+		
+		
 		String key = "";
 		String value1 = "";
 		String value2 = "";
@@ -148,6 +155,8 @@ public class ExcelUtil {
 		String value15 = "";
 		
 		testDataMap = new HashMap<>(); // reset the map - we are going to add some data to it here
+		testDataMap.put("DevOrTstEnvironment", devortest.trim());
+		System.out.println("entry added to map for DevOrTstEnvironment:"+devortest);
 		
 		XSSFRow row = null;
 
@@ -174,7 +183,7 @@ public class ExcelUtil {
 		int rows = policySheet.getLastRowNum() + 1;
 
 		System.out.println("Rows to process:" + rows);
-		String devortest = "";
+		
 		for (int i = 0; i < rows; i++) {
 
 			DataFormatter dataFormatter = new DataFormatter(Locale.UK);
@@ -252,18 +261,18 @@ public class ExcelUtil {
 			
 			if (key!=null && !key.isEmpty() && value1 != null && !value1.isEmpty()) {
 				    // check if devortest field
-				 if (key.equalsIgnoreCase("DevOrTstEnvironment"))
-				 {
-				    	devortest = value1;
-				    	System.out.println("found devortest:"+devortest);
-				    	testDataMap.put("DevOrTstEnvironment", devortest.trim());
-		    			System.out.println("entry added to map for DevOrTstEnvironment:"+devortest);
-				 }
-				 else
-				 {
+				// if (key.equalsIgnoreCase("DevOrTstEnvironment"))
+				// {
+				//    	devortest = value1;
+				//    	System.out.println("found devortest:"+devortest);
+				//    	testDataMap.put("DevOrTstEnvironment", devortest.trim());
+		    	//		System.out.println("entry added to map for DevOrTstEnvironment:"+devortest);
+				// }
+				// else
+				// {
 					 
-				    if (!devortest.equalsIgnoreCase(""))
-				    {
+				//    if (!devortest.equalsIgnoreCase(""))
+				 //   {
 				    	// we must have dev or test set
 				    	if (key != null && key.equalsIgnoreCase(devortest)) {
 				    	// this is a matching dev or test entry, but is it a matching sheet entry
@@ -334,8 +343,8 @@ public class ExcelUtil {
 				    			break;
 				    		}
 						}
-				    }
-				 }
+				  //  }
+				// }
 				 
 					
 					

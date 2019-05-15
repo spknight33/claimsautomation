@@ -6,6 +6,7 @@ import org.testng.Assert;
 import com.big.automation.selenium_webdriver.common.baseTest.BaseTest;
 import com.big.automation.selenium_webdriver.common.config.UserConfig;
 import com.big.automation.selenium_webdriver.common.config.UserFactory;
+import com.big.automation.selenium_webdriver.common.utilities.PropertyManager;
 import com.big.automation.selenium_webdriver.common.utilities.excelutils.ExcelUtil;
 
 import cucumber.api.java.en.Given;
@@ -26,15 +27,15 @@ public class CCLoginSteps extends BaseTest {
 		{
 			if (env.equalsIgnoreCase("DEV"))
 			{
-				url="http://claimcenterdev.cloud.aioinissaydowa.eu/cc/";
+				url=PropertyManager.getInstance().getDevClaimsURL();
 			}
 			else if (env.equalsIgnoreCase("TEST"))
 			{
-				url="http://claimcentertest.cloud.aioinissaydowa.eu/cc/";
+				url=PropertyManager.getInstance().getTestClaimsURL();
 			}
 			else if (env.equalsIgnoreCase("NONPROD"))
 			{
-				url="https://cbp-nonprod-qa.cloud.aioinissaydowa.eu/cc/";
+				url=PropertyManager.getInstance().getPreProdClaimsURL();
 			}
 		}
 		else {

@@ -3,6 +3,7 @@ package stepdefs.policy;
 import org.openqa.selenium.NoAlertPresentException;
 
 import com.big.automation.selenium_webdriver.common.baseTest.BaseTest;
+import com.big.automation.selenium_webdriver.common.utilities.PropertyManager;
 import com.big.automation.selenium_webdriver.common.utilities.excelutils.ExcelUtil;
 
 import cucumber.api.java.en.Given;
@@ -20,15 +21,15 @@ public class policyLoginSteps extends BaseTest {
 		{
 			if (env.equalsIgnoreCase("DEV"))
 			{
-				url="http://policycenterdev.cloud.aioinissaydowa.eu/pc/";
+				url=PropertyManager.getInstance().getDevPolicyURL();
 			}
 			else if (env.equalsIgnoreCase("TEST"))
 			{
-				url="http://policycentertest.cloud.aioinissaydowa.eu/pc/";
+				url=PropertyManager.getInstance().getTestPolicyURL();
 			}
 			else if (env.equalsIgnoreCase("NONPROD"))
 			{
-				url="https://cbp-nonprod-qa.cloud.aioinissaydowa.eu/pc/";
+				url=PropertyManager.getInstance().getPreProdPolicyURL();
 			}
 		}
 		else {
