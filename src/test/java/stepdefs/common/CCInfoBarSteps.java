@@ -17,6 +17,9 @@ public class CCInfoBarSteps extends BaseTest {
 	    case "Status":
 	    	Assert.assertEquals(infoBarPOM.getClaimStatusText(),fieldValue);
 	    	break;
+	    case "Adjuster":
+	    	Assert.assertTrue(infoBarPOM.getClaimAdjusterText().contains(fieldValue),"Could not find the adjuster text:"+fieldValue+" in infobar");
+	    	break;
 	    	//TODO the rest
 	    default:
 		    Assert.fail("unknown input field :"+ fieldValue+" - check cucumber script!");
