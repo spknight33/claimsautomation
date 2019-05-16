@@ -116,13 +116,13 @@ public class ClaimCenterFNOLNewPassengerDetailsPOM extends BaseTest{
 	
 	@FindBy(id = "FNOLContactPopup:FNOLContactScreen:ContactDV:InjuryIncidentInputSet:AmbulanceAttended_itb_true-inputEl")
 	private WebElement ambulanceYesRadio;
-	@FindBy(id = "FNOLContactPopup:FNOLContactScreen:ContactDV:InjuryIncidentInputSet:AmbulanceAttended_itb_false-inputEll")
+	@FindBy(id = "FNOLContactPopup:FNOLContactScreen:ContactDV:InjuryIncidentInputSet:AmbulanceAttended_itb_false-inputEl")
 	private WebElement ambulanceNoRadio;
 	
 	
 	@FindBy(id = "FNOLContactPopup:FNOLContactScreen:ContactDV:InjuryIncidentInputSet:AirAmbulanceAttended_itb_true-inputEl")
 	private WebElement airAmbulanceYesRadio;
-	@FindBy(id = "FNOLContactPopup:FNOLContactScreen:ContactDV:InjuryIncidentInputSet:AirAmbulanceAttended_itb_false-inputEll")
+	@FindBy(id = "FNOLContactPopup:FNOLContactScreen:ContactDV:InjuryIncidentInputSet:AirAmbulanceAttended_itb_false-inputEl")
 	private WebElement airAmbulanceNoRadio;
 	
 	@FindBy(id = "FNOLContactPopup:FNOLContactScreen:ContactDV:InjuryIncidentInputSet:HospitalAttended_itb_true-inputEl")

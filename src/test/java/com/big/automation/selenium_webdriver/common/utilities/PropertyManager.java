@@ -3,7 +3,9 @@ package com.big.automation.selenium_webdriver.common.utilities;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Properties;
@@ -75,6 +77,14 @@ public class PropertyManager {
         setUserMap(items,"Third Party Capture");
         items = Arrays.asList(prop.getProperty("CHProtocolHandlers").split("\\s*,\\s*"));
         setUserMap(items,"Credit Hire Protocol");
+        items = Arrays.asList(prop.getProperty("SIUHandlers").split("\\s*,\\s*"));
+        setUserMap(items,"SIU");
+        items = Arrays.asList(prop.getProperty("ITAdminUsers").split("\\s*,\\s*"));
+        setUserMap(items,"ITAdmin");
+        items = Arrays.asList(prop.getProperty("FinanceUsers").split("\\s*,\\s*"));
+        setUserMap(items,"Finance");
+        items = Arrays.asList(prop.getProperty("LargeLossUsers").split("\\s*,\\s*"));
+        setUserMap(items,"LargeLoss");
     
     }
     public String getEnvType () {
@@ -100,6 +110,24 @@ public class PropertyManager {
     public String getPreProdPolicyURL () {
         return preProdPolicyUrl;
       }
+    
+    
+    
+    public UserConfig getUserForTeam(String team)
+    {
+    	
+    	Collection<UserConfig> configs = userMap.values();
+   
+    	for (UserConfig config : configs) {
+    	    if (config.getTeam().equalsIgnoreCase(team))
+    	    {
+    	    	// found a match return a user
+    	    	return config;
+    	    }
+    	}
+    	return null;
+    	
+    }
     
     public String getGroupForUser(String user)
     {

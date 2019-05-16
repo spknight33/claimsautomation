@@ -1,37 +1,35 @@
 @Ignore
-Feature: CBPCL-71 As a user I want to login to Claims Center
+Feature: test user logins
 
   Background: 
+    Given I use test data set "postfnol_set1"
     Given I access ClaimCenter login page
- 
-  @Ignore
-  Scenario Outline: CBPCL-71 TC7 login valid user
-    When I login to ClaimCenter as "<user>" with "<password>"
+
+  Scenario Outline: TC1 login as a team member
+    And I login to ClaimCenter as role "<role>"
     Then I will be logged on to ClaimsCenter desktop
-    And I will log off
 
     Examples: 
-      | user    | password |
-      | sknight | gw       |
-      | rhenderson   | gw       |
-
-    @Ignore
-    Examples: 
-      | user         | password |
-      | sknight      | gw       |
-      | mbest        | gw       |
-      | rhenderson   | gw       |
-      | bchmielewska | gw       |
-      | awilson      | gw       |
-      | sakbar       | gw       |
-      | gdick        | gw       |
-      | jbutler      | gw       |
-
-  @Ignore
-  Scenario Outline: invalid login should get error message
-    When I login to ClaimCenter as "<user>" with "<password>"
-    Then an error message "<error message displayed>" will be shown
-
-    Examples: 
-      | user     | password | error message displayed                      | validation reason  |
-      | sthomson | GW       | The submitted user name/password is invalid. | uppercase password |
+      | role                    |
+      | ADClaimsHandlerTm1      |
+      | ADClaimsHandlerTm2      |
+      | ClaimsSupportHandlerTm1 |
+      | ClaimsSupportHandlerTm2 |
+      | PIClaimsHandlerTm1      |
+      | PIClaimsHandlerTm2      |
+      | CHClaimsHandlerTm1      |
+      | TPCClaimsHandlerTm1     |
+      | TPDClaimsHandlerTm1     |
+      | SIUUserTm1              |
+      | ADTeamManagerTm1        |
+      | ADTeamManagerTm2        |
+      | CSTeamManagerTm1        |
+      | CSTeamManagerTm2        |
+      | TPCTeamManagerTm1       |
+      | TPDTeamManagerTm1       |
+      | CHTeamManagerTm1        |
+      | PITeamManagerTm1        |
+      | PITeamManagerTm2        |
+      | SIUManagerTm1           |
+      | Finance                 |
+      | ITAdmin                 |
