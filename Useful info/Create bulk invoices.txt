@@ -1,0 +1,15 @@
+Regular
+1.Message Mike brown to ask him to upload the file, ask him to put it here:"/mnt/sc_request_share/borderaux/"
+2.Run Bulk invoice creation batch job 
+3.May need to approve payment (go to payments and approve as manager)
+NOTE: IF there is no exposure it will create one 
+4.Run Bulk invoice work flow monitor batch job 
+5.Run bulk invoice escalation batch job 
+NOTE:If the company/contact you are sending it to has EFT (electronic funds transfer) details filled out it will go through BACs as opposed to physical cheque
+
+
+
+Glass
+1.Message Mike brown to ask him to upload the file, ask him to put ithere:"/mnt/sc_request_share/glassclaim/"
+2.Run create glass claim batch job
+3. Follow steps 3 and above for glass (I think?)

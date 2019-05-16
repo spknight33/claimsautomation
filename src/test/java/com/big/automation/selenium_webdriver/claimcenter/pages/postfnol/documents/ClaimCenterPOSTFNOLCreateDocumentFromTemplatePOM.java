@@ -2,6 +2,7 @@ package com.big.automation.selenium_webdriver.claimcenter.pages.postfnol.documen
 
 import com.big.automation.selenium_webdriver.common.baseTest.BaseTest;
 import com.big.automation.selenium_webdriver.common.gw.utilities.GuideWireAccessors;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
@@ -10,11 +11,33 @@ import static java.lang.String.format;
 
 public class ClaimCenterPOSTFNOLCreateDocumentFromTemplatePOM extends BaseTest {
 
-
+    //
     //WEB ELEMENTS BELOW
+    //
 
     @FindBy(id = "ClaimNewDocumentFromTemplateWorksheet:NewDocumentFromTemplateScreen:ttlBar")
     private WebElement pageTitle;
+
+
+    //Search for template Begin
+    @FindBy(id = "ClaimNewDocumentFromTemplateWorksheet:NewDocumentFromTemplateScreen:NewTemplateDocumentDV:TemplatePicker:SelectTemplatePicker")
+    private WebElement documentTemplateSearchButton;
+
+    @FindBy(id = "DocumentTemplateSearchPopup:DocumentTemplateSearchScreen:DocumentTemplateSearchDV:TemplateType-trigger-picker")
+    private WebElement docTypeTemplateSearchDropDown;
+
+    @FindBy(id = "DocumentTemplateSearchPopup:DocumentTemplateSearchScreen:DocumentTemplateSearchDV:LossType-trigger-picker")
+    private WebElement lineOfBusinessTemplateSearchDropDown;
+
+    @FindBy(id = "DocumentTemplateSearchPopup:DocumentTemplateSearchScreen:DocumentTemplateSearchDV:JurisdictionState-trigger-picker")
+    private WebElement jurisdictionTemplateSearchDropDown;
+
+    @FindBy(id = "DocumentTemplateSearchPopup:DocumentTemplateSearchScreen:DocumentTemplateSearchDV:Keywords-inputEl")
+    private WebElement keywordsTemplateSearchTextBox;
+
+    private String selectDocTemplateShell = "//div[text() = '%s']/../..//a";
+    //Search for template end
+
 
     @FindBy(id = "")
     private WebElement recipientType;
@@ -40,7 +63,7 @@ public class ClaimCenterPOSTFNOLCreateDocumentFromTemplatePOM extends BaseTest {
 
     @FindBy(id = "")
     private WebElement InOutOutboundButton;
-    @FindBy(id = "")
+    @FindBy(id = "ClaimNewDocumentFromTemplateWorksheet:NewDocumentFromTemplateScreen:DocumentDetailsEditDVPanelSet:DocumentDetailsEditInputSet:InBound_true-inputEl")
     private WebElement InOutInboundButton;
 
     @FindBy(id = "")
@@ -56,7 +79,10 @@ public class ClaimCenterPOSTFNOLCreateDocumentFromTemplatePOM extends BaseTest {
     private WebElement handler;
 
 
+
+    //
     //METHODS BELOW
+    //
 
     public String getName() {
 
@@ -70,17 +96,87 @@ public class ClaimCenterPOSTFNOLCreateDocumentFromTemplatePOM extends BaseTest {
         return this.getPageTitle().getText().equalsIgnoreCase(expected);
     }
 
+
     public void selectDocTypeAndSubType(String docType,String docSubType){
+        logger.info("Attempting to enter select Doc type: " + docType);
         GuideWireAccessors.selectOptionFromGWDropDown(driver,docType,getDocTypeDropDown(),0);
+        logger.info("Attempting to enter select Doc Sub type: " + docSubType);
         GuideWireAccessors.selectOptionFromGWDropDown(driver,docSubType,getDocSubTypeDropDown(),0);
+    }
+
+    public void selectDocType(String docType){
+        logger.info("Attempting to enter select Doc type: " + docType);
+        GuideWireAccessors.selectOptionFromGWDropDown(driver,docType,getDocTypeDropDown(),0);
+    }
+
+    public void selectDocSubType(String docSubType){
+        logger.info("Attempting to enter select Doc Sub type: " + docSubType);
+        GuideWireAccessors.selectOptionFromGWDropDown(driver,docSubType,getDocSubTypeDropDown(),0);
+    }
+
+    public void clickSearchForDocTemplateButton(){
+        logger.info("Attempting to click search for doc template button");
+        GuideWireAccessors.clickGWButton(driver,postFnolCreateDocumentFromTemplatePOM.getDocumentTemplateSearchButton());
+    }
+
+    public void setInOut(String s){
+        if(s.equals("Inbound")){
+            GuideWireAccessors.clickGWButton(driver,getInOutInboundButton());
+        }
+        else if (s.equals("Outbound")){
+            GuideWireAccessors.clickGWButton(driver,getInOutOutboundButton());
+        }
+    }
+
+
+    //
+    //Doc Template page
+    //
+    public void clickSelectButtonForDocTemplateByText(String elementText){
+        logger.info("Attempting to select element from template table with the text: " + elementText);
+        GuideWireAccessors.clickGWButton(driver,createWebElementForDocumentTemplateSelectButton(elementText));
     }
 
 
 
+    //
+    //UTILITY METHODS
+    //
+
+    public WebElement createWebElementForDocumentTemplateSelectButton(String text){
+        By xpath  = By.xpath(String.format(selectDocTemplateShell,text));
+        WebElement webElement = driver.findElement(xpath);
+        return webElement;
+    }
+
+
+
+    //
     //GETTERS BELOW
+    //
 
     public WebElement getPageTitle() {
         return pageTitle;
+    }
+
+    public WebElement getDocumentTemplateSearchButton() {
+        return documentTemplateSearchButton;
+    }
+
+    public WebElement getDocTypeTemplateSearchDropDown() {
+        return docTypeTemplateSearchDropDown;
+    }
+
+    public WebElement getLineOfBusinessTemplateSearchDropDown() {
+        return lineOfBusinessTemplateSearchDropDown;
+    }
+
+    public WebElement getJurisdictionTemplateSearchDropDown() {
+        return jurisdictionTemplateSearchDropDown;
+    }
+
+    public String getSelectDocTemplateShell() {
+        return selectDocTemplateShell;
     }
 
     public WebElement getRecipientType() {
