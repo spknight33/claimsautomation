@@ -128,6 +128,18 @@ public class CCFNOLDriverSteps extends BaseTest {
 				searchAddressBookSteps.i_select_on_search_address_book_screen("Search");
 				searchAddressBookSteps.i_select_on_search_address_book_screen("Select First Result");
 			}
+			
+			// air aumbulance
+			fieldValue = ExcelUtil.getTestDataValue("Fnol_PHDriverInjAirAmbAttend");
+			if (fieldValue !=null && fieldValue.equalsIgnoreCase("TRUE"))
+				fnolDriverDetailsPOM.selectAirAmbulanceAttend(true);
+			else
+				fnolDriverDetailsPOM.selectAirAmbulanceAttend(false);
+			
+			// if injury severity is overridden
+			 fieldValue = ExcelUtil.getTestDataValue("Fnol_PHDriverInjSeverity");
+				if (fieldValue !=null)
+					fnolDriverDetailsPOM.selectInjurySeverity(fieldValue);
 	
 	}
 	
@@ -310,6 +322,18 @@ public class CCFNOLDriverSteps extends BaseTest {
 					searchAddressBookSteps.i_select_on_search_address_book_screen("Search");
 					searchAddressBookSteps.i_select_on_search_address_book_screen("Select First Result");
 				}
+				
+				// air aumbulance
+				fieldValue = ExcelUtil.getTestDataValue("Fnol_TPDriverInjAirAmbAttend");
+				if (fieldValue !=null && fieldValue.equalsIgnoreCase("TRUE"))
+					fnolDriverDetailsPOM.selectAirAmbulanceAttend(true);
+				else
+					fnolDriverDetailsPOM.selectAirAmbulanceAttend(false);
+				
+				// if injury severity is overridden
+				 fieldValue = ExcelUtil.getTestDataValue("Fnol_TPDriverInjSeverity");
+					if (fieldValue !=null)
+						fnolDriverDetailsPOM.selectInjurySeverity(fieldValue);
 				
 		}
 		else

@@ -93,7 +93,7 @@ Feature: Regression test for create claim FNOL path - ITB claims
     And I will see the "New Malicious Damage" activity on Workplan screen for post FNOL
 
 
-  Scenario: FNOL Regression - Create new claim - PROPERTY only
+  Scenario: FNOL Regression - Create new claim - PROPERTY only, report by tp
     Given I use test data set "regress_fnol_propertyonly" for brand "ITB"
     And As a "ADClaimsHandlerTm1" I am at step5 for FNOL
     When I create a claim as part of a regression test
@@ -107,6 +107,8 @@ Feature: Regression test for create claim FNOL path - ITB claims
     And I will see post FNOL Workplan screen
     And I select "All open activities" from "Activities" on Workplan screen for post FNOL
     And I will see the "New TPPD - 100% Fault" activity on Workplan screen for post FNOL
+    And I will see the "New TPPD - Unreported" activity on Workplan screen for post FNOL
+
 
   Scenario: FNOL Regression - Create new claim - CYCLIST only no injury
     Given I use test data set "regress_fnol_cyclistonly" for brand "ITB"
@@ -123,12 +125,22 @@ Feature: Regression test for create claim FNOL path - ITB claims
     And I select "All open activities" from "Activities" on Workplan screen for post FNOL
     And I will see the "New TPPD - 100% Fault" activity on Workplan screen for post FNOL
 
-  Scenario: FNOL Regression - Create new claim - MOTORBIKE only
+  Scenario: FNOL Regression - Create new claim - MOTORBIKE only, death of pillion passenger
     Given I use test data set "regress_fnol_motorbike" for brand "ITB"
     And As a "ADClaimsHandlerTm1" I am at step5 for FNOL
     When I create a claim as part of a regression test
-    
+    And I click on the created claim link on Claim Saved screen
+    And I will see "Personal Injury - MOJ" in field "Adjuster" on Claim Info Bar
+    And I select "Exposures" on the Claim Navigator
+    And I will see post FNOL exposures screen
+    And I will see type "Bodily Injury" for coverage "Third Party Liability" and claimant "TP Passenger" has been assigned to a user in group "Personal Injury - MOJ"
+    And I select "Workplan" on the Claim Navigator
+    And I will see post FNOL Workplan screen
+    And I select "All open activities" from "Activities" on Workplan screen for post FNOL
+    And I will see the "New PI Claim" activity on Workplan screen for post FNOL
+    And I will see the "Notification of Fatal Injury " activity on Workplan screen for post FNOL
  
+
    Scenario: FNOL Regression - Create new claim - PEDESTRIAN only with injury
     Given I use test data set "regress_fnol_accident_pedest" for brand "ITB"
     And As a "ADClaimsHandlerTm1" I am at step5 for FNOL
@@ -142,6 +154,7 @@ Feature: Regression test for create claim FNOL path - ITB claims
     And I will see post FNOL Workplan screen
     And I select "All open activities" from "Activities" on Workplan screen for post FNOL
     And I will see the "New PI Claim" activity on Workplan screen for post FNOL
+    And I will see the "Review for Potential Large Loss Report" activity on Workplan screen for post FNOL
 
 
   Scenario: FNOL Regression - Create new claim - PH COURTESY CAR only
@@ -196,11 +209,13 @@ Feature: Regression test for create claim FNOL path - ITB claims
     And I will see post FNOL Workplan screen
     And I select "All open activities" from "Activities" on Workplan screen for post FNOL
     And I will see the "New TPPD - Possible Dispute" activity on Workplan screen for post FNOL
-    And I will see the "New Credit Hire Claim" activity on Workplan screen for post FNOL
     And I will see the "New PI Claim" activity on Workplan screen for post FNOL
+    And I will see the "Review for Potential Large Loss Report" activity on Workplan screen for post FNOL
+    And I will see the "New Credit Hire Claim" activity on Workplan screen for post FNOL
+   
 
 
-  Scenario: FNOL Regression - Create new claim - ACCIDENT (FAULT) with TP, No injuries or credit hire
+  Scenario: FNOL Regression - Create new claim - ACCIDENT (FAULT) with TP, No injuries or credit hire, report by tp
     Given I use test data set "regress_fnol_accident_fault" for brand "ITB"
     And As a "ADClaimsHandlerTm1" I am at step5 for FNOL
     When I create a claim as part of a regression test
@@ -214,7 +229,7 @@ Feature: Regression test for create claim FNOL path - ITB claims
     And I will see post FNOL Workplan screen
     And I select "All open activities" from "Activities" on Workplan screen for post FNOL
     And I will see the "New TPPD - 100% Fault" activity on Workplan screen for post FNOL
-    
+    And I will see the "New TPPD - Unreported" activity on Workplan screen for post FNOL
    
    Scenario: FNOL Regression - Create new claim - ACCIDENT (CREDITHIRE)collision with TP , No Injuries WITH Credit Hire
     Given I use test data set "regress_fnol_accident_credhire" for brand "ITB"

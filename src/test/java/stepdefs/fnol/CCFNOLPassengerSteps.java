@@ -65,7 +65,7 @@ public class CCFNOLPassengerSteps extends BaseTest {
 				if (fieldValue !=null)
 					fnolNewPassengerPOM.setInjuryDesc(fieldValue);
 			 
-			 fieldValue = ExcelUtil.getTestDataValue("Fnol_TPPassengerInj1BodyArea");
+			    fieldValue = ExcelUtil.getTestDataValue("Fnol_TPPassengerInj1BodyArea");
 				if (fieldValue !=null)
 					fnolNewPassengerPOM.selectAreaOfBody(fieldValue, 1);
 				fieldValue = ExcelUtil.getTestDataValue("Fnol_TPPassengerInj1Detailed");
@@ -92,6 +92,18 @@ public class CCFNOLPassengerSteps extends BaseTest {
 					searchAddressBookSteps.i_select_on_search_address_book_screen("Search");
 					searchAddressBookSteps.i_select_on_search_address_book_screen("Select First Result");
 				}
+				
+				// air aumbulance
+				fieldValue = ExcelUtil.getTestDataValue("Fnol_TPPassengerInjAirAmbAttend");
+				if (fieldValue !=null && fieldValue.equalsIgnoreCase("TRUE"))
+					fnolNewPassengerPOM.selectAirAmbulanceAttend(true);
+				else
+					fnolNewPassengerPOM.selectAirAmbulanceAttend(false);
+				
+				// if injury severity is overridden
+				 fieldValue = ExcelUtil.getTestDataValue("Fnol_TPPassengerInjSeverity");
+					if (fieldValue !=null)
+						fnolNewPassengerPOM.selectInjurySeverity(fieldValue);
 		     
 		}
 		else
@@ -178,6 +190,18 @@ public class CCFNOLPassengerSteps extends BaseTest {
 					searchAddressBookSteps.i_select_on_search_address_book_screen("Search");
 					searchAddressBookSteps.i_select_on_search_address_book_screen("Select First Result");
 				}
+				
+				// air aumbulance
+				fieldValue = ExcelUtil.getTestDataValue("Fnol_PHPassengerInjAirAmbAttend");
+				if (fieldValue !=null && fieldValue.equalsIgnoreCase("TRUE"))
+					fnolNewPassengerPOM.selectAirAmbulanceAttend(true);
+				else
+					fnolNewPassengerPOM.selectAirAmbulanceAttend(false);
+				
+				// if injury severity is overridden
+				 fieldValue = ExcelUtil.getTestDataValue("Fnol_PHPassengerInjSeverity");
+					if (fieldValue !=null)
+						fnolNewPassengerPOM.selectInjurySeverity(fieldValue);
 		     
 		}
 		else

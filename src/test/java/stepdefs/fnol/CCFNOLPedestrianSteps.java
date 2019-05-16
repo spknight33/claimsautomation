@@ -104,6 +104,20 @@ public class CCFNOLPedestrianSteps extends BaseTest {
 					searchAddressBookSteps.i_select_on_search_address_book_screen("Search");
 					searchAddressBookSteps.i_select_on_search_address_book_screen("Select First Result");
 				}
+				
+				// air aumbulance
+				fieldValue = ExcelUtil.getTestDataValue("Fnol_PedestrianInjAirAmbAttend");
+				if (fieldValue !=null && fieldValue.equalsIgnoreCase("TRUE"))
+					fnolPedestrianPOM.selectAirAmbulanceAttend(true);
+				else
+					fnolPedestrianPOM.selectAirAmbulanceAttend(false);
+				
+				// if injury severity is overridden
+				 fieldValue = ExcelUtil.getTestDataValue("Fnol_PedestrianInjSeverity");
+					if (fieldValue !=null)
+						fnolPedestrianPOM.selectInjurySeverity(fieldValue);
+					
+				
 		     
 		}
 		else

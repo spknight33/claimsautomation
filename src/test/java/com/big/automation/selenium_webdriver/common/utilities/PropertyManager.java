@@ -8,6 +8,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Properties;
 
+import com.big.automation.selenium_webdriver.common.config.UserConfig;
+
 
 public class PropertyManager {
 
@@ -22,7 +24,7 @@ public class PropertyManager {
     private static String testPolicyUrl;
     private static String preProdPolicyUrl;
     private static String envType;
-    private static Map<String, String> userMap = new HashMap<>();
+    private static Map<String, UserConfig> userMap = new HashMap<>();
 
     //Create a Singleton instance. We need only one instance of Property Manager.
     public static PropertyManager getInstance () {
@@ -101,13 +103,27 @@ public class PropertyManager {
     
     public String getGroupForUser(String user)
     {
-    	return userMap.get(user);
+    	UserConfig userConfig = userMap.get(user);
+    	return userConfig.getGroup();
     }
     
     private void setUserMap(List<String> items,String group)
     {
+    	UserConfig userConfig=null;
+    	String user=null;
+    	String password=null;
+    	String team=null;
     	for (int i=0; i<items.size(); i++){
-            userMap.put(items.get(i).trim(), group);
+    		
+    		List<String> userDetails = Arrays.asList(items.get(i).split("\\s*\\$\\s*"));
+    		
+    		user=userDetails.get(0).trim();
+    		password=userDetails.get(1);
+    		team=userDetails.get(2);
+    		
+    		// format of entry is user/password/team
+    		userConfig = new UserConfig(user,password,group,team);
+            userMap.put(user, userConfig);
     	}
     	
     }
