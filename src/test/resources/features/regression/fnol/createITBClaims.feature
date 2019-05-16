@@ -8,10 +8,14 @@ Feature: Regression test for create claim FNOL path - ITB claims
     When I create a claim as part of a regression test
     And I will be on Claim Saved screen in FNOL
     And I click on the created claim link on Claim Saved screen
+    And I will see "Accidental Damage" in field "Adjuster" on Claim Info Bar
+    And I select "Exposures" on the Claim Navigator
+    And I will see post FNOL exposures screen
+    And I will see type "Vehicle" for coverage "Fire" and claimant "PH Driver" has been assigned to a user in group "Accidental Damage"
     And I select "Workplan" on the Claim Navigator
     And I will see post FNOL Workplan screen
     And I select "All open activities" from "Activities" on Workplan screen for post FNOL
-    #And I will see the "New Fire" activity on Workplan screen for post FNOL
+    And I will see the "New Fire" activity on Workplan screen for post FNOL
 
 
   Scenario: FNOL Regression - Create new claim - THEFT claim
@@ -19,10 +23,14 @@ Feature: Regression test for create claim FNOL path - ITB claims
     And As a "ADClaimsHandlerTm1" I am at step5 for FNOL
     When I create a claim as part of a regression test
     And I click on the created claim link on Claim Saved screen
+    And I will see "Accidental Damage" in field "Adjuster" on Claim Info Bar
+    And I select "Exposures" on the Claim Navigator
+    And I will see post FNOL exposures screen
+    And I will see type "Vehicle" for coverage "Theft" and claimant "PH Driver" has been assigned to a user in group "Accidental Damage"
     And I select "Workplan" on the Claim Navigator
     And I will see post FNOL Workplan screen
     And I select "All open activities" from "Activities" on Workplan screen for post FNOL
-    #And I will see the "New Theft" activity on Workplan screen for post FNOL
+    And I will see the "New Theft" activity on Workplan screen for post FNOL
 
 
   Scenario: FNOL Regression - Create new claim - GLASS REPAIR claim
@@ -31,6 +39,7 @@ Feature: Regression test for create claim FNOL path - ITB claims
     When I create a claim as part of a regression test
     And I will be on Claim Saved screen in FNOL
     And I click on the created claim link on Claim Saved screen
+    And I will see "Claims Support" in field "Adjuster" on Claim Info Bar
     And I select "Exposures" on the Claim Navigator
     And I will see post FNOL exposures screen
     And I will see type "Vehicle" for coverage "Glass" and claimant "PH Driver" has been assigned to a user in group "Claims Support"
@@ -41,6 +50,11 @@ Feature: Regression test for create claim FNOL path - ITB claims
     Given I use test data set "regress_fnol_glass_replace" for brand "ITB"
     And As a "ADClaimsHandlerTm1" I am at step5 for FNOL
     When I create a claim as part of a regression test
+    And I click on the created claim link on Claim Saved screen
+    And I will see "Claims Support" in field "Adjuster" on Claim Info Bar
+    And I select "Exposures" on the Claim Navigator
+    And I will see post FNOL exposures screen
+    And I will see type "Vehicle" for coverage "Glass" and claimant "PH Driver" has been assigned to a user in group "Claims Support"
 
 
   Scenario: FNOL Regression - Create new claim - MISFUELLING claim
@@ -49,6 +63,7 @@ Feature: Regression test for create claim FNOL path - ITB claims
     When I create a claim as part of a regression test
     And I will be on Claim Saved screen in FNOL
     And I click on the created claim link on Claim Saved screen
+    And I will see "Accidental Damage" in field "Adjuster" on Claim Info Bar
     And I select "Exposures" on the Claim Navigator
     And I will see post FNOL exposures screen
     And I will see type "Vehicle" for coverage "Misfuelling Cover" and claimant "PH Driver" has been assigned to a user in group "Accidental Damage"
@@ -58,26 +73,40 @@ Feature: Regression test for create claim FNOL path - ITB claims
     Given I use test data set "regress_fnol_flood" for brand "ITB"
     And As a "ADClaimsHandlerTm1" I am at step5 for FNOL
     When I create a claim as part of a regression test
+    And I will be on Claim Saved screen in FNOL
+    And I click on the created claim link on Claim Saved screen
+    And I will see "Accidental Damage" in field "Adjuster" on Claim Info Bar
+    And I select "Exposures" on the Claim Navigator
+    And I will see post FNOL exposures screen
+    And I will see type "Vehicle" for coverage "Accidental Damage" and claimant "PH Driver" has been assigned to a user in group "Accidental Damage"
+    
 
   Scenario: FNOL Regression - Create new claim - MALICIOUS DAMAGE but incident only claim - no reserves to be created
     Given I use test data set "regress_fnol_inconly" for brand "ITB"
     And As a "ADClaimsHandlerTm1" I am at step5 for FNOL
     When I create a claim as part of a regression test
     And I click on the created claim link on Claim Saved screen
+    And I will see "Accidental Damage" in field "Adjuster" on Claim Info Bar
     And I select "Workplan" on the Claim Navigator
     And I will see post FNOL Workplan screen
     And I select "All open activities" from "Activities" on Workplan screen for post FNOL
-    #And I will see the "New Malicious Damage" activity on Workplan screen for post FNOL
+    And I will see the "New Malicious Damage" activity on Workplan screen for post FNOL
+
 
   Scenario: FNOL Regression - Create new claim - PROPERTY only
     Given I use test data set "regress_fnol_propertyonly" for brand "ITB"
     And As a "ADClaimsHandlerTm1" I am at step5 for FNOL
     When I create a claim as part of a regression test
-     And I will be on Claim Saved screen in FNOL
+    And I will be on Claim Saved screen in FNOL
     And I click on the created claim link on Claim Saved screen
+    And I will see "Third Party Property Damage" in field "Adjuster" on Claim Info Bar
     And I select "Exposures" on the Claim Navigator
     And I will see post FNOL exposures screen
     And I will see type "Property" for coverage "Third Party Liability" and claimant "TP Property Owner" has been assigned to a user in group "Third Party Property Damage"
+     And I select "Workplan" on the Claim Navigator
+    And I will see post FNOL Workplan screen
+    And I select "All open activities" from "Activities" on Workplan screen for post FNOL
+    And I will see the "New TPPD - 100% Fault" activity on Workplan screen for post FNOL
 
   Scenario: FNOL Regression - Create new claim - CYCLIST only no injury
     Given I use test data set "regress_fnol_cyclistonly" for brand "ITB"
@@ -85,10 +114,14 @@ Feature: Regression test for create claim FNOL path - ITB claims
     When I create a claim as part of a regression test
     And I will be on Claim Saved screen in FNOL
     And I click on the created claim link on Claim Saved screen
+    And I will see "Third Party Property Damage" in field "Adjuster" on Claim Info Bar
     And I select "Exposures" on the Claim Navigator
     And I will see post FNOL exposures screen
     And I will see type "Vehicle" for coverage "Third Party Liability" and claimant "TP Driver" has been assigned to a user in group "Third Party Property Damage"
-    
+    And I select "Workplan" on the Claim Navigator
+    And I will see post FNOL Workplan screen
+    And I select "All open activities" from "Activities" on Workplan screen for post FNOL
+    And I will see the "New TPPD - 100% Fault" activity on Workplan screen for post FNOL
 
   Scenario: FNOL Regression - Create new claim - MOTORBIKE only
     Given I use test data set "regress_fnol_motorbike" for brand "ITB"
@@ -96,15 +129,19 @@ Feature: Regression test for create claim FNOL path - ITB claims
     When I create a claim as part of a regression test
     
  
-     Scenario: FNOL Regression - Create new claim - PEDESTRIAN only
+   Scenario: FNOL Regression - Create new claim - PEDESTRIAN only with injury
     Given I use test data set "regress_fnol_accident_pedest" for brand "ITB"
     And As a "ADClaimsHandlerTm1" I am at step5 for FNOL
     When I create a claim as part of a regression test
     And I click on the created claim link on Claim Saved screen
+    And I will see "Personal Injury - MOJ" in field "Adjuster" on Claim Info Bar
+    And I select "Exposures" on the Claim Navigator
+    And I will see post FNOL exposures screen
+    And I will see type "Bodily Injury" for coverage "Third Party Liability" and claimant "Pedestrian" has been assigned to a user in group "Personal Injury - MOJ"
     And I select "Workplan" on the Claim Navigator
     And I will see post FNOL Workplan screen
     And I select "All open activities" from "Activities" on Workplan screen for post FNOL
-    #And I will see the "New PI Claim" activity on Workplan screen for post FNOL
+    And I will see the "New PI Claim" activity on Workplan screen for post FNOL
 
 
   Scenario: FNOL Regression - Create new claim - PH COURTESY CAR only
@@ -124,13 +161,17 @@ Feature: Regression test for create claim FNOL path - ITB claims
     When I create a claim as part of a regression test
     And I will be on Claim Saved screen in FNOL
     And I click on the created claim link on Claim Saved screen
+    And I will see "Credit Hire" in field "Adjuster" on Claim Info Bar
     And I select "Exposures" on the Claim Navigator
     And I will see post FNOL exposures screen
     And I will see type "Vehicle" for coverage "Accidental Damage" and claimant "PH Driver" has been assigned to a user in group "Accidental Damage"
     And I will see type "Credit Hire" for coverage "Third Party Liability" and claimant "TP Driver" has been assigned to a user in group "Credit Hire"
     And I will see type "Protocol Hire" for coverage "Third Party Liability" and claimant "TP Driver" has been assigned to a user in group "Credit Hire Protocol"
     And I will see type "Property" for coverage "Third Party Liability" and claimant "TP Property Owner" has been assigned to a user in group "Credit Hire"
- 
+    And I select "Workplan" on the Claim Navigator
+    And I will see post FNOL Workplan screen
+    And I select "All open activities" from "Activities" on Workplan screen for post FNOL
+    And I will see the "New Credit Hire Claim" activity on Workplan screen for post FNOL
 
 
   Scenario: FNOL Regression - Create new claim - ACCIDENT (SPLIT) - also check expsoure assignments
@@ -139,13 +180,14 @@ Feature: Regression test for create claim FNOL path - ITB claims
     When I create a claim as part of a regression test
     And I will be on Claim Saved screen in FNOL
     And I click on the created claim link on Claim Saved screen
+    And I will see "Personal Injury - MOJ" in field "Adjuster" on Claim Info Bar
     And I select "Exposures" on the Claim Navigator
     And I will see post FNOL exposures screen
     And I will see type "Vehicle" for coverage "Accidental Damage" and claimant "PH Driver" has been assigned to a user in group "Accidental Damage"
     And I will see type "Vehicle" for coverage "Third Party Liability" and claimant "TP Driver" has been assigned to a user in group "Personal Injury - MOJ"
     And I will see type "Credit Hire" for coverage "Third Party Liability" and claimant "TP Driver" has been assigned to a user in group "Credit Hire"
     And I will see type "Protocol Hire" for coverage "Third Party Liability" and claimant "TP Driver" has been assigned to a user in group "Credit Hire Protocol"
-     And I will see type "Bodily Injury" for coverage "Third Party Liability" and claimant "TP Driver" has been assigned to a user in group "Personal Injury - MOJ"
+    And I will see type "Bodily Injury" for coverage "Third Party Liability" and claimant "TP Driver" has been assigned to a user in group "Personal Injury - MOJ"
     And I will see type "Bodily Injury" for coverage "Third Party Liability" and claimant "TP Passenger" has been assigned to a user in group "Personal Injury - MOJ"
     And I will see type "Bodily Injury" for coverage "Third Party Liability" and claimant "PH Passenger" has been assigned to a user in group "Personal Injury - MOJ"
     And I will see type "Bodily Injury" for coverage "Third Party Liability" and claimant "Pedestrian" has been assigned to a user in group "Personal Injury - MOJ"
@@ -153,34 +195,45 @@ Feature: Regression test for create claim FNOL path - ITB claims
     And I select "Workplan" on the Claim Navigator
     And I will see post FNOL Workplan screen
     And I select "All open activities" from "Activities" on Workplan screen for post FNOL
-    #And I will see the "New TPPD - Possible Dispute" activity on Workplan screen for post FNOL
+    And I will see the "New TPPD - Possible Dispute" activity on Workplan screen for post FNOL
+    And I will see the "New Credit Hire Claim" activity on Workplan screen for post FNOL
+    And I will see the "New PI Claim" activity on Workplan screen for post FNOL
 
-  Scenario: FNOL Regression - Create new claim - ACCIDENT (FAULT)
+
+  Scenario: FNOL Regression - Create new claim - ACCIDENT (FAULT) with TP, No injuries or credit hire
     Given I use test data set "regress_fnol_accident_fault" for brand "ITB"
     And As a "ADClaimsHandlerTm1" I am at step5 for FNOL
     When I create a claim as part of a regression test
-     And I click on the created claim link on Claim Saved screen
+    And I click on the created claim link on Claim Saved screen
+    And I will see "Third Party Property Damage" in field "Adjuster" on Claim Info Bar
+    And I select "Exposures" on the Claim Navigator
+    And I will see post FNOL exposures screen
+    And I will see type "Vehicle" for coverage "Accidental Damage" and claimant "PH Driver" has been assigned to a user in group "Accidental Damage"
+    And I will see type "Vehicle" for coverage "Third Party Liability" and claimant "TP Driver" has been assigned to a user in group "Third Party Property Damage"
     And I select "Workplan" on the Claim Navigator
     And I will see post FNOL Workplan screen
     And I select "All open activities" from "Activities" on Workplan screen for post FNOL
-    #And I will see the "New TPPD - 100% Fault" activity on Workplan screen for post FNOL
+    And I will see the "New TPPD - 100% Fault" activity on Workplan screen for post FNOL
     
+   
    Scenario: FNOL Regression - Create new claim - ACCIDENT (CREDITHIRE)collision with TP , No Injuries WITH Credit Hire
     Given I use test data set "regress_fnol_accident_credhire" for brand "ITB"
     And As a "ADClaimsHandlerTm1" I am at step5 for FNOL
     When I create a claim as part of a regression test
     And I will be on Claim Saved screen in FNOL
     And I click on the created claim link on Claim Saved screen
+    And I will see "Credit Hire" in field "Adjuster" on Claim Info Bar
     And I select "Exposures" on the Claim Navigator
     And I will see post FNOL exposures screen
     And I will see type "Vehicle" for coverage "Accidental Damage" and claimant "PH Driver" has been assigned to a user in group "Accidental Damage"
     And I will see type "Credit Hire" for coverage "Third Party Liability" and claimant "TP Driver" has been assigned to a user in group "Credit Hire"
     And I will see type "Vehicle" for coverage "Third Party Liability" and claimant "TP Driver" has been assigned to a user in group "Credit Hire"
     And I will see type "Protocol Hire" for coverage "Third Party Liability" and claimant "TP Driver" has been assigned to a user in group "Credit Hire Protocol"
-     And I select "Workplan" on the Claim Navigator
+    And I select "Workplan" on the Claim Navigator
     And I will see post FNOL Workplan screen
     And I select "All open activities" from "Activities" on Workplan screen for post FNOL
-    #And I will see the "New Credit Hire Claim" activity on Workplan screen for post FNOL
+    And I will see the "New Credit Hire Claim" activity on Workplan screen for post FNOL
+    And I will see the "New TPPD - 100% Fault" activity on Workplan screen for post FNOL
 
   Scenario: FNOL Regression - Create new claim - ACCIDENT (FAULT- NAMED DRIVER)
     Given I use test data set "regress_fnol_accident_namedriv" for brand "ITB"

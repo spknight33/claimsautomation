@@ -1,5 +1,7 @@
 package com.big.automation.selenium_webdriver.common.config;
 
+import com.big.automation.selenium_webdriver.common.utilities.PropertyManager;
+
 public class UserToGroupMap {
 
 	
@@ -7,7 +9,10 @@ public class UserToGroupMap {
 
 	public static String getGroupForUser(String user) throws Throwable{
 		// these are Carlos test user - to be changed later
-		switch (user)
+		
+		String group = PropertyManager.getInstance().getGroupForUser(user);
+		
+		/*switch (user)
 		{
 		case ("HAD1"):
 		case ("HAD2"):
@@ -47,6 +52,12 @@ public class UserToGroupMap {
 		throw new Exception("Cannot find expected user "+user);
 		
 	}
+	}*/
+		
+		if (group !=null)
+			return group;
+		
+		throw new Exception("Cannot find expected user "+user);
 	}
 
 }

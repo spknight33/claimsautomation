@@ -2,6 +2,10 @@ package com.big.automation.selenium_webdriver.common.utilities;
 
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import java.util.Properties;
 
 
@@ -18,6 +22,7 @@ public class PropertyManager {
     private static String testPolicyUrl;
     private static String preProdPolicyUrl;
     private static String envType;
+    private static Map<String, String> userMap = new HashMap<>();
 
     //Create a Singleton instance. We need only one instance of Property Manager.
     public static PropertyManager getInstance () {
@@ -50,6 +55,24 @@ public class PropertyManager {
         devPolicyUrl = prop.getProperty("devPolicyUrl");
         testPolicyUrl = prop.getProperty("testPolicyUrl");
         preProdPolicyUrl = prop.getProperty("preProdPolicyUrl");
+        
+        userMap = new HashMap<>();
+        
+        // read each group properties and add to map
+        List<String> items = Arrays.asList(prop.getProperty("ADHandlers").split("\\s*,\\s*"));
+        setUserMap(items,"Accidental Damage");
+        items = Arrays.asList(prop.getProperty("CSHandlers").split("\\s*,\\s*"));
+        setUserMap(items,"Claims Support");
+        items = Arrays.asList(prop.getProperty("PIHandlers").split("\\s*,\\s*"));
+        setUserMap(items,"Personal Injury - MOJ");
+        items = Arrays.asList(prop.getProperty("TPPDHandlers").split("\\s*,\\s*"));
+        setUserMap(items,"Third Party Property Damage");
+        items = Arrays.asList(prop.getProperty("CHHandlers").split("\\s*,\\s*"));
+        setUserMap(items,"Credit Hire");
+        items = Arrays.asList(prop.getProperty("TPCHandlers").split("\\s*,\\s*"));
+        setUserMap(items,"Third Party Capture");
+        items = Arrays.asList(prop.getProperty("CHProtocolHandlers").split("\\s*,\\s*"));
+        setUserMap(items,"Credit Hire Protocol");
     
     }
     public String getEnvType () {
@@ -75,5 +98,18 @@ public class PropertyManager {
     public String getPreProdPolicyURL () {
         return preProdPolicyUrl;
       }
+    
+    public String getGroupForUser(String user)
+    {
+    	return userMap.get(user);
+    }
+    
+    private void setUserMap(List<String> items,String group)
+    {
+    	for (int i=0; i<items.size(); i++){
+            userMap.put(items.get(i).trim(), group);
+    	}
+    	
+    }
     
 }
