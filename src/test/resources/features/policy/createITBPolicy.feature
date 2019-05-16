@@ -6,7 +6,7 @@ Feature: ITB Policy Creation - Single Driver
     Given I access PolicyCenter login page
     When I login to PolicyCenter as "tu1" with "Password1"
     And I select the Desktop Actions Popup Menu Hierarchy "New Account"
-    And I set the policy account field "FirstName" to "Steve"
+    And I set the policy account field "FirstName" to "Paul"
     And I set the policy account field "LastName" to "Knight-itb1"
     And I Click Search at account create
     And I Click create new person account
