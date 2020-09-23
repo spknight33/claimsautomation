@@ -1,5 +1,5 @@
 @Ignore @createclaimsdgt
-Feature: Regression test for create claim FNOL path - DGT claims
+Feature: Regression test for create claim FNOL path - DGT claim
 
 
   Scenario: FNOL Regression - Create new claim - FIRE claim
